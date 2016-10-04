@@ -1,0 +1,27 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# production
+build
+debian/files
+debian/ips-web.postinst.debhelper
+debian/ips-web.postrm.debhelper
+debian/ips-web.prerm.debhelper
+debian/ips-web.substvars
+debian/ips-web/
+*.css
+
+# gel react
+./src/cgel-react/.gitignore
+./src/cgel-react/.npmignore
+./src/cgel-react/package.json
+
+#dev
+*.log
+*.json.gzip
+
+# misc
+.DS_Store
+npm-debug.log

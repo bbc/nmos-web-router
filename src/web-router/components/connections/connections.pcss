@@ -1,0 +1,39 @@
+:root {
+  --line: #a19ea0;
+  --routed: #ffe44d;
+}
+
+@keyframes routed {
+  0% {
+    stroke-dasharray: 10;
+    stroke-opacity: 0.5;
+  }
+
+  100% {
+    stroke-dasharray: 15;
+    stroke-opacity: 1;
+  }
+}
+
+.connections {
+  & .routes {
+    padding: 0;
+
+    & .route {
+      position: absolute;
+      z-index: -1;
+      width: 34.25%;
+
+      & .line {
+        stroke: color(var(--line) tint(50%));
+        stroke-linecap: round;
+        stroke-width: 4;
+      }
+
+      &.routed .line {
+        stroke: color(var(--routed) b(5%));
+        animation: routed 1s infinite ease-in-out alternate;
+      }
+    }
+  }
+}

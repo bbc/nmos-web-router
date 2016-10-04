@@ -1,0 +1,11 @@
+Source: ips-web
+Priority: optional
+Section: web
+Maintainer: Luke Preston <luke.preston@bbc.co.uk>
+Standards-Version: 3.9.3
+Build-Depends: debhelper (>= 9), apache2-dev
+
+Package: ips-web
+Architecture: any
+Depends: ${misc:Depends}, apache2
+Description: html content and configuration files for ips-web

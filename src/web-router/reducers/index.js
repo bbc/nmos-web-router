@@ -1,0 +1,25 @@
+import initialise from './initialise-reducer'
+import initialiseError from './initialise-error-reducer'
+import reset from './reset-reducer'
+import toggleConnections from './toggle-connections-reducer'
+import toggleConfirmation from './toggle-confirmation-reducer'
+import updateConnections from './update-connections-reducer'
+import remove from './remove-reducer'
+import drag from './drag-reducer'
+import location from './location-reducer'
+
+export default {
+  initialise,
+  initialiseError,
+  reset,
+  toggleConnections,
+  toggleConfirmation,
+  updateConnections,
+  remove,
+  drag,
+  all: {
+    router: {
+      LOCATION_CHANGE: location
+    }
+  }
+}

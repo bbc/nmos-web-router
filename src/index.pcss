@@ -1,0 +1,98 @@
+:root {
+  --background: #ebebeb;
+  --color: #555;
+  --button-border: #bbb;
+}
+
+body {
+  font-family: Helvetica, Arial, freesans, sans-serif;
+  background-color: var(--background);
+  color: var(--color);
+}
+
+h4 {
+  margin: 1rem 0;
+}
+
+.button {
+  overflow: hidden;
+  display: inline-flex;
+  height: 38px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid var(--button-border);
+  color: #fff;
+  fill: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: color 0.3s, background-color 0.3s;
+  padding: 0 8px;
+
+  &-fill {
+    width: 100%;
+  }
+
+  &-fill.button-has-no-label.button-has-icon .gel-icon {
+    width: 100%;
+  }
+
+  &-fill.button-has-label .label {
+    width: 100%;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  & .beside,
+  & .label,
+  & .gel-icon {
+    display: inline-block;
+    padding: 0 8px;
+  }
+
+  & .gel-icon {
+    padding: 0;
+    margin: auto 0;
+    height: 24px;
+  }
+}
+
+.switch-container {
+  margin-top: 3px;
+  background-color: color(#f5e3cd tint(25%));
+  height: 28px;
+  width: 32px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+
+  & .switch {
+    position: absolute;
+    border-radius: 4px;
+    background-color: color(#877d71 tint(25%));
+    height: 24px;
+    width: 10px;
+    transition: transform 0.3s, background-color 0.3s;
+    margin-left: 2px;
+    margin-top: 2px;
+  }
+}
+
+.toggle-on {
+  & .switch {
+    transform: translateX(180%);
+  }
+}
+
+.toggle-off {
+  & .switch {
+    transform: translateX(0%);
+  }
+}

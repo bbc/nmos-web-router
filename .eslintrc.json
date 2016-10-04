@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
+  "plugins": [
+    "standard",
+    "promise"
+  ],
+  "rules": {
+    "curly": "off",
+    "quotes": ["error", "single"],
+    "no-multiple-empty-lines": "off",
+    "padded-blocks": "off"
+  },
+  "globals": {
+    "WebSocket": true,
+    "Image": true
+  },
+  "env": {
+    "jest": true
+  }
+}

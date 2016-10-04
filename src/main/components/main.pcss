@@ -1,0 +1,55 @@
+:root {
+  --icon-color: #414042;
+  --navigation-background: color(#ebebeb b(15%));
+  --nav-color: #fff;
+  --nav-background: #33c3f0;
+}
+
+.navigation {
+  background-color: var(--navigation-background);
+  border-radius: 4px;
+  padding: 1em;
+  margin-bottom: 2em;
+
+  & .icon,
+  & .title,
+  & .nav {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+
+  & .nav {
+    float: right;
+    fill: color(var(--nav-color) tint(30%));
+    color: color(var(--nav-color) tint(30%));
+    background-color: color(var(--nav-background) tint(30%));
+    border-color: color(var(--nav-background) tint(30%));
+
+    &:hover {
+      fill: var(--nav-color);
+      color: var(--nav-color);
+      background-color: var(--nav-background);
+      border-color: var(--nav-background);
+    }
+  }
+
+  & .icon {
+    height: 2.5em;
+    fill: color(var(--icon-color) tint(20%));
+
+    &:hover {
+      fill: color(var(--icon-color) l(20%));
+      cursor: pointer;
+    }
+  }
+}
+
+.contents {
+  width: 100%;
+  background-color: var(--nav-background);
+
+  & .label {
+    width: 100%;
+  }
+}

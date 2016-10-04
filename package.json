@@ -1,0 +1,74 @@
+{
+  "name": "ips-web",
+  "version": "0.0.1",
+  "author": "Luke Preston <luke.preston@bbc.co.uk>",
+  "private": true,
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "babel-jest": "^15.0.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "change-case": "^3.0.0",
+    "eslint": "^3.3.1",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-config-standard-react": "^4.0.0",
+    "eslint-plugin-flowtype": "^2.11.1",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-react": "^6.1.2",
+    "eslint-plugin-standard": "^2.0.0",
+    "fs-extra": "^0.30.0",
+    "jest": "^15.0.2",
+    "mustache": "^2.2.1",
+    "node-watch": "^0.4.0",
+    "normalize.css": "^4.2.0",
+    "postcss": "^5.1.2",
+    "postcss-cssnext": "^2.7.0",
+    "postcss-import": "^8.1.2",
+    "postcss-reloader": "0.0.2",
+    "react-scripts": "0.2.2",
+    "react-test-renderer": "^15.3.1",
+    "requirejs": "^2.2.0",
+    "stylelint": "^7.2.0",
+    "stylelint-config-standard": "^12.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.13.1",
+    "node-watch": "^0.4.0",
+    "pushstate-server": "^1.12.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-draggable": "^2.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.7.0",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2"
+  },
+  "scripts": {
+    "styles": "postcss-reloader build",
+    "react": "react-scripts build",
+    "dev": "postcss-reloader start | react-scripts start",
+    "dev-test": "node ./tasks/watch-test.js",
+    "build": "rm -rf build && npm run styles && react-scripts build && cp -r build ips-web && mv ips-web build/ips-web",
+    "start": "npm run build && echo http://localhost:7942 && node ./tasks/server.js",
+    "lint": "node ./tasks/lint.js",
+    "test": "npm run lint && jest",
+    "jest": "jest"
+  },
+  "homepage": "http://ipstudio-master.rd.bbc.co.uk/ips-web/",
+  "postcss-reloader": {
+    "dir": "./src",
+    "loaders": [
+      "postcss-import",
+      "postcss-cssnext"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/react-scripts/config/eslint.js"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^.+\\.(css)$": "<rootDir>/src/style-mock.js"
+    }
+  }
+}
