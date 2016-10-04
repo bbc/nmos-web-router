@@ -7,7 +7,6 @@
 
 .navigation {
   background-color: var(--navigation-background);
-  border-radius: 4px;
   padding: 1em;
   margin-bottom: 2em;
 
@@ -17,21 +16,6 @@
     display: inline-block;
     margin-right: 1rem;
     margin-bottom: 0;
-  }
-
-  & .nav {
-    float: right;
-    fill: color(var(--nav-color) tint(30%));
-    color: color(var(--nav-color) tint(30%));
-    background-color: color(var(--nav-background) tint(30%));
-    border-color: color(var(--nav-background) tint(30%));
-
-    &:hover {
-      fill: var(--nav-color);
-      color: var(--nav-color);
-      background-color: var(--nav-background);
-      border-color: var(--nav-background);
-    }
   }
 
   & .icon {
@@ -45,11 +29,8 @@
   }
 }
 
-.contents {
-  width: 100%;
-  background-color: var(--nav-background);
-
-  & .label {
-    width: 100%;
+.welcome {
+  & .gel-layout__item {
+    margin: 1em 0;
   }
 }

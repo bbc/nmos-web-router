@@ -1,32 +1,21 @@
 import React from 'react'
+
 import Button from '../../components/button-component'
+import { Layout, LayoutItem } from '../../gel-react/grid'
+import { Trafalgar, GreatPrimer } from '../../gel-react/typography'
 
 let Welcome = () => {
-  return <div
-    style={{
-      textAlign: 'center',
-      margin: '0 4em'
-    }}>
-    <div style={{
-      fontSize: '24px'
-    }}>
-      <span>Welcome to the IP Studio site </span>
-    </div>
-    <div>
-      <span>You will find all the utilities to interact and observe IP Studio</span>
-    </div>
-    <ul style={{
-      listStyle: 'none',
-      marginTop: '2rem'
-    }}>
-      <li>
-        <Button
-          to='web-router'
-          name='contents'
-          label='WEB ROUTER' />
-      </li>
-    </ul>
-  </div>
+  return <Layout layouts='center' className='welcome'>
+    <LayoutItem>
+      <Trafalgar>Welcome to the IP Studio site</Trafalgar>
+    </LayoutItem>
+    <LayoutItem>
+      <GreatPrimer>You will find all the utilities to interact and observe IP Studio</GreatPrimer>
+    </LayoutItem>
+    <LayoutItem>
+      <Button fill to='web-router' name='contents' label='web router' />
+    </LayoutItem>
+  </Layout>
 }
 
 export default Welcome

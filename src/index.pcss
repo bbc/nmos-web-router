@@ -2,6 +2,8 @@
   --background: #ebebeb;
   --color: #555;
   --button-border: #bbb;
+  --nav-color: #fff;
+  --nav-background: #33c3f0;
 }
 
 body {
@@ -94,5 +96,22 @@ h4 {
 .toggle-off {
   & .switch {
     transform: translateX(0%);
+  }
+}
+
+/* BUTTONS */
+
+.nav,
+.contents {
+  fill: color(var(--nav-color) tint(30%));
+  color: color(var(--nav-color) tint(30%));
+  background-color: color(var(--nav-background) tint(30%));
+  border-color: color(var(--nav-background) tint(30%));
+
+  &:hover {
+    fill: var(--nav-color);
+    color: var(--nav-color);
+    background-color: var(--nav-background);
+    border-color: var(--nav-background);
   }
 }
