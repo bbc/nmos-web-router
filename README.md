@@ -30,8 +30,6 @@ each `folder` maps to a `route`
 each `route` has a `container`
 each `container` can have: a `reducer`, a `dispatcher` and multiple `components`
 
-More information on this implementation can be found in [FLUX](./FLUX.md)
-
 #### Styling
 
 Write only in post script but import the `*.css` file
