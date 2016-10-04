@@ -24,13 +24,31 @@ let Loading = ({view}) => {
     </LayoutItem>
     <Layout layouts='center' gels='1/1'>
       {view.notLoaded.map((notLoaded, index) => {
-        return <Status key={`not-loaded-${index}`} label={notLoaded} icon={<Spinner />} />
+        let name = 'not-loaded'
+        return <Status
+          key={`${name}-${index}`}
+          name={name}
+          label={notLoaded}
+          icon={<Spinner />}
+          />
       })}
       {view.errored.map((errored, index) => {
-        return <Status key={`not-errored-${index}`} label={errored} icon={<No />} />
+        let name = 'errored'
+        return <Status
+          key={`${name}-${index}`}
+          name={name}
+          label={errored}
+          icon={<No />}
+          />
       })}
       {view.loaded.map((loaded, index) => {
-        return <Status key={`loaded-${index}`} label={loaded} icon={<Yes />} />
+        let name = 'loaded'
+        return <Status
+          key={`${name}-${index}`}
+          name={name}
+          label={loaded}
+          icon={<Yes />}
+          />
       })}
     </Layout>
   </Layout>

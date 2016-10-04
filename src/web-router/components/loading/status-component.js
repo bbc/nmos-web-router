@@ -3,11 +3,11 @@ import React, { PropTypes } from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
 import Button from '../../../components/button-component'
 
-let Status = ({icon, label}) => {
+let Status = ({name, icon, label}) => {
   return <LayoutItem gels='1/3'>
     <Button
       fill
-      name='not-loaded'
+      name={name}
       className='status'
       icon={icon}
       label={label} />
