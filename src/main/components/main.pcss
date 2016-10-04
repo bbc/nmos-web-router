@@ -1,5 +1,5 @@
 :root {
-  --icon-color: #414042;
+  --logo-color: #555;
   --navigation-background: color(#ebebeb b(15%));
   --nav-color: #fff;
   --nav-background: #33c3f0;
@@ -10,7 +10,7 @@
   padding: 1em;
   margin-bottom: 2em;
 
-  & .icon,
+  & .logo,
   & .title,
   & .nav {
     display: inline-block;
@@ -18,12 +18,13 @@
     margin-bottom: 0;
   }
 
-  & .icon {
+  & .logo {
+    transition: fill 0.5s;
     height: 2.5em;
-    fill: color(var(--icon-color) tint(20%));
+    fill: color(var(--logo-color) tint(20%));
 
     &:hover {
-      fill: color(var(--icon-color) l(20%));
+      fill: color(var(--logo-color) l(20%));
       cursor: pointer;
     }
   }
