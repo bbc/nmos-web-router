@@ -17,6 +17,14 @@ let Connections = ({data, view, sides, actions, layout}) => {
       side={sides.left.plural}
       sideName='left'
       />
+    <LayoutItem gels='1/3' />
+    <RoutablesColumn
+      routables={data[sides.right.plural]}
+      view={view[sides.right.plural]}
+      actions={actions}
+      side={sides.right.plural}
+      sideName='right'
+      />
     <PointMouse isDragging={view.isDragging} mouse={view.mouse} />
   </LayoutItem>
 }

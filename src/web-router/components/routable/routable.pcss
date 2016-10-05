@@ -88,6 +88,10 @@
   & .draggable {
     margin-right: calc(0.5 * var(--point-width));
   }
+
+  & .routable-expanded {
+    transform: translateX(20%);
+  }
 }
 
 .right {
@@ -97,6 +101,10 @@
 
   & .draggable {
     margin-left: calc(-0.5 * var(--point-width));
+  }
+
+  & .routable-expanded {
+    transform: translateX(-30%);
   }
 }
 
@@ -114,7 +122,6 @@
     position: fixed;
     z-index: 1;
     width: 350px;
-    transform: translateX(20%);
     top: 34%;
 
     & .button {
