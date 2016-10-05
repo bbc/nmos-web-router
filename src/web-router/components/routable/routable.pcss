@@ -51,6 +51,7 @@
 
     & .expanded {
       background-color: color(var(--expanded) tint(10%));
+      border-color: color(var(--expanded) tint(10%));
     }
 
     & .point {
@@ -70,6 +71,7 @@
 
     & .expanded {
       background-color: var(--expanded);
+      border-color: var(--expanded);
     }
 
     & .point {
@@ -100,23 +102,28 @@
 
 .placeholder {
   visibility: hidden;
-  margin-bottom: 1rem;
 }
 
 .routable {
   position: relative;
-  margin-bottom: 1rem;
   cursor: pointer;
   color: #555;
-  transition: margin 0.5s;
+  transition: transform 0.5s;
 
   &-expanded {
     position: fixed;
     z-index: 1;
-    margin-left: 5%;
-    top: 50%;
     width: 350px;
-    margin-bottom: 1rem;
+    transform: translateX(20%);
+    top: 34%;
+
+    & .button {
+      box-shadow: 5px 5px 25px color(#555 alpha(-30%));
+    }
+
+    & .point {
+      box-shadow: 5px 5px 25px color(#555 alpha(-30%));
+    }
   }
 
   &:hover,
@@ -127,6 +134,7 @@
 
     & .routable-button.expanded {
       background-color: color(var(--expanded) b(20%));
+      border-color: color(var(--expanded) b(20%));
     }
 
     & .point {
@@ -173,6 +181,7 @@
       display: inline-block;
       height: auto;
       background-color: var(--expanded);
+      border-color: var(--expanded);
 
       & .label,
       & .description,
@@ -205,6 +214,10 @@
       }
     }
   }
+}
+
+.routable {
+  margin-bottom: 3px;
 }
 
 @media (max-width: 56.25em) {
