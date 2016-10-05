@@ -1,25 +1,26 @@
 import './confirmation.css'
 
 import React, { PropTypes } from 'react'
-
 import Button from '../../../components/button-component'
-import Row from './row-component'
+import { LayoutItem } from '../../../gel-react/grid'
+import { GreatPrimer, Pica } from '../../../gel-react/typography'
 import { Yes, Replay } from '../../../gel-react/iconography'
+import Row from './row-component'
 
 let Confirmation = ({ data, view, sides, actions, layout }) => {
-  return <div className={`gel-layout__item confirmation gel-${layout}@l gel-1/1`}>
-    <div className='gel-layout__item gel-1/3' >
-      <h3>Confirmation</h3>
-    </div>
-    <div className='gel-layout__item gel-2/3' />
-    <div className='gel-layout__item gel-4/12' >
-      <h4>{view.leftTitle}</h4>
-    </div>
-    <div className='gel-layout__item gel-3/12' />
-    <div className='gel-layout__item gel-5/12' >
-      <h4>{view.rightTitle}</h4>
-    </div>
-    <div className='gel-layout__item routes'>{
+  return <LayoutItem className='confirmation' gels={[`${layout}@l`, '1/1']}>
+    <LayoutItem gels='1/3'>
+      <GreatPrimer bold>Confirmation</GreatPrimer>
+    </LayoutItem>
+    <LayoutItem gels='2/3' />
+    <LayoutItem gels='4/12'>
+      <Pica bold>{view.leftTitle}</Pica>
+    </LayoutItem>
+    <LayoutItem gels='3/12' />
+    <LayoutItem gels='5/12'>
+      <Pica bold>{view.rightTitle}</Pica>
+    </LayoutItem>
+    <LayoutItem className='routes'>{
         view.routes.map((route, index) => {
           return <Row
             key={`route-${index}`}
@@ -31,18 +32,18 @@ let Confirmation = ({ data, view, sides, actions, layout }) => {
             />
         })
       }
-    </div>
-    <div className='gel-layout__item gel-7/12' />
-    <div className='gel-layout__item gel-5/12'>
-      <div className='gel-layout__item gel-1/2'>
+    </LayoutItem>
+    <LayoutItem gels='7/12' />
+    <LayoutItem gels='5/12'>
+      <LayoutItem gels='1/2'>
         <Button
           onClick={actions.reset}
           icon={<Replay />}
           className='reset'
           label='reset'
           fill />
-      </div>
-      <div className='gel-layout__item gel-1/2'>
+      </LayoutItem>
+      <LayoutItem gels='1/2'>
         <Button
           onClick={function () {
             actions.confirm(data.senders)
@@ -52,9 +53,9 @@ let Confirmation = ({ data, view, sides, actions, layout }) => {
           label='confirm'
           fill
           />
-      </div>
-    </div>
-  </div>
+      </LayoutItem>
+    </LayoutItem>
+  </LayoutItem>
 }
 
 Confirmation.propTypes = {
