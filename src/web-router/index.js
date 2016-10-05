@@ -47,6 +47,7 @@ export default {
       layout: '1/2',
       launchPage: 'connections-confirmation',
       connections: {
+        toggleSide: '',
         isDragging: false,
         mouse: {
           x: 0,
