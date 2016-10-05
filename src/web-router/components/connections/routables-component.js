@@ -21,7 +21,9 @@ let Routables = ({side, routables, view, actions}) => {
         view={routableView}
         actions={{
           toggle () {
-            actions.toggleConnections('connections', side, routable.id)
+            if (routableView.routable) {
+              actions.toggleConnections('connections', side, routable.id)
+            }
           },
           mounted: actions.updateConnections,
           drag (evt, data, status) {

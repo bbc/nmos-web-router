@@ -38,26 +38,6 @@
   padding-right: calc(0.5 * var(--point-width));
 }
 
-.not-routable {
-  & .button {
-    fill: color(#555 tint(35%));
-    color: color(#555 tint(35%));
-  }
-
-  & .contracted {
-    background-color: color(var(--contracted) tint(10%));
-  }
-
-  & .expanded {
-    background-color: color(var(--expanded) tint(10%));
-    border-color: color(var(--expanded) tint(10%));
-  }
-
-  & .point {
-    background-color: color(var(--point-unrouted) tint(50%));
-  }
-}
-
 .dragging {
   & .preview {
     & .button {
@@ -225,6 +205,31 @@
 
 .routable {
   margin-bottom: 3px;
+}
+
+.not-routable,
+.not-routable:hover {
+  & .button {
+    fill: color(#555 tint(35%)) !important;
+    color: color(#555 tint(35%)) !important;
+  }
+
+  & .contracted {
+    background-color: color(var(--contracted) tint(10%)) !important;
+  }
+
+  & .expanded {
+    background-color: color(var(--expanded) tint(10%)) !important;
+    border-color: color(var(--expanded) tint(10%)) !important;
+  }
+
+  & .point {
+    background-color: color(var(--point-unrouted) tint(50%)) !important;
+  }
+
+  &.routed .point {
+    background-color: color(var(--point-routed) tint(50%)) !important;
+  }
 }
 
 @media (max-width: 56.25em) {
