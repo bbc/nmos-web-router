@@ -1,51 +1,51 @@
-function mouseOver (mouse, routable) {
-  let mouseX = mouse.x
-  let mouseY = mouse.y - mouse.offset
-  let betweenWidth = mouseX >= routable.dimensions.x[0] && mouseX <= routable.dimensions.x[1]
-  let betweenHeight = mouseY >= routable.dimensions.y[0] && mouseY <= routable.dimensions.y[1]
-  return betweenWidth && betweenHeight
-}
+// function mouseOver (mouse, routable) {
+//   let mouseX = mouse.x
+//   let mouseY = mouse.y - mouse.offset
+//   let betweenWidth = mouseX >= routable.dimensions.x[0] && mouseX <= routable.dimensions.x[1]
+//   let betweenHeight = mouseY >= routable.dimensions.y[0] && mouseY <= routable.dimensions.y[1]
+//   return betweenWidth && betweenHeight
+// }
 
-function connectionRoutable (routable, action, isDragging, hasStopped, state, view, sameSide) {
-  let newRoute
-  let isBeingDragged = routable.id === action.routable.id
-  let dropable = !sameSide && !isBeingDragged && action.routable.format === routable.format
-  routable.dropable = dropable
-  let isOver = mouseOver(action.mouse, routable)
-  routable.preview = isDragging && (isBeingDragged || (isOver && dropable))
-  if (hasStopped && isOver && !isBeingDragged && dropable) {
-    let sideName = state.sides[action.side]
-    let opposite = state.sides[sideName].opposite.name
-    let alreadyRouted = view.connections.routes.filter(route => {
-      let hasRoutable = route[opposite].id === routable.id
-      let hasDraggedRoutable = route[sideName].id === action.routable.id
-      return hasRoutable && hasDraggedRoutable
-    }).length > 0
-    if (!alreadyRouted) {
-      newRoute = {}
-      let routableDimensions = view.connections.senders
-            .concat(view.connections.receivers)
-            .filter(routable => {
-              return routable.id === action.routable.id
-            })[0].dimensions
-
-      newRoute[sideName] = {
-        x: routableDimensions.x,
-        y: routableDimensions.y,
-        id: action.routable.id
-      }
-
-      newRoute[opposite] = {
-        x: routable.dimensions.x,
-        y: routable.dimensions.y,
-        id: routable.id
-      }
-
-      view.connections.routes.push(newRoute)
-    }
-  }
-  return newRoute
-}
+// function connectionRoutable (routable, action, isDragging, hasStopped, state, view, sameSide) {
+//   let newRoute
+//   let isBeingDragged = routable.id === action.routable.id
+//   let isRoutable = !sameSide && !isBeingDragged && action.routable.format === routable.format
+//   routable.routable = isRoutable
+//   let isOver = mouseOver(action.mouse, routable)
+//   routable.preview = isDragging && (isBeingDragged || (isOver && isRoutable))
+//   if (hasStopped && isOver && !isBeingDragged && isRoutable) {
+//     let sideName = state.sides[action.side]
+//     let opposite = state.sides[sideName].opposite.name
+//     let alreadyRouted = view.connections.routes.filter(route => {
+//       let hasRoutable = route[opposite].id === routable.id
+//       let hasDraggedRoutable = route[sideName].id === action.routable.id
+//       return hasRoutable && hasDraggedRoutable
+//     }).length > 0
+//     if (!alreadyRouted) {
+//       newRoute = {}
+//       let routableDimensions = view.connections.senders
+//             .concat(view.connections.receivers)
+//             .filter(routable => {
+//               return routable.id === action.routable.id
+//             })[0].dimensions
+//
+//       newRoute[sideName] = {
+//         x: routableDimensions.x,
+//         y: routableDimensions.y,
+//         id: action.routable.id
+//       }
+//
+//       newRoute[opposite] = {
+//         x: routable.dimensions.x,
+//         y: routable.dimensions.y,
+//         id: routable.id
+//       }
+//
+//       view.connections.routes.push(newRoute)
+//     }
+//   }
+//   return newRoute
+// }
 
 // export default (state, action, merge) => {
 //   let view = Object.assign({}, state.view)

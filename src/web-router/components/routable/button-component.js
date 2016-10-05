@@ -12,12 +12,12 @@ let RoutableButton = ({baseId, data, view, actions, draggable}) => {
   let expaneded = view.contracted ? 'contracted' : 'expanded'
   let preview = view.preview ? 'preview' : ''
   let routed = view.routed ? 'routed' : ''
-  let dropable = view.dropable ? 'dropable' : 'not-dropable'
+  let routable = view.routable ? 'routable' : 'not-routable'
   let side = view.side || ''
 
   return <div
     id={`${baseId}-${data.id}`}
-    className={`routable ${preview} ${routed} ${dropable} ${side} routable-${expaneded}`}
+    className={`routable ${preview} ${routed} ${routable} ${side} routable-${expaneded}`}
     onClick={function () { actions.toggle(baseId, data.id) }}>
     <div className='point-container'>
       <div className='point point-unrouted' />
