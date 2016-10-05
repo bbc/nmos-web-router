@@ -3,22 +3,24 @@ import './connections.css'
 import React, { PropTypes } from 'react'
 import RoutablesColumn from './routables-column-component'
 import RoutesColumn from './routes-column-component'
+import { LayoutItem } from '../../../gel-react/grid'
+import { GreatPrimer, Pica } from '../../../gel-react/typography'
 
 let Connections = ({data, view, sides, actions, layout}) => {
   let pointDisplay = view.isDragging ? 'block' : 'none'
   let dragging = view.isDragging ? 'dragging' : ''
-  return <div className={`gel-layout__item connections gel-${layout}@l gel-1/1 ${dragging}`}>
-    <div className='gel-layout__item gel-1/3' >
-      <h3>Connections</h3>
-    </div>
-    <div className='gel-layout__item gel-2/3' />
-    <div className='gel-layout__item gel-1/3' >
-      <h4>{view.leftTitle}</h4>
-    </div>
-    <div className='gel-layout__item gel-1/3' />
-    <div className='gel-layout__item gel-1/3' >
-      <h4>{view.rightTitle}</h4>
-    </div>
+  return <LayoutItem className={`connections ${dragging}`} gels={[`${layout}@l`, '1/1']} >
+    <LayoutItem gel='1/3' >
+      <GreatPrimer bold>Connections</GreatPrimer>
+    </LayoutItem>
+    <LayoutItem gel='2/3' />
+    <LayoutItem gel='1/3' >
+      <Pica bold>{view.leftTitle}</Pica>
+    </LayoutItem>
+    <LayoutItem gel='1/3' />
+    <LayoutItem gel='1/3' >
+      <Pica bold>{view.rightTitle}</Pica>
+    </LayoutItem>
     <RoutablesColumn
       routables={data[sides.left.plural]}
       view={view[sides.left.plural]}
@@ -45,7 +47,7 @@ let Connections = ({data, view, sides, actions, layout}) => {
         display: pointDisplay
       }}
         />
-  </div>
+  </LayoutItem>
 }
 
 Connections.propTypes = {
