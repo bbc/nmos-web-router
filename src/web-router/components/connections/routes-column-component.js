@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react'
-
+import { LayoutItem } from '../../../gel-react/grid'
 import Routes from './routes-component'
 
 let RoutesColumn = ({view, data}) => {
-  return <div className={'gel-layout__item gel-1/3 routes'}>
+  return <LayoutItem className='routes' gels='1/3'>
     <Routes
       view={view}
       data={data}
       />
-  </div>
+  </LayoutItem>
 }
 
 RoutesColumn.propTypes = {

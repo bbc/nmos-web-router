@@ -1,15 +1,16 @@
 import React, { PropTypes } from 'react'
 import Routables from './routables-component'
+import { LayoutItem } from '../../../gel-react/grid'
 
 let RoutablesColumn = ({routables, view, actions, side, sideName}) => {
-  return <div className={`gel-layout__item gel-1/3 ${sideName}`}>
+  return <LayoutItem className={sideName} gels='1/3'>
     <Routables
       routables={routables}
       view={view}
       actions={actions}
       side={side}
       />
-  </div>
+  </LayoutItem>
 }
 
 RoutablesColumn.propTypes = {
