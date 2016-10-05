@@ -98,11 +98,26 @@
   }
 }
 
+.placeholder {
+  visibility: hidden;
+  margin-bottom: 1rem;
+}
+
 .routable {
   position: relative;
   margin-bottom: 1rem;
   cursor: pointer;
   color: #555;
+  transition: margin 0.5s;
+
+  &-expanded {
+    position: fixed;
+    z-index: 1;
+    margin-left: 5%;
+    top: 50%;
+    width: 350px;
+    margin-bottom: 1rem;
+  }
 
   &:hover,
   &.preview {
@@ -189,5 +204,23 @@
         height: 30px;
       }
     }
+  }
+}
+
+@media (max-width: 56.25em) {
+  .routable-expanded {
+    width: 230px;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .routable-expanded {
+    width: 180px;
+  }
+}
+
+@media (max-width: 25em) {
+  .routable-expanded {
+    width: 120px;
   }
 }

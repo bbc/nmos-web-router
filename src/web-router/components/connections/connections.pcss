@@ -16,6 +16,17 @@
 }
 
 .connections {
+  & .thing-container {
+    position: relative;
+
+    & .thing {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  }
+
   & .routes {
     padding: 0;
 
