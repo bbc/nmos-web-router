@@ -10,15 +10,15 @@ let Connections = ({data, view, sides, actions, layout}) => {
   let pointDisplay = view.isDragging ? 'block' : 'none'
   let dragging = view.isDragging ? 'dragging' : ''
   return <LayoutItem className={`connections ${dragging}`} gels={[`${layout}@l`, '1/1']} >
-    <LayoutItem gel='1/3' >
+    <LayoutItem gels='1/3' >
       <GreatPrimer bold>Connections</GreatPrimer>
     </LayoutItem>
-    <LayoutItem gel='2/3' />
-    <LayoutItem gel='1/3' >
+    <LayoutItem gels='2/3' />
+    <LayoutItem gels='1/3' >
       <Pica bold>{view.leftTitle}</Pica>
     </LayoutItem>
-    <LayoutItem gel='1/3' />
-    <LayoutItem gel='1/3' >
+    <LayoutItem gels='1/3' />
+    <LayoutItem gels='1/3' >
       <Pica bold>{view.rightTitle}</Pica>
     </LayoutItem>
     <RoutablesColumn
