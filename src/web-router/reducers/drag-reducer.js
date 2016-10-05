@@ -47,54 +47,57 @@ function connectionRoutable (routable, action, isDragging, hasStopped, state, vi
   return newRoute
 }
 
-export default (state, action, merge) => {
-  let view = Object.assign({}, state.view)
-  let isDragging = action.status === 'dragging'
-  let hasStopped = action.status === 'stopped'
+// export default (state, action, merge) => {
+//   let view = Object.assign({}, state.view)
+//   let isDragging = action.status === 'dragging'
+//   let hasStopped = action.status === 'stopped'
+//
+//   view.connections.isDragging = isDragging
+//   view.connections.mouse = action.mouse
+//
+//
+//   let newRoute
+//   view.connections.senders.forEach(routable => {
+//     let newSenderRoute = connectionRoutable(routable, action, isDragging, hasStopped, state, view, action.side === 'senders')
+//     newRoute = newRoute || newSenderRoute
+//   })
+//   view.connections.receivers.forEach(routable => {
+//     let newReceiverRoute = connectionRoutable(routable, action, isDragging, hasStopped, state, view, action.side === 'receivers')
+//     newRoute = newRoute || newReceiverRoute
+//   })
+//
+//   if (newRoute) {
+//     let confirmationRoute = {}
+//     let leftName = state.sides.left.plural
+//     let left = state.data[leftName].filter(routable => {
+//       return routable.id === newRoute.left.id
+//     })[0]
+//     confirmationRoute[state.sides.left.singular] = {
+//       label: left.label,
+//       descripton: left.descripton,
+//       id: left.id,
+//       format: left.format,
+//       contracted: true
+//     }
+//
+//     let rightName = state.sides.right.plural
+//     let right = state.data[rightName].filter(routable => {
+//       return routable.id === newRoute.right.id
+//     })[0]
+//     confirmationRoute[state.sides.right.singular] = {
+//       label: right.label,
+//       descripton: right.descripton,
+//       id: right.id,
+//       format: right.format,
+//       contracted: true
+//     }
+//
+//     view.confirmation.routes.push(confirmationRoute)
+//   }
+//
+//   view.scroll = false
+//   return merge({view})
+// }
 
-  view.connections.isDragging = isDragging
-  view.connections.mouse = action.mouse
 
-
-  let newRoute
-  view.connections.senders.forEach(routable => {
-    let newSenderRoute = connectionRoutable(routable, action, isDragging, hasStopped, state, view, action.side === 'senders')
-    newRoute = newRoute || newSenderRoute
-  })
-  view.connections.receivers.forEach(routable => {
-    let newReceiverRoute = connectionRoutable(routable, action, isDragging, hasStopped, state, view, action.side === 'receivers')
-    newRoute = newRoute || newReceiverRoute
-  })
-
-  if (newRoute) {
-    let confirmationRoute = {}
-    let leftName = state.sides.left.plural
-    let left = state.data[leftName].filter(routable => {
-      return routable.id === newRoute.left.id
-    })[0]
-    confirmationRoute[state.sides.left.singular] = {
-      label: left.label,
-      descripton: left.descripton,
-      id: left.id,
-      format: left.format,
-      contracted: true
-    }
-
-    let rightName = state.sides.right.plural
-    let right = state.data[rightName].filter(routable => {
-      return routable.id === newRoute.right.id
-    })[0]
-    confirmationRoute[state.sides.right.singular] = {
-      label: right.label,
-      descripton: right.descripton,
-      id: right.id,
-      format: right.format,
-      contracted: true
-    }
-
-    view.confirmation.routes.push(confirmationRoute)
-  }
-
-  view.scroll = false
-  return merge({view})
-}
+export default () => {}

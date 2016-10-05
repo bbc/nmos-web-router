@@ -38,27 +38,27 @@
   padding-right: calc(0.5 * var(--point-width));
 }
 
-.dragging {
-  & .not-dropable {
-    & .button {
-      fill: color(#555 tint(35%));
-      color: color(#555 tint(35%));
-    }
-
-    & .contracted {
-      background-color: color(var(--contracted) tint(10%));
-    }
-
-    & .expanded {
-      background-color: color(var(--expanded) tint(10%));
-      border-color: color(var(--expanded) tint(10%));
-    }
-
-    & .point {
-      background-color: color(var(--point-unrouted) tint(50%));
-    }
+.not-dropable {
+  & .button {
+    fill: color(#555 tint(35%));
+    color: color(#555 tint(35%));
   }
 
+  & .contracted {
+    background-color: color(var(--contracted) tint(10%));
+  }
+
+  & .expanded {
+    background-color: color(var(--expanded) tint(10%));
+    border-color: color(var(--expanded) tint(10%));
+  }
+
+  & .point {
+    background-color: color(var(--point-unrouted) tint(50%));
+  }
+}
+
+.dragging {
   & .preview {
     & .button {
       color: #555;

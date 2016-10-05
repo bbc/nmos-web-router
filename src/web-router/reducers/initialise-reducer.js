@@ -54,7 +54,7 @@ function getConnectionsRoutables (data, type, singularType) {
   return data[type].map(routable => {
     return {
       id: routable.id,
-      dropable: false,
+      dropable: true,
       routed: isRouted(data, routable, singularType),
       preview: false,
       contracted: true,
