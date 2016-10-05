@@ -7,7 +7,7 @@ import { Trafalgar, GreatPrimer, Pica } from '../../../gel-react/typography'
 import Status from './status-component'
 
 let Loading = ({view}) => {
-  return <Layout className={view.status} layouts='auto'>
+  return <Layout className={`loading-container ${view.status}`} layouts='auto'>
     <Layout className={view.status} layouts='center' gels='1/1'>
       <LayoutItem className='header'>
         <Trafalgar className='title title-loading'><Spinner /> Loading</Trafalgar>

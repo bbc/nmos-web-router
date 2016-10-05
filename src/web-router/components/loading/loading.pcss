@@ -24,39 +24,41 @@
   }
 }
 
-.header {
-  margin-bottom: 1em;
+.loading-container {
+  & .header {
+    margin-bottom: 1em;
 
-  & .gel-icon {
-    height: 26px;
+    & .gel-icon {
+      height: 26px;
+    }
   }
-}
 
-.loading {
-  & .title-error {
+  & .loading {
+    & .title-error {
+      display: none !important;
+    }
+  }
+
+  & .error .title-loading {
     display: none !important;
   }
 
-  & .gel-icon {
-    animation: rotate 1s infinite linear;
+  & .not-loaded {
+    background-color: var(--not-loaded);
+    border-color: var(--not-loaded);
+
+    & .gel-icon {
+      animation: rotate 1s infinite linear;
+    }
   }
-}
 
-.error .title-loading {
-  display: none !important;
-}
+  & .errored {
+    background-color: var(--errored);
+    border-color: var(--errored);
+  }
 
-.not-loaded {
-  background-color: var(--not-loaded);
-  border-color: var(--not-loaded);
-}
-
-.errored {
-  background-color: var(--errored);
-  border-color: var(--errored);
-}
-
-.loaded {
-  background-color: var(--loaded);
-  border-color: var(--loaded);
+  & .loaded {
+    background-color: var(--loaded);
+    border-color: var(--loaded);
+  }
 }

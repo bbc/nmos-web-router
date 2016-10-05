@@ -1,39 +1,15 @@
 .web-router {
+  & .title {
+    display: block;
+    margin-bottom: 1em;
+  }
+
   &-container {
     position: absolute;
-    width: 97%;
+    width: 100%;
     height: 100%;
     overflow-x: hidden;
-  }
-
-  & .title,
-  & .sub-title {
-    width: 100%;
-  }
-
-  & .header .layout {
-    float: right;
-    width: 200px;
-    margin-left: 10px;
-    fill: #fff;
-    background-color: #33c3f0;
-    border-color: #33c3f0;
-
-    & .icon svg {
-      transition: transform 0.5s;
-    }
-  }
-
-  & .icon-left {
-    & .icon svg {
-      transform: rotateZ(-180deg) translate(50%) translateY(-25%);
-    }
-  }
-
-  & .icon-right {
-    & .icon svg {
-      transform: rotateZ(0deg) translateX(-50%) translateY(25%);
-    }
+    padding: 0;
   }
 
   & .connections,
@@ -45,16 +21,12 @@
     transition: transform 1s, width 1s;
   }
 
-  &-confirmation {
-    & .connections {
-      transform: translateX(-110%);
-    }
+  &-confirmation  .connections {
+    transform: translateX(-110%);
   }
 
-  &-connections {
-    & .confirmation {
-      transform: translateX(110%);
-    }
+  &-connections  .confirmation {
+    transform: translateX(110%);
   }
 
   &-connections-confirmation {
@@ -65,5 +37,11 @@
     & .confirmation {
       transform: translateX(99%);
     }
+  }
+}
+
+@media (max-width: 56.25em) {
+  .web-router .split {
+    display: none;
   }
 }

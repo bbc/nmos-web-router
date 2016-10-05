@@ -1,32 +1,47 @@
 import React from 'react'
 
 import Button from '../../components/button-component'
-
+import { Layout, LayoutItem } from '../../gel-react/grid'
+import { Trafalgar } from '../../gel-react/typography'
 import { Fullscreen, ExitFullscreen } from '../../gel-react/iconography'
 
 let Header = () => {
-  return <div className='header gel-layout'>
-    <div className='title'>
-      <h2 className='gel-layout__item gel-1/4 gel-double-pica'>Web Router</h2>
-      <div className={'gel-layout__item gel-3/4 buttons'}>
+  return <Layout className='header' layouts='flush' gels='1/1'>
+    <Layout gels={['1/1', '1/3@l']} layouts='center'>
+      <LayoutItem className='title'>
+        <Trafalgar>Web Router</Trafalgar>
+      </LayoutItem>
+    </Layout>
+    <Layout gels={['1/1', '2/3@l']} layouts='center'>
+      <LayoutItem className='split' gels={['1/2', '1/3@l']}>
         <Button
-          to='/web-router/confirmation'
-          label='confirmation'
-          name='layout'
-          icon={<Fullscreen />} />
-        <Button
-          to='/web-router/connections'
-          name='layout'
-          label='connections'
-          icon={<Fullscreen />} />
-        <Button
+          fill
           to={'/web-router/connections/confirmation'}
           name='layout'
           label='split'
-          icon={<ExitFullscreen />} />
-      </div>
-    </div>
-  </div>
+          icon={<ExitFullscreen />}
+          />
+      </LayoutItem>
+      <LayoutItem gels={['1/2', '1/3@l']}>
+        <Button
+          fill
+          to='/web-router/connections'
+          name='layout'
+          label='connections'
+          icon={<Fullscreen />}
+          />
+      </LayoutItem>
+      <LayoutItem gels={['1/2', '1/3@l']}>
+        <Button
+          fill
+          to='/web-router/confirmation'
+          label='confirmation'
+          name='layout'
+          icon={<Fullscreen />}
+          />
+      </LayoutItem>
+    </Layout>
+  </Layout>
 }
 
 export default Header

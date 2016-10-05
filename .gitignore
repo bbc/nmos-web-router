@@ -14,9 +14,10 @@ debian/ips-web/
 *.css
 
 # gel react
-./src/cgel-react/.gitignore
-./src/cgel-react/.npmignore
-./src/cgel-react/package.json
+./src/gel-react/.gitignore
+./src/gel-react/.npmignore
+./src/gel-react/package.json
+!/src/gel-react/*.css
 
 #dev
 *.log

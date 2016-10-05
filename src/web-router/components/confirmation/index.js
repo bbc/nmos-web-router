@@ -7,7 +7,7 @@ import Row from './row-component'
 import { Yes, Replay } from '../../../gel-react/iconography'
 
 let Confirmation = ({ data, view, sides, actions, layout }) => {
-  return <div className={`gel-layout__item confirmation gel-${layout}`}>
+  return <div className={`gel-layout__item confirmation gel-${layout}@l gel-1/1`}>
     <div className='gel-layout__item gel-1/3' >
       <h3>Confirmation</h3>
     </div>

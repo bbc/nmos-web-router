@@ -7,7 +7,7 @@ import RoutesColumn from './routes-column-component'
 let Connections = ({data, view, sides, actions, layout}) => {
   let pointDisplay = view.isDragging ? 'block' : 'none'
   let dragging = view.isDragging ? 'dragging' : ''
-  return <div className={`gel-layout__item connections gel-${layout} ${dragging}`}>
+  return <div className={`gel-layout__item connections gel-${layout}@l gel-1/1 ${dragging}`}>
     <div className='gel-layout__item gel-1/3' >
       <h3>Connections</h3>
     </div>

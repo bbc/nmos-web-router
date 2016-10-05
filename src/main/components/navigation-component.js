@@ -6,13 +6,15 @@ import { Layout, LayoutItem } from '../../gel-react/grid'
 import Button from '../../components/button-component'
 
 let Navigation = () => {
-  return <Layout className='navigation'>
-    <LayoutItem gels='1/2'>
-      <Link
-        to='/'>
-        <Logo />
-      </Link>
-    </LayoutItem>
+  return <Layout className='navigation' layouts='flush'>
+    <Layout gels='1/2'>
+      <LayoutItem>
+        <Link
+          to='/'>
+          <Logo />
+        </Link>
+      </LayoutItem>
+    </Layout>
     <Layout gels='1/2' layouts='right'>
       <LayoutItem>
         <Button
