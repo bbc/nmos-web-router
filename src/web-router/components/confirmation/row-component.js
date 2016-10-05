@@ -2,12 +2,13 @@ import React, { PropTypes } from 'react'
 
 import Routable from '../routable'
 import Button from '../../../components/button-component'
+import { Layout, LayoutItem } from '../../../gel-react/grid'
 import { No } from '../../../gel-react/iconography'
 
 let Row = ({ view, left, right, index, actions }) => {
   let baseId = `confirmation-${index}`
-  return <div className='gel-layout row'>
-    <div className='gel-layout__item gel-4/12 column'>
+  return <Layout className='row'>
+    <LayoutItem gels='4/12' className='column'>
       <Routable
         baseId={baseId}
         data={view[left]}
@@ -22,11 +23,11 @@ let Row = ({ view, left, right, index, actions }) => {
           }
         }}
       />
-    </div>
-    <div className='gel-layout__item gel-3/12 column route-container'>
+    </LayoutItem>
+    <LayoutItem gels='3/12' className='column route-container'>
       <hr className='route' />
-    </div>
-    <div className='gel-layout__item gel-4/12 column'>
+    </LayoutItem>
+    <LayoutItem gels='4/12' className='column'>
       <Routable
         baseId={baseId}
         data={view[right]}
@@ -41,17 +42,17 @@ let Row = ({ view, left, right, index, actions }) => {
           }
         }}
         />
-    </div>
-    <div className='gel-layout__item gel-1/12 column'>
-      <div className='gel-layout'>
+    </LayoutItem>
+    <LayoutItem gels='1/12' className='column'>
+      <Layout>
         <Button
           onClick={function () { actions.remove(view) }}
           className='remove'
           icon={<No />}
           fill />
-      </div>
-    </div>
-  </div>
+      </Layout>
+    </LayoutItem>
+  </Layout>
 }
 
 Row.propTypes = {
