@@ -39,6 +39,8 @@ export default (state, action, merge) => {
     if (allContracted) view[action.viewName].toggleSide = ''
   } else if (view[action.viewName].toggleSide !== action.viewType) console.log('routing', view[action.viewName].toggled.id, action.id)
 
+  if (action.id === 'off') view[action.viewName].toggleSide = ''
+
   view.scroll = false
   return merge({ view })
 }

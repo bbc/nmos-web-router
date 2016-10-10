@@ -18,7 +18,10 @@ let RoutableButton = ({baseId, data, view, actions, draggable}) => {
   return <div
     id={`${baseId}-${data.id}`}
     className={`routable ${preview} ${routed} ${routable} ${side} routable-${expaneded}`}
-    onClick={function () { actions.toggle(baseId, data.id) }}>
+    onClick={function (evt) {
+      evt.stopPropagation()
+      actions.toggle(baseId, data.id)
+    }}>
     <div className='point-container'>
       <div className='point point-unrouted' />
     </div>

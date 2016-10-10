@@ -8,7 +8,12 @@ import PointMouse from './point-mouse-component'
 
 let Connections = ({data, view, sides, actions, layout}) => {
   let dragging = view.isDragging ? 'dragging' : ''
-  return <LayoutItem className={`connections ${dragging}`} gels={[`${layout}@l`, '1/1']} >
+  return <LayoutItem
+    onClick={function () {
+      actions.toggleConnections('connections', 'senders', 'off')
+      actions.toggleConnections('connections', 'receivers', 'off')
+    }}
+    className={`connections ${dragging}`} gels={[`${layout}@l`, '1/1']} >
     <Header left={view.leftTitle} right={view.rightTitle} />
     <RoutablesColumn
       routables={data[sides.left.plural]}
