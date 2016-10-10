@@ -21,7 +21,8 @@
   border-radius: 90px;
   cursor: pointer;
   border: solid 1px #bbb;
-  background-color: color(var(--point-unrouted) tint(15%));
+  background-color: color(var(--point-unrouted) tint(25%));
+  transition: background-color 0.5s, color 0.5s, fill 0.5s;
 
   &-mouse {
     position: absolute;
@@ -102,7 +103,7 @@
     position: fixed;
     z-index: 1;
     width: 350px;
-    top: 34%;
+    top: 15em;
 
     & .button {
       box-shadow: 5px 5px 25px color(#555 alpha(-30%));
@@ -152,6 +153,7 @@
     width: 100%;
     margin: 0;
     fill: #555;
+    transition: background-color 0.5s, color 0.5s, fill 0.5s;
 
     &.contracted {
       background-color: var(--contracted);
@@ -211,17 +213,17 @@
 .not-routable,
 .not-routable:hover {
   & .button {
-    fill: color(#555 tint(35%)) !important;
-    color: color(#555 tint(35%)) !important;
+    fill: color(#555 tint(25%)) !important;
+    color: color(#555 tint(25%)) !important;
   }
 
   & .contracted {
-    background-color: color(var(--contracted) tint(10%)) !important;
+    background-color: color(var(--contracted) tint(25%)) !important;
   }
 
   & .expanded {
-    background-color: color(var(--expanded) tint(10%)) !important;
-    border-color: color(var(--expanded) tint(10%)) !important;
+    background-color: color(var(--expanded) tint(25%)) !important;
+    border-color: color(var(--expanded) tint(25%)) !important;
   }
 
   & .point {
