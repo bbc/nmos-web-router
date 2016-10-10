@@ -28,10 +28,15 @@ const Route = ({left, right, selector}) => {
 
   let height = Math.abs(rightyTop - leftyTop) + 4
 
+  let status = 'contracted'
+  if (!left.routable.contracted || !right.routable.contracted) status = 'expanded'
+
   return <svg
-    className='route'
+    className={`route ${status}`}
     style={{
-      top: top
+      top: top,
+      left: left.x[1],
+      width: right.x[0] - left.x[1]
     }}
     height={height}
     version='1.1'

@@ -1,18 +1,18 @@
 require('./gel-typography.css')
 var react = require('react')
 
-function cleanClassName(className) {
+function cleanClassName (className) {
   return className.split(' ').filter(function (str) {
     return str !== ''
   }).join(' ').trim()
 }
 
-function convertGel(gel) {
+function convertGel (gel) {
   if (!gel.includes('gel-')) return 'gel-' + gel
   return gel
 }
 
-function GelTypography(ref) {
+function GelTypography (ref) {
   var bold = ''
   if (ref.bold) bold = '-bold'
 

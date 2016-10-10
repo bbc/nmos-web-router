@@ -2,6 +2,7 @@ import './connections.css'
 
 import React, { PropTypes } from 'react'
 import RoutablesColumn from './routables-column-component'
+import RoutesColumn from './routes-column-component'
 import { LayoutItem } from '../../../gel-react/grid'
 import Header from './header-component'
 import PointMouse from './point-mouse-component'
@@ -22,7 +23,10 @@ let Connections = ({data, view, sides, actions, layout}) => {
       side={sides.left.plural}
       sideName='left'
       />
-    <LayoutItem gels='1/3' />
+    <RoutesColumn
+      data={data}
+      view={view}
+    />
     <RoutablesColumn
       routables={data[sides.right.plural]}
       view={view[sides.right.plural]}

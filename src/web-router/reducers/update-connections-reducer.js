@@ -1,12 +1,16 @@
 function getDimensions (elementId) {
+  let containerElement = document.querySelector('.web-router-container')
+  let containerRects = containerElement.getClientRects().item(0)
+
   let dimensions = { x: [0, 0], y: [0, 0] }
   let offestY = window.scrollY
-  let offestX = window.scrollX
+  let offestX = window.scrollX - containerRects.left
   let routableElement = document.getElementById(elementId)
   if (routableElement === null) return dimensions
   let rects = routableElement.getClientRects().item(0)
   dimensions = {
     x: [rects.left + offestX, rects.right + offestX],
+    width: rects.width,
     y: [rects.top + offestY, rects.bottom + offestY]
   }
   return dimensions
@@ -41,12 +45,16 @@ export default (state, action, merge) => {
 
     return {
       left: {
+        routable: left,
         id: left.id,
+        width: left.dimensions.width,
         x: left.dimensions.x,
         y: left.dimensions.y
       },
       right: {
+        routable: right,
         id: right.id,
+        width: right.dimensions.width,
         x: right.dimensions.x,
         y: right.dimensions.y
       }

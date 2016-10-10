@@ -12,12 +12,19 @@ let WebRouter = ({data, view, sides, actions}) => {
     webRouterContainer.scrollTop = 0
   }
 
+  window.onresize = function () {
+    actions.updateConnections()
+  }
+
   let page = view.page
   let layout = view.layout
   return <Layout className={`web-router web-router-${page}`}>
     <Header />
     <Layout gels='1/1'>
-      <Wrap className='web-router-container'>
+      <Wrap className='web-router-container'
+        onScroll={function () {
+          actions.updateConnections()
+        }}>
         <Connections
           data={data}
           view={view.connections}
