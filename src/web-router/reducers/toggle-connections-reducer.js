@@ -16,7 +16,7 @@ function changeRoutable (state, view, action) {
   let side = state.sides[action.viewType]
   let opposite = state.sides[side].opposite.plural
   view[action.viewName][opposite] = view[action.viewName][opposite].map(routable => {
-    if (!view[action.viewName].toggled.contracted) routable.routable = view[action.viewName].toggled.format !== 'no' && routable.format === view[action.viewName].toggled.format
+    if (view[action.viewName].toggled && !view[action.viewName].toggled.contracted) routable.routable = view[action.viewName].toggled.format !== 'no' && routable.format === view[action.viewName].toggled.format
     else routable.routable = true
     return routable
   })
