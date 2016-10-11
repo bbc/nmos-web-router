@@ -9,6 +9,7 @@ let Routes = ({view, data}) => {
       left={route.left}
       right={route.right}
       selector='.connections'
+      status={route.status}
       />
   })}</div>
 }

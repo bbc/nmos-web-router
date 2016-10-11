@@ -102,6 +102,7 @@ export default (state, action, merge) => {
   connections.receivers = getConnectionsRoutables(data, 'receivers', 'receiver')
   connections.routes = data.routes.map(route => {
     return {
+      status: 'system',
       left: {
         id: route[state.sides.left.singular].id
       },

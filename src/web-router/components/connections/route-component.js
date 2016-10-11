@@ -1,20 +1,17 @@
 import React, { PropTypes } from 'react'
 
-const Route = ({left, right, selector}) => {
-  if (
-    !left.hasOwnProperty('x') || !left.hasOwnProperty('y') ||
-    !right.hasOwnProperty('x') || !right.hasOwnProperty('y')
-  ) return null
+const Route = ({left, right, selector, status}) => {
+  if (!left.hasOwnProperty('dimensions') || !right.hasOwnProperty('dimensions')) return null
   let routesElement = document.querySelector(selector)
   let routesElementRects = { top: 0 }
   if (routesElement !== null) routesElementRects = routesElement.getClientRects().item(0)
   else return null
 
-  let leftyHeight = Math.abs(left.y[1] - left.y[0]) / 2
-  let leftyTop = left.y[0] + leftyHeight - routesElementRects.top - window.scrollY
+  let leftyHeight = Math.abs(left.dimensions.y[1] - left.dimensions.y[0]) / 2
+  let leftyTop = left.dimensions.y[0] + leftyHeight - routesElementRects.top - window.scrollY
 
-  let rightyHeight = Math.abs(right.y[1] - right.y[0]) / 2
-  let rightyTop = right.y[0] + rightyHeight - routesElementRects.top - window.scrollY
+  let rightyHeight = Math.abs(right.dimensions.y[1] - right.dimensions.y[0]) / 2
+  let rightyTop = right.dimensions.y[0] + rightyHeight - routesElementRects.top - window.scrollY
 
   let y1 = '100%'
   let y2 = '0'
@@ -28,15 +25,15 @@ const Route = ({left, right, selector}) => {
 
   let height = Math.abs(rightyTop - leftyTop) + 4
 
-  let status = 'contracted'
-  if (!left.routable.contracted || !right.routable.contracted) status = 'expanded'
+  let contractionStatus = 'contracted'
+  if (!left.contracted || !right.contracted) contractionStatus = 'expanded'
 
   return <svg
-    className={`route ${status}`}
+    className={`route ${contractionStatus} ${status}`}
     style={{
       top: top,
-      left: left.x[1],
-      width: right.x[0] - left.x[1]
+      left: left.dimensions.x[1],
+      width: right.dimensions.x[0] - left.dimensions.x[1]
     }}
     height={height}
     version='1.1'
@@ -54,7 +51,8 @@ const Route = ({left, right, selector}) => {
 Route.propTypes = {
   left: PropTypes.object.isRequired,
   right: PropTypes.object.isRequired,
-  selector: PropTypes.string.isRequired
+  selector: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired
 }
 
 export default Route

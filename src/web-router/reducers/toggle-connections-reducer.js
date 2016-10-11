@@ -31,13 +31,32 @@ function toggle (state, view, action) {
 export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
 
-  if (view[action.viewName].toggleSide === '') {
+  let nothingExpanded = view[action.viewName].toggleSide === ''
+  let sameSide = view[action.viewName].toggleSide === action.viewType
+
+  if (nothingExpanded) {
     toggle(state, view, action)
     view[action.viewName].toggleSide = action.viewType
-  } else if (view[action.viewName].toggleSide === action.viewType) {
+  } else if (sameSide) {
     let allContracted = toggle(state, view, action)
     if (allContracted) view[action.viewName].toggleSide = ''
-  } else if (view[action.viewName].toggleSide !== action.viewType) console.log('routing', view[action.viewName].toggled.id, action.id)
+  } else if (!sameSide && action.id !== 'off') {
+    let side = state.sides[action.viewType]
+    let sideName = state.sides[side].plural
+
+    let routable = view[action.viewName][sideName].filter(routable => {
+      return routable.id === action.id
+    })[0]
+
+    let route = {
+      status: 'user'
+    }
+
+    route[side] = routable
+    route[state.sides[side].opposite.name] = view[action.viewName].toggled
+
+    view[action.viewName].routes.push(route)
+  }
 
   if (action.id === 'off') view[action.viewName].toggleSide = ''
 

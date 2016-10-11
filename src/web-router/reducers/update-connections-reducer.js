@@ -44,20 +44,9 @@ export default (state, action, merge) => {
         })[0]
 
     return {
-      left: {
-        routable: left,
-        id: left.id,
-        width: left.dimensions.width,
-        x: left.dimensions.x,
-        y: left.dimensions.y
-      },
-      right: {
-        routable: right,
-        id: right.id,
-        width: right.dimensions.width,
-        x: right.dimensions.x,
-        y: right.dimensions.y
-      }
+      status: route.status,
+      left,
+      right
     }
   })
 
