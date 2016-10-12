@@ -12,12 +12,23 @@ function get (baseUrl, id, name) {
   if (id) url += `${id}/`
   return axios.get(url)
     .then(response => {
-      if (Array.isArray(response.data)) return response.data.map(d => {
-        d.type = name
-        return d
-      })
-      response.data.type = name
-      return response.data
+      let data = response.data
+      if (Array.isArray(response.data)) {
+        data = response.data.map(d => {
+          d.type = name
+          return d
+        })
+        data.sort((left, right) => {
+          if (left.format === right.format || left.format === undefined || right.format === undefined) return left.label.toUpperCase() < right.label.toUpperCase() ? -1 : 1
+          else if (left.format.includes('video')) return -1
+          else if (right.format.includes('video')) return 1
+          else if (left.format.includes('audio')) return -1
+          else if (right.format.includes('audio')) return 1
+          return 0
+        })
+
+      } else data.type = name
+      return data
     })
 }
 
@@ -27,11 +38,22 @@ function getStub (id, name) {
     return d.id === id
   })[0]
 
-  if (Array.isArray(data)) data = data.map(d => {
-    d.type = name
-    return d
-  })
-  else data.type = name
+  if (Array.isArray(data)) {
+    data = data.map(d => {
+      d.type = name
+      return d
+    })
+
+    data.sort((left, right) => {
+      if (left.format === right.format || left.format === undefined || right.format === undefined) return left.label.toUpperCase() < right.label.toUpperCase() ? -1 : 1
+      else if (left.format.includes('video')) return -1
+      else if (right.format.includes('video')) return 1
+      else if (left.format.includes('audio')) return -1
+      else if (right.format.includes('audio')) return 1
+      return 0
+    })
+
+  } else data.type = name
 
   return new Promise(resolve => {
     resolve(data)

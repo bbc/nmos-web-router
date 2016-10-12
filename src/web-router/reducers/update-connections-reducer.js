@@ -1,10 +1,15 @@
 function getDimensions (elementId) {
   let containerElement = document.querySelector('.web-router-container')
-  let containerRects = containerElement.getClientRects().item(0)
+  let containerOffset = 0
+
+  if (containerElement !== null) {
+    let containerRects = containerElement.getClientRects().item(0)
+    containerOffset = containerRects.left
+  }
 
   let dimensions = { x: [0, 0], y: [0, 0] }
   let offestY = window.scrollY
-  let offestX = window.scrollX - containerRects.left
+  let offestX = window.scrollX - containerOffset
   let routableElement = document.getElementById(elementId)
   if (routableElement === null) return dimensions
   let rects = routableElement.getClientRects().item(0)
