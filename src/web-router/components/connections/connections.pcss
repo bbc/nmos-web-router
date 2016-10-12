@@ -13,11 +13,12 @@
       z-index: -1;
       width: 34.25%;
       stroke: color(var(--line) tint(50%));
+      transition: left 0.3s, width 0.3s;
 
       & .line {
         stroke-linecap: round;
         stroke-width: 4;
-        transition: stroke 1s, stroke-dasharray 0.5s;
+        transition: stroke 0.5s, stroke-dasharray 0.5s;
       }
 
       &.user .line {
@@ -25,8 +26,6 @@
       }
 
       &.expanded {
-        z-index: 0;
-
         & .line {
           stroke: color(var(--routed) b(5%));
         }
