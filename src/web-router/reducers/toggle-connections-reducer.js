@@ -28,7 +28,7 @@ function isRouted (routes, left, right) {
   }).length > 0
 }
 
-function changeConnected (state, view, action) {
+function connect (state, view, action) {
   let rightSide = state.sides.right.plural
   if (action.viewType === rightSide) view[action.viewName][rightSide]
     .forEach(routable => {
@@ -104,11 +104,11 @@ export default (state, action, merge) => {
   if (nothingExpanded) {
     toggle(state, view, action)
     view[action.viewName].toggleSide = action.viewType
-    changeConnected(state, view, action)
+    connect(state, view, action)
   } else if (sameSide) {
     let allContracted = toggle(state, view, action)
     if (allContracted) view[action.viewName].toggleSide = ''
-    else changeConnected(state, view, action)
+    else connect(state, view, action)
   } else if (!sameSide && action.id !== 'off') {
     route(state, view, action)
   }
