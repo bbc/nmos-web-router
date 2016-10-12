@@ -32,7 +32,7 @@ export default (actions) => {
         actions.updateConnections()
       })
       .catch(error => {
-        console.log(error)
+        console.error(error)
         retries[name] += 1
         if (retries[name] >= MAX_RETRIES) actions.initialiseError({ error, name })
         else setTimeout(function () {
