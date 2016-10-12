@@ -1,4 +1,5 @@
 import initialise from './initialise-reducer'
+import updateData from './update-data-reducer'
 import initialiseError from './initialise-error-reducer'
 import reset from './reset-reducer'
 import toggleConnections from './toggle-connections-reducer'
@@ -10,6 +11,7 @@ import location from './location-reducer'
 
 export default {
   initialise,
+  updateData,
   initialiseError,
   reset,
   toggleConnections,

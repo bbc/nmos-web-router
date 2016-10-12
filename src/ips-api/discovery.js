@@ -12,10 +12,12 @@ function get (baseUrl, id, name) {
   if (id) url += `${id}/`
   return axios.get(url)
     .then(response => {
-      return response.data.map(d => {
+      if (Array.isArray(response.data)) return response.data.map(d => {
         d.type = name
         return d
       })
+      response.data.type = name
+      return response.data
     })
 }
 
@@ -24,10 +26,12 @@ function getStub (id, name) {
   if (id) data = data.filter(d => {
     return d.id === id
   })[0]
-  data = data.map(d => {
+
+  if (Array.isArray(data)) data = data.map(d => {
     d.type = name
     return d
   })
+  else data.type = name
 
   return new Promise(resolve => {
     resolve(data)
@@ -88,6 +92,7 @@ export default function (usestub, baseUrl) {
       return get(baseUrl, id, 'receivers')
     },
     route (id, sender) {
+      sender.routingTo = id
       if (usestub) return new Promise(resolve => {
         setTimeout(function () {
           resolve()

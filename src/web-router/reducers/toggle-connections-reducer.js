@@ -1,8 +1,3 @@
-import discovery from '../../ips-api/discovery'
-
-const baseUrl = 'http://172.29.176.52:12345'
-const usestub = window.location.search.includes('stub')
-
 function changeContracted (view, action) {
   let allContracted = true
   view[action.viewName][action.viewType] = view[action.viewName][action.viewType].map(routable => {
@@ -33,6 +28,36 @@ function toggle (state, view, action) {
   return allContracted
 }
 
+function route (state, view, action) {
+  let side = state.sides[action.viewType]
+  let sideName = state.sides[side].plural
+
+  let routable = view[action.viewName][sideName].filter(routable => {
+    return routable.id === action.id
+  })[0]
+
+  let route = {
+    status: 'user'
+  }
+
+  route[side] = routable
+  route[state.sides[side].opposite.name] = view[action.viewName].toggled
+
+  view[action.viewName].routes.push(route)
+
+  let receiver = view[action.viewName].toggled
+  if (sideName === 'receivers') receiver = routable
+
+  let sender = view[action.viewName].toggled
+  if (sideName === 'senders') sender = routable
+
+  sender = state.data.senders.filter(dataSender => {
+    return dataSender.id === sender.id
+  })[0]
+
+  action.route(receiver.id, sender)
+}
+
 export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
 
@@ -45,38 +70,7 @@ export default (state, action, merge) => {
   } else if (sameSide) {
     let allContracted = toggle(state, view, action)
     if (allContracted) view[action.viewName].toggleSide = ''
-  } else if (!sameSide && action.id !== 'off') {
-    let side = state.sides[action.viewType]
-    let sideName = state.sides[side].plural
-
-    let routable = view[action.viewName][sideName].filter(routable => {
-      return routable.id === action.id
-    })[0]
-
-    let route = {
-      status: 'user'
-    }
-
-    route[side] = routable
-    route[state.sides[side].opposite.name] = view[action.viewName].toggled
-
-    view[action.viewName].routes.push(route)
-
-    let receiver = routable
-    if (sideName === 'receivers') receiver = view[action.viewName].toggled
-
-    let sender = view[action.viewName].toggled
-    if (sideName === 'senders') sender = routable
-
-    sender = state.data.senders.filter(dataSender => {
-      return dataSender.id === sender.id
-    })[0]
-
-    discovery(usestub, baseUrl).route(receiver.id, sender)
-      .then(response => {
-        action.route(response)
-      })
-  }
+  } else if (!sameSide && action.id !== 'off') route(state, view, action)
 
   if (action.id === 'off') view[action.viewName].toggleSide = ''
 

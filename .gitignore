@@ -22,6 +22,7 @@ debian/ips-web/
 #dev
 *.log
 *.json.gzip
+yarn.lock
 
 # misc
 .DS_Store
