@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 
 import Expanded from './expanded-component'
 import Contracted from './contracted-component'
+import { No } from '../../../gel-react/iconography'
 
 let RoutableButton = ({baseId, data, view, actions, draggable}) => {
   draggable = draggable || null
@@ -24,7 +25,9 @@ let RoutableButton = ({baseId, data, view, actions, draggable}) => {
       actions.toggle(baseId, data.id)
     }}>
     <div className='point-container'>
-      <div className='point point-unrouted' />
+      <div className='point'>
+        <No />
+      </div>
     </div>
     <Component actions={actions} data={data} />
     <div>{draggable}</div>

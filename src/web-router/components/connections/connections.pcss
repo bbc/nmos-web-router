@@ -24,8 +24,12 @@
         stroke-dasharray: 10;
       }
 
-      &.expanded .line {
-        stroke: color(var(--routed) b(5%));
+      &.expanded {
+        z-index: 0;
+
+        & .line {
+          stroke: color(var(--routed) b(5%));
+        }
       }
 
       &.remove .line {

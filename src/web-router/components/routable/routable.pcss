@@ -28,6 +28,10 @@
     display: none;
     background-color: var(--point-routed);
   }
+
+  & .gel-icon {
+    display: none;
+  }
 }
 
 .draggable {
@@ -87,8 +91,29 @@
     transform: translateX(-30%);
   }
 
-  & .routable-connected .point-container {
-    left: calc(-1.5 * var(--point-width));
+  & .routable-connected {
+    & .point-container {
+      left: calc(-1.5 * var(--point-width));
+
+      & .point {
+        &:hover {
+          background-color: color(var(--point-routed) b(5%));
+
+          & .gel-icon {
+            fill: color(#555 tint(5%));
+          }
+        }
+
+        & .gel-icon {
+          fill: color(#555 tint(50%));
+          margin: auto;
+          margin-top: 25%;
+          width: 50%;
+          height: auto;
+          display: block;
+        }
+      }
+    }
   }
 }
 
