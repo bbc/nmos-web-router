@@ -113,7 +113,10 @@ export default (state, action, merge) => {
     route(state, view, action)
   }
 
-  if (action.id === 'off') view[action.viewName].toggleSide = ''
+  if (action.id === 'off') {
+    unConnectAll(state, view, action)
+    view[action.viewName].toggleSide = ''
+  }
 
   view.scroll = false
   return merge({ view })
