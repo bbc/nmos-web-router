@@ -1,3 +1,8 @@
+import discovery from '../../ips-api/discovery'
+
+const baseUrl = 'http://172.29.176.52:12345'
+const usestub = window.location.search.includes('stub')
+
 function changeContracted (view, action) {
   let allContracted = true
   view[action.viewName][action.viewType] = view[action.viewName][action.viewType].map(routable => {
@@ -56,6 +61,21 @@ export default (state, action, merge) => {
     route[state.sides[side].opposite.name] = view[action.viewName].toggled
 
     view[action.viewName].routes.push(route)
+
+    let receiver = routable
+    if (sideName === 'receivers') receiver = view[action.viewName].toggled
+
+    let sender = view[action.viewName].toggled
+    if (sideName === 'senders') sender = routable
+
+    sender = state.data.senders.filter(dataSender => {
+      return dataSender.id === sender.id
+    })[0]
+
+    discovery(usestub, baseUrl).route(receiver.id, sender)
+      .then(response => {
+        action.route(response)
+      })
   }
 
   if (action.id === 'off') view[action.viewName].toggleSide = ''

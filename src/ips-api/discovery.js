@@ -89,7 +89,9 @@ export default function (usestub, baseUrl) {
     },
     route (id, sender) {
       if (usestub) return new Promise(resolve => {
-        resolve()
+        setTimeout(function () {
+          resolve()
+        }, 1000)
       })
       return route(baseUrl, id, sender)
     },

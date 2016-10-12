@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 let Toggle = ({ status, onToggle, className }) => {
   status = status || Toggle.off
 
-  return <div className='switch-container'
+  return <div className={`switch-container toggle-${status}`}
     onClick={function () {
       onToggle({
         status,

@@ -12,7 +12,7 @@ function getBeside (beside, name) {
 }
 
 let Button = ({
-  name, onClick, className, to, fill,
+  name, onClick, className, to, fill, link,
   beforeIcon, icon,
   beforeLabel, label, afterLabel
 }) => {
@@ -41,7 +41,17 @@ let Button = ({
   let AfterLabel = getBeside(afterLabel, 'after-label')
   let hasAfterLabel = getHasClass(AfterLabel, 'after-label')
 
-  if (to) return <Link
+  if (link) return <a
+    href={link}
+    className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
+    onClick={onClick}>
+    {BeforeIcon}
+    {Icon}
+    {BeforeLabel}
+    {Label}
+    {AfterLabel}
+  </a>
+  else if (to) return <Link
     to={to}
     className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
     onClick={onClick}>
@@ -67,6 +77,7 @@ Button.propTypes = {
   name: PropTypes.string,
   className: PropTypes.string,
   to: PropTypes.string,
+  link: PropTypes.string,
   beforeIcon: PropTypes.any,
   icon: PropTypes.any,
   beforeLabel: PropTypes.any,
