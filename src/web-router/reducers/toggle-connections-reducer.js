@@ -99,8 +99,6 @@ export default (state, action, merge) => {
   let nothingExpanded = view[action.viewName].toggleSide === ''
   let sameSide = view[action.viewName].toggleSide === action.viewType
 
-  disonnect(state, view, action)
-
   if (nothingExpanded) {
     toggle(state, view, action)
     view[action.viewName].toggleSide = action.viewType
@@ -113,10 +111,9 @@ export default (state, action, merge) => {
     route(state, view, action)
   }
 
-  if (action.id === 'off') {
-    disonnect(state, view, action)
-    view[action.viewName].toggleSide = ''
-  }
+  if (action.id === 'off') view[action.viewName].toggleSide = ''
+
+  if (view[action.viewName].toggleSide === '') disonnect(state, view, action)
 
   view.scroll = false
   return merge({ view })
