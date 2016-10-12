@@ -31,7 +31,19 @@
   }
 
   & .gel-icon {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    fill: color(#555 tint(50%));
+    margin: auto;
+    width: 50%;
+    height: auto;
     display: none;
+  }
+
+  &:hover .gel-icon {
+    fill: #555;
   }
 }
 
@@ -101,21 +113,9 @@
 
         &:hover {
           background-color: var(--point-routed);
-
-          & .gel-icon {
-            fill: #555;
-          }
         }
 
         & .gel-icon {
-          top: 50%;
-          left: 50%;
-          transform: translateX(-50%) translateY(-50%);
-          position: absolute;
-          fill: color(#555 tint(50%));
-          margin: auto;
-          width: 50%;
-          height: auto;
           display: block;
         }
       }
