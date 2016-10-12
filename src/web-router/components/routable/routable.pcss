@@ -91,16 +91,18 @@
     transform: translateX(-30%);
   }
 
-  & .routable-connected {
+  & .routable-connected.routed {
     & .point-container {
       left: calc(-1.5 * var(--point-width));
 
       & .point {
+        background-color: color(var(--point-routed) b(5%));
+
         &:hover {
-          background-color: color(var(--point-routed) b(5%));
+          background-color: var(--point-routed);
 
           & .gel-icon {
-            fill: color(#555 tint(5%));
+            fill: #555;
           }
         }
 

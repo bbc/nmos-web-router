@@ -99,16 +99,16 @@ export default (state, action, merge) => {
   let nothingExpanded = view[action.viewName].toggleSide === ''
   let sameSide = view[action.viewName].toggleSide === action.viewType
 
+  unConnectAll(state, view, action)
+
   if (nothingExpanded) {
     toggle(state, view, action)
     view[action.viewName].toggleSide = action.viewType
     changeConnected(state, view, action)
   } else if (sameSide) {
     let allContracted = toggle(state, view, action)
-    if (allContracted) {
-      view[action.viewName].toggleSide = ''
-      unConnectAll(state, view, action)
-    } else changeConnected(state, view, action)
+    if (allContracted) view[action.viewName].toggleSide = ''
+    else changeConnected(state, view, action)
   } else if (!sameSide && action.id !== 'off') {
     route(state, view, action)
   }
