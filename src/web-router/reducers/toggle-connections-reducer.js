@@ -40,7 +40,7 @@ function changeConnected (state, view, action) {
     })
 }
 
-function unConnectAll (state, view, action) {
+function disonnect (state, view, action) {
   view[action.viewName].senders
     .concat(view[action.viewName].receivers)
     .forEach(routable => {
@@ -99,7 +99,7 @@ export default (state, action, merge) => {
   let nothingExpanded = view[action.viewName].toggleSide === ''
   let sameSide = view[action.viewName].toggleSide === action.viewType
 
-  unConnectAll(state, view, action)
+  disonnect(state, view, action)
 
   if (nothingExpanded) {
     toggle(state, view, action)
@@ -114,7 +114,7 @@ export default (state, action, merge) => {
   }
 
   if (action.id === 'off') {
-    unConnectAll(state, view, action)
+    disonnect(state, view, action)
     view[action.viewName].toggleSide = ''
   }
 
