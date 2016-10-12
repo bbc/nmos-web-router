@@ -26,14 +26,18 @@ const Route = ({left, right, selector, status}) => {
   let height = Math.abs(rightyTop - leftyTop) + 4
 
   let contractionStatus = 'contracted'
-  if (!left.contracted || !right.contracted) contractionStatus = 'expanded'
+  let expansionOffset = 0
+  if (!left.contracted || !right.contracted) {
+    contractionStatus = 'expanded'
+    expansionOffset = -20
+  }
 
   return <svg
     className={`route ${contractionStatus} ${status}`}
     style={{
       top: top,
       left: left.dimensions.x[1],
-      width: right.dimensions.x[0] - left.dimensions.x[1]
+      width: right.dimensions.x[0] - left.dimensions.x[1] + expansionOffset
     }}
     height={height}
     version='1.1'

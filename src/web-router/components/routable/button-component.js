@@ -13,11 +13,12 @@ let RoutableButton = ({baseId, data, view, actions, draggable}) => {
   let preview = view.preview ? 'preview' : ''
   let routed = view.routed ? 'routed' : ''
   let routable = view.routable ? 'routable' : 'not-routable'
+  let connected = view.connected ? 'connected' : 'not-connected'
   let side = view.side || ''
 
   return <div
     id={`${baseId}-${data.id}`}
-    className={`routable ${preview} ${routed} ${routable} ${side} routable-${expaneded}`}
+    className={`routable ${preview} ${routed} ${routable} ${side} routable-${expaneded} routable-${connected}`}
     onClick={function (evt) {
       evt.stopPropagation()
       actions.toggle(baseId, data.id)

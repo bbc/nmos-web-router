@@ -22,6 +22,32 @@ function changeRoutable (state, view, action) {
   })
 }
 
+function isRouted (routes, left, right) {
+  return routes.filter(route => {
+    return route.left.id === left.id && route.right.id === right.id
+  }).length > 0
+}
+
+function changeConnected (state, view, action) {
+  let rightSide = state.sides.right.plural
+  if (action.viewType === rightSide) view[action.viewName][rightSide]
+    .forEach(routable => {
+      if (routable.id === view[action.viewName].toggled.id) routable.connected = true
+    })
+  else view[action.viewName][rightSide]
+    .forEach(routable => {
+      routable.connected = isRouted(view[action.viewName].routes, view[action.viewName].toggled, routable)
+    })
+}
+
+function unConnectAll (state, view, action) {
+  view[action.viewName].senders
+    .concat(view[action.viewName].receivers)
+    .forEach(routable => {
+      routable.connected = false
+    })
+}
+
 function toggle (state, view, action) {
   let allContracted = changeContracted(view, action)
   changeRoutable(state, view, action)
@@ -35,6 +61,8 @@ function route (state, view, action) {
   let routable = view[action.viewName][sideName].filter(routable => {
     return routable.id === action.id
   })[0]
+
+  routable.connected = true
 
   let route = {
     status: 'user'
@@ -67,10 +95,16 @@ export default (state, action, merge) => {
   if (nothingExpanded) {
     toggle(state, view, action)
     view[action.viewName].toggleSide = action.viewType
+    changeConnected(state, view, action)
   } else if (sameSide) {
     let allContracted = toggle(state, view, action)
-    if (allContracted) view[action.viewName].toggleSide = ''
-  } else if (!sameSide && action.id !== 'off') route(state, view, action)
+    if (allContracted) {
+      view[action.viewName].toggleSide = ''
+      unConnectAll(state, view, action)
+    } else changeConnected(state, view, action)
+  } else if (!sameSide && action.id !== 'off') {
+    route(state, view, action)
+  }
 
   if (action.id === 'off') view[action.viewName].toggleSide = ''
 

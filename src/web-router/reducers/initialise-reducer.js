@@ -55,6 +55,7 @@ function getConnectionsRoutables (data, type, singularType) {
     return {
       id: routable.id,
       routable: true,
+      connected: false,
       routed: isRouted(data, routable, singularType),
       preview: false,
       contracted: true,
