@@ -32,11 +32,11 @@ function changeConnected (state, view, action) {
   let rightSide = state.sides.right.plural
   if (action.viewType === rightSide) view[action.viewName][rightSide]
     .forEach(routable => {
-      if (routable.id === view[action.viewName].toggled.id) routable.connected = true
+      if (view[action.viewName].toggled && routable.id === view[action.viewName].toggled.id) routable.connected = true
     })
   else view[action.viewName][rightSide]
     .forEach(routable => {
-      routable.connected = isRouted(view[action.viewName].routes, view[action.viewName].toggled, routable)
+      routable.connected = view[action.viewName].toggled && isRouted(view[action.viewName].routes, view[action.viewName].toggled, routable)
     })
 }
 
