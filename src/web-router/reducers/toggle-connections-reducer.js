@@ -80,17 +80,15 @@ function route (state, view, action) {
 
   view[action.viewName].routes.push(route)
 
-  let receiver = view[action.viewName].toggled
-  if (sideName === 'receivers') receiver = routable
-
-  let sender = view[action.viewName].toggled
-  if (sideName === 'senders') sender = routable
-
-  sender = state.data.senders.filter(dataSender => {
-    return dataSender.id === sender.id
-  })[0]
-
-  action.route(receiver.id, sender)
+  // TODO: put this back on once subscription API is working
+  // let receiver = view[action.viewName].toggled
+  // if (sideName === 'receivers') receiver = routable
+  // let sender = view[action.viewName].toggled
+  // if (sideName === 'senders') sender = routable
+  // sender = state.data.senders.filter(dataSender => {
+  //   return dataSender.id === sender.id
+  // })[0]
+  // action.route(receiver.id, sender)
 }
 
 export default (state, action, merge) => {
