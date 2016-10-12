@@ -99,6 +99,8 @@ export default (state, action, merge) => {
   let nothingExpanded = view[action.viewName].toggleSide === ''
   let sameSide = view[action.viewName].toggleSide === action.viewType
 
+  if (sameSide) disonnect(state, view, action)
+
   if (nothingExpanded) {
     toggle(state, view, action)
     view[action.viewName].toggleSide = action.viewType
