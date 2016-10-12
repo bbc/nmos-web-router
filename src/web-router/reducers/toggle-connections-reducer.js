@@ -62,7 +62,14 @@ function route (state, view, action) {
     return routable.id === action.id
   })[0]
 
+  let toggled = view[action.viewName][state.sides[side].opposite.plural].filter(routable => {
+    return routable.id === view[action.viewName].toggled.id
+  })[0]
+
+  toggled.routed = true
+
   routable.connected = true
+  routable.routed = true
 
   let route = {
     status: 'user'
