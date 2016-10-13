@@ -16,7 +16,8 @@ let Status = ({name, icon, label}) => {
 
 Status.propTypes = {
   icon: PropTypes.any.isRequired,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 export default Status
