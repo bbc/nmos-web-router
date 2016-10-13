@@ -28,7 +28,7 @@ let RoutableButton = ({baseId, data, view, actions, draggable}) => {
       <div
         onClick={function (evt) {
           evt.stopPropagation()
-          if (connected) console.log('remove')
+          if (connected) actions.remove()
         }}
         className='point'>
         <No />

@@ -20,6 +20,7 @@ let Routables = ({side, routables, view, actions}) => {
         data={routable}
         view={routableView}
         actions={{
+          remove: actions.remove,
           toggle () {
             if (routableView.routable) {
               actions.toggleConnections('connections', side, routable.id)
