@@ -15,7 +15,9 @@
   },
   "globals": {
     "WebSocket": true,
-    "Image": true
+    "Image": true,
+    "jasmine": true,
+    "fail": true
   },
   "env": {
     "jest": true
