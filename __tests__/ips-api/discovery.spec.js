@@ -150,7 +150,11 @@ describe('Discovery - stub data', () => {
   })
 
   describe('Routing', () => {
-    pit('Creating a new route will return the object sent and subscribe that route', (done) => {
+    afterEach(() => {
+      discovery.route(types.receivers, { id: types.senders })
+    })
+
+    pit('Creating a new route will return the object sent and subscribe the receiver to the sender', (done) => {
       discovery.receivers(types.receivers).then(data => {
         expect(data.subscription.sender_id).toBe(types.senders)
         return discovery.route(types.receivers, differentSender)
@@ -159,6 +163,19 @@ describe('Discovery - stub data', () => {
         return discovery.receivers(types.receivers)
       }).then(data => {
         expect(data.subscription.sender_id).toBe(differentSender.id)
+        done()
+      }).catch(error => {
+        fail(error)
+        done()
+      })
+    })
+
+    pit('Removing a route will return a blank object and then subscribe the receiver to null', (done) => {
+      discovery.unroute(types.receivers).then(data => {
+        expect(data).toEqual({})
+        return discovery.receivers(types.receivers)
+      }).then(data => {
+        expect(data.subscription.sender_id).toBe(null)
         done()
       }).catch(error => {
         fail(error)

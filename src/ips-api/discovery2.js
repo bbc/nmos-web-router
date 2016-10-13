@@ -103,6 +103,11 @@ export default function (options) {
       })
     },
     unroute (id) {
+      if (stub) return new Promise((resolve, reject) => {
+        let reciver = collections.receivers.findOne({id})
+        reciver.subscription = { sender_id: null }
+        resolve({})
+      })
     }
   }
 }
