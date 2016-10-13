@@ -78,9 +78,18 @@ export default function (options) {
     })
   }
 
-  function routeStub (receiverId, sender, senderId) {
 
+
+  function routeStub (receiverId, sender, senderId) {
     return new Promise((resolve, reject) => {
+      function updateRoute () {
+        receiver.subscription = { sender_id: senderId }
+        collections.receivers.update(receiver)
+        setTimeout(function () {
+          resolve(sender)
+        }, delay)
+      }
+
       let receiver = collections.receivers.findOne({ id: receiverId })
       if (receiver === null) setTimeout(function () {
         reject('404 no receiver')
@@ -91,20 +100,8 @@ export default function (options) {
           if (foundSender === null) setTimeout(function () {
             reject('404 no sender')
           }, delay)
-          else {
-            receiver.subscription = { sender_id: senderId }
-            collections.receivers.update(receiver)
-            setTimeout(function () {
-              resolve(sender)
-            }, delay)
-          }
-        } else {
-          receiver.subscription = { sender_id: senderId }
-          collections.receivers.update(receiver)
-          setTimeout(function () {
-            resolve(sender)
-          }, delay)
-        }
+          else updateRoute()
+        } else updateRoute()
       }
     })
   }
