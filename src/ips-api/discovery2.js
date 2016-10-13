@@ -78,6 +78,15 @@ export default function (options) {
     })
   }
 
+  function routeStub (receiverId, sender, senderId) {
+
+    return new Promise((resolve, reject) => {
+      let reciver = collections.receivers.findOne({ id: receiverId })
+      reciver.subscription = { sender_id: senderId }
+      resolve(sender)
+    })
+  }
+
   return {
     subscriptions () {
       if (stub) return new Promise((resolve, reject) => {
@@ -103,18 +112,10 @@ export default function (options) {
       if (stub) return getStub('receivers', id)
     },
     route (id, sender) {
-      if (stub) return new Promise((resolve, reject) => {
-        let reciver = collections.receivers.findOne({id})
-        reciver.subscription = { sender_id: sender.id }
-        resolve(sender)
-      })
+      if (stub) return routeStub(id, sender, sender.id)
     },
     unroute (id) {
-      if (stub) return new Promise((resolve, reject) => {
-        let reciver = collections.receivers.findOne({id})
-        reciver.subscription = { sender_id: null }
-        resolve({})
-      })
+      if (stub) return routeStub(id, {}, null)
     }
   }
 }
