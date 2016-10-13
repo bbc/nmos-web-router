@@ -60,11 +60,11 @@ export default function (options) {
   let collections
   if (stub) collections = createCollections()
 
-  function stubGet (type, id) {
+  function getStub (type, id) {
     return new Promise((resolve, reject) => {
       if (id) {
         let data = stripLoki(collections[type].findOne({ id }))
-        if (!data.hasOwnProperty('id')) reject('404')
+        if (data && !data.hasOwnProperty('id')) reject('404')
         resolve(data)
       }
       resolve(collections[type].data.map(stripLoki).sort(defaultSort))
@@ -78,24 +78,29 @@ export default function (options) {
       })
     },
     flows (id) {
-      if (stub) return stubGet('flows', id)
+      if (stub) return getStub('flows', id)
     },
     sources (id) {
-      if (stub) return stubGet('sources', id)
+      if (stub) return getStub('sources', id)
     },
     nodes (id) {
-      if (stub) return stubGet('nodes', id)
+      if (stub) return getStub('nodes', id)
     },
     devices (id) {
-      if (stub) return stubGet('devices', id)
+      if (stub) return getStub('devices', id)
     },
     senders (id) {
-      if (stub) return stubGet('senders', id)
+      if (stub) return getStub('senders', id)
     },
     receivers (id) {
-      if (stub) return stubGet('receivers', id)
+      if (stub) return getStub('receivers', id)
     },
     route (id, sender) {
+      if (stub) return new Promise((resolve, reject) => {
+        let reciver = collections.receivers.findOne({id})
+        reciver.subscription = { sender_id: sender.id }
+        resolve(sender)
+      })
     },
     unroute (id) {
     }

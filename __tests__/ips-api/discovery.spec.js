@@ -10,6 +10,10 @@ const types = {
   receivers: 'd1ea51b2-556e-42e6-8d21-2825f621d6fd'
 }
 
+const differentSender = {
+  id: '88ca9efb-a70e-4503-8d06-a2b8e7fcb398'
+}
+
 const typesSortedByLabelOnly = [
   'nodes',
   'devices',
@@ -141,6 +145,24 @@ describe('Discovery - stub data', () => {
         resolvePromise(discovery[type](), done, (data) => {
           expectToBeAlphabetical(data)
         })
+      })
+    })
+  })
+
+  describe('Routing', () => {
+    pit('Creating a new route will return the object sent and subscribe that route', (done) => {
+      discovery.receivers(types.receivers).then(data => {
+        expect(data.subscription.sender_id).toBe(types.senders)
+        return discovery.route(types.receivers, differentSender)
+      }).then(data => {
+        expect(data).toEqual(differentSender)
+        return discovery.receivers(types.receivers)
+      }).then(data => {
+        expect(data.subscription.sender_id).toBe(differentSender.id)
+        done()
+      }).catch(error => {
+        fail(error)
+        done()
       })
     })
   })
