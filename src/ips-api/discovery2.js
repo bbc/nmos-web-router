@@ -56,6 +56,7 @@ export default function (options) {
   // let getUrl = options.get
   // let putUrl = options.put
   let stub = options.stub
+  let delay = options.delay || 0
 
   let collections
   if (stub) collections = createCollections()
@@ -64,10 +65,16 @@ export default function (options) {
     return new Promise((resolve, reject) => {
       if (id) {
         let data = stripLoki(collections[type].findOne({ id }))
-        if (data && !data.hasOwnProperty('id')) reject('404')
-        resolve(data)
+        if (data && !data.hasOwnProperty('id')) setTimeout(function () {
+          reject('404')
+        }, delay)
+        setTimeout(function () {
+          resolve(data)
+        }, delay)
       }
-      resolve(collections[type].data.map(stripLoki).sort(defaultSort))
+      setTimeout(function () {
+        resolve(collections[type].data.map(stripLoki).sort(defaultSort))
+      }, delay)
     })
   }
 
