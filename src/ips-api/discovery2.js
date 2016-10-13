@@ -65,7 +65,7 @@ export default function (options) {
     return new Promise((resolve, reject) => {
       if (id) {
         let data = stripLoki(collections[type].findOne({ id }))
-        if (data && !data.hasOwnProperty('id')) setTimeout(function () {
+        if (!data.hasOwnProperty('id')) setTimeout(function () {
           reject('404')
         }, delay)
         setTimeout(function () {
@@ -81,9 +81,31 @@ export default function (options) {
   function routeStub (receiverId, sender, senderId) {
 
     return new Promise((resolve, reject) => {
-      let reciver = collections.receivers.findOne({ id: receiverId })
-      reciver.subscription = { sender_id: senderId }
-      resolve(sender)
+      let receiver = collections.receivers.findOne({ id: receiverId })
+      if (receiver === null) setTimeout(function () {
+        reject('404 no receiver')
+      }, delay)
+      else {
+        if (senderId) {
+          let foundSender = collections.senders.findOne({ id: senderId })
+          if (foundSender === null) setTimeout(function () {
+            reject('404 no sender')
+          }, delay)
+          else {
+            receiver.subscription = { sender_id: senderId }
+            collections.receivers.update(receiver)
+            setTimeout(function () {
+              resolve(sender)
+            }, delay)
+          }
+        } else {
+          receiver.subscription = { sender_id: senderId }
+          collections.receivers.update(receiver)
+          setTimeout(function () {
+            resolve(sender)
+          }, delay)
+        }
+      }
     })
   }
 

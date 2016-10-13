@@ -11,7 +11,7 @@ const types = {
 }
 
 const differentSender = {
-  id: '88ca9efb-a70e-4503-8d06-a2b8e7fcb398'
+  id: '5a126176-d6b9-4646-be1f-431c57cb406d'
 }
 
 const typesSortedByLabelOnly = [
@@ -166,6 +166,36 @@ describe('Discovery - stub data', () => {
         done()
       }).catch(error => {
         fail(error)
+        done()
+      })
+    })
+
+    pit('Creating a new route will error is receiver does not exist', (done) => {
+      discovery.route('invalid', differentSender).then(data => {
+        fail('no')
+        done()
+      }).catch(error => {
+        try {
+          expect(error).toBe('404 no receiver')
+        } catch (e) {
+          fail(e)
+          done()
+        }
+        done()
+      })
+    })
+
+    pit('Creating a new route will error is sender does not exist', (done) => {
+      discovery.route(types.receivers, { id: 'invalid' }).then(data => {
+        fail('no')
+        done()
+      }).catch(error => {
+        try {
+          expect(error).toBe('404 no sender')
+        } catch (e) {
+          fail(e)
+          done()
+        }
         done()
       })
     })
