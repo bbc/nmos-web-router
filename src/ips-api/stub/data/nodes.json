@@ -1,0 +1,2019 @@
+[
+    {
+        "version": "1473159680:398211840",
+        "hostname": "ap-r730-10",
+        "label": "ap-r730-10.rd.bbc.co.uk",
+        "href": "http://172.29.80.150:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.150:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.150:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.150:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "9e519978-fa40-4125-8fad-31418e18f5d2",
+        "type": "nodes"
+    },
+    {
+        "version": "1470746880:358132031",
+        "hostname": "ap-z440-2",
+        "label": "ap-z440-2.rd.bbc.co.uk",
+        "href": "http://10.0.3.1:12345/",
+        "services": [
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/storequery/",
+                "type": "urn:x-ipstudio:service:storequery"
+            }
+        ],
+        "caps": {},
+        "id": "b30536f3-326c-4e8d-a1c1-86e4af8c17d5",
+        "type": "nodes"
+    },
+    {
+        "version": "1473090316:879383642",
+        "hostname": "ap-r730-13",
+        "label": "ap-r730-13.rd.bbc.co.uk",
+        "href": "http://172.29.80.192:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.192:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.192:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.192:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "47fd2446-6f85-11e6-8f30-246e96096b64",
+        "type": "nodes"
+    },
+    {
+        "version": "1472830736:547772265",
+        "hostname": "ipstudio-master",
+        "label": "ipstudio-master.rd.bbc.co.uk",
+        "href": "http://172.29.94.18:12345/",
+        "services": [
+            {
+                "href": "http://172.29.94.18:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.94.18:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "4fcb301d-19b5-465f-b419-f9ce1d6656d1",
+        "type": "nodes"
+    },
+    {
+        "version": "1474285459:963146637",
+        "hostname": "ap-ch-z420-3",
+        "label": "ap-ch-z420-3.rd.bbc.co.uk",
+        "href": "http://172.29.176.89:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.89:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.89:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "6f6a27b6-c3c5-43ac-aaa3-9df2ab03ded9",
+        "type": "nodes"
+    },
+    {
+        "version": "1474269919:783901608",
+        "hostname": "ap-z200-1",
+        "label": "ap-z200-1.rd.bbc.co.uk",
+        "href": "http://172.29.80.169:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.169:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.169:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.169:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "d5f9c014-bb5e-44eb-aa53-6aef7249c944",
+        "type": "nodes"
+    },
+    {
+        "version": "1474271654:877090880",
+        "hostname": "ap-z420-6",
+        "label": "ap-z420-6.rd.bbc.co.uk",
+        "href": "http://172.29.80.118:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.118:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.118:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.118:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "3d60ddeb-1650-40ae-b598-7f5578acd9aa",
+        "type": "nodes"
+    },
+    {
+        "version": "1473155218:757170304",
+        "hostname": "ap-r730-2",
+        "label": "ap-r730-2.rd.bbc.co.uk",
+        "href": "http://172.29.80.121:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.121:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.121:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.121:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "c00246ea-b073-4fd1-9f6b-14738664d4d1",
+        "type": "nodes"
+    },
+    {
+        "version": "1473673045:877439556",
+        "hostname": "rd45054",
+        "label": "rd45054.rd.bbc.co.uk",
+        "href": "http://172.29.80.70:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.70:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.70:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.70:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "a5b581db-0bf2-4c4c-b2ed-fb9a34c45971",
+        "type": "nodes"
+    },
+    {
+        "version": "1473764028:969001768",
+        "hostname": "ap-z220-5",
+        "label": "ap-z220-5.rd.bbc.co.uk",
+        "href": "http://172.29.80.69:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.69:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.69:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.69:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "20215b78-a7f1-494d-8d5d-e91c4b58a1e7",
+        "type": "nodes"
+    },
+    {
+        "version": "1473958581:602259809",
+        "hostname": "ap-z420-8",
+        "label": "ap-z420-8.rd.bbc.co.uk",
+        "href": "http://172.29.80.128:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.128:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.128:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.128:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.128:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "2764d409-91d3-4d34-9d70-ff1693e1f7aa",
+        "type": "nodes"
+    },
+    {
+        "version": "1474282276:334743570",
+        "hostname": "ap-r730-9",
+        "label": "ap-r730-9.rd.bbc.co.uk",
+        "href": "http://172.29.80.149:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.149:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.149:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.149:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "bcde2de5-51bc-4a23-a197-d58046a464e9",
+        "type": "nodes"
+    },
+    {
+        "version": "1471000926:338778407",
+        "hostname": "ap-ch-r310-1",
+        "label": "ap-ch-r310-1.rd.bbc.co.uk",
+        "href": "http://172.29.176.20:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.20:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.20:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.20:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "2c1594be-084f-401a-9048-0c001eb3e140",
+        "type": "nodes"
+    },
+    {
+        "version": "1474042835:274689928",
+        "hostname": "ap-z840-0",
+        "label": "ap-z840-0.rd.bbc.co.uk",
+        "href": "http://172.29.80.185:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.185:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.185:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.185:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.185:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "43d7ced7-fd01-40f0-a691-1c44d8051409",
+        "type": "nodes"
+    },
+    {
+        "version": "1473936516:959615033",
+        "hostname": "ap-1018r-5",
+        "label": "ap-1018r-5.rd.bbc.co.uk",
+        "href": "http://172.29.80.200:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.200:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.200:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.200:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "59faee58-78f4-11e6-abfc-0cc47aa8aff8",
+        "type": "nodes"
+    },
+    {
+        "version": "1474014171:258377175",
+        "hostname": "ap-r730-1",
+        "label": "ap-r730-1.rd.bbc.co.uk",
+        "href": "http://172.29.80.120:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.120:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.120:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.120:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "9320f8a9-e9df-4762-ad07-673648894cef",
+        "type": "nodes"
+    },
+    {
+        "version": "1470143771:135669402",
+        "hostname": "ap-r720-5",
+        "label": "ap-r720-5.rd.bbc.co.uk",
+        "href": "http://172.29.80.110:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.110:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.110:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.110:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "9a8cf237-8880-4837-8945-ad042698bc46",
+        "type": "nodes"
+    },
+    {
+        "version": "1467189584:180906143",
+        "hostname": "ap-ch-r310-6",
+        "label": "ap-ch-r310-6.rd.bbc.co.uk",
+        "href": "http://172.29.176.67:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.67:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.67:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.176.67:12345/x-nmos/node/v1.0/self/storedflowquery/",
+                "type": "urn:x-ipstudio:service:storedflowquery"
+            }
+        ],
+        "caps": {},
+        "id": "849f4f2b-4f09-41ea-bd33-b60fdd089061",
+        "type": "nodes"
+    },
+    {
+        "version": "1474283943:15360000",
+        "hostname": "ap-zynq-1-10g",
+        "label": "ap-zynq-1-10g.rd.bbc.co.uk",
+        "href": "http://172.29.226.31:12345/",
+        "services": [
+            {
+                "href": "http://172.29.226.31:12345/x-nmos/node/v1.0/self/txctrl/",
+                "type": "urn:x-ipstudio:service:txctrl"
+            },
+            {
+                "href": "http://172.29.226.31:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.226.31:12345/x-nmos/node/v1.0/self/rxctrl/",
+                "type": "urn:x-ipstudio:service:rxctrl"
+            }
+        ],
+        "caps": {},
+        "id": "bf1d84bb-bcd4-4c09-986f-6b4bbcbed3f6",
+        "type": "nodes"
+    },
+    {
+        "version": "1474043401:714246160",
+        "hostname": "ap-z840-3",
+        "label": "ap-z840-3.rd.bbc.co.uk",
+        "href": "http://172.29.80.231:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.231:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.231:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.231:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.231:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "ad39c819-4e50-4918-a83a-731c1d5e0de7",
+        "type": "nodes"
+    },
+    {
+        "version": "1474275451:667503104",
+        "hostname": "rd001689",
+        "label": "rd001689.rd.bbc.co.uk",
+        "href": "http://172.29.80.166:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.166:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.166:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.166:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.166:12345/x-nmos/node/v1.0/self/primercontrol/",
+                "type": "urn:x-ipstudio:service:primercontrol"
+            }
+        ],
+        "caps": {},
+        "id": "d23aa524-5918-4c5f-afb9-266656c79998",
+        "type": "nodes"
+    },
+    {
+        "version": "1473933209:156098039",
+        "hostname": "ap-ch-z220-3",
+        "label": "ap-ch-z220-3.rd.bbc.co.uk",
+        "href": "http://172.29.176.36:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.36:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.36:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.36:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "0ab9623d-e0b7-436e-8286-67ace719e4f3",
+        "type": "nodes"
+    },
+    {
+        "version": "1471010923:704719074",
+        "hostname": "ap-ch-xw8600-2",
+        "label": "ap-ch-xw8600-2",
+        "href": "http://172.29.176.102:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.102:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.102:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.102:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "c8ba20e9-e197-4ec5-8764-4da672128589",
+        "type": "nodes"
+    },
+    {
+        "version": "1472739438:181738173",
+        "hostname": "ap-ch-z800-0",
+        "label": "ap-ch-z800-0.rd.bbc.co.uk",
+        "href": "http://172.29.176.39:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.39:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.39:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.39:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.176.39:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "fcc98af2-e847-4899-84df-d66c6c0a3cd3",
+        "type": "nodes"
+    },
+    {
+        "version": "1471951481:739240498",
+        "hostname": "ap-z440-1",
+        "label": "ap-z440-1.rd.bbc.co.uk",
+        "href": "http://172.29.80.138:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.138:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.138:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.138:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.138:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "2bc6824c-6421-40b4-b997-fcdc461bd5dc",
+        "type": "nodes"
+    },
+    {
+        "version": "1469634102:634285493",
+        "hostname": "ap-r310-4",
+        "label": "ap-r310-4.rd.bbc.co.uk",
+        "href": "http://172.29.80.25:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.25:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.25:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.25:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "5fcae429-a486-45e3-91db-902239d3f9bc",
+        "type": "nodes"
+    },
+    {
+        "version": "1472216689:804674099",
+        "hostname": "ap-z440-3",
+        "label": "ap-z440-3.rd.bbc.co.uk",
+        "href": "http://172.29.80.153:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.153:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.153:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.153:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "69512381-937c-46d3-acb2-054a4936e067",
+        "type": "nodes"
+    },
+    {
+        "version": "1467189205:701506186",
+        "hostname": "ap-ch-x3550-0",
+        "label": "ap-ch-x3550-0.rd.bbc.co.uk",
+        "href": "http://172.29.176.158:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.158:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.158:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "93f2787c-e7f8-4cdc-86d2-7a7c04011194",
+        "type": "nodes"
+    },
+    {
+        "version": "1471006818:134363883",
+        "hostname": "ap-ch-r720-9",
+        "label": "ap-ch-r720-9.rd.bbc.co.uk",
+        "href": "http://172.29.176.142:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.142:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.142:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.142:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "76e69a23-cca9-415d-aa47-09ab21205868",
+        "type": "nodes"
+    },
+    {
+        "version": "1473240434:958605942",
+        "hostname": "ap-r310-3",
+        "label": "ap-r310-3.rd.bbc.co.uk",
+        "href": "http://172.29.80.37:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.37:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.37:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.37:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "43fed1e1-212c-4c1b-a63a-bdce3ce709fe",
+        "type": "nodes"
+    },
+    {
+        "version": "1470143771:197234418",
+        "hostname": "ap-r720-6",
+        "label": "ap-r720-6.rd.bbc.co.uk",
+        "href": "http://172.29.80.112:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.112:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.112:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.112:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "f63ec4d9-118f-4f51-abbd-71ddeb444dd7",
+        "type": "nodes"
+    },
+    {
+        "version": "1474280017:232023970",
+        "hostname": "ap-ch-z420-4",
+        "label": "ap-ch-z420-4.rd.bbc.co.uk",
+        "href": "http://172.29.176.90:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.90:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.90:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.90:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "4968e672-f03e-45a3-b5b1-1300a13410b8",
+        "type": "nodes"
+    },
+    {
+        "version": "1471278804:941049592",
+        "hostname": "ip-172-29-94-172",
+        "label": "ip-172-29-94-172",
+        "href": "http://172.29.94.172:12345/",
+        "services": [
+            {
+                "href": "http://172.29.94.172:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.94.172:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.94.172:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.94.172:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "2cb98a48-4420-11e6-91f3-0200ac1d5eac",
+        "type": "nodes"
+    },
+    {
+        "version": "1474011017:68496911",
+        "hostname": "vm-456-intcloud",
+        "label": "vm-456-intcloud",
+        "href": "http://172.29.94.58:12345/",
+        "services": [
+            {
+                "href": "http://172.29.94.58:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.94.58:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.94.58:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "786c6a65-9462-40d4-9cf1-c6945460684b",
+        "type": "nodes"
+    },
+    {
+        "version": "1469792048:762598460",
+        "hostname": "ap-r310-5",
+        "label": "ap-r310-5.rd.bbc.co.uk",
+        "href": "http://172.29.80.22:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.22:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.22:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.22:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "138c74d8-aadc-4354-bd93-f8158bb80822",
+        "type": "nodes"
+    },
+    {
+        "version": "1473172330:137435121",
+        "hostname": "ap-z220-6",
+        "label": "ap-z220-6.rd.bbc.co.uk",
+        "href": "http://172.29.80.68:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.68:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.68:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.68:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.68:12345/x-nmos/node/v1.0/self/storeupload/",
+                "type": "urn:x-ipstudio:service:storeupload"
+            }
+        ],
+        "caps": {},
+        "id": "97d964b5-52bc-4c85-9e61-05c562db9082",
+        "type": "nodes"
+    },
+    {
+        "version": "1474282225:970779904",
+        "hostname": "ap-r730-7",
+        "label": "ap-r730-7.rd.bbc.co.uk",
+        "href": "http://172.29.80.143:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.143:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.143:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.143:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "e66b8754-0387-4720-8635-035dad6fef58",
+        "type": "nodes"
+    },
+    {
+        "version": "1473157492:809685742",
+        "hostname": "ap-r730-15",
+        "label": "ap-r730-15.rd.bbc.co.uk",
+        "href": "http://172.29.80.194:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.194:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.194:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.194:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "fbae1262-6f84-11e6-b291-246e9609718c",
+        "type": "nodes"
+    },
+    {
+        "version": "1474017190:864152395",
+        "hostname": "ap-r730-4",
+        "label": "ap-r730-4.rd.bbc.co.uk",
+        "href": "http://172.29.80.140:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.140:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.140:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.140:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "a644f87e-58bc-11e6-bd02-ecf4bbe4ac64",
+        "type": "nodes"
+    },
+    {
+        "version": "1471255294:31183462",
+        "hostname": "rd010532",
+        "label": "rd010532.rd.bbc.co.uk",
+        "href": "http://172.29.80.176:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.176:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.176:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.176:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "64312aa9-4ac1-4e23-8542-6d8f9e744ba1",
+        "type": "nodes"
+    },
+    {
+        "version": "1470145348:805116740",
+        "hostname": "ap-r720-3",
+        "label": "ap-r720-3.rd.bbc.co.uk",
+        "href": "http://172.29.80.106:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.106:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.106:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.106:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.106:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "035b5f56-ee29-40b3-a281-0c08a4f6164f",
+        "type": "nodes"
+    },
+    {
+        "version": "1474014367:987938654",
+        "hostname": "ap-z220-0",
+        "label": "ap-z220-0.rd.bbc.co.uk",
+        "href": "http://172.29.80.65:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "5fdb769a-33a2-11e6-b707-a0369f2c0bd0",
+        "type": "nodes"
+    },
+    {
+        "version": "1473149411:769296246",
+        "hostname": "ap-z420-3",
+        "label": "ap-z420-3.rd.bbc.co.uk",
+        "href": "http://172.29.80.83:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.83:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.83:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.83:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.83:12345/x-nmos/node/v1.0/self/storeupload/",
+                "type": "urn:x-ipstudio:service:storeupload"
+            },
+            {
+                "href": "http://172.29.80.83:12345/x-nmos/node/v1.0/self/mediaaccess/",
+                "type": "urn:x-ipstudio:service:mediaaccess"
+            }
+        ],
+        "caps": {},
+        "id": "4569188d-f64d-496b-a013-41280590969b",
+        "type": "nodes"
+    },
+    {
+        "version": "1474285741:899633883",
+        "hostname": "ap-r310-0",
+        "label": "ap-r310-0.rd.bbc.co.uk",
+        "href": "http://172.29.80.28:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.28:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.28:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.28:12345/x-nmos/node/v1.0/self/mediaaccess/",
+                "type": "urn:x-ipstudio:service:mediaaccess"
+            },
+            {
+                "href": "http://172.29.80.28:12345/x-nmos/node/v1.0/self/storeupload/",
+                "type": "urn:x-ipstudio:service:storeupload"
+            },
+            {
+                "href": "http://172.29.80.28:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.28:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            },
+            {
+                "href": "http://172.29.80.28:12345/x-nmos/node/v1.0/self/grouping/",
+                "type": "urn:x-ipstudio:service:grouping"
+            }
+        ],
+        "caps": {},
+        "id": "19ef6dda-a87e-4549-991b-3e82da151ff1",
+        "type": "nodes"
+    },
+    {
+        "version": "1471589648:996139497",
+        "hostname": "icosole-demo-z420-1",
+        "label": "icosole-demo-z420-1.rd.bbc.co.uk",
+        "href": "http://172.29.176.231:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.231:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.231:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.231:12345/x-nmos/node/v1.0/self/storequery/",
+                "type": "urn:x-ipstudio:service:storequery"
+            },
+            {
+                "href": "http://172.29.176.231:12345/x-nmos/node/v1.0/self/mediaaccess/",
+                "type": "urn:x-ipstudio:service:mediaaccess"
+            },
+            {
+                "href": "http://172.29.176.231:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.176.231:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            },
+            {
+                "href": "http://172.29.176.231:12345/x-nmos/node/v1.0/self/grouping/",
+                "type": "urn:x-ipstudio:service:grouping"
+            }
+        ],
+        "caps": {},
+        "id": "7f374f85-5f16-46f5-8c3b-419709fc34d3",
+        "type": "nodes"
+    },
+    {
+        "version": "1471613302:774698456",
+        "hostname": "icosole-demo-z420-2",
+        "label": "icosole-demo-z420-2.rd.bbc.co.uk",
+        "href": "http://172.29.80.130:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.130:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.130:12345/x-nmos/node/v1.0/self/mediaaccess/",
+                "type": "urn:x-ipstudio:service:mediaaccess"
+            },
+            {
+                "href": "http://172.29.80.130:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.130:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.130:12345/x-nmos/node/v1.0/self/storequery/",
+                "type": "urn:x-ipstudio:service:storequery"
+            }
+        ],
+        "caps": {},
+        "id": "a49c3bf4-7d6c-477d-83e1-302b11b733da",
+        "type": "nodes"
+    },
+    {
+        "version": "1473954867:582837478",
+        "hostname": "ipstudio-stable",
+        "label": "ipstudio-stable.rd.bbc.co.uk",
+        "href": "http://172.29.94.17:12345/",
+        "services": [
+            {
+                "href": "http://172.29.94.17:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.94.17:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "5f7f1cf3-1a37-491a-b4e6-573558970c20",
+        "type": "nodes"
+    },
+    {
+        "version": "1473079761:739233905",
+        "hostname": "ap-r730-11",
+        "label": "ap-r730-11.rd.bbc.co.uk",
+        "href": "http://172.29.80.151:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.151:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.151:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.151:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "279dfe26-934b-484f-bacb-c5526c40fe77",
+        "type": "nodes"
+    },
+    {
+        "version": "1474033635:534434787",
+        "hostname": "ap-r730-3",
+        "label": "ap-r730-3.rd.bbc.co.uk",
+        "href": "http://172.29.80.123:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.123:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.123:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.123:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "a0c9cd04-6d64-428c-b882-1f0fdee96451",
+        "type": "nodes"
+    },
+    {
+        "version": "1474014158:316091046",
+        "hostname": "ap-r720-1",
+        "label": "ap-r720-1.rd.bbc.co.uk",
+        "href": "http://172.29.80.102:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.102:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.102:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.102:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "6b5aca51-b41e-46ed-9921-6706ae1de78d",
+        "type": "nodes"
+    },
+    {
+        "version": "1471365402:337767629",
+        "hostname": "ap-ch-z800-6",
+        "label": "ap-ch-z800-6.rd.bbc.co.uk",
+        "href": "http://172.29.176.145:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.145:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.145:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.145:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "78a2045e-2561-41af-9239-15d4fb70e5d5",
+        "type": "nodes"
+    },
+    {
+        "version": "1471006762:300437276",
+        "hostname": "ap-ch-r310-5",
+        "label": "ap-ch-r310-5.rd.bbc.co.uk",
+        "href": "http://172.29.176.66:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.66:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.66:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.66:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "4cf38bb4-d6c4-48d6-a086-6eac45d73ae5",
+        "type": "nodes"
+    },
+    {
+        "version": "1474284016:226885808",
+        "hostname": "ap-ch-z820-0",
+        "label": "ap-ch-z820-0.rd.bbc.co.uk",
+        "href": "http://172.29.176.55:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.55:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.55:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.55:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.176.55:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "4e7bbc4e-6121-4151-bd9a-02e6a0afb536",
+        "type": "nodes"
+    },
+    {
+        "version": "1472140243:235713980",
+        "hostname": "ap-ch-z820-4",
+        "label": "ap-ch-z820-4.rd.bbc.co.uk",
+        "href": "http://172.29.176.79:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.79:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.79:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.79:12345/x-nmos/node/v1.0/self/mediaaccess/",
+                "type": "urn:x-ipstudio:service:mediaaccess"
+            },
+            {
+                "href": "http://172.29.176.79:12345/x-nmos/node/v1.0/self/storeupload/",
+                "type": "urn:x-ipstudio:service:storeupload"
+            },
+            {
+                "href": "http://172.29.176.79:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.176.79:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "8c960af1-d68c-4b6f-b24a-3ace0226485b",
+        "type": "nodes"
+    },
+    {
+        "version": "1474282226:203363840",
+        "hostname": "ap-r730-6",
+        "label": "ap-r730-6.rd.bbc.co.uk",
+        "href": "http://172.29.80.142:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.142:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.142:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.142:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "f35c1ec4-f4a1-43c0-8794-ee377b140820",
+        "type": "nodes"
+    },
+    {
+        "version": "1474042821:336835997",
+        "hostname": "ap-z840-2",
+        "label": "ap-z840-2.rd.bbc.co.uk",
+        "href": "http://172.29.80.187:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.187:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.187:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.187:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.187:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "a3999d7f-40b2-4602-8127-85b17357585e",
+        "type": "nodes"
+    },
+    {
+        "version": "1473090407:986647308",
+        "hostname": "ap-r730-12",
+        "label": "ap-r730-12.rd.bbc.co.uk",
+        "href": "http://172.29.80.191:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.191:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.191:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.191:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "1ee63ca2-65ec-11e6-b56c-246e960971bc",
+        "type": "nodes"
+    },
+    {
+        "version": "1470143770:608326699",
+        "hostname": "ap-r720-2",
+        "label": "ap-r720-2.rd.bbc.co.uk",
+        "href": "http://172.29.80.104:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.104:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.104:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.104:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "8b03d87a-5be1-494b-a8c0-2b4b437e72d5",
+        "type": "nodes"
+    },
+    {
+        "version": "1469706782:617827093",
+        "hostname": "ap-r720-0",
+        "label": "ap-r720-0.rd.bbc.co.uk",
+        "href": "http://172.29.80.79:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.79:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.79:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.79:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "849f7f54-5ecd-4e55-9d40-ffe15ccf4ca4",
+        "type": "nodes"
+    },
+    {
+        "version": "1473936348:840359116",
+        "hostname": "ip-172-29-94-138",
+        "label": "ip-172-29-94-138",
+        "href": "http://172.29.94.138:12345/",
+        "services": [
+            {
+                "href": "http://172.29.94.138:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.94.138:12345/x-nmos/node/v1.0/self/mediaaccess/",
+                "type": "urn:x-ipstudio:service:mediaaccess"
+            },
+            {
+                "href": "http://172.29.94.138:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.94.138:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "c8b27181-4cb0-46df-ab2d-658f22531a8a",
+        "type": "nodes"
+    },
+    {
+        "version": "1473936430:603022458",
+        "hostname": "ap-1018r-7",
+        "label": "ap-1018r-7.rd.bbc.co.uk",
+        "href": "http://172.29.80.202:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.202:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.202:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.202:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "b8cfdeac-78f4-11e6-add1-0cc47aa8bd0c",
+        "type": "nodes"
+    },
+    {
+        "version": "1473407681:189412970",
+        "hostname": "ap-z420-0",
+        "label": "ap-z420-0.rd.bbc.co.uk",
+        "href": "http://172.29.80.58:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.58:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.58:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.58:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "2faf2970-3b6c-4603-a0c2-87eb0700d06d",
+        "type": "nodes"
+    },
+    {
+        "version": "1474282226:926192896",
+        "hostname": "ap-r730-8",
+        "label": "ap-r730-8.rd.bbc.co.uk",
+        "href": "http://172.29.80.148:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.148:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.148:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.148:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "6440796f-0260-4ffe-88ef-b2e2821c6f8f",
+        "type": "nodes"
+    },
+    {
+        "version": "1471365314:212892665",
+        "hostname": "ap-ch-xw8600-0",
+        "label": "ap-ch-xw8600-0.rd.bbc.co.uk",
+        "href": "http://172.29.176.52:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.52:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.52:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.52:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "bb990ff4-dfa8-4ffe-83db-ec41a81459d8",
+        "type": "nodes"
+    },
+    {
+        "version": "1468838316:693325819",
+        "hostname": "ap-ch-r730-0",
+        "label": "ap-ch-r730-0.rd.bbc.co.uk",
+        "href": "http://172.29.176.201:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.201:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.201:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "8d62808c-43a0-4618-a307-4153fb0736a8",
+        "type": "nodes"
+    },
+    {
+        "version": "1470143774:542576199",
+        "hostname": "ap-r720-4",
+        "label": "ap-r720-4.rd.bbc.co.uk",
+        "href": "http://172.29.80.108:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.108:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.108:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.108:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "6f2346f7-a505-4975-9739-4bd473765e5d",
+        "type": "nodes"
+    },
+    {
+        "version": "1471000944:358761115",
+        "hostname": "ap-ch-z820-6",
+        "label": "ap-ch-z820-6.rd.bbc.co.uk",
+        "href": "http://172.29.176.81:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.81:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.81:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.81:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "f76efab5-f90b-46b8-9ca9-959bcdd649f4",
+        "type": "nodes"
+    },
+    {
+        "version": "1473687873:124710185",
+        "hostname": "ap-r310-2",
+        "label": "ap-r310-2.rd.bbc.co.uk",
+        "href": "http://172.29.80.34:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.34:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.34:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.34:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "3ffe6d93-a365-4142-bf7c-5870d1e902fa",
+        "type": "nodes"
+    },
+    {
+        "version": "1474278949:236784684",
+        "hostname": "ap-z840-4",
+        "label": "ap-z840-4.rd.bbc.co.uk",
+        "href": "http://172.29.80.189:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.189:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.189:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.189:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.189:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "53c6432c-c00d-4e2a-a335-a0be7e29c783",
+        "type": "nodes"
+    },
+    {
+        "version": "1470917660:685321330",
+        "hostname": "ap-ch-macmini-2",
+        "label": "ap-ch-macmini-2.rd.bbc.co.uk",
+        "href": "http://10.0.3.1:12345/",
+        "services": [
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "9a4992b9-50fb-4098-a82e-716a6a8d6222",
+        "type": "nodes"
+    },
+    {
+        "version": "1471006709:552354607",
+        "hostname": "ap-ch-z420-5",
+        "label": "ap-ch-z420-5.rd.bbc.co.uk",
+        "href": "http://172.29.176.91:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.91:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.91:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.91:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "3a25a674-e6eb-4987-84ad-ef479fe4d527",
+        "type": "nodes"
+    },
+    {
+        "version": "1473936432:222740554",
+        "hostname": "ap-1018r-9",
+        "label": "ap-1018r-9.rd.bbc.co.uk",
+        "href": "http://172.29.80.204:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.204:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.204:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.204:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "a4f14920-78f4-11e6-9779-0cc47aaa12f0",
+        "type": "nodes"
+    },
+    {
+        "version": "1474043048:740339951",
+        "hostname": "ap-ch-z420-1",
+        "label": "ap-ch-z420-1.rd.bbc.co.uk",
+        "href": "http://172.29.176.87:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.87:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.87:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.87:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "4a4ad959-f313-44e2-aeaa-4d8b4f6b5b93",
+        "type": "nodes"
+    },
+    {
+        "version": "1474277524:109645454",
+        "hostname": "ap-ch-z420-9",
+        "label": "ap-ch-z420-9.rd.bbc.co.uk",
+        "href": "http://172.29.176.98:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.98:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.98:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.98:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "65e74ac6-1202-4df6-a088-38a7436049d2",
+        "type": "nodes"
+    },
+    {
+        "version": "1473177055:530985283",
+        "hostname": "ap-r730-0",
+        "label": "ap-r730-0.rd.bbc.co.uk",
+        "href": "http://172.29.80.119:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.119:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.119:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.119:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "99656db2-1c4a-407a-ab88-c79dbe2b9c23",
+        "type": "nodes"
+    },
+    {
+        "version": "1474042823:402056783",
+        "hostname": "ap-z840-1",
+        "label": "ap-z840-1.rd.bbc.co.uk",
+        "href": "http://172.29.80.186:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.186:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.186:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.186:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.80.186:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "209425dd-9440-4a35-ad0c-e1f958f271a1",
+        "type": "nodes"
+    },
+    {
+        "version": "1472554677:500669368",
+        "hostname": "ap-ch-z220-1",
+        "label": "ap-ch-z220-1.rd.bbc.co.uk",
+        "href": "http://172.29.176.40:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.40:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.40:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.40:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "453a7af3-e9b9-4e39-b4be-d1552166cb67",
+        "type": "nodes"
+    },
+    {
+        "version": "1473084589:477373075",
+        "hostname": "ap-r730-5",
+        "label": "ap-r730-5.rd.bbc.co.uk",
+        "href": "http://172.29.80.141:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.141:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.141:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.141:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "fc53152b-b232-43c6-9f8e-1c2b7dcec252",
+        "type": "nodes"
+    },
+    {
+        "version": "1469789497:129145462",
+        "hostname": "ap-z820-1",
+        "label": "ap-z820-1.rd.bbc.co.uk",
+        "href": "http://172.29.80.80:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.80:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.80:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.80:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "a6b4e145-6110-4857-997f-c35165eb0a14",
+        "type": "nodes"
+    },
+    {
+        "version": "1471000878:321586704",
+        "hostname": "ap-ch-z420-0",
+        "label": "ap-ch-z420-0.rd.bbc.co.uk",
+        "href": "http://172.29.176.86:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.86:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.86:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.86:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "c5176bb0-2c0a-45cb-90b1-690e2dd9ddfc",
+        "type": "nodes"
+    },
+    {
+        "version": "1473329807:810137031",
+        "hostname": "ap-z220-3",
+        "label": "ap-z220-3.rd.bbc.co.uk",
+        "href": "http://172.29.80.73:12345/",
+        "services": [
+            {
+                "href": "http://172.29.80.73:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.80.73:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.80.73:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            }
+        ],
+        "caps": {},
+        "id": "6202d33b-f013-4f34-8714-d7bdfd8966c5",
+        "type": "nodes"
+    },
+    {
+        "version": "1471000950:13342722",
+        "hostname": "ap-ch-z820-5",
+        "label": "ap-ch-z820-5.rd.bbc.co.uk",
+        "href": "http://172.29.176.146:12345/",
+        "services": [
+            {
+                "href": "http://172.29.176.146:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://172.29.176.146:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://172.29.176.146:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://172.29.176.146:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "1d452562-e1d5-4e84-b057-5c24de5f6b48",
+        "type": "nodes"
+    },
+    {
+        "version": "1474278742:553668956",
+        "hostname": "rd015106",
+        "label": "rd015106.rd.bbc.co.uk",
+        "href": "http://10.0.3.1:12345/",
+        "services": [
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/pipelinemanager/",
+                "type": "urn:x-ipstudio:service:pipelinemanager"
+            },
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/status/",
+                "type": "urn:x-ipstudio:service:status"
+            },
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/mdnsbridge/",
+                "type": "urn:x-ipstudio:service:mdnsbridge"
+            },
+            {
+                "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/storemanager/",
+                "type": "urn:x-ipstudio:service:storemanager"
+            }
+        ],
+        "caps": {},
+        "id": "7118d962-10f8-459b-9df7-0a86227215ca",
+        "type": "nodes"
+    }
+]
