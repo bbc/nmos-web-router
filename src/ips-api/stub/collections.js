@@ -22,8 +22,8 @@ function createCollection (db, type) {
   let data = require(`./data/${type}.json`)
   collection.insert(data)
 
-  collection.find = (options) => {
-    let data = collection.findOne(options)
+  collection.find = (query) => {
+    let data = collection.findOne(query)
     if (data !== null) return stripLoki(data)
     return data
   }
