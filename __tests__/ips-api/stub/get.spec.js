@@ -25,6 +25,11 @@ describe('Get', () => {
     }]
     let collections = {
       collection: {
+        find: (query) => {
+          return allData.filter(data => {
+            return data.id === query.id
+          })[0] || null
+        },
         all: () => {
           return allData
         }
@@ -44,6 +49,31 @@ describe('Get', () => {
       done()
     }).catch(error => {
       fail(error)
+      done()
+    })
+  })
+
+  it('Returns the matching item by it\'s id', (done) => {
+    get('2').then(data => {
+      expect(data.id).toBe('2')
+      done()
+    }).catch(error => {
+      fail(error)
+      done()
+    })
+  })
+
+  it('Errors 404 if can not find matching id', (done) => {
+    get('invalid').then(data => {
+      fail('should not get here')
+      done()
+    }).catch(error => {
+      try {
+        expect(error).toBe('404')
+      } catch (e) {
+        fail(e)
+        done()
+      }
       done()
     })
   })
