@@ -2,7 +2,7 @@ export default function (collections, delay) {
   return (id, sender) => {
     sender = sender || {}
     return new Promise((resolve, reject) => {
-      function updateRoute () {
+      function updateRoute (receiver) {
         let senderId = sender.id || null
         let subscription = { sender_id: senderId }
         collections.receivers.modify(receiver, { subscription })
@@ -21,8 +21,8 @@ export default function (collections, delay) {
           if (foundSender === null) setTimeout(function () {
             reject('404 no sender')
           }, delay)
-          else updateRoute()
-        } else updateRoute()
+          else updateRoute(receiver)
+        } else updateRoute(receiver)
       }
     })
   }

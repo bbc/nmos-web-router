@@ -1,7 +1,7 @@
-import discovery from '../../ips-api/discovery'
+import discovery from '../../ips-api/discovery2'
 
 const usestub = window.location.search.includes('stub')
-const baseUrl = 'http://172.29.176.55:12345'
+// const baseUrl = 'http://172.29.176.55:12345'
 
 export default (actions) => {
   return (senders) => {
@@ -10,7 +10,9 @@ export default (actions) => {
     let sender = senders.filter(sender => {
       return sender.id === senderId
     })[0]
-    discovery(usestub, baseUrl)
+    discovery({
+      stub: usestub
+    })
       .route(receiverId, sender)
       .then(data => {
         console.log(data)
