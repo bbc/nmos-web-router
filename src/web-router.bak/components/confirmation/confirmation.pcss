@@ -1,0 +1,60 @@
+:root {
+  --remove: #ff1d23;
+  --confirm: #167f39;
+  --reset: #33c3f0;
+}
+
+.confirmation {
+  & .remove {
+    margin-left: 1em;
+    margin-bottom: 16px;
+    fill: color(#fff tint(30%));
+    background-color: color(var(--remove) tint(30%));
+    border-color: color(var(--remove) tint(30%));
+
+    &:hover {
+      fill: #fff;
+      background-color: var(--remove);
+      border-color: var(--remove);
+    }
+  }
+
+  & .confirm {
+    background-color: color(var(--confirm) tint(30%));
+    border-color: color(var(--confirm) tint(30%));
+
+    &:hover {
+      background-color: var(--confirm);
+      border-color: var(--confirm);
+    }
+  }
+
+  & .reset {
+    fill: color(#fff tint(30%));
+    background-color: color(var(--reset) tint(30%));
+    border-color: color(var(--reset) tint(30%));
+
+    &:hover {
+      fill: #fff;
+      background-color: var(--reset);
+      border-color: var(--reset);
+    }
+  }
+
+  & .row {
+    & .column {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    & .route {
+      position: relative;
+      z-index: -1;
+      border: 1px solid color(#a19ea0 tint(35%));
+      width: 120%;
+      margin-left: -10%;
+      margin-top: -8px;
+    }
+  }
+}

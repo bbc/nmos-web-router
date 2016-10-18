@@ -1,0 +1,39 @@
+:root {
+  --line: #a19ea0;
+  --routed: #ffe44d;
+  --remove: #ff1d23;
+}
+
+.connections {
+  & .routes {
+    padding: 0;
+
+    & .route {
+      position: absolute;
+      z-index: -1;
+      width: 34.25%;
+      stroke: color(var(--line) tint(50%));
+      transition: left 0.3s, width 0.3s;
+
+      & .line {
+        stroke-linecap: round;
+        stroke-width: 4;
+        transition: stroke 0.5s, stroke-dasharray 0.5s;
+      }
+
+      &.user .line {
+        stroke-dasharray: 10;
+      }
+
+      &.expanded {
+        & .line {
+          stroke: color(var(--routed) b(5%));
+        }
+      }
+
+      &.remove .line {
+        stroke: color(var(--remove) tint(15%));
+      }
+    }
+  }
+}

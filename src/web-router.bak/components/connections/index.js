@@ -7,14 +7,14 @@ import { LayoutItem } from '../../../gel-react/grid'
 import Header from './header-component'
 import PointMouse from './point-mouse-component'
 
-let Connections = ({data, view, sides, actions}) => {
+let Connections = ({data, view, sides, actions, layout}) => {
   let dragging = view.isDragging ? 'dragging' : ''
   return <LayoutItem
     onClick={function () {
       actions.toggleConnections('connections', 'senders', 'off')
       actions.toggleConnections('connections', 'receivers', 'off')
     }}
-    className={`connections ${dragging}`} gels={['1/1']} >
+    className={`connections ${dragging}`} gels={[`${layout}@l`, '1/1']} >
     <Header left={view.leftTitle} right={view.rightTitle} />
     <RoutablesColumn
       routables={data[sides.left.plural]}
@@ -42,6 +42,7 @@ Connections.propTypes = {
   data: PropTypes.object.isRequired,
   sides: PropTypes.object.isRequired,
   view: PropTypes.object.isRequired,
+  layout: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired
 }
 

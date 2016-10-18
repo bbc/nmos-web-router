@@ -1,0 +1,47 @@
+.web-router {
+  & .title {
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  &-container {
+    position: absolute;
+    width: 97%;
+    height: 100%;
+    overflow-x: hidden;
+    padding: 0;
+  }
+
+  & .connections,
+  & .confirmation {
+    position: absolute;
+    display: inline-block;
+    width: 98%;
+    margin-bottom: 2em;
+    transition: transform 1s, width 1s;
+  }
+
+  &-confirmation  .connections {
+    transform: translateX(-110%);
+  }
+
+  &-connections  .confirmation {
+    transform: translateX(110%);
+  }
+
+  &-connections-confirmation {
+    & .connections {
+      transform: translateX(0%);
+    }
+
+    & .confirmation {
+      transform: translateX(99%);
+    }
+  }
+}
+
+@media (max-width: 56.25em) {
+  .web-router .split {
+    display: none;
+  }
+}
