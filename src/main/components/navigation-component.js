@@ -16,12 +16,14 @@ let Navigation = () => {
       </LayoutItem>
     </Layout>
     <Layout gels='1/2' layouts='right'>
-      <LayoutItem>
+      <LayoutItem gels='4/12'>
         <Button
+          fill
           name='nav'
           to='/web-router'
           label='WEB ROUTER' />
       </LayoutItem>
+      <LayoutItem gels='1/12' />
     </Layout>
   </Layout>
 }
