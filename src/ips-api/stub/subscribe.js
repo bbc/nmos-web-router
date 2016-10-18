@@ -1,6 +1,6 @@
 import onInsert from './on-insert'
-import onDelete from './on-delete'
-import onUpdate from './on-update'
+import onRemove from './on-remove'
+import onModify from './on-modify'
 
 let types = [
   'flows',
@@ -17,8 +17,8 @@ export default (collections, delay) => {
     subscriptions[type] = (callback) => {
       let collection = collections[type]
       onInsert(collection, callback)
-      onDelete(collection, callback)
-      onUpdate(collection, callback)
+      onRemove(collection, callback)
+      onModify(collection, callback)
     }
   })
 
