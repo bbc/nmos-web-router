@@ -1,9 +1,9 @@
 function changeContracted (view, action) {
   let allContracted = true
-  view[action.viewName][action.viewType] = view[action.viewName][action.viewType].map(routable => {
+  view.connections[action.viewType] = view.connections[action.viewType].map(routable => {
     routable.routable = true
     if (routable.id === action.id) {
-      view[action.viewName].toggled = routable
+      view.connections.toggled = routable
       routable.contracted = !routable.contracted
       allContracted = routable.contracted
     } else routable.contracted = true
@@ -15,8 +15,8 @@ function changeContracted (view, action) {
 function changeRoutable (state, view, action) {
   let side = state.sides[action.viewType]
   let opposite = state.sides[side].opposite.plural
-  view[action.viewName][opposite] = view[action.viewName][opposite].map(routable => {
-    if (view[action.viewName].toggled && !view[action.viewName].toggled.contracted) routable.routable = view[action.viewName].toggled.format !== 'no' && routable.format === view[action.viewName].toggled.format
+  view.connections[opposite] = view.connections[opposite].map(routable => {
+    if (view.connections.toggled && !view.connections.toggled.contracted) routable.routable = view.connections.toggled.format !== 'no' && routable.format === view.connections.toggled.format
     else routable.routable = true
     return routable
   })
@@ -30,19 +30,19 @@ function isRouted (routes, left, right) {
 
 function connect (state, view, action) {
   let rightSide = state.sides.right.plural
-  if (action.viewType === rightSide) view[action.viewName][rightSide]
+  if (action.viewType === rightSide) view.connections[rightSide]
     .forEach(routable => {
-      if (view[action.viewName].toggled && routable.id === view[action.viewName].toggled.id) routable.connected = true
+      if (view.connections.toggled && routable.id === view.connections.toggled.id) routable.connected = true
     })
-  else view[action.viewName][rightSide]
+  else view.connections[rightSide]
     .forEach(routable => {
-      routable.connected = view[action.viewName].toggled && isRouted(view[action.viewName].routes, view[action.viewName].toggled, routable)
+      routable.connected = view.connections.toggled && isRouted(view.connections.routes, view.connections.toggled, routable)
     })
 }
 
 function disonnect (state, view, action) {
-  view[action.viewName].senders
-    .concat(view[action.viewName].receivers)
+  view.connections.senders
+    .concat(view.connections.receivers)
     .forEach(routable => {
       routable.connected = false
     })
@@ -58,12 +58,12 @@ function route (state, view, action) {
   let side = state.sides[action.viewType]
   let sideName = state.sides[side].plural
 
-  let routable = view[action.viewName][sideName].filter(routable => {
+  let routable = view.connections[sideName].filter(routable => {
     return routable.id === action.id
   })[0]
 
-  let toggled = view[action.viewName][state.sides[side].opposite.plural].filter(routable => {
-    return routable.id === view[action.viewName].toggled.id
+  let toggled = view.connections[state.sides[side].opposite.plural].filter(routable => {
+    return routable.id === view.connections.toggled.id
   })[0]
 
   toggled.routed = true
@@ -76,14 +76,14 @@ function route (state, view, action) {
   }
 
   route[side] = routable
-  route[state.sides[side].opposite.name] = view[action.viewName].toggled
+  route[state.sides[side].opposite.name] = view.connections.toggled
 
-  view[action.viewName].routes.push(route)
+  view.connections.routes.push(route)
 
   // TODO: put this back on once subscription API is working
-  // let receiver = view[action.viewName].toggled
+  // let receiver = view.connections.toggled
   // if (sideName === 'receivers') receiver = routable
-  // let sender = view[action.viewName].toggled
+  // let sender = view.connections.toggled
   // if (sideName === 'senders') sender = routable
   // sender = state.data.senders.filter(dataSender => {
   //   return dataSender.id === sender.id
@@ -94,26 +94,26 @@ function route (state, view, action) {
 export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
 
-  let nothingExpanded = view[action.viewName].toggleSide === ''
-  let sameSide = view[action.viewName].toggleSide === action.viewType
+  let nothingExpanded = view.connections.toggleSide === ''
+  let sameSide = view.connections.toggleSide === action.viewType
 
   if (sameSide) disonnect(state, view, action)
 
   if (nothingExpanded) {
     toggle(state, view, action)
-    view[action.viewName].toggleSide = action.viewType
+    view.connections.toggleSide = action.viewType
     connect(state, view, action)
   } else if (sameSide) {
     let allContracted = toggle(state, view, action)
-    if (allContracted) view[action.viewName].toggleSide = ''
+    if (allContracted) view.connections.toggleSide = ''
     else connect(state, view, action)
   } else if (!sameSide && action.id !== 'off') {
     route(state, view, action)
   }
 
-  if (action.id === 'off') view[action.viewName].toggleSide = ''
+  if (action.id === 'off') view.connections.toggleSide = ''
 
-  if (view[action.viewName].toggleSide === '') disonnect(state, view, action)
+  if (view.connections.toggleSide === '') disonnect(state, view, action)
 
   view.scroll = false
   return merge({ view })

@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (viewName, viewType, id) => {
+  return (viewType, id) => {
     actions.toggleConnections({
       route: function (receiverId, sender) {
         window.nmos
@@ -20,7 +20,6 @@ export default (actions) => {
             console.log(err)
           })
       },
-      viewName,
       viewType,
       id
     })

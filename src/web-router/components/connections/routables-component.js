@@ -22,14 +22,10 @@ let Routables = ({side, routables, view, actions}) => {
         actions={{
           remove: actions.remove,
           toggle () {
-            if (routableView.routable) {
-              actions.toggleConnections('connections', side, routable.id)
-            }
+            if (routableView.routable) actions.toggleConnections(side, routable.id)
           },
           mounted: actions.updateConnections,
-          drag (evt, data, status) {
-            actions.drag(evt, data, status, side)
-          }
+          drag (evt, data, status) { }
         }}
       />
     })
