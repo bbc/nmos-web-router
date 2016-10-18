@@ -1,19 +1,19 @@
-import axios from 'axios'
-import constants from './constants'
+var axios = require('axios')
+var constants = require('./constants')
 
-export default (baseUrl) => {
-  return (id, sender) => {
-    axios.put(
-    `${baseUrl}/${constants.NODE_URL}/receivers/${id}/target`,
-    sender,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
+module.exports = function (baseUrl) {
+  return function (id, sender) {
+    var url = `${baseUrl}/${constants.NODE_URL}/receivers/${id}/target`
+    var options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+    axios
+      .put(url, sender, options)
+      .then(response => {
+        return response.data
       })
-    .then(response => {
-      return response.data
-    })
   }
 }

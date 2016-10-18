@@ -1,23 +1,23 @@
-import defaultSort from '../default-sort'
-import axios from 'axios'
-import constants from './constants'
+var defaultSort = require('../default-sort')
+var axios = require('axios')
+var constants = require('./constants')
 
-export default (baseUrl, name) => {
-  return (id) => {
-    let url = `${baseUrl}/${constants.QUERY_URL}/${name}/`
+module.exports = function (baseUrl, name) {
+  return function (id) {
+    var url = `${baseUrl}/${constants.QUERY_URL}/${name}/`
     if (id) url += `${id}/`
     return axios.get(url)
-    .then(response => {
-      let data = response.data
-      if (Array.isArray(response.data)) {
-        data = response.data.map(d => {
-          d.type = name
-          return d
-        })
-        data.sort(defaultSort)
+      .then(function (response) {
+        var data = response.data
+        if (Array.isArray(response.data)) {
+          data = response.data.map(function (d) {
+            d.type = name
+            return d
+          })
+          data.sort(defaultSort)
 
-      } else data.type = name
-      return data
-    })
+        } else data.type = name
+        return data
+      })
   }
 }

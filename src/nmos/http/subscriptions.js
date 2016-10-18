@@ -1,7 +1,7 @@
-import axios from 'axios'
+var axios = require('axios')
 
-export default (baseUrl) => {
-  return () => {
+module.exports = function (baseUrl) {
+  return function () {
     axios.get(`${baseUrl}/subscriptions`)
       .then(response => {
         return response.data

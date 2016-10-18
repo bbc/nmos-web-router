@@ -1,8 +1,8 @@
-import get from './get'
-import subscriptions from './subscriptions'
-import route from './route'
+var get = require('./get')
+var subscriptions = require('./subscriptions')
+var route = require('./route')
 
-export default function (options) {
+module.exports = function (options) {
   return {
     subscriptions: subscriptions(options.get),
     flows: get(options.get, 'flows'),
@@ -14,12 +14,12 @@ export default function (options) {
     route: route(options.put),
     unroute (id) { return route(options.put)(id, {}) },
     subscribe: {
-      flows (callback) { },
-      sources (callback) { },
-      nodes (callback) { },
-      devices (callback) { },
-      senders (callback) { },
-      receivers (callback) { }
+      flows: function (callback) { },
+      sources: function (callback) { },
+      nodes: function (callback) { },
+      devices: function (callback) { },
+      senders: function (callback) { },
+      receivers: function (callback) { }
     }
   }
 }
