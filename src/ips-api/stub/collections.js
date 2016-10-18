@@ -25,6 +25,12 @@ function createCollection (db, type) {
     return collection.data.map(stripLoki)
   }
 
+  collection.modify = (item, changes) => {
+    collection.emit('pre', item)
+    item = Object.assign({}, item, changes)
+    collection.update(item)
+  }
+
   return collection
 }
 

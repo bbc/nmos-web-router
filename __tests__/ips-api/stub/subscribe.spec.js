@@ -18,9 +18,7 @@ describe('Subscribe', () => {
 
   it('Populates post and pre on updated item (must also emit a pre before updating)', () => {
     let item = collections.receivers.findOne({id: 'id'})
-    collections.receivers.emit('pre', item)
-    item.value = 10
-    collections.receivers.update(item)
+    collections.receivers.modify(item, {value: 10})
 
     expect(pre).toEqual({id: 'id', value: 0})
     expect(post).toEqual({id: 'id', value: 10})
