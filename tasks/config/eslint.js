@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parser: 'babel-eslint',
-  plugins: [/* 'import', */'flowtype', 'jsx-a11y', 'react'],
+  plugins: ['flowtype', 'jsx-a11y', 'react'],
   env: {
     browser: true,
     commonjs: true,

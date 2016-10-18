@@ -3,7 +3,7 @@ var autoprefixer = require('autoprefixer')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
-var WatchMissingNodeModulesPlugin = require('../scripts/utils/WatchMissingNodeModulesPlugin')
+var WatchMissingNodeModulesPlugin = require('../utils/WatchMissingNodeModulesPlugin')
 var paths = require('./paths')
 
 module.exports = {
