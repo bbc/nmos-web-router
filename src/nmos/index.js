@@ -1,5 +1,6 @@
 import Stub from './stub'
 import Http from './http'
+import defaultSort from './default-sort'
 
 export default function (options) {
   let stub = options.stub
@@ -11,7 +12,7 @@ export default function (options) {
   let NMOS = Http(options)
   if (stub) NMOS = Stub(delay)
 
-  NMOS.defaultSort = function () {}
+  NMOS.defaultSort = defaultSort
 
   return NMOS
 }

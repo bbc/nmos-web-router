@@ -4,25 +4,25 @@ import Expanded from './expanded-component'
 import Contracted from './contracted-component'
 import { No } from '../../../gel-react/iconography'
 
-let RoutableButton = ({baseId, data, view, actions, draggable}) => {
+let RoutableButton = ({baseId, routable, actions, draggable}) => {
   draggable = draggable || null
   let Component = Contracted
-  if (view.preview) Component = Expanded
-  else if (!view.contracted) Component = Expanded
+  if (routable.preview) Component = Expanded
+  else if (!routable.contracted) Component = Expanded
 
-  let expaneded = view.contracted ? 'contracted' : 'expanded'
-  let preview = view.preview ? 'preview' : ''
-  let routed = view.routed ? 'routed' : ''
-  let routable = view.routable ? 'routable' : 'not-routable'
-  let connected = view.connected ? 'connected' : 'not-connected'
-  let side = view.side || ''
+  let expaneded = routable.contracted ? 'contracted' : 'expanded'
+  let preview = routable.preview ? 'preview' : ''
+  let routed = routable.routed ? 'routed' : ''
+  let routableClassName = routable.routable ? 'routable' : 'not-routable'
+  let connected = routable.connected ? 'connected' : 'not-connected'
+  let side = routable.side || ''
 
   return <div
-    id={`${baseId}-${data.id}`}
-    className={`routable ${preview} ${routed} ${routable} ${side} routable-${expaneded} routable-${connected}`}
+    id={`${baseId}-${routable.id}`}
+    className={`routable ${preview} ${routed} ${routableClassName} ${side} routable-${expaneded} routable-${connected}`}
     onClick={function (evt) {
       evt.stopPropagation()
-      actions.toggle(baseId, data.id)
+      actions.toggle(baseId, routable.id)
     }}>
     <div className='point-container'>
       <div
@@ -34,15 +34,14 @@ let RoutableButton = ({baseId, data, view, actions, draggable}) => {
         <No />
       </div>
     </div>
-    <Component actions={actions} data={data} />
+    <Component actions={actions} routable={routable} />
     <div>{draggable}</div>
   </div>
 }
 
 RoutableButton.propTypes = {
   baseId: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired,
-  view: PropTypes.object.isRequired,
+  routable: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   draggable: PropTypes.object
 }

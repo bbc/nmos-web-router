@@ -12,13 +12,13 @@ class Contracted extends React.Component {
     return <Button
       name='routable'
       className='contracted'
-      icon={<Icon format={this.props.data.format} />}
-      label={this.props.data.label} />
+      icon={<Icon format={this.props.routable.format} />}
+      label={this.props.routable.label} />
   }
 }
 
 Contracted.propTypes = {
-  data: PropTypes.object.isRequired,
+  routable: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
 

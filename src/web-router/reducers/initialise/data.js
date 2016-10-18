@@ -7,7 +7,7 @@ function updateSendersWithFormat (data) {
     else sender.format = 'no'
     return sender
   })
-  senders.sort(window.nmos.sort)
+  senders.sort(window.nmos.defaultSort)
   return senders
 }
 

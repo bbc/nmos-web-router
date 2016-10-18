@@ -6,17 +6,16 @@ import Draggable from './draggable-component'
 import Button from './button-component'
 import Placeholder from './placeholder-componet'
 
-let Routable = ({draggable, baseId, data, view, actions}) => {
+let Routable = ({draggable, baseId, routable, actions}) => {
   let placeholder = null
-  if (!view.contracted) placeholder = <Placeholder />
+  if (!routable.contracted) placeholder = <Placeholder />
   let Component = Button
   if (draggable) Component = Draggable
   return <div>
     {placeholder}
     <Component
       baseId={baseId}
-      data={data}
-      view={view}
+      routable={routable}
       actions={actions}
     />
   </div>
@@ -24,8 +23,7 @@ let Routable = ({draggable, baseId, data, view, actions}) => {
 
 Routable.propTypes = {
   draggable: PropTypes.bool,
-  data: PropTypes.object.isRequired,
-  view: PropTypes.object.isRequired,
+  routable: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   baseId: PropTypes.string.isRequired
 }

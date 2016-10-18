@@ -1,5 +1,64 @@
 :root {
-  --line: #a19ea0;
+  --unrouted: #a19ea0;
   --routed: #ffe44d;
   --remove: #ff1d23;
+  --contracted: #dfe3e2;
+  --expanded: #ff6db5;
+  --node-width: 25px;
+  --color: #000;
+}
+
+.routables {
+  margin-top: 8px;
+}
+
+.routable {
+  margin-bottom: 8px;
+  border-radius: 0;
+  border: none;
+  fill: var(--color);
+  color: var(--color);
+  transition: color 0.3s, fill 0.3s, background-color 0.3s;
+
+  & .label {
+    font-weight: normal;
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  & .node {
+    position: absolute;
+    z-index: -1;
+    width: var(--node-width);
+    height: var(--node-width);
+    border-radius: 90px;
+    background-color: var(--unrouted);
+  }
+
+  &.contracted {
+    background-color: var(--contracted);
+  }
+
+  &.disabled {
+    background-color: color(var(--contracted) tint(75%));
+    fill: color(var(--color) tint(75%));
+    color: color(var(--color) tint(75%));
+
+    & .node {
+      display: none;
+    }
+  }
+
+  &:hover,
+  &:active {
+    &.contracted {
+      background-color: var(--expanded);
+    }
+  }
+
+  &.left .node {
+    transform: translate(3px, 25%);
+  }
 }

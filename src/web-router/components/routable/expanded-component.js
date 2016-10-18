@@ -10,22 +10,22 @@ class Expanded extends React.Component {
   }
   render () {
     let description = null
-    if (this.props.data.description) description = <div className='description'>
-      <span>{this.props.data.description}</span>
+    if (this.props.routable.description) description = <div className='description'>
+      <span>{this.props.routable.description}</span>
     </div>
 
     return <Button
       name='routable'
       className='expanded'
-      icon={<Icon format={this.props.data.format} />}
-      label={this.props.data.label}
+      icon={<Icon format={this.props.routable.format} />}
+      label={this.props.routable.label}
       afterLabel={description}
       />
   }
 }
 
 Expanded.propTypes = {
-  data: PropTypes.object.isRequired,
+  routable: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
 
