@@ -1,3 +1,5 @@
+import defaultSort from './default-sort.js'
+
 import axios from 'axios'
 
 const NMOS = 'x-nmos'
@@ -18,14 +20,7 @@ function get (baseUrl, id, name) {
           d.type = name
           return d
         })
-        data.sort((left, right) => {
-          if (left.format === right.format || left.format === undefined || right.format === undefined) return left.label.toUpperCase() < right.label.toUpperCase() ? -1 : 1
-          else if (left.format.includes('video')) return -1
-          else if (right.format.includes('video')) return 1
-          else if (left.format.includes('audio')) return -1
-          else if (right.format.includes('audio')) return 1
-          return 0
-        })
+        data.sort(defaultSort)
 
       } else data.type = name
       return data
