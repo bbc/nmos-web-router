@@ -5,7 +5,6 @@ import reset from './reset-dispatcher'
 import toggleConnections from './toggle-connections-dispatcher'
 import updateConnections from './update-connections-dispatcher'
 import remove from './remove-dispatcher'
-import drag from './drag-dispatcher'
 import confirm from './confirm-dispatcher'
 
 export default {
@@ -16,6 +15,5 @@ export default {
   toggleConnections,
   updateConnections,
   remove,
-  drag,
   confirm
 }
