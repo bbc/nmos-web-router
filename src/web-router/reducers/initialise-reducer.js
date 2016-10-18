@@ -91,17 +91,7 @@ export default (state, action, merge) => {
   let connections = Object.assign({}, state.view.connections)
   connections.senders = getConnectionsRoutables(data, 'senders', 'sender')
   connections.receivers = getConnectionsRoutables(data, 'receivers', 'receiver')
-  connections.routes = data.routes.map(route => {
-    return {
-      status: 'system',
-      left: {
-        id: route[state.sides.left.singular].id
-      },
-      right: {
-        id: route[state.sides.right.singular].id
-      }
-    }
-  })
+  connections.routes = []
 
   let view = Object.assign({}, state.view, {
     loading: {
