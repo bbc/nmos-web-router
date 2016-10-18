@@ -75,27 +75,6 @@ function getConnectionsRoutables (data, type, singularType) {
   })
 }
 
-function getConfirmatonRoutes (routes) {
-  return routes.map(route => {
-    return {
-      sender: {
-        id: route.sender.id,
-        label: route.sender.label,
-        descripton: route.sender.descripton,
-        format: route.sender.format,
-        contracted: true
-      },
-      receiver: {
-        id: route.receiver.id,
-        label: route.receiver.label,
-        descripton: route.receiver.descripton,
-        format: route.receiver.format,
-        contracted: true
-      }
-    }
-  })
-}
-
 export default (state, action, merge) => {
   let initialised = action.receivers || action.senders || action.flows
 
@@ -124,9 +103,6 @@ export default (state, action, merge) => {
     }
   })
 
-  let confirmation = Object.assign({}, state.view.confirmation)
-  confirmation.routes = getConfirmatonRoutes(data.routes)
-
   let view = Object.assign({}, state.view, {
     loading: {
       notLoaded: getNotLoading(data),
@@ -134,7 +110,6 @@ export default (state, action, merge) => {
       errored: state.view.loading.errored
     },
     connections,
-    confirmation,
     scroll: false
   })
 

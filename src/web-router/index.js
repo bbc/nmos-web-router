@@ -43,9 +43,6 @@ export default {
         loaded: [],
         errored: []
       },
-      page: 'connections-confirmation',
-      layout: '1/2',
-      launchPage: 'connections-confirmation',
       connections: {
         toggleSide: '',
         isDragging: false,
@@ -54,12 +51,7 @@ export default {
           y: 0
         },
         leftTitle: 'Senders',
-        rightTitle: 'Receivers',
-        routes: []
-      },
-      confirmation: {
-        leftTitle: 'Sender',
-        rightTitle: 'Receiver'
+        rightTitle: 'Receivers'
       }
     },
     initialised: false
