@@ -1,5 +1,3 @@
-import discovery from '../../ips-api/discovery'
-
 const MAX_RETRIES = 3
 const RETRY_TIMEOUT = 1000
 
@@ -11,20 +9,7 @@ export default (actions) => {
   }
 
   function initialise (name) {
-    let usestub = window.location.search.includes('stub')
-
-    let baseUrl = 'http://ipstudio-discovery.rd.bbc.co.uk:8870'
-    if (window.location.search.includes('base-url=')) baseUrl = window.location.search
-        .replace('?', '')
-        .split('&')
-        .filter(query => {
-          return query.includes('base-url=')
-        })
-        .map(query => {
-          return query.replace('base-url=', '')
-        })[0]
-
-    discovery(usestub, baseUrl)[name]()
+    window.nmos[name]()
       .then(response => {
         let data = {}
         data[name] = response

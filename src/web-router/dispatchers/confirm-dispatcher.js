@@ -1,8 +1,3 @@
-import discovery from '../../ips-api/discovery2'
-
-const usestub = window.location.search.includes('stub')
-// const baseUrl = 'http://172.29.176.55:12345'
-
 export default (actions) => {
   return (senders) => {
     let receiverId = '7fd2cb0a-7c7f-4b70-989f-3d9c0378e7ed'
@@ -10,9 +5,7 @@ export default (actions) => {
     let sender = senders.filter(sender => {
       return sender.id === senderId
     })[0]
-    discovery({
-      stub: usestub
-    })
+    window.nmos
       .route(receiverId, sender)
       .then(data => {
         console.log(data)
