@@ -18,7 +18,7 @@
   border: none;
   fill: var(--color);
   color: var(--color);
-  transition: color 0.3s, fill 0.3s, background-color 0.3s;
+  transition: color 0.25s, fill 0.25s, background-color 0.25s;
 
   & .label {
     font-weight: normal;
@@ -48,6 +48,16 @@
 
     & .node {
       display: none;
+    }
+  }
+
+  &.other {
+    background-color: color(var(--contracted) tint(50%));
+    fill: color(var(--color) tint(50%));
+    color: color(var(--color) tint(50%));
+
+    & .node {
+      background-color: color(var(--unrouted) tint(50%));
     }
   }
 
