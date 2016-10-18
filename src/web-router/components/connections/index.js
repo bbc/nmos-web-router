@@ -11,8 +11,8 @@ let Connections = ({data, view, sides, actions}) => {
   let dragging = view.isDragging ? 'dragging' : ''
   return <LayoutItem
     onClick={function () {
-      actions.toggleConnections('connections', 'senders', 'off')
-      actions.toggleConnections('connections', 'receivers', 'off')
+      actions.toggleConnections('senders', 'off')
+      actions.toggleConnections('receivers', 'off')
     }}
     className={`connections ${dragging}`} gels={['1/1']} >
     <Header left={view.leftTitle} right={view.rightTitle} />
