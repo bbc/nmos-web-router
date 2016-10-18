@@ -1,4 +1,4 @@
-import defaultSort from './default-sort.js'
+import defaultSort from '../default-sort.js'
 
 import axios from 'axios'
 

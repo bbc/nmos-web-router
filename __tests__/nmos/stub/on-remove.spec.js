@@ -1,5 +1,5 @@
-import onRemove from '../../../src/ips-api/stub/on-remove'
-import collections from '../../../src/ips-api/stub/collections'
+import onRemove from '../../../src/nmos/stub/on-remove'
+import collections from '../../../src/nmos/stub/collections'
 
 describe('Inserting', () => {
   it('Populates post only on new item', () => {

@@ -1,4 +1,4 @@
-import Route from '../../../src/ips-api/stub/route'
+import Route from '../../../src/nmos/stub/route'
 
 describe('Route', () => {
   let route, receivers

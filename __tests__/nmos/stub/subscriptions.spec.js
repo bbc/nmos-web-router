@@ -1,4 +1,4 @@
-import Subscriptions from '../../../src/ips-api/stub/subscriptions'
+import Subscriptions from '../../../src/nmos/stub/subscriptions'
 
 describe('Subscriptions', () => {
   let subscriptions, allData

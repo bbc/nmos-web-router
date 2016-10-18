@@ -1,4 +1,4 @@
-import Get from '../../../src/ips-api/stub/get'
+import Get from '../../../src/nmos/stub/get'
 
 describe('Get', () => {
   let get

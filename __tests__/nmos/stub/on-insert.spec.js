@@ -1,5 +1,5 @@
-import onInsert from '../../../src/ips-api/stub/on-insert'
-import collections from '../../../src/ips-api/stub/collections'
+import onInsert from '../../../src/nmos/stub/on-insert'
+import collections from '../../../src/nmos/stub/collections'
 
 describe('Inserting', () => {
   it('Populates post only on new item', () => {

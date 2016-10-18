@@ -2,7 +2,7 @@ import 'normalize.css'
 import './index.css'
 import drc from './drc'
 
-import NMOS from './ips-api/nmos'
+import NMOS from './nmos'
 
 const usestub = window.location.search.includes('stub')
 let getUrl = 'http://ipstudio-discovery.rd.bbc.co.uk:8870'

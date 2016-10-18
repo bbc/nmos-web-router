@@ -1,5 +1,5 @@
 import Loki from 'lokijs'
-import Collection from '../../../src/ips-api/stub/collection'
+import Collection from '../../../src/nmos/stub/collection'
 
 describe('Collection', () => {
   let db = new Loki('test.json')

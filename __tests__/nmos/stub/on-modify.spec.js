@@ -1,5 +1,5 @@
-import onModify from '../../../src/ips-api/stub/on-modify'
-import collections from '../../../src/ips-api/stub/collections'
+import onModify from '../../../src/nmos/stub/on-modify'
+import collections from '../../../src/nmos/stub/collections'
 
 describe('Modifiying', () => {
   it('Populates post only on new item', () => {
