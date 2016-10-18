@@ -1,8 +1,10 @@
 import Route from '../../../src/ips-api/stub/route'
 
 describe('Route', () => {
-  let route, receivers
+  let route, receivers, emitted
+
   beforeEach(() => {
+    let emit = function (event, data) { emitted = data }
     receivers = [{
       id: 'receiver_0',
       label: 'a',
@@ -30,6 +32,7 @@ describe('Route', () => {
 
     let collections = {
       receivers: {
+        emit,
         findOne: stubFindOne(receivers),
         update (newReceiver) {
           receivers.map(receiver => {
@@ -50,6 +53,19 @@ describe('Route', () => {
       label: 'a'
     }).then(data => {
       expect(data.id).toBe('sender_1')
+      done()
+    }).catch(error => {
+      fail(error)
+      done()
+    })
+  })
+
+  it('Emits a pre with pre update when updating', (done) => {
+    route('receiver_0', {
+      id: 'sender_1',
+      label: 'a'
+    }).then(data => {
+      expect(emitted.subscription.sender_id).toBe('sender_0')
       done()
     }).catch(error => {
       fail(error)

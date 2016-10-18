@@ -1,4 +1,5 @@
 import Loki from 'lokijs'
+import stripLoki from './strip-loki'
 
 let types = [
   'subscriptions',
@@ -8,14 +9,6 @@ let types = [
   'senders',
   'receivers'
 ]
-
-function stripLoki (obj) {
-  obj = Object.assign({}, obj)
-  delete obj.version
-  delete obj.meta
-  delete obj['$loki']
-  return obj
-}
 
 function createCollection (db, type) {
   let collection = db.addCollection(type)
@@ -41,6 +34,7 @@ function createCollections () {
   types.forEach(type => {
     collections[type] = createCollection(db, type)
   })
+  collections.db = db
   return collections
 }
 

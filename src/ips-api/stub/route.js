@@ -3,6 +3,8 @@ export default function (collections, delay) {
     sender = sender || {}
     return new Promise((resolve, reject) => {
       function updateRoute () {
+        let item = Object.assign({}, receiver)
+        collections.receivers.emit('pre', item)
         let senderId = sender.id || null
         receiver.subscription = { sender_id: senderId }
         collections.receivers.update(receiver)
