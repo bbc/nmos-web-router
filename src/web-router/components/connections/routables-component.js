@@ -1,42 +1,18 @@
 import React, { PropTypes } from 'react'
 
-import Routable from '../routable'
+import { LayoutItem } from '../../../gel-react/grid'
 
-function getView (routable, view) {
-  return view.filter(v => {
-    return v.id === routable.id
-  })[0]
-}
-
-let Routables = ({side, routables, view, actions}) => {
-  return <div>{
-    routables.map((routable, index) => {
-      let routableView = getView(routable, view)
-      let baseId = 'connections'
-      return <Routable
-        key={`connections-${routable.id}`}
-        draggable
-        baseId={baseId}
-        data={routable}
-        view={routableView}
-        actions={{
-          remove: actions.remove,
-          toggle () {
-            if (routableView.routable) actions.toggleConnections(side, routable.id)
-          },
-          mounted: actions.updateConnections,
-          drag (evt, data, status) { }
-        }}
-      />
-    })
-  }</div>
+let Routables = ({side, routables, actions}) => {
+  return <LayoutItem className={`routables ${side}`} gels='1/3'>{
+      routables.map(routable => {
+        return <div key={routable.id}>{routable.label}</div>
+      })
+  }</LayoutItem>
 }
 
 Routables.propTypes = {
   side: PropTypes.string.isRequired,
   routables: PropTypes.array.isRequired,
-  view: PropTypes.array.isRequired,
-
   actions: PropTypes.object.isRequired
 }
 

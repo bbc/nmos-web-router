@@ -3,11 +3,10 @@ import { LayoutItem } from '../../../gel-react/grid'
 import { GreatPrimer, Pica } from '../../../gel-react/typography'
 
 let Header = ({left, right}) => {
-  return <div>
-    <LayoutItem gels='1/3' >
+  return <LayoutItem gels='1/1'>
+    <LayoutItem gels='1/1' >
       <GreatPrimer bold>Connections</GreatPrimer>
     </LayoutItem>
-    <LayoutItem gels='2/3' />
     <LayoutItem gels='1/3' >
       <Pica bold>{left}</Pica>
     </LayoutItem>
@@ -15,7 +14,7 @@ let Header = ({left, right}) => {
     <LayoutItem gels='1/3' >
       <Pica bold>{right}</Pica>
     </LayoutItem>
-  </div>
+  </LayoutItem>
 }
 
 Header.propTypes = {

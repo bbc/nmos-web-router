@@ -1,46 +1,24 @@
 import './connections.css'
 
 import React, { PropTypes } from 'react'
-import RoutablesColumn from './routables-column-component'
-import RoutesColumn from './routes-column-component'
-import { LayoutItem } from '../../../gel-react/grid'
+import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Header from './header-component'
-import PointMouse from './point-mouse-component'
+import Routables from './routables-component'
 
-let Connections = ({data, view, sides, actions}) => {
-  let dragging = view.isDragging ? 'dragging' : ''
-  return <LayoutItem
-    onClick={function () {
-      actions.toggleConnections('senders', 'off')
-      actions.toggleConnections('receivers', 'off')
-    }}
-    className={`connections ${dragging}`} gels={['1/1']} >
+let Connections = ({view, actions}) => {
+  return <Layout className={'connections'}>
     <Header left={view.leftTitle} right={view.rightTitle} />
-    <RoutablesColumn
-      routables={data[sides.left.plural]}
-      view={view[sides.left.plural]}
-      actions={actions}
-      side={sides.left.plural}
-      sideName='left'
-      />
-    <RoutesColumn
-      data={data}
-      view={view}
-    />
-    <RoutablesColumn
-      routables={data[sides.right.plural]}
-      view={view[sides.right.plural]}
-      actions={actions}
-      side={sides.right.plural}
-      sideName='right'
-      />
-    <PointMouse isDragging={view.isDragging} mouse={view.mouse} />
-  </LayoutItem>
+    <LayoutItem gels='1/1'>
+      <Routables
+        side='left'
+        routables={view.routables.left}
+        actions={actions}
+        />
+    </LayoutItem>
+  </Layout>
 }
 
 Connections.propTypes = {
-  data: PropTypes.object.isRequired,
-  sides: PropTypes.object.isRequired,
   view: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }

@@ -44,12 +44,13 @@ export default {
         errored: []
       },
       connections: {
+        routables: {
+          left: [],
+          right: []
+        },
+        routes: [],
         toggleSide: '',
         isDragging: false,
-        mouse: {
-          x: 0,
-          y: 0
-        },
         leftTitle: 'Senders',
         rightTitle: 'Receivers'
       }

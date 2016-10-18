@@ -21,7 +21,6 @@ let WebRouter = ({data, view, sides, actions}) => {
           actions.updateConnections()
         }}>
         <Connections
-          data={data}
           view={view.connections}
           actions={actions}
           sides={sides}
