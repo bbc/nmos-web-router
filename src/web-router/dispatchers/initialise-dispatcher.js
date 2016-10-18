@@ -14,7 +14,6 @@ export default (actions) => {
         let data = {}
         data[name] = response
         actions.initialise(data)
-        actions.updateConnections()
       })
       .catch(error => {
         console.error(error)

@@ -10,16 +10,9 @@ let WebRouter = ({data, view, sides, actions}) => {
     webRouterContainer.scrollTop = 0
   }
 
-  window.onresize = function () {
-    actions.updateConnections()
-  }
-
   return <Layout className={'web-router web-router-connectons'}>
     <Layout gels='1/1'>
-      <Wrap className='web-router-container'
-        onScroll={function () {
-          actions.updateConnections()
-        }}>
+      <Wrap className='web-router-container'>
         <Connections
           view={view.connections}
           actions={actions}
