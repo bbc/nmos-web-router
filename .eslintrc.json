@@ -11,11 +11,18 @@
     "curly": "off",
     "quotes": ["error", "single"],
     "no-multiple-empty-lines": "off",
-    "padded-blocks": "off"
+    "padded-blocks": "off",
+    "func-call-spacing": "off",
+    "no-global-assign": "off",
+    "no-tabs": "off",
+    "no-template-curly-in-string": "off",
+    "no-unsafe-negation": "off"
   },
   "globals": {
     "WebSocket": true,
-    "Image": true
+    "Image": true,
+    "jasmine": true,
+    "fail": true
   },
   "env": {
     "jest": true

@@ -1,8 +1,8 @@
 /* autoprefixer: off */
 
 /**
-     * Grid containing element
-     */
+* Grid containing element
+*/
 .gel-wrap {
   max-width: 1008px;
   margin: 0 auto;
@@ -24,18 +24,21 @@
 }
 
 /**
-     * A grid row
-     */
+* A grid row
+*/
 .gel-layout {
   list-style: none;
-  direction: flip(ltr, rtl);
-  text-align: flip(left, right);
+  direction: ltr;
+  text-align: left;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
   margin-right: 0;
   margin-left: -8px;
   padding-right: 0;
@@ -62,7 +65,7 @@
   width: 100%;
   display: inline-block;
   padding-left: 8px;
-  text-align: flip(left, right);
+  text-align: left;
   vertical-align: top;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -148,7 +151,7 @@
 }
 
 .gel-layout--right > .gel-layout__item {
-  text-align: flip(left, right);
+  text-align: left;
 }
 
 /**
@@ -162,7 +165,7 @@
 }
 
 .gel-layout--center > .gel-layout__item {
-  text-align: flip(left, right);
+  text-align: left;
 }
 
 /**
@@ -177,6 +180,7 @@
      */
 .gel-layout--no-flex,
 .gel-layout--no-flex > .gel-layout__item {
+  display: block;
   display: inline-block;
 }
 
@@ -185,7 +189,6 @@
          */
 .gel-layout--equal > .gel-layout__item {
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -717,6 +720,7 @@
 }
 
 @media (min-width: 37.5em) {
+
   .gel-1\/1\@m {
     width: 100% !important;
   }
