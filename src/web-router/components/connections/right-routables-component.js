@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 
 import { LayoutItem } from '../../../gel-react/grid'
-import LeftRoutable from './left-routable-component'
+import RightRoutable from './right-routable-component'
 
-let LeftRoutables = ({routables, actions}) => {
-  return <LayoutItem className='routables left' gels='1/3'>{
+let RightRoutables = ({routables, actions}) => {
+  return <LayoutItem className='routables right' gels='1/3'>{
       routables.map(routable => {
-        return <LeftRoutable
+        return <RightRoutable
           routable={routable}
           baseId='connections'
           actions={actions}
@@ -15,9 +15,9 @@ let LeftRoutables = ({routables, actions}) => {
   }</LayoutItem>
 }
 
-LeftRoutables.propTypes = {
+RightRoutables.propTypes = {
   routables: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
 
-export default LeftRoutables
+export default RightRoutables

@@ -3,19 +3,19 @@ import Icon from '../routable/icon-component'
 import Button from '../../../components/button-component'
 import { LayoutItem } from '../../../gel-react/grid'
 
-let LeftRoutable = ({routable}) => {
+let RightRoutable = ({routable}) => {
   return <LayoutItem gels='1/1' className={`routable ${routable.state}`}>
+    <div className={`node ${routable.node.status}`} />
     <Button
-      fill
       icon={<Icon format={routable.format} />}
       label={routable.label}
+      fill
       />
-    <div className={`node ${routable.node.status}`} />
   </LayoutItem>
 }
 
-LeftRoutable.propTypes = {
+RightRoutable.propTypes = {
   routable: PropTypes.object.isRequired
 }
 
-export default LeftRoutable
+export default RightRoutable

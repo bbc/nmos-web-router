@@ -4,75 +4,88 @@
   --remove: #ff1d23;
   --contracted: #dfe3e2;
   --expanded: #ff6db5;
-  --node-width: 25px;
+  --node-width: 24px;
   --color: #000;
 }
 
-.routables {
-  margin-top: 8px;
-}
-
 .routable {
-  margin-bottom: 8px;
-  border-radius: 0;
-  border: none;
-  fill: var(--color);
-  color: var(--color);
-  transition: color 0.25s, fill 0.25s, background-color 0.25s;
+  margin-top: 8px;
 
-  & .label {
-    font-weight: normal;
-    text-align: right;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+  & .button {
+    width: 90%;
+    border-radius: 0;
+    border: none;
+    fill: var(--color);
+    color: var(--color);
+    transition: color 0.25s, fill 0.25s, background-color 0.25s;
 
-  & .node {
-    position: absolute;
-    z-index: -1;
-    width: var(--node-width);
-    height: var(--node-width);
-    border-radius: 90px;
-    background-color: var(--unrouted);
-
-    &.routed {
-      background-color: var(--routed);
-    }
-  }
-
-  &.contracted {
-    background-color: var(--contracted);
-  }
-
-  &.disabled {
-    background-color: color(var(--contracted) tint(75%));
-    fill: color(var(--color) tint(75%));
-    color: color(var(--color) tint(75%));
-
-    & .node {
-      display: none;
-    }
-  }
-
-  &.other {
-    background-color: color(var(--contracted) tint(50%));
-    fill: color(var(--color) tint(50%));
-    color: color(var(--color) tint(50%));
-
-    & .node {
-      background-color: color(var(--unrouted) tint(50%));
+    & .label {
+      font-weight: normal;
+      text-align: right;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 
   &:hover,
   &:active {
-    &.contracted {
+    &.contracted .button {
       background-color: var(--expanded);
     }
   }
+}
 
-  &.left .node {
-    transform: translate(3px, 25%);
+.node {
+  z-index: -1;
+  position: relative;
+  display: inline-block;
+  width: var(--node-width);
+  height: var(--node-width);
+  border-radius: 90px;
+  transition: color 0.25s, fill 0.25s, background-color 0.25s;
+}
+
+.left .node {
+  margin-left: -12px;
+}
+
+.right .node {
+  margin-right: -12px;
+}
+
+.routed {
+  background-color: var(--routed);
+}
+
+.unrouted {
+  background-color: var(--unrouted);
+}
+
+.contracted .button {
+  background-color: var(--contracted);
+}
+
+.disabled {
+  & .button {
+    background-color: color(var(--contracted) tint(75%));
+    fill: color(var(--color) tint(75%));
+    color: color(var(--color) tint(75%));
+  }
+
+  & .node {
+    display: none;
+  }
+}
+
+.other {
+  & .button {
+    background-color: color(var(--contracted) tint(50%));
+    fill: color(var(--color) tint(50%));
+    color: color(var(--color) tint(50%));
+  }
+
+  & .node {
+    background-color: color(var(--unrouted) tint(50%));
   }
 }
