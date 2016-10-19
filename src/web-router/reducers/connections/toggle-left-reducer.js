@@ -9,7 +9,7 @@ function getLeftState (toggled, expanding, routable) {
 function getRightState (toggled, expanding, routable) {
   let state = 'contracted'
   if (toggled.format !== routable.format && expanding) state = 'disabled'
-  if (expanding) return `${state} selectable`
+  else if (expanding) return `${state} selectable`
   return state
 }
 
