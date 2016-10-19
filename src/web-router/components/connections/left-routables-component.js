@@ -8,7 +8,6 @@ let LeftRoutables = ({routables, actions}) => {
       routables.map(routable => {
         return <LeftRoutable
           routable={routable}
-          baseId='connections'
           actions={actions}
           key={routable.id} />
       })
