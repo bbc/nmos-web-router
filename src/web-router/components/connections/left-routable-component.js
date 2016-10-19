@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import Icon from '../routable/icon-component'
+import Icon from './icon-component'
 import Button from '../../../components/button-component'
 import { LayoutItem } from '../../../gel-react/grid'
 

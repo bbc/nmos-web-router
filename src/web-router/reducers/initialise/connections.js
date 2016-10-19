@@ -8,7 +8,6 @@ function defaultRoutable (routable) {
   return routable
 }
 
-
 export default (data, view, sides) => {
   let connections = Object.assign({}, view.connections)
   connections.routes = Object.assign([], data.routes)
