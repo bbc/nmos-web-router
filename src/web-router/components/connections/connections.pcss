@@ -26,6 +26,7 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      line-height: 18px;
     }
   }
 }
@@ -126,4 +127,54 @@
   & .routed {
     background-color: color(var(--routed) tint(50%));
   }
+}
+
+.full {
+  top: 30%;
+  margin-left: 10%;
+  position: fixed;
+  width: 40%;
+
+  & .button-container {
+    display: inline-block;
+  }
+
+  & .button {
+    width: 300px;
+    height: auto;
+    background-color: color(var(--expanded) tint(30%));
+
+    & .gel-icon {
+      height: 40px;
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    & .label {
+      text-align: center;
+      white-space: normal;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--expanded);
+    }
+  }
+
+  & .node {
+    transform: translate(-12px, 100%);
+  }
+}
+
+.other .full,
+.contracted .full {
+  display: none;
+}
+
+.expanded .full {
+  display: block;
+}
+
+.expanded .short {
+  visibility: hidden;
 }
