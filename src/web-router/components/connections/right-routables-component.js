@@ -3,11 +3,12 @@ import React, { PropTypes } from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
 import RightRoutable from './right-routable-component'
 
-let RightRoutables = ({routables}) => {
+let RightRoutables = ({routables, actions}) => {
   return <LayoutItem className='routables right' gels='1/3'>{
       routables.map(routable => {
         return <RightRoutable
           routable={routable}
+          actions={actions}
           key={routable.id} />
       })
   }</LayoutItem>

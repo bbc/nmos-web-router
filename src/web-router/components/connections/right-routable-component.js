@@ -4,9 +4,13 @@ import { No } from '../../../gel-react/iconography'
 import Button from '../../../components/button-component'
 import { LayoutItem } from '../../../gel-react/grid'
 
-let RightRoutable = ({routable}) => {
+let RightRoutable = ({routable, actions}) => {
   return <LayoutItem gels='1/1' className={`routable ${routable.state}`}>
-    <div className={`node ${routable.node.state}`}>
+    <div
+      onClick={function () {
+        actions.unroute(routable)
+      }}
+      className={`node ${routable.node.state}`}>
       <No />
     </div>
     <Button
@@ -18,7 +22,8 @@ let RightRoutable = ({routable}) => {
 }
 
 RightRoutable.propTypes = {
-  routable: PropTypes.object.isRequired
+  routable: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 }
 
 export default RightRoutable
