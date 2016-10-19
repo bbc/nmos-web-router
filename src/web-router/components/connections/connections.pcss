@@ -1,7 +1,7 @@
 :root {
   --unrouted: #a19ea0;
   --routed: #f5d328;
-  --remove: #ff1d23;
+  --remove: #ec5d57;
   --contracted: #dfe3e2;
   --expanded: #ff6db5;
   --node-width: 24px;
@@ -25,13 +25,6 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-    }
-  }
-
-  &:hover,
-  &:active {
-    &.contracted .button {
-      background-color: var(--expanded);
     }
   }
 }
@@ -72,8 +65,14 @@
 }
 
 .right .routed {
+  z-index: 1;
   transform: translateX(-6px);
   background-color: var(--routed);
+
+  &:hover {
+    background-color: var(--remove);
+    cursor: pointer;
+  }
 
   & .gel-icon {
     fill: #fff;
@@ -86,6 +85,10 @@
 
 .contracted .button {
   background-color: var(--contracted);
+
+  &:hover {
+    background-color: var(--expanded);
+  }
 }
 
 .disabled {
