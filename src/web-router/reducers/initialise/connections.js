@@ -1,27 +1,23 @@
-function isRouted (side, routes, routable) {
+function isRouted (type, routes, routable) {
   return routes.filter(route => {
-    return route[side].id === routable.id
+    return route[type].id === routable.id
   }).length > 0
 }
 
-function defaultRoutable (side, routes, routable) {
-  routable.state = 'contracted'
-  routable.node = {
-    status: isRouted(side, routes, routable) ? 'routed' : 'unrouted'
-  }
-  return routable
-}
-
-function mapRoutables (data, routes, sides, side) {
+function mapRoutables (data, routes, sides, side, defaultState) {
   return data[sides[side].plural].map(routable => {
-    return defaultRoutable(sides[side].singular, routes, routable)
+    routable.state = defaultState
+    routable.node = {
+      status: isRouted(sides[side].singular, routes, routable) ? 'routed' : 'unrouted'
+    }
+    return routable
   })
 }
 
 export default (data, view, sides) => {
   let connections = Object.assign({}, view.connections)
   connections.routes = Object.assign([], data.routes)
-  connections.routables.left = mapRoutables(data, connections.routes, sides, 'left')
-  connections.routables.right = mapRoutables(data, connections.routes, sides, 'right')
+  connections.routables.left = mapRoutables(data, connections.routes, sides, 'left', 'contracted selectable')
+  connections.routables.right = mapRoutables(data, connections.routes, sides, 'right', 'contracted')
   return connections
 }

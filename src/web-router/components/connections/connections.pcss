@@ -12,6 +12,7 @@
   margin-top: 8px;
 
   & .button {
+    cursor: initial;
     width: 90%;
     border-radius: 0;
     border: none;
@@ -85,8 +86,12 @@
 
 .contracted .button {
   background-color: var(--contracted);
+}
 
-  &:hover {
+.selectable .button {
+  &:hover,
+  &:active {
+    cursor: pointer;
     background-color: var(--expanded);
   }
 }
