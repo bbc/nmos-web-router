@@ -27,7 +27,7 @@ export default (actions) => {
 
   function subscribe (name) {
     window.nmos.subscribe[name](data => {
-      console.log(data)
+      actions.updateData({ data })
     })
   }
 

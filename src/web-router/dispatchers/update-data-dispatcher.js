@@ -1,5 +1,1 @@
-export default (actions) => {
-  return (data) => {
-    actions.updateData(data)
-  }
-}
+export default (actions) => { return () => {} }
