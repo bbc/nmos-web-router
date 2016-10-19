@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import Icon from './icon-component'
 import Button from '../../../components/button-component'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
+import { LongPrimer } from '../../../gel-react/typography'
 
 let LeftRoutable = ({routable, actions}) => {
   return <LayoutItem gels='1/1' className={`routable ${routable.state}`}>
@@ -27,7 +28,7 @@ let LeftRoutable = ({routable, actions}) => {
             <Icon format={routable.format} />
           </LayoutItem>
           <LayoutItem gels='1/1'>
-            <span className='label'>word word word word word word word word word word word word word word word word word </span>
+            <LongPrimer className='label'>{routable.label}</LongPrimer>
           </LayoutItem>
         </Layout>
       </div>
