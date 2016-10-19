@@ -4,8 +4,9 @@
   --remove: #ec5d57;
   --contracted: #dfe3e2;
   --expanded: #ff6db5;
-  --node-width: 24px;
   --color: #000;
+  --remove-icon: #fff;
+  --node-width: 24px;
 }
 
 .routable {
@@ -77,7 +78,7 @@
   }
 
   & .gel-icon {
-    fill: #fff;
+    fill: var(--remove-icon);
   }
 }
 
@@ -166,15 +167,19 @@
   }
 }
 
-.other .full,
-.contracted .full {
-  display: none;
+.other,
+.contracted {
+  & .full {
+    display: none;
+  }
 }
 
-.expanded .full {
-  display: block;
-}
+.expanded {
+  & .full {
+    display: block;
+  }
 
-.expanded .short {
-  visibility: hidden;
+  & .short {
+    visibility: hidden;
+  }
 }
