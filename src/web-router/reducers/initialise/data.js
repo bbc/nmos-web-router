@@ -1,3 +1,12 @@
+function updateReceiversWithSenders (data) {
+  return data.receivers.map(receiver => {
+    if (receiver.subscription.sender_id) receiver.subscription.sender = data.senders.filter(sender => {
+      return sender.id === receiver.subscription.sender_id
+    })[0]
+    return receiver
+  })
+}
+
 function updateSendersWithFormat (data) {
   let senders = data.senders.map(sender => {
     let flow = data.flows.filter(flow => {
@@ -36,6 +45,7 @@ export default (state, action) => {
     flows: action.flows || state.data.flows,
     routes: action.routes || state.data.routes
   }
+  data.receivers = updateReceiversWithSenders(data)
   data.senders = updateSendersWithFormat(data)
   data.routes = getRoutes(data)
   return data

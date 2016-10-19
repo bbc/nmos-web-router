@@ -25,9 +25,17 @@ export default (actions) => {
       })
   }
 
+  function subscribe (name) {
+    window.nmos.subscribe[name](data => {
+      console.log(data)
+    })
+  }
+
   return () => {
     initialise('receivers')
     initialise('senders')
     initialise('flows')
+    subscribe('receivers')
+    subscribe('senders')
   }
 }
