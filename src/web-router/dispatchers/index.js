@@ -1,5 +1,5 @@
 import initialise from './initialise-dispatcher'
-import updateData from './update-data-dispatcher'
+import update from './update-dispatcher'
 import initialiseError from './initialise-error-dispatcher'
 import toggleLeft from './connections/toggle-left-dispatcher'
 import unroute from './connections/unroute-dispatcher'
@@ -9,5 +9,5 @@ export default {
   initialiseError,
   toggleLeft,
   unroute,
-  updateData
+  update
 }

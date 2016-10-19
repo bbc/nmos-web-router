@@ -1,11 +1,11 @@
 import initialise from './initialise'
 import initialiseError from './initialise-error-reducer'
 import toggleLeft from './connections/toggle-left-reducer'
-import updateData from './update-data-reducer'
+import update from './update'
 
 export default {
   initialise,
   initialiseError,
   toggleLeft,
-  updateData
+  update
 }

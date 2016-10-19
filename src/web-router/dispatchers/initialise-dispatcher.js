@@ -27,7 +27,9 @@ export default (actions) => {
 
   function subscribe (name) {
     window.nmos.subscribe[name](data => {
-      actions.updateData({ data })
+      let update = {}
+      update[name] = data
+      actions.update({ update })
     })
   }
 
