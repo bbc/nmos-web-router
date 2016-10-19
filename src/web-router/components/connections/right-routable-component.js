@@ -6,7 +6,7 @@ import { LayoutItem } from '../../../gel-react/grid'
 
 let RightRoutable = ({routable}) => {
   return <LayoutItem gels='1/1' className={`routable ${routable.state}`}>
-    <div className={`node ${routable.node.status}`}>
+    <div className={`node ${routable.node.state}`}>
       <No />
     </div>
     <Button

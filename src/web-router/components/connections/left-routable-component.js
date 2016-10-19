@@ -13,7 +13,7 @@ let LeftRoutable = ({routable, actions}) => {
       icon={<Icon format={routable.format} />}
       label={routable.label}
       />
-    <div className={`node ${routable.node.status}`} />
+    <div className={`node ${routable.node.state}`} />
   </LayoutItem>
 }
 

@@ -8,7 +8,7 @@ function mapRoutables (data, routes, sides, side, defaultState) {
   return data[sides[side].plural].map(routable => {
     routable.state = defaultState
     routable.node = {
-      status: routedState(side, routes, routable)
+      state: routedState(side, routes, routable)
     }
     return routable
   })
