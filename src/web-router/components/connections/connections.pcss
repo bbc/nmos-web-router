@@ -1,6 +1,6 @@
 :root {
   --unrouted: #a19ea0;
-  --routed: #ffe44d;
+  --routed: #f5d328;
   --remove: #ff1d23;
   --contracted: #dfe3e2;
   --expanded: #ff6db5;
@@ -43,19 +43,41 @@
   width: var(--node-width);
   height: var(--node-width);
   border-radius: 90px;
-  transition: color 0.25s, fill 0.25s, background-color 0.25s;
+  transition: color 0.25s, fill 0.25s, background-color 0.25s, transform 0.25s;
+
+  & .gel-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    transition: fill 0.25s;
+  }
 }
 
 .left .node {
-  margin-left: -12px;
+  transform: translateX(-12px);
 }
 
 .right .node {
-  margin-right: -12px;
+  transform: translateX(12px);
+
+  & .gel-icon {
+    fill: transparent;
+  }
 }
 
-.routed {
+.left .routed {
   background-color: var(--routed);
+}
+
+.right .routed {
+  transform: translateX(-6px);
+  background-color: var(--routed);
+
+  & .gel-icon {
+    fill: #fff;
+  }
 }
 
 .unrouted {
@@ -74,7 +96,11 @@
   }
 
   & .node {
-    display: none;
+    background-color: transparent;
+
+    & .gel-icon {
+      fill: transparent;
+    }
   }
 }
 
