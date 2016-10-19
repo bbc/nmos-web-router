@@ -5,5 +5,5 @@ export default (state, action, merge) => {
     if (routable.id === action.routable.id) routable.node.state = 'remove'
     return routable
   })
-  merge({ view })
+  return merge({ view })
 }
