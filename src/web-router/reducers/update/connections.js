@@ -10,8 +10,22 @@ function mapReceivers (data, receivers) {
   })
 }
 
+function isSenderRouted (sender, receivers) {
+  return receivers.filter(receiver => {
+    return receiver.subscription.sender_id === sender.id
+  }).length > 0
+}
+
+function mapSenders (data, senders) {
+  return senders.map(sender => {
+    sender.node.state = isSenderRouted(sender, data.receivers) ? 'routed' : 'unrouted'
+    return sender
+  })
+}
+
 export default (data, connections) => {
   connections.receivers = mapReceivers(data, connections.receivers)
+  connections.senders = mapSenders(data, connections.senders)
 
   return connections
 }
