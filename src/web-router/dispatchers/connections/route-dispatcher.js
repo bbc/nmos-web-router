@@ -1,9 +1,9 @@
 export default (actions) => {
-  return (routable, leftRoutables) => {
-    let leftRoutable = leftRoutables.filter(routable => {
-      return routable.state.includes('expanded')
+  return (receiver, senders) => {
+    let sender = senders.filter(receiver => {
+      return receiver.state.includes('expanded')
     })[0]
-    actions.route({ routable, leftRoutable })
-    window.nmos.route(routable.id, leftRoutable)
+    actions.route({ receiver, sender })
+    window.nmos.route(receiver.id, sender)
   }
 }
