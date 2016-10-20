@@ -1,1 +1,3 @@
-export default (actions) => { return () => {} }
+export default () => {
+  return () => {}
+}
