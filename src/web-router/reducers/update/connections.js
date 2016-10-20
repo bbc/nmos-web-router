@@ -1,6 +1,6 @@
 export default (data, connections, sides) => {
-  connections.routables.right = connections.routables.right.map(routable => {
-    let matchingRoutable = data[sides.right.plural].filter(r => {
+  connections.routables.receivers = connections.routables.receivers.map(routable => {
+    let matchingRoutable = data.receivers.filter(r => {
       return routable.id === r.id
     })[0]
     routable.node.state = 'unrouted'

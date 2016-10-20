@@ -17,7 +17,7 @@ let Connections = ({view, actions}) => {
       <LayoutItem gels='1/3' />
       <Receivers
         senders={view.routables.left}
-        receivers={view.routables.right}
+        receivers={view.routables.receivers}
         actions={actions}
         />
     </LayoutItem>

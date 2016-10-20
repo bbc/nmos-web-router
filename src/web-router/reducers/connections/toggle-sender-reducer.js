@@ -25,7 +25,7 @@ export default (state, action, merge) => {
     return Object.assign({}, routable, { state })
   })
 
-  connections.routables.right = connections.routables.right.map(routable => {
+  connections.routables.receivers = connections.routables.receivers.map(routable => {
     let state = getRightState(toggled, expanding, routable)
     return Object.assign({}, routable, { state })
   })
