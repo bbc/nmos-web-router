@@ -1,6 +1,6 @@
 export default (actions) => {
-  return (routable) => {
-    actions.unroute({ routable })
-    window.nmos.unroute(routable.id)
+  return (receiver) => {
+    actions.unroute({ receiver })
+    window.nmos.unroute(receiver.id)
   }
 }
