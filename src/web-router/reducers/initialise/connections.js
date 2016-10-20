@@ -1,26 +1,32 @@
-function routedState (side, routes, routable) {
-  return routes.filter(route => {
-    return route[side].id === routable.id
-  }).length > 0 ? 'routed' : 'unrouted'
+function isSenderRouted (sender, receivers) {
+  return receivers.filter(receiver => {
+    return receiver.subscription.sender_id === sender.id
+  }).length > 0
 }
 
-function mapRoutables2 (data, routes, type, routeSide, defaultState) {
-  return data[type].map(routable => {
-    routable.state = defaultState
-    routable.node = {
-      state: routedState(routeSide, routes, routable)
+function mapSenders (data) {
+  return data.senders.map(sender => {
+    sender.state = 'contracted selectable'
+    sender.node = {
+      state: isSenderRouted(sender, data.receivers) ? 'routed' : 'unrouted'
     }
-    return routable
+    return sender
+  })
+}
+
+function mapReceivers (data) {
+  return data.receivers.map(receiver => {
+    receiver.state = 'contracted selectable'
+    receiver.node = {
+      state: receiver.subscription.sender !== undefined ? 'routed' : 'unrouted'
+    }
+    return receiver
   })
 }
 
 export default (data, view) => {
   let connections = Object.assign({}, view.connections)
-  connections.routes = data.routes.map(route => {
-    route = Object.assign({}, route)
-    return route
-  })
-  connections.routables.senders = mapRoutables2(data, connections.routes, 'senders', 'sender', 'contracted selectable')
-  connections.routables.receivers = mapRoutables2(data, connections.routes, 'receivers', 'receiver', 'contracted')
+  connections.routables.senders = mapSenders(data)
+  connections.routables.receivers = mapReceivers(data)
   return connections
 }

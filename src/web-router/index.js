@@ -8,8 +8,7 @@ export default {
     data: {
       senders: [],
       receivers: [],
-      flows: [],
-      routes: []
+      flows: []
     },
     view: {
       scroll: true,
@@ -23,8 +22,7 @@ export default {
         routables: {
           senders: [],
           receivers: []
-        },
-        routes: []
+        }
       }
     },
     initialised: false
