@@ -19,10 +19,8 @@ export default {
         errored: []
       },
       connections: {
-        routables: {
-          senders: [],
-          receivers: []
-        }
+        senders: [],
+        receivers: []
       }
     },
     initialised: false

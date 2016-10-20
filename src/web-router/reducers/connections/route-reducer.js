@@ -1,12 +1,12 @@
 export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
   let connections = view.connections
-  connections.routables.receivers = connections.routables.receivers.map(routable => {
+  connections.receivers = connections.receivers.map(routable => {
     if (routable.id === action.receiver.id) routable.node.state = 'routed'
     return routable
   })
 
-  connections.routables.senders = connections.routables.senders.map(routable => {
+  connections.senders = connections.senders.map(routable => {
     if (routable.id === action.sender.id) routable.node.state = 'routed'
     return routable
   })

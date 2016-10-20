@@ -20,12 +20,12 @@ export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
   let connections = view.connections
 
-  connections.routables.senders = connections.routables.senders.map(sender => {
+  connections.senders = connections.senders.map(sender => {
     let state = getSenderState(toggled, expanding, sender)
     return Object.assign({}, sender, { state })
   })
 
-  connections.routables.receivers = connections.routables.receivers.map(receiver => {
+  connections.receivers = connections.receivers.map(receiver => {
     let state = getReceiverState(toggled, expanding, receiver)
     return Object.assign({}, receiver, { state })
   })
