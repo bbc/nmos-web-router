@@ -14,6 +14,16 @@ function mapRoutables (data, routes, sides, side, defaultState) {
   })
 }
 
+function mapRoutables2 (data, routes, type, routeSide, defaultState) {
+  return data[type].map(routable => {
+    routable.state = defaultState
+    routable.node = {
+      state: routedState(routeSide, routes, routable)
+    }
+    return routable
+  })
+}
+
 export default (data, view, sides) => {
   let connections = Object.assign({}, view.connections)
   connections.routes = data.routes.map(route => {
@@ -23,6 +33,6 @@ export default (data, view, sides) => {
     return route
   })
   connections.routables.left = mapRoutables(data, connections.routes, sides, 'left', 'contracted selectable')
-  connections.routables.receivers = mapRoutables(data, connections.routes, sides, 'right', 'contracted')
+  connections.routables.receivers = mapRoutables2(data, connections.routes, 'receivers', 'right', 'contracted')
   return connections
 }
