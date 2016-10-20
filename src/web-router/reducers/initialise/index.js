@@ -9,7 +9,7 @@ export default (state, action, merge) => {
 
   let view = Object.assign({}, state.view, {
     loading: loading(data, state.view),
-    connections: connections(data, state.view, state.sides),
+    connections: connections(data, state.view),
     scroll: false
   })
 

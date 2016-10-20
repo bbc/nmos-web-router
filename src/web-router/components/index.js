@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react'
 import { Wrap, Layout } from '../../gel-react/grid'
 import Connections from './connections'
 
-let WebRouter = ({data, view, sides, actions}) => {
+let WebRouter = ({data, view, actions}) => {
   let webRouterContainer = document.querySelector('.web-router-container')
   if (webRouterContainer !== null && view.scroll) {
     webRouterContainer.scrollTop = 0
@@ -16,7 +16,6 @@ let WebRouter = ({data, view, sides, actions}) => {
         <Connections
           view={view.connections}
           actions={actions}
-          sides={sides}
           />
       </Wrap>
     </Layout>
@@ -26,7 +25,6 @@ let WebRouter = ({data, view, sides, actions}) => {
 WebRouter.propTypes = {
   data: PropTypes.object.isRequired,
   view: PropTypes.object.isRequired,
-  sides: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
 

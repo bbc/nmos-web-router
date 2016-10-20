@@ -1,4 +1,4 @@
-function updateReceiversWithSenders (data) {
+function mapReceivers (data) {
   return data.receivers.map(receiver => {
     if (receiver.subscription.sender_id) receiver.subscription.sender = data.senders.filter(sender => {
       return sender.id === receiver.subscription.sender_id
@@ -7,7 +7,7 @@ function updateReceiversWithSenders (data) {
   })
 }
 
-function updateSendersWithFormat (data) {
+function mapSenders (data) {
   let senders = data.senders.map(sender => {
     let flow = data.flows.filter(flow => {
       return flow.id === sender.flow_id
@@ -20,33 +20,13 @@ function updateSendersWithFormat (data) {
   return senders
 }
 
-function getSender (data, id) {
-  return data.senders.filter(sender => {
-    return sender.id === id
-  })[0]
-}
-
-function getRoutes (data) {
-  return data.receivers
-    .filter(receiver => {
-      let senderId = receiver.subscription.sender_id
-      return senderId !== null && getSender(data, senderId)
-    })
-    .map(receiver => {
-      let sender = getSender(data, receiver.subscription.sender_id)
-      return {receiver, sender}
-    })
-}
-
 export default (state, action) => {
   let data = {
     receivers: action.receivers || state.data.receivers,
     senders: action.senders || state.data.senders,
-    flows: action.flows || state.data.flows,
-    routes: action.routes || state.data.routes
+    flows: action.flows || state.data.flows
   }
-  data.receivers = updateReceiversWithSenders(data)
-  data.senders = updateSendersWithFormat(data)
-  data.routes = getRoutes(data)
+  data.receivers = mapReceivers(data)
+  data.senders = mapSenders(data)
   return data
 }

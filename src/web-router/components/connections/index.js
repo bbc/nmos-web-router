@@ -3,20 +3,21 @@ import './connections.css'
 import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Header from './header-component'
-import LeftRoutables from './left-routables-component'
-import RightRoutables from './right-routables-component'
+import Senders from './senders-component'
+import Receivers from './receivers-component'
 
 let Connections = ({view, actions}) => {
   return <Layout className={'connections'}>
-    <Header left={view.leftTitle} right={view.rightTitle} />
+    <Header />
     <LayoutItem gels='1/1'>
-      <LeftRoutables
-        routables={view.routables.left}
+      <Senders
+        senders={view.senders}
         actions={actions}
         />
       <LayoutItem gels='1/3' />
-      <RightRoutables
-        routables={view.routables.right}
+      <Receivers
+        senders={view.senders}
+        receivers={view.receivers}
         actions={actions}
         />
     </LayoutItem>

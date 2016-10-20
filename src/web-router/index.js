@@ -5,35 +5,10 @@ import dispatchers from './dispatchers'
 export default {
   name: 'web-router',
   initialState: {
-    sides: {
-      sender: 'left',
-      senders: 'left',
-      left: {
-        plural: 'senders',
-        singular: 'sender',
-        opposite: {
-          name: 'right',
-          plural: 'receivers',
-          singular: 'receiver'
-        }
-      },
-      receiver: 'right',
-      receivers: 'right',
-      right: {
-        plural: 'receivers',
-        singular: 'receiver',
-        opposite: {
-          name: 'left',
-          plural: 'senders',
-          singular: 'sender'
-        }
-      }
-    },
     data: {
       senders: [],
       receivers: [],
-      flows: [],
-      routes: []
+      flows: []
     },
     view: {
       scroll: true,
@@ -44,15 +19,8 @@ export default {
         errored: []
       },
       connections: {
-        routables: {
-          left: [],
-          right: []
-        },
-        routes: [],
-        toggleSide: '',
-        isDragging: false,
-        leftTitle: 'Senders',
-        rightTitle: 'Receivers'
+        senders: [],
+        receivers: []
       }
     },
     initialised: false

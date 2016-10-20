@@ -50,11 +50,11 @@
   }
 }
 
-.left .node {
+.senders .node {
   transform: translateX(-12px);
 }
 
-.right .node {
+.receivers .node {
   transform: translateX(12px);
 
   & .gel-icon {
@@ -62,19 +62,19 @@
   }
 }
 
-.left .routed {
-  background-color: var(--routed);
-}
-
-.right .routed {
-  z-index: 1;
-  transform: translateX(-6px);
+.routed {
   background-color: var(--routed);
 
   &:hover {
     background-color: var(--remove);
     cursor: pointer;
   }
+}
+
+.receivers .routed,
+.receivers .remove {
+  z-index: 1;
+  transform: translateX(-6px);
 
   & .gel-icon {
     fill: var(--remove-icon);
@@ -83,6 +83,10 @@
 
 .unrouted {
   background-color: var(--unrouted);
+}
+
+.remove {
+  background-color: var(--remove);
 }
 
 .contracted .button {
