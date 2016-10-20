@@ -1,12 +1,9 @@
 import React from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
-import { GreatPrimer, Pica } from '../../../gel-react/typography'
+import { Pica } from '../../../gel-react/typography'
 
 let Header = () => {
   return <LayoutItem gels='1/1'>
-    <LayoutItem gels='1/1' >
-      <GreatPrimer bold>Connections</GreatPrimer>
-    </LayoutItem>
     <LayoutItem gels='1/3' >
       <Pica bold>Senders</Pica>
     </LayoutItem>
