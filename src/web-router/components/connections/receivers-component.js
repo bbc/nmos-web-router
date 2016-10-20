@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
 
 import { LayoutItem } from '../../../gel-react/grid'
-import RightRoutable from './right-routable-component'
+import Receiver from './receiver-component'
 
 let Receivers = ({senders, receivers, actions}) => {
-  return <LayoutItem className='routables right' gels='1/3'>{
+  return <LayoutItem className='routables receivers' gels='1/3'>{
       receivers.map(receiver => {
-        return <RightRoutable
-          routable={receiver}
+        return <Receiver
+          receiver={receiver}
           actions={actions}
-          leftRoutables={senders}
+          senders={senders}
           key={receiver.id} />
       })
   }</LayoutItem>
