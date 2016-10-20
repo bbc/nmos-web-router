@@ -45,7 +45,7 @@ export default {
       },
       connections: {
         routables: {
-          left: [],
+          senders: [],
           receivers: []
         },
         routes: []

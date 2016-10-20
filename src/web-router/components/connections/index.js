@@ -11,12 +11,12 @@ let Connections = ({view, actions}) => {
     <Header />
     <LayoutItem gels='1/1'>
       <Senders
-        senders={view.routables.left}
+        senders={view.routables.senders}
         actions={actions}
         />
       <LayoutItem gels='1/3' />
       <Receivers
-        senders={view.routables.left}
+        senders={view.routables.senders}
         receivers={view.routables.receivers}
         actions={actions}
         />

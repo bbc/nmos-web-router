@@ -6,7 +6,7 @@ export default (state, action, merge) => {
     return routable
   })
 
-  connections.routables.left = connections.routables.left.map(routable => {
+  connections.routables.senders = connections.routables.senders.map(routable => {
     if (routable.id === action.sender.id) routable.node.state = 'routed'
     return routable
   })

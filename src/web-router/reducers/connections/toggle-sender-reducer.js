@@ -1,28 +1,28 @@
-function getLeftState (toggled, expanding, routable) {
+function getSenderState (toggled, expanding, sender) {
   let state = 'contracted'
-  let isBeingToggled = routable.id === toggled.id
+  let isBeingToggled = sender.id === toggled.id
   if (expanding && isBeingToggled) state = 'expanded'
   else if (expanding) state = 'other'
   return `${state} selectable`
 }
 
-function getReceiverState (toggled, expanding, routable) {
+function getReceiverState (toggled, expanding, receiver) {
   let state = 'contracted'
-  if (toggled.format !== routable.format && expanding) state = 'disabled'
+  if (toggled.format !== receiver.format && expanding) state = 'disabled'
   else if (expanding) return `${state} selectable`
   return state
 }
 
 export default (state, action, merge) => {
-  let toggled = Object.assign({}, action.routable)
+  let toggled = Object.assign({}, action.sender)
   let expanding = !toggled.state.includes('expanded')
 
   let view = Object.assign({}, state.view)
   let connections = view.connections
 
-  connections.routables.left = connections.routables.left.map(routable => {
-    let state = getLeftState(toggled, expanding, routable)
-    return Object.assign({}, routable, { state })
+  connections.routables.senders = connections.routables.senders.map(sender => {
+    let state = getSenderState(toggled, expanding, sender)
+    return Object.assign({}, sender, { state })
   })
 
   connections.routables.receivers = connections.routables.receivers.map(receiver => {

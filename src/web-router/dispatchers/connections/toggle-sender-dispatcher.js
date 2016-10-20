@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (routable) => {
-    actions.toggleSender({ routable })
+  return (sender) => {
+    actions.toggleSender({ sender })
   }
 }
