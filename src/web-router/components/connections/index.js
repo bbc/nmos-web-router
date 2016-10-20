@@ -8,7 +8,7 @@ import RightRoutables from './right-routables-component'
 
 let Connections = ({view, actions}) => {
   return <Layout className={'connections'}>
-    <Header left={view.leftTitle} right={view.rightTitle} />
+    <Header />
     <LayoutItem gels='1/1'>
       <LeftRoutables
         routables={view.routables.left}

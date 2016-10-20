@@ -48,11 +48,7 @@ export default {
           left: [],
           right: []
         },
-        routes: [],
-        toggleSide: '',
-        isDragging: false,
-        leftTitle: 'Senders',
-        rightTitle: 'Receivers'
+        routes: []
       }
     },
     initialised: false
