@@ -1,5 +1,5 @@
-export default (data, connections) => {
-  connections.receivers = connections.receivers.map(routable => {
+function mapReceivers (data, receivers) {
+  return receivers.map(routable => {
     let matchingRoutable = data.receivers.filter(r => {
       return routable.id === r.id
     })[0]
@@ -8,6 +8,10 @@ export default (data, connections) => {
     else if (matchingRoutable.subscription.sender) routable.node.state = 'routed'
     return routable
   })
+}
+
+export default (data, connections) => {
+  connections.receivers = mapReceivers(data, connections.receivers)
 
   return connections
 }
