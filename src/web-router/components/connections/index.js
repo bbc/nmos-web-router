@@ -3,15 +3,15 @@ import './connections.css'
 import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Header from './header-component'
-import LeftRoutables from './left-routables-component'
+import Senders from './senders-component'
 import RightRoutables from './right-routables-component'
 
 let Connections = ({view, actions}) => {
   return <Layout className={'connections'}>
     <Header />
     <LayoutItem gels='1/1'>
-      <LeftRoutables
-        routables={view.routables.left}
+      <Senders
+        senders={view.routables.left}
         actions={actions}
         />
       <LayoutItem gels='1/3' />
