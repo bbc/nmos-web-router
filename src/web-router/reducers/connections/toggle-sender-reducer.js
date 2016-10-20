@@ -6,7 +6,7 @@ function getLeftState (toggled, expanding, routable) {
   return `${state} selectable`
 }
 
-function getRightState (toggled, expanding, routable) {
+function getReceiverState (toggled, expanding, routable) {
   let state = 'contracted'
   if (toggled.format !== routable.format && expanding) state = 'disabled'
   else if (expanding) return `${state} selectable`
@@ -25,9 +25,9 @@ export default (state, action, merge) => {
     return Object.assign({}, routable, { state })
   })
 
-  connections.routables.receivers = connections.routables.receivers.map(routable => {
-    let state = getRightState(toggled, expanding, routable)
-    return Object.assign({}, routable, { state })
+  connections.routables.receivers = connections.routables.receivers.map(receiver => {
+    let state = getReceiverState(toggled, expanding, receiver)
+    return Object.assign({}, receiver, { state })
   })
 
   return merge({ view })
