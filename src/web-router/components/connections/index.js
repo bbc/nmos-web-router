@@ -16,7 +16,8 @@ let Connections = ({view, actions}) => {
         />
       <LayoutItem gels='1/3' />
       <RightRoutables
-        routables={view.routables.right}
+        leftRoutables={view.routables.left}
+        rightRoutables={view.routables.right}
         actions={actions}
         />
     </LayoutItem>

@@ -4,7 +4,7 @@ import { No } from '../../../gel-react/iconography'
 import Button from '../../../components/button-component'
 import { LayoutItem } from '../../../gel-react/grid'
 
-let RightRoutable = ({routable, actions}) => {
+let RightRoutable = ({leftRoutables, routable, actions}) => {
   return <LayoutItem gels='1/1' className={`routable ${routable.state}`}>
     <div
       onClick={function () {
@@ -14,6 +14,9 @@ let RightRoutable = ({routable, actions}) => {
       <No />
     </div>
     <Button
+      onClick={function () {
+        if (routable.state.includes('selectable')) actions.route(routable, leftRoutables)
+      }}
       icon={<Icon format={routable.format} />}
       label={routable.label}
       fill
@@ -22,6 +25,7 @@ let RightRoutable = ({routable, actions}) => {
 }
 
 RightRoutable.propTypes = {
+  leftRoutables: PropTypes.array.isRequired,
   routable: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
