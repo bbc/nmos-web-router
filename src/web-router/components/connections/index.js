@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Header from './header-component'
 import Senders from './senders-component'
-import RightRoutables from './right-routables-component'
+import Receivers from './receivers-component'
 
 let Connections = ({view, actions}) => {
   return <Layout className={'connections'}>
@@ -15,9 +15,9 @@ let Connections = ({view, actions}) => {
         actions={actions}
         />
       <LayoutItem gels='1/3' />
-      <RightRoutables
-        leftRoutables={view.routables.left}
-        rightRoutables={view.routables.right}
+      <Receivers
+        senders={view.routables.left}
+        receivers={view.routables.right}
         actions={actions}
         />
     </LayoutItem>
