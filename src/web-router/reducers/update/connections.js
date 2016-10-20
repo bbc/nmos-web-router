@@ -1,4 +1,4 @@
-export default (data, connections, sides) => {
+export default (data, connections) => {
   connections.routables.receivers = connections.routables.receivers.map(routable => {
     let matchingRoutable = data.receivers.filter(r => {
       return routable.id === r.id

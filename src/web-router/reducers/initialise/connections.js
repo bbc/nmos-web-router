@@ -14,7 +14,7 @@ function mapRoutables2 (data, routes, type, routeSide, defaultState) {
   })
 }
 
-export default (data, view, sides) => {
+export default (data, view) => {
   let connections = Object.assign({}, view.connections)
   connections.routes = data.routes.map(route => {
     route = Object.assign({}, route)
