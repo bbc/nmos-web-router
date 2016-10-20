@@ -29,10 +29,9 @@ export default (data, view, sides) => {
   connections.routes = data.routes.map(route => {
     route = Object.assign({}, route)
     route.left = route.sender
-    route.right = route.receiver
     return route
   })
   connections.routables.left = mapRoutables(data, connections.routes, sides, 'left', 'contracted selectable')
-  connections.routables.receivers = mapRoutables2(data, connections.routes, 'receivers', 'right', 'contracted')
+  connections.routables.receivers = mapRoutables2(data, connections.routes, 'receivers', 'receiver', 'contracted')
   return connections
 }
