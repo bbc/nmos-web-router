@@ -1,5 +1,5 @@
 export default (actions) => {
   return (routable) => {
-    actions.toggleLeft({ routable })
+    actions.toggleSender({ routable })
   }
 }

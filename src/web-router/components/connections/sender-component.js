@@ -4,42 +4,42 @@ import Button from '../../../components/button-component'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 import { LongPrimer } from '../../../gel-react/typography'
 
-let LeftRoutable = ({routable, actions}) => {
-  return <LayoutItem gels='1/1' className={`routable ${routable.state}`}>
+let Sender = ({sender, actions}) => {
+  return <LayoutItem gels='1/1' className={`routable ${sender.state}`}>
     <div className='short'>
       <Button
         onClick={function () {
-          actions.toggleLeft(routable)
+          actions.toggleSender(sender)
         }}
         fill
-        icon={<Icon format={routable.format} />}
-        label={routable.label}
+        icon={<Icon format={sender.format} />}
+        label={sender.label}
         />
-      <div className={`node ${routable.node.state}`} />
+      <div className={`node ${sender.node.state}`} />
     </div>
     <div className='full'>
       <div className='button-container'>
         <Layout
           className='button'
           onClick={function () {
-            actions.toggleLeft(routable)
+            actions.toggleSender(sender)
           }}>
           <LayoutItem gels='1/1'>
-            <Icon format={routable.format} />
+            <Icon format={sender.format} />
           </LayoutItem>
           <LayoutItem gels='1/1'>
-            <LongPrimer className='label'>{routable.label}</LongPrimer>
+            <LongPrimer className='label'>{sender.label}</LongPrimer>
           </LayoutItem>
         </Layout>
       </div>
-      <div className={`node ${routable.node.state}`} />
+      <div className={`node ${sender.node.state}`} />
     </div>
   </LayoutItem>
 }
 
-LeftRoutable.propTypes = {
-  routable: PropTypes.object.isRequired,
+Sender.propTypes = {
+  sender: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
 
-export default LeftRoutable
+export default Sender
