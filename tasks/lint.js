@@ -21,32 +21,36 @@ function style () {
 }
 
 function js () {
-  const CLIEngine = require('eslint').CLIEngine
-  let eslint = new CLIEngine({
-    ignorePattern: ['src/gel-react/**/*.js'],
-    configFile: './.eslintrc.json'
-  })
-  let srcResults = eslint.executeOnFiles([
-    'src',
-    '__tests__',
-    'tasks'
-  ]).results
+  try {
+    const CLIEngine = require('eslint').CLIEngine
+    let eslint = new CLIEngine({
+      ignorePattern: ['src/gel-react/**/*.js'],
+      configFile: './.eslintrc.json'
+    })
+    let srcResults = eslint.executeOnFiles([
+      'src',
+      '__tests__',
+      'tasks'
+    ]).results
 
-  let filtered = srcResults
+    let filtered = srcResults
       .filter(function (result) {
         return result.messages.length !== 0
       })
 
-  filtered.forEach(function (result) {
-    console.log(result.filePath)
-    result.messages.forEach(function (message) {
-      let type = message.severity === 2 ? 'error' : 'warn'
-      console.log(type, ':', message.line, ':', message.message)
+    filtered.forEach(function (result) {
+      console.log(result.filePath)
+      result.messages.forEach(function (message) {
+        let type = message.severity === 2 ? 'error' : 'warn'
+        console.log(type, ':', message.line, ':', message.message)
+      })
     })
-  })
 
-  if (filtered.length === 0) console.log('JS LINT FREE')
-  return filtered.length === 0
+    if (filtered.length === 0) console.log('JS LINT FREE')
+    return filtered.length === 0
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 style()

@@ -15,7 +15,6 @@ module.exports = function (baseUrl, name) {
             return d
           })
           data.sort(defaultSort)
-
         } else data.type = name
         return data
       })

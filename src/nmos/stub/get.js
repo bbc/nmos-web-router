@@ -11,11 +11,9 @@ export default function (collections, delay, type) {
         else setTimeout(function () {
           resolve(data)
         }, delay)
-      } else {
-        setTimeout(function () {
-          resolve(collections[type].all().sort(defaultSort))
-        }, delay)
-      }
+      } else setTimeout(function () {
+        resolve(collections[type].all().sort(defaultSort))
+      }, delay)
     })
   }
 }

@@ -24,6 +24,5 @@ describe('Subscriptions', () => {
         fail(error)
         done()
       })
-
   })
 })

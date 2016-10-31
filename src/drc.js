@@ -78,7 +78,6 @@ function Actions (options) {
   return actionDipatchers
 }
 
-
 let Dispatcher = (options) => {
   return (dispatch) => {
     let actions = Actions({
@@ -101,7 +100,6 @@ const defaultDispatcher = (dispatch) => {
   return {
   }
 }
-
 
 function createDispatcher (options) {
   let dispatcher = defaultDispatcher

@@ -14,19 +14,16 @@ export default function (options) {
   }
 
   function stubListen (type) {
-    if (options.hasOwnProperty(type)) {
-      options[type](require(`./stub-data/${type}.json`))
-    }
+    if (options.hasOwnProperty(type)) options[type](require(`./stub-data/${type}.json`))
   }
 
   function subscribe () {
     discovery().subscriptions().then(subscriptions => {
       subscriptions.forEach((subscription) => {
         let type = subscription.resource_path.replace('/', '')
-        if (options.hasOwnProperty(type)) {
+        if (options.hasOwnProperty(type))
           if (window.location.host.includes('localhost')) stubListen(type, subscription)
           else listen(type, subscription)
-        }
       })
     })
   }

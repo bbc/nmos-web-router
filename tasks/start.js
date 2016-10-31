@@ -15,14 +15,9 @@ var compiler
 
 var handleCompile
 var isSmokeTest = process.argv.some(arg => arg.indexOf('--smoke-test') > -1)
-if (isSmokeTest) {
-  handleCompile = function (err, stats) {
-    if (err || stats.hasErrors() || stats.hasWarnings()) {
-      process.exit(1)
-    } else {
-      process.exit(0)
-    }
-  }
+if (isSmokeTest) handleCompile = function (err, stats) {
+  if (err || stats.hasErrors() || stats.hasWarnings()) process.exit(1)
+  else process.exit(0)
 }
 
 var friendlySyntaxErrorLabel = 'Syntax error:'
@@ -81,9 +76,7 @@ function setupCompiler (port) {
     if (hasErrors) {
       console.log(chalk.red('Failed to compile.'))
       console.log()
-      if (formattedErrors.some(isLikelyASyntaxError)) {
-        formattedErrors = formattedErrors.filter(isLikelyASyntaxError)
-      }
+      if (formattedErrors.some(isLikelyASyntaxError)) formattedErrors = formattedErrors.filter(isLikelyASyntaxError)
       formattedErrors.forEach(message => {
         console.log(message)
         console.log()
@@ -105,17 +98,15 @@ function setupCompiler (port) {
 }
 
 function openBrowser (port) {
-  if (process.platform === 'darwin') {
-    try {
-      execSync('ps cax | grep "Google Chrome"')
-      execSync(
+  if (process.platform === 'darwin') try {
+    execSync('ps cax | grep "Google Chrome"')
+    execSync(
         'osascript chrome.applescript http://localhost:' + port + '/',
         {cwd: path.join(__dirname, 'utils'), stdio: 'ignore'}
       )
-      return
-    } catch (err) {
-      // Ignore errors.
-    }
+    return
+  } catch (err) {
+    // Ignore errors.
   }
   opn('http://localhost:' + port + '/')
 }
@@ -130,9 +121,7 @@ function runDevServer (port) {
       ignored: /node_modules/
     }
   }).listen(port, (err, result) => {
-    if (err) {
-      return console.log(err)
-    }
+    if (err) return console.log(err)
 
     clearConsole()
     console.log(chalk.cyan('Starting the development server...'))
@@ -158,8 +147,6 @@ detect(DEFAULT_PORT).then(port => {
     '\n\nWould you like to run the app on another port instead?'
 
   prompt(question, true).then(shouldChangePort => {
-    if (shouldChangePort) {
-      run(port)
-    }
+    if (shouldChangePort) run(port)
   })
 })
