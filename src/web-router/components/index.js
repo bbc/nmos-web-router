@@ -10,7 +10,9 @@ let WebRouter = ({data, view, actions}) => {
   if (webRouterContainer !== null && view.scroll) webRouterContainer.scrollTop = 0
 
   return <div className='web-router web-router/choose/route/confirm'>
-    <div className='container choose left'></div>
+    <div className='container choose left'>
+      <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
+    </div>
     <div className='container route center'>
       <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
       <Connections
@@ -18,7 +20,9 @@ let WebRouter = ({data, view, actions}) => {
         actions={actions}
         />
     </div>
-    <div className='container confirm right'>CONFIRM</div>
+    <div className='container confirm right'>
+      <LayoutItem><DoublePica>Confirm</DoublePica></LayoutItem>
+    </div>
   </div>
 }
 
