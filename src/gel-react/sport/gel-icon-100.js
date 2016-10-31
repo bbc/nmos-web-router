@@ -19,5 +19,5 @@ exports.default = function () {
       { fill: '#FFE710' },
       react.createElement('path', { d: 'M7 8h1v1H7zM7 10h1v1H7zM7 12h1v1H7zM7 16h1v1H7zM7 22h1v1H7zM7 24h1v1H7zM7 14h1v1H7zM7 20h1v1H7zM7 18h1v1H7zM5 10h1v1H5z' })
     )
-  );
-};
+  )
+}

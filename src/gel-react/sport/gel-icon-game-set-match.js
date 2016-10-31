@@ -8,5 +8,5 @@ exports.default = function () {
     react.createElement('path', { d: 'M19.8 7.9v-.7c2.1-.1 5.1.2 5.9.6l-.4.6c-.5-.3-3.3-.6-5.5-.5z' }),
     react.createElement('path', { d: 'M25.3 8.4c-.7-.4-2.5-2.9-3.5-4.8l.6-.3c1 2 2.7 4.2 3.2 4.5l-.3.6zM29.5 10l-.4.7L26 8.9l.4-.7z' }),
     react.createElement('path', { d: 'M25.7 7.9l-.3.6-.7-.4.4-.6z' })
-  );
-};
+  )
+}

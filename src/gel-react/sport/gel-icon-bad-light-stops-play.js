@@ -12,5 +12,5 @@ exports.default = function () {
     react.createElement('circle', { fill: '#FFE710', cx: '8.5', cy: '4.5', r: '1' }),
     react.createElement('path', { fill: '#B3B3B3', d: 'M0 28h32v4H0zM11 28H9l.7-16h.6z' }),
     react.createElement('path', { fill: '#FFF', d: 'M26 25.9V32h1.9v-7.1c0-.5-.4-.9-.9-.9s-.9.4-.9.9v.1H25v-.1c0-.5-.4-.9-.9-.9s-.9.4-.9.9v.1H22v-.1c0-.5-.4-.9-.9-.9s-.9.4-.9.9V32h1.9v-6.1h1.2V32H25v-6.1h1z' })
-  );
-};
+  )
+}

@@ -17,5 +17,5 @@ exports.default = function () {
         react.createElement('circle', { cx: '6.5', cy: '21.9', r: '2.2' })
       )
     )
-  );
-};
+  )
+}

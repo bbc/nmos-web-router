@@ -10,5 +10,5 @@ exports.default = function () {
       null,
       react.createElement('path', { d: 'M22.9 12H32v2.9h-8.5z' })
     )
-  );
-};
+  )
+}

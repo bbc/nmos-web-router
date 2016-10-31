@@ -11,5 +11,5 @@ exports.default = function () {
     react.createElement('circle', { cx: '16', cy: '29', r: '3' }),
     react.createElement('circle', { cx: '7', cy: '25', r: '3' }),
     react.createElement('circle', { cx: '25', cy: '25', r: '3' })
-  );
-};
+  )
+}

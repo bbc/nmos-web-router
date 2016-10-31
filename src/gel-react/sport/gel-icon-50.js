@@ -14,5 +14,5 @@ exports.default = function () {
       { fill: '#FFE710' },
       react.createElement('path', { d: 'M17 10h1v1h-1zM17 12h1v1h-1zM17 16h1v1h-1zM19 8h1v1h-1zM19 10h1v1h-1zM17 22h1v1h-1zM19 22h1v1h-1zM19 24h1v1h-1zM21 8h1v1h-1zM23 10h1v1h-1zM21 10h1v1h-1zM23 16h1v1h-1zM23 18h1v1h-1zM23 22h1v1h-1zM21 22h1v1h-1zM21 24h1v1h-1zM17 14h1v1h-1zM17 20h1v1h-1zM17 18h1v1h-1zM23 14h1v1h-1zM23 12h1v1h-1zM23 20h1v1h-1z' })
     )
-  );
-};
+  )
+}

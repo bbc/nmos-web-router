@@ -12,5 +12,5 @@ exports.default = function () {
     ),
     react.createElement('path', { fill: '#4E7A22', d: 'M0 28h32v4H0z' }),
     react.createElement('path', { d: 'M26 25.9V32h1.9v-7.1c0-.5-.4-.9-.9-.9s-.9.4-.9.9v.1H25v-.1c0-.5-.4-.9-.9-.9s-.9.4-.9.9v.1H22v-.1c0-.5-.4-.9-.9-.9s-.9.4-.9.9V32h1.9v-6.1h1.2V32H25v-6.1h1z' })
-  );
-};
+  )
+}

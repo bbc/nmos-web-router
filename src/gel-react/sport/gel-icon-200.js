@@ -15,5 +15,5 @@ exports.default = function () {
       react.createElement('path', { d: 'M22 10h1v1h-1zM22 12h1v1h-1zM22 16h1v1h-1zM24 8h1v1h-1zM24 10h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM24 24h1v1h-1zM26 8h1v1h-1zM28 10h1v1h-1zM26 10h1v1h-1zM28 16h1v1h-1zM28 18h1v1h-1zM28 22h1v1h-1zM26 22h1v1h-1zM26 24h1v1h-1zM22 14h1v1h-1zM22 20h1v1h-1zM22 18h1v1h-1zM28 14h1v1h-1zM28 12h1v1h-1zM28 20h1v1h-1z' })
     ),
     react.createElement('path', { fill: '#FFE710', d: 'M4 10h1v1H4zM6 16h1v1H6zM4 18h1v1H4zM4 20h1v1H4zM6 18h1v1H6zM4 22h1v1H4zM4 24h1v1H4zM8 8h1v1H8zM10 10h1v1h-1zM8 10h1v1H8zM8 16h1v1H8zM10 22h1v1h-1zM10 24h1v1h-1zM8 22h1v1H8zM6 22h1v1H6zM8 24h1v1H8zM6 24h1v1H6zM6 8h1v1H6zM8 14h1v1H8zM10 14h1v1h-1zM10 12h1v1h-1z' })
-  );
-};
+  )
+}

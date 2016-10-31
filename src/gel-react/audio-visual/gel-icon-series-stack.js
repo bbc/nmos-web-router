@@ -6,5 +6,5 @@ exports.default = function () {
     react.createElement('path', { d: 'M4 6h22v22h2V4H4z' }),
     react.createElement('path', { d: 'M8 0v2h22v22h2V0z' }),
     react.createElement('path', { d: 'M0 32h24V8H0v24zm4-20h16v16H4V12z' })
-  );
-};
+  )
+}

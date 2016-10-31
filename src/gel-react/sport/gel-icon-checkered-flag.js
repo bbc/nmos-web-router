@@ -35,5 +35,5 @@ exports.default = function () {
     react.createElement('path', { d: 'M0 3h1v27H0zM17 3h1v21h-1zM32 21h-1V0h1z' }),
     react.createElement('path', { fill: '#1C1C1C', d: 'M18 3l-3-3v3z' }),
     react.createElement('path', { d: 'M17 25v-1h1z' })
-  );
-};
+  )
+}

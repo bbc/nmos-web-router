@@ -13,5 +13,5 @@ exports.default = function () {
     react.createElement('circle', { cx: '27.5', cy: '9', r: '1.5' }),
     react.createElement('circle', { cx: '30.5', cy: '11.5', r: '1.5' }),
     react.createElement('path', { d: 'M23.5 11c-3 0-5.5 2.5-5.5 5.5 0 1.1.4 2.2 1 3.1l1 1.4v3l-1.4 2.3c-.4.6-.6 1.2-.6 2 0 2.1 1.7 3.8 3.7 3.8 1.7 0 3-1.1 3.5-2.6L28.8 18c.1-.5.2-1 .2-1.5 0-3-2.5-5.5-5.5-5.5z' })
-  );
-};
+  )
+}

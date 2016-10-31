@@ -13,5 +13,5 @@ exports.default = function () {
       react.createElement('path', { d: 'M19 25c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4' }),
       react.createElement('path', { d: 'M17 17l7 4-2 6 2 2h-4l1-7.9-4-2.6z' })
     )
-  );
-};
+  )
+}

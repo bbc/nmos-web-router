@@ -9,5 +9,5 @@ exports.default = function () {
       react.createElement('path', { d: 'M0 2v30l6-6h26V9.6L24.4 2H0z' }),
       react.createElement('path', { 'class': 'st3', d: 'M5 16.6h5v5H5zM13 16.6h5v5h-5zM21 16.6h5v5h-5z' })
     )
-  );
-};
+  )
+}

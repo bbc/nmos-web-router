@@ -8,5 +8,5 @@ exports.default = function () {
     react.createElement('path', { fill: '#FFD324', d: 'M15 0h17v21H15z' }),
     react.createElement('path', { fill: '#FFF', d: 'M18 24l-1 1V3h1z' }),
     react.createElement('path', { fill: '#1C1C1C', d: 'M18 3l-3-3v3z' })
-  );
-};
+  )
+}

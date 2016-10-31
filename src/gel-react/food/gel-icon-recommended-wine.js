@@ -9,5 +9,5 @@ exports.default = function () {
       null,
       react.createElement('path', { d: 'M10.198 27.752l6.541-11.326h-2.31L8.468 26.752l-4.274-2.466-1 1.732 10.278 5.934 1-1.733z' })
     )
-  );
-};
+  )
+}

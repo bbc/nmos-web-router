@@ -9,5 +9,5 @@ exports.default = function () {
       react.createElement('circle', { cx: '16', cy: '21', r: '6' }),
       react.createElement('path', { d: 'M16 0H4l6 6zM18 0l-7 7 5 5L28 0z' })
     )
-  );
-};
+  )
+}

@@ -21,5 +21,5 @@ exports.default = function () {
       { fill: '#FFE710' },
       react.createElement('path', { d: 'M27 10h1v1h-1zM27 12h1v1h-1zM27 14h1v1h-1zM27 18h1v1h-1zM27 20h1v1h-1zM27 22h1v1h-1zM29 10h1v1h-1zM29 12h1v1h-1zM29 14h1v1h-1zM29 18h1v1h-1zM29 20h1v1h-1zM29 22h1v1h-1z' })
     )
-  );
-};
+  )
+}

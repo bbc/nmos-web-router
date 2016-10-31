@@ -8,5 +8,5 @@ exports.default = function () {
       { id: 'Layer_2' },
       react.createElement('path', { d: 'M26 32H6L5 11h4l.053 15h1.951L11 11h4l.023 15L17 25.971V11h4v15h2.014L23 11h4zM20.982 0h-9l-1 1v1h11V1zM28 9H4V5l2-1h20l2 1z' })
     )
-  );
-};
+  )
+}

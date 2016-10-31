@@ -14,5 +14,5 @@ exports.default = function () {
       null,
       react.createElement('path', { fill: '#68A5D8', d: 'M14.1 18.4l.4-4.7-4 2.3c-.7.4-1.2 1.2-1.2 2.1 0 1.3 1.1 2.4 2.4 2.4 1.3.1 2.3-.9 2.4-2.1z' })
     )
-  );
-};
+  )
+}

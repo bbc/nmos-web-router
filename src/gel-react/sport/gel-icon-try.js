@@ -15,5 +15,5 @@ exports.default = function () {
       null,
       react.createElement('path', { d: 'M23.3 8l-6.5 2.3-3.3-.8L7 10 1.3 0H0l5 13 11 2h5.5l-.8-1.6zM24.9 12.5l1.8-3L25.3 8h-.6L22 13.3l.7 1.7H32v-1.7z' })
     )
-  );
-};
+  )
+}
