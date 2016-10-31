@@ -14,17 +14,11 @@
   }
 }
 
-@keyframes rotate-button {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .loading-container {
+  & .gel-icon-loading {
+    animation: rotate 1s infinite linear;
+  }
+
   & .header {
     margin-bottom: 1em;
 
@@ -46,10 +40,6 @@
   & .not-loaded {
     background-color: var(--not-loaded);
     border-color: var(--not-loaded);
-
-    & .gel-icon {
-      animation: rotate 1s infinite linear;
-    }
   }
 
   & .errored {
