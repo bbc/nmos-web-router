@@ -4,7 +4,7 @@ This is the new version of ipp-web
 
 ## Development
 
-### NPM Tasks
+### NPM Scripts
 
 ```bash
 npm run gel # does a check out of the gel icon assets and puts them in src for building
@@ -50,9 +50,9 @@ all tests live in `__tests__` and are named `*.spec.js`
 ### Docker
 
 ```bash
-./tasks/build.sh # creates the docker image and also copies the build file for deploying
-./tasks/dev.sh # starts `npm run dev` from the container with the container name `ips-web-dev`
-./tasks/start.sh # starts `npm start` from the container with the container name `ips-web-start`
+./scripts/build.sh # creates the docker image and also copies the build file for deploying
+./scripts/dev.sh # starts `npm run dev` from the container with the container name `ips-web-dev`
+./scripts/start.sh # starts `npm start` from the container with the container name `ips-web-start`
 ```
 
 ### Ubiquitous Language

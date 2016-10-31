@@ -77,11 +77,11 @@
   },
   "scripts": {
     "styles": "postcss-reloader build",
-    "dev": "postcss-reloader start | node ./tasks/start.js",
-    "dev-test": "node ./tasks/watch-test.js",
-    "build": "rm -rf build && npm run styles && node tasks/build.js && cp -r build ips-web && mv ips-web build/ips-web",
-    "start": "npm run build && echo http://localhost:7942 && node ./tasks/server.js",
-    "lint": "node ./tasks/lint.js",
+    "dev": "postcss-reloader start | node ./scripts/start.js",
+    "dev-test": "node ./scripts/watch-test.js",
+    "build": "rm -rf build && npm run styles && node scripts/build.js && cp -r build ips-web && mv ips-web build/ips-web",
+    "start": "npm run build && echo http://localhost:7942 && node ./scripts/server.js",
+    "lint": "node ./scripts/lint.js",
     "test": "npm run lint && jest",
     "jest": "jest"
   },

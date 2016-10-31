@@ -24,13 +24,12 @@ function js () {
   try {
     const CLIEngine = require('eslint').CLIEngine
     let eslint = new CLIEngine({
-      ignorePattern: ['src/gel-react/**/*.js'],
       configFile: './.eslintrc.json'
     })
     let srcResults = eslint.executeOnFiles([
       'src',
       '__tests__',
-      'tasks'
+      'scripts'
     ]).results
 
     let filtered = srcResults

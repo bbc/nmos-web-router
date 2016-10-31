@@ -169,7 +169,7 @@ If you need to update the icons do the following
 
 ```bash
 git clone git@github.com:bbc/gel-iconography-assets.git gel-iconography-assets || pushd gel-iconography-assets && git pull && popd
-node ./tasks/create-icons.js
+node ./scripts/create-icons.js
 cat iconography.js | cut -d'.' -f2 | cut -d' ' -f1 | sed -e 's/^/* /' > icon-list.md
 ```
 
