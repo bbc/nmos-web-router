@@ -6,23 +6,26 @@ import { Layout, LayoutItem } from '../../gel-react/grid'
 import Button from '../../components/button-component'
 
 let Navigation = () => {
-  return <Layout className='navigation' layouts='flush'>
-    <Layout gels='9/12'>
-      <LayoutItem>
-        <Link
-          to='/'>
-          <Logo />
-        </Link>
-      </LayoutItem>
+  return <div>
+    <div className='navigation-background' />
+    <Layout className='navigation' layouts='flush'>
+      <Layout gels='9/12'>
+        <LayoutItem>
+          <Link
+            to='/'>
+            <Logo />
+          </Link>
+        </LayoutItem>
+      </Layout>
+      <Layout gels='3/12'>
+        <Button
+          fill
+          name='nav'
+          to='/web-router'
+          label='WEB ROUTER' />
+      </Layout>
     </Layout>
-    <Layout gels='3/12'>
-      <Button
-        fill
-        name='nav'
-        to='/web-router'
-        label='WEB ROUTER' />
-    </Layout>
-  </Layout>
+  </div>
 }
 
 export default Navigation

@@ -6,7 +6,6 @@
 }
 
 .navigation {
-  background-color: var(--navigation-background);
   height: 38px;
   padding: 12px 0;
 
@@ -15,6 +14,15 @@
     display: inline-block;
     margin-right: 1rem;
     margin-bottom: 0;
+  }
+
+  &-background {
+    width: 100%;
+    position: absolute;
+    height: calc(38px + 2 * 12px);
+    background-color: var(--navigation-background);
+    left: 0;
+    z-index: -1;
   }
 
   & .logo {
