@@ -15,19 +15,41 @@
   width: 100%;
   max-width: 1280px;
   height: 100%;
-  background-color: #ebebeb;
   top: calc(38px + 3 * 12px);
   left: 0;
   right: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   margin: auto;
 }
 
+.buttons {
+  width: 320px;
+  margin: auto;
+  margin-top: 6px;
+
+  & .button {
+    border: 1px solid #555;
+  }
+}
+
+.center-nav {
+  border-radius: 0;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+}
+
+.left-nav {
+  border-radius: 4px 0 0 4px;
+}
+
+.right-nav {
+  border-radius: 0 4px 4px 0;
+}
+
 .container {
-  background-color: #fff;
   position: absolute;
   height: 100%;
-  top: 0;
+  top: calc(38px + 12px);
   left: 0;
   transition: all 0.5s;
   overflow-y: scroll;

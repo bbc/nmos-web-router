@@ -4,12 +4,24 @@ import React, { PropTypes } from 'react'
 import Connections from './connections'
 import { DoublePica } from '../../gel-react/typography'
 import { LayoutItem } from '../../gel-react/grid'
+import Button from '../../components/button-component'
 
 let WebRouter = ({data, view, actions}) => {
   let webRouterContainer = document.querySelector('.web-router-container')
   if (webRouterContainer !== null && view.scroll) webRouterContainer.scrollTop = 0
 
   return <div className='web-router web-router/choose/route/confirm'>
+    <div className='buttons'>
+      <Button
+        className='nav left-nav'
+        label='CHOOSE' />
+      <Button
+        className='nav center-nav'
+        label='ROUTE' />
+      <Button
+        className='nav right-nav'
+        label='CONFIRM' />
+    </div>
     <div className='container choose left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
     </div>
