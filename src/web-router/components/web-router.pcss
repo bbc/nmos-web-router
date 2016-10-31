@@ -1,47 +1,186 @@
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
 .web-router {
-  & .title {
-    display: block;
-    margin-bottom: 1em;
-  }
+  position: absolute;
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  background-color: #ebebeb;
+  top: calc(38px + 3 * 12px);
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  margin: auto;
+}
 
-  &-container {
-    position: absolute;
-    width: 97%;
-    height: 100%;
-    overflow-x: hidden;
-    padding: 0;
-  }
+.container {
+  background-color: #fff;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+  overflow-y: scroll;
+  width: 100%;
+}
 
-  & .connections,
-  & .confirmation {
-    position: absolute;
-    display: inline-block;
-    width: 98%;
-    margin-bottom: 2em;
-    transition: transform 1s, width 1s;
-  }
-
-  &-confirmation  .connections {
-    transform: translateX(-110%);
-  }
-
-  &-connections  .confirmation {
-    transform: translateX(110%);
-  }
-
-  &-connections-confirmation {
-    & .connections {
-      transform: translateX(0%);
-    }
-
-    & .confirmation {
-      transform: translateX(99%);
-    }
+@media (min-width: 960px) {
+  .container {
+    width: 50%;
   }
 }
 
-@media (max-width: 56.25em) {
-  .web-router .split {
-    display: none;
+@media (min-width: 1200px) {
+  .container {
+    width: 33.3333%;
+  }
+}
+
+.web-router\/choose\/route\/confirm .left {
+  transform: translateX(-100%);
+}
+
+.web-router\/choose\/route\/confirm .center {
+  transform: translateX(0%);
+}
+
+.web-router\/choose\/route\/confirm .right {
+  transform: translateX(100%);
+}
+
+.web-router\/choose\/route .left {
+  transform: translateX(-100%);
+}
+
+.web-router\/choose\/route .center {
+  transform: translateX(0%);
+}
+
+.web-router\/choose\/route .right {
+  transform: translateX(100%);
+}
+
+.web-router\/route\/confirm .left {
+  transform: translateX(-100%);
+}
+
+.web-router\/route\/confirm .center {
+  transform: translateX(0%);
+}
+
+.web-router\/route\/confirm .right {
+  transform: translateX(100%);
+}
+
+.web-router\/route .left {
+  transform: translateX(-100%);
+}
+
+.web-router\/route .center {
+  transform: translateX(0%);
+}
+
+.web-router\/route .right {
+  transform: translateX(100%);
+}
+
+.web-router\/choose .left {
+  transform: translateX(0%);
+}
+
+.web-router\/choose .center {
+  transform: translateX(100%);
+}
+
+.web-router\/choose .right {
+  transform: translateX(200%);
+}
+
+.web-router\/confirm .left {
+  transform: translateX(-200%);
+}
+
+.web-router\/confirm .center {
+  transform: translateX(-100%);
+}
+
+.web-router\/confirm .right {
+  transform: translateX(0%);
+}
+
+@media (min-width: 960px) {
+  .web-router\/choose\/route\/confirm .left {
+    transform: translateX(0%);
+  }
+
+  .web-router\/choose\/route\/confirm .center {
+    transform: translateX(100%);
+  }
+
+  .web-router\/choose\/route\/confirm .right {
+    transform: translateX(200%);
+  }
+
+  .web-router\/choose .left,
+  .web-router\/route .left,
+  .web-router\/choose\/route .left {
+    transform: translateX(0%);
+  }
+
+  .web-router\/choose .center,
+  .web-router\/route .center,
+  .web-router\/choose\/route .center {
+    transform: translateX(100%);
+  }
+
+  .web-router\/choose .right,
+  .web-router\/route .right,
+  .web-router\/choose\/route .right {
+    transform: translateX(200%);
+  }
+
+  .web-router\/confirm .left,
+  .web-router\/route\/confirm .left {
+    transform: translateX(-100%);
+  }
+
+  .web-router\/confirm .center,
+  .web-router\/route\/confirm .center {
+    transform: translateX(0%);
+  }
+
+  .web-router\/confirm .right,
+  .web-router\/route\/confirm .right {
+    transform: translateX(100%);
+  }
+}
+
+@media (min-width: 1200px) {
+  .web-router\/choose\/route .left,
+  .web-router\/route\/confirm .left,
+  .web-router\/choose\/route\/confirm .left {
+    transform: translateX(0%);
+  }
+
+  .web-router\/choose\/route .center,
+  .web-router\/route\/confirm .center,
+  .web-router\/choose\/route\/confirm .center {
+    transform: translateX(100%);
+  }
+
+  .web-router\/choose\/route .right,
+  .web-router\/route\/confirm .right,
+  .web-router\/choose\/route\/confirm .right {
+    transform: translateX(200%);
   }
 }
