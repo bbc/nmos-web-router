@@ -14,7 +14,7 @@ let Connections = ({view, actions}) => {
         senders={view.senders}
         actions={actions}
         />
-      <LayoutItem gels='1/3' />
+      <LayoutItem gels='2/10' />
       <Receivers
         senders={view.senders}
         receivers={view.receivers}

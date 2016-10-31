@@ -4,7 +4,7 @@ import { LayoutItem } from '../../../gel-react/grid'
 import Sender from './sender-component'
 
 let Senders = ({senders, actions}) => {
-  return <LayoutItem className='routables senders' gels='1/3'>{
+  return <LayoutItem className='routables senders' gels='4/10'>{
       senders.map(sender => {
         return <Sender
           sender={sender}

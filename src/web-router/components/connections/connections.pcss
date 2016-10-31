@@ -21,7 +21,8 @@
     color: var(--color);
     transition: color 0.25s, fill 0.25s, background-color 0.25s;
 
-    & .label {
+    & .label,
+    & .description {
       font-weight: normal;
       text-align: right;
       overflow: hidden;
@@ -119,17 +120,17 @@
 
 .other {
   & .button {
-    background-color: color(var(--contracted) tint(50%));
-    fill: color(var(--color) tint(50%));
-    color: color(var(--color) tint(50%));
+    background-color: color(var(--contracted) tint(25%));
+    fill: color(var(--color) tint(25%));
+    color: color(var(--color) tint(25%));
   }
 
   & .unrouted {
-    background-color: color(var(--unrouted) tint(50%));
+    background-color: color(var(--unrouted) tint(25%));
   }
 
   & .routed {
-    background-color: color(var(--routed) tint(50%));
+    background-color: color(var(--routed) tint(25%));
   }
 }
 
@@ -154,9 +155,22 @@
       width: 100%;
     }
 
-    & .label {
+    & .label,
+    & .description {
+      width: 100%;
       text-align: center;
       white-space: normal;
+    }
+
+    & .description {
+      font-style: italic;
+    }
+
+    & .description-container {
+      line-height: 18px;
+      margin-left: 16px;
+      margin-right: 16px;
+      margin-bottom: 16px;
     }
 
     &:hover {
@@ -185,4 +199,8 @@
   & .short {
     visibility: hidden;
   }
+}
+
+.column-title {
+  text-align: center;
 }

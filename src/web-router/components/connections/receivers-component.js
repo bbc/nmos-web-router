@@ -4,7 +4,7 @@ import { LayoutItem } from '../../../gel-react/grid'
 import Receiver from './receiver-component'
 
 let Receivers = ({senders, receivers, actions}) => {
-  return <LayoutItem className='routables receivers' gels='1/3'>{
+  return <LayoutItem className='routables receivers' gels='4/10'>{
       receivers.map(receiver => {
         return <Receiver
           receiver={receiver}
