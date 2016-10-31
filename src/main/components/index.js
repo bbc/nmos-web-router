@@ -2,7 +2,7 @@ import './main.css'
 
 import React, { PropTypes } from 'react'
 
-import { Wrap } from '../../gel-react/grid'
+import { Wrap, Layout } from '../../gel-react/grid'
 
 import Navigation from './navigation-component'
 import Welcome from './welcome-compoment'
@@ -11,7 +11,7 @@ let Main = ({children}) => {
   children = children || <Welcome />
   return <Wrap>
     <Navigation />
-    <Wrap>{children}</Wrap>
+    <Layout>{children}</Layout>
   </Wrap>
 }
 

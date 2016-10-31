@@ -7,7 +7,7 @@ import Button from '../../components/button-component'
 
 let Navigation = () => {
   return <Layout className='navigation' layouts='flush'>
-    <Layout gels='1/2'>
+    <Layout gels='9/12'>
       <LayoutItem>
         <Link
           to='/'>
@@ -15,15 +15,12 @@ let Navigation = () => {
         </Link>
       </LayoutItem>
     </Layout>
-    <Layout gels='1/2' layouts='right'>
-      <LayoutItem gels='4/12'>
-        <Button
-          fill
-          name='nav'
-          to='/web-router'
-          label='WEB ROUTER' />
-      </LayoutItem>
-      <LayoutItem gels='1/12' />
+    <Layout gels='3/12'>
+      <Button
+        fill
+        name='nav'
+        to='/web-router'
+        label='WEB ROUTER' />
     </Layout>
   </Layout>
 }
