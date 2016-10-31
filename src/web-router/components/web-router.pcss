@@ -1,3 +1,13 @@
+:root {
+  --background: #fff;
+  --color: #555;
+  --button-border: #bbb;
+  --nav-color: #fff;
+  --nav-background: #33c3f0;
+  --notification: #ec5d57;
+  --diabled: #bbb;
+}
+
 .red {
   background-color: red;
 }
@@ -20,30 +30,6 @@
   right: 0;
   overflow: hidden;
   margin: auto;
-}
-
-.buttons {
-  width: 320px;
-  margin: auto;
-  margin-top: 6px;
-
-  & .button {
-    border: 1px solid #555;
-  }
-}
-
-.center-nav {
-  border-radius: 0;
-  border-left-width: 0 !important;
-  border-right-width: 0 !important;
-}
-
-.left-nav {
-  border-radius: 4px 0 0 4px;
-}
-
-.right-nav {
-  border-radius: 0 4px 4px 0;
 }
 
 .container {
@@ -204,5 +190,92 @@
   .web-router\/route\/confirm .right,
   .web-router\/choose\/route\/confirm .right {
     transform: translateX(200%);
+  }
+}
+
+.buttons {
+  width: 320px;
+  margin: auto;
+  margin-top: 6px;
+  transition: height 0.5s;
+  overflow: hidden;
+  height: 38px;
+
+  & .button {
+    border: 1px solid #555;
+  }
+}
+
+@media (min-width: 1200px) {
+  .buttons {
+    height: 0;
+  }
+
+  .container {
+    top: 0;
+  }
+}
+
+.center-nav {
+  border-radius: 0;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+}
+
+.left-nav {
+  border-radius: 4px 0 0 4px;
+}
+
+.right-nav {
+  border-radius: 0 4px 4px 0;
+}
+
+.inactive {
+  fill: color(var(--nav-color) tint(30%));
+  color: color(var(--nav-color) tint(30%));
+  background-color: color(var(--nav-background) tint(60%));
+  border-color: color(var(--nav-background) tint(60%));
+
+  &:hover {
+    fill: var(--nav-color);
+    color: var(--nav-color);
+    background-color: color(var(--nav-background) tint(30%));
+    border-color: color(var(--nav-background) tint(30%));
+  }
+}
+
+.active {
+  fill: var(--nav-color);
+  color: var(--nav-color);
+  background-color: var(--nav-background);
+  border-color: var(--nav-background);
+
+  &:hover {
+    cursor: initial;
+  }
+}
+
+.notification {
+  fill: color(var(--nav-color) tint(30%));
+  color: color(var(--nav-color) tint(30%));
+  background-color: color(var(--notification) tint(30%));
+  border-color: color(var(--notification) tint(30%));
+
+  &:hover {
+    fill: var(--nav-color);
+    color: var(--nav-color);
+    background-color: var(--notification);
+    border-color: var(--notification);
+  }
+}
+
+.disabled {
+  fill: var(--diabled);
+  color: var(--diabled);
+  background-color: var(--nav-color);
+  border-color: var(--nav-color);
+
+  &:hover {
+    cursor: initial;
   }
 }

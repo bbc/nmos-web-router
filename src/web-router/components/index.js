@@ -13,13 +13,13 @@ let WebRouter = ({data, view, actions}) => {
   return <div className='web-router web-router/choose/route/confirm'>
     <div className='buttons'>
       <Button
-        className='nav left-nav'
+        className='left-nav inactive'
         label='CHOOSE' />
       <Button
-        className='nav center-nav'
+        className='center-nav active'
         label='ROUTE' />
       <Button
-        className='nav right-nav'
+        className='right-nav disabled'
         label='CONFIRM' />
     </div>
     <div className='container choose left'>
