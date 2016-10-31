@@ -5,7 +5,6 @@ import { Layout, LayoutItem } from '../../../gel-react/grid'
 import { LongPrimer, Pica } from '../../../gel-react/typography'
 
 let Sender = ({sender, actions}) => {
-  console.log(sender)
   return <LayoutItem gels='1/1' className={`routable ${sender.state}`}>
     <div className='short'>
       <Button
