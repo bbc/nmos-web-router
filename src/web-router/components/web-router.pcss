@@ -3,6 +3,27 @@
   --active: #33c3f0;
   --disabled: #bbb;
   --notification: #ec5d57;
+  --active-nav: {
+    fill: var(--button-color);
+    color: var(--button-color);
+    background-color: var(--active);
+
+    &:hover {
+      cursor: initial;
+    }
+  }
+
+  --inactive-nav: {
+    fill: color(var(--button-color) tint(30%));
+    color: color(var(--button-color) tint(30%));
+    background-color: color(var(--active) tint(60%));
+
+    &:hover {
+      fill: var(--button-color);
+      color: var(--button-color);
+      background-color: color(var(--active) tint(30%));
+    }
+  }
 }
 
 .web-router {
@@ -70,6 +91,27 @@
 }
 
 .web-router {
+  /* Need to put this in the correct location when have all three views */
+  & .right {
+    transform: translateX(200%);
+  }
+
+  & .left {
+    transform: translateX(-100%);
+  }
+
+  & .center {
+    transform: translateX(0%);
+  }
+
+  & .route-nav {
+    @apply --active-nav;
+  }
+
+  & .choose-nav {
+    @apply --inactive-nav;
+  }
+
   &\/route {
     & .left {
       transform: translateX(-100%);
@@ -79,30 +121,12 @@
       transform: translateX(0%);
     }
 
-    & .right {
-      transform: translateX(100%);
-    }
-
     & .route-nav {
-      fill: var(--button-color);
-      color: var(--button-color);
-      background-color: var(--active);
-
-      &:hover {
-        cursor: initial;
-      }
+      @apply --active-nav;
     }
 
     & .choose-nav {
-      fill: color(var(--button-color) tint(30%));
-      color: color(var(--button-color) tint(30%));
-      background-color: color(var(--active) tint(60%));
-
-      &:hover {
-        fill: var(--button-color);
-        color: var(--button-color);
-        background-color: color(var(--active) tint(30%));
-      }
+      @apply --inactive-nav;
     }
   }
 
@@ -115,30 +139,12 @@
       transform: translateX(100%);
     }
 
-    & .right {
-      transform: translateX(200%);
+    & .route-nav {
+      @apply --inactive-nav;
     }
 
     & .choose-nav {
-      fill: var(--button-color);
-      color: var(--button-color);
-      background-color: var(--active);
-
-      &:hover {
-        cursor: initial;
-      }
-    }
-
-    & .route-nav {
-      fill: color(var(--button-color) tint(30%));
-      color: color(var(--button-color) tint(30%));
-      background-color: color(var(--active) tint(60%));
-
-      &:hover {
-        fill: var(--button-color);
-        color: var(--button-color);
-        background-color: color(var(--active) tint(30%));
-      }
+      @apply --active-nav;
     }
   }
 }
@@ -150,18 +156,12 @@
   }
 
   .web-router {
-    &\/route {
-      & .left {
-        transform: translateX(0%);
-      }
+    & .left {
+      transform: translateX(0%);
+    }
 
-      & .center {
-        transform: translateX(100%);
-      }
-
-      & .right {
-        transform: translateX(200%);
-      }
+    & .center {
+      transform: translateX(100%);
     }
   }
 
