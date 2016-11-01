@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react'
 import Icon from './icon-component'
 import Button from '../../../components/button-component'
-import { LayoutItem } from '../../../gel-react/grid'
 
 let Sender = ({sender, actions}) => {
-  return <LayoutItem gels='1/1' className={`routable ${sender.state}`}>
+  return <div className={`routable ${sender.state}`}>
     <div className='short'>
       <Button
         onClick={function () {
@@ -14,9 +13,11 @@ let Sender = ({sender, actions}) => {
         icon={<Icon format={sender.format} />}
         label={sender.label}
         />
-      <div className={`node ${sender.node.state}`} />
+      <div className='node-container'>
+        <div className={`node ${sender.node.state}`} />
+      </div>
     </div>
-  </LayoutItem>
+  </div>
 }
 
 Sender.propTypes = {

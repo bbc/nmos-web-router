@@ -2,17 +2,9 @@ import React, { PropTypes } from 'react'
 import Icon from './icon-component'
 import { No } from '../../../gel-react/iconography'
 import Button from '../../../components/button-component'
-import { LayoutItem } from '../../../gel-react/grid'
 
 let Receiver = ({senders, receiver, actions}) => {
-  return <LayoutItem gels='1/1' className={`routable ${receiver.state}`}>
-    <div
-      onClick={function () {
-        actions.unroute(receiver)
-      }}
-      className={`node ${receiver.node.state}`}>
-      <No />
-    </div>
+  return <div className={`routable ${receiver.state}`}>
     <Button
       onClick={function () {
         if (receiver.state.includes('selectable')) actions.route(receiver, senders)
@@ -21,7 +13,16 @@ let Receiver = ({senders, receiver, actions}) => {
       label={receiver.label}
       fill
       />
-  </LayoutItem>
+    <div className={`node-container node-container-${receiver.node.state}`}>
+      <div
+        onClick={function () {
+          actions.unroute(receiver)
+        }}
+        className={`node ${receiver.node.state}`}>
+        <No />
+      </div>
+    </div>
+  </div>
 }
 
 Receiver.propTypes = {

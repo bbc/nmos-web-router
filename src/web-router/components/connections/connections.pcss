@@ -16,12 +16,16 @@
   margin-right: 16px;
 }
 
+.short {
+  height: 38px;
+}
+
 .routable {
+  height: 38px;
   margin-top: 8px;
 
   & .button {
     cursor: initial;
-    width: 90%;
     border-radius: 0;
     border: none;
     fill: var(--color);
@@ -39,10 +43,19 @@
   }
 }
 
-.node {
-  z-index: -1;
+.node-container {
   position: relative;
-  display: inline-block;
+  top: -38px;
+  height: 38px;
+  z-index: -1;
+
+  &-routed {
+    z-index: 1;
+  }
+}
+
+.node {
+  position: absolute;
   width: var(--node-width);
   height: var(--node-width);
   border-radius: 90px;
@@ -59,11 +72,15 @@
 }
 
 .senders .node {
-  transform: translateX(-12px);
+  top: 6px;
+  right: 0;
+  transform: translateX(12px);
 }
 
 .receivers .node {
-  transform: translateX(12px);
+  top: 6px;
+  left: 0;
+  transform: translateX(-12px);
 
   & .gel-icon {
     fill: transparent;
@@ -82,7 +99,7 @@
 .receivers .routed,
 .receivers .remove {
   z-index: 1;
-  transform: translateX(-6px);
+  transform: translateX(-26px);
 
   & .gel-icon {
     fill: var(--remove-icon);
