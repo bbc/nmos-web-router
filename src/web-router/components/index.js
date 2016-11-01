@@ -5,6 +5,7 @@ import Connections from './connections'
 import { DoublePica } from '../../gel-react/typography'
 import { LayoutItem } from '../../gel-react/grid'
 import Buttons from './buttons-component'
+import ExpandedSender from './connections/expanded-sender-component'
 
 let WebRouter = ({data, view, actions}) => {
   return <div className={`web-router web-router${view.location}`}>
@@ -20,7 +21,10 @@ let WebRouter = ({data, view, actions}) => {
         />
     </div>
     <div className='expanded-sender-container route center'>
-      <div className='expanded-sender'></div>
+      <ExpandedSender
+        sender={view.connections.expandedSender}
+        actions={actions}
+        />
     </div>
     <div className='container confirm right'>
       <LayoutItem><DoublePica>Confirm</DoublePica></LayoutItem>

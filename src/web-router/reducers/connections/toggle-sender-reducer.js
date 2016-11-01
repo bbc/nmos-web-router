@@ -20,9 +20,12 @@ export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
   let connections = view.connections
 
+  connections.expandedSender = { state: 'contracted', node: {} }
   connections.senders = connections.senders.map(sender => {
     let state = getSenderState(toggled, expanding, sender)
-    return Object.assign({}, sender, { state })
+    let updatedSender = Object.assign({}, sender, { state })
+    if (state.includes('expanded')) connections.expandedSender = updatedSender
+    return updatedSender
   })
 
   connections.receivers = connections.receivers.map(receiver => {

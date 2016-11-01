@@ -19,6 +19,10 @@ export default {
         errored: []
       },
       connections: {
+        expandedSender: {
+          state: 'contracted',
+          node: {}
+        },
         senders: [],
         receivers: []
       }

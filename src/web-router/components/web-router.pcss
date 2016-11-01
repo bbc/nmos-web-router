@@ -48,12 +48,6 @@
   margin: auto;
 }
 
-.container {
-  height: 90%;
-  left: 0;
-  overflow-y: scroll;
-}
-
 .container,
 .expanded-sender-container {
   position: absolute;
@@ -67,7 +61,18 @@
   }
 }
 
+.container {
+  height: 90%;
+  left: 0;
+  overflow-y: scroll;
+}
+
+.expanded-sender-container {
+  height: 0;
+}
+
 .expanded-sender {
+  height: 0;
   margin-top: 88px;
   margin-left: 112px;
 }
