@@ -9,7 +9,7 @@ import Receivers from './receivers-component'
 let Connections = ({view, actions}) => {
   return <Layout className={'connections'}>
     <Header />
-    <LayoutItem gels='1/1'>
+    <Layout gels='1/1' layouts='flush'>
       <Senders
         senders={view.senders}
         actions={actions}
@@ -20,7 +20,7 @@ let Connections = ({view, actions}) => {
         receivers={view.receivers}
         actions={actions}
         />
-    </LayoutItem>
+    </Layout>
   </Layout>
 }
 
