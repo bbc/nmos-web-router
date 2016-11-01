@@ -4,24 +4,11 @@ import React, { PropTypes } from 'react'
 import Connections from './connections'
 import { DoublePica } from '../../gel-react/typography'
 import { LayoutItem } from '../../gel-react/grid'
-import Button from '../../components/button-component'
+import Buttons from './buttons-component'
 
 let WebRouter = ({data, view, actions}) => {
   return <div className={`web-router web-router${view.location}`}>
-    <div className='buttons-container'>
-      <div className='buttons'>
-        <Button
-          to='/web-router/choose'
-          fill
-          className='choose-nav left-nav nav-1/2'
-          label='CHOOSE' />
-        <Button
-          to='/web-router/route'
-          fill
-          className='route-nav right-nav nav-1/2'
-          label='ROUTE' />
-      </div>
-    </div>
+    <Buttons />
     <div className='container choose left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
     </div>
@@ -31,6 +18,9 @@ let WebRouter = ({data, view, actions}) => {
         view={view.connections}
         actions={actions}
         />
+    </div>
+    <div className='expanded-sender-container route center'>
+      <div className='expanded-sender'></div>
     </div>
     <div className='container confirm right'>
       <LayoutItem><DoublePica>Confirm</DoublePica></LayoutItem>

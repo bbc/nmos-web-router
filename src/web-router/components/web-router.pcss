@@ -1,3 +1,7 @@
+@custom-media --mobile (min-width: 640px);
+@custom-media --tablet (min-width: 960px);
+@custom-media --desktop (min-width: 1280px);
+
 :root {
   --button-color: #fff;
   --active: #33c3f0;
@@ -46,18 +50,27 @@
 }
 
 .container {
-  position: absolute;
-  height: 100%;
-  top: calc(38px + 12px);
+  height: 90%;
   left: 0;
-  transition: all 0.5s;
   overflow-y: scroll;
-  width: 100%;
+}
 
-  @media (min-width: 1000px) {
+.container,
+.expanded-sender-container {
+  position: absolute;
+  top: calc(38px + 12px);
+  width: 100%;
+  transition: all 0.5s;
+
+  @media (--tablet) {
     top: 0;
     width: 50%;
   }
+}
+
+.expanded-sender {
+  margin-top: 88px;
+  margin-left: 112px;
 }
 
 .buttons-container {
@@ -67,7 +80,7 @@
   transition: height 0.5s;
   height: 38px;
 
-  @media (min-width: 1000px) {
+  @media (--tablet) {
     height: 0;
   }
 }
@@ -146,7 +159,7 @@
     }
   }
 
-  @media (min-width: 1000px) {
+  @media (--tablet) {
     & .left {
       @apply --center;
     }
