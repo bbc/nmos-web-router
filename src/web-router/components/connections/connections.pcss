@@ -159,17 +159,31 @@
 }
 
 .full {
-  top: 30%;
+  top: 33.3333%;
   margin-left: 10%;
-  position: fixed;
-  width: 40%;
+  position: absolute;
+  width: 33.3333%;
 
   & .button-container {
-    display: inline-block;
+    width: 100%;
+    position: absolute;
+  }
+
+  & .node-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+  }
+
+  & .node {
+    right: 0;
+    top: 50%;
+    transform: translate(12px, -50%);
   }
 
   & .button {
-    width: 300px;
     height: auto;
     background-color: color(var(--expanded) tint(30%));
 
@@ -201,10 +215,6 @@
       cursor: pointer;
       background-color: var(--expanded);
     }
-  }
-
-  & .node {
-    transform: translate(-12px, 100%);
   }
 }
 

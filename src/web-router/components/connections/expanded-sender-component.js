@@ -23,8 +23,10 @@ let ExpandedSender = ({sender, actions}) => {
             <LongPrimer className='description'>{sender.description}</LongPrimer>
           </LayoutItem>
         </Layout>
+        <div className='node-container'>
+          <div className={`node ${sender.node.state}`} />
+        </div>
       </div>
-      <div className={`node ${sender.node.state}`} />
     </div>
   </LayoutItem>
 }
