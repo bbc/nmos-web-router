@@ -12,7 +12,6 @@
       cursor: initial;
     }
   }
-
   --inactive-nav: {
     fill: color(var(--button-color) tint(30%));
     color: color(var(--button-color) tint(30%));
@@ -24,17 +23,32 @@
       background-color: color(var(--active) tint(30%));
     }
   }
+  --far-left: {
+    transform: translateX(-200%);
+  }
+  --left: {
+    transform: translateX(-100%);
+  }
+  --center: {
+    transform: translateX(0%);
+  }
+  --right: {
+    transform: translateX(100%);
+  }
+  --far-right: {
+    transform: translateX(200%);
+  }
 }
 
 .web-router {
   position: absolute;
+  overflow: hidden;
   width: 100%;
   max-width: 1280px;
   height: 100%;
   top: calc(38px + 3 * 12px);
   left: 0;
   right: 0;
-  overflow: hidden;
   margin: auto;
 }
 
@@ -46,14 +60,23 @@
   transition: all 0.5s;
   overflow-y: scroll;
   width: 100%;
+
+  @media (min-width: 1000px) {
+    top: 0;
+    width: 50%;
+  }
 }
 
 .buttons-container {
   position: absolute;
-  height: 38px;
   width: 100%;
   overflow: hidden;
   transition: height 0.5s;
+  height: 38px;
+
+  @media (min-width: 1000px) {
+    height: 0;
+  }
 }
 
 .buttons {
@@ -91,17 +114,17 @@
 }
 
 .web-router {
-  /* Need to put this in the correct location when have all three views */
+  /* PLACEHOLDER until third view is ready */
   & .right {
-    transform: translateX(200%);
+    @apply --far-right;
   }
 
   & .left {
-    transform: translateX(-100%);
+    @apply --left;
   }
 
   & .center {
-    transform: translateX(0%);
+    @apply --center;
   }
 
   & .route-nav {
@@ -112,31 +135,13 @@
     @apply --inactive-nav;
   }
 
-  &\/route {
-    & .left {
-      transform: translateX(-100%);
-    }
-
-    & .center {
-      transform: translateX(0%);
-    }
-
-    & .route-nav {
-      @apply --active-nav;
-    }
-
-    & .choose-nav {
-      @apply --inactive-nav;
-    }
-  }
-
   &\/choose {
     & .left {
-      transform: translateX(0%);
+      @apply --center;
     }
 
     & .center {
-      transform: translateX(100%);
+      @apply --right;
     }
 
     & .route-nav {
@@ -147,38 +152,14 @@
       @apply --active-nav;
     }
   }
-}
 
-@media (min-width: 1000px) {
-  .container {
-    top: 0;
-    width: 50%;
-  }
-
-  .web-router {
+  @media (min-width: 1000px) {
     & .left {
-      transform: translateX(0%);
+      @apply --center;
     }
 
     & .center {
-      transform: translateX(100%);
+      @apply --right;
     }
-  }
-
-  /* remove this when have all three views */
-  .buttons-container {
-    height: 0;
-  }
-}
-
-@media (min-width: 1200px) {
-  /* this is a placeholder so as not to loose the sizing with all three views */
-  .container-done {
-    top: 0;
-    width: 33.3333%;
-  }
-
-  .buttons-container {
-    height: 0;
   }
 }
