@@ -3,26 +3,19 @@
   --active: #33c3f0;
   --disabled: #bbb;
   --notification: #ec5d57;
+
   --active-nav: {
     fill: var(--button-color);
     color: var(--button-color);
     background-color: var(--active);
-
-    &:hover {
-      cursor: initial;
-    }
   }
+
   --inactive-nav: {
     fill: color(var(--button-color) tint(30%));
     color: color(var(--button-color) tint(30%));
     background-color: color(var(--active) tint(60%));
-
-    &:hover {
-      fill: var(--button-color);
-      color: var(--button-color);
-      background-color: color(var(--active) tint(30%));
-    }
   }
+
   --far-left: {
     transform: translateX(-200%);
   }
