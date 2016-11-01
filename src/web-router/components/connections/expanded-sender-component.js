@@ -4,8 +4,8 @@ import { Layout, LayoutItem } from '../../../gel-react/grid'
 import { LongPrimer, Pica } from '../../../gel-react/typography'
 
 let ExpandedSender = ({sender, actions}) => {
-  return <LayoutItem gels='1/1' className={`routable ${sender.state}`}>
-    <div className='full expanded-sender'>
+  return <div className={sender.state}>
+    <div className='full expanded-sender routable'>
       <div className='button-container'>
         <Layout
           layouts='flush'
@@ -28,7 +28,7 @@ let ExpandedSender = ({sender, actions}) => {
         </div>
       </div>
     </div>
-  </LayoutItem>
+  </div>
 }
 
 ExpandedSender.propTypes = {
