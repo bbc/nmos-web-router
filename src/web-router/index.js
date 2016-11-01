@@ -23,7 +23,8 @@ export default {
         receivers: []
       }
     },
-    initialised: false
+    initialised: false,
+    location: '/'
   },
   reducers,
   reducersAll: reducers.all,

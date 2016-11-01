@@ -7,20 +7,20 @@ import { LayoutItem } from '../../gel-react/grid'
 import Button from '../../components/button-component'
 
 let WebRouter = ({data, view, actions}) => {
-  let webRouterContainer = document.querySelector('.web-router-container')
-  if (webRouterContainer !== null && view.scroll) webRouterContainer.scrollTop = 0
-
-  return <div className='web-router web-router/choose/route/confirm'>
-    <div className='buttons'>
-      <Button
-        className='left-nav inactive'
-        label='CHOOSE' />
-      <Button
-        className='center-nav active'
-        label='ROUTE' />
-      <Button
-        className='right-nav disabled'
-        label='CONFIRM' />
+  return <div className={`web-router web-router${view.location}`}>
+    <div className='buttons-container'>
+      <div className='buttons'>
+        <Button
+          to='/web-router/choose'
+          fill
+          className='choose-nav left-nav nav-1/2'
+          label='CHOOSE' />
+        <Button
+          to='/web-router/route'
+          fill
+          className='route-nav right-nav nav-1/2'
+          label='ROUTE' />
+      </div>
     </div>
     <div className='container choose left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>

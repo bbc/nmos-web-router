@@ -1,8 +1,8 @@
 :root {
-  --nav-color: #fff;
-  --nav-background: #33c3f0;
+  --button-color: #fff;
+  --active: #33c3f0;
+  --disabled: #bbb;
   --notification: #ec5d57;
-  --diabled: #bbb;
 }
 
 .web-router {
@@ -27,177 +27,23 @@
   width: 100%;
 }
 
-@media (min-width: 1000px) {
-  .container {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 33.3333%;
-  }
-}
-
-.web-router\/choose\/route\/confirm .left {
-  transform: translateX(-100%);
-}
-
-.web-router\/choose\/route\/confirm .center {
-  transform: translateX(0%);
-}
-
-.web-router\/choose\/route\/confirm .right {
-  transform: translateX(100%);
-}
-
-.web-router\/choose\/route .left {
-  transform: translateX(-100%);
-}
-
-.web-router\/choose\/route .center {
-  transform: translateX(0%);
-}
-
-.web-router\/choose\/route .right {
-  transform: translateX(100%);
-}
-
-.web-router\/route\/confirm .left {
-  transform: translateX(-100%);
-}
-
-.web-router\/route\/confirm .center {
-  transform: translateX(0%);
-}
-
-.web-router\/route\/confirm .right {
-  transform: translateX(100%);
-}
-
-.web-router\/route .left {
-  transform: translateX(-100%);
-}
-
-.web-router\/route .center {
-  transform: translateX(0%);
-}
-
-.web-router\/route .right {
-  transform: translateX(100%);
-}
-
-.web-router\/choose .left {
-  transform: translateX(0%);
-}
-
-.web-router\/choose .center {
-  transform: translateX(100%);
-}
-
-.web-router\/choose .right {
-  transform: translateX(200%);
-}
-
-.web-router\/confirm .left {
-  transform: translateX(-200%);
-}
-
-.web-router\/confirm .center {
-  transform: translateX(-100%);
-}
-
-.web-router\/confirm .right {
-  transform: translateX(0%);
-}
-
-@media (min-width: 1000px) {
-  .web-router\/choose\/route\/confirm .left {
-    transform: translateX(0%);
-  }
-
-  .web-router\/choose\/route\/confirm .center {
-    transform: translateX(100%);
-  }
-
-  .web-router\/choose\/route\/confirm .right {
-    transform: translateX(200%);
-  }
-
-  .web-router\/choose .left,
-  .web-router\/route .left,
-  .web-router\/choose\/route .left {
-    transform: translateX(0%);
-  }
-
-  .web-router\/choose .center,
-  .web-router\/route .center,
-  .web-router\/choose\/route .center {
-    transform: translateX(100%);
-  }
-
-  .web-router\/choose .right,
-  .web-router\/route .right,
-  .web-router\/choose\/route .right {
-    transform: translateX(200%);
-  }
-
-  .web-router\/confirm .left,
-  .web-router\/route\/confirm .left {
-    transform: translateX(-100%);
-  }
-
-  .web-router\/confirm .center,
-  .web-router\/route\/confirm .center {
-    transform: translateX(0%);
-  }
-
-  .web-router\/confirm .right,
-  .web-router\/route\/confirm .right {
-    transform: translateX(100%);
-  }
-}
-
-@media (min-width: 1200px) {
-  .web-router\/choose\/route .left,
-  .web-router\/route\/confirm .left,
-  .web-router\/choose\/route\/confirm .left {
-    transform: translateX(0%);
-  }
-
-  .web-router\/choose\/route .center,
-  .web-router\/route\/confirm .center,
-  .web-router\/choose\/route\/confirm .center {
-    transform: translateX(100%);
-  }
-
-  .web-router\/choose\/route .right,
-  .web-router\/route\/confirm .right,
-  .web-router\/choose\/route\/confirm .right {
-    transform: translateX(200%);
-  }
+.buttons-container {
+  position: absolute;
+  height: 38px;
+  width: 100%;
+  overflow: hidden;
+  transition: height 0.5s;
 }
 
 .buttons {
-  width: 320px;
+  width: 360px;
+  position: absolute;
+  left: 0;
+  right: 0;
   margin: auto;
-  margin-top: 6px;
-  transition: height 0.5s;
-  overflow: hidden;
-  height: 38px;
 
   & .button {
     border: 1px solid #555;
-  }
-}
-
-@media (min-width: 1200px) {
-  .buttons {
-    height: 0;
-  }
-
-  .container {
-    top: 0;
   }
 }
 
@@ -215,46 +61,124 @@
   border-radius: 0 4px 4px 0;
 }
 
-.inactive {
-  fill: color(var(--nav-color) tint(30%));
-  color: color(var(--nav-color) tint(30%));
-  background-color: color(var(--nav-background) tint(60%));
+.nav-1\/2 {
+  width: 50%;
+}
 
-  &:hover {
-    fill: var(--nav-color);
-    color: var(--nav-color);
-    background-color: color(var(--nav-background) tint(30%));
+.nav-1\/3 {
+  width: 33.3333%;
+}
+
+.web-router {
+  &\/route {
+    & .left {
+      transform: translateX(-100%);
+    }
+
+    & .center {
+      transform: translateX(0%);
+    }
+
+    & .right {
+      transform: translateX(100%);
+    }
+
+    & .route-nav {
+      fill: var(--button-color);
+      color: var(--button-color);
+      background-color: var(--active);
+
+      &:hover {
+        cursor: initial;
+      }
+    }
+
+    & .choose-nav {
+      fill: color(var(--button-color) tint(30%));
+      color: color(var(--button-color) tint(30%));
+      background-color: color(var(--active) tint(60%));
+
+      &:hover {
+        fill: var(--button-color);
+        color: var(--button-color);
+        background-color: color(var(--active) tint(30%));
+      }
+    }
+  }
+
+  &\/choose {
+    & .left {
+      transform: translateX(0%);
+    }
+
+    & .center {
+      transform: translateX(100%);
+    }
+
+    & .right {
+      transform: translateX(200%);
+    }
+
+    & .choose-nav {
+      fill: var(--button-color);
+      color: var(--button-color);
+      background-color: var(--active);
+
+      &:hover {
+        cursor: initial;
+      }
+    }
+
+    & .route-nav {
+      fill: color(var(--button-color) tint(30%));
+      color: color(var(--button-color) tint(30%));
+      background-color: color(var(--active) tint(60%));
+
+      &:hover {
+        fill: var(--button-color);
+        color: var(--button-color);
+        background-color: color(var(--active) tint(30%));
+      }
+    }
   }
 }
 
-.active {
-  fill: var(--nav-color);
-  color: var(--nav-color);
-  background-color: var(--nav-background);
+@media (min-width: 1000px) {
+  .container {
+    top: 0;
+    width: 50%;
+  }
 
-  &:hover {
-    cursor: initial;
+  .web-router {
+    &\/route {
+      & .left {
+        transform: translateX(0%);
+      }
+
+      & .center {
+        transform: translateX(100%);
+      }
+
+      & .right {
+        transform: translateX(200%);
+      }
+    }
+  }
+
+  /* remove this when have all three views */
+  .buttons-container {
+    height: 0;
   }
 }
 
-.notification {
-  fill: color(var(--nav-color) tint(30%));
-  color: color(var(--nav-color) tint(30%));
-  background-color: color(var(--notification) tint(30%));
-
-  &:hover {
-    fill: var(--nav-color);
-    color: var(--nav-color);
-    background-color: var(--notification);
+@media (min-width: 1200px) {
+  /* this is a placeholder so as not to loose the sizing with all three views */
+  .container-done {
+    top: 0;
+    width: 33.3333%;
   }
-}
 
-.disabled {
-  fill: var(--diabled);
-  color: var(--diabled);
-  background-color: var(--nav-color);
-
-  &:hover {
-    cursor: initial;
+  .buttons-container {
+    height: 0;
   }
 }
