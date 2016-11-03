@@ -7,7 +7,7 @@ import Senders from './senders-component'
 import Receivers from './receivers-component'
 
 let Connections = ({view, actions}) => {
-  return <Layout className={'connections'}
+  return <Layout className='box'
     onClick={function () { if (view.expandedSender.state !== 'contracted') actions.toggleSender(view.expandedSender) }}>
     <Header />
     <Layout gels='1/1' layouts='flush'>

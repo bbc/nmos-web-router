@@ -2,6 +2,7 @@ import './web-router.css'
 
 import React, { PropTypes } from 'react'
 import Connections from './connections'
+import Choose from './choose'
 import { DoublePica } from '../../gel-react/typography'
 import { LayoutItem } from '../../gel-react/grid'
 import Buttons from './buttons-component'
@@ -12,6 +13,7 @@ let WebRouter = ({data, view, actions}) => {
     <Buttons />
     <div className='container choose left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
+      <Choose />
     </div>
     <div className='container route center'>
       <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
