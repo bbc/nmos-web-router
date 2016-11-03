@@ -16,7 +16,7 @@ function mapSenders (data) {
 
 function mapReceivers (data) {
   return data.receivers.map(receiver => {
-    receiver.state = 'contracted selectable'
+    receiver.state = 'contracted'
     receiver.node = {
       state: receiver.subscription.sender !== undefined ? 'routed' : 'unrouted'
     }
