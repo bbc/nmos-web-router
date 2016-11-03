@@ -3,7 +3,7 @@ import { LayoutItem } from '../../../gel-react/grid'
 import Routable from './routable-component'
 
 let Routables = ({routables, side}) => {
-  return <LayoutItem gels='4/10'>{
+  return <LayoutItem gels='1/2'>{
       routables.map((routable, index) => {
         return <Routable
           key={`${side}-${index}`}

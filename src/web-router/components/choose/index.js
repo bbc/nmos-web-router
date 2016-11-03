@@ -1,17 +1,16 @@
 import './choose.css'
 
 import React, { PropTypes } from 'react'
-import { Layout, LayoutItem } from '../../../gel-react/grid'
+import { Layout } from '../../../gel-react/grid'
 import Routables from './routables-component'
 
 let Choose = ({senders, receivers, actions}) => {
   return <Layout className='box' >
-    <Layout gels='1/1' layouts='flush'>
+    <Layout gels='1/1'>
       <Routables
         side='left'
         routables={senders}
         />
-      <LayoutItem gels='2/10' />
       <Routables
         side='right'
         routables={receivers}

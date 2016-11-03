@@ -181,3 +181,26 @@
   margin-left: 16px;
   margin-right: 16px;
 }
+
+.routable {
+  height: 38px;
+  margin-top: 8px;
+
+  & .button {
+    cursor: initial;
+    border-radius: 0;
+    border: none;
+    fill: var(--color);
+    color: var(--color);
+    transition: color 0.25s, fill 0.25s, background-color 0.25s;
+
+    & .label,
+    & .description {
+      font-weight: normal;
+      text-align: right;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

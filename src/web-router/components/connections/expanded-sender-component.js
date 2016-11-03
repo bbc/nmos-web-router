@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import Icon from './icon-component'
+import Icon from '../icon-component'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 import { LongPrimer, Pica } from '../../../gel-react/typography'
 
