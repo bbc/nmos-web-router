@@ -1,15 +1,18 @@
 :root {
   --background-color: #dfe3e2;
   --search-border: #555;
+  --color: #000;
 }
 
 .static .button {
-  transition: background-color 0.25s;
-  background-color: var(--background-color);
+  transition: background-color 0.25s !important;
+  background-color: var(--background-color) !important;
+  color: var(--color) !important;
+  fill: var(--color) !important;
 
   &:hover {
-    cursor: pointer;
-    background-color: color(var(--background-color) b(30%));
+    cursor: pointer !important;
+    background-color: color(var(--background-color) b(30%)) !important;
   }
 }
 

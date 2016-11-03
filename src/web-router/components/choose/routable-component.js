@@ -4,7 +4,7 @@ import Icon from '../icon-component'
 import { No } from '../../../gel-react/iconography'
 
 let Routable = ({routable}) => {
-  return <Layout layouts='flush' className='routable static'>
+  return <Layout layouts='flush' className={`routable static ${routable.state}`}>
     <LayoutItem gels='1/12' className='break' />
     <LayoutItem gels='10/12'>
       <div className='button'>
