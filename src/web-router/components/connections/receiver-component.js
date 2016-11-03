@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import Icon from '../icon-component'
 import { No } from '../../../gel-react/iconography'
-import Button from '../../../components/button-component'
 
 let Receiver = ({senders, receiver, actions}) => {
   return <div
@@ -9,14 +8,15 @@ let Receiver = ({senders, receiver, actions}) => {
     onClick={
       function (evt) { evt.stopPropagation() }
     }>
-    <Button
+    <div
+      className='button'
       onClick={function () {
         if (receiver.state.includes('selectable')) actions.route(receiver, senders)
       }}
-      icon={<Icon format={receiver.format} />}
-      label={receiver.label}
-      fill
-      />
+      >
+      <Icon format={receiver.format} />
+      <span className='label'>{receiver.label}</span>
+    </div>
     <div className={`node-container node-container-${receiver.node.state}`}>
       <div
         onClick={function () {

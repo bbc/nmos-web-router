@@ -11,11 +11,10 @@ let Sender = ({sender, actions}) => {
         actions.toggleSender(sender)
       }}>
     <div className='short'>
-      <Button
-        fill
-        icon={<Icon format={sender.format} />}
-        label={sender.label}
-        />
+      <div className='button'>
+        <Icon format={sender.format} />
+        <span className='label'>{sender.label}</span>
+      </div>
       <div className='node-container'>
         <div className={`node ${sender.node.state}`} />
       </div>

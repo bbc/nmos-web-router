@@ -14,8 +14,9 @@
 }
 
 .node-container {
-  position: relative;
-  top: -38px;
+  width: 100%;
+  position: absolute;
+  top: 0;
   height: 38px;
   z-index: -1;
 
@@ -42,15 +43,15 @@
 }
 
 .senders .node {
-  top: 6px;
+  top: 50%;
   right: 0;
-  transform: translateX(12px);
+  transform: translate(12px, -50%);
 }
 
 .receivers .node {
-  top: 6px;
+  top: 50%;
   left: 0;
-  transform: translateX(-12px);
+  transform: translate(-12px, -50%);
 
   & .gel-icon {
     fill: transparent;
@@ -69,7 +70,7 @@
 .receivers .routed,
 .receivers .remove {
   z-index: 1;
-  transform: translateX(-26px);
+  transform: translate(-26px, -50%);
 
   & .gel-icon {
     fill: var(--remove-icon);

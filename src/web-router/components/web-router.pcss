@@ -191,16 +191,22 @@
 }
 
 .routable {
+  position: relative;
   height: 38px;
   margin-top: 8px;
 
   & .button {
+    width: 100%;
     cursor: initial;
     border-radius: 0;
     border: none;
     fill: var(--color);
     color: var(--color);
     transition: color 0.25s, fill 0.25s, background-color 0.25s;
+
+    & .label {
+      width: 100%;
+    }
 
     & .label,
     & .description {
