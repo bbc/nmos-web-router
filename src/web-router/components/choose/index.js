@@ -4,10 +4,12 @@ import React, { PropTypes } from 'react'
 import { Layout } from '../../../gel-react/grid'
 import Routables from './routables-component'
 import Header from '../header-component'
+import AllVisible from './all-visible-component'
 
 let Choose = ({senders, receivers, actions}) => {
   return <Layout className='box box-hidden' >
     <Header />
+    <AllVisible />
     <div className='routables'>
       <Routables
         side='left'
