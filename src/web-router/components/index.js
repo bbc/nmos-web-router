@@ -13,7 +13,11 @@ let WebRouter = ({data, view, actions}) => {
     <Buttons />
     <div className='container choose left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
-      <Choose />
+      <Choose
+        senders={view.senders}
+        receivers={view.receivers}
+        actions={actions}
+        />
     </div>
     <div className='container route center'>
       <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
