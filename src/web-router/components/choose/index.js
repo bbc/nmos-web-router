@@ -7,9 +7,11 @@ import Header from '../header-component'
 import AllVisible from './all-visible-component'
 import Search from './search-component'
 
-let Choose = ({senders, receivers, actions}) => {
+let Choose = ({term, senders, receivers, actions}) => {
   return <Layout className='box box-hidden' >
-    <Search />
+    <Search
+      search={actions.search}
+      term={term} />
     <Header />
     <AllVisible />
     <div className='routables'>
@@ -26,6 +28,7 @@ let Choose = ({senders, receivers, actions}) => {
 }
 
 Choose.propTypes = {
+  term: PropTypes.string.isRequired,
   senders: PropTypes.array.isRequired,
   receivers: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired

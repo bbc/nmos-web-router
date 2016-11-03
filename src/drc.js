@@ -163,13 +163,13 @@ export default (containers, shouldUseHash) => {
     )
   )
 
-  let historyType = browserHistory
-  if (shouldUseHash) historyType = hashHistory
-  const history = syncHistoryWithStore(historyType, store)
+  window.routerHistory = browserHistory
+  if (shouldUseHash) window.routerHistory = hashHistory
+  const historyWithStore = syncHistoryWithStore(window.routerHistory, store)
 
   render(
     <Provider store={store}>
-      <Router history={history} >
+      <Router history={historyWithStore} >
         {routes(newContainers)}
       </Router>
     </Provider>,

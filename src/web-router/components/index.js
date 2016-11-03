@@ -14,6 +14,7 @@ let WebRouter = ({data, view, actions}) => {
     <div className='container choose left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
       <Choose
+        term={view.choose.term}
         senders={view.senders}
         receivers={view.receivers}
         actions={actions}

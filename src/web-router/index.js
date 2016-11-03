@@ -18,6 +18,9 @@ export default {
         loaded: [],
         errored: []
       },
+      choose: {
+        term: ''
+      },
       connections: {
         expandedSender: {
           state: 'contracted',
