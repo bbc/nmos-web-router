@@ -3,19 +3,19 @@ import './choose.css'
 import React, { PropTypes } from 'react'
 import { Layout } from '../../../gel-react/grid'
 import Routables from './routables-component'
+import Header from '../header-component'
 
 let Choose = ({senders, receivers, actions}) => {
   return <Layout className='box' >
-    <Layout gels='1/1'>
-      <Routables
-        side='left'
-        routables={senders}
-        />
-      <Routables
-        side='right'
-        routables={receivers}
-        />
-    </Layout>
+    <Header />
+    <Routables
+      side='left'
+      routables={senders}
+      />
+    <Routables
+      side='right'
+      routables={receivers}
+      />
   </Layout>
 }
 

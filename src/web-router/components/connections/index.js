@@ -2,7 +2,7 @@ import './connections.css'
 
 import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
-import Header from './header-component'
+import Header from '../header-component'
 import Senders from './senders-component'
 import Receivers from './receivers-component'
 

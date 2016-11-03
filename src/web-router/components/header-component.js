@@ -1,6 +1,6 @@
 import React from 'react'
-import { LayoutItem, Layout } from '../../../gel-react/grid'
-import { LongPrimer } from '../../../gel-react/typography'
+import { LayoutItem, Layout } from '../../gel-react/grid'
+import { LongPrimer } from '../../gel-react/typography'
 
 let Header = () => {
   return <Layout gels='1/1' layouts='flush'>
