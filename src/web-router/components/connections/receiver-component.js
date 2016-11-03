@@ -4,7 +4,11 @@ import { No } from '../../../gel-react/iconography'
 import Button from '../../../components/button-component'
 
 let Receiver = ({senders, receiver, actions}) => {
-  return <div className={`routable ${receiver.state}`}>
+  return <div
+    className={`routable ${receiver.state}`}
+    onClick={
+      function (evt) { evt.stopPropagation() }
+    }>
     <Button
       onClick={function () {
         if (receiver.state.includes('selectable')) actions.route(receiver, senders)

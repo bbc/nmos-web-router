@@ -3,12 +3,15 @@ import Icon from './icon-component'
 import Button from '../../../components/button-component'
 
 let Sender = ({sender, actions}) => {
-  return <div className={`routable ${sender.state}`}>
+  return <div
+    className={`routable ${sender.state}`}
+    onClick={
+      function (evt) {
+        evt.stopPropagation()
+        actions.toggleSender(sender)
+      }}>
     <div className='short'>
       <Button
-        onClick={function () {
-          actions.toggleSender(sender)
-        }}
         fill
         icon={<Icon format={sender.format} />}
         label={sender.label}
