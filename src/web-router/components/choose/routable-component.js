@@ -4,7 +4,7 @@ import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Icon from '../icon-component'
 import { No } from '../../../gel-react/iconography'
 
-let Routable = ({routable, side}) => {
+let Routable = ({routable}) => {
   return <Layout layouts='flush' className='routable static'>
     <LayoutItem gels='1/12' className='break' />
     <LayoutItem gels='10/12'>
