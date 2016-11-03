@@ -6,16 +6,18 @@ import Routables from './routables-component'
 import Header from '../header-component'
 
 let Choose = ({senders, receivers, actions}) => {
-  return <Layout className='box' >
+  return <Layout className='box box-hidden' >
     <Header />
-    <Routables
-      side='left'
-      routables={senders}
-      />
-    <Routables
-      side='right'
-      routables={receivers}
-      />
+    <div className='routables'>
+      <Routables
+        side='left'
+        routables={senders}
+        />
+      <Routables
+        side='right'
+        routables={receivers}
+        />
+    </div>
   </Layout>
 }
 

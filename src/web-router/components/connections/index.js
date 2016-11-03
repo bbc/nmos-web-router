@@ -7,7 +7,7 @@ import Senders from './senders-component'
 import Receivers from './receivers-component'
 
 let Connections = ({expandedSender, senders, receivers, actions}) => {
-  return <Layout className='box'
+  return <Layout className='box box-scroll'
     onClick={function () { if (expandedSender.state !== 'contracted') actions.toggleSender(expandedSender) }}>
     <Header />
     <Layout gels='1/1' layouts='flush'>
