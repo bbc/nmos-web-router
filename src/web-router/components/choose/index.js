@@ -14,7 +14,7 @@ let Choose = ({term, senders, receivers, actions}) => {
       term={term} />
     <Header />
     <AllVisible />
-    <div className='routables'>
+    <div className='routables routables-scroll'>
       <Routables
         side='left'
         routables={senders}
