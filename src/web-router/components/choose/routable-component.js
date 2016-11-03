@@ -4,8 +4,9 @@ import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Icon from '../icon-component'
 import { No } from '../../../gel-react/iconography'
 
-let Routable = ({routable}) => {
+let Routable = ({routable, side}) => {
   return <Layout layouts='flush' className='routable static'>
+    <LayoutItem gels='1/12' className='break' />
     <LayoutItem gels='10/12'>
       <Button
         fill
