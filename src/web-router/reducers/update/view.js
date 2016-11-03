@@ -23,9 +23,8 @@ function mapSenders (data, senders) {
   })
 }
 
-export default (data, connections) => {
-  connections.receivers = mapReceivers(data, connections.receivers)
-  connections.senders = mapSenders(data, connections.senders)
-
-  return connections
+export default (data, view) => {
+  view.receivers = mapReceivers(data, view.receivers)
+  view.senders = mapSenders(data, view.senders)
+  return view
 }
