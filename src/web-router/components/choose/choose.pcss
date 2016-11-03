@@ -1,6 +1,6 @@
 :root {
   --contracted: #dfe3e2;
-  --color: #000;
+  --search-border: #555;
 }
 
 .static .button {
@@ -47,4 +47,30 @@
   width: 100%;
   overflow-y: scroll;
   height: 95%;
+}
+
+.search {
+  margin-left: 16px;
+  border: solid 1px;
+  height: 38px;
+  width: 45%;
+  display: flex;
+
+  & .gel-icon,
+  & input {
+    flex-grow: 1;
+    padding: 0 8px;
+  }
+
+  & .gel-icon {
+    margin-top: 4px;
+    height: 28px;
+    width: 28px;
+  }
+
+  & input {
+    outline: none;
+    height: 38px;
+    border: 0;
+  }
 }

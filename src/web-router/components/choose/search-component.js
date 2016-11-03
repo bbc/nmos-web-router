@@ -1,7 +1,15 @@
 import React from 'react'
+import { Search } from '../../../gel-react/iconography'
 
-let Search = () => {
-  return <input type='text' />
+let SearchBox = () => {
+  return <div className='search'>
+    <input
+      type='text'
+      placeholder='Enter search text...' />
+    <div className='search-icon-container'>
+      <Search />
+    </div>
+  </div>
 }
 
-export default Search
+export default SearchBox
