@@ -1,9 +1,9 @@
 import './choose.css'
 
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { Layout } from '../../../gel-react/grid'
 
-let Connections = ({view, actions}) => {
+let Choose = () => {
   return <Layout className='box' >
     <Layout gels='1/1' layouts='flush'>
       CHOOSE
@@ -11,9 +11,4 @@ let Connections = ({view, actions}) => {
   </Layout>
 }
 
-Connections.propTypes = {
-  view: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
-}
-
-export default Connections
+export default Choose

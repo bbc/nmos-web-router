@@ -6,19 +6,19 @@ import Header from './header-component'
 import Senders from './senders-component'
 import Receivers from './receivers-component'
 
-let Connections = ({view, actions}) => {
+let Connections = ({expandedSender, senders, receivers, actions}) => {
   return <Layout className='box'
-    onClick={function () { if (view.expandedSender.state !== 'contracted') actions.toggleSender(view.expandedSender) }}>
+    onClick={function () { if (expandedSender.state !== 'contracted') actions.toggleSender(expandedSender) }}>
     <Header />
     <Layout gels='1/1' layouts='flush'>
       <Senders
-        senders={view.senders}
+        senders={senders}
         actions={actions}
         />
       <LayoutItem gels='2/10' />
       <Receivers
-        senders={view.senders}
-        receivers={view.receivers}
+        senders={senders}
+        receivers={receivers}
         actions={actions}
         />
     </Layout>
@@ -26,7 +26,9 @@ let Connections = ({view, actions}) => {
 }
 
 Connections.propTypes = {
-  view: PropTypes.object.isRequired,
+  expandedSender: PropTypes.object.isRequired,
+  senders: PropTypes.array.isRequired,
+  receivers: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
 

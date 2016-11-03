@@ -25,8 +25,7 @@ function mapReceivers (data) {
 }
 
 export default (data, view) => {
-  let connections = Object.assign({}, view.connections)
-  connections.senders = mapSenders(data)
-  connections.receivers = mapReceivers(data)
-  return connections
+  view.senders = mapSenders(data)
+  view.receivers = mapReceivers(data)
+  return view
 }

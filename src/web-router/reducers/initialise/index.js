@@ -1,6 +1,6 @@
 import initialiseData from './data'
 import loading from './loading'
-import connections from './connections'
+import initialiseView from './view'
 
 export default (state, action, merge) => {
   let initialised = action.receivers || action.senders || action.flows
@@ -9,7 +9,7 @@ export default (state, action, merge) => {
 
   let view = Object.assign({}, state.view, {
     loading: loading(data, state.view),
-    connections: connections(data, state.view),
+    view: initialiseView(data, state.view),
     scroll: false
   })
 

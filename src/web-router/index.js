@@ -22,10 +22,10 @@ export default {
         expandedSender: {
           state: 'contracted',
           node: {}
-        },
-        senders: [],
-        receivers: []
-      }
+        }
+      },
+      senders: [],
+      receivers: []
     },
     initialised: false,
     location: '/'
