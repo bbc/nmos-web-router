@@ -1,10 +1,16 @@
 :root {
-  --contracted: #dfe3e2;
+  --background-color: #dfe3e2;
   --search-border: #555;
 }
 
 .static .button {
-  background-color: var(--contracted);
+  transition: background-color 0.5s;
+  background-color: var(--background-color);
+
+  &:hover {
+    cursor: pointer;
+    background-color: color(var(--background-color) b(30%));
+  }
 }
 
 .checkbox {
