@@ -10,7 +10,9 @@ import ExpandedSender from './connections/expanded-sender-component'
 
 let WebRouter = ({data, view, actions}) => {
   return <div className={`web-router web-router${view.location}`}>
-    <Buttons />
+    <Buttons
+      term={view.choose.term}
+      />
     <div className='container choose left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
       <Choose
