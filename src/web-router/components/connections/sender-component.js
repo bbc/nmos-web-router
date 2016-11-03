@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import Icon from '../icon-component'
-import Button from '../../../components/button-component'
 
 let Sender = ({sender, actions}) => {
   return <div
