@@ -1,7 +1,7 @@
 import fuzzysearch from 'fuzzysearch'
 
 function map (view, routable) {
-  let fuzzymatch = fuzzysearch(view.choose.term, routable.label.toLowerCase()) || fuzzysearch(view.choose.term, routable.id.toLowerCase())
+  let fuzzymatch = fuzzysearch(view.choose.term.toLowerCase(), routable.label.toLowerCase()) || fuzzysearch(view.choose.term.toLowerCase(), routable.id.toLowerCase())
   if (fuzzymatch) routable.state = routable.state.replace('fuzzymissmatch', 'fuzzymatch')
   else routable.state = routable.state.replace('fuzzymatch', 'fuzzymissmatch')
   return routable
