@@ -3,7 +3,7 @@ import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Icon from '../icon-component'
 import Checkbox from '../../../components/checkbox-component'
 
-let Routable = ({routable}) => {
+let Routable = ({routable, check}) => {
   return <Layout layouts='flush' className={`routable static ${routable.state}`}>
     <LayoutItem gels='1/12' className='break' />
     <LayoutItem gels='10/12'>
@@ -13,7 +13,7 @@ let Routable = ({routable}) => {
       </div>
       <Checkbox
         onClick={function () {
-          console.log('toggle', routable.label)
+          check(routable)
         }}
         />
     </LayoutItem>
@@ -21,7 +21,8 @@ let Routable = ({routable}) => {
 }
 
 Routable.propTypes = {
-  routable: PropTypes.object.isRequired
+  routable: PropTypes.object.isRequired,
+  check: PropTypes.func.isRequired
 }
 
 export default Routable

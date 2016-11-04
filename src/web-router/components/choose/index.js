@@ -20,10 +20,12 @@ let Choose = ({view, senders, receivers, actions}) => {
       <Routables
         side='left'
         routables={senders}
+        actions={actions}
         />
       <Routables
         side='right'
         routables={receivers}
+        actions={actions}
         />
     </div>
   </Layout>

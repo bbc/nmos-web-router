@@ -6,6 +6,7 @@ import unroute from './connections/unroute-dispatcher'
 import route from './connections/route-dispatcher'
 import search from './choose/search-dispatcher'
 import allVisible from './choose/all-visible-dispatcher'
+import check from './choose/check-dispatcher'
 
 export default {
   initialise,
@@ -15,5 +16,6 @@ export default {
   route,
   update,
   search,
-  allVisible
+  allVisible,
+  check
 }

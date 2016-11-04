@@ -15,7 +15,7 @@ function fuzzymatch (view, routable) {
 
 function mapSenders (data, view) {
   return data.senders.map(sender => {
-    sender.state = 'contracted selectable all fuzzymatch'
+    sender.state = 'checked contracted selectable fuzzymatch'
     sender.node = {
       state: isSenderRouted(sender, data.receivers) ? 'routed' : 'unrouted'
     }
@@ -26,7 +26,7 @@ function mapSenders (data, view) {
 
 function mapReceivers (data, view) {
   return data.receivers.map(receiver => {
-    receiver.state = 'contracted all fuzzymatch'
+    receiver.state = 'checked contracted fuzzymatch'
     receiver.node = {
       state: receiver.subscription.sender !== undefined ? 'routed' : 'unrouted'
     }
