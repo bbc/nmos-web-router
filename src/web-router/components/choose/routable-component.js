@@ -15,7 +15,7 @@ let Routable = ({routable}) => {
         onClick={function () {
           console.log('toggle', routable.label)
         }}
-        state='all' />
+        />
     </LayoutItem>
   </Layout>
 }

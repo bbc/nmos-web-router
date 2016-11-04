@@ -25,6 +25,7 @@ let Empty = () => {
 }
 
 let Checkbox = ({onClick, state}) => {
+  onClick = onClick || function () {}
   return <div className={`checkbox ${state}`}
     onClick={function () { onClick(state) }}>
     <No />
@@ -34,8 +35,8 @@ let Checkbox = ({onClick, state}) => {
 }
 
 Checkbox.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  state: PropTypes.string.isRequired
+  onClick: PropTypes.func,
+  state: PropTypes.string
 }
 
 export default Checkbox

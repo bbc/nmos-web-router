@@ -120,18 +120,20 @@ h4 {
   & .gel-icon-empty {
     display: none;
   }
+}
 
-  &.all .gel-icon-no {
-    display: block;
-  }
+.checked .gel-icon-no,
+.all .gel-icon-no {
+  display: block;
+}
 
-  &.some .gel-icon-minus {
-    display: block;
-  }
+.some .gel-icon-minus {
+  display: block;
+}
 
-  &.none .gel-icon-empty {
-    display: block;
-  }
+.unchecked .gel-icon-empty,
+.none .gel-icon-empty {
+  display: block;
 }
 
 /* BUTTONS */
