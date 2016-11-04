@@ -4,5 +4,11 @@ export default (state, action, merge) => {
   let choose = view.choose
   if (choose.allVisibleState[type] === 'all' || choose.allVisibleState[type] === 'some') choose.allVisibleState[type] = 'none'
   else if (choose.allVisibleState[type] === 'none') choose.allVisibleState[type] = 'all'
+
+  view[type].forEach(routable => {
+    if (choose.allVisibleState[type] === 'all') routable.state = routable.state.replace('unchecked', 'checked')
+    else if (choose.allVisibleState[type] === 'none' && !routable.state.includes('unchecked')) routable.state = routable.state.replace('checked', 'unchecked')
+  })
+
   return merge ({ view })
 }
