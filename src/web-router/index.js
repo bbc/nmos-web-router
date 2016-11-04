@@ -19,7 +19,11 @@ export default {
         errored: []
       },
       choose: {
-        term: ''
+        term: '',
+        allVisibleState: {
+          senders: 'all',
+          receivers: 'all'
+        }
       },
       connections: {
         expandedSender: {

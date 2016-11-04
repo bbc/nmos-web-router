@@ -7,13 +7,15 @@ import Header from '../header-component'
 import AllVisible from './all-visible-component'
 import Search from './search-component'
 
-let Choose = ({term, senders, receivers, actions}) => {
+let Choose = ({view, senders, receivers, actions}) => {
   return <Layout className='box box-hidden' >
     <Search
       search={actions.search}
-      term={term} />
+      term={view.term} />
     <Header />
-    <AllVisible />
+    <AllVisible
+      allVisible={actions.allVisible}
+      state={view.allVisibleState} />
     <div className='routables routables-scroll'>
       <Routables
         side='left'
@@ -28,7 +30,7 @@ let Choose = ({term, senders, receivers, actions}) => {
 }
 
 Choose.propTypes = {
-  term: PropTypes.string.isRequired,
+  view: PropTypes.object.isRequired,
   senders: PropTypes.array.isRequired,
   receivers: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Icon from '../icon-component'
-import { No } from '../../../gel-react/iconography'
+import Checkbox from '../../../components/checkbox-component'
 
 let Routable = ({routable}) => {
   return <Layout layouts='flush' className={`routable static ${routable.state}`}>
@@ -11,9 +11,11 @@ let Routable = ({routable}) => {
         <Icon format={routable.format} />
         <span className='label'>{routable.label}</span>
       </div>
-    </LayoutItem>
-    <LayoutItem className='checkbox' gels='1/12'>
-      <No />
+      <Checkbox
+        onClick={function () {
+          console.log('toggle', routable.label)
+        }}
+        state='all' />
     </LayoutItem>
   </Layout>
 }

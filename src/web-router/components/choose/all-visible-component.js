@@ -1,28 +1,45 @@
-import React from 'react'
-import { No } from '../../../gel-react/iconography'
+import React, { PropTypes } from 'react'
 import { LongPrimer } from '../../../gel-react/typography'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
+import Checkbox from '../../../components/checkbox-component'
 
-let Visible = () => {
-  return <Layout layouts='flush'>
-    <LayoutItem gels='11/12' className='all-visible'>
-      <LongPrimer>All Visible</LongPrimer>
+let Visible = ({type, allVisible, state}) => {
+  return <LayoutItem gels='1/1' className='all-visible-label'>
+    <LongPrimer>All Visible</LongPrimer>
+    <Checkbox
+      onClick={function () {
+        allVisible(type)
+      }}
+      state={state} />
+  </LayoutItem>
+}
+
+Visible.propTypes = {
+  type: PropTypes.string.isRequired,
+  allVisible: PropTypes.func.isRequired,
+  state: PropTypes.string.isRequired
+}
+
+let AllVisible = ({allVisible, state}) => {
+  return <Layout>
+    <LayoutItem className='all-visible all-visible-left' gels='1/2'>
+      <Visible
+        state={state.senders}
+        type='senders'
+        allVisible={allVisible} />
     </LayoutItem>
-    <LayoutItem className='checkbox' gels='1/12'>
-      <No />
+    <LayoutItem className='all-visible all-visible-right' gels='1/2'>
+      <Visible
+        state={state.receivers}
+        type='receivers'
+        allVisible={allVisible} />
     </LayoutItem>
   </Layout>
 }
 
-let AllVisible = () => {
-  return <Layout>
-    <LayoutItem className='all-visible-left' gels='1/2'>
-      <Visible />
-    </LayoutItem>
-    <LayoutItem className='all-visible-right' gels='1/2'>
-      <Visible />
-    </LayoutItem>
-  </Layout>
+AllVisible.propTypes = {
+  allVisible: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired
 }
 
 export default AllVisible

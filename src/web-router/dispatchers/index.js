@@ -5,6 +5,7 @@ import toggleSender from './connections/toggle-sender-dispatcher'
 import unroute from './connections/unroute-dispatcher'
 import route from './connections/route-dispatcher'
 import search from './choose/search-dispatcher'
+import allVisible from './choose/all-visible-dispatcher'
 
 export default {
   initialise,
@@ -13,5 +14,6 @@ export default {
   unroute,
   route,
   update,
-  search
+  search,
+  allVisible
 }
