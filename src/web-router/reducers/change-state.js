@@ -32,6 +32,14 @@ export default (routable) => {
       routable.state = routable.state.replace('selectable', '')
       return changeState
     },
+    disable () {
+      if (!routable.state.includes('disabled')) routable.state += ' disabled'
+      return changeState
+    },
+    enable () {
+      routable.state = routable.state.replace('disabled', '')
+      return changeState
+    },
     route () {
       routable.node.state = 'routed'
       return changeState
@@ -42,10 +50,6 @@ export default (routable) => {
     },
     remove () {
       routable.node.state = 'remove'
-      return changeState
-    },
-    disable () {
-      routable.state = 'disabled'
       return changeState
     }
   }
