@@ -7,11 +7,7 @@ let Routable = ({routable, actions, expandedSender}) => {
   return <Layout layouts='flush' className={`routable static ${routable.state}`}>
     <LayoutItem gels='1/12' className='break' />
     <LayoutItem gels='10/12'>
-      <div className='button'
-        onClick={function () {
-          if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender)
-          actions.check(routable)
-        }}>
+      <div className='button'>
         <Icon format={routable.format} />
         <span className='label'>{routable.label}</span>
       </div>
