@@ -1,17 +1,4 @@
-function getSenderState (toggled, expanding, sender) {
-  let state = 'contracted'
-  let isBeingToggled = sender.id === toggled.id
-  if (expanding && isBeingToggled) state = 'expanded'
-  else if (expanding) state = 'other'
-  return `${state} selectable`
-}
-
-function getReceiverState (toggled, expanding, receiver) {
-  let state = 'contracted'
-  if (toggled.format !== receiver.format && expanding) state = 'disabled'
-  else if (expanding) return `${state} selectable`
-  return state
-}
+import ChangeState from '../change-state'
 
 export default (state, action, merge) => {
   let toggled = Object.assign({}, action.sender)
@@ -20,17 +7,25 @@ export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
   let connections = view.connections
 
-  connections.expandedSender = { state: 'contracted', node: {} }
+  let changeExpandedSenderState = ChangeState(connections.expandedSender)
+  changeExpandedSenderState.contract()
   view.senders = view.senders.map(sender => {
-    let state = getSenderState(toggled, expanding, sender)
-    let updatedSender = Object.assign({}, sender, { state })
-    if (state.includes('expanded')) connections.expandedSender = updatedSender
+    let changeState = ChangeState(sender)
+    changeState.contract().selectable().notOther()
+    let isBeingToggled = sender.id === toggled.id
+    if (expanding && isBeingToggled) changeState.expand()
+    else if (expanding) changeState.other()
+    let updatedSender = Object.assign({}, sender)
+    if (sender.state.includes('expanded')) connections.expandedSender = updatedSender
     return updatedSender
   })
 
   view.receivers = view.receivers.map(receiver => {
-    let state = getReceiverState(toggled, expanding, receiver)
-    return Object.assign({}, receiver, { state })
+    let changeState = ChangeState(receiver)
+    changeState.contract().enable().notSelectable()
+    if (toggled.format !== receiver.format && expanding) changeState.disable()
+    else if (expanding) changeState.selectable()
+    return receiver
   })
 
   return merge({ view })

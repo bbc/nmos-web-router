@@ -30,6 +30,19 @@ export default (routable) => {
       if (!routable.state.includes('contracted')) routable.state += ' contracted'
       return changeState
     },
+    expand () {
+      routable.state = routable.state.replace('contracted', 'expanded')
+      if (!routable.state.includes('expanded')) routable.state += ' expanded'
+      return changeState
+    },
+    other () {
+      if (!routable.state.includes('other')) routable.state += ' other'
+      return changeState
+    },
+    notOther () {
+      routable.state = routable.state.replace('other', '')
+      return changeState
+    },
     selectable () {
       if (!routable.state.includes('selectable')) routable.state += ' selectable'
       return changeState
