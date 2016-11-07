@@ -1,18 +1,20 @@
 import React, { PropTypes } from 'react'
-import { LongPrimer } from '../../../gel-react/typography'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
-import Checkbox from '../../../components/checkbox-component'
+import Routable from '../routable'
 
 let Visible = ({type, actions, expandedSender, state}) => {
-  return <LayoutItem gels='1/1' className='all-visible-label'>
-    <LongPrimer>All Visible</LongPrimer>
-    <Checkbox
-      onClick={function () {
-        if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender)
-        actions.allVisible(type)
-      }}
-      state={state} />
-  </LayoutItem>
+  return <Routable
+    baseState={`static blank ${state}`}
+    routable={{
+      label: 'All Visible',
+      format: 'blank'
+    }}
+    checkbox
+    onCheckbox={function () {
+      if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender)
+      actions.allVisible(type)
+    }}
+    />
 }
 
 Visible.propTypes = {
@@ -24,14 +26,14 @@ Visible.propTypes = {
 
 let AllVisible = ({actions, expandedSender, state}) => {
   return <Layout>
-    <LayoutItem className='all-visible all-visible-left' gels='1/2'>
+    <LayoutItem className='all-visible-left' gels='1/2'>
       <Visible
         state={state.senders}
         type='senders'
         expandedSender={expandedSender}
         actions={actions} />
     </LayoutItem>
-    <LayoutItem className='all-visible all-visible-right' gels='1/2'>
+    <LayoutItem className='all-visible-right' gels='1/2'>
       <Visible
         state={state.receivers}
         type='receivers'
@@ -48,3 +50,13 @@ AllVisible.propTypes = {
 }
 
 export default AllVisible
+
+// return <LayoutItem gels='1/1' className='all-visible-label'>
+//   <LongPrimer>All Visible</LongPrimer>
+//   <Checkbox
+//     onClick={function () {
+//       if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender)
+//       actions.allVisible(type)
+//     }}
+//     state={state} />
+// </LayoutItem>

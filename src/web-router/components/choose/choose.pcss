@@ -18,39 +18,24 @@
       cursor: initial;
     }
   }
+}
 
-  & .checkbox {
-    position: absolute;
+.choose .checkbox {
+  position: absolute;
+}
+
+.blank {
+  & .button {
+    background-color: transparent !important;
+
+    &:hover {
+      cursor: initial;
+    }
   }
 }
 
 .routables-left .break {
   display: none;
-}
-
-.all-visible {
-  height: 38px;
-
-  &-label {
-    padding-right: 14px;
-    text-align: right;
-  }
-
-  &-left {
-    padding-right: 3.8%;
-
-    & .checkbox {
-      transform: translate(4px, 5px);
-    }
-  }
-
-  &-right {
-    padding-right: 14px;
-
-    & .checkbox {
-      transform: translate(2px, 5px);
-    }
-  }
 }
 
 .choose {
@@ -103,5 +88,23 @@
       font-style: italic;
       color: var(--placeholder);
     }
+  }
+}
+
+.all-visible-left {
+  margin-left: 2px;
+}
+
+.all-visible-right {
+  margin-left: -15px;
+}
+
+@media (pointer: coarse) {
+  .all-visible-left {
+    margin-left: 8px;
+  }
+
+  .all-visible-right {
+    margin-left: -8px;
   }
 }
