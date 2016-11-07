@@ -8,7 +8,7 @@ import Receivers from './receivers-component'
 
 let Connections = ({expandedSender, senders, receivers, actions}) => {
   return <Layout className='connections box box-hidden'
-    onClick={function () { if (expandedSender.state !== 'contracted') actions.toggleSender(expandedSender) }}>
+    onClick={function () { if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender) }}>
     <Header />
     <Layout gels='1/1' layouts='flush' className='routables-scroll'>
       <Senders
