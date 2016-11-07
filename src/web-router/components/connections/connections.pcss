@@ -19,10 +19,6 @@
   top: 0;
   height: 38px;
   z-index: -1;
-
-  &-routed {
-    z-index: 1;
-  }
 }
 
 .node {
@@ -46,6 +42,10 @@
   top: 50%;
   right: 0;
   transform: translate(12px, -50%);
+
+  & .gel-icon {
+    fill: transparent;
+  }
 }
 
 .receivers .node {
@@ -55,6 +55,10 @@
 
   & .gel-icon {
     fill: transparent;
+  }
+
+  &-container-routed {
+    z-index: 1;
   }
 }
 
@@ -199,18 +203,16 @@
   }
 }
 
-.expanded {
-  & .full {
-    display: block;
-  }
+.connections {
+  & .expanded {
+    &.short {
+      visibility: hidden;
+    }
 
-  & .short {
-    visibility: hidden;
-  }
-
-  & .button-container,
-  & .node {
-    box-shadow: rgba(85, 85, 85, 0.9) 0 0 20px 5px;
+    & .button-container,
+    & .node {
+      box-shadow: rgba(85, 85, 85, 0.9) 0 0 20px 5px;
+    }
   }
 }
 

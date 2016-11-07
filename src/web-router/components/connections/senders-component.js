@@ -1,15 +1,20 @@
 import React, { PropTypes } from 'react'
 
 import { LayoutItem } from '../../../gel-react/grid'
-import Sender from './sender-component'
+import Routable from '../routable'
 
 let Senders = ({senders, actions}) => {
   return <LayoutItem className='routables senders' gels='4/10'>{
       senders.map(sender => {
-        return <Sender
-          sender={sender}
-          actions={actions}
-          key={sender.id} />
+        return <Routable
+          key={sender.id}
+          routable={sender}
+          node
+          onClick={function (evt) {
+            evt.stopPropagation()
+            actions.toggleSender(sender)
+          }}
+          />
       })
   }</LayoutItem>
 }

@@ -6,8 +6,9 @@ let Receivers = ({senders, receivers, actions}) => {
   return <LayoutItem className='routables receivers' gels='4/10'>{
       receivers.map(receiver => {
         return <Routable
-          node
+          key={receiver.id}
           routable={receiver}
+          node
           onClick={function (evt) {
             evt.stopPropagation()
           }}
@@ -17,7 +18,7 @@ let Receivers = ({senders, receivers, actions}) => {
           onNode={function () {
             actions.unroute(receiver)
           }}
-          key={receiver.id} />
+          />
       })
   }</LayoutItem>
 }

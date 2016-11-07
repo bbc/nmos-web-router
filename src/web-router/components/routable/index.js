@@ -4,6 +4,7 @@ import Checkbox from '../../../components/checkbox-component'
 import Node from './node'
 
 let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode }) => {
+  node = node || 'none'
   baseState = baseState || ''
   onClick = onClick || function () {}
   onButton = onButton || function () {}
@@ -16,10 +17,13 @@ let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onChec
     />
 
   let NodeComponent = null
-  if (node) NodeComponent = <Node state={routable.node.state} onClick={onNode} />
+  if (node !== 'none') NodeComponent = <Node
+    state={`${routable.node.state} ${node}`}
+    onClick={onNode}
+    />
 
   return <div
-    className={`routable ${baseState} ${routable.state}`}
+    className={`routable short ${baseState} ${routable.state}`}
     onClick={onClick}>
     <div
       className='button'
