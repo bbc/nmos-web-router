@@ -1,17 +1,17 @@
 import filter from './filter'
 
 function allVisible (routables) {
-  let uncheckedSenders = 0
-  let filteredSenders = 0
+  let unchecked = 0
+  let filtered = 0
   routables.forEach(routable => {
     if (routable.state.includes('fuzzymatch')) {
-      filteredSenders += 1
-      if (routable.state.includes('uncheck')) uncheckedSenders += 1
+      filtered += 1
+      if (routable.state.includes('uncheck')) unchecked += 1
     }
   })
-  if (filteredSenders === 0) return 'none'
-  else if (uncheckedSenders === 0) return 'all'
-  else if (uncheckedSenders !== filteredSenders) return 'some'
+  if (filtered === 0) return 'none'
+  else if (unchecked === 0) return 'all'
+  else if (unchecked !== filtered) return 'some'
   return 'none'
 }
 
@@ -26,7 +26,7 @@ export default (state, action, merge) => {
       view = filter(view)
     }
   }
-  view.choose.allVisibleState.senders = allVisible(view.senders)
-  view.choose.allVisibleState.receivers = allVisible(view.receivers)
+  if (view.senders.length !== 0) view.choose.allVisibleState.senders = allVisible(view.senders)
+  if (view.receivers.length !== 0) view.choose.allVisibleState.receivers = allVisible(view.receivers)
   return merge({ view })
 }

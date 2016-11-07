@@ -19,6 +19,12 @@ export default (routable) => {
       if (!routable.state.includes('checked')) routable.state += ' checked'
       return changeState
     },
+    uncheck () {
+      if (routable.state.includes('unchecked')) return changeState
+      else if (routable.state.includes('checked')) routable.state = routable.state.replace('checked', 'unchecked')
+      else routable.state += ' unchecked'
+      return changeState
+    },
     contract () {
       routable.state = routable.state.replace('expanded', 'contracted')
       if (!routable.state.includes('contracted')) routable.state += ' contracted'
