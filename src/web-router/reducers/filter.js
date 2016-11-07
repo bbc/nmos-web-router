@@ -1,9 +1,16 @@
 import fuzzysearch from 'fuzzysearch'
+import ChangeState from './change-state'
+
+function matches (term, routable) {
+  return fuzzysearch(term.toLowerCase(), routable.label.toLowerCase()) ||
+         fuzzysearch(term.toLowerCase(), routable.id.toLowerCase())
+}
 
 function map (view, routable) {
-  let fuzzymatch = fuzzysearch(view.choose.term.toLowerCase(), routable.label.toLowerCase()) || fuzzysearch(view.choose.term.toLowerCase(), routable.id.toLowerCase())
-  if (fuzzymatch) routable.state = routable.state.replace('fuzzymissmatch', 'fuzzymatch')
-  else routable.state = routable.state.replace('fuzzymatch', 'fuzzymissmatch')
+  let fuzzymatch = matches(view.choose.term, routable)
+  let changeState = ChangeState(routable)
+  if (fuzzymatch) changeState.fuzzymatch()
+  else changeState.fuzzymissmatch()
   return routable
 }
 
