@@ -203,17 +203,15 @@
   }
 }
 
-.connections {
-  & .expanded {
-    &.short {
-      visibility: hidden;
-    }
-
-    & .button-container,
-    & .node {
-      box-shadow: rgba(85, 85, 85, 0.9) 0 0 20px 5px;
-    }
+.expanded {
+  & .button-container,
+  & .node {
+    box-shadow: rgba(85, 85, 85, 0.9) 0 0 20px 5px;
   }
+}
+
+.connections .expanded.short {
+  visibility: hidden;
 }
 
 .column-title {
