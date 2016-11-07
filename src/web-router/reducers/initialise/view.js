@@ -1,4 +1,5 @@
 import fuzzysearch from 'fuzzysearch'
+import ChangeState from '../change-state'
 
 function isSenderRouted (sender, receivers) {
   return receivers.filter(receiver => {
@@ -6,31 +7,31 @@ function isSenderRouted (sender, receivers) {
   }).length > 0
 }
 
-function fuzzymatch (view, routable) {
+function fuzzymatch (view, routable, changeState) {
   let fuzzymatch = fuzzysearch(view.choose.term.toLowerCase(), routable.label.toLowerCase()) || fuzzysearch(view.choose.term.toLowerCase(), routable.id.toLowerCase())
-  if (fuzzymatch) routable.state = routable.state.replace('fuzzymissmatch', 'fuzzymatch')
-  else routable.state = routable.state.replace('fuzzymatch', 'fuzzymissmatch')
+  if (fuzzymatch) changeState.fuzzymatch()
+  else changeState.fuzzymissmatch()
   return routable
 }
 
 function mapSenders (data, view) {
   return data.senders.map(sender => {
-    sender.state = 'checked contracted selectable fuzzymatch'
-    sender.node = {
-      state: isSenderRouted(sender, data.receivers) ? 'routed' : 'unrouted'
-    }
-    sender = fuzzymatch(view, sender)
+    let changeState = ChangeState(sender)
+    changeState.check().contract().selectable()
+    if (isSenderRouted(sender, data.receivers)) changeState.route()
+    else changeState.unroute()
+    sender = fuzzymatch(view, sender, changeState)
     return sender
   })
 }
 
 function mapReceivers (data, view) {
   return data.receivers.map(receiver => {
-    receiver.state = 'checked contracted fuzzymatch'
-    receiver.node = {
-      state: receiver.subscription.sender !== undefined ? 'routed' : 'unrouted'
-    }
-    receiver = fuzzymatch(view, receiver)
+    let changeState = ChangeState(receiver)
+    changeState.check().contract().notSelectable()
+    if (receiver.subscription.sender) changeState.route()
+    else changeState.unroute()
+    receiver = fuzzymatch(view, receiver, changeState)
     return receiver
   })
 }
