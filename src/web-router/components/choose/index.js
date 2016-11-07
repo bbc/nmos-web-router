@@ -7,25 +7,29 @@ import Header from '../header-component'
 import AllVisible from './all-visible-component'
 import Search from './search-component'
 
-let Choose = ({view, senders, receivers, actions}) => {
+let Choose = ({view, senders, receivers, expandedSender, actions}) => {
   return <Layout className='box box-hidden' >
     <Search
-      search={actions.search}
+      expandedSender={expandedSender}
+      actions={actions}
       term={view.term} />
     <Header />
     <AllVisible
-      allVisible={actions.allVisible}
+      expandedSender={expandedSender}
+      actions={actions}
       state={view.allVisibleState} />
     <div className='routables routables-scroll'>
       <Routables
         side='left'
         routables={senders}
         actions={actions}
+        expandedSender={expandedSender}
         />
       <Routables
         side='right'
         routables={receivers}
         actions={actions}
+        expandedSender={expandedSender}
         />
     </div>
   </Layout>
@@ -35,7 +39,8 @@ Choose.propTypes = {
   view: PropTypes.object.isRequired,
   senders: PropTypes.array.isRequired,
   receivers: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  expandedSender: PropTypes.object.isRequired
 }
 
 export default Choose

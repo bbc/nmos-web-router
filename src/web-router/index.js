@@ -25,14 +25,12 @@ export default {
           receivers: 'all'
         }
       },
-      connections: {
-        expandedSender: {
-          state: 'contracted',
-          node: {}
-        }
-      },
       senders: [],
-      receivers: []
+      receivers: [],
+      expandedSender: {
+        state: 'contracted',
+        node: {}
+      }
     },
     initialised: false,
     location: '/'

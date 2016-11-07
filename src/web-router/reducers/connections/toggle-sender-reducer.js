@@ -5,9 +5,8 @@ export default (state, action, merge) => {
   let expanding = !toggled.state.includes('expanded')
 
   let view = Object.assign({}, state.view)
-  let connections = view.connections
 
-  let changeExpandedSenderState = ChangeState(connections.expandedSender)
+  let changeExpandedSenderState = ChangeState(view.expandedSender)
   changeExpandedSenderState.contract()
   view.senders = view.senders.map(sender => {
     let changeState = ChangeState(sender)
@@ -16,7 +15,7 @@ export default (state, action, merge) => {
     if (expanding && isBeingToggled) changeState.expand()
     else if (expanding) changeState.other()
     let updatedSender = Object.assign({}, sender)
-    if (sender.state.includes('expanded')) connections.expandedSender = updatedSender
+    if (sender.state.includes('expanded')) view.expandedSender = updatedSender
     return updatedSender
   })
 
