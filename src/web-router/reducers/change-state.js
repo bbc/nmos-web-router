@@ -40,6 +40,10 @@ export default (routable) => {
       routable.node.state = 'unrouted'
       return changeState
     },
+    remove () {
+      routable.node.state = 'remove'
+      return changeState
+    },
     disable () {
       routable.state = 'disabled'
       return changeState
