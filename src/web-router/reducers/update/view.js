@@ -1,12 +1,15 @@
+import ChangeState from '../change-state'
+
 function mapReceivers (data, receivers) {
-  return receivers.map(routable => {
+  return receivers.map(receiver => {
+    let changeState = ChangeState(receiver)
     let matchingRoutable = data.receivers.filter(r => {
-      return routable.id === r.id
+      return receiver.id === r.id
     })[0]
-    routable.node.state = 'unrouted'
-    if (matchingRoutable === undefined) routable.state = 'disabled'
-    else if (matchingRoutable.subscription.sender) routable.node.state = 'routed'
-    return routable
+    changeState.unroute()
+    if (matchingRoutable === undefined) changeState.route().disable()
+    else if (matchingRoutable.subscription.sender) changeState.route()
+    return receiver
   })
 }
 
@@ -18,7 +21,9 @@ function isSenderRouted (sender, receivers) {
 
 function mapSenders (data, senders) {
   return senders.map(sender => {
-    sender.node.state = isSenderRouted(sender, data.receivers) ? 'routed' : 'unrouted'
+    let changeState = ChangeState(sender)
+    if (isSenderRouted(sender, data.receivers)) changeState.route()
+    else changeState.unroute()
     return sender
   })
 }
