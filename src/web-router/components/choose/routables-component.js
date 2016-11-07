@@ -1,16 +1,21 @@
 import React, { PropTypes } from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
-import Routable from './routable-component'
+import Routable from '../routable'
 
 let Routables = ({routables, side, actions, expandedSender}) => {
   return <LayoutItem gels='1/2' className={`routables-${side}`}>
     <div>{
       routables.map((routable, index) => {
         return <Routable
-          expandedSender={expandedSender}
+          baseState='static'
+          checkbox
           key={`${side}-${index}`}
           routable={routable}
           actions={actions}
+          onCheckbox={function () {
+            if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender)
+            actions.check(routable)
+          }}
           />
       })
     }</div>
