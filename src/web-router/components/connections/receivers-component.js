@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
-import Routable from '../routable'
+import Routable from '../routable-component'
 
 let Receivers = ({senders, receivers, actions}) => {
   return <LayoutItem className='routables receivers' gels='4/10'>{

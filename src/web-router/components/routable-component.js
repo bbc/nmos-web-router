@@ -1,7 +1,22 @@
 import React, { PropTypes } from 'react'
-import Icon from '../icon-component'
-import Checkbox from '../../../components/checkbox-component'
-import Node from './node'
+import Icon from './icon-component'
+import Checkbox from '../../components/checkbox-component'
+import { No } from '../../gel-react/iconography'
+
+let Node = ({ state, onClick }) => {
+  return <div className={`node-container node-container-${state}`}>
+    <div
+      onClick={onClick}
+      className={`node ${state}`}>
+      <No />
+    </div>
+  </div>
+}
+
+Node.propTypes = {
+  state: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+}
 
 let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode }) => {
   node = node || 'none'
