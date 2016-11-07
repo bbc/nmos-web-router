@@ -1,15 +1,22 @@
 import React, { PropTypes } from 'react'
-
 import { LayoutItem } from '../../../gel-react/grid'
-import Receiver from './receiver-component'
+import Routable from '../routable'
 
 let Receivers = ({senders, receivers, actions}) => {
   return <LayoutItem className='routables receivers' gels='4/10'>{
       receivers.map(receiver => {
-        return <Receiver
-          receiver={receiver}
-          actions={actions}
-          senders={senders}
+        return <Routable
+          node
+          routable={receiver}
+          onClick={function (evt) {
+            evt.stopPropagation()
+          }}
+          onButton={function () {
+            if (receiver.state.includes('selectable')) actions.route(receiver, senders)
+          }}
+          onNode={function () {
+            actions.unroute(receiver)
+          }}
           key={receiver.id} />
       })
   }</LayoutItem>

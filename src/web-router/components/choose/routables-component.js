@@ -7,11 +7,10 @@ let Routables = ({routables, side, actions, expandedSender}) => {
     <div>{
       routables.map((routable, index) => {
         return <Routable
+          key={`${side}-${index}`}
           baseState='static'
           checkbox
-          key={`${side}-${index}`}
           routable={routable}
-          actions={actions}
           onCheckbox={function () {
             if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender)
             actions.check(routable)
