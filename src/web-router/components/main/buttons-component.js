@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import Button from '../../components/button-component'
+import Button from '../../../components/button-component'
 
 let Buttons = ({term}) => {
   return <div className='buttons-container'>

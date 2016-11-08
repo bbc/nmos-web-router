@@ -30,7 +30,7 @@ import webRouter from './web-router'
 drc({
   '/': {
     component: main,
-    'web-router(/choose)(/route)(/confirm)': {
+    'web-router(/**)': {
       component: webRouter
     }
   }
