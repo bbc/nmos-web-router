@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import { Help, Audio, Video, Data, No } from '../../gel-react/iconography'
+import { Help, Audio, Video, Data, No } from '../../../gel-react/iconography'
 
 let Empty = () => {
   return <svg

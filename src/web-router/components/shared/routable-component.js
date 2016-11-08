@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Icon from './icon-component'
-import Checkbox from '../../components/checkbox-component'
-import { No } from '../../gel-react/iconography'
+import Checkbox from '../../../components/checkbox-component'
+import { No } from '../../../gel-react/iconography'
 
 let Node = ({ state, onClick }) => {
   return <div className={`node-container node-container-${state}`}>

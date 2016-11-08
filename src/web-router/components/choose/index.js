@@ -3,7 +3,7 @@ import './choose.css'
 import React, { PropTypes } from 'react'
 import { Layout } from '../../../gel-react/grid'
 import Routables from './routables-component'
-import Header from '../header-component'
+import Header from '../shared/header-component'
 import AllVisible from './all-visible-component'
 import Search from './search-component'
 
