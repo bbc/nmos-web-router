@@ -7,6 +7,8 @@ import route from './connections/route-dispatcher'
 import search from './choose/search-dispatcher'
 import allVisible from './choose/all-visible-dispatcher'
 import check from './choose/check-dispatcher'
+import alert from './notifications/alert-dispatcher'
+import allClear from './notifications/all-clear-dispatcher'
 
 export default {
   initialise,
@@ -17,5 +19,7 @@ export default {
   update,
   search,
   allVisible,
-  check
+  check,
+  alert,
+  allClear
 }

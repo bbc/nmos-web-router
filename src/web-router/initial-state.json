@@ -1,0 +1,37 @@
+{
+  "data": {
+    "senders": [],
+    "receivers": [],
+    "flows": []
+  },
+  "view": {
+    "scroll": true,
+    "loading": {
+      "status": "loading",
+      "notLoaded": ["receivers", "senders", "flows"],
+      "loaded": [],
+      "errored": []
+    },
+    "choose": {
+      "term": "",
+      "allVisibleState": {
+        "senders": "all",
+        "receivers": "all"
+      }
+    },
+    "senders": [],
+    "receivers": [],
+    "expandedSender": {
+      "state": "contracted",
+      "node": {}
+    },
+    "notifications": {
+      "state": "none",
+      "message": "",
+      "type": "alert",
+      "timeout": null
+    }
+  },
+  "initialised": false,
+  "location": "/"
+}

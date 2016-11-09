@@ -1,5 +1,13 @@
 :root {
   --alert: #ec5d57;
+  --info: #33c3f0;
+}
+
+.notifications {
+  margin-bottom: 12px;
+  height: 44px;
+  overflow: hidden;
+  transition: all 0.5s;
 }
 
 .notification {
@@ -14,6 +22,10 @@
 
   & .gel-icon-alert {
     fill: var(--alert);
+  }
+
+  & .gel-icon-info {
+    fill: var(--info);
   }
 
   & .message {

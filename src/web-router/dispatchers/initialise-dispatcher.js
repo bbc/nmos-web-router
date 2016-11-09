@@ -8,6 +8,17 @@ export default (actions) => {
     flows: 0
   }
 
+  function dispatchError (error) {
+    console.error(error)
+    let timeout = setTimeout(function () {
+      actions.allClear()
+    }, 30 * 1000)
+    actions.alert({
+      message: error.message,
+      timeout
+    })
+  }
+
   function initialise (name) {
     window.nmos[name]()
       .then(response => {
@@ -16,7 +27,7 @@ export default (actions) => {
         actions.initialise(data)
       })
       .catch(error => {
-        console.error(error)
+        dispatchError(error)
         retries[name] += 1
         if (retries[name] >= MAX_RETRIES) actions.initialiseError({ error, name })
         else setTimeout(function () {

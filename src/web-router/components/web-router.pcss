@@ -49,6 +49,10 @@
   margin: auto;
 }
 
+.web-router-notification-none .notifications {
+  height: 0;
+}
+
 .container,
 .expanded-sender-container {
   position: absolute;
@@ -78,14 +82,30 @@
 }
 
 .buttons-container {
+  top: 0;
   position: absolute;
   width: 100%;
   overflow: hidden;
-  transition: height 0.5s;
+  transition: all 0.5s;
   height: 38px;
 
   @media (--tablet) {
     height: 0;
+  }
+}
+
+.web-router-notification-alert {
+  & .container,
+  & .expanded-sender-container {
+    top: calc(38px + 44px);
+
+    @media (--tablet) {
+      top: calc(44px + 12px);
+    }
+  }
+
+  & .buttons-container {
+    top: calc(38px + 12px);
   }
 }
 
