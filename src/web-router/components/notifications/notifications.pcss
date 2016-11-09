@@ -1,0 +1,25 @@
+:root {
+  --alert: #ec5d57;
+}
+
+.notification {
+  background-color: #ebebeb;
+  height: 44px;
+
+  & .gel-icon {
+    margin-top: 4px;
+    height: 32px;
+    width: 32px;
+  }
+
+  & .gel-icon-alert {
+    fill: var(--alert);
+  }
+
+  & .message {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 44px;
+  }
+}

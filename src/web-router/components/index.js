@@ -2,9 +2,11 @@ import './web-router.css'
 
 import React, { PropTypes } from 'react'
 import Main from './main'
+import Notifictions from './notifications'
 
 let WebRouter = ({data, view, actions}) => {
   return <div className={`web-router web-router${view.location}`}>
+    <Notifictions />
     <Main data={data} view={view} actions={actions} />
   </div>
 }
