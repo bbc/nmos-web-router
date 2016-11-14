@@ -15,7 +15,7 @@ function add (routables, grain) {
   routables.forEach(routable => {
     if (grain.post.id === routable.id) {
       let changeState = ChangeState(routable)
-      changeState.uncheck().unremove()
+      if (!routable.state.includes('checked')) changeState.uncheck().unremove()
     }
   })
 }
