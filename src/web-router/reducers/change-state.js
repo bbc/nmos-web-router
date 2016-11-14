@@ -61,15 +61,24 @@ export default (routable) => {
     },
     route () {
       routable.node.state = 'routed'
+      routable.node.state = routable.node.state.replace('unrouted', 'routed')
+      if (!routable.node.state.includes('routed')) routable.node.state += ' routed'
       return changeState
     },
     unroute () {
-      routable.node.state = 'unrouted'
+      if (routable.node.state.includes('unrouted')) return changeState
+      else if (routable.node.state.includes('routed')) routable.node.state = routable.node.state.replace('routed', 'unrouted')
+      else routable.node.state += ' unrouted'
       return changeState
     },
     remove () {
       if (!routable.state.includes('removed')) routable.state += ' removed'
-      routable.node.state = 'remove'
+      if (!routable.node.state.includes('removed')) routable.node.state += ' removed'
+      return changeState
+    },
+    unremove () {
+      routable.state = routable.state.replace('removed', '')
+      routable.node.state = routable.node.state.replace('removed', '')
       return changeState
     }
   }
