@@ -49,6 +49,7 @@ module.exports = {
     }
   },
   module: {
+    noParse: ['ws'],
     preLoaders: [{
       test: /\.(js|jsx)$/,
       loader: 'eslint',
@@ -131,5 +132,6 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty'
-  }
+  },
+  externals: ['ws']
 }

@@ -5,6 +5,7 @@ node_modules
 
 # production
 build
+build.tmp
 debian/files
 debian/ips-web.postinst.debhelper
 debian/ips-web.postrm.debhelper

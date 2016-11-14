@@ -116,56 +116,11 @@ function build (previousSizeMap) {
     printFileSizes(stats, previousSizeMap)
     console.log()
 
-    var openCommand = process.platform === 'win32' ? 'start' : 'open'
-    var homepagePath = require(paths.appPackageJson).homepage
-    var publicPath = config.output.publicPath
-    if (homepagePath && homepagePath.indexOf('.github.io/') !== -1) {
-      console.log('The project was built assuming it is hosted at ' + chalk.green(publicPath) + '.')
-      console.log('You can control this with the ' + chalk.green('homepage') + ' field in your ' + chalk.cyan('package.json') + '.')
-      console.log()
-      console.log('The ' + chalk.cyan('build') + ' folder is ready to be deployed.')
-      console.log('To publish it at ' + chalk.green(homepagePath) + ', run:')
-      console.log()
-      console.log('  ' + chalk.cyan('npm') + ' install --save-dev gh-pages')
-      console.log()
-      console.log('Add the following script in your ' + chalk.cyan('package.json') + '.')
-      console.log()
-      console.log('    ' + chalk.dim('// ...'))
-      console.log('    ' + chalk.yellow('"scripts"') + ': {')
-      console.log('      ' + chalk.dim('// ...'))
-      console.log('      ' + chalk.yellow('"deploy"') + ': ' + chalk.yellow('"gh-pages -d build"'))
-      console.log('    }')
-      console.log()
-      console.log('Then run:')
-      console.log()
-      console.log('  ' + chalk.cyan('npm') + ' run deploy')
-      console.log()
-    } else if (publicPath !== '/') {
-      console.log('The project was built assuming it is hosted at ' + chalk.green(publicPath) + '.')
-      console.log('You can control this with the ' + chalk.green('homepage') + ' field in your ' + chalk.cyan('package.json') + '.')
-      console.log()
-      console.log('The ' + chalk.cyan('build') + ' folder is ready to be deployed.')
-      console.log()
-    } else {
-      console.log('The project was built assuming it is hosted at the server root.')
-      if (homepagePath) {
-        console.log('You can control this with the ' + chalk.green('homepage') + ' field in your ' + chalk.cyan('package.json') + '.')
-        console.log()
-      } else {
-        console.log('To override this, specify the ' + chalk.green('homepage') + ' in your ' + chalk.cyan('package.json') + '.')
-        console.log('For example, add this to build it for GitHub Pages:')
-        console.log()
-        console.log('  ' + chalk.green('"homepage"') + chalk.cyan(': ') + chalk.green('"http://myname.github.io/myapp"') + chalk.cyan(','))
-        console.log()
-      }
-      console.log('The ' + chalk.cyan('build') + ' folder is ready to be deployed.')
-      console.log('You may also serve it locally with a static server:')
-      console.log()
-      console.log('  ' + chalk.cyan('npm') + ' install -g pushstate-server')
-      console.log('  ' + chalk.cyan('pushstate-server') + ' build')
-      console.log('  ' + chalk.cyan(openCommand) + ' http://localhost:9000')
-      console.log()
-    }
+    fs.renameSync(paths.appBuild, paths.appBuild + '.tmp')
+    fs.mkdirSync(paths.appBuild)
+    fs.copySync(paths.appBuild + '.tmp', paths.appBuild + '/ips-web')
+    fs.copySync(paths.appBuild + '.tmp', paths.appBuild)
+    rimrafSync(paths.appBuild + '.tmp')
   })
 }
 
