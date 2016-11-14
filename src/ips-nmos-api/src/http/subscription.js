@@ -12,19 +12,40 @@ module.exports = (WebSocket, subscriptions, type) => {
         })[0]
 
         var ws = new WebSocket(subscription.ws_href)
-        ws.on('open', function () {
-          connection = 'open'
-        })
-
-        ws.on('message', function (data) {
-          callbacks.forEach(callback => {
-            callback(data)
+        if (typeof ws.onopen !== undefined) {
+          ws.onopen = function () {
+            connection = 'open'
+          }
+        } else {
+          ws.on('open', function () {
+            connection = 'open'
           })
-        })
+        }
 
-        ws.on('open', function () {
-          connection = 'closed'
-        })
+        if (typeof ws.onmessage !== undefined) {
+          ws.onmessage = function (evt) {
+            callbacks.forEach(callback => {
+              console.log(evt.data)
+              callback(JSON.parse(evt.data))
+            })
+          }
+        } else {
+          ws.on('message', function (data) {
+            callbacks.forEach(callback => {
+              callback(data)
+            })
+          })
+        }
+
+        if (typeof ws.onclose !== undefined) {
+          ws.onclose = function () {
+            connection = 'closed'
+          }
+        } else {
+          ws.on('close', function () {
+            connection = 'closed'
+          })
+        }
       })
       .catch(error => {
         console.log(error)

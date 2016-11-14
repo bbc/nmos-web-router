@@ -21,7 +21,12 @@ module.exports = function (collections, delay) {
       subscribe (callback) {
         function onCallback (data) {
           setTimeout(function () {
-            callback(data)
+            console.log(data)
+            callback({
+              grain: {
+                data: [data]
+              }
+            })
           }, delay())
         }
         let insert = onInsert(collection, onCallback)

@@ -43,8 +43,11 @@ export default (actions) => {
   function subscribe (name) {
     window.nmos.subscription[name].subscribe(data => {
       let update = {}
-      update[name] = data
-      actions.update({ update })
+      update[name] = data.grain.data
+      actions.update({
+        update,
+        name: name
+      })
     })
   }
 
@@ -54,5 +57,6 @@ export default (actions) => {
     initialise('flows')
     subscribe('receivers')
     subscribe('senders')
+    subscribe('flows')
   }
 }
