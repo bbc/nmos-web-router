@@ -68,6 +68,7 @@ export default (routable) => {
       return changeState
     },
     remove () {
+      if (!routable.state.includes('removed')) routable.state += ' removed'
       routable.node.state = 'remove'
       return changeState
     }

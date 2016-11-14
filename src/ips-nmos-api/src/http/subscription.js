@@ -25,7 +25,6 @@ module.exports = (WebSocket, subscriptions, type) => {
         if (typeof ws.onmessage !== undefined) {
           ws.onmessage = function (evt) {
             callbacks.forEach(callback => {
-              console.log(evt.data)
               callback(JSON.parse(evt.data))
             })
           }

@@ -4,9 +4,9 @@ import onGrain from './on-grain'
 
 function remove (routables, grain) {
   routables.forEach(routable => {
-    if (grain.post.id === routable.id) {
+    if (grain.pre.id === routable.id) {
       let changeState = ChangeState(routable)
-      changeState.disable()
+      changeState.remove()
     }
   })
 }
@@ -36,7 +36,7 @@ function fuzzymatch (view, routable, changeState) {
 function mapSenders (data, view) {
   return data.senders.map(sender => {
     let changeState = ChangeState(sender)
-    changeState.check().contract().selectable()
+    changeState.contract().selectable()
     if (isSenderRouted(sender, data.receivers)) changeState.route()
     else changeState.unroute()
     sender = fuzzymatch(view, sender, changeState)
@@ -47,7 +47,7 @@ function mapSenders (data, view) {
 function mapReceivers (data, view) {
   return data.receivers.map(receiver => {
     let changeState = ChangeState(receiver)
-    changeState.check().contract().notSelectable()
+    changeState.contract().notSelectable()
     if (receiver.subscription.sender) changeState.route()
     else changeState.unroute()
     receiver = fuzzymatch(view, receiver, changeState)

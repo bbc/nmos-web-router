@@ -101,14 +101,27 @@
   }
 }
 
-.disabled {
+.disabled,
+.removed {
   & .button {
     background-color: color(var(--contracted) tint(75%));
     fill: color(var(--color) tint(75%));
     color: color(var(--color) tint(75%));
   }
+}
 
+.disabled {
   & .node.unrouted {
+    background-color: transparent;
+
+    & .gel-icon {
+      fill: transparent;
+    }
+  }
+}
+
+.removed {
+  & .node {
     background-color: transparent;
 
     & .gel-icon {
