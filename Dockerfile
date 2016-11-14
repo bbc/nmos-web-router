@@ -13,4 +13,4 @@ RUN yarn install
 RUN npm test
 RUN npm run build
 
-EXPOSE 7942 3000
+EXPOSE 4000 3000
