@@ -3,6 +3,7 @@
   --search-border: #555;
   --color: #000;
   --placeholder: #555;
+  --contracted: #dfe3e2;
 }
 
 .static {
@@ -55,6 +56,12 @@
 
   & .fuzzymissmatch {
     display: none;
+  }
+
+  & .removed .button {
+    background-color: color(var(--contracted) tint(75%)) !important;
+    fill: color(var(--color) tint(75%)) !important;
+    color: color(var(--color) tint(75%)) !important;
   }
 }
 

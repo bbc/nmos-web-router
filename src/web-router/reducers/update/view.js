@@ -58,9 +58,11 @@ function mapReceivers (data, view) {
 export default (data, view, action) => {
   view.senders = mapSenders(data, view)
   view.receivers = mapReceivers(data, view)
-  onGrain(view[action.name], action.update[action.name], {
-    remove,
-    add
-  })
+  if (action.name !== 'flows') {
+    onGrain(view[action.name], action.update[action.name], {
+      remove,
+      add
+    })
+  }
   return view
 }
