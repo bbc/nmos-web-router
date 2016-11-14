@@ -41,37 +41,40 @@ let Button = ({
   let AfterLabel = getBeside(afterLabel, 'after-label')
   let hasAfterLabel = getHasClass(AfterLabel, 'after-label')
 
-  if (link) return <a
-    href={link}
-    className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
-    onClick={onClick}>
-    {BeforeIcon}
-    {Icon}
-    {BeforeLabel}
-    {Label}
-    {AfterLabel}
-  </a>
-  else if (to && query) return <Link
-    to={to}
-    query={query}
-    className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
-    onClick={onClick}>
-    {BeforeIcon}
-    {Icon}
-    {BeforeLabel}
-    {Label}
-    {AfterLabel}
-  </Link>
-  else if (to) return <Link
-    to={to}
-    className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
-    onClick={onClick}>
-    {BeforeIcon}
-    {Icon}
-    {BeforeLabel}
-    {Label}
-    {AfterLabel}
-  </Link>
+  if (link) {
+    return <a
+      href={link}
+      className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
+      onClick={onClick}>
+      {BeforeIcon}
+      {Icon}
+      {BeforeLabel}
+      {Label}
+      {AfterLabel}
+    </a>
+  } else if (to && query) {
+    return <Link
+      to={to}
+      query={query}
+      className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
+      onClick={onClick}>
+      {BeforeIcon}
+      {Icon}
+      {BeforeLabel}
+      {Label}
+      {AfterLabel}
+    </Link>
+  } else if (to) {
+    return <Link
+      to={to}
+      className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
+      onClick={onClick}>
+      {BeforeIcon}
+      {Icon}
+      {BeforeLabel}
+      {Label}
+      {AfterLabel}
+    </Link> }
   return <button
     className={`button ${name} ${hasBeforeIcon} ${hasIcon} ${hasBeforeLabel} ${hasLabel} ${hasAfterLabel} ${className} ${fill}`.trim()}
     onClick={onClick}>

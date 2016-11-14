@@ -27,15 +27,19 @@ let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onChec
   onNode = onNode || function () {}
 
   let CheckboxComponent = null
-  if (checkbox) CheckboxComponent = <Checkbox
-    onClick={onCheckbox}
+  if (checkbox) {
+    CheckboxComponent = <Checkbox
+      onClick={onCheckbox}
     />
+  }
 
   let NodeComponent = null
-  if (node !== 'none') NodeComponent = <Node
-    state={`${routable.node.state} ${node}`}
-    onClick={onNode}
+  if (node !== 'none') {
+    NodeComponent = <Node
+      state={`${routable.node.state} ${node}`}
+      onClick={onNode}
     />
+  }
 
   return <div
     className={`routable short ${baseState} ${routable.state}`}

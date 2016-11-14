@@ -32,9 +32,11 @@ export default (actions) => {
         dispatchError(error)
         retries[name] += 1
         if (retries[name] >= MAX_RETRIES) actions.initialiseError({ error, name })
-        else setTimeout(function () {
-          initialise(name)
-        }, RETRY_TIMEOUT)
+        else {
+          setTimeout(function () {
+            initialise(name)
+          }, RETRY_TIMEOUT)
+        }
       })
   }
 

@@ -6,7 +6,8 @@ import NMOS from './nmos'
 
 const usestub = window.location.search.includes('stub')
 let getUrl = 'http://ipstudio-discovery.rd.bbc.co.uk:8870'
-if (window.location.search.includes('get-url=')) getUrl = window.location.search
+if (window.location.search.includes('get-url=')) {
+  getUrl = window.location.search
     .replace('?', '')
     .split('&')
     .filter(query => {
@@ -14,7 +15,7 @@ if (window.location.search.includes('get-url=')) getUrl = window.location.search
     })
     .map(query => {
       return query.replace('get-url=', '')
-    })[0]
+    })[0] }
 
 let putUrl = 'http://172.29.176.55:12345'
 

@@ -11,18 +11,15 @@ debian/ips-web.postrm.debhelper
 debian/ips-web.prerm.debhelper
 debian/ips-web.substvars
 debian/ips-web/
-*.css
 
 # gel react
 ./src/gel-react/.gitignore
 ./src/gel-react/.npmignore
 ./src/gel-react/package.json
-!/src/gel-react/*.css
 
 #dev
 *.log
 *.json.gzip
-yarn.lock
 
 # misc
 .DS_Store

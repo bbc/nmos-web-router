@@ -1,8 +1,10 @@
 function mapReceivers (data) {
   return data.receivers.map(receiver => {
-    if (receiver.subscription.sender_id) receiver.subscription.sender = data.senders.filter(sender => {
-      return sender.id === receiver.subscription.sender_id
-    })[0]
+    if (receiver.subscription.sender_id) {
+      receiver.subscription.sender = data.senders.filter(sender => {
+        return sender.id === receiver.subscription.sender_id
+      })[0]
+    }
     return receiver
   })
 }

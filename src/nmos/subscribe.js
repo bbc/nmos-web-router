@@ -21,9 +21,9 @@ export default function (options) {
     discovery().subscriptions().then(subscriptions => {
       subscriptions.forEach((subscription) => {
         let type = subscription.resource_path.replace('/', '')
-        if (options.hasOwnProperty(type))
+        if (options.hasOwnProperty(type)) {
           if (window.location.host.includes('localhost')) stubListen(type, subscription)
-          else listen(type, subscription)
+          else listen(type, subscription) }
       })
     })
   }

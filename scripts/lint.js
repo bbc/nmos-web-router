@@ -2,17 +2,19 @@ function style () {
   const stylelint = require('stylelint')
   return stylelint
   .lint({
-    files: '**/*.pcss'
+    files: '**/*.css',
+    ignoreFiles: 'build/**/*.css'
   })
   .then(result => {
     let errored = result.results
       .filter(res => {
         return res.errored
       })
-    if (errored.length > 0) errored.forEach(res => {
-      console.log(res.source, res.warnings)
-    })
-    else console.log('STYLE LINT FREE')
+    if (errored.length > 0) {
+      errored.forEach(res => {
+        console.log(res.source, res.warnings)
+      })
+    } else console.log('STYLE LINT FREE')
     return errored.length === 0
   })
   .catch(err => {
@@ -29,6 +31,7 @@ function js () {
     let srcResults = eslint.executeOnFiles([
       'src',
       '__tests__',
+      'config',
       'scripts'
     ]).results
 

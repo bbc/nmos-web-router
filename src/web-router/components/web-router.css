@@ -35,6 +35,8 @@
   --far-right: {
     transform: translateX(200%);
   }
+
+  --color: #000;
 }
 
 .web-router {

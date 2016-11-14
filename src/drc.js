@@ -103,10 +103,12 @@ const defaultDispatcher = (dispatch) => {
 
 function createDispatcher (options) {
   let dispatcher = defaultDispatcher
-  if (options.dispatchers) dispatcher = Dispatcher({
-    name: options.name,
-    dispatchers: options.dispatchers
-  })
+  if (options.dispatchers) {
+    dispatcher = Dispatcher({
+      name: options.name,
+      dispatchers: options.dispatchers
+    })
+  }
   return dispatcher
 }
 

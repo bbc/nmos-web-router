@@ -10,10 +10,10 @@ export default (state, action, merge) => {
 
   view[type].forEach(routable => {
     let changeState = ChangeState(routable)
-    if (routable.state.includes('fuzzymatch'))
+    if (routable.state.includes('fuzzymatch')) {
       if (choose.allVisibleState[type] === 'all') changeState.check()
-      else if (choose.allVisibleState[type] === 'none' && !routable.state.includes('unchecked')) changeState.uncheck()
+      else if (choose.allVisibleState[type] === 'none' && !routable.state.includes('unchecked')) changeState.uncheck() }
   })
 
-  return merge ({ view })
+  return merge({ view })
 }
