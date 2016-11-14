@@ -1,36 +1,24 @@
-// import onGrain from './on-grain'
-// import ChangeState from '../change-state'
-//
-// function remove (routables, grain) {
-//   routables.forEach(routable => {
-//     if (grain.post.id === routable.id) {
-//       let changeState = ChangeState(routable)
-//       changeState.disable()
-//     }
-//   })
-// }
-//
-// function add (routables, grain) {
-//   routables.forEach(routable => {
-//     if (grain.post.id === routable.id) {
-//       let changeState = ChangeState(routable)
-//       changeState.unchecked()
-//     }
-//   })
-// }
-//
-// export default (data, view, action) => {
-//   console.log('before', view)
-//   onGrain(view[action.name], action.update[action.name], {
-//     remove,
-//     add
-//   })
-//   console.log('before', view)
-//   return view
-// }
-
 import fuzzysearch from 'fuzzysearch'
 import ChangeState from '../change-state'
+import onGrain from './on-grain'
+
+function remove (routables, grain) {
+  routables.forEach(routable => {
+    if (grain.post.id === routable.id) {
+      let changeState = ChangeState(routable)
+      changeState.disable()
+    }
+  })
+}
+
+function add (routables, grain) {
+  routables.forEach(routable => {
+    if (grain.post.id === routable.id) {
+      let changeState = ChangeState(routable)
+      changeState.uncheck()
+    }
+  })
+}
 
 function isSenderRouted (sender, receivers) {
   return receivers.filter(receiver => {
@@ -70,5 +58,9 @@ function mapReceivers (data, view) {
 export default (data, view, action) => {
   view.senders = mapSenders(data, view)
   view.receivers = mapReceivers(data, view)
+  onGrain(view[action.name], action.update[action.name], {
+    remove,
+    add
+  })
   return view
 }
