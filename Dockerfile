@@ -8,8 +8,7 @@ COPY . /usr/src/app
 RUN npm config set proxy http://www-cache.rd.bbc.co.uk:8080
 RUN npm config set https-proxy http://www-cache.rd.bbc.co.uk:8080
 
-RUN npm i -g yarn
-RUN yarn install
+RUN npm install
 RUN npm test
 RUN npm run build
 
