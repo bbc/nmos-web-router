@@ -139,8 +139,6 @@
 
 .disabled,
 .removed {
-  pointer-events: none;
-
   & .button {
     background-color: color(var(--contracted) tint(75%));
     fill: color(var(--color) tint(75%));

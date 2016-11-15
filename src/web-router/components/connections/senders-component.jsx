@@ -12,7 +12,10 @@ let Senders = ({senders, actions}) => {
           node
           onClick={function (evt) {
             evt.stopPropagation()
-            actions.toggleSender(sender)
+            let selectable = sender.state.includes('selectable')
+            let disabled = sender.state.includes('disabled')
+            let removed = sender.state.includes('removed')
+            if (selectable && !disabled && !removed) actions.toggleSender(sender)
           }}
           />
       })

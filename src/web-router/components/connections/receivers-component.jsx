@@ -13,7 +13,10 @@ let Receivers = ({senders, receivers, actions}) => {
             evt.stopPropagation()
           }}
           onButton={function () {
-            if (receiver.state.includes('selectable')) actions.route(receiver, senders)
+            let selectable = receiver.state.includes('selectable')
+            let disabled = receiver.state.includes('disabled')
+            let removed = receiver.state.includes('removed')
+            if (selectable && !disabled && !removed) actions.route(receiver, senders)
           }}
           onNode={function () {
             actions.unroute(receiver)
