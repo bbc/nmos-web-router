@@ -21,7 +21,6 @@ module.exports = function (collections, delay) {
       subscribe (callback) {
         function onCallback (data) {
           setTimeout(function () {
-            console.log(data)
             callback({
               grain: {
                 data: [data]
