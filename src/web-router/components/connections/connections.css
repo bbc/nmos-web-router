@@ -101,15 +101,6 @@
   }
 }
 
-.disabled,
-.removed {
-  & .button {
-    background-color: color(var(--contracted) tint(75%));
-    fill: color(var(--color) tint(75%));
-    color: color(var(--color) tint(75%));
-  }
-}
-
 .disabled {
   & .node.unrouted {
     background-color: transparent;
@@ -143,6 +134,24 @@
 
   & .routed {
     background-color: color(var(--routed) tint(25%));
+  }
+}
+
+.disabled,
+.removed {
+  pointer-events: none;
+
+  & .button {
+    background-color: color(var(--contracted) tint(75%));
+    fill: color(var(--color) tint(75%));
+    color: color(var(--color) tint(75%));
+
+    &:hover {
+      cursor: initial;
+      background-color: color(var(--contracted) tint(75%));
+      fill: color(var(--color) tint(75%));
+      color: color(var(--color) tint(75%));
+    }
   }
 }
 
