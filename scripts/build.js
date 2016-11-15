@@ -115,12 +115,6 @@ function build (previousSizeMap) {
     console.log()
     printFileSizes(stats, previousSizeMap)
     console.log()
-
-    fs.renameSync(paths.appBuild, paths.appBuild + '.tmp')
-    fs.mkdirSync(paths.appBuild)
-    fs.copySync(paths.appBuild + '.tmp', paths.appBuild + '/ips-web')
-    fs.copySync(paths.appBuild + '.tmp', paths.appBuild)
-    rimrafSync(paths.appBuild + '.tmp')
   })
 }
 

@@ -10,6 +10,5 @@ RUN npm config set https-proxy http://www-cache.rd.bbc.co.uk:8080
 
 RUN npm install
 RUN npm test
-RUN npm run build
 
 EXPOSE 4000 3000
