@@ -14,7 +14,6 @@ class Routes extends React.Component {
       this.props.receivers.filter(receiver => {
         let checked = false
         let removed = false
-        let expanded = false
         let routed = receiver.subscription.sender_id !== null && receiver.subscription.sender
         if (routed) {
           let receiverChecked = receiver.state.includes('checked') && !receiver.state.includes('unchecked')
@@ -24,12 +23,23 @@ class Routes extends React.Component {
           let receiverRemoved = receiver.state.includes('removed')
           let senderRemoved = receiver.subscription.sender.state.includes('removed')
           removed = receiverRemoved || senderRemoved
-
-          if (this.props.expandedSender.state.includes('expanded') && this.props.expandedSender.id === receiver.subscription.sender.id) expanded = true
         }
-        return routed && checked && !removed && !expanded
+        return routed && checked && !removed
       }).map((receiver, index) => {
+        let expanded = false
+        if (this.props.expandedSender.state.includes('expanded') && this.props.expandedSender.id === receiver.subscription.sender.id) {
+          expanded = true
+          receiver = {
+            nodeEl: receiver.nodeEl,
+            subscription: {
+              sender: {
+                nodeEl: document.querySelector('.expanded-sender .node')
+              }
+            }
+          }
+        }
         return <Route
+          expanded={expanded}
           routesEl={this.props.routesEl}
           key={`route-${index}`}
           receiver={receiver}

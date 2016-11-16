@@ -266,5 +266,17 @@
     padding-left: 10px;
     margin-top: 10px;
     width: 100%;
+
+    & .line {
+      stroke-linecap: round;
+      stroke: black;
+      fill: transparent;
+      stroke-width: 2;
+    }
+
+    &.expanded {
+      margin-top: 74px;
+      padding-left: 43px;
+    }
   }
 }
