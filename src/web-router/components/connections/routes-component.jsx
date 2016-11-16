@@ -19,7 +19,6 @@ class Routes extends React.Component {
           let senderChecked = receiver.subscription.sender.state.includes('checked') && !receiver.subscription.sender.state.includes('unchecked')
           checked = receiverChecked && senderChecked
 
-          console.log(receiver.state)
           let receiverRemoved = receiver.state.includes('removed')
           let senderRemoved = receiver.subscription.sender.state.includes('removed')
           removed = receiverRemoved || senderRemoved
