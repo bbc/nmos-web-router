@@ -30,13 +30,11 @@ let Route = ({receiver, routesEl}) => {
     preserveAspectRatio='none'
     height={height}
     xmlns='http://www.w3.org/2000/svg'>
-    <line
-      x1='0'
-      y1={y1}
-      x2={width}
-      y2={y2}
-      strokeWidth='2'
-      stroke='black' />
+    <path
+      d={`M0 ${y1} C ${width / 2} ${y1}, ${width / 2} ${y2}, ${width} ${y2}`}
+      stroke='black'
+      fill='transparent'
+      />
   </svg>
 }
 
