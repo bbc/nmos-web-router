@@ -26,6 +26,7 @@ let WebRouter = ({data, view, actions}) => {
     <div className='container route center'>
       <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
       <Connections
+        routesEl={view.routesEl}
         expandedSender={view.expandedSender}
         senders={view.senders}
         receivers={view.receivers}

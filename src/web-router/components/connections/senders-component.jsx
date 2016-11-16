@@ -7,6 +7,7 @@ let Senders = ({senders, actions}) => {
   return <LayoutItem className='routables senders' gels='4/10'>{
       senders.map(sender => {
         return <Routable
+          id={sender.id}
           key={sender.id}
           routable={sender}
           node
@@ -16,6 +17,9 @@ let Senders = ({senders, actions}) => {
             let disabled = sender.state.includes('disabled')
             let removed = sender.state.includes('removed')
             if (selectable && !disabled && !removed) actions.toggleSender(sender)
+          }}
+          onNodeRender={function (nodeEl) {
+            actions.nodeRendered(nodeEl, sender, 'senders')
           }}
           />
       })

@@ -6,6 +6,7 @@ let Receivers = ({senders, receivers, actions}) => {
   return <LayoutItem className='routables receivers' gels='4/10'>{
       receivers.map(receiver => {
         return <Routable
+          id={receiver.id}
           key={receiver.id}
           routable={receiver}
           node
@@ -20,6 +21,9 @@ let Receivers = ({senders, receivers, actions}) => {
           }}
           onNode={function () {
             actions.unroute(receiver)
+          }}
+          onNodeRender={function (nodeEl) {
+            actions.nodeRendered(nodeEl, receiver, 'receivers')
           }}
           />
       })

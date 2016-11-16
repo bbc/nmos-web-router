@@ -4,6 +4,8 @@ import initialiseError from './initialise-error-dispatcher'
 import toggleSender from './connections/toggle-sender-dispatcher'
 import unroute from './connections/unroute-dispatcher'
 import route from './connections/route-dispatcher'
+import nodeRendered from './connections/node-rendered-dispatcher'
+import routesRendered from './connections/routes-rendered-dispatcher'
 import search from './choose/search-dispatcher'
 import allVisible from './choose/all-visible-dispatcher'
 import check from './choose/check-dispatcher'
@@ -16,6 +18,8 @@ export default {
   toggleSender,
   unroute,
   route,
+  nodeRendered,
+  routesRendered,
   update,
   search,
   allVisible,

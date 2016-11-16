@@ -3,6 +3,8 @@ import initialiseError from './initialise-error-reducer'
 import toggleSender from './connections/toggle-sender-reducer'
 import unroute from './connections/unroute-reducer'
 import route from './connections/route-reducer'
+import nodeRendered from './connections/node-rendered-reducer'
+import routesRendered from './connections/routes-rendered-reducer'
 import update from './update'
 import locationChange from './location-change-reducer'
 import allVisible from './choose/all-visible-reducer'
@@ -16,6 +18,8 @@ export default {
   toggleSender,
   unroute,
   route,
+  nodeRendered,
+  routesRendered,
   update,
   allVisible,
   check,

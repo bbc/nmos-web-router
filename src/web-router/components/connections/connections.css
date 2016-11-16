@@ -245,3 +245,12 @@
 .connections .routable.unchecked {
   display: none;
 }
+
+.routes {
+  position: relative;
+  z-index: -2;
+}
+
+.route {
+  position: absolute;
+}
