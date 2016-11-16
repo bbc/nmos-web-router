@@ -12,13 +12,19 @@ class Routes extends React.Component {
       gels='2/10'>{
       this.props.receivers.filter(receiver => {
         let checked = false
+        let removed = false
         let routed = receiver.subscription.sender_id !== null && receiver.subscription.sender
         if (routed) {
           let receiverChecked = receiver.state.includes('checked') && !receiver.state.includes('unchecked')
           let senderChecked = receiver.subscription.sender.state.includes('checked') && !receiver.subscription.sender.state.includes('unchecked')
           checked = receiverChecked && senderChecked
+
+          console.log(receiver.state)
+          let receiverRemoved = receiver.state.includes('removed')
+          let senderRemoved = receiver.subscription.sender.state.includes('removed')
+          removed = receiverRemoved || senderRemoved
         }
-        return routed && checked
+        return routed && checked && !removed
       }).map((receiver, index) => {
         return <Route
           routesEl={this.props.routesEl}
