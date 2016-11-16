@@ -14,21 +14,18 @@ Path.propTypes = {
   height: PropTypes.number.isRequired
 }
 
-let Line = ({y1, y2, width, height}) => {
+let Line = ({width}) => {
   return <line
     className='line'
     x1='0'
-    y1={y1}
+    y1='0'
     x2={width}
-    y2={y2}
+    y2='0'
     />
 }
 
 Line.propTypes = {
-  y1: PropTypes.number.isRequired,
-  y2: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired
+  width: PropTypes.number.isRequired
 }
 
 let Route = ({expanded, receiver, routesEl}) => {
