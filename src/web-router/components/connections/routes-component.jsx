@@ -9,7 +9,8 @@ class Routes extends React.Component {
   render () {
     return <LayoutItem
       className='routes'
-      gels='2/10'>{
+      gels='2/10'>
+      <div className='routes-container'>{
       this.props.receivers.filter(receiver => {
         let checked = false
         let removed = false
@@ -31,7 +32,8 @@ class Routes extends React.Component {
           receiver={receiver}
           />
       })
-    }</LayoutItem>
+    }</div>
+    </LayoutItem>
   }
 }
 

@@ -9,7 +9,7 @@ let Route = ({receiver, routesEl}) => {
   let routesRects = routesEl.getBoundingClientRect()
 
   let width = receiverRects.left - senderRects.left
-  let height = Math.abs(senderRects.top - receiverRects.top) + 4
+  let height = Math.abs(senderRects.top - receiverRects.top)
 
   let y1 = height
   let y2 = 0
@@ -22,8 +22,7 @@ let Route = ({receiver, routesEl}) => {
 
   return <svg
     style={{
-      top: top - routesRects.top + 12,
-      width: '90%'
+      top: top - routesRects.top
     }}
     className='route'
     viewBox={`0 0 ${width} ${height}`}
@@ -32,8 +31,10 @@ let Route = ({receiver, routesEl}) => {
     xmlns='http://www.w3.org/2000/svg'>
     <path
       d={`M0 ${y1} C ${width / 2} ${y1}, ${width / 2} ${y2}, ${width} ${y2}`}
+      strokeLinecap='round'
       stroke='black'
       fill='transparent'
+      strokeWidth='2'
       />
   </svg>
 }
