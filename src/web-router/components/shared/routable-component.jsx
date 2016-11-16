@@ -5,37 +5,6 @@ import { No } from '../../../gel-react/iconography'
 
 const noop = function () {}
 
-// let Node = ({ state, onClick, onRender }) => {
-//   onRender = onRender || noop
-//   return <div className={`node-container node-container-${state}`}>
-//     <div
-//       ref={(nodeEl) => {
-//         let routed = state.includes('routed') && !state.includes('unrouted')
-//         if (nodeEl && routed) onRender(nodeEl.getBoundingClientRect())
-//         // if (nodeEl && routed) {
-//         //   let rect = nodeEl.getBoundingClientRect()
-//         //   let point = document.createElement('div')
-//         //   point.style.position = 'absolute'
-//         //   point.style.width = '32px'
-//         //   point.style.height = '32px'
-//         //   point.style['background-color'] = 'red'
-//         //
-//         //   let routes = document.querySelector('.routes')
-//         //   let routesRect = routes.getBoundingClientRect()
-//         //
-//         //   point.style.top = rect.top - routesRect.top + 'px'
-//         //   point.style.left = rect.left - routesRect.left + 'px'
-//         //
-//         //   routes.appendChild(point)
-//         // }
-//       }}
-//       onClick={onClick}
-//       className={`node ${state}`}>
-//       <No />
-//     </div>
-//   </div>
-// }
-
 class Node extends React.Component {
   componentDidMount () {
     this.props.onRender(this.nodeEl)
