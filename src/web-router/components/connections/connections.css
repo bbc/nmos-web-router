@@ -268,10 +268,12 @@
     width: 100%;
 
     & .line {
-      stroke-linecap: round;
-      stroke: black;
+      transition: stroke 0.5s, stroke-dasharray 0.5s;
       fill: transparent;
+      stroke-linecap: round;
       stroke-width: 2;
+      stroke: var(--expanded);
+      stroke-dasharray: 0, 0;
     }
 
     &.expanded {
