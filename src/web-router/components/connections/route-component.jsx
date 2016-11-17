@@ -56,6 +56,7 @@ let Route = ({expanded, receiver, routesEl}) => {
   if (y1 === y2) LineComponent = Line
 
   if (expanded) {
+    y2 = receiverRects.top
     className += ' expanded'
     let scrollTop = routesEl.parentElement.scrollTop
     x1 = routesRects.width / 10
