@@ -19,8 +19,10 @@ debian/ips-web/
 ./src/gel-react/package.json
 
 #dev
+npm-debug.log*
 *.log
 *.json.gzip
+*.swp
 
 # misc
 .DS_Store
