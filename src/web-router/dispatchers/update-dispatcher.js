@@ -1,3 +1,7 @@
-export default () => {
-  return () => {}
+export default (actions) => {
+  return () => {
+    actions.update({
+      name: 'view'
+    })
+  }
 }

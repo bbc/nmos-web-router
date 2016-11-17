@@ -11,7 +11,7 @@ let Connections = ({routesEl, expandedSender, senders, receivers, actions}) => {
   return <Layout className='connections box box-hidden'
     onClick={function () { if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender) }}>
     <Header />
-    <Layout gels='1/1' layouts='flush' className='routables-scroll'>
+    <Layout gels='1/1' layouts='flush' className='routables-scroll' onScroll={() => { actions.update() }}>
       <Senders
         senders={senders}
         actions={actions}
