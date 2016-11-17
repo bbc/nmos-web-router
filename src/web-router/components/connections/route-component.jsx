@@ -37,7 +37,7 @@ let Route = ({expanded, receiver, routesEl}) => {
   let receiverRects = receiver.nodeEl.getBoundingClientRect()
   let routesRects = routesEl.getBoundingClientRect()
 
-  let width = receiverRects.left - senderRects.left
+  let width = routesRects.width
   let height = Math.abs(senderRects.top - receiverRects.top)
 
   let className = 'route'

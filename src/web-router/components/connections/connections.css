@@ -283,3 +283,13 @@
     }
   }
 }
+
+.routes {
+  position: relative;
+  left: -40%;
+}
+
+.receivers {
+  position: relative;
+  left: 20%;
+}

@@ -16,14 +16,14 @@ let Connections = ({routesEl, expandedSender, senders, receivers, actions}) => {
         senders={senders}
         actions={actions}
         />
+      <Receivers
+        senders={senders}
+        receivers={receivers}
+        actions={actions}
+          />
       <Routes
         expandedSender={expandedSender}
         routesEl={routesEl}
-        receivers={receivers}
-        actions={actions}
-        />
-      <Receivers
-        senders={senders}
         receivers={receivers}
         actions={actions}
         />

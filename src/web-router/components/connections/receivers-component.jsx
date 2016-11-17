@@ -23,6 +23,7 @@ let Receivers = ({senders, receivers, actions}) => {
             actions.unroute(receiver)
           }}
           onNodeRender={function (nodeEl) {
+            console.log('rendered')
             actions.nodeRendered(nodeEl, receiver, 'receivers')
           }}
           />
