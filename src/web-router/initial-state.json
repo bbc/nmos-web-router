@@ -22,7 +22,7 @@
     "senders": [],
     "receivers": [],
     "expandedSender": {
-      "state": "contracted",
+      "state": [],
       "node": {}
     },
     "notifications": {

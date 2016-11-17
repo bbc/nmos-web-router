@@ -36,6 +36,13 @@ let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onChec
   onNode = onNode || noop
   onNodeRender = onNodeRender || noop
 
+  let routableState = routable.state || []
+  routableState = routableState
+    .filter(state => {
+      return state !== ''
+    })
+    .join(' ')
+
   let CheckboxComponent = null
   if (checkbox) {
     CheckboxComponent = <Checkbox
@@ -45,15 +52,20 @@ let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onChec
 
   let NodeComponent = null
   if (node !== 'none') {
+    let nodeState = routable.node.state
+      .filter(state => {
+        return state !== ''
+      })
+      .join(' ')
     NodeComponent = <Node
-      state={`${routable.node.state} ${node}`}
+      state={nodeState}
       onClick={onNode}
       onRender={onNodeRender}
     />
   }
 
   return <div
-    className={`routable short ${baseState} ${routable.state}`}
+    className={`routable short ${baseState} ${routableState}`}
     onClick={onClick}>
     <div
       className='button'

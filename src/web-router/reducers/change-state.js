@@ -10,90 +10,129 @@ const disabled = 'disabled'
 const routed = 'routed'
 const unrouted = 'unrouted'
 const removed = 'removed'
+const blank = ''
 
-export default (routable) => {
-  routable.state = routable.state || ''
-  routable.node = routable.node || {
-    state: ''
+const routableStates = [
+  fuzzymissmatch,
+  fuzzymatch,
+  unchecked,
+  checked,
+  expanded,
+  contracted,
+  other,
+  selectable,
+  disabled,
+  removed
+]
+
+const nodeStates = [
+  routed,
+  unrouted,
+  removed
+]
+
+function initialStringArray (states) {
+  let arr = Array.apply(null, Array(states.length))
+  return arr
+    .map(() => {
+      return ''
+    })
+}
+
+function changeStates (states, state, add, remove) {
+  if (add) {
+    let index = states.indexOf(add)
+    state[index] = add
   }
+  if (remove) {
+    let index = states.indexOf(remove)
+    state[index] = ''
+  }
+}
+
+let ChangeState = (routable) => {
+  routable.state = routable.state || initialStringArray(routableStates)
+  routable.node = routable.node || {
+    state: initialStringArray(nodeStates)
+  }
+
+  function changeRoutableStates (add, remove) {
+    changeStates(routableStates, routable.state, add, remove)
+  }
+
+  function changeNodeStates (add, remove) {
+    changeStates(nodeStates, routable.node.state, add, remove)
+  }
+
   let changeState = {
     fuzzymatch () {
-      routable.state = routable.state.replace(fuzzymissmatch, fuzzymatch)
-      if (!routable.state.includes(fuzzymatch)) routable.state += ' ' + fuzzymatch
+      changeRoutableStates(fuzzymatch, fuzzymissmatch)
       return changeState
     },
     fuzzymissmatch () {
-      routable.state = routable.state.replace(fuzzymatch, fuzzymissmatch)
-      if (!routable.state.includes(fuzzymissmatch)) routable.state += ' ' + fuzzymissmatch
+      changeRoutableStates(fuzzymissmatch, fuzzymatch)
       return changeState
     },
     check () {
-      routable.state = routable.state.replace(unchecked, checked)
-      if (!routable.state.includes(checked)) routable.state += ' ' + checked
+      changeRoutableStates(checked, unchecked)
       return changeState
     },
     uncheck () {
-      if (routable.state.includes(unchecked)) return changeState
-      else if (routable.state.includes(checked)) routable.state = routable.state.replace(checked, unchecked)
-      else routable.state += ' ' + unchecked
+      changeRoutableStates(unchecked, checked)
       return changeState
     },
     contract () {
-      routable.state = routable.state.replace(expanded, contracted)
-      if (!routable.state.includes(contracted)) routable.state += ' ' + contracted
+      changeRoutableStates(contracted, expanded)
       return changeState
     },
     expand () {
-      routable.state = routable.state.replace(contracted, expanded)
-      if (!routable.state.includes(expanded)) routable.state += ' ' + expanded
+      changeRoutableStates(expanded, contracted)
       return changeState
     },
     other () {
-      if (!routable.state.includes(other)) routable.state += ' ' + other
+      changeRoutableStates(other, blank)
       return changeState
     },
     notOther () {
-      routable.state = routable.state.replace(other, '')
+      changeRoutableStates(blank, other)
       return changeState
     },
     selectable () {
-      if (!routable.state.includes(selectable)) routable.state += ' ' + selectable
+      changeRoutableStates(selectable, blank)
       return changeState
     },
     notSelectable () {
-      routable.state = routable.state.replace(selectable, '')
+      changeRoutableStates(blank, selectable)
       return changeState
     },
     disable () {
-      if (!routable.state.includes(disabled)) routable.state += ' ' + disabled
+      changeRoutableStates(disabled, blank)
       return changeState
     },
     enable () {
-      routable.state = routable.state.replace(disabled, '')
+      changeRoutableStates(blank, disabled)
       return changeState
     },
     route () {
-      routable.node.state = routed
-      routable.node.state = routable.node.state.replace(unrouted, routed)
-      if (!routable.node.state.includes(routed)) routable.node.state += ' ' + routed
+      changeNodeStates(routed, unrouted)
       return changeState
     },
     unroute () {
-      if (routable.node.state.includes(unrouted)) return changeState
-      else if (routable.node.state.includes(routed)) routable.node.state = routable.node.state.replace(routed, unrouted)
-      else routable.node.state += ' ' + unrouted
+      changeNodeStates(unrouted, routed)
       return changeState
     },
     remove () {
-      if (!routable.state.includes(removed)) routable.state += ' ' + removed
-      if (!routable.node.state.includes(removed)) routable.node.state += ' ' + removed
+      changeRoutableStates(removed, blank)
+      changeNodeStates(removed, blank)
       return changeState
     },
     unremove () {
-      routable.state = routable.state.replace(removed, '')
-      routable.node.state = routable.node.state.replace(removed, '')
+      changeRoutableStates(blank, removed)
+      changeNodeStates(blank, removed)
       return changeState
     }
   }
   return changeState
 }
+
+export default ChangeState
