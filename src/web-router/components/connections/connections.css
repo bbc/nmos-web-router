@@ -268,17 +268,18 @@
     width: 100%;
 
     & .line {
-      transition: stroke 0.5s, stroke-dasharray 0.5s;
+      transition: stroke 0.25s, stroke-dasharray 0.5s;
       fill: transparent;
       stroke-linecap: round;
-      stroke-width: 2;
+      stroke-width: 3;
       stroke: var(--expanded);
       stroke-dasharray: 0, 0;
     }
 
     &.expanded {
-      margin-top: 74px;
-      padding-left: 43px;
+      & .line {
+        stroke: var(--routed);
+      }
     }
   }
 }

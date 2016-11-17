@@ -1,13 +1,14 @@
 import React, {PropTypes} from 'react'
 
-let Path = ({y1, y2, width, height}) => {
+let Path = ({x1, y1, y2, width, height}) => {
   return <path
     className='line'
-    d={`M0 ${y1} C ${width / 2} ${y1}, ${width / 2} ${y2}, ${width} ${y2}`}
+    d={`M${x1} ${y1} C ${width / 2} ${y1}, ${width / 2} ${y2}, ${width} ${y2}`}
     />
 }
 
 Path.propTypes = {
+  x1: PropTypes.number.isRequired,
   y1: PropTypes.number.isRequired,
   y2: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
@@ -40,11 +41,8 @@ let Route = ({expanded, receiver, routesEl}) => {
   let height = Math.abs(senderRects.top - receiverRects.top)
 
   let className = 'route'
-  if (expanded) {
-    height = height - routesRects.top - 62
-    className += ' expanded'
-  }
 
+  let x1 = 0
   let y1 = height
   let y2 = 0
   let top = receiverRects.top
@@ -54,12 +52,24 @@ let Route = ({expanded, receiver, routesEl}) => {
     y1 = 0
   }
 
-  if (expanded) {
-    top = routesRects.top
-  }
-
   let LineComponent = Path
   if (y1 === y2) LineComponent = Line
+
+  if (expanded) {
+    className += ' expanded'
+    let scrollTop = routesEl.parentElement.scrollTop
+    x1 = routesRects.width / 10
+    top = routesRects.top + scrollTop + 70 // need to calculate this number 70...
+    height = Math.abs(top - receiverRects.top)
+    if (y2 < top) {
+      y1 = height
+      y2 = 0
+      top -= height
+    } else {
+      y1 = 0
+      y2 = height
+    }
+  }
 
   return <svg
     style={{
@@ -70,7 +80,7 @@ let Route = ({expanded, receiver, routesEl}) => {
     preserveAspectRatio='none'
     height={height + 4}
     xmlns='http://www.w3.org/2000/svg'>
-    <LineComponent y1={y1} y2={y2} width={width} height={height} />
+    <LineComponent x1={x1} y1={y1} y2={y2} width={width} height={height} />
   </svg>
 }
 
