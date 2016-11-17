@@ -5,19 +5,31 @@ import drc from './drc'
 import NMOS from './ips-nmos-api/src'
 
 const usestub = window.location.search.includes('stub')
-let getUrl = 'http://ipstudio-discovery.rd.bbc.co.uk:8870'
-if (window.location.search.includes('get-url=')) {
-  getUrl = window.location.search
+
+function url (type, defaultUrl) {
+  if (window.location.search.includes(`${type}-url=`)) {
+    return window.location.search
     .replace('?', '')
     .split('&')
     .filter(query => {
-      return query.includes('get-url=')
+      return query.includes(`${type}-url=`)
     })
     .map(query => {
-      return query.replace('get-url=', '')
-    })[0] }
+      return query.replace(`${type}-url=`, '')
+    })[0]
+  } else return defaultUrl
+}
 
-let putUrl = 'http://172.29.176.55:12345'
+const ipstudioGet = 'http://172.29.94.124:8870'
+const ipstudioPut = 'http://172.29.176.55:12345'
+
+let bothUrl = url('both', '')
+let getUrl = bothUrl
+let putUrl = bothUrl
+if (bothUrl === '') {
+  getUrl = url('get', ipstudioGet)
+  putUrl = url('put', ipstudioPut)
+}
 
 window.nmos = NMOS({
   stub: usestub,
