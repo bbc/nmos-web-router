@@ -70,3 +70,22 @@ Either a sender or receiver
 #### Route
 
 Some kind of connection between a sender and a receiver
+
+## TODO
+
+1. change-state
+2. routing
+3. impliment:
+    route.subscriptions = {
+      sender: {},
+      unrouted: []
+    }
+4. clean reducers
+5. clean css
+6. make data consistent when generating
+7. remove components except the checkbox
+8. loading screen needs to be in a container
+9. real estate
+10. remove DRC
+11. update docs
+12. update tests
