@@ -74,18 +74,17 @@ Some kind of connection between a sender and a receiver
 ## TODO
 
 1. change-state
-2. routing
-3. impliment:
+2. impliment:
     route.subscriptions = {
       sender: {},
       unrouted: []
     }
-4. clean reducers
-5. clean css
-6. make data consistent when generating
-7. remove components except the checkbox
-8. loading screen needs to be in a container
-9. real estate
-10. remove DRC
-11. update docs
-12. update tests
+3. clean reducers
+4. clean css
+5. make data consistent when generating
+6. remove components except the checkbox
+7. loading screen needs to be in a container
+8. real estate
+9. remove DRC
+10. update docs
+11. update tests
