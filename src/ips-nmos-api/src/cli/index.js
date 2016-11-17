@@ -11,7 +11,9 @@ function port (name, defaultPort) {
   return portNumber
 }
 
-let nmos = NMOS({stub: true})
+let nmos = NMOS({stub: {
+  delay: 'random'
+}})
 
 let httpPort = port('http', 6589)
 serve(nmos, httpPort)
