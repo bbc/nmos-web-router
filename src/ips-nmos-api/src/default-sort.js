@@ -11,7 +11,8 @@ let includes = {
 }
 
 function compareLabel (left, right) {
-  return left.label.toUpperCase() < right.label.toUpperCase() ? -1 : 1
+  if (left.label.toUpperCase() !== right.label.toUpperCase()) return left.label.toUpperCase() < right.label.toUpperCase() ? -1 : 1
+  return left.id.toUpperCase() < right.id.toUpperCase() ? -1 : 1
 }
 
 module.exports = function (left, right) {

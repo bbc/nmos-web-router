@@ -282,7 +282,7 @@
         "id": "d0fd10b7-0e71-48ca-bc96-666c2389cb57",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
-            "sender_id": "155d7884-0e3a-4493-8ca3-b0b451836f26"
+            "sender_id": null
         },
         "type": "receivers"
     },
