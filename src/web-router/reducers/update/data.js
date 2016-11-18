@@ -1,58 +1,48 @@
-import onGrain from './on-grain'
+function noop (data) { return data }
 
-function updateReceiversWithSenders (data) {
-  return data.receivers.map(receiver => {
-    if (receiver.subscription.sender_id) {
-      receiver.subscription.sender = data.senders.filter(sender => {
-        return sender.id === receiver.subscription.sender_id
-      })[0]
-    }
-    return receiver
+function add (data, grain) {
+  return [].concat(data).concat([grain.post])
+}
+
+function remove (data, grain) {
+  let index = -1
+  data.forEach((d, i) => {
+    if (d.id === grain.pre.id) index = i
+  })
+  if (index === -1) return data
+  if (index === data.length - 1) return data.slice(0, data.length - 1)
+  return data.slice(0, index).concat(data.slice(index + 1, data.length))
+}
+
+function update (data, grain) {
+  return data.map(d => {
+    d = Object.assign({}, d)
+    if (grain.post.id === d.id) return grain.post
+    else return d
   })
 }
 
-function updateSendersWithFlows (data) {
-  let senders = data.senders.map(sender => {
-    let flow = data.flows.filter(flow => {
-      return flow.id === sender.flow_id
-    })[0]
-    if (flow) sender.format = flow.format
-    else sender.format = 'no'
-    return sender
-  })
-  return senders
-}
-
-function add (routables, grain) {
-  let post = grain.post
-  let routable = routables.filter(routable => {
-    return routable.id === post.id
-  })[0]
-  if (routable === undefined) routables.push(post)
-}
-
-function update (routables, grain) {
-  routables.forEach(routable => {
-    if (routable.id === grain.pre.id) {
-      Object.keys(grain.post).forEach(key => {
-        let value = grain.post[key]
-        routable[key] = value
-      })
-    }
-  })
+function isEmpty (obj) {
+  return obj === undefined || obj === null || Object.keys(obj).length === 0 && obj.constructor === Object
 }
 
 export default (state, action) => {
   let data = Object.assign({}, state.data) || {}
-  onGrain(data[action.name], action.update[action.name], {
-    update,
-    add
+
+  let grains = action.update[action.name]
+  grains.forEach(grain => {
+    let post = grain.post
+    let pre = grain.pre
+
+    let callback = noop
+    if (isEmpty(pre) && !isEmpty(post)) callback = add
+    else if (!isEmpty(pre) && isEmpty(post)) callback = remove
+    else if (!isEmpty(pre) && !isEmpty(post)) callback = update
+
+    data[action.name] = callback(data[action.name], grain)
   })
 
   data[action.name].sort(window.nmos.defaultSort)
-
-  updateReceiversWithSenders(data)
-  updateSendersWithFlows(data)
 
   return data
 }

@@ -12,5 +12,7 @@ export default (state, action, merge) => {
     if (routable.id === action.sender.id) changeState.route()
     return routable
   })
+  let changeState = ChangeState(view.expandedSender)
+  changeState.route()
   return merge({ view })
 }
