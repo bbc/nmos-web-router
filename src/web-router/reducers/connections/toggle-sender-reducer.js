@@ -21,7 +21,7 @@ export default (state, action, merge) => {
 
   view.receivers = view.receivers.map(receiver => {
     let changeState = ChangeState(receiver)
-    changeState.contract().enable().notSelectable()
+    changeState.enable().notSelectable()
     if (toggled.format !== receiver.format && expanding) changeState.disable()
     else if (expanding) changeState.selectable()
     return receiver
