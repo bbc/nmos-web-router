@@ -117,10 +117,12 @@ let ChangeState = (routable) => {
     },
     route () {
       changeNodeStates(routed, unrouted)
+      changeNodeStates(routed, unrouting)
       return changeState
     },
     unroute () {
       changeNodeStates(unrouted, routed)
+      changeNodeStates(unrouted, unrouting)
       return changeState
     },
     unrouting () {
