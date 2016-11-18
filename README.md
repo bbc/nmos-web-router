@@ -73,18 +73,13 @@ Some kind of connection between a sender and a receiver
 
 ## TODO
 
-1. change-state - need to go through reducers and make sure change-state is being used correctly as it currently isn't. Strategy is to remove all uses of it and start again adding correctly where needed.
-2. impliment:
-    route.subscriptions = {
-      sender: {},
-      unrouted: []
-    }
-3. clean reducers
+1. update the view on web sockets, but just the routes, everything else looks fine
+2. remove components except the checkbox
+3. clean reducers => test then
+3. make data consistent when generating
 4. clean css
-5. make data consistent when generating
-6. remove components except the checkbox
-7. loading screen needs to be in a container
-8. real estate
-9. remove DRC
-10. update docs
-11. update tests
+5. loading screen needs to be in a container
+6. real estate
+7. remove DRC
+8. update docs
+9. update tests
