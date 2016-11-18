@@ -6,6 +6,13 @@ export default (state, action, merge) => {
     Object.assign({}, routable)
     let changeState = ChangeState(routable)
     if (routable.id === action.receiver.id) changeState.route()
+    let sender = Object.assign({}, routable.subscription.routed)
+
+    let matched = routable.subscription.routing.filter(r => {
+      return r.id === sender.id
+    })[0]
+    if (matched === undefined) [].concat(routable.subscription.routing, [sender])
+
     return routable
   })
   view.senders = view.senders.map(routable => {
