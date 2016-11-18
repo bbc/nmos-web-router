@@ -121,10 +121,6 @@ function Unrouting (receivers, expandedSender, routesEl) {
   return routes
 }
 
-function Unrouted (receivers, expandedSender, routesEl) {
-  return null
-}
-
 class Routes extends React.Component {
   componentDidMount () {
     this.props.actions.routesRendered(document.querySelector('.routes'))
@@ -137,7 +133,6 @@ class Routes extends React.Component {
         {Routed(this.props.receivers, this.props.expandedSender, this.props.routesEl)}
         {Routing(this.props.receivers, this.props.expandedSender, this.props.routesEl)}
         {Unrouting(this.props.receivers, this.props.expandedSender, this.props.routesEl)}
-        {Unrouted(this.props.receivers, this.props.expandedSender, this.props.routesEl)}
       </div>
     </LayoutItem>
   }

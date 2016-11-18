@@ -36,7 +36,6 @@ function mapReceiver (receiver, view, senders) {
     changeState.route()
   } else changeState.unroute()
 
-  receiver.subscription.unrouted = []
   receiver.subscription.routing = []
   receiver.subscription.unrouting = []
 
