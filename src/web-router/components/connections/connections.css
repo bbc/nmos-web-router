@@ -74,7 +74,12 @@
   }
 }
 
+.unrouting {
+  background-color: var(--remove);
+}
+
 .receivers .routed,
+.receivers .unrouting,
 .receivers .remove {
   z-index: 1;
   transform: translate(-26px, -50%);

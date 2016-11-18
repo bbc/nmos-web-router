@@ -9,6 +9,7 @@ const selectable = 'selectable'
 const disabled = 'disabled'
 const routed = 'routed'
 const unrouted = 'unrouted'
+const unrouting = 'unrouting'
 const removed = 'removed'
 const blank = ''
 
@@ -28,6 +29,7 @@ const routableStates = [
 const nodeStates = [
   routed,
   unrouted,
+  unrouting,
   removed
 ]
 
@@ -119,6 +121,11 @@ let ChangeState = (routable) => {
     },
     unroute () {
       changeNodeStates(unrouted, routed)
+      return changeState
+    },
+    unrouting () {
+      changeNodeStates(unrouting, routed)
+      changeNodeStates(unrouting, unrouted)
       return changeState
     },
     remove () {
