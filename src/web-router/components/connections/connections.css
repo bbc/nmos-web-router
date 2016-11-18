@@ -282,6 +282,10 @@
       stroke-dasharray: 0, 0;
     }
 
+    &-routing .line {
+      stroke-dasharray: 15, 15;
+    }
+
     &.expanded {
       & .line {
         stroke: var(--routed);

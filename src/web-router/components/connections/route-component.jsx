@@ -29,17 +29,19 @@ Line.propTypes = {
   width: PropTypes.number.isRequired
 }
 
-let Route = ({expanded, receiver, routesEl}) => {
+let Route = ({expanded, senderNodeEl, receiverNodeEl, routesEl, state}) => {
   if (routesEl === undefined || routesEl === null) return null
+  if (senderNodeEl === undefined || senderNodeEl === null) return null
+  if (receiverNodeEl === undefined || receiverNodeEl === null) return null
 
-  let senderRects = receiver.subscription.routed.nodeEl.getBoundingClientRect()
-  let receiverRects = receiver.nodeEl.getBoundingClientRect()
+  let senderRects = senderNodeEl.getBoundingClientRect()
+  let receiverRects = receiverNodeEl.getBoundingClientRect()
   let routesRects = routesEl.getBoundingClientRect()
 
   let width = routesRects.width
   let height = Math.abs(senderRects.top - receiverRects.top)
 
-  let className = 'route'
+  let className = `route route-${state}`
 
   let x1 = 0
   let y1 = height
@@ -85,8 +87,10 @@ let Route = ({expanded, receiver, routesEl}) => {
 }
 
 Route.propTypes = {
+  state: PropTypes.string.isRequired,
   expanded: PropTypes.bool.isRequired,
-  receiver: PropTypes.object.isRequired,
+  senderNodeEl: PropTypes.object,
+  receiverNodeEl: PropTypes.object,
   routesEl: PropTypes.any
 }
 

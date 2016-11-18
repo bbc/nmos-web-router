@@ -8,7 +8,7 @@ import ExpandedSender from '../connections/expanded-sender-component'
 import Choose from '../choose'
 import Buttons from './buttons-component'
 
-let WebRouter = ({data, view, actions}) => {
+let WebRouter = ({view, actions}) => {
   return <div className='main'>
     <Buttons
       term={view.choose.term}
@@ -46,7 +46,6 @@ let WebRouter = ({data, view, actions}) => {
 }
 
 WebRouter.propTypes = {
-  data: PropTypes.object.isRequired,
   view: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
