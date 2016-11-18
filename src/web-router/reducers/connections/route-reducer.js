@@ -1,49 +1,51 @@
 import ChangeState from '../change-state'
 
-function routing (routable, sender) {
-  let matched = routable.subscription.routing.filter(r => {
-    return r.id === sender.id
-  })[0]
-  if (matched === undefined) return [].concat(routable.subscription.routing, [sender])
-  return routable.subscription.routing
-}
-
-function remove (data, sender) {
-  let index = -1
-  data.forEach((d, i) => {
-    if (d.id === sender.id) index = i
+function unique (senders) {
+  let arr = []
+  senders.forEach(sender => {
+    let matched = arr.filter(a => {
+      return a.id === sender.id
+    })[0]
+    if (matched === undefined) arr.push(sender)
   })
-  if (index === -1) return data
-  if (index === data.length - 1) return data.slice(0, data.length - 1)
-  return data.slice(0, index).concat(data.slice(index + 1, data.length))
-}
-
-function unrouting (routable, sender) {
-  let matched = routable.subscription.unrouting.filter(r => {
-    return r.id === sender.id
-  })[0]
-  if (matched !== undefined) remove(routable.subscription.unrouting, sender)
-  return routable.subscription.unrouting
+  return arr
 }
 
 export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
-  view.receivers = view.receivers.map(routable => {
-    Object.assign({}, routable)
-    let changeState = ChangeState(routable)
-    if (routable.id === action.receiver.id) {
+  view.receivers = view.receivers.map(receiver => {
+    Object.assign({}, receiver)
+    let changeState = ChangeState(receiver)
+    if (receiver.id === action.receiver.id) {
       changeState.route()
-      routable.subscription.routing = routing(routable, action.sender)
-      routable.subscription.unrouting = unrouting(routable, action.sender)
-    }
 
-    return routable
+      if (receiver.subscription.routed) receiver.subscription.unrouting.push(receiver.subscription.routed)
+      delete receiver.subscription.routed
+
+      receiver.subscription.routing.push(action.sender)
+
+      if (receiver.subscription.unrouting.length > 0) {
+        let unrouting = []
+        receiver.subscription.unrouting.forEach(unroutingSender => {
+          let mySender = unroutingSender
+          receiver.subscription.routing.forEach(routingSender => {
+            if (routingSender.id === unroutingSender.id) mySender = null
+          })
+          if (mySender !== null) unrouting.push(mySender)
+        })
+        receiver.subscription.unrouting = unrouting
+      }
+
+      receiver.subscription.routing = unique(receiver.subscription.routing)
+      receiver.subscription.unrouting = unique(receiver.subscription.unrouting)
+    }
+    return receiver
   })
-  view.senders = view.senders.map(routable => {
-    Object.assign({}, routable)
-    let changeState = ChangeState(routable)
-    if (routable.id === action.sender.id) changeState.route()
-    return routable
+  view.senders = view.senders.map(sender => {
+    Object.assign({}, sender)
+    let changeState = ChangeState(sender)
+    if (sender.id === action.sender.id) changeState.route()
+    return sender
   })
   let changeState = ChangeState(view.expandedSender)
   changeState.route()

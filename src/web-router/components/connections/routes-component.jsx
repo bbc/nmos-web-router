@@ -6,7 +6,7 @@ function Routed (receivers, expandedSender, routesEl) {
   return receivers.filter(receiver => {
     let checked = false
     let removed = false
-    let routed = receiver.subscription.sender_id !== null
+    let routed = receiver.subscription.routed !== undefined
     if (routed) {
       let receiverChecked = receiver.state.includes('checked')
       let sender = receiver.subscription.routed
@@ -71,7 +71,7 @@ function Routing (receivers, expandedSender, routesEl) {
         state='routing'
         expanded={expanded}
         routesEl={routesEl}
-        key={`unrouting-route-${index}-${receiver.id}`}
+        key={`routing-route-${index}-${receiver.id}`}
         receiverNodeEl={receiver.nodeEl}
         senderNodeEl={sender.nodeEl}
         />)
@@ -82,7 +82,43 @@ function Routing (receivers, expandedSender, routesEl) {
 }
 
 function Unrouting (receivers, expandedSender, routesEl) {
-  return null
+  receivers = receivers.filter(receiver => {
+    let checked = receiver.state.includes('checked')
+    let removed = receiver.state.includes('removed')
+    return checked && !removed
+  })
+
+  let routes = []
+  receivers.forEach(receiver => {
+    receiver.subscription.unrouting.filter(sender => {
+      let checked = sender.state.includes('checked')
+      let removed = sender.state.includes('removed')
+      return checked && !removed
+    }).forEach((sender, index) => {
+      let expanded = false
+
+      if (expandedSender.state.includes('expanded') && expandedSender.id === sender.id) {
+        expanded = true
+        receiver = {
+          nodeEl: receiver.nodeEl
+        }
+        sender = {
+          nodeEl: document.querySelector('.expanded-sender .node')
+        }
+      }
+
+      routes.push(<Route
+        state='unrouting'
+        expanded={expanded}
+        routesEl={routesEl}
+        key={`unrouting-route-${index}-${receiver.id}`}
+        receiverNodeEl={receiver.nodeEl}
+        senderNodeEl={sender.nodeEl}
+        />)
+    })
+  })
+
+  return routes
 }
 
 function Unrouted (receivers, expandedSender, routesEl) {

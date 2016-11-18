@@ -286,10 +286,18 @@
       stroke-dasharray: 15, 15;
     }
 
+    &-unrouting .line {
+      stroke-dasharray: 15, 15;
+    }
+
     &.expanded {
       & .line {
         stroke: var(--routed);
       }
+    }
+
+    &-unrouting .line {
+      stroke: var(--remove);
     }
   }
 }

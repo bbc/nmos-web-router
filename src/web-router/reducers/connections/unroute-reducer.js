@@ -1,29 +1,14 @@
 import ChangeState from '../change-state'
 
-function remove (data, sender) {
-  let index = -1
-  data.forEach((d, i) => {
-    if (d.id === sender.id) index = i
+function unique (senders) {
+  let arr = []
+  senders.forEach(sender => {
+    let matched = arr.filter(a => {
+      return a.id === sender.id
+    })[0]
+    if (matched === undefined) arr.push(sender)
   })
-  if (index === -1) return data
-  if (index === data.length - 1) return data.slice(0, data.length - 1)
-  return data.slice(0, index).concat(data.slice(index + 1, data.length))
-}
-
-function routing (receiver, sender) {
-  let matched = receiver.subscription.routing.filter(r => {
-    return r.id === sender.id
-  })[0]
-  if (matched !== undefined) remove(receiver.subscription.routing, sender)
-  return receiver.subscription.routing
-}
-
-function unrouting (receiver, sender) {
-  let matched = receiver.subscription.unrouting.filter(r => {
-    return r.id === sender.id
-  })[0]
-  if (matched === undefined) return [].concat(receiver.subscription.unrouting, [sender])
-  return receiver.subscription.unrouting
+  return arr
 }
 
 export default (state, action, merge) => {
@@ -32,9 +17,14 @@ export default (state, action, merge) => {
     let changeState = ChangeState(receiver)
     if (receiver.id === action.receiver.id) {
       changeState.unrouting()
-      let sender = Object.assign({}, receiver.subscription.routed)
-      receiver.subscription.unrouting = unrouting(receiver, sender)
-      receiver.subscription.routing = routing(receiver, sender)
+      let routed = receiver.subscription.routed
+      if (routed) {
+        delete receiver.subscription.routed
+        receiver.subscription.unrouting = receiver.subscription.unrouting.concat([routed])
+      }
+      receiver.subscription.unrouting = receiver.subscription.unrouting.concat(receiver.subscription.routing)
+      receiver.subscription.routing = []
+      receiver.subscription.unrouting = unique(receiver.subscription.unrouting)
     }
     return receiver
   })
