@@ -31,9 +31,8 @@ Line.propTypes = {
 
 let Route = ({expanded, receiver, routesEl}) => {
   if (routesEl === undefined || routesEl === null) return null
-  if (receiver.subscription.sender === undefined) return null
 
-  let senderRects = receiver.subscription.sender.nodeEl.getBoundingClientRect()
+  let senderRects = receiver.subscription.routed.nodeEl.getBoundingClientRect()
   let receiverRects = receiver.nodeEl.getBoundingClientRect()
   let routesRects = routesEl.getBoundingClientRect()
 

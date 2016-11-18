@@ -32,7 +32,7 @@ function mapReceiver (receiver, view, senders) {
     let sender = senders.filter(sender => {
       return sender.id === receiver.subscription.sender_id
     })[0]
-    receiver.subscription.sender = sender
+    receiver.subscription.routed = sender
     changeState.route()
   } else changeState.unroute()
   receiver = fuzzymatch(view, receiver, changeState)
