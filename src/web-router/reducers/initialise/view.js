@@ -46,6 +46,6 @@ function mapReceivers (data, view, senders) {
 export default (data, view) => {
   view.senders = mapSenders(data, view)
   view.receivers = mapReceivers(data, view, view.senders)
-  ChangeState(view.expandedSender).contract()
+  ChangeState(view.expandedSender).contract().unroute()
   return view
 }
