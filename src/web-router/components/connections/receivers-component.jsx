@@ -5,6 +5,14 @@ import Routable from '../shared/routable-component'
 let Receivers = ({senders, receivers, actions}) => {
   return <LayoutItem className='routables receivers' gels='4/10'>{
       receivers.map(receiver => {
+        let clicked = 'button'
+        function route () {
+          let selectable = receiver.state.includes('selectable')
+          let disabled = receiver.state.includes('disabled')
+          let removed = receiver.state.includes('removed')
+          if (selectable && !disabled && !removed) actions.route(receiver, senders)
+        }
+
         return <Routable
           id={receiver.id}
           key={receiver.id}
@@ -12,14 +20,14 @@ let Receivers = ({senders, receivers, actions}) => {
           node
           onClick={function (evt) {
             evt.stopPropagation()
+            if (clicked === 'button') route()
           }}
           onButton={function () {
-            let selectable = receiver.state.includes('selectable')
-            let disabled = receiver.state.includes('disabled')
-            let removed = receiver.state.includes('removed')
-            if (selectable && !disabled && !removed) actions.route(receiver, senders)
+            clicked = 'button'
+            route()
           }}
           onNode={function () {
+            clicked = 'node'
             actions.unroute(receiver)
           }}
           onNodeRender={function (nodeEl) {
