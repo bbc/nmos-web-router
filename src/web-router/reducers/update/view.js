@@ -33,6 +33,9 @@ function mapReceiver (receiver, view, senders) {
       return sender.id === receiver.subscription.sender_id
     })[0]
     receiver.subscription.routed = sender
+    receiver.subscription.unrouted = []
+    receiver.subscription.routing = []
+    receiver.subscription.unrouting = []
     changeState.route()
   } else changeState.unroute()
   receiver = fuzzymatch(view, receiver, changeState)
