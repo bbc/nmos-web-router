@@ -5,7 +5,6 @@
     "flows": []
   },
   "view": {
-    "scroll": true,
     "loading": {
       "status": "loading",
       "notLoaded": ["receivers", "senders", "flows"],

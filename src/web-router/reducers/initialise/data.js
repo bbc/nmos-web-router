@@ -1,14 +1,3 @@
-function mapReceivers (data) {
-  return data.receivers.map(receiver => {
-    if (receiver.subscription.sender_id) {
-      receiver.subscription.sender = data.senders.filter(sender => {
-        return sender.id === receiver.subscription.sender_id
-      })[0]
-    }
-    return receiver
-  })
-}
-
 function mapSenders (data) {
   let senders = data.senders.map(sender => {
     let flow = data.flows.filter(flow => {
@@ -28,7 +17,7 @@ export default (state, action) => {
     senders: action.senders || state.data.senders,
     flows: action.flows || state.data.flows
   }
-  data.receivers = mapReceivers(data)
+  data.receivers = data.receivers
   data.senders = mapSenders(data)
   return data
 }

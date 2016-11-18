@@ -10,8 +10,7 @@ export default (state, action, merge) => {
   let viewData = Object.assign({}, data)
   let view = Object.assign({}, state.view, {
     loading: loading(viewData, state.view),
-    view: initialiseView(viewData, state.view),
-    scroll: false
+    view: initialiseView(viewData, state.view)
   })
 
   return merge({

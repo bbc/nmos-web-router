@@ -12,7 +12,7 @@ function port (name, defaultPort) {
 }
 
 let nmos = NMOS({stub: {
-  delay: 'random'
+  delay: 0
 }})
 
 let httpPort = port('http', 6589)

@@ -73,7 +73,7 @@ Some kind of connection between a sender and a receiver
 
 ## TODO
 
-1. change-state
+1. change-state - need to go through reducers and make sure change-state is being used correctly as it currently isn't. Strategy is to remove all uses of it and start again adding correctly where needed.
 2. impliment:
     route.subscriptions = {
       sender: {},
