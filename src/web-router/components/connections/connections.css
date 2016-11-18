@@ -96,12 +96,13 @@
   background-color: var(--contracted);
 }
 
-.selectable .button {
-  &:hover,
-  &:active {
-    cursor: pointer;
-    background-color: var(--expanded);
-  }
+.connections .routable:hover.selectable {
+  cursor: pointer;
+}
+
+.connections .routable:hover.selectable .button {
+  cursor: pointer;
+  background-color: var(--expanded);
 }
 
 .disabled {
