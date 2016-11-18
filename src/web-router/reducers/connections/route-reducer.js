@@ -11,7 +11,7 @@ export default (state, action, merge) => {
     let matched = routable.subscription.routing.filter(r => {
       return r.id === sender.id
     })[0]
-    if (matched === undefined) [].concat(routable.subscription.routing, [sender])
+    if (matched === undefined) routable.subscription.routing = [].concat(routable.subscription.routing, [sender])
 
     return routable
   })
