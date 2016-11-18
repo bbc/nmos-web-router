@@ -51,7 +51,17 @@ export default (data, view, action) => {
     })[0]
 
     if (matched === undefined) changeState.remove()
-    else changeState.unremove()
+    else {
+      changeState.unremove()
+
+      Object.keys(matched)
+        .filter(key => {
+          return key !== 'subscription'
+        })
+        .forEach(key => {
+          routable[key] = matched[key]
+        })
+    }
 
     return routable
   })
