@@ -21,7 +21,7 @@ function url (type, defaultUrl) {
 }
 
 const ipstudioGet = 'http://172.29.94.124:8870'
-const ipstudioPut = 'http://172.29.176.55:12345'
+const ipstudioPut = 'http://172.29.80.138:12345'
 
 let bothUrl = url('both', '')
 let getUrl = bothUrl
