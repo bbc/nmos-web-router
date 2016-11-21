@@ -156,17 +156,16 @@ export default (data, view, action) => {
   let matchSender = view.senders.filter(sender => {
     return sender.id === expandedId
   })[0]
+  let changeExpandedState = ChangeState(view.expandedSender)
   if (matchSender) {
     view.expandedSender.id = matchSender.id
     view.expandedSender.label = matchSender.label
     view.expandedSender.description = matchSender.description
     view.expandedSender.format = matchSender.format
-
-    let changeState = ChangeState(view.expandedSender)
-    if (matchSender.node.state.includes('routed')) changeState.route()
-    else changeState.unroute()
+    if (matchSender.node.state.includes('routed')) changeExpandedState.route()
+    else changeExpandedState.unroute()
   } else {
-    view.expandedSender.contract()
+    changeExpandedState.contract()
   }
 
   view[action.name].sort(window.nmos.defaultSort)
