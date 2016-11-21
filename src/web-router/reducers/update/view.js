@@ -112,6 +112,15 @@ export default (data, view, action) => {
           }
           delete routable.subscription.routed
           changeState.unroute()
+        } else if (!mathcedRouted) {
+          delete routable.subscription.routed
+          changeState.unroute()
+        } else if (mathcedRouted) {
+          let sender = view.senders.filter(sender => {
+            return sender.id === matched.subscription.sender_id
+          })[0]
+          routable.subscription.routed = sender
+          changeState.route()
         }
       }
     }
