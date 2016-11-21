@@ -49,8 +49,22 @@ function updateSenderRoutes (sender, data) {
   return sender
 }
 
+function updateSenderWithFlow (sender, flows) {
+  let flow = flows.filter(flow => {
+    return flow.id === sender.flow_id
+  })[0]
+  if (flow) sender.format = flow.format
+  else sender.format = 'no'
+  return sender
+}
+
 export default (data, view, action) => {
-  if (action.name === 'flows') return view
+  if (action.name === 'flows') {
+    view.senders = view.senders.map(sender => {
+      return updateSenderWithFlow(sender, data.flows)
+    })
+    return view
+  }
 
   data[action.name].forEach(routable => {
     let matched = view[action.name].filter(r => {

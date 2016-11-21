@@ -73,13 +73,13 @@ Some kind of connection between a sender and a receiver
 
 ## TODO
 
-1. update the view on web sockets, but just the routes, everything else looks fine
-2. remove components except the checkbox
-3. clean reducers => test then
-3. make data consistent when generating
-4. clean css
-5. loading screen needs to be in a container
-6. real estate
-7. remove DRC
-8. update docs
-9. update tests
+* sort out expanded
+* remove components except the checkbox and move into shared
+* clean reducers => test them
+* make data consistent when generating
+* clean css
+* loading screen needs to be in a container
+* real estate
+* remove DRC
+* update docs
+* update tests
