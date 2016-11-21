@@ -63,6 +63,7 @@ export default (data, view, action) => {
     view.senders = view.senders.map(sender => {
       return updateSenderWithFlow(sender, data.flows)
     })
+    view.senders.sort(window.nmos.defaultSort)
     return view
   }
 
