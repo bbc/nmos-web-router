@@ -7,12 +7,18 @@ function port (name, defaultPort) {
   let portNumber = process.argv.filter(arg => {
     return arg.includes(`--${name}-port`)
   })[0] || `--${name}-port=${defaultPort}`
-  portNumber = parseInt(portNumber.replace(`--${name}-port=`, ''), 10)
-  return portNumber
+  return parseInt(portNumber.replace(`--${name}-port=`, ''), 10) || defaultPort
+}
+
+function delay () {
+  let delay = process.argv.filter(arg => {
+    return arg.includes(`--delay`)
+  })[0] || '--delay=0'
+  return parseInt(delay.replace('--delay=', ''), 10) || 0
 }
 
 let nmos = NMOS({stub: {
-  delay: 0
+  delay: delay()
 }})
 
 let httpPort = port('http', 6589)
