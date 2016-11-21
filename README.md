@@ -73,7 +73,6 @@ Some kind of connection between a sender and a receiver
 
 ## TODO
 
-* sort out expanded
 * remove components except the checkbox and move into shared
 * clean reducers => test them
 * make data consistent when generating

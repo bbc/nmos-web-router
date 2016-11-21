@@ -5,6 +5,7 @@ function contract (state, action, merge) {
   let changeState = ChangeState(view.expandedSender)
   changeState.contract()
 
+  delete view.expandedSender.id
   delete view.expandedSender.label
   delete view.expandedSender.description
   delete view.expandedSender.format
