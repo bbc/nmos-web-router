@@ -17,7 +17,7 @@ function fuzzymatch (view, routable, changeState) {
 function mapSender (sender, data, view) {
   sender = Object.assign({}, sender)
   let changeState = ChangeState(sender)
-  changeState.check().contract().selectable()
+  changeState.uncheck().contract().selectable()
   if (isSenderRouted(sender, data.receivers)) changeState.route()
   else changeState.unroute()
   sender = fuzzymatch(view, sender, changeState)
@@ -27,7 +27,7 @@ function mapSender (sender, data, view) {
 function mapReceiver (receiver, view, senders) {
   receiver = Object.assign({}, receiver)
   let changeState = ChangeState(receiver)
-  changeState.check().contract().notSelectable()
+  changeState.uncheck().contract().notSelectable()
   if (receiver.subscription.sender_id !== null) {
     let sender = senders.filter(sender => {
       return sender.id === receiver.subscription.sender_id
