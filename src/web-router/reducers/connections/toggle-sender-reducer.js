@@ -36,6 +36,7 @@ function expand (state, action, merge) {
     sender = Object.assign({}, sender)
     let changeState = ChangeState(sender)
     if (sender.id === toggled.id) {
+      view.expandedSender.id = sender.id
       view.expandedSender.label = sender.label
       view.expandedSender.description = sender.description
       view.expandedSender.format = sender.format
