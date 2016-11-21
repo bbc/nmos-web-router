@@ -105,17 +105,12 @@ export default (data, view, action) => {
         let routableHasRouting = routable.subscription.routing.length > 0
 
         if (routableHasRouting && mathcedRouted) {
-          let sender = view.senders.filter(sender => {
-            return sender.id === matched.subscription.sender_id
-          })[0]
-          routable.subscription.routed = sender
           let routingIndex = -1
           routable.subscription.routing.forEach((sender, index) => {
             if (sender.id === matched.subscription.sender_id) routingIndex = index
           })
           if (routingIndex !== -1) routable.subscription.routing.splice(routingIndex, 1)
-          changeState.route()
-        } else if (routableHasUnrouting && !mathcedRouted) {
+
           if (!routableRouted) routable.subscription.unrouting = []
           else {
             let unroutingIndex = -1
@@ -124,12 +119,23 @@ export default (data, view, action) => {
             })
             if (unroutingIndex !== -1) routable.subscription.unrouting.splice(unroutingIndex, 1)
           }
+        }
+        if (routableHasUnrouting && !mathcedRouted) {
+          if (!routableRouted) routable.subscription.unrouting = []
+          else {
+            let unroutingIndex = -1
+            routable.subscription.unrouting.forEach((sender, index) => {
+              if (routable.subscription.routed.id === sender.id) unroutingIndex = index
+            })
+            if (unroutingIndex !== -1) routable.subscription.unrouting.splice(unroutingIndex, 1)
+          }
+        }
+
+        if (!mathcedRouted) {
           delete routable.subscription.routed
           changeState.unroute()
-        } else if (!mathcedRouted) {
-          delete routable.subscription.routed
-          changeState.unroute()
-        } else if (mathcedRouted) {
+        }
+        if (mathcedRouted) {
           let sender = view.senders.filter(sender => {
             return sender.id === matched.subscription.sender_id
           })[0]
