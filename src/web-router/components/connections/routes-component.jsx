@@ -60,12 +60,15 @@ function Routing (receivers, expandedSender, routesEl) {
       if (expandedSender.state.includes('expanded') && expandedSender.id === sender.id) {
         expanded = true
         receiver = {
+          id: receiver.id,
           nodeEl: receiver.nodeEl
         }
         sender = {
           nodeEl: document.querySelector('.expanded-sender .node')
         }
       }
+
+      if (receiver.id === undefined) console.log('routing', receiver)
 
       routes.push(<Route
         state='routing'
@@ -100,12 +103,15 @@ function Unrouting (receivers, expandedSender, routesEl) {
       if (expandedSender.state.includes('expanded') && expandedSender.id === sender.id) {
         expanded = true
         receiver = {
+          id: receiver.id,
           nodeEl: receiver.nodeEl
         }
         sender = {
           nodeEl: document.querySelector('.expanded-sender .node')
         }
       }
+
+      if (receiver.id === undefined) console.log('unrouting', receiver)
 
       routes.push(<Route
         state='unrouting'
