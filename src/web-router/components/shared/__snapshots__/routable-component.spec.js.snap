@@ -1,6 +1,312 @@
+exports[`Routable Component Can have a checkbox 1`] = `
+<div
+  className="routable short  routable-first routable-second"
+  onClick={[Function noop]}>
+  <div
+    className="button"
+    onClick={[Function noop]}>
+    <svg
+      className="gel-icon gel-icon-help"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm2 26h-4v-4h4v4zm2.6-10c-1.2.9-2.6 1.6-2.6 3.2v.8h-4v-1c0-2.4 1.4-3.4 2.5-4.3 1.1-.8 2.5-1.5 2.5-2.9 0-1.7-1.4-2.4-2.8-2.4-2 0-3.7 1.6-3.7 3.6H9c.1-4 3.1-6.8 7-6.8 5.1 0 7.3 3.1 7.3 5.2 0 2.7-1.5 3.7-2.7 4.6z" />
+    </svg>
+    <span
+      className="label">
+      routable-label
+    </span>
+  </div>
+  <div
+    className="checkbox undefined"
+    onClick={[Function onClick]}>
+    <svg
+      className="gel-icon gel-icon-no"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M32 3.5L28.5 0 16 12.5 3.5 0 0 3.5 12.5 16 0 28.5 3.5 32 16 19.5 28.5 32l3.5-3.5L19.5 16z" />
+    </svg>
+    <svg
+      className="gel-icon gel-icon-minus"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <line
+        stroke="black"
+        strokeWidth="4"
+        x1="0"
+        x2="32"
+        y1="16"
+        y2="16" />
+    </svg>
+    <svg
+      className="gel-icon gel-icon-empty"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg" />
+  </div>
+</div>
+`;
+
+exports[`Routable Component Can have a node but routable needs to have state and a node state 1`] = `
+<div
+  className="routable short  routable-first routable-second"
+  onClick={[Function noop]}>
+  <div
+    className="button"
+    onClick={[Function noop]}>
+    <svg
+      className="gel-icon gel-icon-help"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm2 26h-4v-4h4v4zm2.6-10c-1.2.9-2.6 1.6-2.6 3.2v.8h-4v-1c0-2.4 1.4-3.4 2.5-4.3 1.1-.8 2.5-1.5 2.5-2.9 0-1.7-1.4-2.4-2.8-2.4-2 0-3.7 1.6-3.7 3.6H9c.1-4 3.1-6.8 7-6.8 5.1 0 7.3 3.1 7.3 5.2 0 2.7-1.5 3.7-2.7 4.6z" />
+    </svg>
+    <span
+      className="label">
+      routable-label
+    </span>
+  </div>
+  <div
+    className="node-container node-container-node-first node-second">
+    <div
+      className="node node-first node-second"
+      onClick={[Function noop]}>
+      <svg
+        className="gel-icon gel-icon-no"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M32 3.5L28.5 0 16 12.5 3.5 0 0 3.5 12.5 16 0 28.5 3.5 32 16 19.5 28.5 32l3.5-3.5L19.5 16z" />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Routable Component Can have an optional baseState 1`] = `
+<div
+  className="routable short base-state routable-first routable-second"
+  onClick={[Function noop]}>
+  <div
+    className="button"
+    onClick={[Function noop]}>
+    <svg
+      className="gel-icon gel-icon-help"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm2 26h-4v-4h4v4zm2.6-10c-1.2.9-2.6 1.6-2.6 3.2v.8h-4v-1c0-2.4 1.4-3.4 2.5-4.3 1.1-.8 2.5-1.5 2.5-2.9 0-1.7-1.4-2.4-2.8-2.4-2 0-3.7 1.6-3.7 3.6H9c.1-4 3.1-6.8 7-6.8 5.1 0 7.3 3.1 7.3 5.2 0 2.7-1.5 3.7-2.7 4.6z" />
+    </svg>
+    <span
+      className="label">
+      routable-label
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Routable Component Can have onButton which is an onClick on the button 1`] = `
+<div
+  className="routable short  routable-first routable-second"
+  onClick={[Function noop]}>
+  <div
+    className="button"
+    onClick={[Function onButton]}>
+    <svg
+      className="gel-icon gel-icon-help"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm2 26h-4v-4h4v4zm2.6-10c-1.2.9-2.6 1.6-2.6 3.2v.8h-4v-1c0-2.4 1.4-3.4 2.5-4.3 1.1-.8 2.5-1.5 2.5-2.9 0-1.7-1.4-2.4-2.8-2.4-2 0-3.7 1.6-3.7 3.6H9c.1-4 3.1-6.8 7-6.8 5.1 0 7.3 3.1 7.3 5.2 0 2.7-1.5 3.7-2.7 4.6z" />
+    </svg>
+    <span
+      className="label">
+      routable-label
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Routable Component Can have onCheckbox which is an onClick on the checkbox, must have checkbox 1`] = `
+<div
+  className="routable short  routable-first routable-second"
+  onClick={[Function noop]}>
+  <div
+    className="button"
+    onClick={[Function noop]}>
+    <svg
+      className="gel-icon gel-icon-help"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm2 26h-4v-4h4v4zm2.6-10c-1.2.9-2.6 1.6-2.6 3.2v.8h-4v-1c0-2.4 1.4-3.4 2.5-4.3 1.1-.8 2.5-1.5 2.5-2.9 0-1.7-1.4-2.4-2.8-2.4-2 0-3.7 1.6-3.7 3.6H9c.1-4 3.1-6.8 7-6.8 5.1 0 7.3 3.1 7.3 5.2 0 2.7-1.5 3.7-2.7 4.6z" />
+    </svg>
+    <span
+      className="label">
+      routable-label
+    </span>
+  </div>
+  <div
+    className="checkbox undefined"
+    onClick={[Function onClick]}>
+    <svg
+      className="gel-icon gel-icon-no"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M32 3.5L28.5 0 16 12.5 3.5 0 0 3.5 12.5 16 0 28.5 3.5 32 16 19.5 28.5 32l3.5-3.5L19.5 16z" />
+    </svg>
+    <svg
+      className="gel-icon gel-icon-minus"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <line
+        stroke="black"
+        strokeWidth="4"
+        x1="0"
+        x2="32"
+        y1="16"
+        y2="16" />
+    </svg>
+    <svg
+      className="gel-icon gel-icon-empty"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg" />
+  </div>
+</div>
+`;
+
+exports[`Routable Component Can have onClick which is applied to parent routable 1`] = `
+<div
+  className="routable short  routable-first routable-second"
+  onClick={[Function onClick]}>
+  <div
+    className="button"
+    onClick={[Function noop]}>
+    <svg
+      className="gel-icon gel-icon-help"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm2 26h-4v-4h4v4zm2.6-10c-1.2.9-2.6 1.6-2.6 3.2v.8h-4v-1c0-2.4 1.4-3.4 2.5-4.3 1.1-.8 2.5-1.5 2.5-2.9 0-1.7-1.4-2.4-2.8-2.4-2 0-3.7 1.6-3.7 3.6H9c.1-4 3.1-6.8 7-6.8 5.1 0 7.3 3.1 7.3 5.2 0 2.7-1.5 3.7-2.7 4.6z" />
+    </svg>
+    <span
+      className="label">
+      routable-label
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Routable Component Can have onNode which is an onClick on the node, must have node 1`] = `
+<div
+  className="routable short  routable-first routable-second"
+  onClick={[Function noop]}>
+  <div
+    className="button"
+    onClick={[Function noop]}>
+    <svg
+      className="gel-icon gel-icon-help"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm2 26h-4v-4h4v4zm2.6-10c-1.2.9-2.6 1.6-2.6 3.2v.8h-4v-1c0-2.4 1.4-3.4 2.5-4.3 1.1-.8 2.5-1.5 2.5-2.9 0-1.7-1.4-2.4-2.8-2.4-2 0-3.7 1.6-3.7 3.6H9c.1-4 3.1-6.8 7-6.8 5.1 0 7.3 3.1 7.3 5.2 0 2.7-1.5 3.7-2.7 4.6z" />
+    </svg>
+    <span
+      className="label">
+      routable-label
+    </span>
+  </div>
+  <div
+    className="node-container node-container-node-first node-second">
+    <div
+      className="node node-first node-second"
+      onClick={[Function onNode]}>
+      <svg
+        className="gel-icon gel-icon-no"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M32 3.5L28.5 0 16 12.5 3.5 0 0 3.5 12.5 16 0 28.5 3.5 32 16 19.5 28.5 32l3.5-3.5L19.5 16z" />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Routable Component Can have onNodeRender which is fired when a node is rendered for the first time, must have a node 1`] = `
+<div
+  className="routable short  routable-first routable-second"
+  onClick={[Function noop]}>
+  <div
+    className="button"
+    onClick={[Function noop]}>
+    <svg
+      className="gel-icon gel-icon-help"
+      height="32"
+      viewBox="0 0 32 32"
+      width="32"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0zm2 26h-4v-4h4v4zm2.6-10c-1.2.9-2.6 1.6-2.6 3.2v.8h-4v-1c0-2.4 1.4-3.4 2.5-4.3 1.1-.8 2.5-1.5 2.5-2.9 0-1.7-1.4-2.4-2.8-2.4-2 0-3.7 1.6-3.7 3.6H9c.1-4 3.1-6.8 7-6.8 5.1 0 7.3 3.1 7.3 5.2 0 2.7-1.5 3.7-2.7 4.6z" />
+    </svg>
+    <span
+      className="label">
+      routable-label
+    </span>
+  </div>
+  <div
+    className="node-container node-container-node-first node-second">
+    <div
+      className="node node-first node-second"
+      onClick={[Function noop]}>
+      <svg
+        className="gel-icon gel-icon-no"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M32 3.5L28.5 0 16 12.5 3.5 0 0 3.5 12.5 16 0 28.5 3.5 32 16 19.5 28.5 32l3.5-3.5L19.5 16z" />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Routable Component Default has no node, no checkbox and all functions are noop, help icon and a label 1`] = `
 <div
-  className="routable short  "
+  className="routable short  routable-first routable-second"
   onClick={[Function noop]}>
   <div
     className="button"
