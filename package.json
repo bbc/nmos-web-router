@@ -81,7 +81,7 @@
     "serve": "npm run build && pushstate-server build 4000",
     "start": "node scripts/start.js",
     "lint": "node ./scripts/lint.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "npm run lint && node scripts/test.js --env=jsdom",
     "nmos": "./src/ips-nmos-api/bin/ips-nmos-api"
   },
   "homepage": "http://ipstudio-master.rd.bbc.co.uk/ips-web/",
