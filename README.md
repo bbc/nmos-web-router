@@ -2,83 +2,80 @@
 
 This is the new version of ipp-web
 
-## Development
-
-### NPM Scripts
+## NPM Scripts
 
 ```bash
-npm run gel # does a check out of the gel icon assets and puts them in src for building
-npm run styles # generates the *.css files in src for building
-npm run react # starts the react process which launches the site
+npm start # starts the dev service
 npm run build # creates a build folder and builds everything needed
-npm run dev # starts watchers and launches in browser
-npm run dev-test # starts watching __test__ and src and run the jest tests on changes, lint is caught by dev
-npm start # runs a build and launches a server
+npm run serve # runs build and then starts serving
 npm run lint # lints the javascript and styles
-npm run check-gel # checks that the gel folder exists
-npm run jest # runs the jest tests
-npm test # runs, lint, check-gel and jest
+npm test # runs lint and jest
+npm test -- --watch # runs lint and jest and then starts watching with jest (it is amazing)
+npm test -- --updateSnapshot # runs lint and jest and updates all the snapshots
 ```
 
-### Flux
+## Flux
 
 [Flux Documentation](https://facebook.github.io/flux/docs/actions-and-the-dispatcher.html#content)
 
-This project uses `flux`, using `react` and `redux` as well as the `react-router`
+This project uses `flux`, using [react](https://facebook.github.io/react/) and [redux](http://redux.js.org/) as well as the [react-router](https://github.com/ReactTraining/react-router)
 
 each `folder` maps to a `route`
 each `route` has a `container`
 each `container` can have: a `reducer`, a `dispatcher` and multiple `components`
 
-#### Styling
+## DRC
 
-Write only in post script but import the `*.css` file
-If a file starts with `_` it is meant to be imported only as the watch will not create a `css` version of a file starting with `_`
-It tends to be nice to have a `pcss` file per component but not mandatory
+There is a file `src/drc.js`
 
-### Testing
+This is what allows us to have a configuration approach to Redux and the React Router. Here is more in-depth information [README]('./DRC.md')
 
-Only unit test reducers, dispatchers, components and containers.
-These files should be quite pure and not need much mocking.
-Favour mocking data input and testing function output over mutation.
-Jest snapshots are a great way to test components.
+## Styling
 
-You can use stub data by including `stub` in the query params e.g. [http://localhost:3000/?stub](http://localhost:3000/?stub)
+You can use [CSSNext](http://cssnext.io/) in any css file. It is good to keep the css file next to the thing it is styling and them import the style with `import './style-file.css'`
 
-all tests live in `__tests__` and are named `*.spec.js`
+The other thing to note is the route is added a class to the main containers. Styling based on the route makes things a lot easier, then you do not need to write JavaScript to hide things when the route changes for example
 
-### Docker
+## Gel
+
+You can find all Gel things in the `src/gel-react` [README](./src/gel-react/README.md)
+
+## IPS NMOS API
+
+You can find all IPS NMOS API things in the `src/gel-react` [README](./src/ips-nmos-api/README.md)
+
+## Testing
+
+Uses [Jest](http://facebook.github.io/jest/) for testing. Just write a file in src with the extension `*.spec.js` or `*.test.js`
+
+We use very simple snapshot tests for components and unit test the reducers and maybe receivers. There is no point in testning everything as some things are static, some components are static and do not need testing or some dispatchers are so small you can test them by looking at the code.
+
+There are no screenshot tests because they are slow, but also phantomcss does not play nicely with the RnD proxy. There are no integration tests with something like Casper. This doesn't feel needed but the ips-nmos-api does support stubbing in browser so it should be straight forward to mock
+
+## Docker
 
 ```bash
-./scripts/build.sh # creates the docker image and also copies the build file for deploying
-./scripts/dev.sh # starts `npm run dev` from the container with the container name `ips-web-dev`
-./scripts/start.sh # starts `npm start` from the container with the container name `ips-web-start`
+./scripts/build.sh # creates the docker image and also copies the build file for deploying, jenkins doesn't seem to like running this script so just copy it's contents to jenkins and add sudo to everything as a temprory fix
+./scripts/dev.sh # starts `npm start` from the container with the container name `ips-web-dev`
+./scripts/start.sh # starts `npm serve` from the container with the container name `ips-web-start`
 ```
 
-### Ubiquitous Language
+## Jenkins
+
+Here is the build [Job](https://jenkins.rd.bbc.co.uk/job/pbuilder.ap.ips-web/) it just runs the build but will fail if the tests fail.
+
+## Ubiquitous Language
 
 This is just a section to help with language, the code is written using this language, and should be something which everyone can talk in in order to know what is what
 
-#### Web Router
+### Web Router
 
 Tool used to create routes between senders and receivers
 
-#### Routable
+### Routable
 
-Either a sender or receiver
+Either a Sender or Receiver
 
-#### Route
+### Route
 
 Some kind of connection between a sender and a receiver
-
-## TODO
-
-* remove components except the checkbox and move into shared
-* clean reducers => test them
-* make data consistent when generating
-* clean css
-* loading screen needs to be in a container
-* real estate
-* remove DRC
-* update docs
-* update tests
