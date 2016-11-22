@@ -24,17 +24,17 @@ each `folder` maps to a `route`
 each `route` has a `container`
 each `container` can have: a `reducer`, a `dispatcher` and multiple `components`
 
-## DRC
-
-There is a file `src/drc.js`
-
-This is what allows us to have a configuration approach to Redux and the React Router. Here is more in-depth information [README]('./DRC.md')
-
 ## Styling
 
 You can use [CSSNext](http://cssnext.io/) in any css file. It is good to keep the css file next to the thing it is styling and them import the style with `import './style-file.css'`
 
 The other thing to note is the route is added a class to the main containers. Styling based on the route makes things a lot easier, then you do not need to write JavaScript to hide things when the route changes for example
+
+## DRC
+
+There is a file `src/drc.js`
+
+This is what allows us to have a configuration approach to Redux and the React Router. Here is more in-depth information [README](./src/DRC.md)
 
 ## Gel
 
