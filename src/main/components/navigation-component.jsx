@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 
 import Logo from './logo'
 import { Layout, LayoutItem } from '../../gel-react/grid'
-import Button from '../../components/button-component'
 
 let Navigation = () => {
   return <div>
@@ -18,11 +17,15 @@ let Navigation = () => {
         </LayoutItem>
       </Layout>
       <Layout gels='3/12'>
-        <Button
-          fill
-          name='nav'
+        <Link
+          style={{
+            width: '100%',
+            textAlign: 'center'
+          }}
           to='/web-router'
-          label='WEB ROUTER' />
+          className='button nav'>
+          WEB ROUTER
+        </Link>
       </Layout>
     </Layout>
   </div>
