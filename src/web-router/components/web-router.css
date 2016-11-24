@@ -245,3 +245,42 @@
 .routables-scroll {
   overflow-y: scroll;
 }
+
+.checkbox {
+  margin-left: 4px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  padding: 2px;
+  border: solid 2px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  & .gel-icon {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  & .gel-icon-no,
+  & .gel-icon-minus,
+  & .gel-icon-empty {
+    display: none;
+  }
+}
+
+.checked .gel-icon-no,
+.all .gel-icon-no {
+  display: block;
+}
+
+.some .gel-icon-minus {
+  display: block;
+}
+
+.unchecked .gel-icon-empty,
+.none .gel-icon-empty {
+  display: block;
+}
