@@ -15,8 +15,23 @@
 }
 
 .loading-container {
+  padding: 40px;
+
   & .gel-icon-loading {
     animation: rotate 1s infinite linear;
+  }
+
+  & .button {
+    width: 100%;
+    text-align: center;
+
+    & .label {
+      width: 80%;
+    }
+
+    & .gel-icon {
+      width: 20%;
+    }
   }
 
   & .header {

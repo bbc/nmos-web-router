@@ -1,16 +1,13 @@
 import React, { PropTypes } from 'react'
 
 import { LayoutItem } from '../../../gel-react/grid'
-import Button from '../../../components/button-component'
 
 let Status = ({name, icon, label}) => {
   return <LayoutItem gels='1/3'>
-    <Button
-      fill
-      name={name}
-      className='status'
-      icon={icon}
-      label={label} />
+    <div className={`button ${name} status`}>
+      {icon}
+      <span className='label'>{label.toUpperCase()}</span>
+    </div>
   </LayoutItem>
 }
 
