@@ -48,9 +48,16 @@ You can find all IPS NMOS API things in the `src/gel-react` [README](./src/ips-n
 
 Uses [Jest](http://facebook.github.io/jest/) for testing. Just write a file in src with the extension `*.spec.js` or `*.test.js`
 
-We use very simple snapshot tests for components and unit test the reducers and maybe receivers. There is no point in testning everything as some things are static, some components are static and do not need testing or some dispatchers are so small you can test them by looking at the code.
+Things which are being tested
+  * components with complex logic, i.e. if a component does more than just render DOM it should be tested, it may be as simple as prop validation. Otherwise it can be tested by simply looking at the code and having the linting pass
+  * dispatchers with complex logic unless it is http requests. HTTP requests should be done using some kind of integration (see below)
+  * reducers that return something other than static JSON
 
-There are no screenshot tests because they are slow, but also phantomcss does not play nicely with the RnD proxy. There are no integration tests with something like Casper. This doesn't feel needed but the ips-nmos-api does support stubbing in browser so it should be straight forward to mock
+There are currently no screenshot or integration tests currently, still MVP and unstable. These tests would be too brittle until post MVP when the project has become more defined
+
+Screenshot tests would be used to check CSS and so should be limited where possible, not to check DOM structure which can be better tested with Jest snapshots
+
+Integration test would start a local NMOS API instance and then check that the data is being loaded in correctly and verified using a single snapshot. This is to check that the data is being processed as expected, not to check DOM structure nor to test CSS
 
 ## Docker
 
