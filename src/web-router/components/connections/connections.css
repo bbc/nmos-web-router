@@ -235,7 +235,21 @@
 .expanded {
   & .button-container,
   & .node {
-    box-shadow: rgba(85, 85, 85, 0.9) 0 0 20px 5px;
+    box-shadow: rgba(85, 85, 85, 0.5) 7px 7px 20px 3px;
+  }
+
+  & .node {
+    &:hover {
+      cursor: auto;
+    }
+
+    &.routed:hover {
+      background-color: var(--routed);
+    }
+
+    &.unrouted:hover {
+      background-color: var(--unrouted);
+    }
   }
 }
 
