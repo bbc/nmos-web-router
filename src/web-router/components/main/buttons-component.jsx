@@ -1,21 +1,21 @@
 import React, { PropTypes } from 'react'
-import Button from '../../../components/button-component'
+import {Link} from 'react-router'
 
 let Buttons = ({term}) => {
   return <div className='buttons-container'>
     <div className='buttons'>
-      <Button
+      <Link
         to='/web-router/choose'
         query={{search: term}}
-        fill
-        className='choose-nav left-nav nav-1/2'
-        label='CHOOSE' />
-      <Button
+        className='button choose-nav left-nav nav-1/2'>
+        <span className='label'>CHOOSE</span>
+      </Link>
+      <Link
         to='/web-router/route'
         query={{search: term}}
-        fill
-        className='route-nav right-nav nav-1/2'
-        label='ROUTE' />
+        className='button route-nav right-nav nav-1/2'>
+        <span className='label'>ROUTE</span>
+      </Link>
     </div>
   </div>
 }

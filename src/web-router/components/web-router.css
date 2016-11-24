@@ -138,7 +138,12 @@
 }
 
 .nav-1\/2 {
+  text-align: center;
   width: 50%;
+
+  & .label {
+    width: 100%;
+  }
 }
 
 .nav-1\/3 {

@@ -35,24 +35,10 @@ h4 {
   box-sizing: border-box;
   padding: 0 8px;
 
-  &-fill {
-    text-align: center;
-    width: 100%;
-  }
-
-  &-fill.button-has-no-label.button-has-icon .gel-icon {
-    width: 100%;
-  }
-
-  &-fill.button-has-label .label {
-    width: 100%;
-  }
-
   &:focus {
     outline: 0;
   }
 
-  & .beside,
   & .label,
   & .gel-icon {
     display: inline-block;
