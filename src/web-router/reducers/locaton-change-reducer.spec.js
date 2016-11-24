@@ -51,18 +51,4 @@ describe('Location Change Reducer', () => {
 
     expect(newState.view.location).toBe('/location')
   })
-
-  // it('Filters based on search parameter', () => {
-  //   let newState = locationChangeReducer(initialState, {
-  //     payload: {
-  //       pathname: '/web-router/',
-  //       query: {
-  //         search: 'label-a'
-  //       }
-  //     }
-  //   }, merge)
-  //
-  //   expect(newState.view.choose.allVisibleState.senders).toBe('some')
-  //   expect(newState.view.choose.allVisibleState.receivers).toBe('some')
-  // })
 })

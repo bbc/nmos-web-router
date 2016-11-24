@@ -50,13 +50,3 @@ AllVisible.propTypes = {
 }
 
 export default AllVisible
-
-// return <LayoutItem gels='1/1' className='all-visible-label'>
-//   <LongPrimer>All Visible</LongPrimer>
-//   <Checkbox
-//     onClick={function () {
-//       if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender)
-//       actions.allVisible(type)
-//     }}
-//     state={state} />
-// </LayoutItem>
