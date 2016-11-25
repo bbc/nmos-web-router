@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "standard"
+  ],
+  "globals": {
+    "WebSocket": true,
+    "jasmine": true,
+    "fail": true,
+    "document": false,
+    "navigator": false,
+    "window": false
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  }
+}

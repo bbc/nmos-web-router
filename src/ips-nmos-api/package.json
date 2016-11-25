@@ -1,0 +1,37 @@
+{
+  "name": "ips-nmos-api",
+  "version": "1.0.0",
+  "description": "Using promises to get and modify the data from nmos and subscription api as well as sophisticated stubbing",
+  "private": true,
+  "main": "src/index.js",
+  "bin": {
+    "ips-nmos-api": "./bin/ips-nmos-api"
+  },
+  "directories": {
+    "bin": "./bin",
+    "src": "./src"
+  },
+  "author": "BBC",
+  "license": "ISC",
+  "scripts": {
+    "test": "npm run lint && jest",
+    "lint": "node scripts/lint.js"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "chance": "^1.0.4",
+    "change-case": "^3.0.0",
+    "express": "^4.14.0",
+    "jest": "^17.0.0",
+    "lokijs": "^1.4.1",
+    "randexp": "^0.4.3",
+    "ws": "^1.1.1",
+    "body-parser": "^1.15.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.3.1",
+    "eslint-plugin-standard": "^2.0.1"
+  }
+}
