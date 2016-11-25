@@ -3,7 +3,7 @@
         "version": "1473159680:398211840",
         "hostname": "ap-r730-10",
         "label": "ap-r730-10.rd.bbc.co.uk",
-        "href": "http://172.29.80.150:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.150:12345/x-nmos/node/v1.0/self/status/",
@@ -26,7 +26,7 @@
         "version": "1470746880:358132031",
         "hostname": "ap-z440-2",
         "label": "ap-z440-2.rd.bbc.co.uk",
-        "href": "http://10.0.3.1:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/status/",
@@ -53,7 +53,7 @@
         "version": "1473090316:879383642",
         "hostname": "ap-r730-13",
         "label": "ap-r730-13.rd.bbc.co.uk",
-        "href": "http://172.29.80.192:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.192:12345/x-nmos/node/v1.0/self/status/",
@@ -76,7 +76,7 @@
         "version": "1472830736:547772265",
         "hostname": "ipstudio-master",
         "label": "ipstudio-master.rd.bbc.co.uk",
-        "href": "http://172.29.94.18:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.94.18:12345/x-nmos/node/v1.0/self/status/",
@@ -95,7 +95,7 @@
         "version": "1474285459:963146637",
         "hostname": "ap-ch-z420-3",
         "label": "ap-ch-z420-3.rd.bbc.co.uk",
-        "href": "http://172.29.176.89:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.89:12345/x-nmos/node/v1.0/self/status/",
@@ -114,7 +114,7 @@
         "version": "1474269919:783901608",
         "hostname": "ap-z200-1",
         "label": "ap-z200-1.rd.bbc.co.uk",
-        "href": "http://172.29.80.169:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.169:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -137,7 +137,7 @@
         "version": "1474271654:877090880",
         "hostname": "ap-z420-6",
         "label": "ap-z420-6.rd.bbc.co.uk",
-        "href": "http://172.29.80.118:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.118:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -160,7 +160,7 @@
         "version": "1473155218:757170304",
         "hostname": "ap-r730-2",
         "label": "ap-r730-2.rd.bbc.co.uk",
-        "href": "http://172.29.80.121:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.121:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -183,7 +183,7 @@
         "version": "1473673045:877439556",
         "hostname": "rd45054",
         "label": "rd45054.rd.bbc.co.uk",
-        "href": "http://172.29.80.70:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.70:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -206,7 +206,7 @@
         "version": "1473764028:969001768",
         "hostname": "ap-z220-5",
         "label": "ap-z220-5.rd.bbc.co.uk",
-        "href": "http://172.29.80.69:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.69:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -229,7 +229,7 @@
         "version": "1473958581:602259809",
         "hostname": "ap-z420-8",
         "label": "ap-z420-8.rd.bbc.co.uk",
-        "href": "http://172.29.80.128:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.128:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -256,7 +256,7 @@
         "version": "1474282276:334743570",
         "hostname": "ap-r730-9",
         "label": "ap-r730-9.rd.bbc.co.uk",
-        "href": "http://172.29.80.149:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.149:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -279,7 +279,7 @@
         "version": "1471000926:338778407",
         "hostname": "ap-ch-r310-1",
         "label": "ap-ch-r310-1.rd.bbc.co.uk",
-        "href": "http://172.29.176.20:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.20:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -302,7 +302,7 @@
         "version": "1474042835:274689928",
         "hostname": "ap-z840-0",
         "label": "ap-z840-0.rd.bbc.co.uk",
-        "href": "http://172.29.80.185:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.185:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -329,7 +329,7 @@
         "version": "1473936516:959615033",
         "hostname": "ap-1018r-5",
         "label": "ap-1018r-5.rd.bbc.co.uk",
-        "href": "http://172.29.80.200:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.200:12345/x-nmos/node/v1.0/self/status/",
@@ -352,7 +352,7 @@
         "version": "1474014171:258377175",
         "hostname": "ap-r730-1",
         "label": "ap-r730-1.rd.bbc.co.uk",
-        "href": "http://172.29.80.120:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.120:12345/x-nmos/node/v1.0/self/status/",
@@ -375,7 +375,7 @@
         "version": "1470143771:135669402",
         "hostname": "ap-r720-5",
         "label": "ap-r720-5.rd.bbc.co.uk",
-        "href": "http://172.29.80.110:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.110:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -398,7 +398,7 @@
         "version": "1467189584:180906143",
         "hostname": "ap-ch-r310-6",
         "label": "ap-ch-r310-6.rd.bbc.co.uk",
-        "href": "http://172.29.176.67:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.67:12345/x-nmos/node/v1.0/self/status/",
@@ -421,7 +421,7 @@
         "version": "1474283943:15360000",
         "hostname": "ap-zynq-1-10g",
         "label": "ap-zynq-1-10g.rd.bbc.co.uk",
-        "href": "http://172.29.226.31:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.226.31:12345/x-nmos/node/v1.0/self/txctrl/",
@@ -444,7 +444,7 @@
         "version": "1474043401:714246160",
         "hostname": "ap-z840-3",
         "label": "ap-z840-3.rd.bbc.co.uk",
-        "href": "http://172.29.80.231:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.231:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -471,7 +471,7 @@
         "version": "1474275451:667503104",
         "hostname": "rd001689",
         "label": "rd001689.rd.bbc.co.uk",
-        "href": "http://172.29.80.166:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.166:12345/x-nmos/node/v1.0/self/status/",
@@ -498,7 +498,7 @@
         "version": "1473933209:156098039",
         "hostname": "ap-ch-z220-3",
         "label": "ap-ch-z220-3.rd.bbc.co.uk",
-        "href": "http://172.29.176.36:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.36:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -521,7 +521,7 @@
         "version": "1471010923:704719074",
         "hostname": "ap-ch-xw8600-2",
         "label": "ap-ch-xw8600-2",
-        "href": "http://172.29.176.102:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.102:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -544,7 +544,7 @@
         "version": "1472739438:181738173",
         "hostname": "ap-ch-z800-0",
         "label": "ap-ch-z800-0.rd.bbc.co.uk",
-        "href": "http://172.29.176.39:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.39:12345/x-nmos/node/v1.0/self/status/",
@@ -571,7 +571,7 @@
         "version": "1471951481:739240498",
         "hostname": "ap-z440-1",
         "label": "ap-z440-1.rd.bbc.co.uk",
-        "href": "http://172.29.80.138:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.138:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -598,7 +598,7 @@
         "version": "1469634102:634285493",
         "hostname": "ap-r310-4",
         "label": "ap-r310-4.rd.bbc.co.uk",
-        "href": "http://172.29.80.25:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.25:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -621,7 +621,7 @@
         "version": "1472216689:804674099",
         "hostname": "ap-z440-3",
         "label": "ap-z440-3.rd.bbc.co.uk",
-        "href": "http://172.29.80.153:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.153:12345/x-nmos/node/v1.0/self/status/",
@@ -644,7 +644,7 @@
         "version": "1467189205:701506186",
         "hostname": "ap-ch-x3550-0",
         "label": "ap-ch-x3550-0.rd.bbc.co.uk",
-        "href": "http://172.29.176.158:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.158:12345/x-nmos/node/v1.0/self/status/",
@@ -663,7 +663,7 @@
         "version": "1471006818:134363883",
         "hostname": "ap-ch-r720-9",
         "label": "ap-ch-r720-9.rd.bbc.co.uk",
-        "href": "http://172.29.176.142:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.142:12345/x-nmos/node/v1.0/self/status/",
@@ -686,7 +686,7 @@
         "version": "1473240434:958605942",
         "hostname": "ap-r310-3",
         "label": "ap-r310-3.rd.bbc.co.uk",
-        "href": "http://172.29.80.37:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.37:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -709,7 +709,7 @@
         "version": "1470143771:197234418",
         "hostname": "ap-r720-6",
         "label": "ap-r720-6.rd.bbc.co.uk",
-        "href": "http://172.29.80.112:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.112:12345/x-nmos/node/v1.0/self/status/",
@@ -732,7 +732,7 @@
         "version": "1474280017:232023970",
         "hostname": "ap-ch-z420-4",
         "label": "ap-ch-z420-4.rd.bbc.co.uk",
-        "href": "http://172.29.176.90:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.90:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -755,7 +755,7 @@
         "version": "1471278804:941049592",
         "hostname": "ip-172-29-94-172",
         "label": "ip-172-29-94-172",
-        "href": "http://172.29.94.172:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.94.172:12345/x-nmos/node/v1.0/self/status/",
@@ -782,7 +782,7 @@
         "version": "1474011017:68496911",
         "hostname": "vm-456-intcloud",
         "label": "vm-456-intcloud",
-        "href": "http://172.29.94.58:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.94.58:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -805,7 +805,7 @@
         "version": "1469792048:762598460",
         "hostname": "ap-r310-5",
         "label": "ap-r310-5.rd.bbc.co.uk",
-        "href": "http://172.29.80.22:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.22:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -828,7 +828,7 @@
         "version": "1473172330:137435121",
         "hostname": "ap-z220-6",
         "label": "ap-z220-6.rd.bbc.co.uk",
-        "href": "http://172.29.80.68:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.68:12345/x-nmos/node/v1.0/self/status/",
@@ -855,7 +855,7 @@
         "version": "1474282225:970779904",
         "hostname": "ap-r730-7",
         "label": "ap-r730-7.rd.bbc.co.uk",
-        "href": "http://172.29.80.143:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.143:12345/x-nmos/node/v1.0/self/status/",
@@ -878,7 +878,7 @@
         "version": "1473157492:809685742",
         "hostname": "ap-r730-15",
         "label": "ap-r730-15.rd.bbc.co.uk",
-        "href": "http://172.29.80.194:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.194:12345/x-nmos/node/v1.0/self/status/",
@@ -901,7 +901,7 @@
         "version": "1474017190:864152395",
         "hostname": "ap-r730-4",
         "label": "ap-r730-4.rd.bbc.co.uk",
-        "href": "http://172.29.80.140:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.140:12345/x-nmos/node/v1.0/self/status/",
@@ -924,7 +924,7 @@
         "version": "1471255294:31183462",
         "hostname": "rd010532",
         "label": "rd010532.rd.bbc.co.uk",
-        "href": "http://172.29.80.176:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.176:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -947,7 +947,7 @@
         "version": "1470145348:805116740",
         "hostname": "ap-r720-3",
         "label": "ap-r720-3.rd.bbc.co.uk",
-        "href": "http://172.29.80.106:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.106:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -974,7 +974,7 @@
         "version": "1474014367:987938654",
         "hostname": "ap-z220-0",
         "label": "ap-z220-0.rd.bbc.co.uk",
-        "href": "http://172.29.80.65:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -997,7 +997,7 @@
         "version": "1473149411:769296246",
         "hostname": "ap-z420-3",
         "label": "ap-z420-3.rd.bbc.co.uk",
-        "href": "http://172.29.80.83:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.83:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1028,7 +1028,7 @@
         "version": "1474285741:899633883",
         "hostname": "ap-r310-0",
         "label": "ap-r310-0.rd.bbc.co.uk",
-        "href": "http://172.29.80.28:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.28:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1067,7 +1067,7 @@
         "version": "1471589648:996139497",
         "hostname": "icosole-demo-z420-1",
         "label": "icosole-demo-z420-1.rd.bbc.co.uk",
-        "href": "http://172.29.176.231:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.231:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1106,7 +1106,7 @@
         "version": "1471613302:774698456",
         "hostname": "icosole-demo-z420-2",
         "label": "icosole-demo-z420-2.rd.bbc.co.uk",
-        "href": "http://172.29.80.130:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.130:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1137,7 +1137,7 @@
         "version": "1473954867:582837478",
         "hostname": "ipstudio-stable",
         "label": "ipstudio-stable.rd.bbc.co.uk",
-        "href": "http://172.29.94.17:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.94.17:12345/x-nmos/node/v1.0/self/status/",
@@ -1156,7 +1156,7 @@
         "version": "1473079761:739233905",
         "hostname": "ap-r730-11",
         "label": "ap-r730-11.rd.bbc.co.uk",
-        "href": "http://172.29.80.151:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.151:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1179,7 +1179,7 @@
         "version": "1474033635:534434787",
         "hostname": "ap-r730-3",
         "label": "ap-r730-3.rd.bbc.co.uk",
-        "href": "http://172.29.80.123:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.123:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1202,7 +1202,7 @@
         "version": "1474014158:316091046",
         "hostname": "ap-r720-1",
         "label": "ap-r720-1.rd.bbc.co.uk",
-        "href": "http://172.29.80.102:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.102:12345/x-nmos/node/v1.0/self/status/",
@@ -1225,7 +1225,7 @@
         "version": "1471365402:337767629",
         "hostname": "ap-ch-z800-6",
         "label": "ap-ch-z800-6.rd.bbc.co.uk",
-        "href": "http://172.29.176.145:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.145:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1248,7 +1248,7 @@
         "version": "1471006762:300437276",
         "hostname": "ap-ch-r310-5",
         "label": "ap-ch-r310-5.rd.bbc.co.uk",
-        "href": "http://172.29.176.66:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.66:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1271,7 +1271,7 @@
         "version": "1474284016:226885808",
         "hostname": "ap-ch-z820-0",
         "label": "ap-ch-z820-0.rd.bbc.co.uk",
-        "href": "http://172.29.176.55:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.55:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1298,7 +1298,7 @@
         "version": "1472140243:235713980",
         "hostname": "ap-ch-z820-4",
         "label": "ap-ch-z820-4.rd.bbc.co.uk",
-        "href": "http://172.29.176.79:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.79:12345/x-nmos/node/v1.0/self/status/",
@@ -1333,7 +1333,7 @@
         "version": "1474282226:203363840",
         "hostname": "ap-r730-6",
         "label": "ap-r730-6.rd.bbc.co.uk",
-        "href": "http://172.29.80.142:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.142:12345/x-nmos/node/v1.0/self/status/",
@@ -1356,7 +1356,7 @@
         "version": "1474042821:336835997",
         "hostname": "ap-z840-2",
         "label": "ap-z840-2.rd.bbc.co.uk",
-        "href": "http://172.29.80.187:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.187:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1383,7 +1383,7 @@
         "version": "1473090407:986647308",
         "hostname": "ap-r730-12",
         "label": "ap-r730-12.rd.bbc.co.uk",
-        "href": "http://172.29.80.191:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.191:12345/x-nmos/node/v1.0/self/status/",
@@ -1406,7 +1406,7 @@
         "version": "1470143770:608326699",
         "hostname": "ap-r720-2",
         "label": "ap-r720-2.rd.bbc.co.uk",
-        "href": "http://172.29.80.104:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.104:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1429,7 +1429,7 @@
         "version": "1469706782:617827093",
         "hostname": "ap-r720-0",
         "label": "ap-r720-0.rd.bbc.co.uk",
-        "href": "http://172.29.80.79:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.79:12345/x-nmos/node/v1.0/self/status/",
@@ -1452,7 +1452,7 @@
         "version": "1473936348:840359116",
         "hostname": "ip-172-29-94-138",
         "label": "ip-172-29-94-138",
-        "href": "http://172.29.94.138:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.94.138:12345/x-nmos/node/v1.0/self/status/",
@@ -1479,7 +1479,7 @@
         "version": "1473936430:603022458",
         "hostname": "ap-1018r-7",
         "label": "ap-1018r-7.rd.bbc.co.uk",
-        "href": "http://172.29.80.202:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.202:12345/x-nmos/node/v1.0/self/status/",
@@ -1502,7 +1502,7 @@
         "version": "1473407681:189412970",
         "hostname": "ap-z420-0",
         "label": "ap-z420-0.rd.bbc.co.uk",
-        "href": "http://172.29.80.58:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.58:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1525,7 +1525,7 @@
         "version": "1474282226:926192896",
         "hostname": "ap-r730-8",
         "label": "ap-r730-8.rd.bbc.co.uk",
-        "href": "http://172.29.80.148:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.148:12345/x-nmos/node/v1.0/self/status/",
@@ -1548,7 +1548,7 @@
         "version": "1471365314:212892665",
         "hostname": "ap-ch-xw8600-0",
         "label": "ap-ch-xw8600-0.rd.bbc.co.uk",
-        "href": "http://172.29.176.52:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.52:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1571,7 +1571,7 @@
         "version": "1468838316:693325819",
         "hostname": "ap-ch-r730-0",
         "label": "ap-ch-r730-0.rd.bbc.co.uk",
-        "href": "http://172.29.176.201:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.201:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1590,7 +1590,7 @@
         "version": "1470143774:542576199",
         "hostname": "ap-r720-4",
         "label": "ap-r720-4.rd.bbc.co.uk",
-        "href": "http://172.29.80.108:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.108:12345/x-nmos/node/v1.0/self/status/",
@@ -1613,7 +1613,7 @@
         "version": "1471000944:358761115",
         "hostname": "ap-ch-z820-6",
         "label": "ap-ch-z820-6.rd.bbc.co.uk",
-        "href": "http://172.29.176.81:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.81:12345/x-nmos/node/v1.0/self/status/",
@@ -1636,7 +1636,7 @@
         "version": "1473687873:124710185",
         "hostname": "ap-r310-2",
         "label": "ap-r310-2.rd.bbc.co.uk",
-        "href": "http://172.29.80.34:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.34:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1659,7 +1659,7 @@
         "version": "1474278949:236784684",
         "hostname": "ap-z840-4",
         "label": "ap-z840-4.rd.bbc.co.uk",
-        "href": "http://172.29.80.189:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.189:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1686,7 +1686,7 @@
         "version": "1470917660:685321330",
         "hostname": "ap-ch-macmini-2",
         "label": "ap-ch-macmini-2.rd.bbc.co.uk",
-        "href": "http://10.0.3.1:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1709,7 +1709,7 @@
         "version": "1471006709:552354607",
         "hostname": "ap-ch-z420-5",
         "label": "ap-ch-z420-5.rd.bbc.co.uk",
-        "href": "http://172.29.176.91:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.91:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1732,7 +1732,7 @@
         "version": "1473936432:222740554",
         "hostname": "ap-1018r-9",
         "label": "ap-1018r-9.rd.bbc.co.uk",
-        "href": "http://172.29.80.204:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.204:12345/x-nmos/node/v1.0/self/status/",
@@ -1755,7 +1755,7 @@
         "version": "1474043048:740339951",
         "hostname": "ap-ch-z420-1",
         "label": "ap-ch-z420-1.rd.bbc.co.uk",
-        "href": "http://172.29.176.87:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.87:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1778,7 +1778,7 @@
         "version": "1474277524:109645454",
         "hostname": "ap-ch-z420-9",
         "label": "ap-ch-z420-9.rd.bbc.co.uk",
-        "href": "http://172.29.176.98:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.98:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1801,7 +1801,7 @@
         "version": "1473177055:530985283",
         "hostname": "ap-r730-0",
         "label": "ap-r730-0.rd.bbc.co.uk",
-        "href": "http://172.29.80.119:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.119:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1824,7 +1824,7 @@
         "version": "1474042823:402056783",
         "hostname": "ap-z840-1",
         "label": "ap-z840-1.rd.bbc.co.uk",
-        "href": "http://172.29.80.186:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.186:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1851,7 +1851,7 @@
         "version": "1472554677:500669368",
         "hostname": "ap-ch-z220-1",
         "label": "ap-ch-z220-1.rd.bbc.co.uk",
-        "href": "http://172.29.176.40:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.40:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1874,7 +1874,7 @@
         "version": "1473084589:477373075",
         "hostname": "ap-r730-5",
         "label": "ap-r730-5.rd.bbc.co.uk",
-        "href": "http://172.29.80.141:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.141:12345/x-nmos/node/v1.0/self/status/",
@@ -1897,7 +1897,7 @@
         "version": "1469789497:129145462",
         "hostname": "ap-z820-1",
         "label": "ap-z820-1.rd.bbc.co.uk",
-        "href": "http://172.29.80.80:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.80:12345/x-nmos/node/v1.0/self/status/",
@@ -1920,7 +1920,7 @@
         "version": "1471000878:321586704",
         "hostname": "ap-ch-z420-0",
         "label": "ap-ch-z420-0.rd.bbc.co.uk",
-        "href": "http://172.29.176.86:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.86:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1943,7 +1943,7 @@
         "version": "1473329807:810137031",
         "hostname": "ap-z220-3",
         "label": "ap-z220-3.rd.bbc.co.uk",
-        "href": "http://172.29.80.73:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.80.73:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1966,7 +1966,7 @@
         "version": "1471000950:13342722",
         "hostname": "ap-ch-z820-5",
         "label": "ap-ch-z820-5.rd.bbc.co.uk",
-        "href": "http://172.29.176.146:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://172.29.176.146:12345/x-nmos/node/v1.0/self/pipelinemanager/",
@@ -1993,7 +1993,7 @@
         "version": "1474278742:553668956",
         "hostname": "rd015106",
         "label": "rd015106.rd.bbc.co.uk",
-        "href": "http://10.0.3.1:12345/",
+        "href": "http://localhost:6589/",
         "services": [
             {
                 "href": "http://10.0.3.1:12345/x-nmos/node/v1.0/self/pipelinemanager/",
