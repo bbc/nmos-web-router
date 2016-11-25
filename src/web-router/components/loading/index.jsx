@@ -18,7 +18,7 @@ let Loading = ({view}) => {
       <GreatPrimer>Attempting to get get data, if a problem arrises please check the following:</GreatPrimer>
       <ul>
         <li><Pica>Check the console for any errors</Pica></li>
-        <li><Pica>URL contains <b>both-url=</b><a href='#'>{'http://locaton:port'}</a> where your data is being served, it defaults to <a href='http://ipstudio-discovery.rd.bbc.co.uk:8870'>{'http://ipstudio-discovery.rd.bbc.co.uk:8870'}</a></Pica></li>
+        <li><Pica>URL contains <b>url=</b><a href='#'>{'http://locaton:port'}</a> where your data is being served, it defaults to <a href='http://ipstudio-discovery.rd.bbc.co.uk:8870'>{'http://ipstudio-discovery.rd.bbc.co.uk:8870'}</a></Pica></li>
         <li><Pica>Check your servers are working</Pica></li>
       </ul>
     </LayoutItem>
