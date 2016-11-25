@@ -4,8 +4,6 @@ var Route = require('./route')
 var Subscription = require('./subscription')
 
 module.exports = function (options) {
-  let subscriptions = Subscriptions(options.get)
-
   let getters = {
     flows: Get(options.get, 'flows'),
     sources: Get(options.get, 'sources'),
@@ -20,6 +18,7 @@ module.exports = function (options) {
     unroute (id) { return Route(getters)(id, {}) }
   }
 
+  let subscriptions = Subscriptions(options.get)
   let subscribers = {
     subscriptions: subscriptions,
     subscription: {

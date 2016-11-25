@@ -126,8 +126,8 @@ To be able to route a `receiver` to a `sender` and unroute a `receiver`
 var sender = { id: 'sender-id' }
 nmos.route('receiver-id', sender).then(function (data) {})
 nmos.route('receiver-id', sender, node_url).then(function (data) {})
-nmos.unroute('receiver-id', sender).then(function (data) {})
-nmos.unroute('receiver-id', sender, node_url).then(function (data) {})
+nmos.unroute('receiver-id').then(function (data) {})
+nmos.unroute('receiver-id', node_url).then(function (data) {})
 ```
 
 `node_url` is optional, it will do the requests to find this url if not present in the function
