@@ -45,8 +45,7 @@ Example which would work both in browser and from node modules
 ```javascript
 var NMOS = require('nmos')
 let nmos = NMOS({
-  get: 'url',
-  put: 'url',
+  get: 'url'
 })
 
 nmos
@@ -126,8 +125,12 @@ To be able to route a `receiver` to a `sender` and unroute a `receiver`
 ```js
 var sender = { id: 'sender-id' }
 nmos.route('receiver-id', sender).then(function (data) {})
+nmos.route('receiver-id', sender, node_url).then(function (data) {})
 nmos.unroute('receiver-id', sender).then(function (data) {})
+nmos.unroute('receiver-id', sender, node_url).then(function (data) {})
 ```
+
+`node_url` is optional, it will do the requests to find this url if not present in the function
 
 *You can also unroute by calling route with {} but it is better to call unroute for better error handling*
 

@@ -5,16 +5,23 @@ var Subscription = require('./subscription')
 
 module.exports = function (options) {
   let subscriptions = Subscriptions(options.get)
-  return {
-    subscriptions: subscriptions,
+
+  let getters = {
     flows: Get(options.get, 'flows'),
     sources: Get(options.get, 'sources'),
     nodes: Get(options.get, 'nodes'),
     devices: Get(options.get, 'devices'),
     senders: Get(options.get, 'senders'),
-    receivers: Get(options.get, 'receivers'),
-    route: Route(options.put),
-    unroute (id) { return Route(options.put)(id, {}) },
+    receivers: Get(options.get, 'receivers')
+  }
+
+  let routers = {
+    route: Route(getters),
+    unroute (id) { return Route(getters)(id, {}) }
+  }
+
+  let subscribers = {
+    subscriptions: subscriptions,
     subscription: {
       receivers: Subscription(options.WebSocket, subscriptions, 'receivers'),
       flows: Subscription(options.WebSocket, subscriptions, 'flows'),
@@ -24,4 +31,5 @@ module.exports = function (options) {
       senders: Subscription(options.WebSocket, subscriptions, 'senders')
     }
   }
+  return Object.assign({}, getters, routers, subscribers)
 }
