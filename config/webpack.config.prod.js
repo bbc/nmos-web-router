@@ -52,10 +52,10 @@ module.exports = {
     noParse: ['ws'],
     preLoaders: [{
       test: /\.(js|jsx)$/,
-      loader: 'eslint',
-      include: paths.appSrc
-    }
-    ],
+      loader: 'eslint-loader',
+      configFile: '../.eslintrc.json',
+      exclude: /node_modules/
+    }],
     loaders: [{
       test: /\.(js|jsx)$/,
       include: paths.appSrc,
