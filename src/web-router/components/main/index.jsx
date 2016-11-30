@@ -30,6 +30,7 @@ let WebRouter = ({view, actions}) => {
         expandedSender={view.expandedSender}
         senders={view.senders}
         receivers={view.receivers}
+        routes={view.routes}
         actions={actions}
         />
     </div>

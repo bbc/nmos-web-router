@@ -1,4 +1,5 @@
 import ChangeState from '../change-state'
+import routes from '../update/routes'
 
 function unique (senders) {
   let arr = []
@@ -49,5 +50,6 @@ export default (state, action, merge) => {
   })
   let changeState = ChangeState(view.expandedSender)
   changeState.route()
+  view.routes = routes(view)
   return merge({ view })
 }

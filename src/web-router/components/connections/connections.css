@@ -288,6 +288,7 @@
     width: 100%;
 
     & .line {
+      transition: stroke-dasharray 0.25s, stroke 0.25s;
       fill: transparent;
       stroke-linecap: round;
       stroke-width: 3;

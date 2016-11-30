@@ -1,5 +1,6 @@
 import fuzzysearch from 'fuzzysearch'
 import ChangeState from '../change-state'
+import routes from './routes'
 
 function isSenderRouted (sender, receivers) {
   return receivers.filter(receiver => {
@@ -37,6 +38,15 @@ function mapReceiver (receiver, view, senders) {
   } else changeState.unroute()
   receiver.subscription.routing = receiver.subscription.routing || []
   receiver.subscription.unrouting = receiver.subscription.unrouting || []
+
+  receiver.subscription.routing = receiver.subscription.routing.filter(sender => {
+    return sender.id !== receiver.subscription.routed.id
+  })
+
+  receiver.subscription.unrouting = receiver.subscription.unrouting.filter(sender => {
+    return sender.id !== receiver.subscription.routed.id
+  })
+
   receiver = fuzzymatch(view, receiver, changeState)
   return receiver
 }
@@ -170,6 +180,8 @@ export default (data, view, action) => {
   }
 
   view[action.name].sort(window.nmos.defaultSort)
+
+  view.routes = routes(view)
 
   return view
 }

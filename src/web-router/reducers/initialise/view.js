@@ -1,5 +1,6 @@
 import fuzzysearch from 'fuzzysearch'
 import ChangeState from '../change-state'
+import routes from '../update/routes'
 
 function isSenderRouted (sender, receivers) {
   return receivers.filter(receiver => {
@@ -58,6 +59,7 @@ function mapReceivers (data, view, senders) {
 export default (data, view) => {
   view.senders = mapSenders(data, view)
   view.receivers = mapReceivers(data, view, view.senders)
+  view.routes = routes(view)
   ChangeState(view.expandedSender).contract().unroute()
   return view
 }
