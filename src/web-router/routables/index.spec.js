@@ -1,19 +1,6 @@
 import Routables from './'
 import generate from '../../ips-nmos-api/src/stub/generate'
 
-// sender
-// format:"urn:x-nmos:format:video"
-// node: {state: Array[strings]}
-// state: Array[strings]
-
-// receiver
-// subscription:
-    // routed:{sender}
-    // routing:Array[{sender}]
-    // unrouting:Array[{sender}]
-// state:Array[10]
-// node: {state: Array[strings]}
-
 describe('Routables', () => {
   let routables, senders, receivers, flows
 
@@ -59,6 +46,23 @@ describe('Routables', () => {
     routables.insert.senders(senders)
     routables.insert.receivers(receivers)
     routables.insert.flows(flows)
+  })
+
+  describe('Populates, if any of these fail then the rest is invalid', () => {
+    it('Receivers', () => {
+      let view = routables.view()
+      expect(view.receivers.length).toBeGreaterThan(0)
+    })
+
+    it('Senders', () => {
+      let view = routables.view()
+      expect(view.senders.length).toBeGreaterThan(0)
+    })
+
+    it('Routes', () => {
+      let view = routables.view()
+      expect(view.routes.length).toBeGreaterThan(0)
+    })
   })
 
   describe('Insert', () => {
@@ -212,18 +216,23 @@ describe('Routables', () => {
     expect(view.expanded.format).not.toBeDefined()
   })
 
+  it('Routes have sender id and receiver id and are routed if receiver is routed', () => {
+    let view = routables.view()
+
+    view.routes.forEach(route => {
+      expect(route.sender).toBeDefined()
+      expect(route.receiver).toBeDefined()
+      expect(route.state).toBe('routed')
+    })
+  })
+
   // it('Does everything you need to but not the HTTP stuff', () => {
   //   let receiverId = ''
   //   let senderId = ''
   //   let sender = {}
   //   let grain = {}
   //
-  //   routables.expand(senderId)
-  //
   //   let routablesView = routables.view()
-  //   routablesView.expanded
-  //   routablesView.senders
-  //   routablesView.receivers
   //   routablesView.routes
   //
   //   routables.route(receiverId, sender)

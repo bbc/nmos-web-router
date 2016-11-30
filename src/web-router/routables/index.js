@@ -65,6 +65,28 @@ function check (routables, id) {
   else routable.changeState.check()
 }
 
+function getSender (senders, senderId) {
+  return senders.filter(sender => {
+    return sender.id === senderId
+  })[0]
+}
+
+function mapInitialRouted (senders, receivers, routes) {
+  return receivers
+    .filter(receiver => {
+      let routed = receiver.subscription.sender_id !== null
+      let senderExists = getSender(senders, receiver.subscription.sender_id) !== undefined
+      return routed && senderExists
+    })
+    .map(receiver => {
+      return {
+        state: 'routed',
+        receiver,
+        sender: getSender(senders, receiver.subscription.sender_id)
+      }
+    })
+}
+
 export default () => {
   let expanded = {}
   expanded.changeState = ChangeState(expanded)
@@ -82,6 +104,7 @@ export default () => {
         updateWithChangeState(senders)
         updateSenderInitialState(senders)
         updateSenderRoutedState(senders, receivers)
+        routes = mapInitialRouted(senders, receivers, routes)
       },
       receivers (data) {
         receivers = data
@@ -89,6 +112,7 @@ export default () => {
         updateReceiverInitialState(receivers)
         updateSenderRoutedState(senders, receivers)
         updateReceiverRoutedState(receivers)
+        routes = mapInitialRouted(senders, receivers, routes)
       },
       flows (data) {
         flows = data
