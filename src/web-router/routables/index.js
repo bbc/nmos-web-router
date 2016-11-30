@@ -1,3 +1,4 @@
+import fuzzysearch from 'fuzzysearch'
 import ChangeState from './change-state'
 
 function updateSenderFormat (senders, flows) {
@@ -48,6 +49,14 @@ function updateReceiverRoutedState (receivers) {
   })
 }
 
+function fuzzymatch (term, routables) {
+  routables.forEach(routable => {
+    let fuzzymatch = fuzzysearch(term.toLowerCase(), routable.label.toLowerCase()) || fuzzysearch(term.toLowerCase(), routable.id.toLowerCase())
+    if (fuzzymatch) routable.changeState.fuzzymatch()
+    else routable.changeState.fuzzymissmatch()
+  })
+}
+
 export default () => {
   let senders = []
   let receivers = []
@@ -88,7 +97,10 @@ export default () => {
       devices (grain) {},
       nodes (grain) {}
     },
-    filter (term) {},
+    filter (term) {
+      fuzzymatch(term, senders)
+      fuzzymatch(term, receivers)
+    },
     check: {
       receiver () {},
       sender () {}
