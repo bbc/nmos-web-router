@@ -66,6 +66,9 @@ function check (routables, id) {
 }
 
 export default () => {
+  let expanded = {}
+  expanded.changeState = ChangeState(expanded)
+  expanded.changeState.contract().unroute()
   let senders = []
   let receivers = []
   let flows = []
@@ -104,7 +107,26 @@ export default () => {
         check(senders, id)
       }
     },
-    expand (senderId) {},
+    expand (id) {
+      expanded.changeState.contract()
+      delete expanded.id
+      delete expanded.label
+      delete expanded.description
+      delete expanded.format
+
+      senders.forEach(sender => {
+        sender.changeState.contract()
+        if (sender.id === id) {
+          sender.changeState.expand()
+          expanded.changeState.expand()
+
+          expanded.id = sender.id
+          expanded.label = sender.label
+          expanded.description = sender.description
+          expanded.format = sender.format
+        }
+      })
+    },
     route (receiverId, sender) {},
     unroute () {},
     update: {
@@ -118,7 +140,8 @@ export default () => {
       return {
         senders,
         receivers,
-        routes
+        routes,
+        expanded
       }
     }
   }
