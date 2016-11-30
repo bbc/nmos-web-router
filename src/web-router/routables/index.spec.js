@@ -154,7 +154,7 @@ describe('Routables', () => {
     expect(view.senders[0].state).toContain('expanded')
   })
 
-  it('Exapns contracts any expanded senders without matching id', () => {
+  it('Expand contracts any expanded senders without matching id', () => {
     routables.expand(senders[0].id)
     routables.expand(senders[1].id)
 
@@ -164,7 +164,7 @@ describe('Routables', () => {
     expect(view.senders[1].state).toContain('expanded')
   })
 
-  it('Has default expanded sender as contracted unrouted sender with no data', () => {
+  it('Expanded defaults to contracted and unrouted with no data', () => {
     let view = routables.view()
     expect(view.expanded.state).toContain('contracted')
     expect(view.expanded.node.state).toContain('unrouted')
@@ -175,16 +175,41 @@ describe('Routables', () => {
     expect(view.expanded.format).not.toBeDefined()
   })
 
-  it('Expands the expanded sender and gives it values of expanded sender', () => {
+  it('Expand sets the expanded sender to the values of expanded sender', () => {
     let view = routables.view()
 
     routables.expand(senders[0].id)
 
     expect(view.expanded.state).toContain('expanded')
+    expect(view.expanded.node.state).toContain('routed')
     expect(view.expanded.id).toBe(senders[0].id)
     expect(view.expanded.label).toBe(senders[0].label)
     expect(view.expanded.description).toBe(senders[0].description)
     expect(view.expanded.format).toBe(senders[0].format)
+  })
+
+  it('Contract contracts all expanded senders', () => {
+    routables.expand(senders[0].id)
+    routables.contract()
+
+    let view = routables.view()
+
+    expect(view.senders[0].state).toContain('contracted')
+  })
+
+  it('Contract defaults expanded to defaults', () => {
+    routables.expand(senders[0].id)
+    routables.contract()
+
+    let view = routables.view()
+
+    expect(view.expanded.state).toContain('contracted')
+    expect(view.expanded.node.state).toContain('unrouted')
+
+    expect(view.expanded.id).not.toBeDefined()
+    expect(view.expanded.label).not.toBeDefined()
+    expect(view.expanded.description).not.toBeDefined()
+    expect(view.expanded.format).not.toBeDefined()
   })
 
   // it('Does everything you need to but not the HTTP stuff', () => {

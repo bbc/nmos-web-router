@@ -109,6 +109,7 @@ export default () => {
     },
     expand (id) {
       expanded.changeState.contract()
+      expanded.changeState.unroute()
       delete expanded.id
       delete expanded.label
       delete expanded.description
@@ -119,6 +120,7 @@ export default () => {
         if (sender.id === id) {
           sender.changeState.expand()
           expanded.changeState.expand()
+          if (sender.node.state.includes('routed')) expanded.changeState.route()
 
           expanded.id = sender.id
           expanded.label = sender.label
@@ -126,6 +128,9 @@ export default () => {
           expanded.format = sender.format
         }
       })
+    },
+    contract () {
+      routables.expand()
     },
     route (receiverId, sender) {},
     unroute () {},
