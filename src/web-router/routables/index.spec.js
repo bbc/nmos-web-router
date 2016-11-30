@@ -152,22 +152,20 @@ describe('Routables', () => {
     })
   })
 
+  function expectRoutableToBeFiltered (routable, index) {
+    if (index < 3) expect(routable.state).toContain('fuzzymatch')
+    else expect(routable.state).toContain('fuzzymissmatch')
+  }
+
   it('Filters', () => {
     routables.filter('label value')
     let view = routables.view()
-    view.senders.forEach((sender, index) => {
-      if (index < 3) expect(sender.state).toContain('fuzzymatch')
-      else expect(sender.state).toContain('fuzzymissmatch')
+    view.senders.forEach((routable, index) => {
+      expectRoutableToBeFiltered(routable, index)
     })
-    // for (let i = 0; i < 3; i++) {
-    //   expect(view.senders[i].state).toContain('fuzzymatch')
-    //   expect(view.receivers[i].state).toContain('fuzzymatch')
-    // }
-    //
-    // for (let i = 3; i < 10; i++) {
-    //   expect(view.senders[i].state).toContain('fuzzymissmatch')
-    //   expect(view.receivers[i].state).toContain('fuzzymissmatch')
-    // }
+    view.receivers.forEach((routable, index) => {
+      expectRoutableToBeFiltered(routable, index)
+    })
   })
 
   it('Check will change state to unchecked if state is checked', () => {
@@ -220,8 +218,5 @@ describe('Routables', () => {
   //   routables.update.flows(grain)
   //   routables.update.devices(grain)
   //   routables.update.nodes(grain)
-  //
-  //   routables.check.receiver(receiverId)
-  //   routables.check.sender(senderId)
   // })
 })
