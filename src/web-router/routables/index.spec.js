@@ -64,19 +64,12 @@ describe('Routables', () => {
   describe('Insert', () => {
     it('Updates format of senders after flows have been inserted', () => {
       let view = routables.view()
-      expect(view.senders[0].format).toBe(flows[0].format)
-      expect(view.senders[1].format).toBe(flows[0].format)
-      expect(view.senders[2].format).toBe(flows[0].format)
-      expect(view.senders[3].format).toBe(flows[0].format)
-
-      expect(view.senders[4].format).toBe(flows[1].format)
-      expect(view.senders[5].format).toBe(flows[1].format)
-      expect(view.senders[6].format).toBe(flows[1].format)
-
-      expect(view.senders[7].format).toBe(flows[2].format)
-      expect(view.senders[8].format).toBe(flows[2].format)
-
-      expect(view.senders[9].format).toBe('no')
+      view.senders.forEach((sender, index) => {
+        if (index < 4) expect(sender.format).toBe(flows[0].format)
+        else if (index < 7) expect(sender.format).toBe(flows[1].format)
+        else if (index < 9) expect(sender.format).toBe(flows[2].format)
+        else expect(sender.format).toBe('no')
+      })
     })
 
     it('Sets the initial state for all senders', () => {
@@ -90,16 +83,10 @@ describe('Routables', () => {
 
     it('Sets the initial node state for all senders', () => {
       let view = routables.view()
-      expect(view.senders[0].node.state).toContain('routed')
-      expect(view.senders[1].node.state).toContain('routed')
-      expect(view.senders[2].node.state).toContain('routed')
-      expect(view.senders[3].node.state).toContain('routed')
-
-      expect(view.senders[4].node.state).toContain('unrouted')
-      expect(view.senders[5].node.state).toContain('unrouted')
-      expect(view.senders[6].node.state).toContain('unrouted')
-      expect(view.senders[7].node.state).toContain('unrouted')
-      expect(view.senders[9].node.state).toContain('unrouted')
+      view.senders.forEach((sender, index) => {
+        if (index < 4) expect(sender.node.state).toContain('routed')
+        else expect(sender.node.state).toContain('unrouted')
+      })
     })
 
     it('Sets the initial state for all receivers', () => {
@@ -113,17 +100,10 @@ describe('Routables', () => {
 
     it('Sets the initial node state for all receivers', () => {
       let view = routables.view()
-      expect(view.receivers[0].node.state).toContain('routed')
-      expect(view.receivers[1].node.state).toContain('routed')
-      expect(view.receivers[2].node.state).toContain('routed')
-      expect(view.receivers[3].node.state).toContain('routed')
-
-      expect(view.receivers[4].node.state).toContain('routed')
-      expect(view.receivers[5].node.state).toContain('routed')
-      expect(view.receivers[6].node.state).toContain('routed')
-
-      expect(view.receivers[7].node.state).toContain('unrouted')
-      expect(view.receivers[9].node.state).toContain('unrouted')
+      view.receivers.forEach((receiver, index) => {
+        if (index < 7) expect(receiver.node.state).toContain('routed')
+        else expect(receiver.node.state).toContain('unrouted')
+      })
     })
   })
 
