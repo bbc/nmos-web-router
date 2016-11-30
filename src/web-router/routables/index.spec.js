@@ -192,12 +192,6 @@ describe('Routables', () => {
   })
 
   // it('Does everything you need to but not the HTTP stuff', () => {
-  //   let receivers = []
-  //   let senders = []
-  //   let flows = []
-  //   let devices = []
-  //   let nodes = []
-  //
   //   let receiverId = ''
   //   let senderId = ''
   //   let sender = {}
@@ -216,7 +210,5 @@ describe('Routables', () => {
   //   routables.update.receivers(grain)
   //   routables.update.senders(grain)
   //   routables.update.flows(grain)
-  //   routables.update.devices(grain)
-  //   routables.update.nodes(grain)
   // })
 })

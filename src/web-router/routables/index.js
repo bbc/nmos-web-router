@@ -70,8 +70,6 @@ export default () => {
   let receivers = []
   let flows = []
   let routes = []
-  let devices = []
-  let nodes = []
 
   let routables = {
     insert: {
@@ -92,9 +90,7 @@ export default () => {
       flows (data) {
         flows = data
         updateSenderFormat(senders, flows)
-      },
-      devices (data) { devices = data },
-      nodes (data) { nodes = data }
+      }
     },
     filter (term) {
       fuzzymatch(term, senders)
