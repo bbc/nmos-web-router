@@ -150,6 +150,29 @@ describe('Routables', () => {
     }
   })
 
+  it('Check will change state to unchecked if state is checked', () => {
+    routables.check.sender(senders[0].id)
+    routables.check.receiver(receivers[0].id)
+
+    let view = routables.view()
+
+    expect(view.senders[0].state).toContain('unchecked')
+    expect(view.receivers[0].state).toContain('unchecked')
+  })
+
+  it('Check will change state to checked if state is unchecked', () => {
+    routables.check.sender(senders[0].id)
+    routables.check.receiver(receivers[0].id)
+
+    routables.check.sender(senders[0].id)
+    routables.check.receiver(receivers[0].id)
+
+    let view = routables.view()
+
+    expect(view.senders[0].state).toContain('checked')
+    expect(view.receivers[0].state).toContain('checked')
+  })
+
   // it('Does everything you need to but not the HTTP stuff', () => {
   //   let receivers = []
   //   let senders = []
@@ -161,8 +184,6 @@ describe('Routables', () => {
   //   let senderId = ''
   //   let sender = {}
   //   let grain = {}
-  //
-  //   let term = ''
   //
   //   routables.expand(senderId)
   //
@@ -180,7 +201,6 @@ describe('Routables', () => {
   //   routables.update.devices(grain)
   //   routables.update.nodes(grain)
   //
-  //   routables.filter(term)
   //   routables.check.receiver(receiverId)
   //   routables.check.sender(senderId)
   // })

@@ -57,6 +57,14 @@ function fuzzymatch (term, routables) {
   })
 }
 
+function check (routables, id) {
+  let routable = routables.filter(routable => {
+    return routable.id === id
+  })[0]
+  if (routable.state.includes('checked')) routable.changeState.uncheck()
+  else routable.changeState.check()
+}
+
 export default () => {
   let senders = []
   let receivers = []
@@ -102,8 +110,12 @@ export default () => {
       fuzzymatch(term, receivers)
     },
     check: {
-      receiver () {},
-      sender () {}
+      receiver (id) {
+        check(receivers, id)
+      },
+      sender (id) {
+        check(senders, id)
+      }
     },
     expand (senderId) {},
     view () {
