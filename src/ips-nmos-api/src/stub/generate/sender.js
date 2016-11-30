@@ -7,6 +7,7 @@ module.exports = () => {
     label: random.label(),
     transport: random.transport(),
     device_id: random.id(),
+    flow_id: random.id(),
     id: random.id()
   }
 }
