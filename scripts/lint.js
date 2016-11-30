@@ -2,8 +2,7 @@ function style () {
   const stylelint = require('stylelint')
   return stylelint
   .lint({
-    files: '**/*.css',
-    ignoreFiles: 'build/**/*.css'
+    files: '**/*.css'
   })
   .then(result => {
     let errored = result.results
