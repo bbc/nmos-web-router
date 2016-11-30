@@ -116,104 +116,116 @@ describe('Routables', () => {
     else expect(routable.state).toContain('fuzzymissmatch')
   }
 
-  it('Filters', () => {
-    routables.filter('label value')
-    let view = routables.view()
-    view.senders.forEach((routable, index) => {
-      expectRoutableToBeFiltered(routable, index)
+  describe('Filtering', () => {
+    it('By fuzzymatch and lowercase label', () => {
+      routables.filter('label value')
+      let view = routables.view()
+      view.senders.forEach((routable, index) => {
+        expectRoutableToBeFiltered(routable, index)
+      })
+      view.receivers.forEach((routable, index) => {
+        expectRoutableToBeFiltered(routable, index)
+      })
     })
-    view.receivers.forEach((routable, index) => {
-      expectRoutableToBeFiltered(routable, index)
+
+    it('By fuzzymatch and lowercase id', () => {
+      routables.filter(senders[7].id)
+      let view = routables.view()
+      expect(view.senders[7].state).toContain('fuzzymatch')
     })
   })
 
-  it('Check will change state to unchecked if state is checked', () => {
-    routables.check.sender(senders[0].id)
-    routables.check.receiver(receivers[0].id)
+  describe('Checking', () => {
+    it('Will change state to unchecked if state is checked', () => {
+      routables.check.sender(senders[0].id)
+      routables.check.receiver(receivers[0].id)
 
-    let view = routables.view()
+      let view = routables.view()
 
-    expect(view.senders[0].state).toContain('unchecked')
-    expect(view.receivers[0].state).toContain('unchecked')
+      expect(view.senders[0].state).toContain('unchecked')
+      expect(view.receivers[0].state).toContain('unchecked')
+    })
+
+    it('Will change state to checked if state is unchecked', () => {
+      routables.check.sender(senders[0].id)
+      routables.check.receiver(receivers[0].id)
+
+      routables.check.sender(senders[0].id)
+      routables.check.receiver(receivers[0].id)
+
+      let view = routables.view()
+
+      expect(view.senders[0].state).toContain('checked')
+      expect(view.receivers[0].state).toContain('checked')
+    })
   })
 
-  it('Check will change state to checked if state is unchecked', () => {
-    routables.check.sender(senders[0].id)
-    routables.check.receiver(receivers[0].id)
+  describe('Expanding', () => {
+    it('Exapnds sender with matching id', () => {
+      routables.expand(senders[0].id)
 
-    routables.check.sender(senders[0].id)
-    routables.check.receiver(receivers[0].id)
+      let view = routables.view()
 
-    let view = routables.view()
+      expect(view.senders[0].state).toContain('expanded')
+    })
 
-    expect(view.senders[0].state).toContain('checked')
-    expect(view.receivers[0].state).toContain('checked')
-  })
+    it('Contracts any expanded senders without matching id', () => {
+      routables.expand(senders[0].id)
+      routables.expand(senders[1].id)
 
-  it('Expand exapnds sender with matching id', () => {
-    routables.expand(senders[0].id)
+      let view = routables.view()
 
-    let view = routables.view()
+      expect(view.senders[0].state).toContain('contracted')
+      expect(view.senders[1].state).toContain('expanded')
+    })
 
-    expect(view.senders[0].state).toContain('expanded')
-  })
+    it('Defaults expanded to contracted and unrouted with no data', () => {
+      let view = routables.view()
+      expect(view.expanded.state).toContain('contracted')
+      expect(view.expanded.node.state).toContain('unrouted')
 
-  it('Expand contracts any expanded senders without matching id', () => {
-    routables.expand(senders[0].id)
-    routables.expand(senders[1].id)
+      expect(view.expanded.id).not.toBeDefined()
+      expect(view.expanded.label).not.toBeDefined()
+      expect(view.expanded.description).not.toBeDefined()
+      expect(view.expanded.format).not.toBeDefined()
+    })
 
-    let view = routables.view()
+    it('Sets expanded to the values of expanded sender', () => {
+      let view = routables.view()
 
-    expect(view.senders[0].state).toContain('contracted')
-    expect(view.senders[1].state).toContain('expanded')
-  })
+      routables.expand(senders[0].id)
 
-  it('Expanded defaults to contracted and unrouted with no data', () => {
-    let view = routables.view()
-    expect(view.expanded.state).toContain('contracted')
-    expect(view.expanded.node.state).toContain('unrouted')
+      expect(view.expanded.state).toContain('expanded')
+      expect(view.expanded.node.state).toContain('routed')
+      expect(view.expanded.id).toBe(senders[0].id)
+      expect(view.expanded.label).toBe(senders[0].label)
+      expect(view.expanded.description).toBe(senders[0].description)
+      expect(view.expanded.format).toBe(senders[0].format)
+    })
 
-    expect(view.expanded.id).not.toBeDefined()
-    expect(view.expanded.label).not.toBeDefined()
-    expect(view.expanded.description).not.toBeDefined()
-    expect(view.expanded.format).not.toBeDefined()
-  })
+    it('Contracting contracts all expanded senders', () => {
+      routables.expand(senders[0].id)
+      routables.contract()
 
-  it('Expand sets the expanded sender to the values of expanded sender', () => {
-    let view = routables.view()
+      let view = routables.view()
 
-    routables.expand(senders[0].id)
+      expect(view.senders[0].state).toContain('contracted')
+    })
 
-    expect(view.expanded.state).toContain('expanded')
-    expect(view.expanded.node.state).toContain('routed')
-    expect(view.expanded.id).toBe(senders[0].id)
-    expect(view.expanded.label).toBe(senders[0].label)
-    expect(view.expanded.description).toBe(senders[0].description)
-    expect(view.expanded.format).toBe(senders[0].format)
-  })
+    it('Contracting defaults expanded to defaults', () => {
+      routables.expand(senders[0].id)
+      routables.contract()
 
-  it('Contract contracts all expanded senders', () => {
-    routables.expand(senders[0].id)
-    routables.contract()
+      let view = routables.view()
 
-    let view = routables.view()
+      expect(view.expanded.state).toContain('contracted')
+      expect(view.expanded.node.state).toContain('unrouted')
 
-    expect(view.senders[0].state).toContain('contracted')
-  })
-
-  it('Contract defaults expanded to defaults', () => {
-    routables.expand(senders[0].id)
-    routables.contract()
-
-    let view = routables.view()
-
-    expect(view.expanded.state).toContain('contracted')
-    expect(view.expanded.node.state).toContain('unrouted')
-
-    expect(view.expanded.id).not.toBeDefined()
-    expect(view.expanded.label).not.toBeDefined()
-    expect(view.expanded.description).not.toBeDefined()
-    expect(view.expanded.format).not.toBeDefined()
+      expect(view.expanded.id).not.toBeDefined()
+      expect(view.expanded.label).not.toBeDefined()
+      expect(view.expanded.description).not.toBeDefined()
+      expect(view.expanded.format).not.toBeDefined()
+    })
   })
 
   it('Routes have sender id and receiver id and are routed if receiver is routed', () => {
