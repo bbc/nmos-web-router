@@ -123,6 +123,30 @@ describe('Routables', () => {
       expect(view.senders[7].node.state).toContain('unrouted')
       expect(view.senders[9].node.state).toContain('unrouted')
     })
+
+    it('Sets the initial state for all receivers', () => {
+      let view = routables.view()
+      view.receivers.forEach(receiver => {
+        expect(receiver.state).toContain('checked')
+        expect(receiver.state).toContain('contracted')
+        expect(receiver.state).not.toContain('selectable')
+      })
+    })
+
+    it('Sets the initial node state for all receivers', () => {
+      let view = routables.view()
+      expect(view.receivers[0].node.state).toContain('routed')
+      expect(view.receivers[1].node.state).toContain('routed')
+      expect(view.receivers[2].node.state).toContain('routed')
+      expect(view.receivers[3].node.state).toContain('routed')
+
+      expect(view.receivers[4].node.state).toContain('routed')
+      expect(view.receivers[5].node.state).toContain('routed')
+      expect(view.receivers[6].node.state).toContain('routed')
+
+      expect(view.receivers[7].node.state).toContain('unrouted')
+      expect(view.receivers[9].node.state).toContain('unrouted')
+    })
   })
 
   // it('Does everything you need to but not the HTTP stuff', () => {

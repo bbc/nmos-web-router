@@ -22,11 +22,29 @@ function isSenderRouted (sender, receivers) {
   })
 }
 
-function updateSenderRoutedState (senders, receivers) {
+function updateSenderInitialState (senders) {
   senders.forEach(sender => {
     sender.changeState.check().contract().selectable()
+  })
+}
+
+function updateSenderRoutedState (senders, receivers) {
+  senders.forEach(sender => {
     if (isSenderRouted(sender, receivers)) sender.changeState.route()
     else sender.changeState.unroute()
+  })
+}
+
+function updateReceiverInitialState (receivers) {
+  receivers.forEach(receiver => {
+    receiver.changeState.check().contract().notSelectable()
+  })
+}
+
+function updateReceiverRoutedState (receivers) {
+  receivers.forEach(receiver => {
+    if (receiver.subscription.sender_id !== null) receiver.changeState.route()
+    else receiver.changeState.unroute()
   })
 }
 
@@ -44,11 +62,15 @@ export default () => {
         senders = data
         updateSenderFormat(senders, flows)
         updateWithChangeState(senders)
+        updateSenderInitialState(senders)
         updateSenderRoutedState(senders, receivers)
       },
       receivers (data) {
         receivers = data
+        updateWithChangeState(receivers)
+        updateReceiverInitialState(receivers)
         updateSenderRoutedState(senders, receivers)
+        updateReceiverRoutedState(receivers)
       },
       flows (data) {
         flows = data
