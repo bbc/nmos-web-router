@@ -33,6 +33,14 @@ describe('Routables', () => {
     senders[0].label = 'label value'
     senders[1].label = 'before label value after'
     senders[2].label = 'XlXaXbXeXlX XvXaXlXuXeX'
+
+    senders[3].label = 'something else'
+    senders[4].label = 'something else'
+    senders[5].label = 'something else'
+    senders[6].label = 'something else'
+    senders[7].label = 'something else'
+    senders[8].label = 'something else'
+    senders[9].label = 'something else'
   }
 
   function initReceivers () {
@@ -53,6 +61,14 @@ describe('Routables', () => {
     receivers[0].label = 'label value'
     receivers[1].label = 'before label value after'
     receivers[2].label = 'XlXaXbXeXlX XvXaXlXuXeX'
+
+    receivers[3].label = 'something else'
+    receivers[4].label = 'something else'
+    receivers[5].label = 'something else'
+    receivers[6].label = 'something else'
+    receivers[7].label = 'something else'
+    receivers[8].label = 'something else'
+    receivers[9].label = 'something else'
   }
 
   beforeEach(() => {
@@ -139,15 +155,19 @@ describe('Routables', () => {
   it('Filters', () => {
     routables.filter('label value')
     let view = routables.view()
-    for (let i = 0; i < 3; i++) {
-      expect(view.senders[i].state).toContain('fuzzymatch')
-      expect(view.receivers[i].state).toContain('fuzzymatch')
-    }
-
-    for (let i = 3; i < 10; i++) {
-      expect(view.senders[i].state).toContain('fuzzymissmatch')
-      expect(view.receivers[i].state).toContain('fuzzymissmatch')
-    }
+    view.senders.forEach((sender, index) => {
+      if (index < 3) expect(sender.state).toContain('fuzzymatch')
+      else expect(sender.state).toContain('fuzzymissmatch')
+    })
+    // for (let i = 0; i < 3; i++) {
+    //   expect(view.senders[i].state).toContain('fuzzymatch')
+    //   expect(view.receivers[i].state).toContain('fuzzymatch')
+    // }
+    //
+    // for (let i = 3; i < 10; i++) {
+    //   expect(view.senders[i].state).toContain('fuzzymissmatch')
+    //   expect(view.receivers[i].state).toContain('fuzzymissmatch')
+    // }
   })
 
   it('Check will change state to unchecked if state is checked', () => {

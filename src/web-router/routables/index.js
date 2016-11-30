@@ -96,15 +96,6 @@ export default () => {
       devices (data) { devices = data },
       nodes (data) { nodes = data }
     },
-    route (receiverId, sender) {},
-    unroute () {},
-    update: {
-      senders (grain) {},
-      receivers (grain) {},
-      flows (grain) {},
-      devices (grain) {},
-      nodes (grain) {}
-    },
     filter (term) {
       fuzzymatch(term, senders)
       fuzzymatch(term, receivers)
@@ -118,6 +109,15 @@ export default () => {
       }
     },
     expand (senderId) {},
+    route (receiverId, sender) {},
+    unroute () {},
+    update: {
+      senders (grains) {},
+      receivers (grains) {},
+      flows (grains) {},
+      devices (grains) {},
+      nodes (grains) {}
+    },
     view () {
       return {
         senders,
