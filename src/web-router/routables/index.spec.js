@@ -18,57 +18,32 @@ describe('Routables', () => {
   let routables, senders, receivers, flows
 
   function initSenders () {
-    senders[0].flow_id = flows[0].id
-    senders[1].flow_id = flows[0].id
-    senders[2].flow_id = flows[0].id
-    senders[3].flow_id = flows[0].id
+    senders.forEach((sender, index) => {
+      if (index < 4) sender.flow_id = flows[0].id
+      else if (index < 7) sender.flow_id = flows[1].id
+      else if (index < 9) sender.flow_id = flows[2].id
 
-    senders[4].flow_id = flows[1].id
-    senders[5].flow_id = flows[1].id
-    senders[6].flow_id = flows[1].id
-
-    senders[7].flow_id = flows[2].id
-    senders[8].flow_id = flows[2].id
+      if (index > 2) sender.label = 'something else'
+    })
 
     senders[0].label = 'label value'
     senders[1].label = 'before label value after'
     senders[2].label = 'XlXaXbXeXlX XvXaXlXuXeX'
-
-    senders[3].label = 'something else'
-    senders[4].label = 'something else'
-    senders[5].label = 'something else'
-    senders[6].label = 'something else'
-    senders[7].label = 'something else'
-    senders[8].label = 'something else'
-    senders[9].label = 'something else'
   }
 
   function initReceivers () {
-    receivers = receivers.map(receiver => {
+    receivers.forEach((receiver, index) => {
       receiver.subscription.sender_id = null
-      return receiver
+
+      if (index < 4) receiver.subscription.sender_id = senders[index].id
+      else if (index < 7) receiver.subscription.sender_id = generate.random.id()
+
+      if (index > 2) receiver.label = 'something else'
     })
-
-    receivers[0].subscription.sender_id = senders[0].id
-    receivers[1].subscription.sender_id = senders[1].id
-    receivers[2].subscription.sender_id = senders[2].id
-    receivers[3].subscription.sender_id = senders[3].id
-
-    receivers[4].subscription.sender_id = generate.random.id()
-    receivers[5].subscription.sender_id = generate.random.id()
-    receivers[6].subscription.sender_id = generate.random.id()
 
     receivers[0].label = 'label value'
     receivers[1].label = 'before label value after'
     receivers[2].label = 'XlXaXbXeXlX XvXaXlXuXeX'
-
-    receivers[3].label = 'something else'
-    receivers[4].label = 'something else'
-    receivers[5].label = 'something else'
-    receivers[6].label = 'something else'
-    receivers[7].label = 'something else'
-    receivers[8].label = 'something else'
-    receivers[9].label = 'something else'
   }
 
   beforeEach(() => {
