@@ -65,7 +65,7 @@ describe('Routables', () => {
     })
   })
 
-  describe('Insert', () => {
+  describe('Inserting', () => {
     it('Updates format of senders after flows have been inserted', () => {
       let view = routables.view()
       view.senders.forEach((sender, index) => {
@@ -236,6 +236,18 @@ describe('Routables', () => {
       expect(route.receiver).toBeDefined()
       expect(route.state).toBe('routed')
     })
+  })
+
+  describe('Routing', () => {
+
+  })
+
+  describe('Unrouting', () => {
+
+  })
+
+  describe('Updating', () => {
+
   })
 
   // it('Does everything you need to but not the HTTP stuff', () => {
