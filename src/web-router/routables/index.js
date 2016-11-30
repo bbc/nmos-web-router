@@ -1,10 +1,32 @@
-function mapSenderFormat (senders, flows) {
-  return senders.map(sender => {
+import ChangeState from './change-state'
+
+function updateSenderFormat (senders, flows) {
+  senders.forEach(sender => {
     let flow = flows.filter(flow => {
       return flow.id === sender.flow_id
     })[0] || {format: 'no'}
     sender.format = flow.format
-    return sender
+  })
+}
+
+function updateWithChangeState (routables) {
+  return routables.forEach(routable => {
+    routable.changeState = ChangeState(routable)
+    return routable
+  })
+}
+
+function isSenderRouted (sender, receivers) {
+  return receivers.some(receiver => {
+    return receiver.subscription.sender_id === sender.id
+  })
+}
+
+function updateSenderRoutedState (senders, receivers) {
+  senders.forEach(sender => {
+    sender.changeState.check().contract().selectable()
+    if (isSenderRouted(sender, receivers)) sender.changeState.route()
+    else sender.changeState.unroute()
   })
 }
 
@@ -20,12 +42,17 @@ export default () => {
     insert: {
       senders (data) {
         senders = data
-        senders = mapSenderFormat(senders, flows)
+        updateSenderFormat(senders, flows)
+        updateWithChangeState(senders)
+        updateSenderRoutedState(senders, receivers)
       },
-      receivers (data) { receivers = data },
+      receivers (data) {
+        receivers = data
+        updateSenderRoutedState(senders, receivers)
+      },
       flows (data) {
         flows = data
-        senders = mapSenderFormat(senders, flows)
+        updateSenderFormat(senders, flows)
       },
       devices (data) { devices = data },
       nodes (data) { nodes = data }
