@@ -10,13 +10,6 @@ function updateSenderFormat (senders, flows) {
   })
 }
 
-function initialState (routables) {
-  return routables.forEach(routable => {
-    routable.state = mapState(routable).state()
-    return routable
-  })
-}
-
 function isSenderRouted (sender, receivers) {
   return receivers.some(receiver => {
     return receiver.subscription.sender_id === sender.id
@@ -106,14 +99,12 @@ export default () => {
       senders (data) {
         senders = data
         updateSenderFormat(senders, flows)
-        initialState(senders)
         updateSenderInitialState(senders)
         updateSenderRoutedState(senders, receivers)
         routes = mapInitialRouted(senders, receivers, routes)
       },
       receivers (data) {
         receivers = data
-        initialState(receivers)
         updateReceiverInitialState(receivers)
         updateSenderRoutedState(senders, receivers)
         updateReceiverRoutedState(receivers)
