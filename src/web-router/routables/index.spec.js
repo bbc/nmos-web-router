@@ -230,7 +230,7 @@ describe('Routables', () => {
     })
   })
 
-  it('Routes have sender id and receiver id and are routed if receiver is routed', () => {
+  it('The routes have sender id and receiver id and are routed if receiver is routed', () => {
     let view = routables.view()
 
     let routes = view.routes()

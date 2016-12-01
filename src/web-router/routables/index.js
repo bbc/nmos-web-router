@@ -114,6 +114,7 @@ export default ({senders, flows, receivers, routes}) => {
         senders = mapInitialSenderState(senders)
         senders = mapSenderRoutedState(senders, receivers)
         routes = mapInitialRouted(senders, receivers, routes)
+        return routables
       },
       receivers (data) {
         receivers = data
@@ -121,22 +122,27 @@ export default ({senders, flows, receivers, routes}) => {
         receivers = mapRoutedReceivers(receivers)
         senders = mapSenderRoutedState(senders, receivers)
         routes = mapInitialRouted(senders, receivers, routes)
+        return routables
       },
       flows (data) {
         flows = data
         senders = mapSenderFormats(senders, flows)
+        return routables
       }
     },
     filter (term) {
       senders = mapFuzzymatch(term, senders)
       receivers = mapFuzzymatch(term, receivers)
+      return routables
     },
     check: {
       receiver (id) {
         receivers = mapCheck(receivers, id)
+        return routables
       },
       sender (id) {
         senders = mapCheck(senders, id)
+        return routables
       }
     },
     expand (id) {
@@ -147,18 +153,28 @@ export default ({senders, flows, receivers, routes}) => {
         sender.state = senderMapState.state()
         return sender
       })
+      return routables
     },
     contract () {
       routables.expand()
+      return routables
     },
-    route (receiverId, sender) {},
-    unroute () {},
+    route (receiverId, sender) {
+      return routables
+    },
+    unroute () {
+      return routables
+    },
     update: {
-      senders (grains) {},
-      receivers (grains) {},
-      flows (grains) {},
-      devices (grains) {},
-      nodes (grains) {}
+      senders (grains) {
+        return routables
+      },
+      receivers (grains) {
+        return routables
+      },
+      flows (grains) {
+        return routables
+      }
     },
     data () {
       return {
