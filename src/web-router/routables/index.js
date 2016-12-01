@@ -146,9 +146,7 @@ export default () => {
       senders = senders.map(sender => {
         sender = Object.assign({}, sender)
         let senderMapState = mapState(sender).contract()
-        if (sender.id === id) {
-          senderMapState.expand()
-        }
+        if (sender.id === id) senderMapState.expand()
         sender.state = senderMapState.state()
         return sender
       })
