@@ -1,12 +1,14 @@
 import fuzzysearch from 'fuzzysearch'
 import mapState from './map-state'
 
-function updateSenderFormat (senders, flows) {
-  senders.forEach(sender => {
+function mapSenderFormats (senders, flows) {
+  return senders.map(sender => {
+    sender = Object.assign({}, sender)
     let flow = flows.filter(flow => {
       return flow.id === sender.flow_id
     })[0] || {format: 'no'}
     sender.format = flow.format
+    return sender
   })
 }
 
@@ -16,51 +18,64 @@ function isSenderRouted (sender, receivers) {
   })
 }
 
-function updateSenderInitialState (senders) {
-  senders.forEach(sender => {
+function mapInitialSenderState (senders) {
+  return senders.map(sender => {
+    sender = Object.assign({}, sender)
     sender.state = mapState(sender).check().contract().selectable().state()
+    return sender
   })
 }
 
-function updateSenderRoutedState (senders, receivers) {
-  senders.forEach(sender => {
+function mapSenderRoutedState (senders, receivers) {
+  return senders.map(sender => {
+    sender = Object.assign({}, sender)
     let senderMapState = mapState(sender).unroute()
     if (isSenderRouted(sender, receivers)) senderMapState.route()
     sender.state = senderMapState.state()
+    return sender
   })
 }
 
-function updateReceiverInitialState (receivers) {
-  receivers.forEach(receiver => {
+function mapInitialReceiverState (receivers) {
+  return receivers.map(receiver => {
+    receiver = Object.assign({}, receiver)
     receiver.state = mapState(receiver).check().contract().notSelectable().state()
+    return receiver
   })
 }
 
-function updateReceiverRoutedState (receivers) {
-  receivers.forEach(receiver => {
+function mapRoutedReceivers (receivers) {
+  return receivers.map(receiver => {
+    receiver = Object.assign({}, receiver)
     let receiverMapState = mapState(receiver).unroute()
     if (receiver.subscription.sender_id !== null) receiverMapState.route()
     receiver.state = receiverMapState.state()
+    return receiver
   })
 }
 
-function fuzzymatch (term, routables) {
-  routables.forEach(routable => {
+function mapFuzzymatch (term, routables) {
+  return routables.map(routable => {
+    routable = Object.assign({}, routable)
     let fuzzymatch = fuzzysearch(term.toLowerCase(), routable.label.toLowerCase()) || fuzzysearch(term.toLowerCase(), routable.id.toLowerCase())
     let routableMapState = mapState(routable)
     if (fuzzymatch) routableMapState.fuzzymatch()
     else routableMapState.fuzzymissmatch()
     routable.state = routableMapState.state()
+    return routable
   })
 }
 
-function check (routables, id) {
-  let routable = routables.filter(routable => {
-    return routable.id === id
-  })[0]
-  let routableMapState = mapState(routable).check()
-  if (routable.state.includes('checked')) routableMapState.uncheck()
-  routable.state = routableMapState.state()
+function mapCheck (routables, id) {
+  return routables.map(routable => {
+    routable = Object.assign({}, routable)
+    if (routable.id === id) {
+      let routableMapState = mapState(routable).check()
+      if (routable.state.includes('checked')) routableMapState.uncheck()
+      routable.state = routableMapState.state()
+    }
+    return routable
+  })
 }
 
 function getSender (senders, senderId) {
@@ -98,36 +113,37 @@ export default () => {
     insert: {
       senders (data) {
         senders = data
-        updateSenderFormat(senders, flows)
-        updateSenderInitialState(senders)
-        updateSenderRoutedState(senders, receivers)
+        senders = mapSenderFormats(senders, flows)
+        senders = mapInitialSenderState(senders)
+        senders = mapSenderRoutedState(senders, receivers)
         routes = mapInitialRouted(senders, receivers, routes)
       },
       receivers (data) {
         receivers = data
-        updateReceiverInitialState(receivers)
-        updateSenderRoutedState(senders, receivers)
-        updateReceiverRoutedState(receivers)
+        receivers = mapInitialReceiverState(receivers)
+        receivers = mapRoutedReceivers(receivers)
+        senders = mapSenderRoutedState(senders, receivers)
         routes = mapInitialRouted(senders, receivers, routes)
       },
       flows (data) {
         flows = data
-        updateSenderFormat(senders, flows)
+        senders = mapSenderFormats(senders, flows)
       }
     },
     filter (term) {
-      fuzzymatch(term, senders)
-      fuzzymatch(term, receivers)
+      senders = mapFuzzymatch(term, senders)
+      receivers = mapFuzzymatch(term, receivers)
     },
     check: {
       receiver (id) {
-        check(receivers, id)
+        receivers = mapCheck(receivers, id)
       },
       sender (id) {
-        check(senders, id)
+        senders = mapCheck(senders, id)
       }
     },
     expand (id) {
+      expanded = Object.assign({}, expanded)
       delete expanded.id
       delete expanded.label
       delete expanded.description
@@ -166,10 +182,18 @@ export default () => {
     },
     view () {
       return {
-        senders,
-        receivers,
-        routes,
-        expanded
+        senders () {
+          return senders
+        },
+        receivers () {
+          return receivers
+        },
+        routes () {
+          return routes
+        },
+        expanded () {
+          return expanded
+        }
       }
     }
   }
