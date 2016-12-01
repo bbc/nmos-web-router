@@ -35,7 +35,6 @@ describe('Routables', () => {
 
   beforeEach(() => {
     routables = Routables({})
-    routables = Routables(routables.view())
 
     senders = generate.senders(10)
     receivers = generate.receivers(10)
@@ -48,6 +47,20 @@ describe('Routables', () => {
       .insert.senders(senders)
       .insert.receivers(receivers)
       .insert.flows(flows)
+  })
+
+  it('Can be initialised using a view from an old routable', () => {
+    let oldView = routables.view()
+    let oldSendersCount = oldView.senders.length
+    let oldReceiversCount = oldView.receivers.length
+    let oldFlowsCount = oldView.flows.length
+    let oldRoutesCount = oldView.routes.length
+
+    let newView = Routables(oldView).view()
+    expect(newView.senders.length).toBe(oldSendersCount)
+    expect(newView.receivers.length).toBe(oldReceiversCount)
+    expect(newView.flows.length).toBe(oldFlowsCount)
+    expect(newView.routes.length).toBe(oldRoutesCount)
   })
 
   describe('Populates, if any of these fail then the rest is invalid', () => {
