@@ -359,6 +359,22 @@ describe('routables', () => {
     expect(route.state).toBe('unrouting')
   })
 
+  it('chain routing will leave the route in the final state', () => {
+    let receiverId = receivers[0].id
+    let senderId = senders[0].id
+    let view = routables
+      .route(receiverId, senderId)
+      .unroute(receiverId)
+      .route(receiverId, senderId)
+      .view()
+
+    let routing = view.routes.filter(route => {
+      return route.sender.id === senders[0].id &&
+           route.receiver.id === receivers[0].id
+    })[0]
+    expect(routing.state).toBe('routing')
+  })
+
   describe('updating', () => {
 
   })
