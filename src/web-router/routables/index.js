@@ -143,29 +143,28 @@ export default () => {
       }
     },
     expand (id) {
-      expanded = Object.assign({}, expanded)
-      delete expanded.id
-      delete expanded.label
-      delete expanded.description
-      delete expanded.format
-
-      let expandedState = mapState(expanded).contract().unroute()
-
-      senders.forEach(sender => {
+      senders = senders.map(sender => {
+        sender = Object.assign({}, sender)
         let senderMapState = mapState(sender).contract()
         if (sender.id === id) {
           senderMapState.expand()
-          expandedState.expand()
-          if (sender.state.includes('routed')) expandedState.route()
-
-          expanded.id = sender.id
-          expanded.label = sender.label
-          expanded.description = sender.description
-          expanded.format = sender.format
         }
         sender.state = senderMapState.state()
+        return sender
       })
 
+      let expandedSender = senders.filter(sender => {
+        return sender.state.includes('expanded')
+      })[0] || { state: ['contracted'] }
+
+      expanded = Object.assign({}, expanded)
+      let expandedState = mapState(expanded).contract().unroute()
+      if (expandedSender.state.includes('expanded')) expandedState.expand()
+      expanded.id = expandedSender.id
+      expanded.label = expandedSender.label
+      expanded.description = expandedSender.description
+      expanded.format = expandedSender.format
+      if (expandedSender.state.includes('routed')) expandedState.route()
       expanded.state = expandedState.state()
     },
     contract () {
