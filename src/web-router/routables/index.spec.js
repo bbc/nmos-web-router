@@ -22,8 +22,11 @@ describe('routables', () => {
     receivers.forEach((receiver, index) => {
       receiver.subscription.sender_id = null
 
-      if (index < 4) receiver.subscription.sender_id = senders[index].id
-      else if (index < 7) receiver.subscription.sender_id = generate.random.id()
+      if (index < 4) {
+        receiver.subscription.sender_id = senders[index].id
+      } else if (index < 7) {
+        receiver.subscription.sender_id = generate.random.id()
+      }
 
       if (index > 2) receiver.label = 'something else'
     })
@@ -248,39 +251,116 @@ describe('routables', () => {
     routes.forEach((route, index) => {
       expect(route.sender).toBeDefined()
       expect(route.receiver).toBeDefined()
-      if (index < 4) expect(route.state).toBe('routed')
-      else expect(route.state).toBe('routed-missing-sender')
+      expect(route.state).toBe('routed')
     })
-    expect(routes.length).toBe(7)
+    expect(routes.length).toBe(4)
   })
 
   describe('routing', () => {
-    it('adds a route which is routing if it does not exist', () => {
-      let view = routables
-        .route(receivers[9].id, senders[9].id)
-        .view()
+    let data = {
+      routed: {},
+      unrouted: {}
+    }
+    beforeEach(() => {
+      data.routed.receiver = {
+        index: 1,
+        id: receivers[1].id
+      }
+      data.unrouted.receiver = {
+        index: 9,
+        id: receivers[9].id
+      }
 
-      let newRoute = view.routes.filter(route => {
-        return route.receiver.id === receivers[9].id && route.sender.id === senders[9].id
-      })[0]
-
-      expect(newRoute).toBeDefined()
-      expect(newRoute.state).toBe('routing')
-      expect(view.receivers[9].state).toContain('routed')
-      expect(view.senders[9].state).toContain('routed')
+      data.routed.sender = {
+        index: 2,
+        id: senders[2].id
+      }
+      data.unrouted.sender = {
+        index: 9,
+        id: senders[9].id
+      }
     })
 
-    it('changes a route which is routed to routing if it already exists', () => {
-      let routes = routables
-        .route(receivers[9].id, senders[9].id)
+    it('receiver: unrouted, sender: unrouted', () => {
+      let receiver = data.unrouted.receiver
+      let sender = data.unrouted.sender
+      let view = routables
+        .route(receiver.id, sender.id)
         .view()
-        .routes
-      let newRoute = routes.filter(route => {
-        return route.receiver.id === receivers[9].id && route.sender.id === senders[9].id
-      })[0]
 
-      expect(newRoute).toBeDefined()
-      expect(newRoute.state).toBe('routing')
+      expect(view.receivers[receiver.index].state).toContain('routed')
+      expect(view.senders[sender.index].state).toContain('routed')
+
+      let route = view.routes.filter(route => {
+        return route.sender.id === sender.id &&
+               route.receiver.id === receiver.id
+      })[0]
+      expect(route.state).toBe('routing')
+    })
+
+    it('receiver: routed, sender: unrouted', () => {
+      let receiver = data.routed.receiver
+      let sender = data.unrouted.sender
+      let view = routables
+        .route(receiver.id, sender.id)
+        .view()
+
+      expect(view.receivers[receiver.index].state).toContain('routed')
+      expect(view.senders[receiver.index].state).toContain('unrouted')
+      expect(view.senders[sender.index].state).toContain('routed')
+
+      let routing = view.routes.filter(route => {
+        return route.sender.id === sender.id &&
+               route.receiver.id === receiver.id
+      })[0]
+      expect(routing.state).toBe('routing')
+
+      let unrouting = view.routes.filter(route => {
+        return route.sender.id === view.senders[receiver.index].id &&
+               route.receiver.id === receiver.id
+      })[0]
+      expect(unrouting.state).toBe('unrouting')
+    })
+
+    it('receiver: unrouted, sender: routed', () => {
+      let receiver = data.unrouted.receiver
+      let sender = data.routed.sender
+      let view = routables
+        .route(receiver.id, sender.id)
+        .view()
+
+      expect(view.receivers[receiver.index].state).toContain('routed')
+      expect(view.senders[sender.index].state).toContain('routed')
+
+      let routing = view.routes.filter(route => {
+        return route.sender.id === sender.id &&
+               route.receiver.id === receiver.id
+      })[0]
+      expect(routing.state).toBe('routing')
+    })
+
+    it('receiver: routed, sender: routed', () => {
+      let receiver = data.routed.receiver
+      let sender = data.routed.sender
+      let view = routables
+        .route(receiver.id, sender.id)
+        .view()
+
+      expect(view.receivers[receiver.index].state).toContain('routed')
+      expect(view.senders[receiver.index].state).toContain('unrouted')
+      expect(view.senders[sender.index].state).toContain('routed')
+
+      let routing = view.routes.filter(route => {
+        return route.sender.id === sender.id &&
+               route.receiver.id === receiver.id
+      })[0]
+      expect(routing.state).toBe('routing')
+
+      let unrouting = view.routes.filter(route => {
+        return route.sender.id === view.senders[receiver.index].id &&
+               route.receiver.id === receiver.id
+      })[0]
+      expect(unrouting.state).toBe('unrouting')
     })
   })
 
