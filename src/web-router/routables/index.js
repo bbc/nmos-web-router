@@ -78,9 +78,9 @@ function mapCheck (routables, id) {
   })
 }
 
-function getSender (senders, senderId) {
-  return senders.filter(sender => {
-    return sender.id === senderId
+function get (routables, id) {
+  return routables.filter(routable => {
+    return routable.id === id
   })[0]
 }
 
@@ -88,14 +88,14 @@ function mapInitialRouted (senders, receivers, routes) {
   return receivers
     .filter(receiver => {
       let routed = receiver.subscription.sender_id !== null
-      let senderExists = getSender(senders, receiver.subscription.sender_id) !== undefined
+      let senderExists = get(senders, receiver.subscription.sender_id) !== undefined
       return routed && senderExists
     })
     .map(receiver => {
       return {
         state: 'routed',
         receiver,
-        sender: getSender(senders, receiver.subscription.sender_id)
+        sender: get(senders, receiver.subscription.sender_id)
       }
     })
 }
@@ -180,7 +180,10 @@ export default ({senders, flows, receivers, routes}) => {
       routables.expand()
       return routables
     },
-    route (receiverId, sender) {
+    route (receiverId, senderId) {
+      let receiver = get(receivers, receiverId)
+      let sender = get(senders, senderId)
+      console.log(receiver.state, sender.state)
       return routables
     },
     unroute () {

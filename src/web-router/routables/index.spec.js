@@ -254,7 +254,13 @@ describe('routables', () => {
   })
 
   describe('routing', () => {
+    it('adds a route which is routing if it does not exist', () => {
+      routables.route(receivers[9].id, senders[9].id)
+    })
 
+    it('changes a route which is routed to routing if it already exists', () => {
+
+    })
   })
 
   describe('unrouting', () => {
