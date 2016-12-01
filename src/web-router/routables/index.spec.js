@@ -245,21 +245,42 @@ describe('routables', () => {
   it('the routes have sender id and receiver id and are routed if receiver is routed', () => {
     let routes = routables.view().routes
 
-    routes.forEach(route => {
+    routes.forEach((route, index) => {
       expect(route.sender).toBeDefined()
       expect(route.receiver).toBeDefined()
-      expect(route.state).toBe('routed')
+      if (index < 4) expect(route.state).toBe('routed')
+      else expect(route.state).toBe('routed-missing-sender')
     })
-    expect(routes.length).toBe(4)
+    expect(routes.length).toBe(7)
   })
 
   describe('routing', () => {
     it('adds a route which is routing if it does not exist', () => {
-      routables.route(receivers[9].id, senders[9].id)
+      let view = routables
+        .route(receivers[9].id, senders[9].id)
+        .view()
+
+      let newRoute = view.routes.filter(route => {
+        return route.receiver.id === receivers[9].id && route.sender.id === senders[9].id
+      })[0]
+
+      expect(newRoute).toBeDefined()
+      expect(newRoute.state).toBe('routing')
+      expect(view.receivers[9].state).toContain('routed')
+      expect(view.senders[9].state).toContain('routed')
     })
 
     it('changes a route which is routed to routing if it already exists', () => {
+      let routes = routables
+        .route(receivers[9].id, senders[9].id)
+        .view()
+        .routes
+      let newRoute = routes.filter(route => {
+        return route.receiver.id === receivers[9].id && route.sender.id === senders[9].id
+      })[0]
 
+      expect(newRoute).toBeDefined()
+      expect(newRoute.state).toBe('routing')
     })
   })
 

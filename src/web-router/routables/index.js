@@ -1,6 +1,10 @@
 import fuzzysearch from 'fuzzysearch'
 import mapState from './map-state'
 
+function isEmpty (obj) {
+  return obj === undefined || obj === null || Object.keys(obj).length === 0 && obj.constructor === Object
+}
+
 function mapSenderFormats (senders, flows) {
   return senders.map(sender => {
     sender = Object.assign({}, sender)
@@ -79,9 +83,10 @@ function mapCheck (routables, id) {
 }
 
 function get (routables, id) {
-  return routables.filter(routable => {
+  let routable = routables.filter(routable => {
     return routable.id === id
   })[0]
+  return Object.assign({}, routable)
 }
 
 function mapInitialRouted (senders, receivers, routes) {
@@ -92,10 +97,11 @@ function mapInitialRouted (senders, receivers, routes) {
       return routed && senderExists
     })
     .map(receiver => {
+      let sender = get(senders, receiver.subscription.sender_id)
       return {
-        state: 'routed',
+        state: isEmpty(sender) ? 'routed-missing-sender' : 'routed',
         receiver,
-        sender: get(senders, receiver.subscription.sender_id)
+        sender
       }
     })
 }
@@ -119,11 +125,26 @@ function expanded (senders) {
   return expanded
 }
 
+function routeRoutable (routables, id) {
+  return routables.map(routable => {
+    routable = Object.assign({}, routable)
+    if (routable.id === id) {
+      routable.state = mapState(routable).route().state()
+    }
+    return routable
+  })
+}
+
 export default ({senders, flows, receivers, routes}) => {
   senders = senders || []
   flows = flows || []
   receivers = receivers || []
   routes = routes || []
+
+  senders = [].concat(senders)
+  flows = [].concat(flows)
+  receivers = [].concat(receivers)
+  routes = [].concat(routes)
 
   let routables = {
     insert: {
@@ -183,7 +204,17 @@ export default ({senders, flows, receivers, routes}) => {
     route (receiverId, senderId) {
       let receiver = get(receivers, receiverId)
       let sender = get(senders, senderId)
-      console.log(receiver.state, sender.state)
+
+      let route = {
+        sender,
+        receiver,
+        state: 'routing'
+      }
+      routes.push(route)
+
+      receivers = routeRoutable(receivers, receiverId)
+      senders = routeRoutable(senders, senderId)
+
       return routables
     },
     unroute () {
