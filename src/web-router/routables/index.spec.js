@@ -34,7 +34,8 @@ describe('Routables', () => {
   }
 
   beforeEach(() => {
-    routables = Routables()
+    routables = Routables({})
+    routables = Routables(routables.data())
 
     senders = generate.senders(10)
     receivers = generate.receivers(10)

@@ -100,14 +100,11 @@ function mapInitialRouted (senders, receivers, routes) {
     })
 }
 
-export default () => {
-  let expanded = {}
-  expanded.state = mapState(expanded).contract().unroute().state()
-
-  let senders = []
-  let receivers = []
-  let flows = []
-  let routes = []
+export default ({senders, flows, receivers, routes}) => {
+  senders = senders || []
+  flows = flows || []
+  receivers = receivers || []
+  routes = routes || []
 
   let routables = {
     insert: {
@@ -150,20 +147,6 @@ export default () => {
         sender.state = senderMapState.state()
         return sender
       })
-
-      let expandedSender = senders.filter(sender => {
-        return sender.state.includes('expanded')
-      })[0] || { state: ['contracted'] }
-
-      expanded = Object.assign({}, expanded)
-      let expandedState = mapState(expanded).contract().unroute()
-      if (expandedSender.state.includes('expanded')) expandedState.expand()
-      expanded.id = expandedSender.id
-      expanded.label = expandedSender.label
-      expanded.description = expandedSender.description
-      expanded.format = expandedSender.format
-      if (expandedSender.state.includes('routed')) expandedState.route()
-      expanded.state = expandedState.state()
     },
     contract () {
       routables.expand()
@@ -177,6 +160,14 @@ export default () => {
       devices (grains) {},
       nodes (grains) {}
     },
+    data () {
+      return {
+        senders,
+        receivers,
+        flows,
+        routes
+      }
+    },
     view () {
       return {
         senders () {
@@ -189,6 +180,19 @@ export default () => {
           return routes
         },
         expanded () {
+          let expanded = {}
+          expanded.state = mapState(expanded).contract().unroute().state()
+          let expandedSender = senders.filter(sender => {
+            return sender.state.includes('expanded')
+          })[0] || { state: ['contracted'] }
+          let expandedState = mapState(expanded).contract().unroute()
+          if (expandedSender.state.includes('expanded')) expandedState.expand()
+          expanded.id = expandedSender.id
+          expanded.label = expandedSender.label
+          expanded.description = expandedSender.description
+          expanded.format = expandedSender.format
+          if (expandedSender.state.includes('routed')) expandedState.route()
+          expanded.state = expandedState.state()
           return expanded
         }
       }
