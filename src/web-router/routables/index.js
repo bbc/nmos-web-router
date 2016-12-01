@@ -100,6 +100,25 @@ function mapInitialRouted (senders, receivers, routes) {
     })
 }
 
+function expanded (senders) {
+  let expanded = {}
+  let expandedSender = senders.filter(sender => {
+    return sender.state.includes('expanded')
+  })[0] || { state: ['contracted'] }
+
+  let mapExpandedState = mapState(expanded).contract().unroute()
+  if (expandedSender.state.includes('expanded')) mapExpandedState.expand()
+  if (expandedSender.state.includes('routed')) mapExpandedState.route()
+  expanded.state = mapExpandedState.state()
+
+  expanded.id = expandedSender.id
+  expanded.label = expandedSender.label
+  expanded.description = expandedSender.description
+  expanded.format = expandedSender.format
+
+  return expanded
+}
+
 export default ({senders, flows, receivers, routes}) => {
   senders = senders || []
   flows = flows || []
@@ -149,7 +168,9 @@ export default ({senders, flows, receivers, routes}) => {
       senders = senders.map(sender => {
         sender = Object.assign({}, sender)
         let senderMapState = mapState(sender).contract()
-        if (sender.id === id) senderMapState.expand()
+        if (sender.id === id) {
+          senderMapState.expand()
+        }
         sender.state = senderMapState.state()
         return sender
       })
@@ -176,41 +197,13 @@ export default ({senders, flows, receivers, routes}) => {
         return routables
       }
     },
-    data () {
+    view () {
       return {
         senders,
         receivers,
         flows,
-        routes
-      }
-    },
-    view () {
-      return {
-        senders () {
-          return senders
-        },
-        receivers () {
-          return receivers
-        },
-        routes () {
-          return routes
-        },
-        expanded () {
-          let expanded = {}
-          expanded.state = mapState(expanded).contract().unroute().state()
-          let expandedSender = senders.filter(sender => {
-            return sender.state.includes('expanded')
-          })[0] || { state: ['contracted'] }
-          let expandedState = mapState(expanded).contract().unroute()
-          if (expandedSender.state.includes('expanded')) expandedState.expand()
-          expanded.id = expandedSender.id
-          expanded.label = expandedSender.label
-          expanded.description = expandedSender.description
-          expanded.format = expandedSender.format
-          if (expandedSender.state.includes('routed')) expandedState.route()
-          expanded.state = expandedState.state()
-          return expanded
-        }
+        routes,
+        expanded: expanded(senders)
       }
     }
   }
