@@ -137,21 +137,22 @@ function mapNewRoutedReceiver (receivers, receiverId, senderId) {
   })
 }
 
+function mapUnroutedReceiver (receivers, receiverId) {
+  return receivers.map(receiver => {
+    receiver = Object.assign({}, receiver)
+    if (receiver.id === receiverId) {
+      receiver.subscription.sender_id = null
+      receiver.state = mapState(receiver).unroute().state()
+    }
+    return receiver
+  })
+}
+
 function includesRoute (routes, route) {
   return routes.some(r => {
     let hasSender = r.sender.id === route.sender.id
     let hasReceiver = r.receiver.id === route.receiver.id
     return hasSender && hasReceiver
-  })
-}
-
-function removeFromRoutes (routes, toRemove) {
-  return routes.filter(route => {
-    return !toRemove.some(routedRoute => {
-      let hasSender = routedRoute.sender.id === route.sender.id
-      let hasReceiver = routedRoute.receiver.id === route.receiver.id
-      return hasSender && hasReceiver
-    })
   })
 }
 
@@ -164,23 +165,39 @@ function mapRouteState (routes, state) {
 }
 
 function mapRoutes (routes, senders, receivers) {
-  let unrouting = [].concat(routes)
-  let routing = mapInitialRouted(senders, receivers, routes)
+  let oldRoutes = [].concat(routes)
+  let newRoutes = mapInitialRouted(senders, receivers, routes)
+  let oldRouting = routes.filter(route => { return route.state === 'routing' })
+  let oldUnrouting = routes.filter(route => { return route.state === 'unrouting' })
 
+  let routing = []
+  let unrouting = []
   let routed = []
-  unrouting.concat(routing).forEach(route => {
-    let isInOld = includesRoute(unrouting, route)
-    let isInNew = includesRoute(routing, route)
-    let isInRouted = includesRoute(routed, route)
-    if (isInOld && isInNew && !isInRouted) routed.push(route)
-  })
-  unrouting = removeFromRoutes(unrouting, routed)
-  routing = removeFromRoutes(routing, routed)
 
+  newRoutes.forEach(newRoute => {
+    if (!includesRoute(oldRoutes, newRoute)) {
+      routing.push(newRoute)
+    }
+  })
+
+  oldRoutes.forEach(oldRoute => {
+    if (!includesRoute(newRoutes, oldRoute)) unrouting.push(oldRoute)
+  })
+
+  let allRoutes = [].concat(oldRoutes).concat(newRoutes)
+  allRoutes.forEach(route => {
+    if (!includesRoute(routed, route) && !includesRoute(routing, route) && !includesRoute(unrouting, route)) {
+      if (includesRoute(oldRouting, route)) routing.push(route)
+      else if (includesRoute(oldUnrouting, route)) unrouting.push(route)
+      else routed.push(route)
+    }
+  })
+
+  routing = mapRouteState(routing, 'routing')
   routed = mapRouteState(routed, 'routed')
   unrouting = mapRouteState(unrouting, 'unrouting')
-  routing = mapRouteState(routing, 'routing')
-  return [].concat(routed).concat(unrouting).concat(routing)
+
+  return [].concat(routing).concat(unrouting).concat(routed)
 }
 
 export default ({senders, flows, receivers, routes}) => {
@@ -252,10 +269,19 @@ export default ({senders, flows, receivers, routes}) => {
     route (receiverId, senderId) {
       receivers = mapNewRoutedReceiver(receivers, receiverId, senderId)
       senders = mapSenderRoutedState(senders, receivers)
+
+      routes = routes.map(route => {
+        route = Object.assign({}, route)
+        if (route.receiver.id === receiverId && route.sender.id === senderId) route.state = 'routing'
+        return route
+      })
       routes = mapRoutes(routes, senders, receivers)
       return routables
     },
-    unroute () {
+    unroute (receiverId) {
+      receivers = mapUnroutedReceiver(receivers, receiverId)
+      senders = mapSenderRoutedState(senders, receivers)
+      routes = mapRoutes(routes, senders, receivers)
       return routables
     },
     update: {

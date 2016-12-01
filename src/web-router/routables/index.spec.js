@@ -328,10 +328,35 @@ describe('routables', () => {
         }
       })
     })
+
+    it('same already routed route will change to routing', () => {
+      let receiverId = receivers[0].id
+      let senderId = senders[0].id
+      let view = routables
+        .route(receiverId, senderId)
+        .view()
+
+      let routing = view.routes.filter(route => {
+        return route.sender.id === senders[0].id &&
+             route.receiver.id === receivers[0].id
+      })[0]
+      expect(routing.state).toBe('routing')
+    })
   })
 
-  describe('unrouting', () => {
+  it('unrouting changes sender and receiver to unrouted and the route to unrouting', () => {
+    let view = routables
+      .unroute(receivers[0].id)
+      .view()
 
+    expect(view.receivers[0].state).toContain('unrouted')
+    expect(view.senders[0].state).toContain('unrouted')
+
+    let route = view.routes.filter(route => {
+      return route.receiver.id === receivers[0].id
+    })[0]
+
+    expect(route.state).toBe('unrouting')
   })
 
   describe('updating', () => {
