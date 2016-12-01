@@ -182,7 +182,7 @@ describe('Routables', () => {
     it('Defaults expanded to contracted and unrouted with no data', () => {
       let view = routables.view()
       expect(view.expanded.state).toContain('contracted')
-      expect(view.expanded.node.state).toContain('unrouted')
+      expect(view.expanded.state).toContain('unrouted')
 
       expect(view.expanded.id).not.toBeDefined()
       expect(view.expanded.label).not.toBeDefined()
@@ -196,7 +196,7 @@ describe('Routables', () => {
       routables.expand(senders[0].id)
 
       expect(view.expanded.state).toContain('expanded')
-      expect(view.expanded.node.state).toContain('routed')
+      expect(view.expanded.state).toContain('routed')
       expect(view.expanded.id).toBe(senders[0].id)
       expect(view.expanded.label).toBe(senders[0].label)
       expect(view.expanded.description).toBe(senders[0].description)
@@ -219,7 +219,7 @@ describe('Routables', () => {
       let view = routables.view()
 
       expect(view.expanded.state).toContain('contracted')
-      expect(view.expanded.node.state).toContain('unrouted')
+      expect(view.expanded.state).toContain('unrouted')
 
       expect(view.expanded.id).not.toBeDefined()
       expect(view.expanded.label).not.toBeDefined()

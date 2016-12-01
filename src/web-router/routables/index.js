@@ -1,5 +1,6 @@
 import fuzzysearch from 'fuzzysearch'
 import ChangeState from './change-state'
+import mapState from './map-state'
 
 function updateSenderFormat (senders, flows) {
   senders.forEach(sender => {
@@ -89,8 +90,8 @@ function mapInitialRouted (senders, receivers, routes) {
 
 export default () => {
   let expanded = {}
-  expanded.changeState = ChangeState(expanded)
-  expanded.changeState.contract().unroute()
+  expanded.state = mapState(expanded).contract().unroute().state()
+
   let senders = []
   let receivers = []
   let flows = []
@@ -132,19 +133,19 @@ export default () => {
       }
     },
     expand (id) {
-      expanded.changeState.contract()
-      expanded.changeState.unroute()
       delete expanded.id
       delete expanded.label
       delete expanded.description
       delete expanded.format
 
+      let expandedState = mapState(expanded).contract().unroute()
+
       senders.forEach(sender => {
         sender.changeState.contract()
         if (sender.id === id) {
           sender.changeState.expand()
-          expanded.changeState.expand()
-          if (sender.node.state.includes('routed')) expanded.changeState.route()
+          expandedState.expand()
+          if (sender.node.state.includes('routed')) expandedState.route()
 
           expanded.id = sender.id
           expanded.label = sender.label
@@ -152,6 +153,8 @@ export default () => {
           expanded.format = sender.format
         }
       })
+
+      expanded.state = expandedState.state()
     },
     contract () {
       routables.expand()
