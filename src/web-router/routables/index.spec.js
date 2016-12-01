@@ -233,11 +233,13 @@ describe('Routables', () => {
   it('Routes have sender id and receiver id and are routed if receiver is routed', () => {
     let view = routables.view()
 
-    view.routes().forEach(route => {
+    let routes = view.routes()
+    routes.forEach(route => {
       expect(route.sender).toBeDefined()
       expect(route.receiver).toBeDefined()
       expect(route.state).toBe('routed')
     })
+    expect(routes.length).toBe(4)
   })
 
   describe('Routing', () => {
