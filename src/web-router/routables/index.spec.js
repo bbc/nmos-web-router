@@ -88,8 +88,8 @@ describe('Routables', () => {
     it('Sets the initial node state for all senders', () => {
       let view = routables.view()
       view.senders.forEach((sender, index) => {
-        if (index < 4) expect(sender.node.state).toContain('routed')
-        else expect(sender.node.state).toContain('unrouted')
+        if (index < 4) expect(sender.state).toContain('routed')
+        else expect(sender.state).toContain('unrouted')
       })
     })
 
@@ -105,8 +105,8 @@ describe('Routables', () => {
     it('Sets the initial node state for all receivers', () => {
       let view = routables.view()
       view.receivers.forEach((receiver, index) => {
-        if (index < 7) expect(receiver.node.state).toContain('routed')
-        else expect(receiver.node.state).toContain('unrouted')
+        if (index < 7) expect(receiver.state).toContain('routed')
+        else expect(receiver.state).toContain('unrouted')
       })
     })
   })

@@ -1,5 +1,4 @@
 import fuzzysearch from 'fuzzysearch'
-import ChangeState from './change-state'
 import mapState from './map-state'
 
 function updateSenderFormat (senders, flows) {
@@ -11,9 +10,9 @@ function updateSenderFormat (senders, flows) {
   })
 }
 
-function updateWithChangeState (routables) {
+function initialState (routables) {
   return routables.forEach(routable => {
-    routable.changeState = ChangeState(routable)
+    routable.state = mapState(routable).state()
     return routable
   })
 }
@@ -26,35 +25,39 @@ function isSenderRouted (sender, receivers) {
 
 function updateSenderInitialState (senders) {
   senders.forEach(sender => {
-    sender.changeState.check().contract().selectable()
+    sender.state = mapState(sender).check().contract().selectable().state()
   })
 }
 
 function updateSenderRoutedState (senders, receivers) {
   senders.forEach(sender => {
-    if (isSenderRouted(sender, receivers)) sender.changeState.route()
-    else sender.changeState.unroute()
+    let senderMapState = mapState(sender).unroute()
+    if (isSenderRouted(sender, receivers)) senderMapState.route()
+    sender.state = senderMapState.state()
   })
 }
 
 function updateReceiverInitialState (receivers) {
   receivers.forEach(receiver => {
-    receiver.changeState.check().contract().notSelectable()
+    receiver.state = mapState(receiver).check().contract().notSelectable().state()
   })
 }
 
 function updateReceiverRoutedState (receivers) {
   receivers.forEach(receiver => {
-    if (receiver.subscription.sender_id !== null) receiver.changeState.route()
-    else receiver.changeState.unroute()
+    let receiverMapState = mapState(receiver).unroute()
+    if (receiver.subscription.sender_id !== null) receiverMapState.route()
+    receiver.state = receiverMapState.state()
   })
 }
 
 function fuzzymatch (term, routables) {
   routables.forEach(routable => {
     let fuzzymatch = fuzzysearch(term.toLowerCase(), routable.label.toLowerCase()) || fuzzysearch(term.toLowerCase(), routable.id.toLowerCase())
-    if (fuzzymatch) routable.changeState.fuzzymatch()
-    else routable.changeState.fuzzymissmatch()
+    let routableMapState = mapState(routable)
+    if (fuzzymatch) routableMapState.fuzzymatch()
+    else routableMapState.fuzzymissmatch()
+    routable.state = routableMapState.state()
   })
 }
 
@@ -62,8 +65,9 @@ function check (routables, id) {
   let routable = routables.filter(routable => {
     return routable.id === id
   })[0]
-  if (routable.state.includes('checked')) routable.changeState.uncheck()
-  else routable.changeState.check()
+  let routableMapState = mapState(routable).check()
+  if (routable.state.includes('checked')) routableMapState.uncheck()
+  routable.state = routableMapState.state()
 }
 
 function getSender (senders, senderId) {
@@ -102,14 +106,14 @@ export default () => {
       senders (data) {
         senders = data
         updateSenderFormat(senders, flows)
-        updateWithChangeState(senders)
+        initialState(senders)
         updateSenderInitialState(senders)
         updateSenderRoutedState(senders, receivers)
         routes = mapInitialRouted(senders, receivers, routes)
       },
       receivers (data) {
         receivers = data
-        updateWithChangeState(receivers)
+        initialState(receivers)
         updateReceiverInitialState(receivers)
         updateSenderRoutedState(senders, receivers)
         updateReceiverRoutedState(receivers)
@@ -141,17 +145,18 @@ export default () => {
       let expandedState = mapState(expanded).contract().unroute()
 
       senders.forEach(sender => {
-        sender.changeState.contract()
+        let senderMapState = mapState(sender).contract()
         if (sender.id === id) {
-          sender.changeState.expand()
+          senderMapState.expand()
           expandedState.expand()
-          if (sender.node.state.includes('routed')) expandedState.route()
+          if (sender.state.includes('routed')) expandedState.route()
 
           expanded.id = sender.id
           expanded.label = sender.label
           expanded.description = sender.description
           expanded.format = sender.format
         }
+        sender.state = senderMapState.state()
       })
 
       expanded.state = expandedState.state()
