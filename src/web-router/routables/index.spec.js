@@ -1,7 +1,7 @@
 import Routables from './'
 import generate from '../../ips-nmos-api/src/stub/generate'
 
-describe('Routables', () => {
+describe('routables', () => {
   let routables, senders, receivers, flows
 
   function initSenders () {
@@ -49,7 +49,7 @@ describe('Routables', () => {
       .insert.flows(flows)
   })
 
-  it('Can be initialised using a view from an old routable', () => {
+  it('can be initialised using a view from an old routable', () => {
     let oldView = routables.view()
     let oldSendersCount = oldView.senders.length
     let oldReceiversCount = oldView.receivers.length
@@ -63,25 +63,25 @@ describe('Routables', () => {
     expect(newView.routes.length).toBe(oldRoutesCount)
   })
 
-  describe('Populates, if any of these fail then the rest is invalid', () => {
-    it('Receivers', () => {
+  describe('populates, if any of these fail then the rest is invalid', () => {
+    it('receivers', () => {
       let view = routables.view()
       expect(view.receivers.length).toBeGreaterThan(0)
     })
 
-    it('Senders', () => {
+    it('senders', () => {
       let view = routables.view()
       expect(view.senders.length).toBeGreaterThan(0)
     })
 
-    it('Routes', () => {
+    it('routes', () => {
       let view = routables.view()
       expect(view.routes.length).toBeGreaterThan(0)
     })
   })
 
-  describe('Inserting', () => {
-    it('Updates format of senders after flows have been inserted', () => {
+  describe('inserting', () => {
+    it('updates format of senders after flows have been inserted', () => {
       let view = routables.view()
       view.senders.forEach((sender, index) => {
         if (index < 4) expect(sender.format).toBe(flows[0].format)
@@ -91,7 +91,7 @@ describe('Routables', () => {
       })
     })
 
-    it('Sets the initial state for all senders', () => {
+    it('sets the initial state for all senders', () => {
       let view = routables.view()
       view.senders.forEach(sender => {
         expect(sender.state).toContain('checked')
@@ -100,7 +100,7 @@ describe('Routables', () => {
       })
     })
 
-    it('Sets the initial node state for all senders', () => {
+    it('sets the initial node state for all senders', () => {
       let view = routables.view()
       view.senders.forEach((sender, index) => {
         if (index < 4) expect(sender.state).toContain('routed')
@@ -108,7 +108,7 @@ describe('Routables', () => {
       })
     })
 
-    it('Sets the initial state for all receivers', () => {
+    it('sets the initial state for all receivers', () => {
       let view = routables.view()
       view.receivers.forEach(receiver => {
         expect(receiver.state).toContain('checked')
@@ -117,7 +117,7 @@ describe('Routables', () => {
       })
     })
 
-    it('Sets the initial node state for all receivers', () => {
+    it('sets the initial node state for all receivers', () => {
       let view = routables.view()
       view.receivers.forEach((receiver, index) => {
         if (index < 7) expect(receiver.state).toContain('routed')
@@ -131,8 +131,8 @@ describe('Routables', () => {
     else expect(routable.state).toContain('fuzzymissmatch')
   }
 
-  describe('Filtering', () => {
-    it('By fuzzymatch and lowercase label', () => {
+  describe('filtering', () => {
+    it('by fuzzymatch and lowercase label', () => {
       let view = routables.filter('label value').view()
       view.senders.forEach((routable, index) => {
         expectRoutableToBeFiltered(routable, index)
@@ -142,14 +142,14 @@ describe('Routables', () => {
       })
     })
 
-    it('By fuzzymatch and lowercase id', () => {
+    it('by fuzzymatch and lowercase id', () => {
       let view = routables.filter(senders[7].id).view()
       expect(view.senders[7].state).toContain('fuzzymatch')
     })
   })
 
-  describe('Checking', () => {
-    it('Will change state to unchecked if state is checked', () => {
+  describe('checking', () => {
+    it('will change state to unchecked if state is checked', () => {
       let view = routables
         .check.sender(senders[0].id)
         .check.receiver(receivers[0].id)
@@ -159,7 +159,7 @@ describe('Routables', () => {
       expect(view.receivers[0].state).toContain('unchecked')
     })
 
-    it('Will change state to checked if state is unchecked', () => {
+    it('will change state to checked if state is unchecked', () => {
       let view = routables
         .check.sender(senders[0].id)
         .check.receiver(receivers[0].id)
@@ -172,8 +172,8 @@ describe('Routables', () => {
     })
   })
 
-  describe('Expanding', () => {
-    it('Exapnds sender with matching id', () => {
+  describe('expanding', () => {
+    it('exapnds sender with matching id', () => {
       let view = routables
         .expand(senders[0].id)
         .view()
@@ -181,7 +181,7 @@ describe('Routables', () => {
       expect(view.senders[0].state).toContain('expanded')
     })
 
-    it('Contracts any expanded senders without matching id', () => {
+    it('contracts any expanded senders without matching id', () => {
       let view = routables
         .expand(senders[0].id)
         .expand(senders[1].id)
@@ -191,7 +191,7 @@ describe('Routables', () => {
       expect(view.senders[1].state).toContain('expanded')
     })
 
-    it('Defaults expanded to contracted and unrouted with no data', () => {
+    it('defaults expanded to contracted and unrouted with no data', () => {
       let expanded = routables.view().expanded
 
       expect(expanded.state).toContain('contracted')
@@ -202,7 +202,7 @@ describe('Routables', () => {
       expect(expanded.format).not.toBeDefined()
     })
 
-    it('Sets expanded to the values of expanded sender', () => {
+    it('sets expanded to the values of expanded sender', () => {
       let expanded = routables
         .expand(senders[0].id)
         .view()
@@ -216,7 +216,7 @@ describe('Routables', () => {
       expect(expanded.format).toBe(flows[0].format)
     })
 
-    it('Contracting contracts all expanded senders', () => {
+    it('contracting contracts all expanded senders', () => {
       let view = routables
         .expand(senders[0].id)
         .contract()
@@ -225,7 +225,7 @@ describe('Routables', () => {
       expect(view.senders[0].state).toContain('contracted')
     })
 
-    it('Contracting defaults expanded to defaults', () => {
+    it('contracting defaults expanded to defaults', () => {
       let expanded = routables
         .expand(senders[0].id)
         .contract()
@@ -242,7 +242,7 @@ describe('Routables', () => {
     })
   })
 
-  it('The routes have sender id and receiver id and are routed if receiver is routed', () => {
+  it('the routes have sender id and receiver id and are routed if receiver is routed', () => {
     let routes = routables.view().routes
 
     routes.forEach(route => {
@@ -253,15 +253,15 @@ describe('Routables', () => {
     expect(routes.length).toBe(4)
   })
 
-  describe('Routing', () => {
+  describe('routing', () => {
 
   })
 
-  describe('Unrouting', () => {
+  describe('unrouting', () => {
 
   })
 
-  describe('Updating', () => {
+  describe('updating', () => {
 
   })
 
