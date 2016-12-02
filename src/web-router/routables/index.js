@@ -1,6 +1,16 @@
 import fuzzysearch from 'fuzzysearch'
 import mapState from './map-state'
 
+function remove (arr, index) {
+  let newArr = [].concat(arr)
+  newArr.splice(index, 1)
+  return newArr
+}
+
+function noMap (routables) {
+  return routables
+}
+
 function isEmpty (obj) {
   return obj === undefined || obj === null || Object.keys(obj).length === 0 && obj.constructor === Object
 }
@@ -200,6 +210,39 @@ function mapRoutes (routes, senders, receivers) {
   return [].concat(routing).concat(unrouting).concat(routed)
 }
 
+function mapAddReceivers (receivers, grain) {
+  return receivers
+}
+
+function mapRemoveReceivers (receivers, grain) {
+  let removeIndex = -1
+  receivers.forEach((receiver, index) => {
+    if (receiver.id === grain.pre.id) removeIndex = index
+  })
+  if (removeIndex !== -1) receivers = remove(receivers, removeIndex)
+
+  return receivers
+}
+
+function mapUpdateReceivers (receivers, grain) {
+  return receivers
+}
+
+function mapRoutesWithUpdatedReceivers (routes, removed, added, updated) {
+  let removeIndexes = []
+  removed.forEach(receiver => {
+    routes.forEach((route, index) => {
+      if (route.receiver.id === receiver.id) {
+        removeIndexes = [index].concat(removeIndexes)
+      }
+    })
+  })
+  removeIndexes.forEach(index => {
+    routes = remove(routes, index)
+  })
+  return routes
+}
+
 export default ({senders, flows, receivers, routes}) => {
   senders = senders || []
   flows = flows || []
@@ -289,6 +332,40 @@ export default ({senders, flows, receivers, routes}) => {
         return routables
       },
       receivers (grains) {
+        let removed = []
+        let added = []
+        let updated = []
+        grains.forEach(grain => {
+          receivers = [].concat(receivers)
+          let mapReceivers = noMap
+          let hasPost = !isEmpty(grain.post)
+          let hasPre = !isEmpty(grain.pre)
+          if (hasPost && hasPre) {
+            updated.push({
+              id: grain.post.id
+            })
+            updated.push({
+              id: grain.pre.id
+            })
+            mapReceivers = mapUpdateReceivers
+          } else if (hasPost) {
+            added.push({
+              id: grain.post.id
+            })
+            mapReceivers = mapAddReceivers
+          } else if (hasPre) {
+            removed.push({
+              id: grain.pre.id
+            })
+            mapReceivers = mapRemoveReceivers
+          }
+
+          receivers = mapReceivers(receivers, grain)
+        })
+
+        senders = mapSenderRoutedState(senders, receivers)
+        routes = mapRoutesWithUpdatedReceivers(routes, removed, added, updated)
+
         return routables
       },
       flows (grains) {

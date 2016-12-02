@@ -376,7 +376,57 @@ describe('routables', () => {
   })
 
   describe('updating', () => {
+    describe('receivers', () => {
+      it('adds, pre: empty', () => {
+        // let updatedReceivers = routables
+        //   .update
+        //   .receivers([{
+        //     pre: {},
+        //     post: generate.receivers(1)
+        //   }])
+        //   .view()
+        //   .receivers
+      })
 
+      it('removes, post: empty', () => {
+        let view = routables
+            .update
+            .receivers([{
+              pre: receivers[0],
+              post: {}
+            }, {
+              pre: receivers[1],
+              post: {}
+            }])
+            .view()
+
+        expect(view.receivers.length).toBe(receivers.length - 2)
+        expect(view.receivers[0].id).toBe(receivers[2].id)
+        expect(view.senders[0].state).toContain('unrouted')
+        expect(view.senders[0].state).not.toContain('routed')
+        expect(view.senders[1].state).toContain('unrouted')
+        expect(view.senders[1].state).not.toContain('routed')
+
+        let routes = view.routes.filter(route => {
+          return route.receiver.id === receivers[0].id || route.receiver.id === receivers[1].id
+        })
+        expect(routes.length).toBe(0)
+      })
+
+      it('updates', () => {
+        // let view = routables
+        //     .update
+        //     .receivers([{
+        //       pre: receivers[0],
+        //       post: Object.assign({}, receivers[0], {subscription: {sender_id: senders[9].id}}, {label: 'bacon'})
+        //     }])
+        //     .view()
+        //
+        // let updatedReceivers = view.receivers
+        //
+        // expect(updatedReceivers.length).toBe(receivers.length)
+      })
+    })
   })
 
   // it('Does everything you need to but not the HTTP stuff', () => {
@@ -384,10 +434,8 @@ describe('routables', () => {
   //   let senderId = ''
   //   let sender = {}
   //   let grain = {}
-  //
-  //   routables.unroute(receiverId)
-  //   routables.update.receivers(grain)
-  //   routables.update.senders(grain)
-  //   routables.update.flows(grain)
+  //   routables.update.receivers(grains)
+  //   routables.update.senders(grains)
+  //   routables.update.flows(grains)
   // })
 })
