@@ -599,10 +599,22 @@ describe('routables', () => {
           .view()
 
         expect(view.senders[9].format).toBe(flow.format)
+        expect(view.flows.length).toBe(flows.length + 1)
       })
 
       it('removes', () => {
-        // remove a flow which will update a sender to no flow
+        let view = routables
+          .update
+          .flows([{
+            post: {},
+            pre: flows[0]
+          }])
+          .view()
+
+        expect(view.flows.length).toBe(flows.length - 1)
+        view.senders.forEach((sender, index) => {
+          if (index < 4) expect(sender.format).toBe('no')
+        })
       })
 
       it('update', () => {

@@ -338,7 +338,11 @@ function mapAddFlow (flows, grain) {
 }
 
 function mapRemoveFlow (flows, grain) {
-  return flows
+  let flowIndex = -1
+  flows.forEach((flow, index) => {
+    if (flow.id === grain.pre.id) flowIndex = index
+  })
+  return remove(flows, flowIndex)
 }
 
 export default ({senders, flows, receivers, routes}) => {
