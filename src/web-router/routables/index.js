@@ -279,6 +279,19 @@ function mapRoutesWithUpdatedReceivers (routes, senders, removed, added, updated
 }
 
 function mapRoutesWithUpdatedSenders (routes, receivers, removed, added, updated) {
+  let removeIndexes = []
+  removed.forEach(sender => {
+    routes.forEach((route, index) => {
+      if (route.sender.id === sender.id) {
+        removeIndexes = [index].concat(removeIndexes)
+      }
+    })
+  })
+
+  removeIndexes.forEach(index => {
+    routes = remove(routes, index)
+  })
+
   let addedRoutes = mapInitialRouted(added, receivers, [])
   routes = routes.concat(addedRoutes)
   return routes
@@ -295,7 +308,10 @@ function mapAddSenders (senders, receivers, flows, grain) {
   return senders.concat(newSenders)
 }
 
-function mapRemoveSenders (senders, receivers, grain) {
+function mapRemoveSenders (senders, receivers, flows, grain) {
+  senders.forEach(sender => {
+    if (sender.id === grain.pre.id) sender.state = mapState(sender).remove().state()
+  })
   return senders
 }
 

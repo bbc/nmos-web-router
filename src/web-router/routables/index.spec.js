@@ -552,6 +552,22 @@ describe('routables', () => {
         expect(routes.length).toBe(1)
         expect(routes[0].state).toBe('routed')
       })
+
+      it('removes', () => {
+        let view = routables
+          .update
+          .senders([{
+            pre: senders[0],
+            post: {}
+          }])
+          .view()
+
+        expect(view.senders[0].state).toContain('removed')
+        let routes = view.routes.filter(route => {
+          return route.sender.id === senders[0].id && route.receiver.id === receivers[0].id
+        })
+        expect(routes.length).toBe(0)
+      })
     })
   })
 
