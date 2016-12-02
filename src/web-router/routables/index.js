@@ -211,7 +211,9 @@ function mapRoutes (routes, senders, receivers) {
 }
 
 function mapAddReceivers (receivers, grain) {
-  return receivers
+  let newReceivers = mapInitialReceiverState([grain.post])
+  newReceivers = mapRoutedReceivers(newReceivers)
+  return receivers.concat(newReceivers)
 }
 
 function mapRemoveReceivers (receivers, grain) {
@@ -226,7 +228,7 @@ function mapUpdateReceivers (receivers, grain) {
   return receivers
 }
 
-function mapRoutesWithUpdatedReceivers (routes, removed, added, updated) {
+function mapRoutesWithUpdatedReceivers (routes, senders, removed, added, updated) {
   let removeIndexes = []
   removed.forEach(receiver => {
     routes.forEach((route, index) => {
@@ -238,7 +240,9 @@ function mapRoutesWithUpdatedReceivers (routes, removed, added, updated) {
   removeIndexes.forEach(index => {
     routes = remove(routes, index)
   })
-  return routes
+
+  let addedRoutes = mapInitialRouted(senders, added, [])
+  return routes.concat(addedRoutes)
 }
 
 export default ({senders, flows, receivers, routes}) => {
@@ -339,22 +343,14 @@ export default ({senders, flows, receivers, routes}) => {
           let hasPost = !isEmpty(grain.post)
           let hasPre = !isEmpty(grain.pre)
           if (hasPost && hasPre) {
-            updated.push({
-              id: grain.post.id
-            })
-            updated.push({
-              id: grain.pre.id
-            })
+            updated.push(grain.post)
+            updated.push(grain.pre)
             mapReceivers = mapUpdateReceivers
           } else if (hasPost) {
-            added.push({
-              id: grain.post.id
-            })
+            added.push(grain.post)
             mapReceivers = mapAddReceivers
           } else if (hasPre) {
-            removed.push({
-              id: grain.pre.id
-            })
+            removed.push(grain.pre)
             mapReceivers = mapRemoveReceivers
           }
 
@@ -362,7 +358,7 @@ export default ({senders, flows, receivers, routes}) => {
         })
 
         senders = mapSenderRoutedState(senders, receivers)
-        routes = mapRoutesWithUpdatedReceivers(routes, removed, added, updated)
+        routes = mapRoutesWithUpdatedReceivers(routes, senders, removed, added, updated)
 
         return routables
       },

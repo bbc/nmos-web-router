@@ -376,31 +376,68 @@ describe('routables', () => {
   })
 
   describe('updating', () => {
+    it('removing and then adding the same one', () => {})
+
     describe('receivers', () => {
       it('adds, pre: empty', () => {
-        // let updatedReceivers = routables
-        //   .update
-        //   .receivers([{
-        //     pre: {},
-        //     post: generate.receivers(1)
-        //   }])
-        //   .view()
-        //   .receivers
+        let unroutedReceiver = generate.receiver()
+        unroutedReceiver.subscription.sender_id = null
+
+        let routedReceiverButNotToAnything = generate.receiver()
+        routedReceiverButNotToAnything.subscription.sender_id = 'missing sender'
+
+        let routedReceiverButNotToExistingSender = generate.receiver()
+        routedReceiverButNotToExistingSender.subscription.sender_id = senders[8].id
+
+        let view = routables
+          .route(receivers[9].id, senders[9].id)
+          .unroute(receivers[2].id, senders[2].id)
+          .update
+          .receivers([{
+            post: unroutedReceiver,
+            pre: {}
+          }, {
+            post: routedReceiverButNotToAnything,
+            pre: {}
+          }, {
+            post: routedReceiverButNotToExistingSender,
+            pre: {}
+          }])
+          .view()
+
+        expect(view.receivers.length).toBe(receivers.length + 3)
+        expect(view.senders[8].state).toContain('routed')
+
+        let routes = view.routes.filter(route => {
+          return route.sender.id === senders[8].id && route.receiver.id === routedReceiverButNotToExistingSender.id
+        })
+
+        expect(routes.length).toBe(1)
+
+        let route = view.routes.filter(route => {
+          return route.receiver.id === receivers[9].id && route.sender.id === senders[9].id
+        })[0]
+        expect(route.state).toBe('routing')
+
+        route = view.routes.filter(route => {
+          return route.receiver.id === receivers[2].id && route.sender.id === senders[2].id
+        })[0]
+        expect(route.state).toBe('unrouting')
       })
 
       it('changes state to removed when post is empty, senders are updated correctly, routes with matching id are removed and any route in route/unrouting state is left alone', () => {
         let view = routables
-            .route(receivers[9].id, senders[9].id)
-            .unroute(receivers[2].id, senders[2].id)
-            .update
-            .receivers([{
-              pre: receivers[0],
-              post: {}
-            }, {
-              pre: receivers[1],
-              post: {}
-            }])
-            .view()
+          .route(receivers[9].id, senders[9].id)
+          .unroute(receivers[2].id, senders[2].id)
+          .update
+          .receivers([{
+            pre: receivers[0],
+            post: {}
+          }, {
+            pre: receivers[1],
+            post: {}
+          }])
+          .view()
 
         expect(view.receivers[0].state).toContain('removed')
         expect(view.receivers[1].state).toContain('removed')
