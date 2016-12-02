@@ -463,17 +463,17 @@ describe('routables', () => {
       })
 
       it('updates', () => {
-        // let view = routables
-        //     .update
-        //     .receivers([{
-        //       pre: receivers[0],
-        //       post: Object.assign({}, receivers[0], {subscription: {sender_id: senders[9].id}}, {label: 'bacon'})
-        //     }])
-        //     .view()
-        //
-        // let updatedReceivers = view.receivers
-        //
-        // expect(updatedReceivers.length).toBe(receivers.length)
+        let updateRoute = Object.assign({}, receivers[9])
+        updateRoute.label = 'updated label'
+        let view = routables
+          .update
+          .receivers([{
+            pre: receivers[9],
+            post: updateRoute
+          }])
+          .view()
+
+        expect(view.receivers[9].label).toBe('updated label')
       })
     })
   })

@@ -225,6 +225,19 @@ function mapRemoveReceivers (receivers, grain) {
 }
 
 function mapUpdateReceivers (receivers, grain) {
+  receivers = receivers.map(receiver => {
+    receiver = Object.assign({}, receiver)
+    if (grain.post.id === receiver.id) {
+      Object.keys(grain.post)
+        .filter(key => {
+          return key !== 'subscription'
+        })
+        .forEach(key => {
+          receiver[key] = grain.post[key]
+        })
+    }
+    return receiver
+  })
   return receivers
 }
 
