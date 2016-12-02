@@ -388,8 +388,10 @@ describe('routables', () => {
         //   .receivers
       })
 
-      it('removes, post: empty', () => {
+      it('removes when post: empty, senders updated correctly, routes with id are removed and any route in route/unrouting state is left alone', () => {
         let view = routables
+            .route(receivers[9].id, senders[9].id)
+            .unroute(receivers[2].id, senders[2].id)
             .update
             .receivers([{
               pre: receivers[0],
@@ -411,6 +413,16 @@ describe('routables', () => {
           return route.receiver.id === receivers[0].id || route.receiver.id === receivers[1].id
         })
         expect(routes.length).toBe(0)
+
+        let route = view.routes.filter(route => {
+          return route.receiver.id === receivers[9].id && route.sender.id === senders[9].id
+        })[0]
+        expect(route.state).toBe('routing')
+
+        route = view.routes.filter(route => {
+          return route.receiver.id === receivers[2].id && route.sender.id === senders[2].id
+        })[0]
+        expect(route.state).toBe('unrouting')
       })
 
       it('updates', () => {
