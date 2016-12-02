@@ -278,6 +278,27 @@ function mapRoutesWithUpdatedReceivers (routes, senders, removed, added, updated
   return routes
 }
 
+function mapRoutesWithUpdatedSenders (routes, receivers, removed, added, updated) {
+  let addedRoutes = mapInitialRouted(added, receivers, [])
+  routes = routes.concat(addedRoutes)
+  return routes
+}
+
+function mapUpdateSenders (senders, receivers, grain) {
+  return senders
+}
+
+function mapAddSenders (senders, receivers, flows, grain) {
+  let newSenders = mapSenderFormats([grain.post], flows)
+  newSenders = mapInitialSenderState(newSenders)
+  newSenders = mapSenderRoutedState(newSenders, receivers)
+  return senders.concat(newSenders)
+}
+
+function mapRemoveSenders (senders, receivers, grain) {
+  return senders
+}
+
 export default ({senders, flows, receivers, routes}) => {
   senders = senders || []
   flows = flows || []
@@ -364,6 +385,27 @@ export default ({senders, flows, receivers, routes}) => {
     },
     update: {
       senders (grains) {
+        let removed = []
+        let added = []
+        let updated = []
+        grains.forEach(grain => {
+          let mapSenders = noMap
+          let hasPost = !isEmpty(grain.post)
+          let hasPre = !isEmpty(grain.pre)
+          if (hasPost && hasPre) {
+            updated.push(grain)
+            mapSenders = mapUpdateSenders
+          } else if (hasPost) {
+            added.push(grain.post)
+            mapSenders = mapAddSenders
+          } else if (hasPre) {
+            removed.push(grain.pre)
+            mapSenders = mapRemoveSenders
+          }
+
+          senders = mapSenders(senders, receivers, flows, grain)
+          routes = mapRoutesWithUpdatedSenders(routes, receivers, removed, added, updated)
+        })
         return routables
       },
       receivers (grains) {

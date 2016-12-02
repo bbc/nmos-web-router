@@ -515,6 +515,44 @@ describe('routables', () => {
         expect(routes.length).toBe(1)
       })
     })
+
+    describe('senders', () => {
+      it('adds', () => {
+        let noFlowNoRoutes = generate.sender()
+        let routed = generate.sender()
+        routed.flow_id = flows[0].id
+
+        let view = routables
+          .route(receivers[9].id, routed.id)
+          .update
+          .senders([{
+            pre: {},
+            post: noFlowNoRoutes
+          }, {
+            pre: {},
+            post: routed
+          }])
+          .view()
+
+        let sender = view.senders.filter(sender => {
+          return sender.id === noFlowNoRoutes.id
+        })[0] || {state: ['not added'], format: 'not added'}
+        expect(sender.state).toContain('unrouted')
+        expect(sender.format).toBe('no')
+
+        sender = view.senders.filter(sender => {
+          return sender.id === routed.id
+        })[0] || {state: ['not added'], format: 'not added'}
+        expect(sender.state).toContain('routed')
+        expect(sender.format).toBe(flows[0].format)
+
+        let routes = view.routes.filter(route => {
+          return route.receiver.id === receivers[9].id && route.sender.id === routed.id
+        })
+        expect(routes.length).toBe(1)
+        expect(routes[0].state).toBe('routed')
+      })
+    })
   })
 
   // it('Does everything you need to but not the HTTP stuff', () => {
@@ -522,7 +560,6 @@ describe('routables', () => {
   //   let senderId = ''
   //   let sender = {}
   //   let grain = {}
-  //   routables.update.receivers(grains)
   //   routables.update.senders(grains)
   //   routables.update.flows(grains)
   // })
