@@ -329,6 +329,18 @@ function mapRemoveSenders (senders, receivers, flows, grain) {
   return senders
 }
 
+function mapUpdateFlow (flows, grain) {
+  return flows
+}
+
+function mapAddFlow (flows, grain) {
+  return flows.concat(grain.post)
+}
+
+function mapRemoveFlow (flows, grain) {
+  return flows
+}
+
 export default ({senders, flows, receivers, routes}) => {
   senders = senders || []
   flows = flows || []
@@ -465,6 +477,21 @@ export default ({senders, flows, receivers, routes}) => {
         return routables
       },
       flows (grains) {
+        grains.forEach(grain => {
+          let mapFlows = noMap
+          let hasPost = !isEmpty(grain.post)
+          let hasPre = !isEmpty(grain.pre)
+          if (hasPost && hasPre) {
+            mapFlows = mapUpdateFlow
+          } else if (hasPost) {
+            mapFlows = mapAddFlow
+          } else if (hasPre) {
+            mapFlows = mapRemoveFlow
+          }
+          flows = mapFlows(flows, grain)
+        })
+
+        senders = mapSenderFormats(senders, flows)
         return routables
       }
     },

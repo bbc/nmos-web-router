@@ -584,6 +584,31 @@ describe('routables', () => {
         expect(view.senders[9].label).toBe('updated label')
       })
     })
+
+    describe('flows', () => {
+      it('adds', () => {
+        let flow = generate.flow()
+        flow.id = senders[9].flow_id
+
+        let view = routables
+          .update
+          .flows([{
+            pre: {},
+            post: flow
+          }])
+          .view()
+
+        expect(view.senders[9].format).toBe(flow.format)
+      })
+
+      it('removes', () => {
+        // remove a flow which will update a sender to no flow
+      })
+
+      it('update', () => {
+        // it should change some flows, change one to no and change one to yes
+      })
+    })
   })
 
   // it('Does everything you need to but not the HTTP stuff', () => {
