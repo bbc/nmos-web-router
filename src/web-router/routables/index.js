@@ -28,7 +28,7 @@ function mapSenderFormats (senders, flows) {
 
 function isSenderRouted (sender, receivers) {
   return receivers.some(receiver => {
-    return receiver.subscription.sender_id === sender.id
+    return receiver.subscription.sender_id === sender.id && !receiver.state.includes('removed')
   })
 }
 
@@ -215,11 +215,9 @@ function mapAddReceivers (receivers, grain) {
 }
 
 function mapRemoveReceivers (receivers, grain) {
-  let removeIndex = -1
-  receivers.forEach((receiver, index) => {
-    if (receiver.id === grain.pre.id) removeIndex = index
+  receivers.forEach(receiver => {
+    if (receiver.id === grain.pre.id) receiver.state = mapState(receiver).remove().state()
   })
-  if (removeIndex !== -1) receivers = remove(receivers, removeIndex)
 
   return receivers
 }

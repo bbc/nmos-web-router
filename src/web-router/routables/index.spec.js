@@ -388,7 +388,7 @@ describe('routables', () => {
         //   .receivers
       })
 
-      it('removes when post: empty, senders updated correctly, routes with id are removed and any route in route/unrouting state is left alone', () => {
+      it('changes state to removed when post is empty, senders are updated correctly, routes with matching id are removed and any route in route/unrouting state is left alone', () => {
         let view = routables
             .route(receivers[9].id, senders[9].id)
             .unroute(receivers[2].id, senders[2].id)
@@ -402,8 +402,8 @@ describe('routables', () => {
             }])
             .view()
 
-        expect(view.receivers.length).toBe(receivers.length - 2)
-        expect(view.receivers[0].id).toBe(receivers[2].id)
+        expect(view.receivers[0].state).toContain('removed')
+        expect(view.receivers[1].state).toContain('removed')
         expect(view.senders[0].state).toContain('unrouted')
         expect(view.senders[0].state).not.toContain('routed')
         expect(view.senders[1].state).toContain('unrouted')
