@@ -278,7 +278,7 @@ function mapRoutesWithUpdatedReceivers (routes, senders, removed, added, updated
   return routes
 }
 
-function mapRoutesWithUpdatedSenders (routes, receivers, removed, added, updated) {
+function mapRoutesWithUpdatedSenders (routes, receivers, removed, added) {
   let removeIndexes = []
   removed.forEach(sender => {
     routes.forEach((route, index) => {
@@ -297,7 +297,21 @@ function mapRoutesWithUpdatedSenders (routes, receivers, removed, added, updated
   return routes
 }
 
-function mapUpdateSenders (senders, receivers, grain) {
+function mapUpdateSenders (senders, receivers, flows, grain) {
+  senders = senders.map(sender => {
+    sender = Object.assign({}, sender)
+    if (grain.post.id === sender.id) {
+      Object.keys(grain.post)
+        .filter(key => {
+          return key !== 'subscription'
+        })
+        .forEach(key => {
+          sender[key] = grain.post[key]
+        })
+    }
+    return sender
+  })
+  senders = mapSenderFormats(senders, flows)
   return senders
 }
 
@@ -403,13 +417,11 @@ export default ({senders, flows, receivers, routes}) => {
       senders (grains) {
         let removed = []
         let added = []
-        let updated = []
         grains.forEach(grain => {
           let mapSenders = noMap
           let hasPost = !isEmpty(grain.post)
           let hasPre = !isEmpty(grain.pre)
           if (hasPost && hasPre) {
-            updated.push(grain)
             mapSenders = mapUpdateSenders
           } else if (hasPost) {
             added.push(grain.post)
@@ -420,7 +432,7 @@ export default ({senders, flows, receivers, routes}) => {
           }
 
           senders = mapSenders(senders, receivers, flows, grain)
-          routes = mapRoutesWithUpdatedSenders(routes, receivers, removed, added, updated)
+          routes = mapRoutesWithUpdatedSenders(routes, receivers, removed, added)
         })
         return routables
       },

@@ -568,6 +568,21 @@ describe('routables', () => {
         })
         expect(routes.length).toBe(0)
       })
+
+      it('updates', () => {
+        let sender = Object.assign({}, senders[9])
+        sender.label = 'updated label'
+
+        let view = routables
+          .update
+          .senders([{
+            pre: senders[9],
+            post: sender
+          }])
+          .view()
+
+        expect(view.senders[9].label).toBe('updated label')
+      })
     })
   })
 
@@ -576,7 +591,6 @@ describe('routables', () => {
   //   let senderId = ''
   //   let sender = {}
   //   let grain = {}
-  //   routables.update.senders(grains)
   //   routables.update.flows(grains)
   // })
 })
