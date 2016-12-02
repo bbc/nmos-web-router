@@ -472,6 +472,9 @@ describe('routables', () => {
         let newlyRoutedReceiver = Object.assign({}, receivers[8])
         newlyRoutedReceiver.subscription = {sender_id: senders[9].id}
 
+        let replacedRoute = Object.assign({}, receivers[1])
+        replacedRoute.subscription = {sender_id: senders[8].id}
+
         let view = routables
           .update
           .receivers([{
@@ -483,6 +486,9 @@ describe('routables', () => {
           }, {
             pre: receivers[8],
             post: newlyRoutedReceiver
+          }, {
+            pre: receivers[1],
+            post: replacedRoute
           }])
           .view()
 
@@ -495,6 +501,16 @@ describe('routables', () => {
 
         routes = view.routes.filter(route => {
           return route.receiver.id === receivers[8].id && route.sender.id === senders[9].id
+        })
+        expect(routes.length).toBe(1)
+
+        routes = view.routes.filter(route => {
+          return route.receiver.id === receivers[1].id && route.sender.id === senders[1].id
+        })
+        expect(routes.length).toBe(0)
+
+        routes = view.routes.filter(route => {
+          return route.receiver.id === receivers[1].id && route.sender.id === senders[8].id
         })
         expect(routes.length).toBe(1)
       })
