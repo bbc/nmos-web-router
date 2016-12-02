@@ -606,8 +606,8 @@ describe('routables', () => {
         let view = routables
           .update
           .flows([{
-            post: {},
-            pre: flows[0]
+            pre: flows[0],
+            post: {}
           }])
           .view()
 
@@ -618,16 +618,20 @@ describe('routables', () => {
       })
 
       it('update', () => {
-        // it should change some flows, change one to no and change one to yes
+        let updatedFlow = Object.assign({}, flows[0])
+        updatedFlow.format = 'new format'
+        let view = routables
+          .update
+          .flows([{
+            pre: flows[0],
+            post: updatedFlow
+          }])
+          .view()
+
+        view.senders.forEach((sender, index) => {
+          if (index < 4) expect(sender.format).toBe('new format')
+        })
       })
     })
   })
-
-  // it('Does everything you need to but not the HTTP stuff', () => {
-  //   let receiverId = ''
-  //   let senderId = ''
-  //   let sender = {}
-  //   let grain = {}
-  //   routables.update.flows(grains)
-  // })
 })

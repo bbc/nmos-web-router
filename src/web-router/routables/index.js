@@ -302,9 +302,6 @@ function mapUpdateSenders (senders, receivers, flows, grain) {
     sender = Object.assign({}, sender)
     if (grain.post.id === sender.id) {
       Object.keys(grain.post)
-        .filter(key => {
-          return key !== 'subscription'
-        })
         .forEach(key => {
           sender[key] = grain.post[key]
         })
@@ -330,6 +327,16 @@ function mapRemoveSenders (senders, receivers, flows, grain) {
 }
 
 function mapUpdateFlow (flows, grain) {
+  flows = flows.map(flow => {
+    flow = Object.assign({}, flow)
+    if (grain.post.id === flow.id) {
+      Object.keys(grain.post)
+        .forEach(key => {
+          flow[key] = grain.post[key]
+        })
+    }
+    return flow
+  })
   return flows
 }
 
