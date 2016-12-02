@@ -463,17 +463,40 @@ describe('routables', () => {
       })
 
       it('updates', () => {
-        let updateRoute = Object.assign({}, receivers[9])
-        updateRoute.label = 'updated label'
+        let updateReceiver = Object.assign({}, receivers[9])
+        updateReceiver.label = 'updated label'
+
+        let unroutedReceiver = Object.assign({}, receivers[0])
+        unroutedReceiver.subscription = {sender_id: null}
+
+        let newlyRoutedReceiver = Object.assign({}, receivers[8])
+        newlyRoutedReceiver.subscription = {sender_id: senders[9].id}
+
         let view = routables
           .update
           .receivers([{
             pre: receivers[9],
-            post: updateRoute
+            post: updateReceiver
+          }, {
+            pre: receivers[0],
+            post: unroutedReceiver
+          }, {
+            pre: receivers[8],
+            post: newlyRoutedReceiver
           }])
           .view()
 
         expect(view.receivers[9].label).toBe('updated label')
+
+        let routes = view.routes.filter(route => {
+          return route.receiver.id === receivers[0].id && route.sender.id === senders[0].id
+        })
+        expect(routes.length).toBe(0)
+
+        routes = view.routes.filter(route => {
+          return route.receiver.id === receivers[8].id && route.sender.id === senders[9].id
+        })
+        expect(routes.length).toBe(1)
       })
     })
   })

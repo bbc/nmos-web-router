@@ -250,11 +250,34 @@ function mapRoutesWithUpdatedReceivers (routes, senders, removed, added, updated
       }
     })
   })
+
+  updated.forEach(grain => {
+    // let isDoingNothing = grain.post.subscription.sender_id === grain.pre.subscription.sender_id
+    // if (isDoingNothing) console.log('is doing nothing', grain.post.subscription.sender_id, grain.pre.subscription.sender_id)
+
+    let isRemoving = grain.post.subscription.sender_id === null && grain.pre.subscription.sender_id !== null
+    if (isRemoving) {
+      let senderId = grain.pre.subscription.sender_id
+      let receiverId = grain.pre.id
+      routes.forEach((route, index) => {
+        if (route.sender.id === senderId && route.receiver.id === receiverId) removeIndexes = [index].concat(removeIndexes)
+      })
+    }
+
+    let isAdding = grain.post.subscription.sender_id !== null && grain.pre.subscription.sender_id === null
+    if (isAdding) {
+      added.push(grain.post)
+    }
+
+    let isReplacing = grain.post.subscription.sender_id !== grain.pre.subscription.sender_id && grain.post.subscription.sender_id !== null && grain.pre.subscription.sender_id !== null
+    if (isReplacing) console.log('is replacing routes')
+  })
+
   removeIndexes.forEach(index => {
     routes = remove(routes, index)
   })
-
   let addedRoutes = mapInitialRouted(senders, added, [])
+
   return routes.concat(addedRoutes)
 }
 
@@ -356,8 +379,7 @@ export default ({senders, flows, receivers, routes}) => {
           let hasPost = !isEmpty(grain.post)
           let hasPre = !isEmpty(grain.pre)
           if (hasPost && hasPre) {
-            updated.push(grain.post)
-            updated.push(grain.pre)
+            updated.push(grain)
             mapReceivers = mapUpdateReceivers
           } else if (hasPost) {
             added.push(grain.post)
