@@ -539,13 +539,9 @@ export default ({senders, flows, receivers, routes}) => {
           let mapFlows = noMap
           let hasPost = !isEmpty(grain.post)
           let hasPre = !isEmpty(grain.pre)
-          if (hasPost && hasPre) {
-            mapFlows = mapUpdateFlow
-          } else if (hasPost) {
-            mapFlows = mapAddFlow
-          } else if (hasPre) {
-            mapFlows = mapRemoveFlow
-          }
+          if (hasPost && hasPre) mapFlows = mapUpdateFlow
+          else if (hasPost) mapFlows = mapAddFlow
+          else if (hasPre) mapFlows = mapRemoveFlow
           flows = mapFlows(flows, grain)
         })
 
@@ -563,10 +559,6 @@ export default ({senders, flows, receivers, routes}) => {
       }
     }
   }
-
-  routables.insert.receivers(receivers)
-  routables.insert.senders(senders)
-  routables.insert.flows(flows)
 
   return routables
 }
