@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (routable) => {
-    actions.check({routable})
+  return (routable, routableType) => {
+    actions.check({routable, routableType})
   }
 }

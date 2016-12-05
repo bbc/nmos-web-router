@@ -6,7 +6,6 @@ let Routables = ({routables, side, actions, expanded, type}) => {
   return <LayoutItem gels='1/2' className={`routables-${side}`}>
     <div>{
       routables.map((routable, index) => {
-        routable.type = routable.type || type
         return <Routable
           key={`${side}-${index}`}
           baseState='static'
@@ -14,7 +13,7 @@ let Routables = ({routables, side, actions, expanded, type}) => {
           routable={routable}
           onCheckbox={function () {
             if (!expanded.state.includes('contracted')) actions.toggleSender(expanded)
-            actions.check(routable)
+            actions.check(routable, type)
           }}
           />
       })
