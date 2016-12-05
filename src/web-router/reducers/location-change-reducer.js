@@ -1,4 +1,5 @@
 import Routables from '../routables'
+import allVisible from './choose/all-visible'
 
 export default (state, action, merge) => {
   let pathname = action.payload.pathname
@@ -17,6 +18,12 @@ export default (state, action, merge) => {
     .view()
 
   view = Object.assign({}, view, filteredView)
+
+  let allVisibleState = allVisible(routables.view().senders)
+  view.choose.allVisibleState.senders = allVisibleState.current
+
+  allVisibleState = allVisible(routables.view().receivers)
+  view.choose.allVisibleState.receivers = allVisibleState.current
 
   return merge({ view })
 }

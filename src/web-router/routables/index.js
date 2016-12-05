@@ -98,6 +98,30 @@ function mapCheck (routables, id) {
   })
 }
 
+function mapCheckAll (routables) {
+  return routables.map(routable => {
+    routable = Object.assign({}, routable)
+    if (routable.state.includes('fuzzymatch')) {
+      let routableMapState = mapState(routable).check()
+      routable.state = routableMapState.state()
+      routable.stateString = stateToString(routable.state)
+    }
+    return routable
+  })
+}
+
+function mapCheckNone (routables) {
+  return routables.map(routable => {
+    routable = Object.assign({}, routable)
+    if (routable.state.includes('fuzzymatch')) {
+      let routableMapState = mapState(routable).uncheck()
+      routable.state = routableMapState.state()
+      routable.stateString = stateToString(routable.state)
+    }
+    return routable
+  })
+}
+
 function get (routables, id) {
   let routable = routables.filter(routable => {
     return routable.id === id
@@ -418,12 +442,16 @@ export default ({senders, flows, receivers, routes}) => {
       return routables
     },
     check: {
-      receiver (id) {
-        receivers = mapCheck(receivers, id)
+      receivers (id) {
+        if (id === 'all') receivers = mapCheckAll(receivers)
+        else if (id === 'none') receivers = mapCheckNone(receivers)
+        else receivers = mapCheck(receivers, id)
         return routables
       },
-      sender (id) {
-        senders = mapCheck(senders, id)
+      senders (id) {
+        if (id === 'all') senders = mapCheckAll(senders)
+        else if (id === 'none') senders = mapCheckNone(senders)
+        else senders = mapCheck(senders, id)
         return routables
       }
     },

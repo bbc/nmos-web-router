@@ -21,14 +21,14 @@ let Choose = ({view, senders, receivers, expanded, actions}) => {
     <div className='routables routables-scroll'>
       <Routables
         side='left'
-        type='sender'
+        type='senders'
         routables={senders}
         actions={actions}
         expanded={expanded}
         />
       <Routables
         side='right'
-        type='receiver'
+        type='receivers'
         routables={receivers}
         actions={actions}
         expanded={expanded}
