@@ -1,4 +1,4 @@
-import Routables from '../../routables'
+import Routables from '../routables'
 
 export default (state, action, merge) => {
   let routables = Routables(state.view)

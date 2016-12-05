@@ -7,10 +7,9 @@ export default (actions) => {
     actions.route({ receiver, sender })
 
     sender = Object.assign({}, sender)
-    delete sender.node
-    delete sender.nodeEl
     delete sender.format
     delete sender.state
+    delete sender.stateString
     window.nmos.route(receiver.id, sender)
   }
 }

@@ -4,8 +4,7 @@ import toggleSender from './connections/toggle-sender-reducer'
 import unroute from './connections/unroute-reducer'
 import route from './connections/route-reducer'
 import nodeRendered from './connections/node-rendered-reducer'
-import routesRendered from './connections/routes-rendered-reducer'
-import update from './update'
+import update from './update-reducer'
 import locationChange from './location-change-reducer'
 import allVisible from './choose/all-visible-reducer'
 import check from './choose/check-reducer'
@@ -19,7 +18,6 @@ export default {
   unroute,
   route,
   nodeRendered,
-  routesRendered,
   update,
   allVisible,
   check,
