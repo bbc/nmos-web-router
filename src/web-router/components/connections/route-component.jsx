@@ -29,10 +29,17 @@ Line.propTypes = {
   width: PropTypes.number.isRequired
 }
 
-let Route = ({expanded, senderNodeEl, receiverNodeEl, routesEl, state}) => {
-  if (routesEl === undefined || routesEl === null) return null
-  if (senderNodeEl === undefined || senderNodeEl === null) return null
-  if (receiverNodeEl === undefined || receiverNodeEl === null) return null
+let Route = ({data}) => {
+  let routesEl = document.querySelector('.routes')
+  if (routesEl === null) return null
+
+  let senderEl = document.getElementById(data.sender.id)
+  if (senderEl === null) return null
+  let senderNodeEl = senderEl.querySelector('.node')
+
+  let receiverEl = document.getElementById(data.receiver.id)
+  if (receiverEl === null) return null
+  let receiverNodeEl = receiverEl.querySelector('.node')
 
   let senderRects = senderNodeEl.getBoundingClientRect()
   let receiverRects = receiverNodeEl.getBoundingClientRect()
@@ -41,7 +48,7 @@ let Route = ({expanded, senderNodeEl, receiverNodeEl, routesEl, state}) => {
   let width = routesRects.width
   let height = Math.abs(senderRects.top - receiverRects.top)
 
-  let className = `route route-${state}`
+  let className = `route route-${data.state}`
 
   let x1 = 0
   let y1 = height
@@ -56,7 +63,7 @@ let Route = ({expanded, senderNodeEl, receiverNodeEl, routesEl, state}) => {
   let LineComponent = Path
   if (y1 === y2) LineComponent = Line
 
-  if (expanded) {
+  if (data.expanded) {
     y2 = receiverRects.top
     className += ' expanded'
     let scrollTop = routesEl.parentElement.scrollTop
@@ -87,11 +94,7 @@ let Route = ({expanded, senderNodeEl, receiverNodeEl, routesEl, state}) => {
 }
 
 Route.propTypes = {
-  state: PropTypes.string.isRequired,
-  expanded: PropTypes.bool.isRequired,
-  senderNodeEl: PropTypes.object,
-  receiverNodeEl: PropTypes.object,
-  routesEl: PropTypes.any
+  data: PropTypes.object.isRequired
 }
 
 export default Route

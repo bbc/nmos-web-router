@@ -11,13 +11,6 @@ let ExpandedSender = ({sender, actions}) => {
     })
     .join(' ')
 
-  let nodeState = sender.node.state || []
-  nodeState = nodeState
-      .filter(state => {
-        return state !== ''
-      })
-      .join(' ')
-
   return <div className={senderState}>
     <div className='full expanded-sender routable'>
       <div className='button-container'>
@@ -38,7 +31,7 @@ let ExpandedSender = ({sender, actions}) => {
           </LayoutItem>
         </Layout>
         <div className='node-container'>
-          <div className={`node ${nodeState}`} />
+          <div className={`node`} />
         </div>
       </div>
     </div>

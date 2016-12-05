@@ -1,10 +1,10 @@
-import updateData from './data'
-import updateView from './view'
+import Routables from '../../routables'
 
 export default (state, action, merge) => {
-  if (action.name === 'view') return merge({ view: Object.assign({}, state.view) })
-  let data = updateData(state, action)
-  let view = Object.assign({}, state.view)
-  view = updateView(data, view, action)
-  return merge({ data, view })
+  let routables = Routables(state.view)
+  let updatedView = routables
+    .update[action.name](action.update[action.name])
+    .view()
+  let view = Object.assign({}, state.view, updatedView)
+  return merge({ view })
 }

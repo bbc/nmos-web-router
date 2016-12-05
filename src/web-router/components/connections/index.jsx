@@ -7,11 +7,11 @@ import Senders from './senders-component'
 import Routes from './routes-component'
 import Receivers from './receivers-component'
 
-let Connections = ({routesEl, expandedSender, senders, receivers, routes, actions}) => {
+let Connections = ({expanded, senders, receivers, routes, actions}) => {
   return <Layout className='connections box box-hidden'
-    onClick={function () { if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender) }}>
+    onClick={function () { if (!expanded.state.includes('contracted')) actions.toggleSender(expanded) }}>
     <Header />
-    <Layout gels='1/1' layouts='flush' className='routables-scroll' onScroll={() => { if (!expandedSender.state.includes('contracted')) actions.update() }}>
+    <Layout gels='1/1' layouts='flush' className='routables-scroll' onScroll={() => { if (!expanded.state.includes('contracted')) actions.update() }}>
       <Senders
         senders={senders}
         actions={actions}
@@ -22,7 +22,6 @@ let Connections = ({routesEl, expandedSender, senders, receivers, routes, action
         actions={actions}
           />
       <Routes
-        routesEl={routesEl}
         routes={routes}
         actions={actions}
         />
@@ -32,7 +31,7 @@ let Connections = ({routesEl, expandedSender, senders, receivers, routes, action
 
 Connections.propTypes = {
   routesEl: PropTypes.any,
-  expandedSender: PropTypes.object.isRequired,
+  expanded: PropTypes.object.isRequired,
   senders: PropTypes.array.isRequired,
   receivers: PropTypes.array.isRequired,
   routes: PropTypes.array.isRequired,

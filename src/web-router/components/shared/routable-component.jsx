@@ -10,11 +10,11 @@ class Node extends React.Component {
     this.props.onRender(this.nodeEl)
   }
   render () {
-    return <div className={`node-container node-container-${this.props.state}`}>
+    return <div className='node-container'>
       <div
         ref={(nodeEl) => { this.nodeEl = nodeEl }}
         onClick={this.props.onClick}
-        className={`node ${this.props.state}`}>
+        className='node'>
         <No />
       </div>
     </div>
@@ -22,12 +22,12 @@ class Node extends React.Component {
 }
 
 Node.propTypes = {
-  state: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   onRender: PropTypes.func.isRequired
 }
 
-let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender }) => {
+let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender }) => {
+  id = id || ''
   node = node || 'none'
   baseState = baseState || ''
   onClick = onClick || noop
@@ -36,12 +36,7 @@ let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onChec
   onNode = onNode || noop
   onNodeRender = onNodeRender || noop
 
-  let routableState = routable.state || []
-  routableState = routableState
-    .filter(state => {
-      return state !== ''
-    })
-    .join(' ')
+  let routableState = routable.stateString
 
   let CheckboxComponent = null
   if (checkbox) {
@@ -52,19 +47,14 @@ let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onChec
 
   let NodeComponent = null
   if (node !== 'none') {
-    let nodeState = routable.node.state
-      .filter(state => {
-        return state !== ''
-      })
-      .join(' ')
     NodeComponent = <Node
-      state={nodeState}
       onClick={onNode}
       onRender={onNodeRender}
     />
   }
 
   return <div
+    id={id}
     className={`routable short ${baseState} ${routableState}`}
     onClick={onClick}>
     <div
@@ -79,6 +69,7 @@ let Routable = ({ routable, baseState, node, checkbox, onClick, onButton, onChec
 }
 
 Routable.propTypes = {
+  id: PropTypes.string,
   routable: PropTypes.object.isRequired,
   baseState: PropTypes.string,
   node: PropTypes.bool,

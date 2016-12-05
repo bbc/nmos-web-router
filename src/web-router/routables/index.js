@@ -36,6 +36,7 @@ function mapInitialSenderState (senders) {
   return senders.map(sender => {
     sender = Object.assign({}, sender)
     sender.state = mapState(sender).check().contract().selectable().state()
+    sender.stateString = stateToString(sender.state)
     return sender
   })
 }
@@ -46,6 +47,7 @@ function mapSenderRoutedState (senders, receivers) {
     let senderMapState = mapState(sender).unroute()
     if (isSenderRouted(sender, receivers)) senderMapState.route()
     sender.state = senderMapState.state()
+    sender.stateString = stateToString(sender.state)
     return sender
   })
 }
@@ -54,6 +56,7 @@ function mapInitialReceiverState (receivers) {
   return receivers.map(receiver => {
     receiver = Object.assign({}, receiver)
     receiver.state = mapState(receiver).check().contract().notSelectable().state()
+    receiver.stateString = stateToString(receiver.state)
     return receiver
   })
 }
@@ -64,6 +67,7 @@ function mapRoutedReceivers (receivers) {
     let receiverMapState = mapState(receiver).unroute()
     if (receiver.subscription.sender_id !== null) receiverMapState.route()
     receiver.state = receiverMapState.state()
+    receiver.stateString = stateToString(receiver.state)
     return receiver
   })
 }
@@ -76,6 +80,7 @@ function mapFuzzymatch (term, routables) {
     if (fuzzymatch) routableMapState.fuzzymatch()
     else routableMapState.fuzzymissmatch()
     routable.state = routableMapState.state()
+    routable.stateString = stateToString(routable.state)
     return routable
   })
 }
@@ -87,6 +92,7 @@ function mapCheck (routables, id) {
       let routableMapState = mapState(routable).check()
       if (routable.state.includes('checked')) routableMapState.uncheck()
       routable.state = routableMapState.state()
+      routable.stateString = stateToString(routable.state)
     }
     return routable
   })
@@ -120,14 +126,14 @@ function mapInitialRouted (senders, receivers, routes) {
 function expanded (senders) {
   let expanded = {}
   let expandedSender = senders.filter(sender => {
-    return sender.state.includes('expanded')
+    return sender.state && sender.state.includes('expanded')
   })[0] || { state: ['contracted'] }
 
   let mapExpandedState = mapState(expanded).contract().unroute()
   if (expandedSender.state.includes('expanded')) mapExpandedState.expand()
   if (expandedSender.state.includes('routed')) mapExpandedState.route()
   expanded.state = mapExpandedState.state()
-
+  expanded.stateString = stateToString(expanded.state)
   expanded.id = expandedSender.id
   expanded.label = expandedSender.label
   expanded.description = expandedSender.description
@@ -142,6 +148,7 @@ function mapNewRoutedReceiver (receivers, receiverId, senderId) {
     if (receiver.id === receiverId) {
       receiver.subscription.sender_id = senderId
       receiver.state = mapState(receiver).route().state()
+      receiver.stateString = stateToString(receiver.state)
     }
     return receiver
   })
@@ -153,6 +160,7 @@ function mapUnroutedReceiver (receivers, receiverId) {
     if (receiver.id === receiverId) {
       receiver.subscription.sender_id = null
       receiver.state = mapState(receiver).unroute().state()
+      receiver.stateString = stateToString(receiver.state)
     }
     return receiver
   })
@@ -218,7 +226,10 @@ function mapAddReceivers (receivers, grain) {
 
 function mapRemoveReceivers (receivers, grain) {
   receivers.forEach(receiver => {
-    if (receiver.id === grain.pre.id) receiver.state = mapState(receiver).remove().state()
+    if (receiver.id === grain.pre.id) {
+      receiver.state = mapState(receiver).remove().state()
+      receiver.stateString = stateToString(receiver.state)
+    }
   })
 
   return receivers
@@ -321,7 +332,10 @@ function mapAddSenders (senders, receivers, flows, grain) {
 
 function mapRemoveSenders (senders, receivers, flows, grain) {
   senders.forEach(sender => {
-    if (sender.id === grain.pre.id) sender.state = mapState(sender).remove().state()
+    if (sender.id === grain.pre.id) {
+      sender.state = mapState(sender).remove().state()
+      sender.stateString = stateToString(sender.state)
+    }
   })
   return senders
 }
@@ -352,6 +366,13 @@ function mapRemoveFlow (flows, grain) {
   return remove(flows, flowIndex)
 }
 
+function stateToString (state) {
+  return state.filter(state => {
+    return state !== ''
+  })
+  .join(' ')
+}
+
 export default ({senders, flows, receivers, routes}) => {
   senders = senders || []
   flows = flows || []
@@ -371,6 +392,8 @@ export default ({senders, flows, receivers, routes}) => {
         senders = mapInitialSenderState(senders)
         senders = mapSenderRoutedState(senders, receivers)
         routes = mapInitialRouted(senders, receivers, routes)
+        senders.sort(window.nmos.defaultSort)
+        receivers.sort(window.nmos.defaultSort)
         return routables
       },
       receivers (data) {
@@ -379,6 +402,8 @@ export default ({senders, flows, receivers, routes}) => {
         receivers = mapRoutedReceivers(receivers)
         senders = mapSenderRoutedState(senders, receivers)
         routes = mapInitialRouted(senders, receivers, routes)
+        senders.sort(window.nmos.defaultSort)
+        receivers.sort(window.nmos.defaultSort)
         return routables
       },
       flows (data) {
@@ -406,12 +431,29 @@ export default ({senders, flows, receivers, routes}) => {
       senders = senders.map(sender => {
         sender = Object.assign({}, sender)
         let senderMapState = mapState(sender).contract()
-        if (sender.id === id) {
-          senderMapState.expand()
-        }
+        if (sender.id === id) senderMapState.expand()
         sender.state = senderMapState.state()
+        sender.stateString = stateToString(sender.state)
         return sender
       })
+
+      let expandedFormat = 'contracting'
+      if (id) {
+        expandedFormat = senders.filter(sender => {
+          return sender.state.includes('expanded')
+        })[0].format
+      }
+
+      receivers = receivers.map(receiver => {
+        receiver = Object.assign({}, receiver)
+        let receiverMapState = mapState(receiver).notSelectable().enable()
+        if (receiver.format === expandedFormat) receiverMapState.selectable()
+        else if (expandedFormat !== 'contracting') receiverMapState.disable()
+        receiver.state = receiverMapState.state()
+        receiver.stateString = stateToString(receiver.state)
+        return receiver
+      })
+
       return routables
     },
     contract () {
@@ -457,6 +499,9 @@ export default ({senders, flows, receivers, routes}) => {
           senders = mapSenders(senders, receivers, flows, grain)
           routes = mapRoutesWithUpdatedSenders(routes, receivers, removed, added)
         })
+
+        senders.sort(window.nmos.defaultSort)
+        receivers.sort(window.nmos.defaultSort)
         return routables
       },
       receivers (grains) {
@@ -485,6 +530,8 @@ export default ({senders, flows, receivers, routes}) => {
         senders = mapSenderRoutedState(senders, receivers)
         routes = mapRoutesWithUpdatedReceivers(routes, senders, removed, added, updated)
 
+        senders.sort(window.nmos.defaultSort)
+        receivers.sort(window.nmos.defaultSort)
         return routables
       },
       flows (grains) {
@@ -516,6 +563,10 @@ export default ({senders, flows, receivers, routes}) => {
       }
     }
   }
+
+  routables.insert.receivers(receivers)
+  routables.insert.senders(senders)
+  routables.insert.flows(flows)
 
   return routables
 }

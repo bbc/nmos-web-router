@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Routable from '../shared/routable-component'
 
-let Visible = ({type, actions, expandedSender, state}) => {
+let Visible = ({type, actions, expanded, state}) => {
   return <Routable
     baseState={`static blank ${state}`}
     routable={{
@@ -11,7 +11,7 @@ let Visible = ({type, actions, expandedSender, state}) => {
     }}
     checkbox
     onCheckbox={function () {
-      if (!expandedSender.state.includes('contracted')) actions.toggleSender(expandedSender)
+      if (!expanded.state.includes('contracted')) actions.toggleSender(expanded)
       actions.allVisible(type)
     }}
     />
@@ -20,24 +20,24 @@ let Visible = ({type, actions, expandedSender, state}) => {
 Visible.propTypes = {
   type: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
-  expandedSender: PropTypes.object.isRequired,
+  expanded: PropTypes.object.isRequired,
   state: PropTypes.string.isRequired
 }
 
-let AllVisible = ({actions, expandedSender, state}) => {
+let AllVisible = ({actions, expanded, state}) => {
   return <Layout>
     <LayoutItem className='all-visible-left' gels='1/2'>
       <Visible
         state={state.senders}
         type='senders'
-        expandedSender={expandedSender}
+        expanded={expanded}
         actions={actions} />
     </LayoutItem>
     <LayoutItem className='all-visible-right' gels='1/2'>
       <Visible
         state={state.receivers}
         type='receivers'
-        expandedSender={expandedSender}
+        expanded={expanded}
         actions={actions} />
     </LayoutItem>
   </Layout>
@@ -46,7 +46,7 @@ let AllVisible = ({actions, expandedSender, state}) => {
 AllVisible.propTypes = {
   state: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
-  expandedSender: PropTypes.object.isRequired
+  expanded: PropTypes.object.isRequired
 }
 
 export default AllVisible

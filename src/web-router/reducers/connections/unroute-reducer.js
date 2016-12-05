@@ -1,34 +1,8 @@
-import ChangeState from '../change-state'
-import routes from '../update/routes'
-
-function unique (senders) {
-  let arr = []
-  senders.forEach(sender => {
-    let matched = arr.filter(a => {
-      return a.id === sender.id
-    })[0]
-    if (matched === undefined) arr.push(sender)
-  })
-  return arr
-}
+import Routables from '../../routables'
 
 export default (state, action, merge) => {
-  let view = Object.assign({}, state.view)
-  view.receivers = view.receivers.map(receiver => {
-    let changeState = ChangeState(receiver)
-    if (receiver.id === action.receiver.id) {
-      changeState.unrouting()
-      let routed = receiver.subscription.routed
-      if (routed) {
-        delete receiver.subscription.routed
-        receiver.subscription.unrouting = receiver.subscription.unrouting.concat([routed])
-      }
-      receiver.subscription.unrouting = receiver.subscription.unrouting.concat(receiver.subscription.routing)
-      receiver.subscription.routing = []
-      receiver.subscription.unrouting = unique(receiver.subscription.unrouting)
-    }
-    return receiver
-  })
-  view.routes = routes(view)
-  return merge({ view })
+  let routables = Routables(state.view)
+  let updatedView = routables.unroute(action.receiver.id).view()
+  let view = Object.assign({}, state.view, updatedView)
+  return merge({view})
 }

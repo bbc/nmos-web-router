@@ -1,17 +1,19 @@
-import initialiseData from './data'
 import loading from './loading'
-import initialiseView from './view'
+import Routables from '../../routables'
 
 export default (state, action, merge) => {
   let initialised = action.receivers || action.senders || action.flows
 
-  let data = initialiseData(state, action)
+  let data = {
+    receivers: action.receivers || state.data.receivers,
+    senders: action.senders || state.data.senders,
+    flows: action.flows || state.data.flows
+  }
+  let routables = Routables(data)
 
-  let viewData = Object.assign({}, data)
   let view = Object.assign({}, state.view, {
-    loading: loading(viewData, state.view),
-    view: initialiseView(viewData, state.view)
-  })
+    loading: loading(routables.view(), state.view)
+  }, routables.view())
 
   return merge({
     data,

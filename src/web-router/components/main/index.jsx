@@ -19,7 +19,7 @@ let WebRouter = ({view, actions}) => {
         view={view.choose}
         senders={view.senders}
         receivers={view.receivers}
-        expandedSender={view.expandedSender}
+        expanded={view.expanded}
         actions={actions}
         />
     </div>
@@ -27,7 +27,7 @@ let WebRouter = ({view, actions}) => {
       <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
       <Connections
         routesEl={view.routesEl}
-        expandedSender={view.expandedSender}
+        expanded={view.expanded}
         senders={view.senders}
         receivers={view.receivers}
         routes={view.routes}
@@ -36,7 +36,7 @@ let WebRouter = ({view, actions}) => {
     </div>
     <div className='expanded-sender-container route center'>
       <ExpandedSender
-        sender={view.expandedSender}
+        sender={view.expanded}
         actions={actions}
         />
     </div>
