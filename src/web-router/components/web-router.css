@@ -4,9 +4,7 @@
 :root {
   --button-color: #fff;
   --active: #33c3f0;
-  --disabled: #bbb;
-  --notification: #ec5d57;
-  --unrouted: #a19ea0;
+  --box-border: #a19ea0;
 
   --active-nav: {
     fill: var(--button-color);
@@ -35,8 +33,6 @@
   --far-right: {
     transform: translateX(200%);
   }
-
-  --color: #000;
 }
 
 .web-router {
@@ -49,108 +45,106 @@
   left: 0;
   right: 0;
   margin: auto;
-}
 
-.web-router-notification-none .notifications {
-  height: 0;
-}
-
-.container,
-.expanded-sender-container {
-  position: absolute;
-  top: calc(38px + 12px);
-  width: 100%;
-  transition: all 0.5s;
-
-  @media (--tablet) {
-    top: 0;
-    width: 50%;
-  }
-}
-
-.container {
-  height: 80%;
-  left: 0;
-}
-
-.expanded-sender-container {
-  height: 0;
-}
-
-.expanded-sender {
-  height: 0;
-  margin-top: 88px;
-  margin-left: 112px;
-}
-
-.buttons-container {
-  top: 0;
-  position: absolute;
-  width: 100%;
-  overflow: hidden;
-  transition: all 0.5s;
-  height: 38px;
-
-  @media (--tablet) {
+  &-notification-none .notifications {
     height: 0;
   }
-}
 
-.web-router-notification-alert {
   & .container,
   & .expanded-sender-container {
-    top: calc(38px + 44px);
+    position: absolute;
+    top: calc(38px + 12px);
+    width: 100%;
+    transition: all 0.5s;
 
     @media (--tablet) {
-      top: calc(44px + 12px);
+      top: 0;
+      width: 50%;
     }
   }
 
+  & .container {
+    height: 80%;
+    left: 0;
+  }
+
+  & .expanded-sender-container {
+    height: 0;
+  }
+
+  & .expanded-sender {
+    height: 0;
+    margin-top: 88px;
+    margin-left: 112px;
+  }
+
   & .buttons-container {
-    top: calc(38px + 12px);
-  }
-}
-
-.buttons {
-  width: 360px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-
-  & .button {
-    border: 1px solid #555;
-  }
-}
-
-.center-nav {
-  border-radius: 0;
-  border-left-width: 0 !important;
-  border-right-width: 0 !important;
-}
-
-.left-nav {
-  border-radius: 4px 0 0 4px;
-}
-
-.right-nav {
-  border-radius: 0 4px 4px 0;
-}
-
-.nav-1\/2 {
-  text-align: center;
-  width: 50%;
-
-  & .label {
+    top: 0;
+    position: absolute;
     width: 100%;
+    overflow: hidden;
+    transition: all 0.5s;
+    height: 38px;
+
+    @media (--tablet) {
+      height: 0;
+    }
   }
-}
 
-.nav-1\/3 {
-  width: 33.3333%;
-}
+  &-notification-alert {
+    & .container,
+    & .expanded-sender-container {
+      top: calc(38px + 44px);
 
-.web-router {
+      @media (--tablet) {
+        top: calc(44px + 12px);
+      }
+    }
+
+    & .buttons-container {
+      top: calc(38px + 12px);
+    }
+  }
+
+  & .buttons {
+    width: 360px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    & .button {
+      border: 1px solid #555;
+    }
+  }
+
+  & .center-nav {
+    border-radius: 0;
+    border-left-width: 0 !important;
+    border-right-width: 0 !important;
+  }
+
+  & .left-nav {
+    border-radius: 4px 0 0 4px;
+  }
+
+  & .right-nav {
+    border-radius: 0 4px 4px 0;
+  }
+
+  & .nav-1\/2 {
+    text-align: center;
+    width: 50%;
+
+    & .label {
+      width: 100%;
+    }
+  }
+
+  & .nav-1\/3 {
+    width: 33.3333%;
+  }
+
   /* PLACEHOLDER until third view is ready */
   & .right {
     @apply --far-right;
@@ -199,93 +193,24 @@
       @apply --right;
     }
   }
-}
 
-.box {
-  border: solid 3px var(--unrouted);
-  padding: 12px;
-  margin-left: 16px;
-  margin-right: 16px;
-  height: 100%;
-}
-
-.box-scroll {
-  overflow-y: scroll;
-}
-
-.box-hidden {
-  overflow-y: hidden;
-}
-
-.routable {
-  position: relative;
-  height: 38px;
-  margin-top: 8px;
-  width: 99%;
-
-  & .button {
-    width: 100%;
-    cursor: initial;
-    border-radius: 0;
-    border: none;
-    fill: var(--color);
-    color: var(--color);
-    transition: color 0.25s, fill 0.25s, background-color 0.25s;
-
-    & .label {
-      width: 100%;
-    }
-
-    & .label,
-    & .description {
-      font-weight: normal;
-      text-align: right;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-  }
-}
-
-.routables-scroll {
-  overflow-y: auto;
-}
-
-.checkbox {
-  margin-left: 4px;
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  padding: 2px;
-  border: solid 2px;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  & .gel-icon {
-    margin: auto;
-    width: 100%;
+  & .box {
+    border: solid 3px var(--box-border);
+    padding: 12px;
+    margin-left: 16px;
+    margin-right: 16px;
     height: 100%;
   }
 
-  & .gel-icon-no,
-  & .gel-icon-minus,
-  & .gel-icon-empty {
-    display: none;
+  & .box-scroll {
+    overflow-y: scroll;
   }
-}
 
-.checked .gel-icon-no,
-.all .gel-icon-no {
-  display: block;
-}
+  & .box-hidden {
+    overflow-y: hidden;
+  }
 
-.some .gel-icon-minus {
-  display: block;
-}
-
-.unchecked .gel-icon-empty,
-.none .gel-icon-empty {
-  display: block;
+  & .routables-scroll {
+    overflow-y: auto;
+  }
 }
