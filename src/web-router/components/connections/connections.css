@@ -2,6 +2,7 @@
   --routed: #f5d328;
   --remove: #ec5d57;
   --expanded: #ff6db5;
+  --remove-icon: #fff;
 }
 
 .connections {
@@ -72,5 +73,44 @@
   & .receivers {
     position: relative;
     left: 20%;
+  }
+
+  & .senders .node {
+    top: 50%;
+    right: 0;
+    transform: translate(12px, -50%);
+
+    & .gel-icon {
+      fill: transparent;
+    }
+  }
+
+  & .receivers .node {
+    top: 50%;
+    left: 0;
+    transform: translate(-12px, -50%);
+
+    & .gel-icon {
+      fill: transparent;
+    }
+
+    &-container-routed {
+      z-index: 1;
+    }
+  }
+
+  & .receivers .routable {
+    &.routed,
+    &.unrouting,
+    &.remove {
+      & .node {
+        z-index: 1;
+        transform: translate(-26px, -50%);
+
+        & .gel-icon {
+          fill: var(--remove-icon);
+        }
+      }
+    }
   }
 }

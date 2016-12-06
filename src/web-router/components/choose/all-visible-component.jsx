@@ -4,7 +4,7 @@ import Routable from '../../routables/routable-component'
 
 let Visible = ({type, actions, expanded, state}) => {
   return <Routable
-    baseState={`static blank ${state}`}
+    baseState={`blank ${state}`}
     routable={{
       label: 'All Visible',
       format: 'blank'

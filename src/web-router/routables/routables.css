@@ -38,6 +38,183 @@
       text-overflow: ellipsis;
     }
   }
+
+  & .node-container {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 38px;
+    z-index: -1;
+
+    & .node {
+      background-color: var(--unrouted);
+      position: absolute;
+      width: var(--node-width);
+      height: var(--node-width);
+      border-radius: 90px;
+      transition: color 0.25s, fill 0.25s, background-color 0.25s, transform 0.25s;
+
+      & .gel-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        transition: fill 0.25s;
+      }
+    }
+  }
+
+  &.full {
+    margin-top: 90px;
+    margin-left: 10%;
+    position: absolute;
+    width: 33.3333%;
+
+    & .button-container {
+      width: 100%;
+      position: absolute;
+    }
+
+    & .node-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      z-index: -1;
+    }
+
+    & .node {
+      right: 0;
+      top: 50%;
+      transform: translate(12px, -50%);
+    }
+
+    & .button {
+      height: auto;
+      background-color: color(var(--expanded) tint(30%));
+
+      & .gel-icon {
+        height: 40px;
+        margin-top: 16px;
+        width: 100%;
+      }
+
+      & .label {
+        width: 95%;
+      }
+
+      & .label,
+      & .description {
+        text-align: center;
+        white-space: normal;
+      }
+
+      & .description {
+        font-style: italic;
+      }
+
+      & .description-container {
+        line-height: 18px;
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-bottom: 16px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--expanded);
+      }
+    }
+  }
+
+  & .unrouting .node {
+    background-color: var(--remove);
+  }
+
+  &.routed .node {
+    background-color: var(--routed);
+
+    &:hover {
+      background-color: var(--remove);
+      cursor: pointer;
+    }
+  }
+
+  &.contracted .button {
+    background-color: var(--contracted);
+  }
+
+  &:hover.selectable .button {
+    cursor: pointer;
+    background-color: var(--expanded);
+  }
+
+  &.disabled,
+  &.removed {
+    & .button {
+      background-color: color(var(--contracted) tint(75%));
+      fill: color(var(--color) tint(75%));
+      color: color(var(--color) tint(75%));
+
+      &:hover {
+        cursor: initial;
+        background-color: color(var(--contracted) tint(75%));
+        fill: color(var(--color) tint(75%));
+        color: color(var(--color) tint(75%));
+      }
+    }
+  }
+
+  &.other {
+    & .button {
+      background-color: color(var(--contracted) tint(25%));
+      fill: color(var(--color) tint(25%));
+      color: color(var(--color) tint(25%));
+    }
+
+    & .unrouted {
+      background-color: color(var(--unrouted) tint(25%));
+    }
+
+    & .routed {
+      background-color: color(var(--routed) tint(25%));
+    }
+  }
+
+  &.removed {
+    & .node {
+      background-color: transparent;
+
+      & .gel-icon {
+        fill: transparent;
+      }
+    }
+  }
+
+  &.disabled.unrouted {
+    & .node {
+      background-color: transparent;
+
+      & .gel-icon {
+        fill: transparent;
+      }
+    }
+  }
+}
+
+.expanded {
+  & .button-container,
+  & .node {
+    box-shadow: rgba(85, 85, 85, 0.5) 7px 7px 20px 3px;
+  }
+}
+
+.other,
+.contracted {
+  & .full {
+    display: none;
+  }
 }
 
 .checkbox {
@@ -66,279 +243,9 @@
 }
 
 .checked .gel-icon-no,
-.all .gel-icon-no {
-  display: block;
-}
-
-.some .gel-icon-minus {
-  display: block;
-}
-
+.all .gel-icon-no,
+.some .gel-icon-minus,
 .unchecked .gel-icon-empty,
 .none .gel-icon-empty {
   display: block;
-}
-
-.routable {
-  &.static {
-    & .button {
-      transition: background-color 0.25s !important;
-      background-color: var(--background-color) !important;
-      color: var(--color) !important;
-      fill: var(--color) !important;
-      width: 98%;
-      margin-right: 1%;
-
-      &:hover {
-        cursor: initial;
-      }
-    }
-  }
-
-  &.blank {
-    & .button {
-      background-color: transparent !important;
-
-      &:hover {
-        cursor: initial;
-      }
-    }
-  }
-}
-
-.node-container {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  height: 38px;
-  z-index: -1;
-}
-
-.node {
-  position: absolute;
-  width: var(--node-width);
-  height: var(--node-width);
-  border-radius: 90px;
-  transition: color 0.25s, fill 0.25s, background-color 0.25s, transform 0.25s;
-
-  & .gel-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    transition: fill 0.25s;
-  }
-}
-
-.senders .node {
-  top: 50%;
-  right: 0;
-  transform: translate(12px, -50%);
-
-  & .gel-icon {
-    fill: transparent;
-  }
-}
-
-.receivers .node {
-  top: 50%;
-  left: 0;
-  transform: translate(-12px, -50%);
-
-  & .gel-icon {
-    fill: transparent;
-  }
-
-  &-container-routed {
-    z-index: 1;
-  }
-}
-
-.routed {
-  background-color: var(--routed);
-
-  &:hover {
-    background-color: var(--remove);
-    cursor: pointer;
-  }
-}
-
-.unrouting {
-  background-color: var(--remove);
-}
-
-.receivers .routed,
-.receivers .unrouting,
-.receivers .remove {
-  z-index: 1;
-  transform: translate(-26px, -50%);
-
-  & .gel-icon {
-    fill: var(--remove-icon);
-  }
-}
-
-.unrouted {
-  background-color: var(--unrouted);
-}
-
-.remove {
-  background-color: var(--remove);
-}
-
-.contracted .button {
-  background-color: var(--contracted);
-}
-
-.connections .routable:hover.selectable {
-  cursor: pointer;
-}
-
-.connections .routable:hover.selectable .button {
-  cursor: pointer;
-  background-color: var(--expanded);
-}
-
-.disabled {
-  & .node.unrouted {
-    background-color: transparent;
-
-    & .gel-icon {
-      fill: transparent;
-    }
-  }
-}
-
-.removed {
-  & .node {
-    background-color: transparent;
-
-    & .gel-icon {
-      fill: transparent;
-    }
-  }
-}
-
-.other {
-  & .button {
-    background-color: color(var(--contracted) tint(25%));
-    fill: color(var(--color) tint(25%));
-    color: color(var(--color) tint(25%));
-  }
-
-  & .unrouted {
-    background-color: color(var(--unrouted) tint(25%));
-  }
-
-  & .routed {
-    background-color: color(var(--routed) tint(25%));
-  }
-}
-
-.disabled,
-.removed {
-  & .button {
-    background-color: color(var(--contracted) tint(75%));
-    fill: color(var(--color) tint(75%));
-    color: color(var(--color) tint(75%));
-
-    &:hover {
-      cursor: initial;
-      background-color: color(var(--contracted) tint(75%));
-      fill: color(var(--color) tint(75%));
-      color: color(var(--color) tint(75%));
-    }
-  }
-}
-
-.full {
-  margin-top: 90px;
-  margin-left: 10%;
-  position: absolute;
-  width: 33.3333%;
-
-  & .button-container {
-    width: 100%;
-    position: absolute;
-  }
-
-  & .node-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    z-index: -1;
-  }
-
-  & .node {
-    right: 0;
-    top: 50%;
-    transform: translate(12px, -50%);
-  }
-
-  & .button {
-    height: auto;
-    background-color: color(var(--expanded) tint(30%));
-
-    & .gel-icon {
-      height: 40px;
-      margin-top: 16px;
-      width: 100%;
-    }
-
-    & .label {
-      width: 95%;
-    }
-
-    & .label,
-    & .description {
-      text-align: center;
-      white-space: normal;
-    }
-
-    & .description {
-      font-style: italic;
-    }
-
-    & .description-container {
-      line-height: 18px;
-      margin-left: 16px;
-      margin-right: 16px;
-      margin-bottom: 16px;
-    }
-
-    &:hover {
-      cursor: pointer;
-      background-color: var(--expanded);
-    }
-  }
-}
-
-.other,
-.contracted {
-  & .full {
-    display: none;
-  }
-}
-
-.expanded {
-  & .button-container,
-  & .node {
-    box-shadow: rgba(85, 85, 85, 0.5) 7px 7px 20px 3px;
-  }
-
-  & .node {
-    &:hover {
-      cursor: auto;
-    }
-
-    &.routed:hover {
-      background-color: var(--routed);
-    }
-
-    &.unrouted:hover {
-      background-color: var(--unrouted);
-    }
-  }
 }

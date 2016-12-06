@@ -1,5 +1,6 @@
 :root {
   --placeholder: #555;
+  --contracted: #dfe3e2;
 }
 
 .choose-view {
@@ -14,6 +15,19 @@
 
   & .routable {
     width: 90%;
+
+    &:hover .button {
+      cursor: initial;
+      background-color: var(--contracted);
+    }
+
+    &.blank {
+      background-color: transparent;
+
+      &:hover .button {
+        background-color: transparent;
+      }
+    }
   }
 
   & .routable .checkbox {
