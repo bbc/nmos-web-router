@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
-import Icon from './icon-component'
+import Icon from '../components/shared/icon-component'
 import Checkbox from './checkbox-component'
-import { No } from '../../../gel-react/iconography'
+import { No } from '../../gel-react/iconography'
 
 const noop = function () {}
 

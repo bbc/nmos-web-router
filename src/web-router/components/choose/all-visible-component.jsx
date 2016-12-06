@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
-import Routable from '../shared/routable-component'
+import Routable from '../../routables/routable-component'
 
 let Visible = ({type, actions, expanded, state}) => {
   return <Routable

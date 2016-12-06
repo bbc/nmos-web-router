@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { No } from '../../../gel-react/iconography'
+import { No } from '../../gel-react/iconography'
 
 let Minus = () => {
   return <svg
