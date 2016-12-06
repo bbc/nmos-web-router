@@ -8,6 +8,9 @@ let Routes = ({routes}) => {
     gels='2/10'>
     <div className='routes-container'>{
         routes
+          .filter(route => {
+            return route.receiver.state.includes('checked') && route.sender.state.includes('checked')
+          })
           .map((route, index) => {
             return <Route
               key={`route-${route.receiver.id}-${route.sender.id}`}

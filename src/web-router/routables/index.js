@@ -409,6 +409,24 @@ function stateToString (state) {
   .join(' ')
 }
 
+function mapRoutesRoutableState (routes, receivers, senders) {
+  routes = routes.map(route => {
+    route = Object.assign({}, route)
+    let sender = senders.filter(sender => {
+      return sender.id === route.sender.id
+    })[0]
+    route.sender = Object.assign({}, route.sender, sender)
+
+    let receiver = receivers.filter(receiver => {
+      return receiver.id === route.receiver.id
+    })[0]
+    route.receiver = Object.assign({}, route.receiver, receiver)
+
+    return route
+  })
+  return routes
+}
+
 export default ({senders, flows, receivers, routes}) => {
   senders = senders || []
   flows = flows || []
@@ -458,12 +476,14 @@ export default ({senders, flows, receivers, routes}) => {
         if (id === 'all') receivers = mapCheckAll(receivers)
         else if (id === 'none') receivers = mapCheckNone(receivers)
         else receivers = mapCheck(receivers, id)
+        routes = mapRoutesRoutableState(routes, receivers, senders)
         return routables
       },
       senders (id) {
         if (id === 'all') senders = mapCheckAll(senders)
         else if (id === 'none') senders = mapCheckNone(senders)
         else senders = mapCheck(senders, id)
+        routes = mapRoutesRoutableState(routes, receivers, senders)
         return routables
       }
     },
@@ -538,6 +558,7 @@ export default ({senders, flows, receivers, routes}) => {
 
           senders = mapSenders(senders, receivers, flows, grain)
           routes = mapRoutesWithUpdatedSenders(routes, receivers, removed, added)
+          routes = mapRoutesRoutableState(routes, receivers, senders)
         })
 
         senders.sort(window.nmos.defaultSort)
@@ -569,6 +590,7 @@ export default ({senders, flows, receivers, routes}) => {
 
         senders = mapSenderRoutedState(senders, receivers)
         routes = mapRoutesWithUpdatedReceivers(routes, senders, removed, added, updated)
+        routes = mapRoutesRoutableState(routes, receivers, senders)
 
         senders.sort(window.nmos.defaultSort)
         receivers.sort(window.nmos.defaultSort)
