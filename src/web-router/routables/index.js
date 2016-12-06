@@ -245,6 +245,12 @@ function mapRoutes (routes, senders, receivers) {
 function mapAddReceivers (receivers, grain) {
   let newReceivers = mapInitialReceiverState([grain.post])
   newReceivers = mapRoutedReceivers(newReceivers)
+  newReceivers = newReceivers.map(receiver => {
+    receiver = Object.assign({}, receiver)
+    receiver.state = mapState(receiver).uncheck().state()
+    receiver.stateString = stateToString(receiver.state)
+    return receiver
+  })
   return receivers.concat(newReceivers)
 }
 
@@ -351,6 +357,12 @@ function mapAddSenders (senders, receivers, flows, grain) {
   let newSenders = mapSenderFormats([grain.post], flows)
   newSenders = mapInitialSenderState(newSenders)
   newSenders = mapSenderRoutedState(newSenders, receivers)
+  newSenders = newSenders.map(sender => {
+    sender = Object.assign({}, sender)
+    sender.state = mapState(sender).uncheck().state()
+    sender.stateString = stateToString(sender.state)
+    return sender
+  })
   return senders.concat(newSenders)
 }
 
