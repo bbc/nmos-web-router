@@ -2,7 +2,7 @@
   --placeholder: #555;
 }
 
-.choose {
+.choose-view {
   & .checkbox {
     position: absolute;
   }

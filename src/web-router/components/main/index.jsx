@@ -13,7 +13,7 @@ let WebRouter = ({view, actions}) => {
     <Buttons
       term={view.choose.term}
       />
-    <div className='container choose left'>
+    <div className='container choose-view left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
       <Choose
         view={view.choose}
@@ -23,7 +23,7 @@ let WebRouter = ({view, actions}) => {
         actions={actions}
         />
     </div>
-    <div className='container route center'>
+    <div className='container route-view center'>
       <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
       <Connections
         routesEl={view.routesEl}
@@ -34,7 +34,7 @@ let WebRouter = ({view, actions}) => {
         actions={actions}
         />
     </div>
-    <div className='expanded-sender-container route center'>
+    <div className='expanded-sender-container route-view center'>
       <ExpandedSender
         sender={view.expanded}
         actions={actions}
