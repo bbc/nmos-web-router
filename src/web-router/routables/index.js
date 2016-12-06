@@ -287,17 +287,17 @@ function mapRoutesWithUpdatedReceivers (routes, senders, removed, added, updated
   })
 
   updated.forEach(grain => {
-    let isRemoving = grain.post.subscription.sender_id === null && grain.pre.subscription.sender_id !== null
     let isReplacing = grain.post.subscription.sender_id !== grain.pre.subscription.sender_id && grain.post.subscription.sender_id !== null && grain.pre.subscription.sender_id !== null
-    if (isRemoving || isReplacing) {
-      let senderId = grain.pre.subscription.sender_id
-      let receiverId = grain.pre.id
-      routes.forEach((route, index) => {
-        if (route.sender.id === senderId && route.receiver.id === receiverId) removeIndexes = [index].concat(removeIndexes)
-      })
-    }
-
     let isAdding = grain.post.subscription.sender_id !== null && grain.pre.subscription.sender_id === null
+
+    routes.forEach((route, index) => {
+      let matchedPost = route.receiver.id === grain.post.id && route.sender.id === grain.post.subscription.sender_id
+      let matchedPre = route.receiver.id === grain.pre.id && route.sender.id === grain.pre.subscription.sender_id
+      if (matchedPost || matchedPre) {
+        removeIndexes = [index].concat(removeIndexes)
+      }
+    })
+
     if (isAdding || isReplacing) {
       added.push(grain.post)
     }
