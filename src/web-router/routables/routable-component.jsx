@@ -1,3 +1,4 @@
+import './routables.css'
 import React, { PropTypes } from 'react'
 import Icon from '../components/shared/icon-component'
 import Checkbox from './checkbox-component'

@@ -248,7 +248,7 @@
 }
 
 .routables-scroll {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .checkbox {
