@@ -293,7 +293,7 @@ function mapRoutesWithUpdatedReceivers (routes, senders, removed, added, updated
   })
 
   updated.forEach(grain => {
-    let isReplacing = grain.post.subscription.sender_id !== grain.pre.subscription.sender_id && grain.post.subscription.sender_id !== null && grain.pre.subscription.sender_id !== null
+    let isReplacing = grain.post.subscription.sender_id !== null && grain.pre.subscription.sender_id !== null
     let isAdding = grain.post.subscription.sender_id !== null && grain.pre.subscription.sender_id === null
 
     routes.forEach((route, index) => {
