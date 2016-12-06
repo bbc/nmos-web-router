@@ -36,7 +36,7 @@ let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, on
   onNode = onNode || noop
   onNodeRender = onNodeRender || noop
 
-  let routableState = routable.stateString
+  let routableState = routable.stateString || ''
 
   let CheckboxComponent = null
   if (checkbox) {
