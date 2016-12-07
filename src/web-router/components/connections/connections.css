@@ -1,7 +1,7 @@
 :root {
   --routed: #f5d328;
   --remove: #ec5d57;
-  --expanded: #ff6db5;
+  --default: #a19ea0;
   --remove-icon: #fff;
 }
 
@@ -42,11 +42,11 @@
       width: 100%;
 
       & .line {
-        transition: stroke-dasharray 0.25s, stroke 0.25s;
+        transition: stroke-dasharray 1s, stroke 1s;
         fill: transparent;
         stroke-linecap: round;
         stroke-width: 3;
-        stroke: var(--expanded);
+        stroke: color(var(--default) tint(33%));
         stroke-dasharray: 0, 0;
       }
 
