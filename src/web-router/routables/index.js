@@ -276,6 +276,16 @@ function mapUpdateReceivers (receivers, grain) {
         .forEach(key => {
           receiver[key] = grain.post[key]
         })
+
+      receiver.subscription = {
+        sender_id: grain.post.subscription.sender_id
+      }
+      let receiverMapState = mapState(receiver)
+      receiverMapState.unroute()
+      if (receiver.subscription.sender_id !== null) receiverMapState.route()
+
+      receiver.state = receiverMapState.state()
+      receiver.stateString = stateToString(receiver.state)
     }
     return receiver
   })
