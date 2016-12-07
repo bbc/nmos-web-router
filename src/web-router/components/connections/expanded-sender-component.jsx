@@ -4,6 +4,9 @@ import { Layout, LayoutItem } from '../../../gel-react/grid'
 import { LongPrimer, Pica } from '../../../gel-react/typography'
 
 class ExpandedSender extends React.Component {
+  componentDidMount () {
+    this.props.actions.update()
+  }
   render () {
     let sender = this.props.sender
     let actions = this.props.actions

@@ -9,6 +9,14 @@ import Choose from '../choose'
 import Buttons from './buttons-component'
 
 let WebRouter = ({view, actions}) => {
+  let Expanded = null
+  let isExpanded = view.expanded.state && view.expanded.state.includes('expanded')
+  if (isExpanded) {
+    Expanded = <ExpandedSender
+      sender={view.expanded}
+      actions={actions}
+      />
+  }
   return <div className='main'>
     <Buttons
       term={view.choose.term}
@@ -35,10 +43,7 @@ let WebRouter = ({view, actions}) => {
         />
     </div>
     <div className='expanded-sender-container route-view center'>
-      <ExpandedSender
-        sender={view.expanded}
-        actions={actions}
-        />
+      {Expanded}
     </div>
     <div className='container confirm right'>
       <LayoutItem><DoublePica>Confirm</DoublePica></LayoutItem>
