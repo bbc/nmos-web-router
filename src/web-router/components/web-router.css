@@ -195,11 +195,15 @@
   }
 
   & .box {
-    border: solid 3px var(--box-border);
+    border: solid 3px transparent;
     padding: 12px;
     margin-left: 16px;
     margin-right: 16px;
     height: 100%;
+
+    @media (--tablet) {
+      border: solid 3px var(--box-border);
+    }
   }
 
   & .box-scroll {
