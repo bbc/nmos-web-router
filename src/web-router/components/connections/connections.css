@@ -70,45 +70,46 @@
     }
   }
 
-  & .receivers {
-    position: relative;
-    left: 20%;
+  & .receivers,
+  & .senders {
+    & .node {
+      top: 50%;
+
+      & .gel-icon {
+        fill: transparent;
+      }
+    }
   }
 
   & .senders .node {
-    top: 50%;
     right: 0;
     transform: translate(12px, -50%);
-
-    & .gel-icon {
-      fill: transparent;
-    }
   }
 
-  & .receivers .node {
-    top: 50%;
-    left: 0;
-    transform: translate(-12px, -50%);
+  & .receivers {
+    position: relative;
+    left: 20%;
 
-    & .gel-icon {
-      fill: transparent;
-    }
+    & .node {
+      left: 0;
+      transform: translate(-12px, -50%);
 
-    &-container-routed {
-      z-index: 1;
-    }
-  }
-
-  & .receivers .routable {
-    &.routed,
-    &.unrouting,
-    &.remove {
-      & .node-container {
+      &-container-routed {
         z-index: 1;
-        transform: translateX(-26px);
+      }
+    }
 
-        & .gel-icon {
-          fill: var(--remove-icon);
+    & .routable {
+      &.routed,
+      &.unrouting,
+      &.remove {
+        & .node-container {
+          z-index: 1;
+          transform: translateX(-26px);
+
+          & .gel-icon {
+            fill: var(--remove-icon);
+          }
         }
       }
     }
