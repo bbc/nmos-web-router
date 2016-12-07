@@ -103,7 +103,7 @@
     &.routed,
     &.unrouting,
     &.remove {
-      & .node {
+      & .node-container {
         z-index: 1;
         transform: translate(-26px, -50%);
 
