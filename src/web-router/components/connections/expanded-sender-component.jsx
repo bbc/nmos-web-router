@@ -4,15 +4,8 @@ import { Layout, LayoutItem } from '../../../gel-react/grid'
 import { LongPrimer, Pica } from '../../../gel-react/typography'
 
 let ExpandedSender = ({sender, actions}) => {
-  let senderState = sender.state || []
-  senderState = senderState
-    .filter(state => {
-      return state !== ''
-    })
-    .join(' ')
-
-  return <div className={senderState}>
-    <div className='full expanded-sender routable'>
+  return <div className={sender.stateString}>
+    <div className={`full expanded-sender routable ${sender.stateString}`}>
       <div className='button-container'>
         <Layout
           layouts='flush'

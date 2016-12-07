@@ -24,6 +24,7 @@ let Connections = ({expanded, senders, receivers, routes, actions}) => {
       <Routes
         routes={routes}
         actions={actions}
+        expanded={expanded}
         />
     </Layout>
   </Layout>

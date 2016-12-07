@@ -29,11 +29,13 @@ Line.propTypes = {
   width: PropTypes.number.isRequired
 }
 
-let Route = ({data}) => {
+let Route = ({data, expanded}) => {
   let routesEl = document.querySelector('.routes')
   if (routesEl === null) return null
 
   let senderEl = document.getElementById(data.sender.id)
+  if (expanded) senderEl = document.querySelector('.expanded-sender')
+
   if (senderEl === null) return null
   let senderNodeEl = senderEl.querySelector('.node')
 
@@ -63,7 +65,7 @@ let Route = ({data}) => {
   let LineComponent = Path
   if (y1 === y2) LineComponent = Line
 
-  if (data.expanded) {
+  if (expanded) {
     y2 = receiverRects.top
     className += ' expanded'
     let scrollTop = routesEl.parentElement.scrollTop
@@ -94,7 +96,8 @@ let Route = ({data}) => {
 }
 
 Route.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  expanded: PropTypes.bool.isRequired
 }
 
 export default Route
