@@ -1,7 +1,7 @@
 import Routables from './'
 import generate from '../../ips-nmos-api/src/stub/generate'
 
-describe('routables', () => {
+xdescribe('routables', () => {
   let routables, senders, receivers, flows
 
   function initSenders () {
