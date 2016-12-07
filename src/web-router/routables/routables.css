@@ -207,7 +207,7 @@
 .expanded {
   & .button-container,
   & .node {
-    box-shadow: rgba(85, 85, 85, 0.5) 7px 7px 20px 3px;
+    box-shadow: rgba(85, 85, 85, 0.5) -7px 7px 20px 3px;
   }
 }
 

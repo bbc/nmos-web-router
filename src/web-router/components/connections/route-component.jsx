@@ -70,7 +70,9 @@ let Route = ({data, expanded}) => {
     className += ' expanded'
     let scrollTop = routesEl.parentElement.scrollTop
     x1 = routesRects.width / 10
-    top = routesRects.top + scrollTop + 70 // need to calculate this number 70...
+    let senderButtonContainer = senderEl.querySelector('.button-container')
+    let senderHeight = senderButtonContainer.getBoundingClientRect().height / 2 + 12
+    top = routesRects.top + scrollTop + senderHeight
     height = Math.abs(top - receiverRects.top)
     if (y2 < top) {
       y1 = height

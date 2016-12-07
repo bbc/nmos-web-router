@@ -42,11 +42,11 @@
       width: 100%;
 
       & .line {
-        transition: stroke-dasharray 1s, stroke 1s;
+        transition: stroke-dasharray 1s ease-out, stroke 1s ease-out;
         fill: transparent;
         stroke-linecap: round;
         stroke-width: 3;
-        stroke: color(var(--default) tint(33%));
+        stroke: color(var(--default) tint(30%));
         stroke-dasharray: 0, 0;
       }
 
