@@ -5,48 +5,30 @@ import Path from './path-component'
 let ExpandedRoute = ({data, routesRects, scrollTop}) => {
   let senderEl = document.querySelector('.expanded-sender')
   if (senderEl === null) return null
-  let senderNodeEl = senderEl.querySelector('.node')
-  let senderRects = senderNodeEl.getBoundingClientRect()
 
   let receiverEl = document.getElementById(data.receiver.id)
   let receiverNodeEl = receiverEl.querySelector('.node')
   let receiverRects = receiverNodeEl.getBoundingClientRect()
 
-  let width = routesRects.width
-  let height = Math.abs(senderRects.top - receiverRects.top)
-
-  let className = `route route-${data.state} expanded`
-
-  let x1 = 0
-  let y1 = height
-  let y2 = 0
-  let top = receiverRects.top
-  if (senderRects.top < receiverRects.top) {
-    top = senderRects.top
-    y2 = height
-    y1 = 0
-  }
-  y2 = receiverRects.top
-
-  x1 = routesRects.width / 10
   let senderButtonContainer = senderEl.querySelector('.button-container')
   let senderHeight = senderButtonContainer.getBoundingClientRect().height / 2 + 12
-  top = routesRects.top + scrollTop + senderHeight
-  height = Math.abs(top - receiverRects.top)
-  if (y2 < top) {
+  let top = routesRects.top + scrollTop + senderHeight
+  let height = Math.abs(top - receiverRects.top)
+
+  let y1 = 0
+  let y2 = height
+  if (receiverRects.top < top) {
     y1 = height
     y2 = 0
     top -= height
-  } else {
-    y1 = 0
-    y2 = height
   }
-
+  let x1 = routesRects.width / 10
+  let width = routesRects.width
   return <svg
     style={{
       top: top - routesRects.top
     }}
-    className={className}
+    className={`route route-${data.state} expanded`}
     viewBox={`0 0 ${width} ${height + 4}`}
     preserveAspectRatio='none'
     height={height + 4}
