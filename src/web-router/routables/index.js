@@ -131,12 +131,6 @@ function get (routables, id) {
 
 function mapInitialRouted (senders, receivers, routes) {
   return receivers
-    .filter(receiver => {
-      let routed = receiver.subscription.sender_id !== null
-      let sender = get(senders, receiver.subscription.sender_id)
-      let senderExists = !isEmpty(sender)
-      return routed && senderExists
-    })
     .map(receiver => {
       let sender = get(senders, receiver.subscription.sender_id)
       return {

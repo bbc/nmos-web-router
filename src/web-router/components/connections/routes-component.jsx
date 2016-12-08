@@ -8,16 +8,13 @@ let Routes = ({routes, expanded}) => {
     gels='2/10'>
     <div className='routes-container'>{
         routes
-          .filter(route => {
-            return route.receiver.state.includes('checked') && route.sender.state.includes('checked')
-          })
           .map((route, index) => {
             let isExpanded = false
             if (expanded.state && expanded.state.includes('expanded')) {
               isExpanded = route.sender.id === expanded.id
             }
             return <Route
-              key={`route-${route.receiver.id}-${route.sender.id}`}
+              key={`route-${route.receiver.id || 'half'}-${route.sender.id || 'half'}`}
               data={route}
               expanded={isExpanded}
               />
