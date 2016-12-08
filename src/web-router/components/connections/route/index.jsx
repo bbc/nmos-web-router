@@ -59,9 +59,6 @@ let FullRoute = ({data, routesRects, scrollTop}) => {
   let width = routesRects.width
   let height = Math.abs(senderRects.top - receiverRects.top)
 
-  let className = `route route-${data.state}`
-
-  let x1 = 0
   let y1 = height
   let y2 = 0
   let top = receiverRects.top
@@ -71,30 +68,19 @@ let FullRoute = ({data, routesRects, scrollTop}) => {
     y1 = 0
   }
 
-  if (y1 === y2) {
-    return <svg
-      style={{
-        top: top - routesRects.top
-      }}
-      className={className}
-      viewBox={`0 0 ${width} ${height + 4}`}
-      preserveAspectRatio='none'
-      height={height + 4}
-      xmlns='http://www.w3.org/2000/svg'>
-      <Line x1={x1} y1={y1} y2={y2} width={width} height={height} />
-    </svg>
-  }
+  let LineComponent = Path
+  if (y1 === y2) LineComponent = Line
 
   return <svg
     style={{
       top: top - routesRects.top
     }}
-    className={className}
+    className={`route route-${data.state}`}
     viewBox={`0 0 ${width} ${height + 4}`}
     preserveAspectRatio='none'
     height={height + 4}
     xmlns='http://www.w3.org/2000/svg'>
-    <Path x1={x1} y1={y1} y2={y2} width={width} height={height} />
+    <LineComponent x1={0} y1={y1} y2={y2} width={width} height={height} />
   </svg>
 }
 
