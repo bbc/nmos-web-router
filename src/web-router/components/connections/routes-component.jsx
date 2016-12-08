@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
-import Route from './route-component'
+import Route from './route'
 
 let Routes = ({routes, expanded}) => {
   return <LayoutItem
