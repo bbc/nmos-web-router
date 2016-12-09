@@ -16,7 +16,7 @@ let Routes = ({routes, expanded}) => {
               isExpanded = route.sender.id === expanded.id
             }
             return <Route
-              key={`route-${route.receiver.id || 'half'}-${route.sender.id || 'half'}-${index}`}
+              key={`route-${index}`}
               data={route}
               expanded={isExpanded}
               />
