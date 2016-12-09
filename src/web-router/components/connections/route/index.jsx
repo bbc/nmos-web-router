@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react'
 import Line from './line-component'
 import Path from './path-component'
+import RouteSVG from './route-svg-component'
 
 let ExpandedRoute = ({data, routesRects, scrollTop}) => {
   let senderEl = document.querySelector('.expanded-sender')
@@ -24,17 +25,14 @@ let ExpandedRoute = ({data, routesRects, scrollTop}) => {
   }
   let x1 = routesRects.width / 10
   let width = routesRects.width
-  return <svg
-    style={{
-      top: top - routesRects.top
-    }}
-    className={`route route-${data.state} expanded`}
-    viewBox={`0 0 ${width} ${height + 4}`}
-    preserveAspectRatio='none'
-    height={height + 4}
-    xmlns='http://www.w3.org/2000/svg'>
+  return <RouteSVG
+    top={top - routesRects.top}
+    state={`${data.state} expanded`}
+    width={width}
+    height={height}
+    >
     <Path x1={x1} y1={y1} y2={y2} width={width} height={height} />
-  </svg>
+  </RouteSVG>
 }
 
 ExpandedRoute.propTypes = {
