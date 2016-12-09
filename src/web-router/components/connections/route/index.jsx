@@ -1,9 +1,10 @@
 import React, {PropTypes} from 'react'
+import Half from './half-component'
 import Line from './line-component'
 import Path from './path-component'
 import RouteSVG from './route-svg-component'
 
-let ExpandedRoute = ({data, routesRects, scrollTop}) => {
+let ExpandedRoute = ({data, routesRects, scrollTop, half}) => {
   let senderEl = document.querySelector('.expanded-sender')
   if (senderEl === null) return null
 
@@ -25,20 +26,31 @@ let ExpandedRoute = ({data, routesRects, scrollTop}) => {
   }
   let x1 = routesRects.width / 10
   let width = routesRects.width
+
+  let LineComponent = Path
+  if (half) {
+    LineComponent = Half
+    top = routesRects.top + scrollTop + senderHeight
+  }
+
+  top -= routesRects.top
+  console.log(top)
+
   return <RouteSVG
-    top={top - routesRects.top}
+    top={top}
     state={`${data.state} expanded`}
     width={width}
     height={height}
     >
-    <Path x1={x1} y1={y1} y2={y2} width={width} height={height} />
+    <LineComponent side='left' x1={x1} y1={y1} y2={y2} width={width} height={height} />
   </RouteSVG>
 }
 
 ExpandedRoute.propTypes = {
   data: PropTypes.object.isRequired,
   routesRects: PropTypes.object.isRequired,
-  scrollTop: PropTypes.number.isRequired
+  scrollTop: PropTypes.number.isRequired,
+  half: PropTypes.bool.isRequired
 }
 
 let FullRoute = ({data, routesRects, scrollTop}) => {
@@ -69,17 +81,14 @@ let FullRoute = ({data, routesRects, scrollTop}) => {
   let LineComponent = Path
   if (y1 === y2) LineComponent = Line
 
-  return <svg
-    style={{
-      top: top - routesRects.top
-    }}
-    className={`route route-${data.state}`}
-    viewBox={`0 0 ${width} ${height + 4}`}
-    preserveAspectRatio='none'
-    height={height + 4}
-    xmlns='http://www.w3.org/2000/svg'>
+  return <RouteSVG
+    top={top - routesRects.top}
+    state={data.state}
+    width={width}
+    height={height}
+    >
     <LineComponent x1={0} y1={y1} y2={y2} width={width} height={height} />
-  </svg>
+  </RouteSVG>
 }
 
 FullRoute.propTypes = {
@@ -88,27 +97,32 @@ FullRoute.propTypes = {
   scrollTop: PropTypes.number.isRequired
 }
 
-/*
-if there is no sender/receiver element
-or if either of the sender/receiver happens to be unchecked/removed
-   then do half
-
-Also would be good to make Expanded/Full Route to be metrics creaters instead
-  then it would make this thing easier
-*/
-let Route = ({data, expanded}) => {
+let Route = ({data, expanded, halfs}) => {
   let routesEl = document.querySelector('.routes')
   if (routesEl === null) return null
   let routesRects = routesEl.getBoundingClientRect()
   let scrollTop = routesEl.parentElement.scrollTop
 
-  if (expanded) return ExpandedRoute({data, routesRects, scrollTop})
-  else return FullRoute({data, routesRects, scrollTop})
+  if (expanded) {
+    return <ExpandedRoute
+      data={data}
+      routesRects={routesRects}
+      scrollTop={scrollTop}
+      half={halfs.includes('receiver')}
+      />
+  } else {
+    return <FullRoute
+      data={data}
+      routesRects={routesRects}
+      scrollTop={scrollTop}
+      />
+  }
 }
 
 Route.propTypes = {
   data: PropTypes.object.isRequired,
-  expanded: PropTypes.bool.isRequired
+  expanded: PropTypes.bool.isRequired,
+  halfs: PropTypes.array.isRequired
 }
 
 export default Route
