@@ -15,8 +15,9 @@ let Routes = ({routes, expanded}) => {
             if (expanded.state && expanded.state.includes('expanded')) {
               isExpanded = route.sender.id === expanded.id
             }
+            let half = `half-${index}`
             return <Route
-              key={`route-${index}`}
+              key={`route-${route.receiver.id || half}-${route.sender.id || half}`}
               data={route}
               expanded={isExpanded}
               />
