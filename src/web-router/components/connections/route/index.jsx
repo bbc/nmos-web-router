@@ -90,6 +90,14 @@ FullRoute.propTypes = {
   scrollTop: PropTypes.number.isRequired
 }
 
+/*
+if there is no sender/receiver element
+or if either of the sender/receiver happens to be unchecked/removed
+   then do half
+
+Also would be good to make Expanded/Full Route to be metrics creaters instead
+  then it would make this thing easier
+*/
 let Route = ({data, expanded}) => {
   let routesEl = document.querySelector('.routes')
   if (routesEl === null) return null

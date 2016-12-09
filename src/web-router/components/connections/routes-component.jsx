@@ -3,8 +3,10 @@ import { LayoutItem } from '../../../gel-react/grid'
 import Route from './route'
 
 let Routes = ({routes, expanded}) => {
+  let expandedClassName = expanded.state.includes('expanded') ? ' expanded' : ''
+  let className = `routes${expandedClassName}`
   return <LayoutItem
-    className='routes'
+    className={className}
     gels='2/10'>
     <div className='routes-container'>{
         routes

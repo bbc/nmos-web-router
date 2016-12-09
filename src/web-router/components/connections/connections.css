@@ -34,6 +34,18 @@
       height: 100%;
     }
 
+    &.expanded {
+      & .route {
+        & .line {
+          stroke: color(var(--default) tint(75%));
+        }
+
+        &-unrouting .line {
+          stroke: color(var(--remove) tint(30%));
+        }
+      }
+    }
+
     & .route {
       position: absolute;
       padding: 2px 0;
