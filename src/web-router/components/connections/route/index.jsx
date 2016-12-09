@@ -34,7 +34,6 @@ let ExpandedRoute = ({data, routesRects, scrollTop, half}) => {
   }
 
   top -= routesRects.top
-  console.log(top)
 
   return <RouteSVG
     top={top}
@@ -55,15 +54,11 @@ ExpandedRoute.propTypes = {
 
 let FullRoute = ({data, routesRects, scrollTop}) => {
   let senderEl = document.getElementById(data.sender.id)
-
-  if (senderEl === null) return null
   let senderNodeEl = senderEl.querySelector('.node')
+  let senderRects = senderNodeEl.getBoundingClientRect()
 
   let receiverEl = document.getElementById(data.receiver.id)
-  if (receiverEl === null) return null
   let receiverNodeEl = receiverEl.querySelector('.node')
-
-  let senderRects = senderNodeEl.getBoundingClientRect()
   let receiverRects = receiverNodeEl.getBoundingClientRect()
 
   let width = routesRects.width
@@ -77,12 +72,13 @@ let FullRoute = ({data, routesRects, scrollTop}) => {
     y2 = height
     y1 = 0
   }
+  top -= routesRects.top
 
   let LineComponent = Path
   if (y1 === y2) LineComponent = Line
 
   return <RouteSVG
-    top={top - routesRects.top}
+    top={top}
     state={data.state}
     width={width}
     height={height}
@@ -92,6 +88,31 @@ let FullRoute = ({data, routesRects, scrollTop}) => {
 }
 
 FullRoute.propTypes = {
+  data: PropTypes.object.isRequired,
+  routesRects: PropTypes.object.isRequired,
+  scrollTop: PropTypes.number.isRequired
+}
+
+let HalfRoute = ({data, side, routesRects, scrollTop}) => {
+  let routableEl = document.getElementById(data.routable.id)
+  let routableNodeEl = routableEl.querySelector('.node')
+  let routableRects = routableNodeEl.getBoundingClientRect()
+
+  let width = routesRects.width
+  let top = routableRects.top - routesRects.top
+
+  return <RouteSVG
+    top={top}
+    state={data.state}
+    width={width}
+    height={4}
+    >
+    <Half side={side} x1={0} width={width} />
+  </RouteSVG>
+}
+
+HalfRoute.propTypes = {
+  side: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
   routesRects: PropTypes.object.isRequired,
   scrollTop: PropTypes.number.isRequired
@@ -109,6 +130,24 @@ let Route = ({data, expanded, halfs}) => {
       routesRects={routesRects}
       scrollTop={scrollTop}
       half={halfs.includes('receiver')}
+      />
+  } else if (halfs.length === 1) {
+    let side = 'right'
+    let routableType = 'receiver'
+
+    if (halfs[0] === 'receiver') {
+      side = 'left'
+      routableType = 'sender'
+    }
+    data = {
+      state: data.state,
+      routable: data[routableType]
+    }
+    return <HalfRoute
+      data={data}
+      routesRects={routesRects}
+      scrollTop={scrollTop}
+      side={side}
       />
   } else {
     return <FullRoute

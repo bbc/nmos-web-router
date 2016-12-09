@@ -27,6 +27,7 @@ let Routes = ({routes, expanded}) => {
             let halfs = []
             if (isHalf(route.receiver)) halfs.push('receiver')
             if (isHalf(route.sender)) halfs.push('sender')
+            if (halfs.length === 2) return null
 
             let half = `half-${index}`
             return <Route
