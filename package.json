@@ -83,7 +83,7 @@
     "start": "node scripts/start.js",
     "lint": "node ./scripts/lint.js",
     "test": "npm run lint && node scripts/test.js --env=jsdom",
-    "nmos": "./src/ips-nmos-api/bin/ips-nmos-api"
+    "nmos": "node scripts/mdnsbridge-local.js | ./src/ips-nmos-api/bin/ips-nmos-api"
   },
   "homepage": "http://ipstudio-master.rd.bbc.co.uk/ips-web/",
   "jest": {
