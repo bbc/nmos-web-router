@@ -428,8 +428,9 @@ function mapRoutesRoutableState (routes, receivers, senders) {
       return receiver.id === route.receiver.id
     })[0]
     route.receiver = Object.assign({}, route.receiver, receiver)
-
     return route
+  }).filter(route => {
+    return route.receiver.subscription.sender_id !== null
   })
   return routes
 }
