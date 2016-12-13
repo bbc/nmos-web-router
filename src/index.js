@@ -102,4 +102,8 @@ else {
       }
       start(queryStub, url)
     })
+    .catch(error => {
+      console.error(error)
+      start()
+    })
 }
