@@ -42,7 +42,47 @@ You can find all Gel things in the `src/gel-react` [README](./src/gel-react/READ
 
 ## IPS NMOS API
 
-You can find all IPS NMOS API things in the `src/gel-react` [README](./src/ips-nmos-api/README.md)
+You can find all IPS NMOS API things in the `src/ips-nmos-api` [README](./src/ips-nmos-api/README.md)
+
+If you aren't running `scripts/dev.sh` then you can run
+
+```
+npm run nmos
+```
+
+If you want to add a delay
+
+```
+npm run nmos -- --delay=500
+```
+
+But if have a running you can simply run
+
+```
+npm run nmos -- --connect
+```
+
+This should connect to the docker container as well after using `scritps/dev.sh`
+
+You can then get access this from in 2 ways
+
+Either using [http://localhost:3000/?url=http://localhost:6589](http://localhost:3000/?url=http://localhost:6589)
+
+or you will need to start the mdnsbridge task as such
+
+```
+npm run mdnsbridge
+```
+
+If you have run `scripts/dev.sh` then you will not need to do this
+
+You can configure the ports for everything except mdnsbridge, it is 12345
+
+```
+npm run nmos -- --ws-port=3001 --http-port=3002 --repl-port=3003
+```
+
+read the [README](./src/ips-nmos-api/README.md) for more information on this
 
 ## Testing
 
@@ -63,7 +103,7 @@ Integration test would start a local NMOS API instance and then check that the d
 
 ```bash
 ./scripts/build.sh # creates the docker image and also copies the build file for deploying, jenkins doesn't seem to like running this script so just copy it's contents to jenkins and add sudo to everything as a temprory fix
-./scripts/dev.sh # starts `npm start` from the container with the container name `ips-web-dev`
+./scripts/dev.sh # starts `npm start` from the container with the container name `ips-web-dev` it also starts the nmos and mdnsbridge tasks
 ./scripts/start.sh # starts `npm serve` from the container with the container name `ips-web-start`
 ```
 
