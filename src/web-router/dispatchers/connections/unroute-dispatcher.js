@@ -7,7 +7,7 @@ export default (actions) => {
         actions.unroute({ receiver })
       })
       .catch(error => {
-        if (error.message === 'Network Error') error = 'Can not connect to server'
+        if (error.message === 'Network Error') error = `Can not connect to server, can not unroute ${receiver.label}`
         dispatchError(actions)(error)
       })
   }
