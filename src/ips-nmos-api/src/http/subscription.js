@@ -10,7 +10,11 @@ module.exports = (WebSocket, subscriptions, type) => {
         let subscription = subscriptions.filter(subscription => {
           return subscription.resource_path === `/${type}`
         })[0]
-        if (subscription === undefined) throw new Error(`Could not subscribe to ${type}`)
+        if (subscription === undefined) {
+          let error = new Error(`Could not subscribe to ${type}`)
+          error.type = 'can-not-connect'
+          throw error
+        }
 
         var ws = new WebSocket(subscription.ws_href)
         if (typeof ws.onopen !== undefined) {
@@ -39,10 +43,16 @@ module.exports = (WebSocket, subscriptions, type) => {
 
         if (typeof ws.onclose !== undefined) {
           ws.onclose = function () {
+            let error = new Error(`Disconnected from ${type}`)
+            error.type = 'disconnected'
+            onError(error)
             connection = 'closed'
           }
         } else {
           ws.on('close', function () {
+            let error = new Error(`Disconnected from ${type}`)
+            error.type = 'disconnected'
+            onError(error)
             connection = 'closed'
           })
         }
@@ -55,6 +65,7 @@ module.exports = (WebSocket, subscriptions, type) => {
 
   return {
     subscribe (callback, onError) {
+      onError = onError || noop
       if (connection === 'closed') connect(onError)
       callbacks.push(callback)
       return callbacks.length - 1
