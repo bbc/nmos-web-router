@@ -48,7 +48,7 @@ export default (actions) => {
         update,
         name: name
       })
-    })
+    }, dispatchError)
   }
 
   return () => {

@@ -3,13 +3,14 @@ const noop = function () {}
 module.exports = (WebSocket, subscriptions, type) => {
   let callbacks = []
   let connection = 'closed'
-  function connect () {
+  function connect (onError) {
     connection = 'trying'
     subscriptions()
       .then(subscriptions => {
         let subscription = subscriptions.filter(subscription => {
           return subscription.resource_path === `/${type}`
         })[0]
+        if (subscription === undefined) throw new Error(`Could not subscribe to ${type}`)
 
         var ws = new WebSocket(subscription.ws_href)
         if (typeof ws.onopen !== undefined) {
@@ -47,14 +48,14 @@ module.exports = (WebSocket, subscriptions, type) => {
         }
       })
       .catch(error => {
-        console.log(error)
         connection = 'failed'
+        onError(error)
       })
   }
 
   return {
-    subscribe (callback) {
-      if (connection === 'closed') connect()
+    subscribe (callback, onError) {
+      if (connection === 'closed') connect(onError)
       callbacks.push(callback)
       return callbacks.length - 1
     },
