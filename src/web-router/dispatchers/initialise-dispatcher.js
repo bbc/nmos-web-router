@@ -1,3 +1,5 @@
+import dispatchError from './error-dispatcher'
+
 const MAX_RETRIES = 3
 const RETRY_TIMEOUT = 1000
 
@@ -8,19 +10,6 @@ export default (actions) => {
     flows: 0
   }
 
-  function dispatchError (error) {
-    let message = error
-    if (error.message) message = error.message
-    console.error(error)
-    let timeout = setTimeout(function () {
-      actions.allClear()
-    }, 30 * 1000)
-    actions.alert({
-      message,
-      timeout
-    })
-  }
-
   function initialise (name) {
     window.nmos[name]()
       .then(response => {
@@ -29,7 +18,7 @@ export default (actions) => {
         actions.initialise(data)
       })
       .catch(error => {
-        dispatchError(error)
+        dispatchError(actions)(error)
         retries[name] += 1
         if (retries[name] >= MAX_RETRIES) actions.initialiseError({ error, name })
         else {
@@ -48,7 +37,7 @@ export default (actions) => {
         update,
         name: name
       })
-    }, dispatchError)
+    }, dispatchError(actions))
   }
 
   return () => {
