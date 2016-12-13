@@ -11,7 +11,7 @@ function parseURL (url) {
   parser.href = url
 
   let query = {}
-  let queries = parser.search.replace(/^\?/, '').split('&')
+  let queries = parser.search.replace(/^\?/, '').replace(/\/$/, '').split('&')
   for (let i = 0; i < queries.length; i++) {
     let split = queries[i].split('=')
     let value = split[1] || ''
@@ -41,6 +41,8 @@ function parseURL (url) {
     hash: parser.hash
   }
 }
+
+window.parseURL = parseURL
 
 const parsedUrl = parseURL(window.location)
 const queryUrl = parsedUrl.query('url').string
