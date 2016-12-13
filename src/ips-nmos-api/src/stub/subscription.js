@@ -47,6 +47,8 @@ module.exports = function (collections, delay) {
   let subscriptions = {}
   types.forEach(type => {
     subscriptions[type] = subscription(type)
+    let token = subscriptions[type].subscribe(() => {})
+    subscriptions[type].unsubscribe(token)
   })
 
   return subscriptions
