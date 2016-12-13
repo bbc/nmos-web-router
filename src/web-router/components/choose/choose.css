@@ -16,6 +16,10 @@
   & .routable {
     width: 90%;
 
+    &.expanded .button {
+      background-color: var(--contracted);
+    }
+
     &:hover .button {
       cursor: initial;
       background-color: var(--contracted);
