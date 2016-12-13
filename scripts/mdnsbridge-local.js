@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const express = require('express')
 var bodyParser = require('body-parser')
 
@@ -66,4 +67,6 @@ app.get('/', function (req, res) {
   res.send('You did this wrong, go to x-nmos/node/v1.0/self')
 })
 
-app.listen(12345)
+app.listen(12345, () => {
+  console.log('started mdnsbridge at', chalk.blue.bold.underline('http://localhost:12345'))
+})
