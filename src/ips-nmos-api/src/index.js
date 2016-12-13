@@ -10,7 +10,7 @@ module.exports = function (options) {
   let NMOS = Http(options)
   if (options.stub) NMOS = Stub(options.stub)
   NMOS.defaultSort = defaultSort
-  if (!options.hasOwnProperty('stub') || !options.hasOwnProperty('url')) {
+  if (!options.hasOwnProperty('stub') && !options.hasOwnProperty('url')) {
     NMOS.error = new Error('Can not start nmos without either `stub` or `url` param')
     NMOS.error.type = 'initialise'
   }
