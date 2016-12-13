@@ -52,11 +52,16 @@ export default (actions) => {
   }
 
   return () => {
-    initialise('receivers')
-    initialise('senders')
-    initialise('flows')
-    subscribe('receivers')
-    subscribe('senders')
-    subscribe('flows')
+    if (window.nmos.error) {
+      console.error(window.nmos.error)
+      actions.initialiseError({ error: window.nmos.error, name: 'nmos' })
+    } else {
+      initialise('receivers')
+      initialise('senders')
+      initialise('flows')
+      subscribe('receivers')
+      subscribe('senders')
+      subscribe('flows')
+    }
   }
 }
