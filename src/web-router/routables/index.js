@@ -340,8 +340,13 @@ function mapRoutesWithUpdatedSenders (routes, receivers, removed, added) {
     routes = remove(routes, index)
   })
 
-  let addedRoutes = mapInitialRouted(added, receivers, [])
-  routes = routes.concat(addedRoutes)
+  routes.forEach(route => {
+    let routed = added.some(sender => {
+      return sender.id === route.sender.id
+    })
+    if (routed) route.state = 'routed'
+  })
+
   return routes
 }
 

@@ -9,7 +9,7 @@ module.exports = (collections) => {
       else if (Array.isArray(count)) data = count
       else if (typeof count === 'object') data.push(count)
       if (typeof count === 'number') {
-        for (let i = 0; i < count; i++) data.push(generate.receiver())
+        for (let i = 0; i < count; i++) data.push(generate[type]())
       }
       data.forEach(d => {
         collections[type].insert(d)

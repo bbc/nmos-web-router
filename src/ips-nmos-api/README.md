@@ -263,24 +263,34 @@ Server
 
 You can start a server as well. There are serveral ways to do this.
 
-The default ports are HTTP: 6589 WS: 6590 delay: 0
+The default values are
+* http-port: 6589
+* ws-port: 6590
+* repl-port: 6591
+* delay: 0
 
 If you have installed this globally just run with optional params
 
 ```
-ips-nmos-api --http-port=8000 --ws-port=8001 --delay=0
+ips-nmos-api --http-port=8000 --ws-port=8001 --repl-port=8002 --delay=0
 ```
 
 If you have cloned it
 
 ```
-./bin/ips-nmos-api --http-port=8000 --ws-port=8001 --delay=0
+./bin/ips-nmos-api --http-port=8000 --ws-port=8001 --repl-port=8002 --delay=0
 ```
 
 If you have it locally installed in your npm tasks
 
 ```
-ips-nmos-api --http-port=8000 --ws-port=8001 --delay=0
+ips-nmos-api --http-port=8000 --ws-port=8001 --repl-port=8002 --delay=0
+```
+
+Want to connect to a running instance? The port is optional
+
+```
+ips-nmos-api --connect --repl-port=8002
 ```
 
 This will start the web sockets which you can subscribe to and the http service which you can call instead, all using the lokijs database

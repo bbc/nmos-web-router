@@ -2,6 +2,7 @@ const NMOS = require('../index.js')
 const serve = require('./serve')
 const websocket = require('./websocket')
 const repl = require('./repl')
+const client = require('./client')
 
 function port (name, defaultPort) {
   let portNumber = process.argv.filter(arg => {
@@ -21,8 +22,19 @@ let nmos = NMOS({stub: {
   delay: delay()
 }})
 
+let connect = process.argv.some(arg => {
+  return arg.includes(`--connect`)
+})
+
+let replPort = port('repl', 6591)
 let httpPort = port('http', 6589)
-serve(nmos, httpPort)
-let wsPort = port('http', 6590)
-websocket(nmos, wsPort)
-repl(nmos, httpPort, wsPort)
+let wsPort = port('ws', 6590)
+
+if (connect) {
+  client(replPort)
+} else {
+  serve(nmos, httpPort)
+  websocket(nmos, wsPort)
+  repl(nmos, httpPort, wsPort, replPort)
+  client(replPort)
+}
