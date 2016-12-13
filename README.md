@@ -84,6 +84,10 @@ npm run nmos -- --ws-port=3001 --http-port=3002 --repl-port=3003
 
 read the [README](./src/ips-nmos-api/README.md) for more information on this
 
+You can also change the priority using `priority=888` for example
+
+If you are using the local stub data then `priority=888` will point to the live data (might be brittle if the ip addresses change, if this happens then look in `scripts/mdnsbridge-local.js`)
+
 ## Testing
 
 Uses [Jest](http://facebook.github.io/jest/) for testing. Just write a file in src with the extension `*.spec.js` or `*.test.js`
