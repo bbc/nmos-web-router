@@ -1,12 +1,10 @@
 export default (actions) => {
-  return (error) => {
-    let message = error
-    if (error.message) message = error.message
-    console.error(error)
+  return (message) => {
+    console.info(message)
     let timeout = setTimeout(function () {
       actions.allClear()
     }, 30 * 1000)
-    actions.alert({
+    actions.info({
       message,
       timeout
     })

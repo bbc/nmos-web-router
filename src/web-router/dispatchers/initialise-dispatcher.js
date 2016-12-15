@@ -1,4 +1,5 @@
 import dispatchError from './error-dispatcher'
+import dispatchInfo from './info-dispatcher'
 
 const MAX_RETRIES = 3
 const RETRY_TIMEOUT = 1000
@@ -30,14 +31,27 @@ export default (actions) => {
   }
 
   function subscribe (name) {
-    window.nmos.subscription[name].subscribe(data => {
-      let update = {}
-      update[name] = data.grain.data
-      actions.update({
-        update,
-        name: name
-      })
-    }, dispatchError(actions))
+    let showOpenedMessage = false
+    window.nmos.subscription[name].subscribe({
+      opened () {
+        if (showOpenedMessage) dispatchInfo(actions)(`Connected to ${name}`)
+        showOpenedMessage = true
+      },
+      updated (data) {
+        let update = {}
+        update[name] = data.grain.data
+        actions.update({
+          update,
+          name: name
+        })
+      },
+      closed () {
+        dispatchError(actions)(`Disconnected from ${name}`)
+      },
+      errored (error) {
+        dispatchError(actions)(`Error occured on ${name}, ${error}`)
+      }
+    })
   }
 
   return () => {

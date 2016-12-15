@@ -9,6 +9,7 @@ import search from './choose/search-dispatcher'
 import allVisible from './choose/all-visible-dispatcher'
 import check from './choose/check-dispatcher'
 import alert from './notifications/alert-dispatcher'
+import info from './notifications/info-dispatcher'
 import allClear from './notifications/all-clear-dispatcher'
 
 export default {
@@ -23,5 +24,6 @@ export default {
   allVisible,
   check,
   alert,
+  info,
   allClear
 }

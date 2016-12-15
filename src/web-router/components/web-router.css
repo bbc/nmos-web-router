@@ -91,6 +91,7 @@
     }
   }
 
+  &-notification-info,
   &-notification-alert {
     & .container,
     & .expanded-sender-container {
