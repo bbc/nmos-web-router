@@ -129,12 +129,18 @@ module.exports = (getters, WebSocket, subscriptions, type) => {
         let subscription = subscriptions.filter(subscription => {
           return subscription.resource_path === `/${type}`
         })[0]
-        if (subscription === undefined) poll()
+        if (subscription === undefined && polling.fallback) poll()
         else sockets(subscription)
       })
       .catch((error) => {
         console.error(error)
-        poll()
+        if (polling.fallback) poll()
+        else {
+          status = 'errored'
+          errors.forEach(callback => {
+            callback(error)
+          })
+        }
       })
   }
 
