@@ -134,31 +134,43 @@ nmos.unroute('receiver-id', node_url).then(function (data) {})
 
 *You can also unroute by calling route with {} but it is better to call unroute for better error handling*
 
-To use the Subscription API
+The Subscription API has a simple interface with a polling fallback option
+
+It will fallback to polling if the subscriptions end point fails and will then use the http endpoint in order to get the data. It will then check periodically if the subscriptions are running again and will connect to those when it can.
 
 ```js
-let callback = (data) => { /* do something to the data */ }
-let token = nmos.subscription.receivers.subscribe(callback)
+// these are the default values
+nmos.subscription.receivers.pollingOptions({
+  fallback: true,
+  interval: 1000,
+  subscriptionsInterval: 10 * 1000
+})
+
+// all the callbacks are optional
+let callbacks = {
+  updated() {}, // occurs on an update
+  errored() {}, // occurs on an error from the web socekts or if the polling returns a 404
+  opened() {}, // happens when the web sockets are opened
+  closed() {}, // happens when the web sockets are closed
+  polling() {} // happens the polling starts
+}
+
+let token = nmos.subscription.receivers.subscribe(callbacks)
 nmos.subscription.receivers.unsubscribe(token)
 
-let callback = (data) => { /* do something to the data */ }
-let token = nmos.subscription.senders.subscribe(callback)
+token = nmos.subscription.senders.subscribe(callbacks)
 nmos.subscription.senders.unsubscribe(token)
 
-let callback = (data) => { /* do something to the data */ }
-let token = nmos.subscription.nodes.subscribe(callback)
+token = nmos.subscription.nodes.subscribe(callbacks)
 nmos.subscription.nodes.unsubscribe(token)
 
-let callback = (data) => { /* do something to the data */ }
-let token = nmos.subscription.flows.subscribe(callback)
+token = nmos.subscription.flows.subscribe(callbacks)
 nmos.subscription.flows.unsubscribe(token)
 
-let callback = (data) => { /* do something to the data */ }
-let token = nmos.subscription.sources.subscribe(callback)
+token = nmos.subscription.sources.subscribe(callbacks)
 nmos.subscription.sources.unsubscribe(token)
 
-let callback = (data) => { /* do something to the data */ }
-let token = nmos.subscription.devices.subscribe(callback)
+token = nmos.subscription.devices.subscribe(callbacks)
 nmos.subscription.devices.unsubscribe(token)
 ```
 

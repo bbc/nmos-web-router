@@ -12,7 +12,7 @@ module.exports = (getters, WebSocket, subscriptions, type) => {
   let polling = {
     fallback: true,
     interval: 1 * 1000,
-    subscriptionInterval: 10 * 1000,
+    subscriptionsInterval: 10 * 1000,
     intervalToken: null,
     subscriptionToken: null
   }
@@ -35,13 +35,13 @@ module.exports = (getters, WebSocket, subscriptions, type) => {
         })
       })
       .catch(error => {
-        status = 'error'
-        error.type = 'could-not-subscribe'
+        status = 'errored'
         errors.forEach(callback => {
           callback(error)
         })
       })
   }
+
   let connect = () => {
     clearInterval(polling.intervalToken)
     clearTimeout(polling.subscriptionToken)
@@ -58,7 +58,7 @@ module.exports = (getters, WebSocket, subscriptions, type) => {
           polling.intervalToken = setInterval(() => {
             get()
           }, polling.interval)
-          polling.subscriptionToken = setTimeout(connect, polling.subscriptionInterval)
+          polling.subscriptionToken = setTimeout(connect, polling.subscriptionsInterval)
         } else {
           ws = new WebSocket(subscription.ws_href)
           if (typeof ws.onopen !== undefined) {
@@ -109,17 +109,17 @@ module.exports = (getters, WebSocket, subscriptions, type) => {
           }
 
           if (typeof ws.onerror !== undefined) {
-            ws.onerror = () => {
+            ws.onerror = (error) => {
               status = 'errored'
               errors.forEach(callback => {
-                callback()
+                callback(error)
               })
             }
           } else {
-            ws.on('error', () => {
+            ws.on('error', (error) => {
               status = 'errored'
               errors.forEach(callback => {
-                callback()
+                callback(error)
               })
             })
           }
@@ -127,16 +127,24 @@ module.exports = (getters, WebSocket, subscriptions, type) => {
       })
       .catch((error) => {
         console.error(error)
+        clearInterval(polling.intervalToken)
+        clearTimeout(polling.subscriptionToken)
         status = 'polling'
-        console.log('polling')
+        pollings.forEach(callback => {
+          callback()
+        })
+        polling.intervalToken = setInterval(() => {
+          get()
+        }, polling.interval)
+        polling.subscriptionToken = setTimeout(connect, polling.subscriptionsInterval)
       })
   }
 
   let subscription = {
-    pollOptions ({pollingFallback, pollingInterval, pollSubscriptionsInterval}) {
-      if (pollingFallback === undefined) pollingFallback = true
-      if (pollingInterval === undefined) pollingInterval = 1000
-      if (pollSubscriptionsInterval === undefined) pollSubscriptionsInterval = 10 * 1000
+    pollingOptions ({fallback, interval, subscriptionsInterval}) {
+      if (fallback === undefined) polling.fallback = true
+      if (interval === undefined) polling.interval = 1000
+      if (subscriptionsInterval === undefined) polling.subscriptionsInterval = 10 * 1000
     },
     status () {
       return status
