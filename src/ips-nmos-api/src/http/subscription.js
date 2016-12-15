@@ -1,6 +1,6 @@
 const noop = function () {}
 
-module.exports = (WebSocket, subscriptions, type) => {
+module.exports = (getters, WebSocket, subscriptions, type) => {
   let opens = []
   let updates = []
   let errors = []
@@ -11,11 +11,40 @@ module.exports = (WebSocket, subscriptions, type) => {
   let ws = null
   let polling = {
     fallback: true,
-    interval: 1000,
+    interval: 1 * 1000,
     subscriptionInterval: 10 * 1000,
-    token: null
+    intervalToken: null,
+    subscriptionToken: null
+  }
+
+  let getter = getters[type]
+  function get () {
+    getter()
+      .then(data => {
+        updates.forEach(callback => {
+          callback({
+            grain: {
+              data: data.map(d => {
+                return {
+                  pre: d,
+                  post: d
+                }
+              })
+            }
+          })
+        })
+      })
+      .catch(error => {
+        status = 'error'
+        error.type = 'could-not-subscribe'
+        errors.forEach(callback => {
+          callback(error)
+        })
+      })
   }
   let connect = () => {
+    clearInterval(polling.intervalToken)
+    clearTimeout(polling.subscriptionToken)
     subscriptions()
       .then(subscriptions => {
         let subscription = subscriptions.filter(subscription => {
@@ -23,12 +52,17 @@ module.exports = (WebSocket, subscriptions, type) => {
         })[0]
         if (subscription === undefined) {
           status = 'polling'
-          console.log('polling')
+          pollings.forEach(callback => {
+            callback()
+          })
+          polling.intervalToken = setInterval(() => {
+            get()
+          }, polling.interval)
+          polling.subscriptionToken = setTimeout(connect, polling.subscriptionInterval)
         } else {
           ws = new WebSocket(subscription.ws_href)
-
           if (typeof ws.onopen !== undefined) {
-            ws.onopen = (evt) => {
+            ws.onopen = () => {
               status = 'opened'
               opens.forEach(callback => {
                 callback()
@@ -91,14 +125,10 @@ module.exports = (WebSocket, subscriptions, type) => {
           }
         }
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error(error)
         status = 'polling'
         console.log('polling')
-        // status = 'error'
-        // error.type = 'could-not-subscribe'
-        // errors.forEach(callback => {
-        //   callback(error)
-        // })
       })
   }
 
@@ -116,7 +146,8 @@ module.exports = (WebSocket, subscriptions, type) => {
     },
     disconnect () {
       if (ws !== null && ws.close) ws.close()
-      if (polling.token) clearInterval(polling.token)
+      clearInterval(polling.intervalToken)
+      clearTimeout(polling.subscriptionToken)
     },
     subscribe ({opened, updated, errored, closed, polling}) {
       opened = opened || noop

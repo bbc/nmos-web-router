@@ -38,6 +38,7 @@ export default (actions) => {
         showOpenedMessage = true
       },
       updated (data) {
+        showOpenedMessage = true
         let update = {}
         update[name] = data.grain.data
         actions.update({
@@ -46,10 +47,16 @@ export default (actions) => {
         })
       },
       closed () {
+        showOpenedMessage = true
         dispatchError(actions)(`Disconnected from ${name}`)
       },
       errored (error) {
+        showOpenedMessage = true
         dispatchError(actions)(`Error occured on ${name}, ${error}`)
+      },
+      polling () {
+        showOpenedMessage = true
+        dispatchError(actions)(`Connections failed for ${name} started polling, please check Subscription API`)
       }
     })
   }

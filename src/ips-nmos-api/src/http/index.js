@@ -22,12 +22,12 @@ module.exports = function (options) {
   let subscribers = {
     subscriptions: subscriptions,
     subscription: {
-      receivers: Subscription(options.WebSocket, subscriptions, 'receivers'),
-      flows: Subscription(options.WebSocket, subscriptions, 'flows'),
-      sources: Subscription(options.WebSocket, subscriptions, 'sources'),
-      nodes: Subscription(options.WebSocket, subscriptions, 'nodes'),
-      devices: Subscription(options.WebSocket, subscriptions, 'devices'),
-      senders: Subscription(options.WebSocket, subscriptions, 'senders')
+      receivers: Subscription(getters, options.WebSocket, subscriptions, 'receivers'),
+      flows: Subscription(getters, options.WebSocket, subscriptions, 'flows'),
+      sources: Subscription(getters, options.WebSocket, subscriptions, 'sources'),
+      nodes: Subscription(getters, options.WebSocket, subscriptions, 'nodes'),
+      devices: Subscription(getters, options.WebSocket, subscriptions, 'devices'),
+      senders: Subscription(getters, options.WebSocket, subscriptions, 'senders')
     }
   }
   return Object.assign({}, getters, routers, subscribers)
