@@ -83,7 +83,9 @@
     "serve": "npm run build && pushstate-server build 4000",
     "start": "node scripts/start.js",
     "lint": "node ./scripts/lint.js",
-    "test": "npm run lint && node scripts/test.js --env=jsdom",
+    "test": "node scripts/test.js --env=jsdom",
+    "test:once": "CI=true node scripts/test.js --env=jsdom",
+    "ci": "npm run lint && npm run test:once",
     "nmos": "./src/ips-nmos-api/bin/ips-nmos-api",
     "mdnsbridge": "node scripts/mdnsbridge-local.js"
   },
