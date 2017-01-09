@@ -8,14 +8,17 @@ module.exports = function (collections, delay, type) {
         if (data === null || !data.hasOwnProperty('id')) {
           setTimeout(function () {
             reject('404')
-          }, delay()) } else {
+          }, delay())
+        } else {
           setTimeout(function () {
             resolve(data)
-          }, delay()) }
+          }, delay())
+        }
       } else {
         setTimeout(function () {
           resolve(collections[type].all().sort(defaultSort))
-        }, delay()) }
+        }, delay())
+      }
     })
   }
 }

@@ -7,8 +7,10 @@ export default (state, action, merge) => {
   let view = Object.assign({}, state.view)
   if (pathname.includes('/web-router/')) {
     view.location = pathname.replace('/web-router', '')
-    if (query.hasOwnProperty('search')) {
+    if (query.search !== '') {
       view.choose.term = query.search
+    } else {
+      view.choose.term = ''
     }
   }
 

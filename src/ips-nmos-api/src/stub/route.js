@@ -15,14 +15,15 @@ module.exports = function (collections, delay) {
       if (receiver === null) {
         setTimeout(function () {
           reject('404 no receiver')
-        }, delay()) } else if (sender.id) {
-          let foundSender = collections.senders.findOne({ id: sender.id })
-          if (foundSender === null) {
-            setTimeout(function () {
-              reject('404 no sender')
-            }, delay())
-          } else updateRoute(receiver)
+        }, delay())
+      } else if (sender.id) {
+        let foundSender = collections.senders.findOne({ id: sender.id })
+        if (foundSender === null) {
+          setTimeout(function () {
+            reject('404 no sender')
+          }, delay())
         } else updateRoute(receiver)
+      } else updateRoute(receiver)
     })
   }
 }
