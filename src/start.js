@@ -6,7 +6,7 @@ import webRouter from './web-router'
 export default (stub, url) => {
   window.nmos = NMOS({
     stub,
-    get: url
+    url
   })
 
   drc({

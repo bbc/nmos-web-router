@@ -5,12 +5,12 @@ var Subscription = require('./subscription')
 
 module.exports = function (options) {
   let getters = {
-    flows: Get(options.get, 'flows'),
-    sources: Get(options.get, 'sources'),
-    nodes: Get(options.get, 'nodes'),
-    devices: Get(options.get, 'devices'),
-    senders: Get(options.get, 'senders'),
-    receivers: Get(options.get, 'receivers')
+    flows: Get(options.url, 'flows'),
+    sources: Get(options.url, 'sources'),
+    nodes: Get(options.url, 'nodes'),
+    devices: Get(options.url, 'devices'),
+    senders: Get(options.url, 'senders'),
+    receivers: Get(options.url, 'receivers')
   }
 
   let routers = {
@@ -18,7 +18,7 @@ module.exports = function (options) {
     unroute (id) { return Route(getters)(id, {}) }
   }
 
-  let subscriptions = Subscriptions(options.get)
+  let subscriptions = Subscriptions(options.url)
   let subscribers = {
     subscriptions: subscriptions,
     subscription: {

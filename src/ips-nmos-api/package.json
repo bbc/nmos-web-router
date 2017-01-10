@@ -15,7 +15,8 @@
   "license": "ISC",
   "scripts": {
     "test": "npm run lint && jest",
-    "lint": "node scripts/lint.js"
+    "lint": "node scripts/lint",
+    "update": "node scripts/update"
   },
   "dependencies": {
     "axios": "^0.15.2",

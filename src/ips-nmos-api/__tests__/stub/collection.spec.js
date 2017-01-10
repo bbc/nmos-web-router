@@ -4,11 +4,12 @@ let Collection = require('../../src/stub/collection')
 describe('Collection', () => {
   let db = new Loki('test.json')
   let collection = Collection(db, 'senders')
+  let id = collection.data[0].id
   let pre
   collection.on('pre', (data) => { pre = data })
 
   it('`all` returns all the data for a collection', () => {
-    expect(collection.all().length).toBe(39)
+    expect(collection.all().length > 0).toBe(true)
   })
 
   it('Find returns `null` if nothing is found', () => {
@@ -16,7 +17,7 @@ describe('Collection', () => {
   })
 
   it('Find returns the item without loki values', () => {
-    let found = collection.find({id: 'dd2c0f87-d17f-4798-a4fc-e1a51576f25f'})
+    let found = collection.find({id})
     expect(found).not.toBe(null)
     expect(found.version).not.toBeDefined()
     expect(found['$loki']).not.toBeDefined()
@@ -24,15 +25,16 @@ describe('Collection', () => {
   })
 
   it('Modify updates in db only', () => {
-    let found = collection.findOne({id: 'dd2c0f87-d17f-4798-a4fc-e1a51576f25f'})
+    let found = collection.findOne({id})
+    let label = found.label
     collection.modify(found, {label: 'test'})
-    let reFound = collection.findOne({id: 'dd2c0f87-d17f-4798-a4fc-e1a51576f25f'})
-    expect(found.label).toBe('MCUK F55 UHD')
+    let reFound = collection.findOne({id})
+    expect(found.label).toBe(label)
     expect(reFound.label).toBe('test')
   })
 
   it('Modify emits pre event with pre data', () => {
-    let found = collection.findOne({id: 'dd2c0f87-d17f-4798-a4fc-e1a51576f25f'})
+    let found = collection.findOne({id})
     collection.modify(found, {label: 'test'})
     expect(pre.id).toBe(found.id)
     expect(pre.label).toBe(found.label)

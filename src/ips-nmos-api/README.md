@@ -311,6 +311,16 @@ It also starts a REPL which you can call `nmos` from, it is a node REPL so any J
 
 It is worth noting you do not have direct access to the lokijs instance. Not sure whether anyone should be allowed access as it might distrupt testing, it would be best to get to it via the extended stub API
 
+Developing
+----------
+
+```bash
+npm test #runs the tests and lints
+npm lint #runs lint
+npm update -- --url=... #you need the url param, this updates the stub data
+```
+
+
 TODO
 ----
 
