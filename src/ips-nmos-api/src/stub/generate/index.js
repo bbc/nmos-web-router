@@ -36,5 +36,9 @@ module.exports = {
   source: require('./source'),
   sources (count) {
     return generate(this.source, count)
+  },
+  subscription: require('./subscription'),
+  subscriptions (count) {
+    return generate(this.subscription, count)
   }
 }

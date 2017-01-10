@@ -12,8 +12,18 @@ const transports = [
   'urn:x-nmos:transport:rtp.mcast',
   'urn:x-nmos:transport:dash'
 ]
+const types = [
+  'devices',
+  'flows',
+  'nodes',
+  'receivers',
+  'senders',
+  'sources'
+]
 
 module.exports = {
+  type () { return chance.pickone(types) },
+  ms () { return chance.integer({min: 0, max: 10 * 1000}) },
   description () { return chance.pickone(['', chance.paragraph()]) },
   format () { return chance.pickone(formats) },
   tags () {
@@ -51,5 +61,6 @@ module.exports = {
     let services = []
     for (let i = 0; i < count; i++) services.push(this.service())
     return services
-  }
+  },
+  bool () { return chance.bool() }
 }

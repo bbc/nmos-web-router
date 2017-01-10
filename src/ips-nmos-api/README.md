@@ -193,6 +193,7 @@ nmos.stub.generate.node()
 nmos.stub.generate.flow()
 nmos.stub.generate.source()
 nmos.stub.generate.device()
+nmos.stub.generate.subscription()
 ```
 
 You can generate multiple items. `argument` is optional and will **default** to generating up to 100 items.
@@ -208,6 +209,7 @@ nmos.stub.generate.nodes(argument)
 nmos.stub.generate.flows(argument)
 nmos.stub.generate.sources(argument)
 nmos.stub.generate.devices(argument)
+nmos.stub.generate.subscriptions(argument)
 ```
 
 Add
@@ -315,11 +317,12 @@ Developing
 ----------
 
 ```bash
-npm test #runs the tests and lints
-npm lint #runs lint
-npm update -- --url=... #you need the url param, this updates the stub data
+yarn # install everything
+yarn test # runs the tests and lints
+yarn lint # runs lint
+yarn update -- --url=... # you need the url param, this updates the stub data
+yarn start # starts the server, pass the params as above
 ```
-
 
 TODO
 ----
@@ -327,3 +330,4 @@ TODO
 The API is ready to use with the following todos to be todone:
 * data consistent with the rest of the data -> currently random data is just random
 * update unit tests -> only testing the Stub API as the HTTP API would require a consistent HTTP connection for any meaningful test (otherwise you are testing you can stub HTTP requests...)
+* make node work behind a proxy -> currently this will not work from node behind a proxy, it will work in a browser because the browser should have proxy configuration sorted. Get working with axios and rig up the serve.js to be correct
