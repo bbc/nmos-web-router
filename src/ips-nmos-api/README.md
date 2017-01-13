@@ -91,7 +91,7 @@ All values are optional.
 | Option | Type | Comment |
 |:--|:--|:--|
 | `data` | `<object>` | use this to override the initial data; all the values are optional and will default to the static stub data if not present; `'random'` will generate up to random 100 items; you can provide and <array> of data; you can also specify a number and it will generate random data up to that number; possible values are: `devices`, `flows`, `nodes`, `receivers`, `senders` and `sources` |
-| `delay` | `<number>` || `'random'` | adds a delay to all requests; the value **default** to 0; random will change every request or update. |
+| `delay` | `<number>` or `'random'` | adds a delay to all requests; the value **default** to 0; random will change every request or update. |
 
 API
 ---
@@ -134,44 +134,47 @@ nmos.unroute('receiver-id', node_url).then(function (data) {})
 
 *You can also unroute by calling route with {} but it is better to call unroute for better error handling*
 
-The Subscription API has a simple interface with a polling fallback option
-
-It will fallback to polling if the subscriptions end point fails and will then use the http endpoint in order to get the data. It will then check periodically if the subscriptions are running again and will connect to those when it can.
+**Subscription API**
 
 ```js
-// these are the default values
-nmos.subscription.receivers.pollingOptions({
-  fallback: true,
-  interval: 1000,
-  subscriptionsInterval: 10 * 1000
+// all the callbacks are optional
+let receiverSubscription = nmos.subscription.receivers()
+// opens websockets with the optional params, these are the default values
+receiverSubscription.connect({
+  max_update_rate_ms: 100,
+  params: {
+    created_by: 'ips-nmos-api'
+  },
+  persist: false,
+  secure: false
 })
 
 // all the callbacks are optional
-let callbacks = {
+let token = receiverSubscription.subscribe({
   updated() {}, // occurs on an update
   errored() {}, // occurs on an error from the web socekts or if the polling returns a 404
   opened() {}, // happens when the web sockets are opened
-  closed() {}, // happens when the web sockets are closed
-  polling() {} // happens the polling starts
-}
+  closed() {} // happens when the web sockets are closed
+})
+receiverSubscription.unsubscribe(token)
+receiverSubscription.disconnect() // closes web sockets
+receiverSubscription.status() // one of ['open', 'closed', 'error', 'connecting'] and starts off 'closed'
+```
 
-let token = nmos.subscription.receivers.subscribe(callbacks)
-nmos.subscription.receivers.unsubscribe(token)
+You can call `connect`, `disconnect` and `subscribe` in any order. If you `subscribe` and have not run `connect` when it finally connects it will call all the callbacks where appropriate
 
-token = nmos.subscription.senders.subscribe(callbacks)
-nmos.subscription.senders.unsubscribe(token)
+It add the params `created_by: 'ips-nmos-api'` so you can find it easier
 
-token = nmos.subscription.nodes.subscribe(callbacks)
-nmos.subscription.nodes.unsubscribe(token)
+Anything you pass into `connect` will be posted to the `subscriptions` endpoint
 
-token = nmos.subscription.flows.subscribe(callbacks)
-nmos.subscription.flows.unsubscribe(token)
+other types of subscription available
 
-token = nmos.subscription.sources.subscribe(callbacks)
-nmos.subscription.sources.unsubscribe(token)
-
-token = nmos.subscription.devices.subscribe(callbacks)
-nmos.subscription.devices.unsubscribe(token)
+```js
+let receiversSubscription = nmos.subscription.receivers()
+let sendersSubscription = nmos.subscription.senders()
+let nodesSubscription = nmos.subscription.nodes()
+let flowsSubscription = nmos.subscription.flows()
+let devicesSubscription = nmos.subscription.devices()
 ```
 
 Stub API
