@@ -41,7 +41,6 @@ export default (start) => {
           url = `http://${representation.address}:${representation.port}`
         }
       }
-      console.log(url)
       start(queryStub, url)
     })
     .catch(error => {
