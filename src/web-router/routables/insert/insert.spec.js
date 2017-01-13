@@ -1,5 +1,5 @@
-import Insert from './insert'
-import generate from '../../ips-nmos-api/src/stub/generate'
+import Insert from './'
+import generate from '../../../ips-nmos-api/src/stub/generate'
 
 describe('insert', () => {
   let data

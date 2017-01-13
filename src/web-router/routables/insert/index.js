@@ -1,4 +1,4 @@
-import Routables from './'
+import Routables from '../'
 import clone from 'clone'
 import mapSenderFormats from './map-sender-formats'
 import mapInitialSenderState from './map-sender-initial-state'

@@ -1,4 +1,4 @@
-import mapState from './map-state'
+import mapState from '../map-state'
 import stateToString from './state-to-string'
 import isSenderRouted from './is-sender-routed'
 
