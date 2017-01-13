@@ -1,4 +1,4 @@
-let Route = require('../../src/stub/route')
+let Route = require('./route')
 
 describe('Route', () => {
   let route, receivers

@@ -1,4 +1,4 @@
-let Get = require('../../src/stub/get')
+let Get = require('./get')
 
 describe('Get', () => {
   let get

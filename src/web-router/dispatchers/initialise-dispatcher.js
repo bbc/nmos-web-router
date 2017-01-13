@@ -32,7 +32,9 @@ export default (actions) => {
 
   function subscribe (name) {
     let showOpenedMessage = false
-    window.nmos.subscription[name].subscribe({
+    let subscription = window.nmos.subscription[name]()
+    subscription.connect()
+    subscription.subscribe({
       opened () {
         if (showOpenedMessage) dispatchInfo(actions)(`Connected to ${name}`)
         showOpenedMessage = true

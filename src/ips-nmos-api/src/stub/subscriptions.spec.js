@@ -1,4 +1,4 @@
-let Subscriptions = require('../../src/stub/subscriptions')
+let Subscriptions = require('./subscriptions')
 
 describe('Subscriptions', () => {
   let subscriptions, allData

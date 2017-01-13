@@ -1,5 +1,5 @@
-let onModify = require('../../src/stub/on-modify')
-let collections = require('../../src/stub/collections')
+let onModify = require('./on-modify')
+let collections = require('./collections')
 
 describe('Modifiying', () => {
   it('Populates post and pre only on modified item', () => {

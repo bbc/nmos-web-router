@@ -6,47 +6,28 @@ let nmos = NMOS({
   url
 })
 
-nmos.subscription.receivers.subscribe({
-  updated (data) {
-    console.log('updated')
+let options = {}
+
+let sub = nmos.subscription.receivers(options)
+
+sub.subscribe({
+  update (data) {
+    console.log(data)
   },
-  errored (error) {
-    console.error('socket error:', error)
+  open () {
+    console.log('opened')
   },
-  opened () {
-    console.log('open')
-  },
-  closed () {
+  close () {
     console.log('closed')
   },
-  polling () {
-    console.log('polling')
+  error (error) {
+    console.log(error)
   }
 })
 
-let senderId, receiverId
-nmos.receivers()
-  .then(data => {
-    receiverId = data.filter(receiver => {
-      return receiver.subscription.sender_id === null
-    })[0].id
-    return nmos.senders()
-  })
-  .then(data => {
-    senderId = data[0].id
-    setTimeout(function () {
-      nmos.senders(senderId).then(sender => {
-        nmos.route(receiverId, sender)
-          .then(data => { console.log(data) })
-          .catch(error => {
-            console.error('route error:', error)
-          })
-      })
-      .catch(error => {
-        console.log('sender error:', error)
-      })
-    }, 1000)
-  })
-  .catch(error => {
-    console.log('receiver error:', error)
-  })
+sub.connect()
+sub.connect()
+
+setTimeout(() => {
+  sub.disconnect()
+}, 1000)

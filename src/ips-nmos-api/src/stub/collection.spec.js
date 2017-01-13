@@ -1,5 +1,5 @@
 let Loki = require('lokijs')
-let Collection = require('../../src/stub/collection')
+let Collection = require('./collection')
 
 describe('Collection', () => {
   let db = new Loki('test.json')

@@ -1,5 +1,5 @@
-let onInsert = require('../../src/stub/on-insert')
-let collections = require('../../src/stub/collections')
+let onRemove = require('./on-remove')
+let collections = require('./collections')
 
 describe('Inserting', () => {
   it('Populates post only on new item', () => {
@@ -7,14 +7,16 @@ describe('Inserting', () => {
     let collection = collections().receivers
 
     let post, pre
-    onInsert(collection, (data) => {
+    onRemove(collection, (data) => {
       post = data.post
       pre = data.pre
     })
 
     collection.insert({id, value: 0})
+    let item = collection.findOne({id})
+    collection.remove(item)
 
-    expect(pre).toEqual({})
-    expect(post).toEqual({id, value: 0})
+    expect(pre).toEqual({id, value: 0})
+    expect(post).toEqual({})
   })
 })
