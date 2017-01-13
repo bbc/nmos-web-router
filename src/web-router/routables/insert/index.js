@@ -1,5 +1,6 @@
 import Routables from '../'
 import clone from 'clone'
+import cloneRoutables from '../clone-routables'
 import mapSenderFormats from './map-sender-formats'
 import mapInitialSenderState from './map-sender-initial-state'
 import mapSenderRoutedState from './map-sender-routed-state'
@@ -8,23 +9,19 @@ import mapInitialRouted from './map-initial-routed'
 import sortRoutes from './sort-routes'
 import mapRoutedReceivers from './map-routed-receivers'
 
-export default ({senders, flows, receivers, routes}) => {
+export default (data) => {
+  data = cloneRoutables(data)
+  let senders = data.senders
+  let receivers = data.receivers
+  let flows = data.flows
+  let routes = data.routes
+
   let routables = () => {
     senders.sort(window.nmos.defaultSort)
     receivers.sort(window.nmos.defaultSort)
     routes.sort(sortRoutes)
     return Routables({senders, flows, receivers, routes})
   }
-
-  senders = senders || []
-  flows = flows || []
-  receivers = receivers || []
-  routes = routes || []
-
-  senders = clone(senders)
-  flows = clone(flows)
-  receivers = clone(receivers)
-  routes = clone(routes)
 
   return {
     senders (data) {
