@@ -4,6 +4,10 @@ import generate from '../../ips-nmos-api/src/stub/generate'
 describe('insert', () => {
   let data
   let sorted
+  let senders
+  let flows
+  let receivers
+
   beforeEach(() => {
     sorted = []
     window.nmos = {
@@ -14,14 +18,14 @@ describe('insert', () => {
     }
     let insert = Insert({})
 
-    let senders = generate.senders(2)
+    senders = generate.senders(2)
     senders[0].id = 'sender_id'
     senders[0].flow_id = 'flow_id'
 
-    let flows = generate.flows(2)
+    flows = generate.flows(2)
     flows[0].id = 'flow_id'
 
-    let receivers = generate.receivers(2)
+    receivers = generate.receivers(2)
     receivers[0].id = 'receiver_id'
     receivers[0].subscription.sender_id = 'sender_id'
     receivers[1].subscription.sender_id = null
@@ -29,6 +33,10 @@ describe('insert', () => {
     data = insert.flows(flows).view()
     data = insert.receivers(receivers).view()
     data = insert.senders(senders).view()
+  })
+
+  it('simply adds the flows', () => {
+    expect(data.flows).toEqual(flows)
   })
 
   it('maps the flows to matching senders', () => {
