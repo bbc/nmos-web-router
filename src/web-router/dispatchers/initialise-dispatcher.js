@@ -35,11 +35,11 @@ export default (actions) => {
     let subscription = window.nmos.subscription[name]()
     subscription.connect()
     subscription.subscribe({
-      opened () {
+      open () {
         if (showOpenedMessage) dispatchInfo(actions)(`Connected to ${name}`)
         showOpenedMessage = true
       },
-      updated (data) {
+      update (data) {
         showOpenedMessage = true
         let update = {}
         update[name] = data.grain.data
@@ -48,17 +48,13 @@ export default (actions) => {
           name: name
         })
       },
-      closed () {
+      close () {
         showOpenedMessage = true
         dispatchError(actions)(`Disconnected from ${name}`)
       },
-      errored (error) {
+      error (error) {
         showOpenedMessage = true
         dispatchError(actions)(`Error occured on ${name}, ${error}`)
-      },
-      polling () {
-        showOpenedMessage = true
-        dispatchError(actions)(`Connections failed for ${name} started polling, please check Subscription API`)
       }
     })
   }

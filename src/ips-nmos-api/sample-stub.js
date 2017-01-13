@@ -6,33 +6,17 @@ let nmos = NMOS({
   stub: true
 })
 
-let receiversCallback = (data) => { console.log('receivers', data) }
-let receiversToken = nmos.subscription.receivers.subscribe(receiversCallback)
-
-let sendersCallback = (data) => { console.log('senders', data) }
-let sendersToken = nmos.subscription.senders.subscribe(sendersCallback)
-
-let nodesCallback = (data) => { console.log('nodes', data) }
-let nodesToken = nmos.subscription.nodes.subscribe(nodesCallback)
-
-let flowsCallback = (data) => { console.log('flows', data) }
-let flowsToken = nmos.subscription.flows.subscribe(flowsCallback)
-
-let sourcesCallback = (data) => { console.log('sources', data) }
-let sourceToken = nmos.subscription.sources.subscribe(sourcesCallback)
-
-let devicesCallback = (data) => { console.log('devices', data) }
-let devicesToken = nmos.subscription.devices.subscribe(devicesCallback)
+let receiversUpdate = (data) => { console.log('receivers', data) }
+let receiversSubscription = nmos.subscription.receivers()
+receiversSubscription.connect()
+let receiversToken = receiversSubscription.subscribe({
+  update: receiversUpdate
+})
 
 nmos.stub.simulation.start(500)
 
 setTimeout(function () {
-  nmos.subscription.receivers.unsubscribe(receiversToken)
-  nmos.subscription.senders.unsubscribe(sendersToken)
-  nmos.subscription.nodes.unsubscribe(nodesToken)
-  nmos.subscription.flows.unsubscribe(flowsToken)
-  nmos.subscription.sources.unsubscribe(sourceToken)
-  nmos.subscription.devices.unsubscribe(devicesToken)
+  receiversSubscription.unsubscribe(receiversToken)
 }, 3 * 1000)
 
 setTimeout(function () {

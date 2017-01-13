@@ -1,5 +1,5 @@
 const express = require('express')
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 
 const types = [
   'devices',
@@ -11,10 +11,10 @@ const types = [
   'subscriptions'
 ]
 
-module.exports = (nmos, port) => {
+module.exports = (nmos, httpPort, wsPort) => {
   let app = express()
 
-  app.all('*', function (req, res, next) {
+  app.all('*', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
@@ -23,7 +23,7 @@ module.exports = (nmos, port) => {
 
   app.use(bodyParser.json())
 
-  app.get(`/subscriptions`, function (req, res) {
+  app.get(`/x-nmos/query/v1.0/subscriptions`, (req, res) => {
     nmos.subscriptions(req.params.id)
       .then(data => {
         res.json(data)
@@ -33,8 +33,22 @@ module.exports = (nmos, port) => {
       })
   })
 
-  function add (type) {
-    app.get(`/x-nmos/query/v1.0/${type}/:id`, function (req, res) {
+  app.post('/x-nmos/query/v1.0/subscriptions', (req, res) => {
+    let type = req.body.resource_path.replace('/', '')
+    let body = req.body
+    body.ws_href = `ws://localhost:${wsPort}/${type}`
+    nmos.subscription[type]()
+      .connect(body)
+        .then(data => {
+          res.json(data)
+        })
+        .catch(error => {
+          res.status(404).send(error)
+        })
+  })
+
+  let add = (type) => {
+    app.get(`/x-nmos/query/v1.0/${type}/:id`, (req, res) => {
       nmos[type](req.params.id)
         .then(data => {
           res.json(data)
@@ -44,18 +58,17 @@ module.exports = (nmos, port) => {
         })
     })
 
-    app.put(`/x-nmos/node/v1.0/receivers/:id/target`, function (req, res) {
+    app.put(`/x-nmos/node/v1.0/receivers/:id/target`, (req, res) => {
       nmos.route(req.params.id, req.body)
         .then(data => {
           res.json(data)
         })
         .catch(error => {
-          console.log('erored', error)
           res.status(404).send(error)
         })
     })
 
-    app.get(`/x-nmos/query/v1.0/${type}`, function (req, res) {
+    app.get(`/x-nmos/query/v1.0/${type}`, (req, res) => {
       nmos[type]()
         .then(data => {
           res.json(data)
@@ -68,9 +81,9 @@ module.exports = (nmos, port) => {
 
   types.forEach(add)
 
-  app.get('/', function (req, res) {
+  app.get('/', (req, res) => {
     res.send('You should have a console open and should be talking through that. Anything HTTP API you would have used with NMOS should be available here as well.')
   })
 
-  app.listen(port)
+  app.listen(httpPort)
 }

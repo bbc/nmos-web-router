@@ -33,8 +33,8 @@ let wsPort = port('ws', 6590)
 if (connect) {
   client(replPort)
 } else {
-  serve(nmos, httpPort)
   websocket(nmos, wsPort)
+  serve(nmos, httpPort, wsPort)
   repl(nmos, httpPort, wsPort, replPort)
   client(replPort)
 }

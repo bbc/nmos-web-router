@@ -14,9 +14,9 @@
   "author": "BBC",
   "license": "ISC",
   "scripts": {
+    "lint": "node scripts/lint",
     "test": "jest",
     "ci": "CI=true npm run lint && jest",
-    "lint": "node scripts/lint",
     "update": "node scripts/update",
     "start": "bin/ips-nmos-api"
   },

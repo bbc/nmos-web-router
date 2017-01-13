@@ -6,9 +6,19 @@ let nmos = NMOS({
   url
 })
 
-let options = {}
+nmos.subscriptions().then(data => {
+  console.log(data)
+})
 
+let options = {}
 let sub = nmos.subscription.receivers(options)
+sub.connect()
+  .then(data => {
+    console.log(data.data)
+  })
+  .catch(error => {
+    console.log(error)
+  })
 
 sub.subscribe({
   update (data) {
@@ -25,9 +35,6 @@ sub.subscribe({
   }
 })
 
-sub.connect()
-sub.connect()
-
-setTimeout(() => {
-  sub.disconnect()
-}, 1000)
+// setTimeout(() => {
+//   sub.disconnect()
+// }, 1000)
