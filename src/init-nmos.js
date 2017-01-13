@@ -24,7 +24,7 @@ export default (start) => {
     .get(`http://${parsedUrl.hostname}:12345/x-nmos/node/v1.0/self/`)
     .then(result => {
       let service = result.data.services.filter(service => {
-        return service.type === 'urn:x-ipstudio:service:mdnsbridge'
+        return service.type.includes('mdnsbridge')
       })[0]
       let url = service.href + 'nmos-query/'
       return axios.get(url)
