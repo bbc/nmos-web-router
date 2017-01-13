@@ -66,6 +66,7 @@
     "axios": "^0.15.2",
     "chance": "^1.0.4",
     "change-case": "^3.0.0",
+    "clone": "^2.1.0",
     "eslint-plugin-jasmine": "^2.1.0",
     "lokijs": "^1.4.1",
     "pushstate-server": "^2.1.0",
