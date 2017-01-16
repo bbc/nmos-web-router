@@ -1,6 +1,6 @@
 import updateFromGrains from './update-from-grains'
 
-describe('updating from grain', () => {
+describe('updating from grains', () => {
   let add
   let added
   let update
