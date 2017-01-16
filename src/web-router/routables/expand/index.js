@@ -1,4 +1,4 @@
-import cloneRoutables from '../clone-routables'
+import cloneRoutables from '../common/clone-routables'
 import Routables from '..'
 import expandSenders from './expand-senders'
 import expandReceivers from './expand-receivers'

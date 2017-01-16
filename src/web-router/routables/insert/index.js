@@ -1,12 +1,12 @@
 import Routables from '../'
 import clone from 'clone'
-import cloneRoutables from '../clone-routables'
+import cloneRoutables from '../common/clone-routables'
 import mapSenderFormats from './map-sender-formats'
 import mapInitialSenderState from './map-sender-initial-state'
-import mapSenderRoutedState from './map-sender-routed-state'
+import mapSenderRoutedState from '../common/map-sender-routed-state'
 import mapInitialReceiverState from './map-receiver-initial-state'
 import mapInitialRouted from './map-initial-routed'
-import sortRoutes from './sort-routes'
+import sortRoutes from '../common/sort-routes'
 import mapRoutedReceivers from './map-routed-receivers'
 
 export default (data) => {

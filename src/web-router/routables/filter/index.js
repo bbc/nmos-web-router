@@ -1,4 +1,4 @@
-import cloneRoutables from '../clone-routables'
+import cloneRoutables from '../common/clone-routables'
 import Routables from '..'
 import mapFuzzymatch from './map-fuzzymatch'
 
