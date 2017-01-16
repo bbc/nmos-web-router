@@ -10,7 +10,7 @@ export default ({add, remove, update, grains, data}) => {
     if (hasPost && hasPre) map = update
     else if (hasPost) map = add
     else if (hasPre) map = remove
-    map(data, grain)
+    map({data, grain})
   })
   return Routables(data)
 }

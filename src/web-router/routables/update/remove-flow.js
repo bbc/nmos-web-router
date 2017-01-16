@@ -1,3 +1,2 @@
-export default () => {
-  console.log('add')
+export default ({data, grain}) => {
 }
