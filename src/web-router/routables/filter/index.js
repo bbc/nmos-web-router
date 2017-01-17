@@ -3,8 +3,8 @@ import Routables from '..'
 import mapFuzzymatch from './map-fuzzymatch'
 
 export default (data) => {
+  data = cloneRoutables(data)
   return (term) => {
-    data = cloneRoutables(data)
     let senders = data.senders
     let receivers = data.receivers
 

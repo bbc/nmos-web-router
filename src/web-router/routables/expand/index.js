@@ -4,12 +4,10 @@ import expandSenders from './expand-senders'
 import expandReceivers from './expand-receivers'
 
 export default (data) => {
+  data = cloneRoutables(data)
   return (id) => {
-    data = cloneRoutables(data)
-    let senders = data.senders
-    let receivers = data.receivers
-    expandSenders({id, senders})
-    data.receivers = expandReceivers({id, senders, receivers})
+    expandSenders(data, id)
+    expandReceivers(data, id)
     return Routables(data)
   }
 }
