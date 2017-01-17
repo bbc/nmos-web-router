@@ -1,44 +1,26 @@
 import cloneRoutables from '../common/clone-routables'
 import Routables from '..'
-import mapSenderFormats from '../common/map-sender-formats'
-import mapInitialReceiverState from './map-receiver-initial-state'
-import mapRoutedReceivers from './map-routed-receivers'
-import mapSenderRoutedState from '../common/map-sender-routed-state'
 import mapInitialRouted from './map-initial-routed'
-import mapInitialSenderState from './map-sender-initial-state'
+import insertSenders from './insert-senders'
+import insertReceivers from './insert-receivers'
+import insertFlows from './insert-flows'
 
 export default (data) => {
   data = cloneRoutables(data)
 
   return {
     senders (senders) {
-      data.senders = senders
-      mapSenderFormats(data)
-      mapInitialSenderState(data)
-      mapSenderRoutedState(data)
-
+      insertSenders(data, senders)
       data.routes = mapInitialRouted(data)
-
-      data.senders.sort(window.nmos.defaultSort)
-      data.receivers.sort(window.nmos.defaultSort)
       return Routables(data)
     },
     receivers (receivers) {
-      data.receivers = receivers
-      mapInitialReceiverState(data)
-      mapRoutedReceivers(data)
-
-      mapSenderRoutedState(data)
-
+      insertReceivers(data, receivers)
       data.routes = mapInitialRouted(data)
-
-      data.senders.sort(window.nmos.defaultSort)
-      data.receivers.sort(window.nmos.defaultSort)
       return Routables(data)
     },
     flows (flows) {
-      data.flows = flows
-      mapSenderFormats(data)
+      insertFlows(data, flows)
       return Routables(data)
     }
   }

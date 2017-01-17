@@ -3,7 +3,10 @@ import mapInitialSenderState from './map-sender-initial-state'
 import mapSenderRoutedState from '../common/map-sender-routed-state'
 
 export default (data, senders) => {
-  mapSenderFormats({senders, flows: data.flows})
-  mapInitialSenderState({senders})
-  mapSenderRoutedState({senders, receivers: data.receivers})
+  if (!data.hasOwnProperty('senders')) data.senders = senders
+  else data.senders = data.senders.concat(senders)
+  mapSenderFormats(data)
+  mapInitialSenderState(data)
+  mapSenderRoutedState(data)
+  data.senders.sort(window.nmos.defaultSort)
 }
