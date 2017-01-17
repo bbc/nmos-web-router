@@ -1,5 +1,5 @@
 import cloneRoutables from '../common/clone-routables'
-import Routables from '..'
+import View from '../view'
 import expandSenders from './expand-senders'
 import expandReceivers from './expand-receivers'
 
@@ -8,6 +8,6 @@ export default (data) => {
   return (id) => {
     expandSenders(data, id)
     expandReceivers(data, id)
-    return Routables(data)
+    return View(data)
   }
 }

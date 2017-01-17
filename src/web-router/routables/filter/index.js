@@ -1,5 +1,5 @@
 import cloneRoutables from '../common/clone-routables'
-import Routables from '..'
+import View from '../view'
 import mapFuzzymatch from './map-fuzzymatch'
 
 export default (data) => {
@@ -11,6 +11,6 @@ export default (data) => {
     mapFuzzymatch(term, senders)
     mapFuzzymatch(term, receivers)
 
-    return Routables(data)
+    return View(data)
   }
 }

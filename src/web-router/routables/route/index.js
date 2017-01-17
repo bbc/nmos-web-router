@@ -1,5 +1,5 @@
 import cloneRoutables from '../common/clone-routables'
-import Routables from '..'
+import View from '../view'
 import sortRoutes from '../common/sort-routes'
 import getRoutable from './get-routable'
 import mapRoutableStateToRouted from './map-routables-state-to-routed'
@@ -21,6 +21,6 @@ export default (data) => {
 
     data.routes.sort(sortRoutes)
 
-    return Routables(data)
+    return View(data)
   }
 }

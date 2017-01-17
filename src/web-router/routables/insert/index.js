@@ -1,5 +1,5 @@
 import cloneRoutables from '../common/clone-routables'
-import Routables from '..'
+import View from '../view'
 import insertRoutes from './insert-routes'
 import insertSenders from './insert-senders'
 import insertReceivers from './insert-receivers'
@@ -12,16 +12,16 @@ export default (data) => {
     senders (senders) {
       insertSenders(data, senders)
       insertRoutes(data)
-      return Routables(data)
+      return View(data)
     },
     receivers (receivers) {
       insertReceivers(data, receivers)
       insertRoutes(data)
-      return Routables(data)
+      return View(data)
     },
     flows (flows) {
       insertFlows(data, flows)
-      return Routables(data)
+      return View(data)
     }
   }
 }

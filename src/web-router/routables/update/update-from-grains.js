@@ -1,4 +1,4 @@
-import Routables from '..'
+import View from '../view'
 import isEmpty from '../common/is-empty'
 const noop = () => {}
 
@@ -12,5 +12,5 @@ export default ({add, remove, update, grains, data}) => {
     else if (hasPre) map = remove
     map({data, grain})
   })
-  return Routables(data)
+  return View(data)
 }
