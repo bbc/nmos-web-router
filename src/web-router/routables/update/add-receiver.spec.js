@@ -9,11 +9,10 @@ describe('adding receivers', () => {
       defaultSort () {}
     }
 
-    let newReceiver = generate.receiver()
-    newReceiver.subscription.sender_id = 'sender_id_1'
-
     let receivers = generate.receivers(2)
+    receivers[0].id = 'receiver_0'
     receivers[0].subscription.sender_id = null
+    receivers[1].id = 'receiver_1'
     receivers[1].subscription.sender_id = 'sender_id_0'
 
     let senders = generate.senders(2)
@@ -24,15 +23,20 @@ describe('adding receivers', () => {
     data = insert.senders(senders).view()
     data = insert.receivers(receivers).view()
 
+    let newReceiver = generate.receiver()
+    newReceiver.id = 'receiver_new'
+    newReceiver.subscription.sender_id = 'sender_id_1'
+
     let grain = {
       pre: {},
       post: newReceiver
     }
 
     add({data, grain})
+    add({data, grain})
   })
 
-  it('adds the new receiver', () => {
+  it('adds the new receiver, does not add duplicates', () => {
     expect(data.receivers.length).toBe(3)
   })
 
