@@ -1,6 +1,5 @@
-import mapSenderFormats from '../common/map-sender-formats'
+import insertFlows from '../insert/insert-flows'
 
 export default ({data, grain}) => {
-  data.flows.push(grain.post)
-  mapSenderFormats(data)
+  insertFlows(data, [grain.post])
 }
