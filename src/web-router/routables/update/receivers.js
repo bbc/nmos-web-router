@@ -1,6 +1,6 @@
 import updateFromGrains from './update-from-grains'
 
-import add from './add-receiver'
+import insert from '../insert/insert-receivers'
 import remove from './remove-receiver'
 
 export default (data) => {
@@ -8,7 +8,9 @@ export default (data) => {
     updateFromGrains({
       grains,
       data,
-      add,
+      add (grain) {
+        insert(data, [grain.post])
+      },
       remove
     })
   }
