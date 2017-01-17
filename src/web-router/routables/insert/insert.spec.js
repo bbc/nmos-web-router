@@ -7,6 +7,7 @@ describe('insert', () => {
   let senders
   let flows
   let receivers
+  let insert
 
   beforeEach(() => {
     sorted = []
@@ -16,7 +17,7 @@ describe('insert', () => {
         else if (left.hasOwnProperty('subscription')) sorted.push('receiver')
       }
     }
-    let insert = Insert({})
+    insert = Insert({})
 
     senders = generate.senders(2)
     senders[0].id = 'sender_id'
@@ -71,5 +72,13 @@ describe('insert', () => {
   it('sorts the senders and receivers with defaultSort', () => {
     expect(sorted).toContain('sender')
     expect(sorted).toContain('receiver')
+  })
+
+  it('updates doubles, flow', () => {
+    let newFlows = generate.flows(1)
+    newFlows[0].id = 'flow_id'
+    data = insert.flows(newFlows).view()
+
+    expect(data.flows.length).toBe(flows.length)
   })
 })
