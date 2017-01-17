@@ -12,10 +12,6 @@ export default (data) => {
     .filter(receiver => {
       return receiver.subscription.sender_id !== null
     })
-    .filter(receiver => {
-      // this is not a good thing... but needed for sorting
-      return get(data.senders, receiver.subscription.sender_id) !== undefined
-    })
     .map(receiver => {
       let sender = get(data.senders, receiver.subscription.sender_id)
       return {
