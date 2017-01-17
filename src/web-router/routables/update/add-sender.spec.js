@@ -29,9 +29,10 @@ describe('adding receivers', () => {
     }
 
     add({data, grain})
+    add({data, grain})
   })
 
-  it('adds the new sender', () => {
+  it('adds the new sender, no duplicates', () => {
     expect(data.senders.length).toBe(2)
   })
 

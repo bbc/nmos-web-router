@@ -18,9 +18,10 @@ describe('adding flows', () => {
       pre: {}
     }
     add({data, grain})
+    add({data, grain})
   })
 
-  it('adds flow to data', () => {
+  it('adds flow to data, no duplicates', () => {
     expect(data.flows.length).toBe(1)
   })
 
