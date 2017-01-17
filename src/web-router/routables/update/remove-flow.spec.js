@@ -19,6 +19,7 @@ describe('adding flows', () => {
       pre: flow
     }
     remove({data, grain})
+    remove({data, grain})
   })
 
   it('removes flow to data', () => {
