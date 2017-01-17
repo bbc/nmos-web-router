@@ -2,13 +2,14 @@ import add from './add-flow'
 import generate from '../../../ips-nmos-api/src/stub/generate'
 
 describe('adding flows', () => {
-  it('adds flow to data', () => {
+  let data
+  beforeEach(() => {
     let flow = generate.flow()
     let sender = generate.sender()
     sender.flow_id = flow.id
     flow.format = 'format'
 
-    let data = {
+    data = {
       senders: [sender],
       flows: []
     }
@@ -17,8 +18,13 @@ describe('adding flows', () => {
       pre: {}
     }
     add({data, grain})
+  })
 
+  it('adds flow to data', () => {
     expect(data.flows.length).toBe(1)
+  })
+
+  it('updates senders with format', () => {
     expect(data.senders[0].format).toBe('format')
   })
 })
