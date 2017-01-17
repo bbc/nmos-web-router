@@ -1,54 +1,45 @@
-import Routables from '../'
-import clone from 'clone'
 import cloneRoutables from '../common/clone-routables'
+import Routables from '..'
 import mapSenderFormats from '../common/map-sender-formats'
-import mapInitialSenderState from './map-sender-initial-state'
-import mapSenderRoutedState from '../common/map-sender-routed-state'
 import mapInitialReceiverState from './map-receiver-initial-state'
-import mapInitialRouted from './map-initial-routed'
-import sortRoutes from '../common/sort-routes'
 import mapRoutedReceivers from './map-routed-receivers'
+import mapSenderRoutedState from '../common/map-sender-routed-state'
+import mapInitialRouted from './map-initial-routed'
+import mapInitialSenderState from './map-sender-initial-state'
 
 export default (data) => {
   data = cloneRoutables(data)
-  let senders = data.senders
-  let receivers = data.receivers
-  let flows = data.flows
-  let routes = data.routes
-
-  let routables = () => {
-    senders.sort(window.nmos.defaultSort)
-    receivers.sort(window.nmos.defaultSort)
-    routes.sort(sortRoutes)
-    return Routables({senders, flows, receivers, routes})
-  }
 
   return {
-    senders (data) {
-      senders = clone(data)
-      mapSenderFormats({senders, flows})
-      mapInitialSenderState({senders})
-      mapSenderRoutedState({senders, receivers})
+    senders (senders) {
+      data.senders = senders
+      mapSenderFormats(data)
+      mapInitialSenderState(data)
+      mapSenderRoutedState(data)
 
-      routes = mapInitialRouted({senders, receivers})
+      data.routes = mapInitialRouted(data)
 
-      return routables()
+      data.senders.sort(window.nmos.defaultSort)
+      data.receivers.sort(window.nmos.defaultSort)
+      return Routables(data)
     },
-    receivers (data) {
-      receivers = clone(data)
-      mapInitialReceiverState({receivers})
-      mapRoutedReceivers({receivers})
+    receivers (receivers) {
+      data.receivers = receivers
+      mapInitialReceiverState(data)
+      mapRoutedReceivers(data)
 
-      mapSenderRoutedState({senders, receivers})
+      mapSenderRoutedState(data)
 
-      routes = mapInitialRouted({senders, receivers})
+      data.routes = mapInitialRouted(data)
 
-      return routables()
+      data.senders.sort(window.nmos.defaultSort)
+      data.receivers.sort(window.nmos.defaultSort)
+      return Routables(data)
     },
-    flows (data) {
-      flows = clone(data)
-      mapSenderFormats({senders, flows})
-      return routables()
+    flows (flows) {
+      data.flows = flows
+      mapSenderFormats(data)
+      return Routables(data)
     }
   }
 }

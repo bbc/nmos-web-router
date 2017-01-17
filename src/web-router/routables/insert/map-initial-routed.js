@@ -1,4 +1,5 @@
 import clone from 'clone'
+import sortRoutes from '../common/sort-routes'
 
 export default ({senders, receivers}) => {
   function get (routables, id) {
@@ -7,7 +8,7 @@ export default ({senders, receivers}) => {
     })[0]
   }
 
-  return receivers
+  let routes = receivers
     .filter(receiver => {
       return receiver.subscription.sender_id !== null
     })
@@ -23,4 +24,7 @@ export default ({senders, receivers}) => {
         sender: clone(sender)
       }
     })
+
+  routes.sort(sortRoutes)
+  return routes
 }
