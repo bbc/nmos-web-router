@@ -77,8 +77,11 @@ describe('insert', () => {
   it('updates doubles, flow', () => {
     let newFlows = generate.flows(1)
     newFlows[0].id = 'flow_id'
+    newFlows[0].label = 'new'
     data = insert.flows(newFlows).view()
 
     expect(data.flows.length).toBe(flows.length)
+    expect(data.flows[1].id).toBe('flow_id')
+    expect(data.flows[1].label).toBe('new')
   })
 })
