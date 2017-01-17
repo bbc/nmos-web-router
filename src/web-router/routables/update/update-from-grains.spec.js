@@ -3,8 +3,6 @@ import updateFromGrains from './update-from-grains'
 describe('updating from grains', () => {
   let add
   let added
-  let update
-  let updated
   let remove
   let removed
   let data
@@ -13,7 +11,6 @@ describe('updating from grains', () => {
   beforeEach(() => {
     added = 'not added'
     removed = 'not removed'
-    updated = 'not updated'
     data = {}
     id = 'id'
     add = () => {
@@ -22,27 +19,13 @@ describe('updating from grains', () => {
     remove = () => {
       removed = 'removed'
     }
-    update = () => {
-      updated = 'updated'
-    }
-  })
-
-  it('updates when there is a post and a pre', () => {
-    let grains = [{post: {id}, pre: {id}}]
-
-    updateFromGrains({add, remove, update, grains, data})
-
-    expect(updated).toBe('updated')
-    expect(removed).not.toBe('removed')
-    expect(added).not.toBe('added')
   })
 
   it('removes when there is a pre only', () => {
     let grains = [{pre: {id}}]
 
-    updateFromGrains({add, remove, update, grains, data})
+    updateFromGrains({add, remove, grains, data})
 
-    expect(updated).not.toBe('updated')
     expect(removed).toBe('removed')
     expect(added).not.toBe('added')
   })
@@ -50,9 +33,8 @@ describe('updating from grains', () => {
   it('adds when there is a post only', () => {
     let grains = [{post: {id}}]
 
-    updateFromGrains({add, remove, update, grains, data})
+    updateFromGrains({add, remove, grains, data})
 
-    expect(updated).not.toBe('updated')
     expect(removed).not.toBe('removed')
     expect(added).toBe('added')
   })
@@ -60,9 +42,8 @@ describe('updating from grains', () => {
   it('does nothing if no post or pre', () => {
     let grains = [{post: {}, pre: {}}]
 
-    updateFromGrains({add, remove, update, grains, data})
+    updateFromGrains({add, remove, grains, data})
 
-    expect(updated).not.toBe('updated')
     expect(removed).not.toBe('removed')
     expect(added).not.toBe('added')
   })
