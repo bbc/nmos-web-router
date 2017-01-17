@@ -1,11 +1,14 @@
 import mapState from '../common/map-state'
 import stateToString from '../common/state-to-string'
 
-export default (routables, setState) => {
-  routables.forEach(routable => {
+export default (data, type, initial, routed) => {
+  data[type].forEach(routable => {
     let mapRoutableState = mapState(routable)
-    if (!routable.hasOwnProperty('state')) setState(mapRoutableState)
     mapRoutableState.unremove()
+
+    initial(routable, mapRoutableState)
+    routed(routable, mapRoutableState, data)
+
     routable.state = mapRoutableState.state()
     routable.stateString = stateToString(routable.state)
   })
