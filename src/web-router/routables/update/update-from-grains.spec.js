@@ -57,7 +57,7 @@ describe('updating from grains', () => {
     expect(added).toBe('added')
   })
 
-  it('does nothing if no post or pred', () => {
+  it('does nothing if no post or pre', () => {
     let grains = [{post: {}, pre: {}}]
 
     updateFromGrains({add, remove, update, grains, data})
