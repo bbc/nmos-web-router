@@ -8,13 +8,9 @@ export default (data) => {
     })[0]
   }
 
-  // console.log(data.receivers.map(r => {
-  //   return r.id
-  // }))
-
   data.routes = data.receivers
     .filter(receiver => {
-      return receiver.subscription.sender_id !== null
+      return receiver.subscription.sender_id !== null && !receiver.state.includes('removed')
     })
     .map(receiver => {
       let sender = get(data.senders, receiver.subscription.sender_id)
