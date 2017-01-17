@@ -1,10 +1,10 @@
 import mapSenderFormats from '../common/map-sender-formats'
 import mapInitialSenderState from './map-sender-initial-state'
 import mapSenderRoutedState from '../common/map-sender-routed-state'
+import addUnique from './add-unique'
 
 export default (data, senders) => {
-  if (!data.hasOwnProperty('senders')) data.senders = senders
-  else data.senders = data.senders.concat(senders)
+  addUnique(data, 'senders', senders)
   mapSenderFormats(data)
   mapInitialSenderState(data)
   mapSenderRoutedState(data)

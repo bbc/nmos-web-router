@@ -80,8 +80,30 @@ describe('insert', () => {
     newFlows[0].label = 'new'
     data = insert.flows(newFlows).view()
 
-    expect(data.flows.length).toBe(flows.length)
+    expect(data.flows.length).toBe(2)
     expect(data.flows[1].id).toBe('flow_id')
     expect(data.flows[1].label).toBe('new')
+  })
+
+  it('updates doubles, receivers', () => {
+    let newReceivers = generate.receivers(1)
+    newReceivers[0].id = 'receiver_id'
+    newReceivers[0].label = 'new'
+    data = insert.receivers(newReceivers).view()
+
+    expect(data.receivers.length).toBe(2)
+    expect(data.receivers[1].id).toBe('receiver_id')
+    expect(data.receivers[1].label).toBe('new')
+  })
+
+  it('updates doubles, senders', () => {
+    let newSenders = generate.senders(1)
+    newSenders[0].id = 'sender_id'
+    newSenders[0].label = 'new'
+    data = insert.senders(newSenders).view()
+
+    expect(data.senders.length).toBe(2)
+    expect(data.senders[1].id).toBe('sender_id')
+    expect(data.senders[1].label).toBe('new')
   })
 })
