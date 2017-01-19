@@ -6,7 +6,6 @@ module.exports = (nmos, port) => {
   wss.on('connection', (ws) => {
     let type = ws.upgradeReq.url.replace(/\//g, '')
     let subscription = nmos.subscription[type]()
-    subscription.connect()
 
     let token = subscription.subscribe({
       update (data) {

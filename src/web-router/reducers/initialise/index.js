@@ -10,10 +10,10 @@ export default (state, action, merge) => {
     flows: action.flows || state.data.flows
   }
   let routables = Routables(data)
-    .insert.receivers(data.receivers)
-    .insert.senders(data.senders)
-    .insert.flows(data.flows)
-    .filter(state.view.choose.term)
+  routables.insert.receivers(data.receivers)
+  routables.insert.senders(data.senders)
+  routables.insert.flows(data.flows)
+  routables.filter(state.view.choose.term)
 
   let view = Object.assign({}, state.view, {
     loading: loading(routables.view(), state.view)

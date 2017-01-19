@@ -1,5 +1,5 @@
 import fuzzysearch from 'fuzzysearch'
-import mapState from './map-state'
+import mapState from './common/map-state'
 
 function remove (arr, index) {
   let newArr = [].concat(arr)

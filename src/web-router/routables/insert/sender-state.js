@@ -1,7 +1,9 @@
 import state from './state'
+import hasState from './has-state'
 
-const initial = (sender, mapState) => {
-  if (!sender.hasOwnProperty('state')) mapState.check().contract().selectable()
+const initial = (sender, mapState, isNew) => {
+  if (!hasState(sender.state, ['contracted', 'expanded'])) mapState.contract()
+  mapState.selectable()
 }
 
 const routed = (sender, mapState, data) => {
@@ -11,6 +13,6 @@ const routed = (sender, mapState, data) => {
   })
 }
 
-export default (data) => {
-  state(data, 'senders', initial, routed)
+export default (data, isNew) => {
+  state(data, 'senders', initial, routed, isNew)
 }

@@ -9,15 +9,13 @@ module.exports = (baseUrl, getters, WebSocket, type) => {
 
   return () => {
     let subscription = {
-      connect (options) {
-        options = options || {}
+      connect (options = {}) {
         return sockets.connect(options)
       },
       disconnect (id) {
         return sockets.disconnect(id)
       },
-      subscribe (options) {
-        options = options || {}
+      subscribe (options = {}) {
         options.connection = options.connection || {}
         return callbacks.push(options)
       },

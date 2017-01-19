@@ -1,12 +1,16 @@
 export default (data, type, newData) => {
-  let idMap = {}
-  let tmp = data[type].concat(newData)
-  data[type] = []
-
-  tmp.forEach((d, index) => {
-    if (!data.hasOwnProperty(type)) data[type] = []
-    if (idMap.hasOwnProperty(d.id)) data[type].splice(idMap[d.id], 1)
-    data[type].push(d)
-    idMap[d.id] = data[type].length - 1
+  if (!data.hasOwnProperty(type)) data[type] = []
+  newData.forEach(newValue => {
+    let pushed = false
+    data[type].forEach((oldValue, index) => {
+      if (oldValue.id === newValue.id) {
+        let toUpdate = data[type][index]
+        Object.keys(newValue).forEach(key => {
+          toUpdate[key] = newValue[key]
+        })
+        pushed = true
+      }
+    })
+    if (!pushed) data[type].push(newValue)
   })
 }

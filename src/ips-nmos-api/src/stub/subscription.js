@@ -26,14 +26,18 @@ module.exports = (collections, delay) => {
           if (!body.hasOwnProperty('persist')) body.persist = false
           if (!body.hasOwnProperty('secure')) body.secure = false
           body.resource_path = `/${type}`
-          let subscription = collections.subscriptions.find(body)
+          let subscription = collections.subscriptions.find({
+            resource_path: body.resource_path
+          })
           if (subscription === null) {
             subscription = body
             subscription.ws_href = subscription.ws_href || `ws://localhost:6590/${type}`
             subscription.id = random.id()
             collections.subscriptions.insert(subscription)
           }
-          subscription = collections.subscriptions.find(body)
+          subscription = collections.subscriptions.find({
+            resource_path: body.resource_path
+          })
           return new Promise((resolve, reject) => {
             resolve(subscription)
           })

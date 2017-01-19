@@ -8,7 +8,7 @@ export default (data) => {
     updateFromGrains({
       grains,
       data,
-      add (grain) {
+      add ({grain}) {
         insert(data, [grain.post])
       },
       remove

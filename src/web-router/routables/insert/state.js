@@ -1,12 +1,16 @@
 import mapState from '../common/map-state'
 import stateToString from '../common/state-to-string'
+import hasState from './has-state'
 
-export default (data, type, initial, routed) => {
+export default (data, type, initial, routed, isNew) => {
   data[type].forEach(routable => {
     let mapRoutableState = mapState(routable)
+    routable.state = routable.state || mapRoutableState.state()
     mapRoutableState.unremove()
+    if (!hasState(routable.state, ['checked', 'unchecked']) && isNew) mapRoutableState.uncheck()
+    else if (!hasState(routable.state, ['checked', 'unchecked'])) mapRoutableState.check()
 
-    initial(routable, mapRoutableState)
+    initial(routable, mapRoutableState, isNew)
     routed(routable, mapRoutableState, data)
 
     routable.state = mapRoutableState.state()

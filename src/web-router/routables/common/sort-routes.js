@@ -1,4 +1,9 @@
 export default (left, right) => {
+  left.receivers = left.receivers || {}
+  left.sender = left.sender || {}
+  right.receivers = right.receivers || {}
+  right.sender = right.sender || {}
+
   let leftReceiverId = left.receiver.id
   let rightReceiverId = right.receiver.id
   let leftSenderId = left.sender.id
