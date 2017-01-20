@@ -36,6 +36,9 @@ export default (data) => {
       }
     },
     view () {
+      data.expanded = data.expanded || {
+        state: []
+      }
       return data
     }
   }
