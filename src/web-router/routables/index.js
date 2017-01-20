@@ -3,9 +3,11 @@ import expand from './expand'
 import filter from './filter'
 import route from './route'
 import update from './update'
+import check from './check'
 
 export default (data) => {
   return {
+    check: check(data),
     update: {
       receivers (grains) {
         update(data).receivers(grains)
