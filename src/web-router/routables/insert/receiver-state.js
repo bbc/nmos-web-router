@@ -1,7 +1,7 @@
 import state from './state'
 
 const initial = (receiver, mapState, isNew) => {
-  mapState.contract().notSelectable()
+  mapState.contract().selectable()
 }
 
 const routed = (receiver, mapState) => {
