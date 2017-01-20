@@ -10,7 +10,7 @@ export default (data, type, initial, routed, isNew) => {
     if (!hasState(routable.state, ['checked', 'unchecked']) && isNew) mapRoutableState.uncheck()
     else if (!hasState(routable.state, ['checked', 'unchecked'])) mapRoutableState.check()
 
-    initial(routable, mapRoutableState, isNew)
+    initial(routable, mapRoutableState, isNew, data)
     routed(routable, mapRoutableState, data)
 
     routable.state = mapRoutableState.state()
