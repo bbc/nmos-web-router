@@ -81,8 +81,8 @@ describe('insert', () => {
     data = insert.flows(newFlows).view()
 
     expect(data.flows.length).toBe(2)
-    expect(data.flows[1].id).toBe('flow_id')
-    expect(data.flows[1].label).toBe('new')
+    expect(data.flows[0].id).toBe('flow_id')
+    expect(data.flows[0].label).toBe('new')
   })
 
   it('updates doubles, receivers', () => {
@@ -92,8 +92,8 @@ describe('insert', () => {
     data = insert.receivers(newReceivers).view()
 
     expect(data.receivers.length).toBe(2)
-    expect(data.receivers[1].id).toBe('receiver_id')
-    expect(data.receivers[1].label).toBe('new')
+    expect(data.receivers[0].id).toBe('receiver_id')
+    expect(data.receivers[0].label).toBe('new')
   })
 
   it('updates doubles, senders', () => {
@@ -103,7 +103,7 @@ describe('insert', () => {
     data = insert.senders(newSenders).view()
 
     expect(data.senders.length).toBe(2)
-    expect(data.senders[1].id).toBe('sender_id')
-    expect(data.senders[1].label).toBe('new')
+    expect(data.senders[0].id).toBe('sender_id')
+    expect(data.senders[0].label).toBe('new')
   })
 })

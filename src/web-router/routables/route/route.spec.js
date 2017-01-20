@@ -30,7 +30,7 @@ describe('routing', () => {
   it('two routables which have yet to be routed become "routing"', () => {
     data = route('receiver_0', 'sender_0').view()
 
-    expect(data.routes[0].state).toBe('routing')
+    expect(data.routes[1].state).toBe('routing')
   })
 
   it('two routables already routed becomes "routed"', () => {
