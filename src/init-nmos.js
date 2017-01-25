@@ -3,6 +3,7 @@ import parseURL from './parse-url'
 
 const parsedUrl = parseURL(window.location)
 const queryStub = parsedUrl.query('stub').boolean
+const queryPort = parsedUrl.query('mdnsbridge_port').number || 80
 const queryPriority = parsedUrl.query('priority').number
 
 function topPriority (representations) {
@@ -21,7 +22,7 @@ function topPriority (representations) {
 
 export default (start) => {
   axios
-    .get(`http://${parsedUrl.hostname}:12345/x-nmos/node/v1.0/self/`)
+    .get(`http://${parsedUrl.hostname}:${queryPort}/x-nmos/node/v1.0/self/`)
     .then(result => {
       let service = result.data.services.filter(service => {
         return service.type.includes('mdnsbridge')
