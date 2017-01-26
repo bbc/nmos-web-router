@@ -1,0 +1,31 @@
+let keyToSpec = {"spec": {}}
+
+{
+  "executable": "",
+  "ui": {
+    "category": "",
+    "description": "",
+    "name": ""
+  },
+  "input": {
+    "name": {
+      "description": "",
+      "name": "name",
+      "type": "dynamic",
+      "caps": {"formats": []},
+      "spec": {},
+      "key": "keyToSpec"
+    }
+  },
+  "output": {
+    "name": {
+      "description": "",
+      "name": "name",
+      "type": "dynamic",
+      "caps": {"formats": []},
+      "spec": {},
+      "key": "keyToSpec"
+    }
+  },
+  "paramspec": "keyToSpec"
+}
