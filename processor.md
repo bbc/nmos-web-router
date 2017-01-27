@@ -2,8 +2,6 @@
 
 The end point can be found here: `/x-ipstudio/pipelinemanager/v1.0/caps/processor/  `
 
-_Maybe things should have been pluralised_
-
 This endpoints return an object with `key` to a `processor`
 e.g.
 
@@ -82,17 +80,17 @@ both of these look pretty much the same.
     "name": "key",
     "type": "dynamic",
     "caps": {"formats": []},
-    "spec": {},
-    "spec_0": {},
-    "spec_1": {}
+    "spec": {}
   }
 }
 ```
-you can have many specs in here, but most are inside the `"spec"` object. i.e. you have have loads of `"spec_x"` but will always have one `"spec"`
+you can have many specs inside the `"spec"` object
 
-some example `"spec_x"`'s  `"tags", "label", "connector", "VidshmSegSize"`
+some example `"spec"`'s  `"tags", "label", "connector", "VidshmSegSize"`
 
-the `type` can be `"dynamic"` or `"static"` but it I have yet to come across `"static"`
+the `type` can be `"dynamic"` or `"static"`
+
+**DEPRECATED** `"static"` do not use this type
 
 ### Paramspec Schema
 
@@ -112,8 +110,6 @@ All specs are a `key` to an object and each will have the following values as a 
   "default": {},
 }
 ```
-
-
 
 * the `"type"` is an enum
 * the `"default"` value depends on the `"type"`
