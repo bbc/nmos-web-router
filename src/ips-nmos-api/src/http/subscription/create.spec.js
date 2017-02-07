@@ -45,10 +45,8 @@ describe('create', () => {
       expect(body.max_update_rate_ms).toBe(100)
     })
 
-    it('params to be created by ips-nmos-api', () => {
-      expect(body.params).toEqual({
-        created_by: 'ips-nmos-api'
-      })
+    it('params to be blank when created by ips-nmos-api', () => {
+      expect(body.params).toEqual({})
     })
 
     it('persist to be false', () => {

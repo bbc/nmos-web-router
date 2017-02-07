@@ -22,7 +22,7 @@ module.exports = (collections, delay) => {
       return {
         connect (body = {}) {
           body.max_update_rate_ms = body.max_update_rate_ms || 100
-          body.params = body.params || {created_by: 'ips-nmos-api'}
+          body.params = body.params || {}
           if (!body.hasOwnProperty('persist')) body.persist = false
           if (!body.hasOwnProperty('secure')) body.secure = false
           body.resource_path = `/${type}`

@@ -142,9 +142,7 @@ let receiverSubscription = nmos.subscription.receivers()
 // opens websockets with the optional params, these are the default values
 receiverSubscription.connect({
   max_update_rate_ms: 100,
-  params: {
-    created_by: 'ips-nmos-api'
-  },
+  params: {},
   persist: false,
   secure: false
 })
@@ -162,8 +160,6 @@ receiverSubscription.status() // one of ['open', 'closed', 'error', 'connecting'
 ```
 
 You can call `connect`, `disconnect` and `subscribe` in any order. If you `subscribe` and have not run `connect` when it finally connects it will call all the callbacks where appropriate
-
-It add the params `created_by: 'ips-nmos-api'` so you can find it easier
 
 Anything you pass into `connect` will be posted to the `subscriptions` endpoint
 
