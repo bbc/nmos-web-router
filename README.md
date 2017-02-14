@@ -141,3 +141,5 @@ Some kind of connection between a sender and a receiver
 Most of the testing is around `./src/web-router/routables` and most of the logic should be here
 
 If you run a build locally and then run `npm run serve` you will need to copy all the files in `build` to `build/ips-web`. You can either add this as part of a build job or change the `package.json` `homepage` but it seems easier to not bother. It is so similar to `npm start` that is isn't worth the hassle
+
+There is also a `./processor-generator.js` and a `./processor-generator.spec.js` which will generate random `processors` which is to be used for testing the new configurator. You can find more docs at [./processor.md](./processor.md)
