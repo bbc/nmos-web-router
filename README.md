@@ -9,9 +9,12 @@ npm start # starts the dev service
 npm run build # creates a build folder and builds everything needed
 npm run serve # runs build and then starts serving
 npm run lint # lints the javascript and styles
-npm test # runs lint and jest
-npm test -- --watch # runs lint and jest and then starts watching with jest (it is amazing)
+npm ci # runs lint and jest, should be run on CI
+npm test # runs lint and jest and then starts watching with jest (it is amazing)
 npm test -- --updateSnapshot # runs lint and jest and updates all the snapshots
+npm test:once # will run the tests once only
+npm run nmos # starts the nmos server
+npm run mdnsbridge # starts local mdnsbridge, see ./scripts/mdnsbridge-local.js to see what it returns
 ```
 
 ## Flux
@@ -88,6 +91,8 @@ You can also change the priority using `priority=888` for example
 
 If you are using the local stub data then `priority=888` will point to the live data (might be brittle if the ip addresses change, if this happens then look in `scripts/mdnsbridge-local.js`)
 
+If you are using mdnsbridge, because everything is now on port 80 you can add `mdnsbridge_port=12345` as a query param e.g. [http://localhost:3000/?mdnsbridge_port=12345](http://localhost:3000/?mdnsbridge_port=12345) and it will set the port for you, otherwise it will default to port 80
+
 ## Testing
 
 Uses [Jest](http://facebook.github.io/jest/) for testing. Just write a file in src with the extension `*.spec.js` or `*.test.js`
@@ -130,3 +135,9 @@ Either a Sender or Receiver
 ### Route
 
 Some kind of connection between a sender and a receiver
+
+## Developer notes
+
+Most of the testing is around `./src/web-router/routables` and most of the logic should be here
+
+If you run a build locally and then run `npm run serve` you will need to copy all the files in `build` to `build/ips-web`. You can either add this as part of a build job or change the `package.json` `homepage` but it seems easier to not bother. It is so similar to `npm start` that is isn't worth the hassle
