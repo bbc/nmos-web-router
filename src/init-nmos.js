@@ -8,11 +8,11 @@ const queryPriority = parsedUrl.query('priority').number
 
 function getPrioritised (representations, queryPriority) {
   if (queryPriority) {
-      let representation = representations
+    let representation = representations
       .filter(representation => {
         return representation.priority === queryPriority
       })[0]
-      if (representation) {
+    if (representation) {
         return `http://${representation.address}:${representation.port}`
       }
   }
@@ -41,7 +41,7 @@ export default (start) => {
     })
     .then(result => {
       let representations = result.data.representation
-      let url = getPriority(representations,queryPriority)
+      let url = getPrioritised(representations, queryPriority)
       start(queryStub, url)
     })
     .catch(error => {
