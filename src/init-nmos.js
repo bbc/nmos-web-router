@@ -6,10 +6,19 @@ const queryStub = parsedUrl.query('stub').boolean
 const queryPort = parsedUrl.query('mdnsbridge_port').number || 80
 const queryPriority = parsedUrl.query('priority').number
 
-function topPriority (representations) {
+function getPrioritised (representations, queryPriority) {
+  if (queryPriority) {
+      let representation = representations
+      .filter(representation => {
+        return representation.priority === queryPriority
+      })[0]
+      if (representation) {
+        return = `http://${representation.address}:${representation.port}`
+      }
+  }
   let lessThanOneHundred = representations
     .filter(representation => {
-      return representation.priority <= 100
+      return representation.priority < 100
     })
   lessThanOneHundred.sort((left, right) => {
     if (left.priority < right.priority) return 1
@@ -32,16 +41,7 @@ export default (start) => {
     })
     .then(result => {
       let representations = result.data.representation
-      let url = topPriority(representations)
-      if (queryPriority) {
-        let representation = representations
-        .filter(representation => {
-          return representation.priority === queryPriority
-        })[0]
-        if (representation) {
-          url = `http://${representation.address}:${representation.port}`
-        }
-      }
+      let url = getPriority(representations,queryPriority)
       start(queryStub, url)
     })
     .catch(error => {
