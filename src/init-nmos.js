@@ -13,7 +13,7 @@ function getPrioritised (representations, queryPriority) {
         return representation.priority === queryPriority
       })[0]
       if (representation) {
-        return = `http://${representation.address}:${representation.port}`
+        return `http://${representation.address}:${representation.port}`
       }
   }
   let lessThanOneHundred = representations
