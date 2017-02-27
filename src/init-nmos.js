@@ -7,13 +7,18 @@ const queryPort = parsedUrl.query('mdnsbridge_port').number || 80
 const queryPriority = parsedUrl.query('priority').number
 
 function getPrioritised (representations, queryPriority) {
+  var url = ''
   if (queryPriority) {
     let representation = representations
       .filter(representation => {
         return representation.priority === queryPriority
       })[0]
     if (representation) {
-      return `http://${representation.address}:${representation.port}`
+      if ((/^[:]$/).test(representation.address)) {
+        url = `http://[${representation.address}]:${representation.port}`
+      } else {
+        url = `http://${representation.address}:${representation.port}`
+      }
     }
   }
   let lessThanOneHundred = representations
@@ -26,7 +31,14 @@ function getPrioritised (representations, queryPriority) {
     return 0
   })
   let representation = lessThanOneHundred[lessThanOneHundred.length - 1]
-  return `http://${representation.address}:${representation.port}`
+  if (representation) {
+    if ((/^[:]$/).test(representation.address)) {
+      url = `http://[${representation.address}]:${representation.port}`
+    } else {
+      url = `http://${representation.address}:${representation.port}`
+    }
+  }
+  return url
 }
 
 export default (start) => {
