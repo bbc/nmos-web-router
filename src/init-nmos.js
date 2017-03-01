@@ -14,7 +14,7 @@ function getPrioritised (representations, queryPriority) {
         return representation.priority === queryPriority
       })[0]
     if (representation) {
-      if ((/^[:]$/).test(representation.address)) {
+      if (representation.address.indexOf(':') > -1) {
         url = `http://[${representation.address}]:${representation.port}`
       } else {
         url = `http://${representation.address}:${representation.port}`
@@ -32,7 +32,7 @@ function getPrioritised (representations, queryPriority) {
   })
   let representation = lessThanOneHundred[lessThanOneHundred.length - 1]
   if (representation) {
-    if ((/^[:]$/).test(representation.address)) {
+    if (representation.address.indexOf(':') > -1) {
       url = `http://[${representation.address}]:${representation.port}`
     } else {
       url = `http://${representation.address}:${representation.port}`
