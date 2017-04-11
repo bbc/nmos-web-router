@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
+    "babel-preset-latest": "^6.24.1",
     "chance": "^1.0.4",
     "change-case": "^3.0.0",
     "clone": "^2.1.0",
