@@ -43,7 +43,6 @@ let Routes = ({routes, expanded}) => {
 
 Routes.propTypes = {
   routes: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
   expanded: PropTypes.object.isRequired
 }
 

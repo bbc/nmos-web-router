@@ -31,7 +31,6 @@ let Connections = ({expanded, senders, receivers, routes, actions}) => {
 }
 
 Connections.propTypes = {
-  routesEl: PropTypes.any,
   expanded: PropTypes.object.isRequired,
   senders: PropTypes.array.isRequired,
   receivers: PropTypes.array.isRequired,
