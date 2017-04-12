@@ -23,6 +23,7 @@
     border: none;
     fill: var(--color);
     color: var(--color);
+    padding: 0 8px 0 13px;
     transition: color 0.25s, fill 0.25s, background-color 0.25s;
 
     & .label {
