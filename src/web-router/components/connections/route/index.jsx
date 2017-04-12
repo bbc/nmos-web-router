@@ -98,7 +98,7 @@ let HalfRoute = ({data, side, routesRects, scrollTop}) => {
   let routableNodeEl = routableEl.querySelector('.node')
   let routableRects = routableNodeEl.getBoundingClientRect()
 
-  let width = routesRects.width
+  let width = 0
   let top = routableRects.top - routesRects.top
 
   return <RouteSVG
