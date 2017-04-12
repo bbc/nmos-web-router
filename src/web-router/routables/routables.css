@@ -23,6 +23,7 @@
     border: none;
     fill: var(--color);
     color: var(--color);
+    padding: 0 8px 0 13px;
     transition: color 0.25s, fill 0.25s, background-color 0.25s;
 
     & .label {
@@ -32,6 +33,7 @@
     & .label,
     & .description {
       font-weight: normal;
+      letter-spacing: 0;
       text-align: right;
       overflow: hidden;
       white-space: nowrap;

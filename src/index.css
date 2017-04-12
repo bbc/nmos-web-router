@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: Helvetica, Arial, freesans, sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   background-color: var(--background);
   color: var(--color);
 }
