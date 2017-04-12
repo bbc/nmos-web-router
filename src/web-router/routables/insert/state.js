@@ -6,7 +6,6 @@ export default (data, type, initial, routed, isNew) => {
   data[type].forEach(routable => {
     let mapRoutableState = mapState(routable)
     routable.state = routable.state || mapRoutableState.state()
-    mapRoutableState.unremove()
     if (!hasState(routable.state, ['checked', 'unchecked']) && isNew) mapRoutableState.uncheck()
     else if (!hasState(routable.state, ['checked', 'unchecked'])) mapRoutableState.check()
 
