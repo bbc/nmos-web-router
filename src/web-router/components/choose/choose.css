@@ -13,6 +13,10 @@
     height: 75%;
   }
 
+  & .column-title {
+    text-align: center;
+  }
+
   & .routable {
     width: 90%;
 
