@@ -2,10 +2,10 @@ const Callbacks = require('./callbacks')
 const Status = require('./status')
 const Sockets = require('./sockets')
 
-module.exports = (baseUrl, getters, WebSocket, type) => {
+module.exports = (baseUrl, apiVersion, getters, WebSocket, type) => {
   let callbacks = Callbacks()
   let status = Status()
-  let sockets = Sockets({baseUrl, callbacks, status, type, WebSocket})
+  let sockets = Sockets({baseUrl, apiVersion, callbacks, status, type, WebSocket})
 
   return () => {
     let subscription = {

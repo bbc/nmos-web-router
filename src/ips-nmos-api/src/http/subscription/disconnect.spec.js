@@ -31,7 +31,7 @@ describe('disconnect', () => {
       }
     }
 
-    disconnect = Disconnect({baseUrl: 'baseUrl', ws, status})
+    disconnect = Disconnect({baseUrl: 'baseUrl', apiVersion: 'apiVersion', ws, status})
   })
 
   it('changes status to closed', () => {
@@ -48,6 +48,6 @@ describe('disconnect', () => {
 
   it('deletes if id is given', () => {
     disconnect('id')
-    expect(deletUrl).toBe('baseUrl/x-nmos/query/v1.0/subscriptions/id')
+    expect(deletUrl).toBe('baseUrl/x-nmos/query/apiVersion/subscriptions/id')
   })
 })

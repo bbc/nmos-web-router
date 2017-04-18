@@ -5,8 +5,8 @@ jest.mock('axios', () => {
     get (url) {
       let data
       return new Promise((resolve, reject) => {
-        if (url === 'baseUrl/x-nmos/query/v1.0/object/') data = {}
-        else if (url === 'baseUrl/x-nmos/query/v1.0/array/') {
+        if (url === 'baseUrl/x-nmos/query/apiVersion/object/') data = {}
+        else if (url === 'baseUrl/x-nmos/query/apiVersion/array/') {
           data = [{
             id: '',
             label: 'b'
@@ -35,14 +35,14 @@ let testGetter = (getter, done, callback) => {
 
 describe('getting', () => {
   it('adds the name as a type to object before returning', (done) => {
-    let getter = get('baseUrl', 'object')
+    let getter = get('baseUrl', 'apiVersion', 'object')
     testGetter(getter, done, (data) => {
       expect(data.type).toBe('object')
     })
   })
 
   it('adds the name as a type to each object in the array before returning', (done) => {
-    let getter = get('baseUrl', 'array')
+    let getter = get('baseUrl', 'apiVersion', 'array')
     testGetter(getter, done, (data) => {
       data.forEach(d => {
         expect(d.type).toBe('array')
@@ -51,7 +51,7 @@ describe('getting', () => {
   })
 
   it('sorts the data before returning', (done) => {
-    let getter = get('baseUrl', 'array')
+    let getter = get('baseUrl', 'apiVersion', 'array')
     testGetter(getter, done, (data) => {
       expect(data.length).toBe(2)
       expect(data[0].label).toBe('a')

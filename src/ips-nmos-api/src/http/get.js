@@ -2,9 +2,9 @@ var defaultSort = require('../default-sort')
 var axios = require('axios')
 var constants = require('./constants')
 
-module.exports = function (baseUrl, name) {
+module.exports = function (baseUrl, apiVersion, name) {
   return function (id) {
-    var url = `${baseUrl}/${constants.QUERY_URL}/${name}/`
+    var url = `${baseUrl}/${constants.QUERY_URL}/${apiVersion}/${name}/`
     if (id) url += `${id}/`
     return axios.get(url)
       .then(function (response) {

@@ -2,22 +2,22 @@ const Disconnect = require('./disconnect')
 const connect = require('./connect-socket')
 const create = require('./create')
 
-module.exports = ({baseUrl, callbacks, status, type, WebSocket}) => {
+module.exports = ({baseUrl, apiVersion, callbacks, status, type, WebSocket}) => {
   let ws = {
     close () {}
   }
-  let disconnect = Disconnect({baseUrl, ws, status})
+  let disconnect = Disconnect({baseUrl, apiVersion, ws, status})
 
   return {
     connect (options) {
       options.connection = options.connection || {}
       let body = options.connection
-      return create({body, baseUrl, type})
+      return create({body, baseUrl, apiVersion, type})
           .then(subscription => {
             if (status.value() === 'closed' || status.value() === 'errored') {
               status.connecting()
               ws = new WebSocket(subscription.data.ws_href)
-              disconnect = Disconnect({baseUrl, ws, status})
+              disconnect = Disconnect({baseUrl, apiVersion, ws, status})
               connect({ws, callbacks, status})
             }
             return new Promise((resolve, reject) => {

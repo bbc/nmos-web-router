@@ -25,6 +25,7 @@ describe('create', () => {
     create({
       body: {},
       baseUrl: 'baseUrl',
+      apiVersion: 'apiVersion',
       type: 'type'
     })
     .then(resoltResponse => {
@@ -37,7 +38,7 @@ describe('create', () => {
   })
 
   it('uses base url for post', () => {
-    expect(url).toBe('baseUrl/x-nmos/query/v1.0/subscriptions')
+    expect(url).toBe('baseUrl/x-nmos/query/apiVersion/subscriptions')
   })
 
   describe('default body sets', () => {

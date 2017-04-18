@@ -4,14 +4,15 @@ import parseURL from './parse-url'
 const parsedUrl = parseURL(window.location)
 const queryStub = parsedUrl.query('stub').boolean
 const queryPort = parsedUrl.query('mdnsbridge_port').number || 80
-const queryPriority = parsedUrl.query('priority').number
+const queryPriority = parsedUrl.query('priority').number || null
+const queryVersion = parsedUrl.query('api_ver').string || 'v1.1'
 
 function getPrioritised (representations, queryPriority) {
   var url = ''
   if (queryPriority) {
     let representation = representations
       .filter(representation => {
-        return representation.priority === queryPriority
+        return representation.priority === queryPriority && representation.versions.indexOf(queryVersion) !== -1
       })[0]
     if (representation) {
       if (representation.address.indexOf(':') > -1) {
@@ -24,7 +25,7 @@ function getPrioritised (representations, queryPriority) {
   } else {
     let lessThanOneHundred = representations
       .filter(representation => {
-        return representation.priority < 100
+        return representation.priority < 100 && representation.versions.indexOf(queryVersion) !== -1
       })
     lessThanOneHundred.sort((left, right) => {
       if (left.priority < right.priority) return 1
@@ -56,7 +57,7 @@ export default (start) => {
     .then(result => {
       let representations = result.data.representation
       let url = getPrioritised(representations, queryPriority)
-      start(queryStub, url)
+      start(queryStub, url, queryVersion)
     })
     .catch(error => {
       console.error(error)
