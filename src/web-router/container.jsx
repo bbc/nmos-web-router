@@ -5,6 +5,7 @@ import WebRouter from './components'
 
 let WebRouterContainer = ({ initialised, data, view, actions }) => {
   if (!initialised) actions.initialise()
+  if (!view.loading.status) view.loading.status = 'loading' // TODO FIXME - It's unclear why this comes back undefined after first pass
   if (view.loading.notLoaded.length > 0 || view.loading.errored.length > 0) return <Loading view={view.loading} />
   return <WebRouter
     data={data}
