@@ -20,25 +20,27 @@ function getPrioritised (representations, queryPriority) {
         url = `http://${representation.address}:${representation.port}`
       }
     }
-  }
-  let lessThanOneHundred = representations
-    .filter(representation => {
-      return representation.priority < 100
+    return url
+  } else {
+    let lessThanOneHundred = representations
+      .filter(representation => {
+        return representation.priority < 100
+      })
+    lessThanOneHundred.sort((left, right) => {
+      if (left.priority < right.priority) return 1
+      else if (left.priority < right.priority) return -1
+      return 0
     })
-  lessThanOneHundred.sort((left, right) => {
-    if (left.priority < right.priority) return 1
-    else if (left.priority < right.priority) return -1
-    return 0
-  })
-  let representation = lessThanOneHundred[lessThanOneHundred.length - 1]
-  if (representation) {
-    if (representation.address.indexOf(':') > -1) {
-      url = `http://[${representation.address}]:${representation.port}`
-    } else {
-      url = `http://${representation.address}:${representation.port}`
+    let representation = lessThanOneHundred[lessThanOneHundred.length - 1]
+    if (representation) {
+      if (representation.address.indexOf(':') > -1) {
+        url = `http://[${representation.address}]:${representation.port}`
+      } else {
+        url = `http://${representation.address}:${representation.port}`
+      }
     }
+    return url
   }
-  return url
 }
 
 export default (start) => {
