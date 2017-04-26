@@ -20,7 +20,7 @@ let Routes = ({routes, expanded}) => {
         routes
           .map((route, index) => {
             let isExpanded = false
-            if (expanded.state && expanded.state.includes('expanded')) {
+            if (expanded.state && expanded.state.includes('expanded') && route.sender) { // FIXME: Added route.sender check o fix error
               isExpanded = route.sender.id === expanded.id
             }
 
@@ -29,9 +29,25 @@ let Routes = ({routes, expanded}) => {
             if (isHalf(route.sender)) halfs.push('sender')
             if (halfs.length === 2) return null
 
+            // TODO: Something isn't right here. See Pivotal #142580263
+            if (!route.receiver) {
+              if (route.sender) {
+                console.warn('Receiver in route is undefined for Sender ' + route.sender.id)
+              } else {
+                console.warn('Receiver in route is undefined')
+              }
+            }
+            if (!route.sender) {
+              if (route.receiver) {
+                console.warn('Sender in route is undefined for Receiver ' + route.receiver.id)
+              } else {
+                console.warn('Sender in route is undefined')
+              }
+            }
+
             let half = `half-${index}`
             return <Route
-              key={`route-${route.receiver.id || half}-${route.sender.id || half}`}
+              key={`route-${route.receiver ? route.receiver.id : half}-${route.sender ? route.sender.id : half}`}
               data={route}
               expanded={isExpanded}
               halfs={halfs}
