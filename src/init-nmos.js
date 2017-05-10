@@ -10,20 +10,20 @@ const queryProtocol = parsedUrl.query('api_proto').string || window.location.pro
 const httpPort = queryProtocol === 'https' ? 443 : 80
 const queryPort = parsedUrl.query('mdnsbridge_port').number || httpPort
 
-function getPrioritised (representations, queryPriority) {
+function getPrioritised (representations, priority, version, protocol) {
   var url = ''
   if (queryPriority) {
     let representation = representations
       .filter(representation => {
-        return representation.priority === queryPriority &&
-            representation.versions.indexOf(queryVersion) !== -1 &&
-            representation.protocols.indexOf(queryProtocol) !== -1
+        return representation.priority === priority &&
+            representation.versions.indexOf(version) !== -1 &&
+            representation.protocols.indexOf(protocol) !== -1
       })[0]
     if (representation) {
       if (representation.address.indexOf(':') > -1) {
-        url = `${queryProtocol}://[${representation.address}]:${representation.port}`
+        url = `${protocol}://[${representation.address}]:${representation.port}`
       } else {
-        url = `${queryProtocol}://${representation.address}:${representation.port}`
+        url = `${protocol}://${representation.address}:${representation.port}`
       }
     }
     return url
@@ -31,8 +31,8 @@ function getPrioritised (representations, queryPriority) {
     let lessThanOneHundred = representations
       .filter(representation => {
         return representation.priority < 100 &&
-            representation.versions.indexOf(queryVersion) !== -1 &&
-            representation.protocols.indexOf(queryProtocol) !== -1
+            representation.versions.indexOf(version) !== -1 &&
+            representation.protocols.indexOf(protocol) !== -1
       })
     lessThanOneHundred.sort((left, right) => {
       if (left.priority < right.priority) return 1
@@ -42,9 +42,9 @@ function getPrioritised (representations, queryPriority) {
     let representation = lessThanOneHundred[lessThanOneHundred.length - 1]
     if (representation) {
       if (representation.address.indexOf(':') > -1) {
-        url = `${queryProtocol}://[${representation.address}]:${representation.port}`
+        url = `${protocol}://[${representation.address}]:${representation.port}`
       } else {
-        url = `${queryProtocol}://${representation.address}:${representation.port}`
+        url = `${protocol}://${representation.address}:${representation.port}`
       }
     }
     return url
@@ -53,7 +53,7 @@ function getPrioritised (representations, queryPriority) {
 
 export default (start) => {
   axios
-    .get(`${queryProtocol}://${parsedUrl.hostname}:${queryPort}/x-nmos/node/v1.0/self/`)
+    .get(`${queryProtocol}://${parsedUrl.hostname}:${queryPort}/x-nmos/node/${queryVersion}/self/`)
     .then(result => {
       let service = result.data.services.filter(service => {
         return service.type.includes('mdnsbridge')
@@ -63,7 +63,7 @@ export default (start) => {
     })
     .then(result => {
       let representations = result.data.representation
-      let url = getPrioritised(representations, queryPriority)
+      let url = getPrioritised(representations, queryPriority, queryVersion, queryProtocol)
       start(queryStub, url, queryVersion)
     })
     .catch(error => {
