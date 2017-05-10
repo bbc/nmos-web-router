@@ -38,7 +38,7 @@ describe('Get', () => {
     get = Get(collections, () => { return 0 }, 'collection')
   })
 
-  it('Returns everything without an id sorted format ( video > audio > data > none ) then by label (ignore case)', (done) => {
+  it('Returns everything without an id sorted format ( video > audio > data > mux > none ) then by label (ignore case)', (done) => {
     get().then(data => {
       expect(data[0].format).toBe('video')
       expect(data[0].label).toBe('a')

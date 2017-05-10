@@ -7,7 +7,8 @@ function createIs (type) {
 let includes = {
   video: createIs('video'),
   audio: createIs('audio'),
-  data: createIs('data')
+  data: createIs('data'),
+  mux: createIs('mux')
 }
 
 function compareLabel (left, right) {
@@ -24,6 +25,8 @@ module.exports = function (left, right) {
   else if (hasFormat && includes.audio(right)) return 1
   else if (hasFormat && includes.data(left)) return -1
   else if (hasFormat && includes.data(right)) return 1
+  else if (hasFormat && includes.mux(left)) return -1
+  else if (hasFormat && includes.mux(right)) return 1
   else if (!left.hasOwnProperty('format') && !right.hasOwnProperty('format')) return compareLabel(left, right)
   return 0
 }

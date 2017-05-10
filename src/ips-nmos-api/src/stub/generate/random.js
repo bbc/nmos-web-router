@@ -4,7 +4,8 @@ const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a
 const formats = [
   'urn:x-nmos:format:video',
   'urn:x-nmos:format:audio',
-  'urn:x-nmos:format:data'
+  'urn:x-nmos:format:data',
+  'urn:x-nmos:format:mux'
 ]
 const transports = [
   'urn:x-nmos:transport:rtp',
