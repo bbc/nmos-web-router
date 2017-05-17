@@ -6,7 +6,11 @@ export default (state, action, merge) => {
   let query = action.payload.query
   let view = Object.assign({}, state.view)
   if (pathname.includes('/web-router/')) {
-    view.location = pathname.replace('/web-router', '')
+    if (pathname.includes('/web-router/automatic')) {
+      view.location = pathname.replace('/web-router/automatic', '')
+    } else {
+      view.location = pathname.replace('/web-router/manual', '')
+    }
     if (query.search !== '') {
       view.choose.term = query.search
     } else {

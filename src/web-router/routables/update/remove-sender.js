@@ -8,6 +8,7 @@ export default ({data, grain}) => {
     if (s.id === sender.id) {
       s.state = mapState(s).remove().state()
       s.stateString = stateToString(s.state)
+      s.timeRemoved = new Date().getTime()
     }
   })
   insertRoutes(data)

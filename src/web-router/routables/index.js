@@ -4,10 +4,12 @@ import filter from './filter'
 import route from './route'
 import update from './update'
 import check from './check'
+import expire from './expire'
 
 export default (data) => {
   return {
     check: check(data),
+    expire: expire(data),
     update: {
       receivers (grains) {
         update(data).receivers(grains)

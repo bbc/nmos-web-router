@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (value) => {
-    window.routerHistory.push(`/web-router/choose?search=${value}`)
+  return (mode, value) => {
+    window.routerHistory.push(`/web-router/${mode}/choose?search=${value}`)
   }
 }

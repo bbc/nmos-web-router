@@ -12,12 +12,13 @@ let Choose = ({view, senders, receivers, expanded, actions}) => {
     <Search
       expanded={expanded}
       actions={actions}
-      term={view.term} />
+      mode={view.routingMode}
+      term={view.choose.term} />
     <Header />
     <AllVisible
       expanded={expanded}
       actions={actions}
-      state={view.allVisibleState} />
+      state={view.choose.allVisibleState} />
     <div className='routables routables-scroll'>
       <Routables
         side='left'
