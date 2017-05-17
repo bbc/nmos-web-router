@@ -11,6 +11,8 @@ import check from './choose/check-reducer'
 import alert from './notifications/alert-reducer'
 import info from './notifications/info-reducer'
 import allClear from './notifications/all-clear-reducer'
+import checkForExpired from './choose/check-for-expired-reducer'
+import changeMode from './change-mode-reducer'
 
 export default {
   initialise,
@@ -25,6 +27,8 @@ export default {
   alert,
   info,
   allClear,
+  checkForExpired,
+  changeMode,
   all: {
     router: {
       LOCATION_CHANGE: locationChange

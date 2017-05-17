@@ -9,6 +9,7 @@ export default ({data, grain}) => {
     if (r.id === receiver.id) {
       r.state = mapState(r).remove().state()
       r.stateString = stateToString(r.state)
+      r.timeRemoved = new Date().getTime()
     }
   })
   mapSenderRoutedState(data)

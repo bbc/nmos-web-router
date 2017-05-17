@@ -12,6 +12,7 @@ const unrouted = 'unrouted'
 const unrouting = 'unrouting'
 const routing = 'routing'
 const removed = 'removed'
+const expired = 'expired'
 const blank = ''
 
 const list = [
@@ -28,7 +29,8 @@ const list = [
   routed,
   unrouted,
   unrouting,
-  routing
+  routing,
+  expired
 ]
 
 function initial () {
@@ -125,6 +127,10 @@ export default (routable) => {
     },
     unremove () {
       change(blank, removed)
+      return changeState
+    },
+    expire () {
+      change(expired)
       return changeState
     },
     state () {

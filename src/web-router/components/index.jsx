@@ -1,12 +1,16 @@
 import './web-router.css'
+import './confirm-mode.css'
 
 import React, { PropTypes } from 'react'
 import Main from './main'
-import Notifictions from './notifications'
+import Notifications from './notifications'
 
 let WebRouter = ({data, view, actions}) => {
-  return <div className={`web-router web-router${view.location} web-router-notification-${view.notifications.state}`}>
-    <Notifictions view={view.notifications} />
+  if (!view.routingMode) {
+    view.routingMode = 'manual'
+  }
+  return <div className={`web-router web-router/${view.routingMode}${view.location} web-router-notification-${view.notifications.state}`}>
+    <Notifications view={view.notifications} />
     <Main view={view} actions={actions} />
   </div>
 }

@@ -1,0 +1,206 @@
+@custom-media --phone (min-width: 300px) and (max-width: 999px);
+@custom-media --tablet (min-width: 1000px) and (max-width: 1399px);
+@custom-media --desktop (min-width: 1400px);
+
+:root {
+  --button-color: #fff;
+  --active: #33c3f0;
+  --box-border: #a19ea0;
+  --disabled: red;
+
+  --active-nav: {
+    fill: var(--button-color);
+    color: var(--button-color);
+    background-color: var(--active);
+  }
+
+  --inactive-nav: {
+    fill: color(var(--button-color) tint(30%));
+    color: color(var(--button-color) tint(30%));
+    background-color: color(var(--active) tint(60%));
+  }
+
+  --disabled-nav: {
+    fill: color(var(--button-color) tint(30%));
+    color: color(var(--button-color) tint(30%));
+    background-color: color(var(--disabled) tint(60%));
+  }
+
+  --far-left: {
+    transform: translateX(-200%);
+  }
+  --left: {
+    transform: translateX(-100%);
+  }
+  --center: {
+    transform: translateX(0%);
+  }
+  --right: {
+    transform: translateX(100%);
+  }
+  --far-right: {
+    transform: translateX(200%);
+  }
+
+  --manual-desktop-view: {
+    max-width: 1920px;
+
+    & .left {
+      @apply --center;
+    }
+
+    & .center {
+      @apply --right;
+    }
+
+    & .right {
+      @apply --far-right;
+    }
+
+    & .container,
+    & .expanded-sender-container {
+      top: 0;
+      width: 33%;
+    }
+
+    /* & .choose-nav {
+      @apply --inactive-nav;
+    }
+
+    & .route-nav {
+      @apply --active-nav;
+    }
+
+    & .confirm-nav {
+      @apply --disabled-nav;
+    } */
+  }
+}
+
+.web-router {
+  &-notification-none .notifications {
+    height: 0;
+  }
+
+  &\/manual\/choose {
+    & .left {
+      @apply --center;
+    }
+
+    & .center {
+      @apply --right;
+    }
+
+    & .right {
+      @apply --far-right;
+    }
+
+    & .choose-nav {
+      @apply --active-nav;
+    }
+
+    & .route-nav {
+      @apply --inactive-nav;
+    }
+
+    & .confirm-nav {
+      @apply --inactive-nav;
+    }
+
+    @media (--tablet) {
+      & .route-nav {
+        @apply --active-nav;
+      }
+    }
+
+    @media (--desktop) {
+      @apply --manual-desktop-view;
+    }
+  }
+
+  &\/manual\/route {
+    & .left {
+      @apply --left;
+    }
+
+    & .center {
+      @apply --center;
+    }
+
+    & .right {
+      @apply --right;
+    }
+
+    & .choose-nav {
+      @apply --inactive-nav;
+    }
+
+    & .route-nav {
+      @apply --active-nav;
+    }
+
+    & .confirm-nav {
+      @apply --inactive-nav;
+    }
+
+    @media (--tablet) {
+      & .confirm-nav {
+        @apply --active-nav;
+      }
+    }
+
+    @media (--desktop) {
+      @apply --manual-desktop-view;
+    }
+  }
+
+  &\/manual\/confirm {
+    & .choose-nav {
+      @apply --inactive-nav;
+    }
+
+    & .route-nav {
+      @apply --inactive-nav;
+    }
+
+    & .confirm-nav {
+      @apply --active-nav;
+    }
+
+    @media (--phone) {
+      & .left {
+        @apply --far-left;
+      }
+
+      & .center {
+        @apply --left;
+      }
+
+      & .right {
+        @apply --center;
+      }
+    }
+
+    @media (--tablet) {
+      & .left {
+        @apply --left;
+      }
+
+      & .center {
+        @apply --center;
+      }
+
+      & .right {
+        @apply --right;
+      }
+
+      & .route-nav {
+        @apply --active-nav;
+      }
+    }
+
+    @media (--desktop) {
+      @apply --manual-desktop-view;
+    }
+  }
+}

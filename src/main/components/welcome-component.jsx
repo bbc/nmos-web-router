@@ -9,7 +9,7 @@ let Welcome = () => {
       <Trafalgar>Welcome to the IP Studio site</Trafalgar>
     </LayoutItem>
     <LayoutItem gels='9/10'>
-      <GreatPrimer>You will find all the utilities to interact and observe IP Studio</GreatPrimer>
+      <GreatPrimer>You will find all of the necessary utilities to interact with and observe IP Studio</GreatPrimer>
     </LayoutItem>
     <LayoutItem gels='9/10'>
       <Link

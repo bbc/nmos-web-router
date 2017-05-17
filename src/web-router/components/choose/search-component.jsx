@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Search } from '../../../gel-react/iconography'
 
-let SearchBox = ({term, actions, expanded}) => {
+let SearchBox = ({mode, term, actions, expanded}) => {
   return <div className='search'>
     <input
       type='text'
@@ -9,7 +9,7 @@ let SearchBox = ({term, actions, expanded}) => {
       defaultValue={term}
       onInput={function (evt) {
         if (!expanded.state.includes('contracted')) actions.toggleSender(expanded)
-        actions.search(evt.target.value)
+        actions.search(mode, evt.target.value)
       }} />
     <div className='search-icon-container'>
       <Search />
@@ -18,6 +18,7 @@ let SearchBox = ({term, actions, expanded}) => {
 }
 
 SearchBox.propTypes = {
+  mode: PropTypes.string.isRequired,
   term: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
   expanded: PropTypes.object.isRequired

@@ -11,6 +11,8 @@ import check from './choose/check-dispatcher'
 import alert from './notifications/alert-dispatcher'
 import info from './notifications/info-dispatcher'
 import allClear from './notifications/all-clear-dispatcher'
+import checkForExpired from './choose/check-for-expired-dispatcher'
+import changeMode from './change-mode-dispatcher'
 
 export default {
   initialise,
@@ -25,5 +27,7 @@ export default {
   check,
   alert,
   info,
-  allClear
+  allClear,
+  checkForExpired,
+  changeMode
 }

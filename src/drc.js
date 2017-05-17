@@ -4,6 +4,7 @@ import { Provider, connect } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import { Router, Route, browserHistory, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux'
+import checkForExpired from './web-router/check-for-expired'
 
 let routes = (containers) => {
   return Object.keys(containers)
@@ -47,8 +48,12 @@ let theReducer = (options) => {
       let actionName = action.type.split('/')[0].replace('@@', '')
       let actionType = action.type.replace(`@@${actionName}/`, '')
       let localAction = actionName === name
-      if (localAction && reducers.hasOwnProperty(actionType)) return reducers[actionType](result, action, createMerge(state)) || result
-      else if (reducersAll.hasOwnProperty(actionName) && reducersAll[actionName].hasOwnProperty(actionType)) return reducersAll[actionName][actionType](result, action, createMerge(state)) || result
+      if (localAction && reducers.hasOwnProperty(actionType)) {
+        // I think the call from the dispatcher ends up here and this returns the relevant reducer
+        return reducers[actionType](result, action, createMerge(state)) || result
+      } else if (reducersAll.hasOwnProperty(actionName) && reducersAll[actionName].hasOwnProperty(actionType)) {
+        return reducersAll[actionName][actionType](result, action, createMerge(state)) || result
+      }
       return reduce(result, action, createMerge(state), actionName, actionType) || result
     }
     return result
@@ -64,21 +69,28 @@ function Actions (options) {
   let actions = options.actions || []
 
   let actionsMap = {}
-  let actionDipatchers = {}
+  let actionDispatchers = {}
 
   actions.forEach(action => {
     actionsMap[action] = `${name}/${action}`
-    actionDipatchers[action] = (data) => {
+    actionDispatchers[action] = (data) => {
       data = data || {}
       data.type = data.type || actionsMap[action]
       options.dispatch(data)
     }
   })
 
-  return actionDipatchers
+  return actionDispatchers
 }
 
 let Dispatcher = (options) => {
+  function globalTimer (actions) {
+    setTimeout(() => {
+      checkForExpired(actions)
+      globalTimer(actions)
+    }, 2000)
+  };
+
   return (dispatch) => {
     let actions = Actions({
       dispatch,
@@ -90,6 +102,7 @@ let Dispatcher = (options) => {
       let dispatcher = options.dispatchers[key]
       funcs[key] = dispatcher === 'default' ? actions[key] : dispatcher(actions)
     })
+    globalTimer(actions)
     return {
       actions: funcs
     }
@@ -168,6 +181,8 @@ export default (containers, shouldUseHash) => {
   window.routerHistory = browserHistory
   if (shouldUseHash) window.routerHistory = hashHistory
   const historyWithStore = syncHistoryWithStore(window.routerHistory, store)
+
+  // console.log(containers)
 
   render(
     <Provider store={store}>

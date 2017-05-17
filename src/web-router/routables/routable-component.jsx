@@ -27,7 +27,7 @@ Node.propTypes = {
   onRender: PropTypes.func.isRequired
 }
 
-let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender }) => {
+let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender, timeRemoved }) => {
   id = id || ''
   node = node || 'none'
   baseState = baseState || ''
@@ -36,6 +36,7 @@ let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, on
   onCheckbox = onCheckbox || noop
   onNode = onNode || noop
   onNodeRender = onNodeRender || noop
+  timeRemoved = timeRemoved || 0
 
   let routableState = routable.stateString || ''
 
@@ -79,7 +80,8 @@ Routable.propTypes = {
   onButton: PropTypes.func,
   onCheckbox: PropTypes.func,
   onNode: PropTypes.func,
-  onNodeRender: PropTypes.func
+  onNodeRender: PropTypes.func,
+  timeRemoved: PropTypes.number
 }
 
 export default Routable
