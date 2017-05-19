@@ -23,7 +23,8 @@
       "message": "",
       "type": "alert",
       "timeout": null
-    }
+    },
+    "routingMode": "automatic"
   },
   "initialised": false,
   "location": "/"

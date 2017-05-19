@@ -6,9 +6,6 @@ import Main from './main'
 import Notifications from './notifications'
 
 let WebRouter = ({data, view, actions}) => {
-  if (!view.routingMode) {
-    view.routingMode = 'manual'
-  }
   return <div className={`web-router web-router/${view.routingMode}${view.location} web-router-notification-${view.notifications.state}`}>
     <Notifications view={view.notifications} />
     <Main view={view} actions={actions} />

@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
-import { LayoutItem } from '../../../gel-react/grid'
+import { Layout, LayoutItem } from '../../../gel-react/grid'
 import { Yes } from '../../../gel-react/iconography'
-import {Link} from 'react-router'
+import { Link } from 'react-router'
+import { Pica } from '../../../gel-react/typography'
 
 let Empty = () => {
   return <svg
@@ -12,29 +13,48 @@ let Empty = () => {
     viewBox='0 0 32 32' />
 }
 
-let ConfirmChangesCheckbox = ({mode, location, searchTerm, actions}) => {
+let ConfirmChangesCheckbox = ({view, actions}) => {
   function onCheckboxClick () {
     actions.changeMode()
   }
+
+  let mode = {now: '', next: ''}
+  if (view.routingMode === 'automatic') {
+    mode.now = 'automatic'
+    mode.next = 'manual'
+  } else {
+    mode.now = 'manual'
+    mode.next = 'automatic'
+  }
+
+  let location = view.location || '/'
+  if (location) {
+    location = location.replace('/web-router/', '')
+    location = location.replace(mode.now, '')
+  }
+  let searchTerm = view.choose.term || ''
+
   return <div
     className={`confirm-changes ${mode.now}`}>
-    <LayoutItem>
-      <span className='confirm-label'>Confirm changes mode</span>
-      <Link
-        to={`/web-router/${mode.next}${location}?search=${searchTerm}`}
-        className={`confirm-checkbox`}
-        onClick={function () { onCheckboxClick() }}>
-        <Yes />
-        <Empty />
-      </Link>
-    </LayoutItem>
+    <Layout layouts='right'>
+      <LayoutItem gels='3/8'>
+        <Pica className='confirm-label'>Confirm changes mode</Pica>
+      </LayoutItem>
+      <LayoutItem gels='1/8'>
+        <Link
+          to={`/web-router/${mode.next}${location}?search=${searchTerm}`}
+          className={`confirm-checkbox`}
+          onClick={function () { onCheckboxClick() }}>
+          <Yes />
+          <Empty />
+        </Link>
+      </LayoutItem>
+    </Layout>
   </div>
 }
 
 ConfirmChangesCheckbox.propTypes = {
-  mode: PropTypes.object.isRequired,
-  location: PropTypes.string.isRequired,
-  searchTerm: PropTypes.string.isRequired,
+  view: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
 
