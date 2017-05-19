@@ -290,8 +290,9 @@
     overflow-y: auto;
   }
 
+  /* This is a bit of a hack - need to work on layout stuff */
   & .route-view-layout {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 1px;
+    margin-right: 1px;
   }
 }

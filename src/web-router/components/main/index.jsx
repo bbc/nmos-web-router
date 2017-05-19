@@ -19,24 +19,12 @@ let WebRouter = ({view, actions}) => {
       actions={actions}
       />
   }
-  let mode = {now: '', next: ''}
-  if (view.routingMode === 'automatic') {
-    mode.now = 'automatic'
-    mode.next = 'manual'
-  } else {
-    mode.now = 'manual'
-    mode.next = 'automatic'
-  }
-  let location = view.location || '/'
-  if (location) {
-    location = location.replace('/web-router/', '')
-    location = location.replace(mode.now, '')
-  }
-  let searchTerm = view.choose.term || ''
+
   return <div className='main'>
     <Buttons
       term={view.choose.term}
       mode={view.routingMode}
+      location={view.location || ''}
       />
     <div className='container choose-view left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
@@ -61,9 +49,7 @@ let WebRouter = ({view, actions}) => {
           />
         <LayoutItem className='confirm-mode-container'>
           <ConfirmMode
-            mode={mode}
-            location={location}
-            searchTerm={searchTerm}
+            view={view}
             actions={actions} />
         </LayoutItem>
       </Layout>
@@ -73,7 +59,10 @@ let WebRouter = ({view, actions}) => {
     </div>
     <div className='container confirm-view right'>
       <LayoutItem><DoublePica>Confirm</DoublePica></LayoutItem>
-      <Confirm />
+      <Confirm
+        senders={view.senders}
+        receivers={view.receivers}
+        actions={actions} />
     </div>
   </div>
 }

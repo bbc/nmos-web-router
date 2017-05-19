@@ -182,8 +182,6 @@ export default (containers, shouldUseHash) => {
   if (shouldUseHash) window.routerHistory = hashHistory
   const historyWithStore = syncHistoryWithStore(window.routerHistory, store)
 
-  // console.log(containers)
-
   render(
     <Provider store={store}>
       <Router history={historyWithStore} >
