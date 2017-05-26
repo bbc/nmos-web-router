@@ -27,10 +27,12 @@ let ConfirmChangesCheckbox = ({view, actions}) => {
     mode.next = 'automatic'
   }
 
-  let location = view.location || '/'
+  let location = view.location
   if (location) {
     location = location.replace('/web-router/', '')
     location = location.replace(mode.now, '')
+  } else {
+    location = '/choose'
   }
   let searchTerm = view.choose.term || ''
 

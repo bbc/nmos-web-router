@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
 import Routable from '../../routables/routable-component'
 
-let Receivers = ({senders, receivers, actions}) => {
+let Receivers = ({senders, receivers, actions, routingMode}) => {
   return <LayoutItem className='routables receivers' gels='4/10'>{
       receivers.map(receiver => {
         let clicked = 'nothing'
@@ -10,7 +10,13 @@ let Receivers = ({senders, receivers, actions}) => {
           let selectable = receiver.state.includes('selectable')
           let disabled = receiver.state.includes('disabled')
           let removed = receiver.state.includes('removed')
-          if (selectable && !disabled && !removed) actions.route(receiver, senders)
+          if (selectable && !disabled && !removed) {
+            if (routingMode === 'automatic') {
+              actions.route(receiver, senders)
+            } else {
+              actions.addChange(receiver, senders, 'route')
+            }
+          }
         }
 
         return <Routable
@@ -28,7 +34,11 @@ let Receivers = ({senders, receivers, actions}) => {
           }}
           onNode={function () {
             clicked = 'node'
-            actions.unroute(receiver)
+            if (routingMode === 'automatic') {
+              actions.unroute(receiver)
+            } else {
+              actions.addChange(receiver, senders, 'unroute')
+            }
           }}
           onNodeRender={function (nodeEl) {
             actions.nodeRendered(nodeEl, receiver, 'receivers')
@@ -41,7 +51,8 @@ let Receivers = ({senders, receivers, actions}) => {
 Receivers.propTypes = {
   senders: PropTypes.array.isRequired,
   receivers: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  routingMode: PropTypes.string.isRequired
 }
 
 export default Receivers

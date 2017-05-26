@@ -13,6 +13,11 @@ import info from './notifications/info-reducer'
 import allClear from './notifications/all-clear-reducer'
 import checkForExpired from './choose/check-for-expired-reducer'
 import changeMode from './change-mode-reducer'
+import addChange from './confirm/add-change-reducer'
+import unstageChange from './confirm/unstage-change-reducer'
+import removeChange from './confirm/remove-change-reducer'
+import clearChanges from './confirm/clear-changes-reducer'
+import deployRoute from './confirm/deploy-route-reducer'
 
 export default {
   initialise,
@@ -29,6 +34,11 @@ export default {
   allClear,
   checkForExpired,
   changeMode,
+  addChange,
+  unstageChange,
+  removeChange,
+  clearChanges,
+  deployRoute,
   all: {
     router: {
       LOCATION_CHANGE: locationChange

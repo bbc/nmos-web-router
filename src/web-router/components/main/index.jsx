@@ -1,7 +1,7 @@
 import './main.css'
 
 import React, { PropTypes } from 'react'
-import { Layout, LayoutItem } from '../../../gel-react/grid'
+import { LayoutItem } from '../../../gel-react/grid'
 import { DoublePica } from '../../../gel-react/typography'
 import Connections from '../connections'
 import ExpandedSender from '../connections/expanded-sender-component'
@@ -10,7 +10,7 @@ import Buttons from './buttons-component'
 import Confirm from '../confirm'
 import ConfirmMode from './confirm-changes-component'
 
-let WebRouter = ({view, actions}) => {
+let WebRouter = ({view, changes, actions}) => {
   let Expanded = null
   let isExpanded = view.expanded.state && view.expanded.state.includes('expanded')
   if (isExpanded) {
@@ -37,22 +37,21 @@ let WebRouter = ({view, actions}) => {
         />
     </div>
     <div className='container route-view center'>
-      <Layout className='route-view-layout'>
-        <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
-        <Connections
-          routesEl={view.routesEl}
-          expanded={view.expanded}
-          senders={view.senders}
-          receivers={view.receivers}
-          routes={view.routes}
-          actions={actions}
-          />
-        <LayoutItem className='confirm-mode-container'>
-          <ConfirmMode
-            view={view}
-            actions={actions} />
-        </LayoutItem>
-      </Layout>
+      <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
+      <Connections
+        routesEl={view.routesEl}
+        expanded={view.expanded}
+        senders={view.senders}
+        receivers={view.receivers}
+        routes={view.routes}
+        actions={actions}
+        routingMode={view.routingMode}
+        />
+      <LayoutItem className='confirm-mode-container'>
+        <ConfirmMode
+          view={view}
+          actions={actions} />
+      </LayoutItem>
     </div>
     <div className='expanded-sender-container route-view center'>
       {Expanded}
@@ -62,6 +61,7 @@ let WebRouter = ({view, actions}) => {
       <Confirm
         senders={view.senders}
         receivers={view.receivers}
+        changes={changes}
         actions={actions} />
     </div>
   </div>
@@ -69,6 +69,7 @@ let WebRouter = ({view, actions}) => {
 
 WebRouter.propTypes = {
   view: PropTypes.object.isRequired,
+  changes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
 

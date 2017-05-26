@@ -7,8 +7,8 @@ import Senders from './senders-component'
 import Routes from './routes-component'
 import Receivers from './receivers-component'
 
-let Connections = ({expanded, senders, receivers, routes, actions}) => {
-  return <Layout className='connections box box-hidden'
+let Connections = ({expanded, senders, receivers, routes, actions, routingMode}) => {
+  return <Layout className='connections box box-hidden connections-box'
     onClick={function () { if (!expanded.state.includes('contracted')) actions.toggleSender(expanded) }}>
     <Header />
     <Layout gels='1/1' layouts='flush' className='routables-scroll' onScroll={() => { if (!expanded.state.includes('contracted')) actions.update() }}>
@@ -20,6 +20,7 @@ let Connections = ({expanded, senders, receivers, routes, actions}) => {
         senders={senders}
         receivers={receivers}
         actions={actions}
+        routingMode={routingMode}
           />
       <Routes
         routes={routes}
@@ -35,7 +36,8 @@ Connections.propTypes = {
   senders: PropTypes.array.isRequired,
   receivers: PropTypes.array.isRequired,
   routes: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  routingMode: PropTypes.string.isRequired
 }
 
 export default Connections
