@@ -6,9 +6,14 @@ import Main from './main'
 import Notifications from './notifications'
 
 let WebRouter = ({data, view, actions}) => {
+  // Not sure how to add this array more officially
+  if (!data.changes) {
+    data.changes = []
+  }
+
   return <div className={`web-router web-router/${view.routingMode}${view.location} web-router-notification-${view.notifications.state}`}>
     <Notifications view={view.notifications} />
-    <Main view={view} actions={actions} />
+    <Main view={view} changes={data.changes} actions={actions} />
   </div>
 }
 

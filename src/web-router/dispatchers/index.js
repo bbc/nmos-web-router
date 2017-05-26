@@ -13,6 +13,11 @@ import info from './notifications/info-dispatcher'
 import allClear from './notifications/all-clear-dispatcher'
 import checkForExpired from './choose/check-for-expired-dispatcher'
 import changeMode from './change-mode-dispatcher'
+import addChange from './confirm/add-change-dispatcher'
+import unstageChange from './confirm/unstage-change-dispatcher'
+import removeChange from './confirm/remove-change-dispatcher'
+import clearChanges from './confirm/clear-changes-dispatcher'
+import deployRoute from './confirm/deploy-route-dispatcher'
 
 export default {
   initialise,
@@ -29,5 +34,10 @@ export default {
   info,
   allClear,
   checkForExpired,
-  changeMode
+  changeMode,
+  addChange,
+  unstageChange,
+  removeChange,
+  clearChanges,
+  deployRoute
 }

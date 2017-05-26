@@ -4,7 +4,7 @@ import { Provider, connect } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import { Router, Route, browserHistory, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux'
-import checkForExpired from './web-router/check-for-expired'
+// import checkForExpired from './web-router/check-for-expired'
 
 let routes = (containers) => {
   return Object.keys(containers)
@@ -86,7 +86,7 @@ function Actions (options) {
 let Dispatcher = (options) => {
   function globalTimer (actions) {
     setTimeout(() => {
-      checkForExpired(actions)
+      // checkForExpired(actions)
       globalTimer(actions)
     }, 2000)
   };

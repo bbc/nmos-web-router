@@ -286,7 +286,12 @@
     overflow-y: hidden;
   }
 
-  & .routables-scroll {
+  & .connections-box {
+    height: 85%;
+  }
+
+  & .routables-scroll,
+  & .changes-scroll {
     overflow-y: auto;
   }
 

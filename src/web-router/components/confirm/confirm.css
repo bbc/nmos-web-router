@@ -8,6 +8,9 @@
   --remove-icon: #fff;
   --node-width: 24px;
   --background-color: #dfe3e2;
+  --confirm-button: #70bf41;
+  --clear-button: #a6aaa9;
+  --button-disabled: #dcdee0;
 }
 
 .confirm {
@@ -16,10 +19,13 @@
   }
 
   & .changes-scroll {
-    height: 95%;
+    top: 0;
+    padding: 1px;
+    height: 85%;
   }
 
   & .one-change {
+    opacity: 1;
     width: 100%;
   }
 
@@ -46,9 +52,33 @@
     }
   }
 
-  & .senders .node {
-    right: 0;
-    transform: translate(12px, -50%);
+  & .senders,
+  & .receivers {
+    & .button {
+      &:hover {
+        background-color: var(--contracted);
+        cursor: default;
+      }
+    }
+
+    & .expanded {
+      & .button {
+        background-color: var(--contracted);
+      }
+
+      & .node {
+        box-shadow: none;
+      }
+    }
+  }
+
+  & .senders {
+    padding-left: 0;
+
+    & .node {
+      right: 0;
+      transform: translate(12px, -50%);
+    }
   }
 
   & .receivers {
@@ -60,16 +90,21 @@
     }
   }
 
-  & .line {
-    stroke-width: 3;
-    stroke: var(--routed);
-  }
-
   & .line-container {
     height: 32px;
 
+    & .line-svg {
+      width: 110%;
+      height: 40px;
+
+      & .line {
+        stroke-width: 3;
+        stroke: var(--routed);
+      }
+    }
+
     & .gel-icon-sandstorm {
-      transform: translate(150%, -100%);
+      transform: translate(180%, -100%);
       display: none;
     }
   }
@@ -81,7 +116,7 @@
       }
     }
 
-    & .line {
+    & .line-svg .line {
       stroke: var(--remove);
     }
 
@@ -90,21 +125,61 @@
     }
   }
 
+  & .unstaged {
+    transition: visibility 0.25s, opacity 0.25s linear;
+    visibility: hidden;
+    opacity: 0;
+  }
+
   & .delete-button {
     margin-left: 10px;
     margin-top: 7px;
     height: 38px;
 
     & .delete-circle {
-      fill: var(--remove);
-      transform: translate(50%, 60%);
+      &:hover {
+        cursor: pointer;
+        background-color: red;
+      }
+
+      background-color: var(--remove);
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      transform: translate(0%, 10%);
     }
 
     & .gel-icon-no {
       height: 18;
       width: 18px;
       fill: white;
-      transform: translate(40%, -125%);
+      transform: translate(40%);
+    }
+  }
+
+  & .clear-confirm-container {
+    height: 10%;
+    margin-right: 5%;
+
+    & .button {
+      width: 20%;
+      margin-left: 12px;
+      margin-top: 24px;
+      background-color: var(--clear-button);
+      color: white;
+      text-align: center;
+      border: none;
+      border-radius: 14px;
+      box-shadow: rgba(85, 85, 85, 0.5) 0 2px 7px 1px;
+    }
+
+    & .confirm {
+      background-color: var(--confirm-button);
+    }
+
+    & .disabled {
+      cursor: default;
+      background-color: var(--button-disabled);
     }
   }
 }
