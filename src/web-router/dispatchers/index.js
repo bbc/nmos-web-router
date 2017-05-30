@@ -18,6 +18,7 @@ import unstageChange from './confirm/unstage-change-dispatcher'
 import removeChange from './confirm/remove-change-dispatcher'
 import clearChanges from './confirm/clear-changes-dispatcher'
 import deployRoute from './confirm/deploy-route-dispatcher'
+import deployUnroute from './confirm/deploy-unroute-dispatcher'
 
 export default {
   initialise,
@@ -39,5 +40,6 @@ export default {
   unstageChange,
   removeChange,
   clearChanges,
-  deployRoute
+  deployRoute,
+  deployUnroute
 }

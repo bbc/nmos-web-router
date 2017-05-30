@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import Change from './change-component'
 
 let ChangeQueue = ({senders, receivers, actions, changes}) => {
-  console.log(changes)
   return <div className='changes-scroll'>{
       changes.map((change, index) => {
         return <Change

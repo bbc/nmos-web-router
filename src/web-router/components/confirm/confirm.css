@@ -131,6 +131,10 @@
     opacity: 0;
   }
 
+  & .deployed {
+    opacity: 0.5;
+  }
+
   & .delete-button {
     margin-left: 10px;
     margin-top: 7px;

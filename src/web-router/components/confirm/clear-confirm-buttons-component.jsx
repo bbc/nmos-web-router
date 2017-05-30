@@ -13,11 +13,11 @@ let ClearConfirm = ({changes, actions}) => {
   }
 
   let confirmClick = () => {
-    changes.forEach(change => {
+    changes.forEach((change, index) => {
       if (change.type === 'route') {
-        actions.deployRoute(change.sender, change.receiver)
+        actions.deployRoute(change.sender, change.receiver, index)
       } else if (change.type === 'unroute') {
-        actions.unroute(change.receiver)
+        actions.deployUnroute(change.receiver, index)
       }
     })
   }
