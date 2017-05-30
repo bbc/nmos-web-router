@@ -18,6 +18,7 @@ import unstageChange from './confirm/unstage-change-reducer'
 import removeChange from './confirm/remove-change-reducer'
 import clearChanges from './confirm/clear-changes-reducer'
 import deployRoute from './confirm/deploy-route-reducer'
+import deployUnroute from './confirm/deploy-unroute-reducer'
 
 export default {
   initialise,
@@ -39,6 +40,7 @@ export default {
   removeChange,
   clearChanges,
   deployRoute,
+  deployUnroute,
   all: {
     router: {
       LOCATION_CHANGE: locationChange
