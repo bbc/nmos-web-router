@@ -17,7 +17,7 @@ function getPrioritised (representations, priority, version, protocol) {
       .filter(representation => {
         return representation.priority === priority &&
             representation.versions.indexOf(version) !== -1 &&
-            representation.protocols.indexOf(protocol) !== -1
+            representation.protocol === protocol
       })[0]
     if (representation) {
       if (representation.address.indexOf(':') > -1) {
@@ -32,7 +32,7 @@ function getPrioritised (representations, priority, version, protocol) {
       .filter(representation => {
         return representation.priority < 100 &&
             representation.versions.indexOf(version) !== -1 &&
-            representation.protocols.indexOf(protocol) !== -1
+            representation.protocol === protocol
       })
     lessThanOneHundred.sort((left, right) => {
       if (left.priority < right.priority) return 1
