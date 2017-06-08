@@ -429,3 +429,4 @@ exports.WhiteCloud = require('./weather/gel-icon-white-cloud.js').default
 exports.WindGustInfoA = require('./weather/gel-icon-wind-gust-info-a.js').default
 exports.WindGustInfoB = require('./weather/gel-icon-wind-gust-info-b.js').default
 exports.Wind = require('./weather/gel-icon-wind.js').default
+exports.Scissors = require('./ips-web-router/scissors.js').default

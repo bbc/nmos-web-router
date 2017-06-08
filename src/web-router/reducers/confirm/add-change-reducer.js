@@ -1,12 +1,33 @@
+import Routables from '../../routables'
+
 export default (state, action, merge) => {
-  let oneChange = {sender: action.sender, receiver: action.receiver, type: action.changeType, state: 'staged'}
-  let newChanges = state.data.changes
-  newChanges.push(oneChange)
+  let routables = Routables(state.view)
+  let updatedView = []
+  updatedView = routables.stageChange(action.receiver.id, action.sender.id, action.changeType).view()
+  let view = Object.assign({}, state.view, updatedView)
+
+  let updatedChanges = state.data.changes
+  let newChange = {
+    sender: action.sender,
+    receiver: action.receiver,
+    type: action.changeType,
+    state: 'staged'
+  }
+  updatedChanges.push(newChange)
+
   let data = {
     receivers: state.data.receivers,
     senders: state.data.senders,
     flows: state.data.flows,
-    changes: newChanges
+    changes: updatedChanges
   }
-  return merge({data})
+
+  let newState = {
+    data: data,
+    initialised: state.initialised,
+    location: state.location,
+    view: view
+  }
+
+  return merge({newState})
 }

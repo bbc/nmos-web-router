@@ -13,13 +13,22 @@ let ClearConfirm = ({changes, actions}) => {
   }
 
   let confirmClick = () => {
-    changes.forEach((change, index) => {
+    changes.forEach((change) => {
       if (change.type === 'route') {
-        actions.deployRoute(change.sender, change.receiver, index)
+        actions.deployRoute(change.sender, change.receiver)
       } else if (change.type === 'unroute') {
-        actions.deployUnroute(change.receiver, index)
+        actions.deployUnroute(change.sender, change.receiver)
       }
     })
+    setTimeout(deleteDeployedChanges, 500)
+  }
+
+  let deleteDeployedChanges = () => {
+    for (var i = changes.length - 1; i >= 0; i--) {
+      if (changes[i].state === 'deployed') {
+        actions.removeChange(changes[i].receiver.id)
+      }
+    }
   }
   return <Layout gels='1/1' layouts='right' className='clear-confirm-container'>
     <LayoutItem className={`button clear ${buttonState}`}

@@ -3,11 +3,7 @@
   --routed: #f5d328;
   --remove: #ec5d57;
   --contracted: #dfe3e2;
-  --expanded: #ff6db5;
-  --color: #000;
-  --remove-icon: #fff;
   --node-width: 24px;
-  --background-color: #dfe3e2;
   --confirm-button: #70bf41;
   --clear-button: #a6aaa9;
   --button-disabled: #dcdee0;
@@ -27,6 +23,7 @@
   & .one-change {
     opacity: 1;
     width: 100%;
+    transition: opacity 0.25s;
   }
 
   & .node-container {
@@ -103,7 +100,11 @@
       }
     }
 
-    & .gel-icon-sandstorm {
+    & .gel-icon-scissors {
+      width: 32px;
+      height: 32px;
+      fill: var(--remove);
+      background-color: white;
       transform: translate(180%, -100%);
       display: none;
     }
@@ -120,7 +121,7 @@
       stroke: var(--remove);
     }
 
-    & .line-container .gel-icon-sandstorm {
+    & .line-container .gel-icon-scissors {
       display: block;
     }
   }
@@ -132,7 +133,9 @@
   }
 
   & .deployed {
-    opacity: 0.5;
+    transition: visibility 0.25s, opacity 0.25s linear;
+    visibility: hidden;
+    opacity: 0;
   }
 
   & .delete-button {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Sandstorm } from '../../../gel-react/iconography'
+import { Scissors } from '../../../gel-react/iconography.js'
 
 let Line = () => {
   // Line length is a bit of a hack, it's deliberately too wide and is then restricted
@@ -13,7 +13,7 @@ let Line = () => {
         x2={250}
         y2='27' />
     </svg>
-    <Sandstorm />
+    <Scissors />
   </div>
 }
 

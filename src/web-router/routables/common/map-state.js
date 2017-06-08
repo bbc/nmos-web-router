@@ -13,6 +13,8 @@ const unrouting = 'unrouting'
 const routing = 'routing'
 const removed = 'removed'
 const expired = 'expired'
+const stagedRoute = 'stagedRoute'
+const stagedUnroute = 'stagedUnroute'
 const blank = ''
 
 const list = [
@@ -30,7 +32,9 @@ const list = [
   unrouted,
   unrouting,
   routing,
-  expired
+  expired,
+  stagedRoute,
+  stagedUnroute
 ]
 
 function initial () {
@@ -131,6 +135,22 @@ export default (routable) => {
     },
     expire () {
       change(expired)
+      return changeState
+    },
+    stageRoute () {
+      change(stagedRoute, unrouted)
+      return changeState
+    },
+    deployRoute () {
+      change(routed, stagedRoute)
+      return changeState
+    },
+    stageUnroute () {
+      change(stagedUnroute, routed)
+      return changeState
+    },
+    deployUnroute () {
+      change(unrouted, stagedUnroute)
       return changeState
     },
     state () {

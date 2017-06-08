@@ -213,6 +213,18 @@
   }
 }
 
+.stagedRoute {
+  & .node-container .node {
+    background-color: var(--routed);
+  }
+}
+
+.stagedUnroute {
+  & .node-container .node {
+    background-color: var(--remove);
+  }
+}
+
 .other,
 .contracted {
   & .full {

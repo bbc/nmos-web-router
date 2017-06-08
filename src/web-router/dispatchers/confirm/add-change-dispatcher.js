@@ -12,7 +12,6 @@ export default (actions) => {
         return sender.id === targetID
       })[0]
     }
-    console.log('In dispatcher')
     let changeType = type
     actions.addChange({ sender, receiver, changeType })
   }
