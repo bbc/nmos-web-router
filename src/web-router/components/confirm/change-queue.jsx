@@ -5,6 +5,7 @@ let ChangeQueue = ({senders, receivers, actions, changes}) => {
   return <div className='changes-scroll'>{
       changes.map((change, index) => {
         return <Change
+          id={change.receiver.id + 'change'}
           key={index}
           sender={change.sender}
           receiver={change.receiver}

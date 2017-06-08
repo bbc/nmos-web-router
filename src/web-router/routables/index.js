@@ -5,6 +5,8 @@ import route from './route'
 import update from './update'
 import check from './check'
 import expire from './expire'
+import stageChange from './stage-change'
+import deployChange from './deploy-change'
 
 export default (data) => {
   return {
@@ -37,6 +39,8 @@ export default (data) => {
         return insert(data).flows(newData)
       }
     },
+    stageChange: stageChange(data),
+    deployChange: deployChange(data),
     view () {
       data.expanded = data.expanded || {
         state: []

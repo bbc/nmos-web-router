@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (index) => {
-    actions.removeChange({index})
+  return (rID) => {
+    actions.removeChange({rID})
   }
 }

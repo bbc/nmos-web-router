@@ -6,8 +6,10 @@ import Sender from './sender-component'
 import Line from './line-component'
 import Delete from './delete-change-component'
 
-let Change = ({sender, receiver, actions, type, index, state}) => {
-  return <div className={`one-change ${type} ${state}`}>
+let Change = ({sender, receiver, actions, type, index, id, state}) => {
+  return <div
+    id={id}
+    className={`one-change ${type} ${state}`}>
     <Layout layouts='flush'>
       <LayoutItem gels='4/12'>
         <Sender
@@ -23,7 +25,7 @@ let Change = ({sender, receiver, actions, type, index, state}) => {
       <LayoutItem gels='1/12'>
         <Delete
           actions={actions}
-          index={index} />
+          rID={receiver.id} />
       </LayoutItem>
     </Layout>
   </div>
@@ -35,6 +37,7 @@ Change.propTypes = {
   actions: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   state: PropTypes.string.isRequired
 }
 

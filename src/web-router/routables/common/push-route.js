@@ -1,6 +1,6 @@
 import clone from 'clone'
 
-export default ({data, receiver, sender}) => {
+export default ({data, receiver, sender, staged}) => {
   let route = data.routes.filter(route => {
     return receiver.id === route.receiver.id &&
           sender.id === route.sender.id
@@ -12,5 +12,9 @@ export default ({data, receiver, sender}) => {
     }
     data.routes.push(route)
   }
-  route.state = 'routing'
+  if (staged) {
+    route.state = 'staged-route'
+  } else {
+    route.state = 'routing'
+  }
 }

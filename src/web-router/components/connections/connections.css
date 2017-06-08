@@ -65,7 +65,9 @@
       }
 
       &-routing,
-      &-unrouting {
+      &-unrouting,
+      &-staged-route,
+      &-staged-unroute {
         & .line {
           stroke-dasharray: 15, 15;
         }
@@ -77,8 +79,21 @@
         }
       }
 
-      &-unrouting .line {
-        stroke: var(--remove);
+      &-staged-unroute.expanded {
+        & .line {
+          stroke: var(--remove);
+        }
+      }
+
+      &-unrouting,
+      &-staged-unroute {
+        & .line {
+          stroke: var(--remove);
+        }
+      }
+
+      &-staged-route .line {
+        stroke: var(--routed);
       }
     }
   }
@@ -126,6 +141,18 @@
           }
         }
       }
+    }
+  }
+
+  /* Staged routes are the temp routes that appear in confirm changes mode */
+  & .receivers,
+  & .senders {
+    & .stagedRoute .node {
+      background-color: var(--routed);
+    }
+
+    & .stagedUnroute .node {
+      background-color: var(--remove);
     }
   }
 }

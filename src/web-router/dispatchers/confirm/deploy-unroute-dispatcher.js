@@ -1,13 +1,10 @@
 import dispatchError from '../error-dispatcher'
 
 export default (actions) => {
-  return (receiver, index) => {
+  return (sender, receiver) => {
     window.nmos.unroute(receiver.id)
       .then(() => {
-        // actions.unroute({ receiver })
-        let changeIndex = index
-        console.log(index)
-        actions.deployUnroute({ receiver, changeIndex })
+        actions.deployUnroute({ sender, receiver })
       })
       .catch(error => {
         if (error.message === 'Network Error') error = `Can not connect to server, can not unroute ${receiver.label}`

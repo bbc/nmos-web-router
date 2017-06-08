@@ -1,9 +1,9 @@
 import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import sortRoutes from '../common/sort-routes'
-import getRoutable from './get-routable'
+import getRoutable from '../common/get-routable'
 import mapRoutableStateToRouted from './map-routables-state-to-routed'
-import pushRoute from './push-route'
+import pushRoute from '../common/push-route'
 import unrouteReceivers from './unroute-receivers'
 
 export default (data) => {
