@@ -5,6 +5,8 @@ export default (state, action, merge) => {
   let updatedView = routables.deployChange(action.receiver.id, action.sender.id, 'route').view()
   let view = Object.assign({}, state.view, updatedView)
 
+  // Set change state to deployed so that it fades out and can be removed from the list
+  // of changes
   let updatedChanges = state.data.changes
   updatedChanges.forEach(change => {
     if (change.receiver.id === action.rID) {
@@ -13,16 +15,11 @@ export default (state, action, merge) => {
   })
 
   let data = {
-    receivers: state.data.receivers,
-    senders: state.data.senders,
-    flows: state.data.flows,
     changes: updatedChanges
   }
 
   let newState = {
     data: data,
-    initialised: state.initialised,
-    location: state.location,
     view: view
   }
 

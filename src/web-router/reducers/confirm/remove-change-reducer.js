@@ -1,20 +1,33 @@
+import Routables from '../../routables'
+
 export default (state, action, merge) => {
-  let currentChanges = state.data.changes
-  // let editedChanges = currentChanges.filter(change => {
-  //   return change.receiver.id !== action.rID
-  // })
+  let view = state.view
+
+  // This reducer is called either when a single change is removed via its delete button
+  // Or a change is removed after being deployed
+  // In the former case, unstage the change and return routables to their previous state
+  if (!action.deployed) {
+    let routables = Routables(state.view)
+    let updatedView = routables.unstageChange(action.rID, action.sID, action.changeType).view()
+    view = Object.assign({}, state.view, updatedView)
+  }
+
+  // Remove the change from the list of changes and then merge
+  let updatedChanges = state.data.changes
   let indexToSplice = 0
-  currentChanges.forEach((change, index) => {
+  updatedChanges.forEach((change, index) => {
     if (change.receiver.id === action.rID) {
       indexToSplice = index
     }
   })
-  currentChanges.splice(indexToSplice, 1)
+  updatedChanges.splice(indexToSplice, 1)
+
   let data = {
-    receivers: state.data.receivers,
-    senders: state.data.senders,
-    flows: state.data.flows,
-    changes: currentChanges
+    changes: updatedChanges
   }
-  return merge({data})
+  let newState = {
+    data: data,
+    view: view
+  }
+  return merge({newState})
 }

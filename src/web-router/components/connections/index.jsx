@@ -7,7 +7,7 @@ import Senders from './senders-component'
 import Routes from './routes-component'
 import Receivers from './receivers-component'
 
-let Connections = ({expanded, senders, receivers, routes, actions, routingMode}) => {
+let Connections = ({expanded, senders, receivers, routes, actions, routingMode, changes}) => {
   return <Layout className='connections box box-hidden connections-box'
     onClick={function () { if (!expanded.state.includes('contracted')) actions.toggleSender(expanded) }}>
     <Header />
@@ -21,6 +21,7 @@ let Connections = ({expanded, senders, receivers, routes, actions, routingMode})
         receivers={receivers}
         actions={actions}
         routingMode={routingMode}
+        changes={changes}
           />
       <Routes
         routes={routes}
@@ -37,7 +38,8 @@ Connections.propTypes = {
   receivers: PropTypes.array.isRequired,
   routes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  routingMode: PropTypes.string.isRequired
+  routingMode: PropTypes.string.isRequired,
+  changes: PropTypes.array.isRequired
 }
 
 export default Connections

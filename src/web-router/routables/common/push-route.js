@@ -12,9 +12,5 @@ export default ({data, receiver, sender, staged}) => {
     }
     data.routes.push(route)
   }
-  if (staged) {
-    route.state = 'staged-route'
-  } else {
-    route.state = 'routing'
-  }
+  route.state = (staged) ? 'staged-route' : 'routing'
 }

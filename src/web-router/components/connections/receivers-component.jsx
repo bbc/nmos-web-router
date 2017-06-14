@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
 import Routable from '../../routables/routable-component'
 
-let Receivers = ({senders, receivers, actions, routingMode}) => {
+let Receivers = ({senders, receivers, actions, routingMode, changes}) => {
   return <LayoutItem className='routables receivers' gels='4/10'>{
       receivers.map(receiver => {
         let clicked = 'nothing'
@@ -14,7 +14,7 @@ let Receivers = ({senders, receivers, actions, routingMode}) => {
             if (routingMode === 'automatic') {
               actions.route(receiver, senders)
             } else {
-              actions.addChange(receiver, senders, 'route')
+              actions.addChange(receiver, senders, 'route', changes)
             }
           }
         }
@@ -37,7 +37,7 @@ let Receivers = ({senders, receivers, actions, routingMode}) => {
             if (routingMode === 'automatic') {
               actions.unroute(receiver)
             } else {
-              actions.addChange(receiver, senders, 'unroute')
+              actions.addChange(receiver, senders, 'unroute', changes)
             }
           }}
           onNodeRender={function (nodeEl) {
@@ -52,7 +52,8 @@ Receivers.propTypes = {
   senders: PropTypes.array.isRequired,
   receivers: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
-  routingMode: PropTypes.string.isRequired
+  routingMode: PropTypes.string.isRequired,
+  changes: PropTypes.array.isRequired
 }
 
 export default Receivers

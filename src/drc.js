@@ -49,7 +49,6 @@ let theReducer = (options) => {
       let actionType = action.type.replace(`@@${actionName}/`, '')
       let localAction = actionName === name
       if (localAction && reducers.hasOwnProperty(actionType)) {
-        // I think the call from the dispatcher ends up here and this returns the relevant reducer
         return reducers[actionType](result, action, createMerge(state)) || result
       } else if (reducersAll.hasOwnProperty(actionName) && reducersAll[actionName].hasOwnProperty(actionType)) {
         return reducersAll[actionName][actionType](result, action, createMerge(state)) || result
@@ -175,7 +174,8 @@ export default (containers, shouldUseHash) => {
   let store = createStore(
     combineReducers(
       Object.assign({ routing }, reducers)
-    )
+    ),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 
   window.routerHistory = browserHistory

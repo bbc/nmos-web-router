@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (receiver, senders, type) => {
+  return (receiver, senders, type, changes) => {
     let sender = ''
 
     if (type === 'route') {
@@ -13,6 +13,18 @@ export default (actions) => {
       })[0]
     }
     let changeType = type
+
+    if (changes) {
+      changes.forEach(change => {
+        if (change.receiver.id === receiver.id) {
+          let rID = receiver.id
+          let sID = change.sender.id
+          let changeType = change.type
+          let deployed = false
+          actions.removeChange({rID, sID, changeType, deployed})
+        }
+      })
+    }
     actions.addChange({ sender, receiver, changeType })
   }
 }

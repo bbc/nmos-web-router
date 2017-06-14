@@ -1,3 +1,9 @@
+/*
+"ClearConfirm" returns a pair of buttons for the bottom of the 'Confirm' view
+These buttons either delete all staged changes (clear) or deploy all
+  staged changes (confirm)
+*/
+
 import React, { PropTypes } from 'react'
 import { Pica } from '../../../gel-react/typography'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
@@ -9,7 +15,9 @@ let ClearConfirm = ({changes, actions}) => {
   }
 
   let clearClick = () => {
-    actions.clearChanges()
+    for (var i = changes.length - 1; i >= 0; i--) {
+      actions.removeChange(changes[i].receiver.id, changes[i].sender.id, changes[i].type, false)
+    }
   }
 
   let confirmClick = () => {
@@ -20,13 +28,19 @@ let ClearConfirm = ({changes, actions}) => {
         actions.deployUnroute(change.sender, change.receiver)
       }
     })
+
+    // Remove any changes that have been set to 'deployed'
+    // The timeout allows time for visual fade transition (0.25s)
+    // Should be every change that gets removed but if something goes
+    // wrong with deployment then the change's state shouldn't be 'deployed'
+    // *** Not tested very thoroughly ***
     setTimeout(deleteDeployedChanges, 500)
   }
 
   let deleteDeployedChanges = () => {
     for (var i = changes.length - 1; i >= 0; i--) {
       if (changes[i].state === 'deployed') {
-        actions.removeChange(changes[i].receiver.id)
+        actions.removeChange(changes[i].receiver.id, changes[i].sender.id, changes[i].type, true)
       }
     }
   }
