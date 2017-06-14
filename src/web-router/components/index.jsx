@@ -7,6 +7,7 @@ import Notifications from './notifications'
 
 let WebRouter = ({data, view, actions}) => {
   // Not sure how to add this array more officially
+  // Changes are needed to populate 'Confirm' view
   if (!data.changes) {
     data.changes = []
   }

@@ -3,11 +3,10 @@ import stateToString from '../common/state-to-string'
 
 export default ({data, sender, receiver}) => {
   data.routes.forEach(route => {
-    if (route.receiver.id === receiver.id) route.state = 'unrouting'
+    if (route.receiver.id === receiver.id) route.state = 'routed'
   })
-  console.log('Deploying unroute')
-  receiver.state = mapState(receiver).deployUnroute().state()
+  receiver.state = mapState(receiver).unstageUnroute().state()
   receiver.stateString = stateToString(receiver.state)
-  sender.state = mapState(sender).deployUnroute().state()
+  sender.state = mapState(sender).unstageUnroute().state()
   sender.stateString = stateToString(sender.state)
 }

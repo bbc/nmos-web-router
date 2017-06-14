@@ -1,3 +1,12 @@
+/*
+"ChangeQueue" returns a div containing a graphical representation
+  of each change currently staged
+"Change" returns a graphical representation of a single change which
+  consists of the relevant sender and receiver, joined by a yellow or red
+  line (route/unroute) and also a red delete button allowing that change
+  to be removed
+*/
+
 import React, { PropTypes } from 'react'
 import Change from './change-component'
 

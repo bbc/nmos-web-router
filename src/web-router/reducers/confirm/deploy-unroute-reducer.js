@@ -13,16 +13,11 @@ export default (state, action, merge) => {
   })
 
   let data = {
-    receivers: state.data.receivers,
-    senders: state.data.senders,
-    flows: state.data.flows,
     changes: updatedChanges
   }
 
   let newState = {
     data: data,
-    initialised: state.initialised,
-    location: state.location,
     view: view
   }
 

@@ -46,6 +46,7 @@ let WebRouter = ({view, changes, actions}) => {
         routes={view.routes}
         actions={actions}
         routingMode={view.routingMode}
+        changes={changes}
         />
       <LayoutItem className='confirm-mode-container'>
         <ConfirmMode

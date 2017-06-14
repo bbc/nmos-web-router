@@ -7,6 +7,7 @@ import check from './check'
 import expire from './expire'
 import stageChange from './stage-change'
 import deployChange from './deploy-change'
+import unstageChange from './unstage-change'
 
 export default (data) => {
   return {
@@ -41,6 +42,7 @@ export default (data) => {
     },
     stageChange: stageChange(data),
     deployChange: deployChange(data),
+    unstageChange: unstageChange(data),
     view () {
       data.expanded = data.expanded || {
         state: []

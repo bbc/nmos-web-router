@@ -25,7 +25,9 @@ let Change = ({sender, receiver, actions, type, index, id, state}) => {
       <LayoutItem gels='1/12'>
         <Delete
           actions={actions}
-          rID={receiver.id} />
+          rID={receiver.id}
+          sID={sender.id}
+          type={type} />
       </LayoutItem>
     </Layout>
   </div>

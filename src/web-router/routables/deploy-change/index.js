@@ -1,3 +1,9 @@
+/*
+These functions are called from the deploy change reducers
+In both cases the state of the relevant routables is updated accordingly
+  and routes are updated or removed accordingly
+*/
+
 import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import getRoutable from '../common/get-routable'

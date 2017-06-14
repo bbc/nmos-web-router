@@ -1,3 +1,10 @@
+/*
+Confirm components are used to build the optional 'Confirm' view in which
+  routing changes are displayed (staged changes) and the user then has the option
+  to deploy all of the changes at once
+  - Jason L 06/2017
+*/
+
 import './confirm.css'
 
 import React, { PropTypes } from 'react'

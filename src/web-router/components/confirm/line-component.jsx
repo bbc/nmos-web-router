@@ -4,6 +4,7 @@ import { Scissors } from '../../../gel-react/iconography.js'
 let Line = () => {
   // Line length is a bit of a hack, it's deliberately too wide and is then restricted
   // by the width of the svg it is in
+  // TODO Make scissors appear in the middle of the line regardless of width
   return <div className='line-container'>
     <svg className='line-svg'>
       <line

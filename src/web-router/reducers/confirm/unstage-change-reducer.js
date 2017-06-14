@@ -6,9 +6,6 @@ export default (state, action, merge) => {
     }
   })
   let data = {
-    receivers: state.data.receivers,
-    senders: state.data.senders,
-    flows: state.data.flows,
     changes: updatedChanges
   }
   return merge({data})

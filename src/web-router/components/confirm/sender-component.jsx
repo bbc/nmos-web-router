@@ -1,3 +1,7 @@
+/*
+Mock routable with no interactions, purely to display the staged routing change
+*/
+
 import React, { PropTypes } from 'react'
 
 import { LayoutItem } from '../../../gel-react/grid'
