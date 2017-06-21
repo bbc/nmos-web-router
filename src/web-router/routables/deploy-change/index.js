@@ -21,6 +21,12 @@ export default (data) => {
       deployUnroute({data, sender, receiver})
     }
 
+    data.changes.forEach(change => {
+      if (change.receiver.id === receiver.id) {
+        change.state = 'deployed'
+      }
+    })
+
     return View(data)
   }
 }

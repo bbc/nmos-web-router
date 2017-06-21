@@ -144,7 +144,7 @@
     }
   }
 
-  /* Staged routes are the temp routes that appear in confirm changes mode */
+  /* Staged routes are the temp routes that appear in manual routing mode */
   & .receivers,
   & .senders {
     & .stagedRoute .node {

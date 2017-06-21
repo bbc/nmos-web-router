@@ -10,7 +10,7 @@
 import React, { PropTypes } from 'react'
 import Change from './change-component'
 
-let ChangeQueue = ({senders, receivers, actions, changes}) => {
+let ChangeQueue = ({actions, changes}) => {
   return <div className='changes-scroll'>{
       changes.map((change, index) => {
         return <Change
@@ -28,8 +28,6 @@ let ChangeQueue = ({senders, receivers, actions, changes}) => {
 }
 
 ChangeQueue.propTypes = {
-  senders: PropTypes.array.isRequired,
-  receivers: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   changes: PropTypes.array.isRequired
 }

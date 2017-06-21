@@ -1,3 +1,7 @@
+/* This .css file styles the 'Confirm' view when it is in use
+and is roughly structured such that the css file from top to bottom
+styles the view from top to bottom */
+
 :root {
   --unrouted: #a19ea0;
   --routed: #f5d328;
@@ -10,160 +14,208 @@
 }
 
 .confirm {
+  /* The column headers: "Senders" and "Receivers" */
   & .column-title {
     text-align: center;
   }
 
+  /* The scrollable area that contains all the changes */
   & .changes-scroll {
     top: 0;
     padding: 1px;
     height: 85%;
-  }
-
-  & .one-change {
-    opacity: 1;
     width: 100%;
-    transition: opacity 0.25s;
-  }
 
-  & .node-container {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    height: 38px;
-    z-index: -1;
-    transition: transform 0.25s;
+    /* "One change" consists of a sender, line, receiver and delete button */
+    & .one-change {
+      opacity: 1;
+      width: 100%;
+      transition: opacity 0.25s;
 
-    & .node {
-      background-color: var(--routed);
-      position: absolute;
-      width: var(--node-width);
-      height: var(--node-width);
-      border-radius: 90px;
-      transition: color 0.25s, fill 0.25s, background-color 0.25s;
-      top: 50%;
+      & .receiver-container,
+      & .sender-container {
+        height: 45px;
 
-      & .gel-icon {
-        fill: transparent;
-      }
-    }
-  }
+        /* Set up a strikethrough line, used when a routable is unavailable,
+        then hide it */
+        & .strikethrough-svg {
+          width: 100%;
+          height: 32px;
+          transform: translate(0, -150%);
 
-  & .senders,
-  & .receivers {
-    & .button {
-      &:hover {
-        background-color: var(--contracted);
-        cursor: default;
-      }
-    }
-
-    & .expanded {
-      & .button {
-        background-color: var(--contracted);
+          & .strikethrough {
+            stroke: var(--remove);
+            stroke-width: 2;
+            opacity: 0;
+          }
+        }
       }
 
-      & .node {
-        box-shadow: none;
+      /* Set up the nodes for senders and receivers
+          - most formatting for nodes is done by previous css files */
+      & .senders,
+      & .receivers {
+        & .node {
+          background-color: var(--routed);
+          top: 50%;
+
+          & .gel-icon {
+            fill: transparent;
+          }
+        }
+
+        /* Override previous properties so these mock routables
+        don't change colour when hovered or when expanded in 'Route' view */
+        & .button {
+          &:hover {
+            background-color: var(--contracted);
+            cursor: default;
+          }
+        }
+
+        & .expanded {
+          & .button {
+            background-color: var(--contracted);
+          }
+
+          & .node {
+            box-shadow: none;
+          }
+        }
+      }
+
+      /* Apply positioning to sender/receiver nodes separately */
+      & .senders {
+        padding-left: 0;
+
+        & .node {
+          right: 0;
+          transform: translate(12px, -50%);
+        }
+      }
+
+      & .receivers .node {
+        transform: translate(-12px, -50%);
+      }
+
+      /* Apply positioning to the line container and line svg such that
+      the line appears to connect both nodes *** a bit of a hack *** */
+      & .line-container {
+        height: 45px;
+        padding-left: 15px;
+
+        & .line-svg {
+          width: 200%;
+          height: 40px;
+          transform: translate(-10px);
+
+          & .line {
+            stroke-width: 3;
+            stroke: var(--routed);
+          }
+        }
+
+        /* Set up scissors icon for unroute changes then hide it */
+        & .gel-icon-scissors {
+          margin: auto;
+          width: 32px;
+          height: 32px;
+          fill: var(--remove);
+          background-color: white;
+          display: none;
+          transform: translate(0, -100%);
+        }
+      }
+
+      /* This is the alternative container which appears if either
+      routable in a change is unavailable */
+      & .line-container-unavailable {
+        height: 45px;
+        text-align: center;
+
+        /* This CSS is a bit hacky but makes the "sender/receiver unavailable"
+        text appear in the middle of the space between the sender and receiver */
+        & .unavailable-text {
+          width: 80px;
+          height: 20px;
+          margin: auto;
+          padding-top: 8px;
+        }
+      }
+
+      /* Set up the delete button which is a /red circle with a /white X
+      inside */
+      & .delete-button {
+        margin-left: 10px;
+        margin-top: 7px;
+        height: 38px;
+
+        & .delete-circle {
+          &:hover {
+            cursor: pointer;
+            background-color: red;
+          }
+
+          background-color: var(--remove);
+          width: 32px;
+          height: 32px;
+          border-radius: 16px;
+          transform: translate(0%, 10%);
+        }
+
+        /* Use a "No" icon as the X for the button */
+        & .gel-icon-no {
+          height: 18;
+          width: 18px;
+          fill: white;
+          transform: translate(40%);
+        }
       }
     }
-  }
 
-  & .senders {
-    padding-left: 0;
-
-    & .node {
-      right: 0;
-      transform: translate(12px, -50%);
-    }
-  }
-
-  & .receivers {
-    position: relative;
-
-    & .node {
-      left: 0;
-      transform: translate(-12px, -50%);
-    }
-  }
-
-  & .line-container {
-    height: 32px;
-
-    & .line-svg {
-      width: 110%;
-      height: 40px;
-
-      & .line {
-        stroke-width: 3;
-        stroke: var(--routed);
-      }
-    }
-
-    & .gel-icon-scissors {
-      width: 32px;
-      height: 32px;
-      fill: var(--remove);
-      background-color: white;
-      transform: translate(180%, -100%);
-      display: none;
-    }
-  }
-
-  & .unroute {
-    & .node-container {
-      & .node {
+    /* Apply colour changes to a change that has "unroute" in its state
+    and also unhide scissors icon */
+    & .unroute {
+      & .senders .node,
+      & .receivers .node {
         background-color: var(--remove);
       }
-    }
 
-    & .line-svg .line {
-      stroke: var(--remove);
-    }
-
-    & .line-container .gel-icon-scissors {
-      display: block;
-    }
-  }
-
-  & .unstaged {
-    transition: visibility 0.25s, opacity 0.25s linear;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  & .deployed {
-    transition: visibility 0.25s, opacity 0.25s linear;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  & .delete-button {
-    margin-left: 10px;
-    margin-top: 7px;
-    height: 38px;
-
-    & .delete-circle {
-      &:hover {
-        cursor: pointer;
-        background-color: red;
+      & .line-container .line-svg .line {
+        stroke: var(--remove);
       }
 
-      background-color: var(--remove);
-      width: 32px;
-      height: 32px;
-      border-radius: 16px;
-      transform: translate(0%, 10%);
+      & .line-container .gel-icon-scissors {
+        display: block;
+      }
     }
 
-    & .gel-icon-no {
-      height: 18;
-      width: 18px;
-      fill: white;
-      transform: translate(40%);
+    /* Hide changes that have "unstaged" or "deployed" in their state */
+    & .unstaged,
+    & .deployed {
+      transition: visibility 0.25s, opacity 0.25s linear;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    /* Fade out changes involving an unavailable routable */
+    & .unavailable {
+      transition: opacity 0.25s linear;
+      opacity: 0.25;
+    }
+
+    /* If a change has unavailable- in its state then make the strikethrough
+    for the relevant routable visible */
+    & .unavailable-receiver .receiver-container,
+    & .unavailable-sender .sender-container {
+      & .strikethrough-svg .strikethrough {
+        transition: opacity 0.25s linear;
+        opacity: 1;
+      }
     }
   }
 
+  /* Style the container which holds the "clear" and "confirm" buttons */
   & .clear-confirm-container {
     height: 10%;
     margin-right: 5%;

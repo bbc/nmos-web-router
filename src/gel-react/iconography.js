@@ -430,3 +430,7 @@ exports.WindGustInfoA = require('./weather/gel-icon-wind-gust-info-a.js').defaul
 exports.WindGustInfoB = require('./weather/gel-icon-wind-gust-info-b.js').default
 exports.Wind = require('./weather/gel-icon-wind.js').default
 exports.Scissors = require('./ips-web-router/scissors.js').default
+exports.IPSVideoIcon = require('./ips-web-router/video.js').default
+exports.IPSAudioIcon = require('./ips-web-router/audio.js').default
+exports.IPSDataIcon = require('./ips-web-router/data.js').default
+exports.IPSMuxIcon = require('./ips-web-router/mux.js').default

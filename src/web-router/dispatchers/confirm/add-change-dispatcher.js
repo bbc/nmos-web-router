@@ -20,8 +20,7 @@ export default (actions) => {
           let rID = receiver.id
           let sID = change.sender.id
           let changeType = change.type
-          let deployed = false
-          actions.removeChange({rID, sID, changeType, deployed})
+          actions.removeChange({sID, rID, changeType})
         }
       })
     }

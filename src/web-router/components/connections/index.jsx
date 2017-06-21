@@ -6,8 +6,18 @@ import Header from '../shared/header-component'
 import Senders from './senders-component'
 import Routes from './routes-component'
 import Receivers from './receivers-component'
+import addChanges from './add-changes-to-routes'
 
 let Connections = ({expanded, senders, receivers, routes, actions, routingMode, changes}) => {
+  let updatedRoutes = routes
+  if (changes.length >= 1) {
+    updatedRoutes = addChanges({changes, routes, senders, receivers})
+  }
+  if (updatedRoutes === null) {
+    updatedRoutes = routes
+    console.log('Update failed')
+  }
+
   return <Layout className='connections box box-hidden connections-box'
     onClick={function () { if (!expanded.state.includes('contracted')) actions.toggleSender(expanded) }}>
     <Header />
@@ -24,7 +34,7 @@ let Connections = ({expanded, senders, receivers, routes, actions, routingMode, 
         changes={changes}
           />
       <Routes
-        routes={routes}
+        routes={updatedRoutes}
         actions={actions}
         expanded={expanded}
         />

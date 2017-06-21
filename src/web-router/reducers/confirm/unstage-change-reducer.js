@@ -1,12 +1,9 @@
+import Routables from '../../routables'
+
 export default (state, action, merge) => {
-  let updatedChanges = state.data.changes
-  updatedChanges.forEach(change => {
-    if (change.receiver.id === action.rID) {
-      change.state = 'unstaged'
-    }
-  })
-  let data = {
-    changes: updatedChanges
-  }
-  return merge({data})
+  let routables = Routables(state.view)
+  let updatedView = routables.unstageChange(action.rID, action.sID, action.changeType).view()
+  let view = Object.assign({}, state.view, updatedView)
+
+  return merge({view})
 }

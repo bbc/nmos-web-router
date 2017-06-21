@@ -15,9 +15,11 @@ let ClearConfirm = ({changes, actions}) => {
   }
 
   let clearClick = () => {
-    for (var i = changes.length - 1; i >= 0; i--) {
-      actions.removeChange(changes[i].receiver.id, changes[i].sender.id, changes[i].type, false)
-    }
+    console.log(changes)
+    changes.forEach(change => {
+      actions.unstageChange(change.sender.id, change.receiver.id, change.type)
+    })
+    setTimeout(function () { actions.clearChanges('unstaged') }, 500)
   }
 
   let confirmClick = () => {
@@ -34,16 +36,9 @@ let ClearConfirm = ({changes, actions}) => {
     // Should be every change that gets removed but if something goes
     // wrong with deployment then the change's state shouldn't be 'deployed'
     // *** Not tested very thoroughly ***
-    setTimeout(deleteDeployedChanges, 500)
+    setTimeout(function () { actions.clearChanges('deployed') }, 500)
   }
 
-  let deleteDeployedChanges = () => {
-    for (var i = changes.length - 1; i >= 0; i--) {
-      if (changes[i].state === 'deployed') {
-        actions.removeChange(changes[i].receiver.id, changes[i].sender.id, changes[i].type, true)
-      }
-    }
-  }
   return <Layout gels='1/1' layouts='right' className='clear-confirm-container'>
     <LayoutItem className={`button clear ${buttonState}`}
       onClick={function () { clearClick() }}>

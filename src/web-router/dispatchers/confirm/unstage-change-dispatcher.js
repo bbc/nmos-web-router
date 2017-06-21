@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (rID) => {
-    actions.unstageChange({rID})
+  return (sID, rID, changeType) => {
+    actions.unstageChange({sID, rID, changeType})
   }
 }

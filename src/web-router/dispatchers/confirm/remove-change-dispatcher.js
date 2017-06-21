@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (rID, sID, changeType, deployed) => {
-    actions.removeChange({ rID, sID, changeType, deployed })
+  return (sID, rID, changeType) => {
+    actions.removeChange({ sID, rID, changeType })
   }
 }

@@ -1,104 +1,19 @@
-@custom-media --phone (min-width: 300px) and (max-width: 999px);
-@custom-media --tablet (min-width: 1000px) and (max-width: 1399px);
-@custom-media --desktop (min-width: 1400px);
+@custom-media --small-screen (min-width: 400px) and (max-width: 1199px);
+@custom-media --medium-screen (min-width: 1200px) and (max-width: 1599px);
+@custom-media --large-screen (min-width: 1600px);
 
 :root {
   --button-color: #fff;
   --active: #33c3f0;
   --box-border: #a19ea0;
-
-  --active-nav: {
-    fill: var(--button-color);
-    color: var(--button-color);
-    background-color: var(--active);
-  }
-
-  --inactive-nav: {
-    fill: color(var(--button-color) tint(30%));
-    color: color(var(--button-color) tint(30%));
-    background-color: color(var(--active) tint(60%));
-  }
-
-  --disabled-nav: {
-    fill: color(var(--button-color) tint(30%));
-    color: color(var(--button-color) tint(30%));
-    background-color: color(black tint(80%));
-  }
-
-  --far-left: {
-    transform: translateX(-200%);
-  }
-  --left: {
-    transform: translateX(-100%);
-  }
-  --center: {
-    transform: translateX(0%);
-  }
-  --right: {
-    transform: translateX(100%);
-  }
-  --far-right: {
-    transform: translateX(200%);
-  }
-
-  --auto-choose: {
-    & .left {
-      @apply --center;
-    }
-
-    & .center {
-      @apply --right;
-    }
-
-    & .right {
-      @apply --far-right;
-    }
-
-    & .choose-nav {
-      @apply --active-nav;
-    }
-
-    & .route-nav {
-      @apply --inactive-nav;
-    }
-
-    & .confirm-nav {
-      @apply --disabled-nav;
-    }
-  }
-
-  --auto-route: {
-    & .left {
-      @apply --left;
-    }
-
-    & .center {
-      @apply --center;
-    }
-
-    & .right {
-      @apply --far-right;
-    }
-
-    & .choose-nav {
-      @apply --inactive-nav;
-    }
-
-    & .route-nav {
-      @apply --active-nav;
-    }
-
-    & .confirm-nav {
-      @apply --disabled-nav;
-    }
-  }
 }
 
 .web-router {
   position: absolute;
   overflow: hidden;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1800px;
+  min-width: 400px;
   height: 100%;
   top: calc(38px + 3 * 12px);
   left: 0;
@@ -116,11 +31,11 @@
     width: 100%;
     transition: all 0.5s;
 
-    @media (--tablet), (--desktop) {
+    @media (--medium-screen), (--large-screen) {
       width: 50%;
     }
 
-    @media (--desktop) {
+    @media (--large-screen) {
       top: 0;
     }
   }
@@ -148,7 +63,7 @@
     transition: all 0.5s;
     height: 38px;
 
-    @media (--desktop) {
+    @media (--large-screen) {
       height: 0;
     }
   }
@@ -159,7 +74,7 @@
     & .expanded-sender-container {
       top: calc(38px + 44px);
 
-      @media (--tablet) {
+      @media (--medium-screen) {
         top: calc(44px + 12px);
       }
     }
@@ -213,59 +128,6 @@
     }
   }
 
-  /* Default view */
-
-  /* PLACEHOLDER until third view is ready */
-  & .right {
-    @apply --far-right;
-  }
-
-  & .left {
-    @apply --center;
-  }
-
-  & .center {
-    @apply --right;
-  }
-
-  & .choose-nav {
-    @apply --active-nav;
-  }
-
-  & .route-nav {
-    @apply --inactive-nav;
-  }
-
-  & .confirm-nav {
-    @apply --disabled-nav;
-  }
-
-  &\/automatic\/choose {
-    @apply --auto-choose;
-  }
-
-  &\/automatic\/route {
-    @apply --auto-route;
-  }
-
-  @media (--tablet), (--desktop) {
-    & .left {
-      @apply --center;
-    }
-
-    & .center {
-      @apply --right;
-    }
-
-    & .choose-nav {
-      @apply --active-nav;
-    }
-
-    & .route-nav {
-      @apply --active-nav;
-    }
-  }
-
   & .box {
     border: solid 1px transparent;
     padding: 12px;
@@ -273,7 +135,7 @@
     margin-right: 16px;
     height: 100%;
 
-    @media (--tablet), (--desktop) {
+    @media (--medium-screen), (--large-screen) {
       border: solid 1px var(--box-border);
     }
   }

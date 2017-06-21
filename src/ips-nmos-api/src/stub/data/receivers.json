@@ -117,7 +117,7 @@
     {
       "description": "",
       "tags": {},
-      "format": "urn:x-nmos:format:video",
+      "format": "urn:x-nmos:format:mux",
       "caps": {
           "media_types": [
               "video/raw",
@@ -142,7 +142,7 @@
   {
     "description": "",
     "tags": {},
-    "format": "urn:x-nmos:format:video",
+    "format": "urn:x-nmos:format:data",
     "caps": {
         "media_types": [
             "video/raw",

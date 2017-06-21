@@ -1,36 +1,32 @@
 import React, { PropTypes } from 'react'
 
-import { Layout, LayoutItem } from '../../../gel-react/grid'
+import { Layout } from '../../../gel-react/grid'
 import Receiver from './receiver-component'
 import Sender from './sender-component'
 import Line from './line-component'
 import Delete from './delete-change-component'
 
 let Change = ({sender, receiver, actions, type, index, id, state}) => {
-  return <div
+  let available = true
+  if (state.includes('unavailable')) available = false
+  return <Layout
     id={id}
-    className={`one-change ${type} ${state}`}>
-    <Layout layouts='flush'>
-      <LayoutItem gels='4/12'>
-        <Sender
-          sender={sender} />
-      </LayoutItem>
-      <LayoutItem className='lines-holder' gels='3/12'>
-        <Line />
-      </LayoutItem>
-      <LayoutItem gels='4/12'>
-        <Receiver
-          receiver={receiver} />
-      </LayoutItem>
-      <LayoutItem gels='1/12'>
-        <Delete
-          actions={actions}
-          rID={receiver.id}
-          sID={sender.id}
-          type={type} />
-      </LayoutItem>
-    </Layout>
-  </div>
+    className={`one-change ${type} ${state}`}
+    layouts='flush'>
+    <Sender
+      sender={sender}
+      available={available} />
+    <Line
+      state={state} />
+    <Receiver
+      receiver={receiver}
+      available={available} />
+    <Delete
+      actions={actions}
+      rID={receiver.id}
+      sID={sender.id}
+      type={type} />
+  </Layout>
 }
 
 Change.propTypes = {

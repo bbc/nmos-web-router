@@ -23,6 +23,10 @@ export default (data) => {
       unstageUnroute({data, sender, receiver})
     }
 
+    data.changes.forEach(change => {
+      if (change.receiver.id === receiverId) change.state = 'unstaged'
+    })
+
     data.routes.sort(sortRoutes)
 
     return View(data)

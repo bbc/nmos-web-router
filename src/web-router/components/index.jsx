@@ -1,5 +1,5 @@
 import './web-router.css'
-import './confirm-mode.css'
+import './column-views.css'
 
 import React, { PropTypes } from 'react'
 import Main from './main'
@@ -14,7 +14,7 @@ let WebRouter = ({data, view, actions}) => {
 
   return <div className={`web-router web-router/${view.routingMode}${view.location} web-router-notification-${view.notifications.state}`}>
     <Notifications view={view.notifications} />
-    <Main view={view} changes={data.changes} actions={actions} />
+    <Main view={view} changes={view.changes} actions={actions} />
   </div>
 }
 
