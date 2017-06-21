@@ -1,5 +1,5 @@
 export default (actions) => {
-  return (index) => {
-    actions.clearChanges({index})
+  return (targetState) => {
+    actions.clearChanges({targetState})
   }
 }

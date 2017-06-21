@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import { Help, Audio, Video, Document as Data, Collection as Mux, No } from '../../../gel-react/iconography'
+import { Help, IPSAudioIcon, IPSVideoIcon, IPSDataIcon, IPSMuxIcon, No } from '../../../gel-react/iconography'
 
 let Empty = () => {
   return <svg
@@ -12,10 +12,10 @@ let Empty = () => {
 }
 
 const icons = {
-  audio: Audio,
-  video: Video,
-  data: Data,
-  mux: Mux,
+  audio: IPSAudioIcon,
+  video: IPSVideoIcon,
+  data: IPSDataIcon,
+  mux: IPSMuxIcon,
   no: No,
   help: Help,
   blank: Empty

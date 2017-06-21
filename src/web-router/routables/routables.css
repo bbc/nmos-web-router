@@ -39,6 +39,11 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
+    & .gel-icon {
+      width: 32px;
+      stroke: var(--color);
+    }
   }
 
   & .node-container {
@@ -159,6 +164,10 @@
       background-color: color(var(--contracted) tint(75%));
       fill: color(var(--color) tint(75%));
       color: color(var(--color) tint(75%));
+
+      & .gel-icon {
+        stroke: color(var(--color) tint(75%));
+      }
 
       &:hover {
         cursor: initial;

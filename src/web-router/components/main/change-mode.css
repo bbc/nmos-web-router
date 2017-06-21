@@ -1,0 +1,47 @@
+.web-router {
+  & .change-mode-container {
+    margin-left: 16px;
+    margin-top: 10px;
+    margin-right: 16px;
+    padding: 12px;
+
+    & .label-container {
+      text-align: right;
+    }
+
+    & .checkbox {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      border: solid 2px;
+      margin-top: -3px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      & .gel-icon {
+        margin: auto;
+        width: 100%;
+        height: 100%;
+      }
+
+      & .gel-icon-yes,
+      & .gel-icon-empty {
+        display: none;
+      }
+    }
+  }
+
+  & .automatic {
+    & .checkbox .gel-icon-empty {
+      display: block;
+    }
+  }
+
+  & .manual {
+    & .checkbox .gel-icon-yes {
+      display: block;
+    }
+  }
+}

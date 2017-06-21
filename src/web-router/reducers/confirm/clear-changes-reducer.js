@@ -1,10 +1,8 @@
 export default (state, action, merge) => {
-  let newChanges = []
-  let data = {
-    receivers: state.data.receivers,
-    senders: state.data.senders,
-    flows: state.data.flows,
-    changes: newChanges
-  }
-  return merge({data})
+  let view = Object.assign({}, state.view)
+  view.changes = view.changes.filter(change => {
+    return change.state !== action.targetState
+  })
+
+  return merge({view})
 }

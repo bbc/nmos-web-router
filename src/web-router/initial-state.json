@@ -24,7 +24,8 @@
       "type": "alert",
       "timeout": null
     },
-    "routingMode": "automatic"
+    "routingMode": "automatic",
+    "changes": []
   },
   "initialised": false,
   "location": "/"

@@ -1,4 +1,4 @@
-import './main.css'
+import './change-mode.css'
 
 import React, { PropTypes } from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
@@ -8,9 +8,9 @@ import ExpandedSender from '../connections/expanded-sender-component'
 import Choose from '../choose'
 import Buttons from './buttons-component'
 import Confirm from '../confirm'
-import ConfirmMode from './confirm-changes-component'
+import ChangeMode from './change-mode-component'
 
-let WebRouter = ({view, changes, actions}) => {
+let WebRouter = ({view, actions}) => {
   let Expanded = null
   let isExpanded = view.expanded.state && view.expanded.state.includes('expanded')
   if (isExpanded) {
@@ -46,13 +46,11 @@ let WebRouter = ({view, changes, actions}) => {
         routes={view.routes}
         actions={actions}
         routingMode={view.routingMode}
-        changes={changes}
+        changes={view.changes}
         />
-      <LayoutItem className='confirm-mode-container'>
-        <ConfirmMode
-          view={view}
-          actions={actions} />
-      </LayoutItem>
+      <ChangeMode
+        view={view}
+        actions={actions} />
     </div>
     <div className='expanded-sender-container route-view center'>
       {Expanded}
@@ -60,9 +58,7 @@ let WebRouter = ({view, changes, actions}) => {
     <div className='container confirm-view right'>
       <LayoutItem><DoublePica>Confirm</DoublePica></LayoutItem>
       <Confirm
-        senders={view.senders}
-        receivers={view.receivers}
-        changes={changes}
+        changes={view.changes}
         actions={actions} />
     </div>
   </div>
@@ -70,7 +66,6 @@ let WebRouter = ({view, changes, actions}) => {
 
 WebRouter.propTypes = {
   view: PropTypes.object.isRequired,
-  changes: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 }
 

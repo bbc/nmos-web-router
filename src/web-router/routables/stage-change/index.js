@@ -12,10 +12,10 @@ import stageRoute from './route'
 import stageUnroute from './unroute'
 
 export default (data) => {
-  return (receiverId, senderId, changeType) => {
+  return (senderID, receiverID, changeType) => {
     data = cloneRoutables(data)
-    let receiver = getRoutable(data.receivers, receiverId)
-    let sender = getRoutable(data.senders, senderId)
+    let receiver = getRoutable(data.receivers, receiverID)
+    let sender = getRoutable(data.senders, senderID)
 
     if (changeType === 'route') {
       stageRoute({data, sender, receiver})
@@ -24,6 +24,13 @@ export default (data) => {
     }
 
     data.routes.sort(sortRoutes)
+    let newChange = {
+      sender: sender,
+      receiver: receiver,
+      type: changeType,
+      state: 'staged'
+    }
+    data.changes.push(newChange)
 
     return View(data)
   }

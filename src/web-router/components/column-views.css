@@ -1,6 +1,10 @@
-@custom-media --phone (min-width: 300px) and (max-width: 999px);
-@custom-media --tablet (min-width: 1000px) and (max-width: 1399px);
-@custom-media --desktop (min-width: 1400px);
+/* This file describes how the three views (choose, route and confirm) should
+arrange themselves depending on the user's viewport size
+It also styles the three navigation buttons at the top of the page accordingly */
+
+@custom-media --small-screen (min-width: 400px) and (max-width: 1199px);
+@custom-media --medium-screen (min-width: 1200px) and (max-width: 1599px);
+@custom-media --large-screen (min-width: 1600px);
 
 :root {
   --button-color: #fff;
@@ -42,7 +46,7 @@
     transform: translateX(200%);
   }
 
-  --manual-desktop-view: {
+  --manual-large-screen-view: {
     max-width: 1920px;
 
     & .left {
@@ -62,8 +66,80 @@
       top: 0;
       width: 33%;
     }
+  }
+}
 
-    /* & .choose-nav {
+.web-router {
+  &-notification-none .notifications {
+    height: 0;
+  }
+
+  /* Default view */
+
+  & .right {
+    @apply --far-right;
+  }
+
+  & .left {
+    @apply --center;
+  }
+
+  & .center {
+    @apply --right;
+  }
+
+  & .choose-nav {
+    @apply --active-nav;
+  }
+
+  & .route-nav {
+    @apply --inactive-nav;
+  }
+
+  & .confirm-nav {
+    @apply --disabled-nav;
+  }
+
+  &\/automatic\/choose {
+    & .left {
+      @apply --center;
+    }
+
+    & .center {
+      @apply --right;
+    }
+
+    & .right {
+      @apply --far-right;
+    }
+
+    & .choose-nav {
+      @apply --active-nav;
+    }
+
+    & .route-nav {
+      @apply --inactive-nav;
+    }
+
+    & .confirm-nav {
+      @apply --disabled-nav;
+    }
+  }
+
+  &\/automatic\/route {
+    & .left {
+      @apply --left;
+    }
+
+    & .center {
+      @apply --center;
+    }
+
+    & .right {
+      @apply --far-right;
+    }
+
+    & .choose-nav {
       @apply --inactive-nav;
     }
 
@@ -73,13 +149,25 @@
 
     & .confirm-nav {
       @apply --disabled-nav;
-    } */
+    }
   }
-}
 
-.web-router {
-  &-notification-none .notifications {
-    height: 0;
+  @media (--medium-screen), (--large-screen) {
+    & .left {
+      @apply --center;
+    }
+
+    & .center {
+      @apply --right;
+    }
+
+    & .choose-nav {
+      @apply --active-nav;
+    }
+
+    & .route-nav {
+      @apply --active-nav;
+    }
   }
 
   &\/manual\/choose {
@@ -107,14 +195,14 @@
       @apply --inactive-nav;
     }
 
-    @media (--tablet) {
+    @media (--medium-screen) {
       & .route-nav {
         @apply --active-nav;
       }
     }
 
-    @media (--desktop) {
-      @apply --manual-desktop-view;
+    @media (--large-screen) {
+      @apply --manual-large-screen-view;
     }
   }
 
@@ -143,14 +231,14 @@
       @apply --inactive-nav;
     }
 
-    @media (--tablet) {
+    @media (--medium-screen) {
       & .confirm-nav {
         @apply --active-nav;
       }
     }
 
-    @media (--desktop) {
-      @apply --manual-desktop-view;
+    @media (--large-screen) {
+      @apply --manual-large-screen-view;
     }
   }
 
@@ -167,7 +255,7 @@
       @apply --active-nav;
     }
 
-    @media (--phone) {
+    @media (--small-screen) {
       & .left {
         @apply --far-left;
       }
@@ -181,7 +269,7 @@
       }
     }
 
-    @media (--tablet) {
+    @media (--medium-screen) {
       & .left {
         @apply --left;
       }
@@ -199,8 +287,8 @@
       }
     }
 
-    @media (--desktop) {
-      @apply --manual-desktop-view;
+    @media (--large-screen) {
+      @apply --manual-large-screen-view;
     }
   }
 }

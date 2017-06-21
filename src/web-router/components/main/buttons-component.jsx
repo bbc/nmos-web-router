@@ -2,14 +2,16 @@ import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
 
 let Buttons = ({term, mode, location}) => {
+  /* If the window size is such that two columns are visible then clicking
+  the route button should do nothing, as per the design spec  */
   let routeButtonDestination = 'route'
   let width = window.innerWidth
-  if (width >= 1000 && width < 1400) {
+  if (width >= 1200 && width < 1600) {
     routeButtonDestination = location.replace('/', '')
   }
 
   let confirmButtonDestination = 'confirm'
-  if (mode === 'automatic' && width < 1000) {
+  if (mode === 'automatic' && width < 1800) {
     confirmButtonDestination = location.replace('/', '')
   }
 
