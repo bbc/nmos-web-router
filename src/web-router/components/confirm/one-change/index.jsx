@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import { Layout } from '../../../gel-react/grid'
+import { Layout } from '../../../../gel-react/grid'
 import Receiver from './receiver-component'
 import Sender from './sender-component'
 import Line from './line-component'

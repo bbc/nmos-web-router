@@ -4,8 +4,8 @@ Mock routable with no interactions, purely to display the staged routing change
 
 import React, { PropTypes } from 'react'
 
-import { LayoutItem } from '../../../gel-react/grid'
-import Routable from '../../routables/routable-component'
+import { LayoutItem } from '../../../../gel-react/grid'
+import Routable from '../../../routables/routable-component'
 
 let Sender = ({sender, type, available}) => {
   let className = (available) ? 'routables senders' : 'routables senders unavailable'
