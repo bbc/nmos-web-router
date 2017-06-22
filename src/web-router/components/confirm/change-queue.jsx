@@ -8,7 +8,7 @@
 */
 
 import React, { PropTypes } from 'react'
-import Change from './change-component'
+import Change from './one-change'
 
 let ChangeQueue = ({actions, changes}) => {
   return <div className='changes-scroll'>{

@@ -11,7 +11,7 @@ import React, { PropTypes } from 'react'
 import { Layout } from '../../../gel-react/grid'
 import Header from './header-component'
 import ChangeQueue from './change-queue'
-import ClearConfirmButtons from './clear-confirm-buttons-component'
+import ClearConfirmButtons from './clear-confirm-buttons'
 
 let Confirm = ({changes, actions, senders}) => {
   return <Layout className='confirm box box-hidden'>
