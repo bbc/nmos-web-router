@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react'
 import { Pica } from '../../../gel-react/typography'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 
-let ClearConfirm = ({changes, actions}) => {
+let ClearConfirm = ({changes, actions, senders}) => {
   let buttonState = 'disabled'
   if (changes.length !== 0) {
     buttonState = 'enabled'
@@ -25,7 +25,7 @@ let ClearConfirm = ({changes, actions}) => {
   let confirmClick = () => {
     changes.forEach((change) => {
       if (change.type === 'route') {
-        actions.deployRoute(change.sender, change.receiver)
+        actions.deployRoute(senders, change.sender.id, change.receiver)
       } else if (change.type === 'unroute') {
         actions.deployUnroute(change.sender, change.receiver)
       }
@@ -53,7 +53,8 @@ let ClearConfirm = ({changes, actions}) => {
 
 ClearConfirm.propTypes = {
   changes: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  senders: PropTypes.array.isRequired
 }
 
 export default ClearConfirm

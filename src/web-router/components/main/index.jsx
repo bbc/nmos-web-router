@@ -59,7 +59,8 @@ let WebRouter = ({view, actions}) => {
       <LayoutItem><DoublePica>Confirm</DoublePica></LayoutItem>
       <Confirm
         changes={view.changes}
-        actions={actions} />
+        actions={actions}
+        senders={view.senders} />
     </div>
   </div>
 }

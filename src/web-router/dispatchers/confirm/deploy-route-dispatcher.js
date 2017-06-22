@@ -1,7 +1,10 @@
 import dispatchError from '../error-dispatcher'
 
 export default (actions) => {
-  return (sender, receiver) => {
+  return (senders, senderID, receiver) => {
+    let sender = senders.filter(sender => {
+      return sender.id === senderID
+    })[0]
     sender = Object.assign({}, sender)
     delete sender.format
     delete sender.state
