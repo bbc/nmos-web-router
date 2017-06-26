@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { No } from '../../../../gel-react/iconography'
 import { LayoutItem } from '../../../../gel-react/grid'
 
-let Delete = ({actions, rID, sID, type}) => {
+let Delete = ({actions, rID, sID, type, oldSenderID}) => {
   let onClick = () => {
     actions.unstageChange(sID, rID, type)
     setTimeout(function () { actions.removeChange(sID, rID, type) }, 250)
@@ -21,7 +21,8 @@ Delete.propTypes = {
   actions: PropTypes.object.isRequired,
   rID: PropTypes.string.isRequired,
   sID: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  oldSenderID: PropTypes.string
 }
 
 export default Delete

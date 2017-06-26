@@ -1,7 +1,7 @@
 import dispatchError from '../error-dispatcher'
 
 export default (actions) => {
-  return (senders, senderID, receiver) => {
+  return (senders, senderID, receiver, oldSenderID) => {
     let sender = senders.filter(sender => {
       return sender.id === senderID
     })[0]
@@ -12,7 +12,7 @@ export default (actions) => {
     window.nmos.route(receiver.id, sender)
       .then(() => {
         let rID = receiver.id
-        actions.deployRoute({ receiver, sender, rID })
+        actions.deployRoute({ receiver, sender, rID, oldSenderID })
       })
       .catch(error => {
         if (error.message === 'Network Error') error = `Can not connect to server, can not route ${sender.label} to ${receiver.label}`

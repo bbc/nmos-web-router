@@ -11,12 +11,16 @@ import deployRoute from './route'
 import deployUnroute from './unroute'
 
 export default (data) => {
-  return (receiverId, senderId, changeType) => {
+  return (receiverId, senderId, changeType, oldSenderID) => {
     data = cloneRoutables(data)
     let sender = getRoutable(data.senders, senderId)
     let receiver = getRoutable(data.receivers, receiverId)
+    let oldSender = ''
+    if (oldSenderID) {
+      oldSender = getRoutable(data.senders, oldSenderID)
+    }
     if (changeType === 'route') {
-      deployRoute({data, sender, receiver})
+      deployRoute({data, sender, receiver, oldSender})
     } else {
       deployUnroute({data, sender, receiver})
     }
