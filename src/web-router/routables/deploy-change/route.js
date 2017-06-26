@@ -1,7 +1,7 @@
 import mapState from '../common/map-state'
 import stateToString from '../common/state-to-string'
 
-export default ({data, sender, receiver}) => {
+export default ({data, sender, receiver, oldSender}) => {
   data.routes.forEach(route => {
     if (route.receiver.id === receiver.id && route.sender.id === sender.id) {
       console.log('Deploying route')
@@ -12,4 +12,8 @@ export default ({data, sender, receiver}) => {
   receiver.stateString = stateToString(receiver.state)
   sender.state = mapState(sender).deployRoute().state()
   sender.stateString = stateToString(sender.state)
+  if (oldSender) {
+    oldSender.state = mapState(oldSender).deployUnroute().state()
+    oldSender.stateString = stateToString(oldSender.state)
+  }
 }

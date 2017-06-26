@@ -21,7 +21,8 @@ let ChangeQueue = ({actions, changes}) => {
           actions={actions}
           type={change.type}
           index={index}
-          state={change.state} />
+          state={change.state}
+          oldSender={change.oldSender} />
       })
       }
   </div>

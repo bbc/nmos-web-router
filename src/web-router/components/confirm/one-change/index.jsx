@@ -6,7 +6,7 @@ import Sender from './sender-component'
 import Line from './line-component'
 import Delete from './delete-change-component'
 
-let Change = ({sender, receiver, actions, type, index, id, state}) => {
+let Change = ({sender, receiver, actions, type, index, id, state, oldSender}) => {
   let available = true
   if (state.includes('unavailable')) available = false
   return <Layout
@@ -25,7 +25,8 @@ let Change = ({sender, receiver, actions, type, index, id, state}) => {
       actions={actions}
       rID={receiver.id}
       sID={sender.id}
-      type={type} />
+      type={type}
+      oldSenderID={oldSender.id} />
   </Layout>
 }
 
@@ -36,7 +37,8 @@ Change.propTypes = {
   type: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired
+  state: PropTypes.string.isRequired,
+  oldSender: PropTypes.object
 }
 
 export default Change

@@ -20,6 +20,7 @@ export default (actions) => {
           let rID = receiver.id
           let sID = change.sender.id
           let changeType = change.type
+          actions.unstageChange({sID, rID, changeType})
           actions.removeChange({sID, rID, changeType})
         }
       })
