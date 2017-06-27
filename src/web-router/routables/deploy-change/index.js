@@ -1,7 +1,7 @@
 /*
 These functions are called from the deploy change reducers
-In both cases the state of the relevant routables is updated accordingly
-  and routes are updated or removed accordingly
+In both cases (route or unroute) the state of the relevant routables is updated
+  accordingly and staged routes are updated or removed accordingly
 */
 
 import cloneRoutables from '../common/clone-routables'
@@ -11,16 +11,16 @@ import deployRoute from './route'
 import deployUnroute from './unroute'
 
 export default (data) => {
-  return (receiverId, senderId, changeType, oldSenderID) => {
+  return (receiverId, senderId, changeType, subscriptionID) => {
     data = cloneRoutables(data)
     let sender = getRoutable(data.senders, senderId)
     let receiver = getRoutable(data.receivers, receiverId)
-    let oldSender = ''
-    if (oldSenderID) {
-      oldSender = getRoutable(data.senders, oldSenderID)
+    let subscription = ''
+    if (subscriptionID) {
+      subscription = getRoutable(data.senders, subscriptionID)
     }
     if (changeType === 'route') {
-      deployRoute({data, sender, receiver, oldSender})
+      deployRoute({data, sender, receiver, subscription})
     } else {
       deployUnroute({data, sender, receiver})
     }

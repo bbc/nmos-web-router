@@ -161,6 +161,14 @@ export default (routable) => {
       change(routed, stagedUnroute)
       return changeState
     },
+    stageMulti () {
+      change(stagedRoute, routed)
+      return changeState
+    },
+    unstageMulti () {
+      change(routed, stagedRoute)
+      return changeState
+    },
     state () {
       return state
     }

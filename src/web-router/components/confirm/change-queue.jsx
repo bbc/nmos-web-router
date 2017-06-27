@@ -16,13 +16,8 @@ let ChangeQueue = ({actions, changes}) => {
         return <Change
           id={change.receiver.id + 'change'}
           key={index}
-          sender={change.sender}
-          receiver={change.receiver}
           actions={actions}
-          type={change.type}
-          index={index}
-          state={change.state}
-          oldSender={change.oldSender} />
+          change={change} />
       })
       }
   </div>

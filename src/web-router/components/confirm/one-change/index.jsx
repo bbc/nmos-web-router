@@ -6,39 +6,33 @@ import Sender from './sender-component'
 import Line from './line-component'
 import Delete from './delete-change-component'
 
-let Change = ({sender, receiver, actions, type, index, id, state, oldSender}) => {
-  let available = true
-  if (state.includes('unavailable')) available = false
+let Change = ({id, actions, change}) => {
+  let available = !(change.state.includes('unavailable'))
   return <Layout
     id={id}
-    className={`one-change ${type} ${state}`}
+    className={`one-change ${change.type} ${change.state}`}
     layouts='flush'>
     <Sender
-      sender={sender}
+      sender={change.sender}
       available={available} />
     <Line
-      state={state} />
+      state={change.state} />
     <Receiver
-      receiver={receiver}
+      receiver={change.receiver}
       available={available} />
     <Delete
       actions={actions}
-      rID={receiver.id}
-      sID={sender.id}
-      type={type}
-      oldSenderID={oldSender.id} />
+      rID={change.receiver.id}
+      sID={change.sender.id}
+      type={change.type}
+      subscriptionID={change.subscriptionID} />
   </Layout>
 }
 
 Change.propTypes = {
-  sender: PropTypes.object.isRequired,
-  receiver: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
-  type: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
-  state: PropTypes.string.isRequired,
-  oldSender: PropTypes.object
+  actions: PropTypes.object.isRequired,
+  change: PropTypes.object.isRequired
 }
 
 export default Change

@@ -213,6 +213,11 @@
       }
     }
   }
+
+  &.expired {
+    transition: opacity 0.25s;
+    opacity: 0;
+  }
 }
 
 .expanded {
