@@ -1,3 +1,10 @@
+/*
+Find the sender relevant to this new change and then check any existing
+  changes - if a change regarding the same receiver already exists then
+  delete that change before adding the new change
+A receiver can only appear once in a list of staged changes
+*/
+
 export default (actions) => {
   return (receiver, senders, type, changes) => {
     let sender = ''
@@ -7,9 +14,8 @@ export default (actions) => {
         return sender.state.includes('expanded')
       })[0]
     } else {
-      let targetID = receiver.subscription.sender_id
       sender = senders.filter(sender => {
-        return sender.id === targetID
+        return sender.id === receiver.subscription.sender_id
       })[0]
     }
     let changeType = type
@@ -20,7 +26,8 @@ export default (actions) => {
           let rID = receiver.id
           let sID = change.sender.id
           let changeType = change.type
-          actions.unstageChange({sID, rID, changeType})
+          let subscriptionID = change.subscriptionID
+          actions.unstageChange({sID, rID, changeType, subscriptionID})
           actions.removeChange({sID, rID, changeType})
         }
       })

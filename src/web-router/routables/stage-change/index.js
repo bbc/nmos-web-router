@@ -1,7 +1,9 @@
 /*
 These functions are called from the add change reducers
-In both cases the state of the relevant routables is updated accordingly
-  and routes are updated or added accordingly
+  Stage Multi means both a route and an unroute are staged because
+  the user is routing a receiver which is already routed to a different sender
+  Therefore the existing route (subscription) is turned dashed red to indicate
+  to the user that it will be deleted if they deploy their desired change
 */
 
 import cloneRoutables from '../common/clone-routables'
@@ -10,21 +12,22 @@ import sortRoutes from '../common/sort-routes'
 import getRoutable from '../common/get-routable'
 import stageRoute from './route'
 import stageUnroute from './unroute'
-import doSomething from './do-something'
+import stageMulti from './multi'
 
 export default (data) => {
   return (senderID, receiverID, changeType) => {
     data = cloneRoutables(data)
     let receiver = getRoutable(data.receivers, receiverID)
     let sender = getRoutable(data.senders, senderID)
-    let oldSender = ''
+    let subscription = ''
 
     if (changeType === 'route') {
       if (receiver.state.includes('routed')) {
-        oldSender = getRoutable(data.senders, receiver.subscription.sender_id)
-        doSomething({data, oldSender, receiver})
+        subscription = getRoutable(data.senders, receiver.subscription.sender_id)
+        stageMulti({data, sender, receiver, subscription})
+      } else {
+        stageRoute({data, sender, receiver})
       }
-      stageRoute({data, sender, receiver})
     } else {
       stageUnroute({data, sender, receiver})
     }
@@ -35,7 +38,7 @@ export default (data) => {
       receiver: receiver,
       type: changeType,
       state: 'staged',
-      oldSender: oldSender
+      subscriptionID: subscription.id
     }
     data.changes.push(newChange)
 

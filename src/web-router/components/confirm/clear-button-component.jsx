@@ -1,3 +1,9 @@
+/*
+To clear all changes, each change is set to 'unstaged' so that they fade out
+  and then after the fades have taken place all 'unstaged' changes are
+  deleted
+*/
+
 import React, { PropTypes } from 'react'
 import { Pica } from '../../../gel-react/typography'
 import { LayoutItem } from '../../../gel-react/grid'

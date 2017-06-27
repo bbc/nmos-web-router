@@ -1,7 +1,8 @@
 /*
 These functions are called from the unstage change reducers
-In both cases the state of the relevant routables is updated accordingly
-  and routes are updated or removed accordingly
+If a change has a subscriptionID then this means there is an existing route
+  which has been changed to a 'staged unroute' and this needs to be changed back
+  to a 'routed' route - unstageMulti does this
 */
 
 import cloneRoutables from '../common/clone-routables'
@@ -10,20 +11,21 @@ import sortRoutes from '../common/sort-routes'
 import getRoutable from '../common/get-routable'
 import unstageRoute from './route'
 import unstageUnroute from './unroute'
-import doSomething from './do-something'
+import unstageMulti from './multi'
 
 export default (data) => {
-  return (receiverID, senderID, changeType, oldSenderID) => {
+  return (receiverID, senderID, changeType, subscriptionID) => {
     data = cloneRoutables(data)
     let receiver = getRoutable(data.receivers, receiverID)
     let sender = getRoutable(data.senders, senderID)
-    let oldSender = ''
-    if (oldSenderID) oldSender = getRoutable(data.senders, oldSenderID)
+    let subscription = ''
+    if (subscriptionID) subscription = getRoutable(data.senders, subscriptionID)
 
     if (changeType === 'route') {
-      unstageRoute({data, sender, receiver})
-      if (oldSenderID) {
-        doSomething({data, oldSender, receiver})
+      if (subscriptionID) {
+        unstageMulti({data, sender, receiver, subscription})
+      } else {
+        unstageRoute({data, sender, receiver})
       }
     } else {
       unstageUnroute({data, sender, receiver})
