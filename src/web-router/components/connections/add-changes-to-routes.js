@@ -14,37 +14,29 @@ export default ({changes, routes, senders, receivers}) => {
     })[0]
   }
 
-  if (routes && senders && receivers) {
-    let updatedRoutes = routes
-    changes.forEach(change => {
-      if (change.type === 'route' && change.state !== 'deployed' && change.state !== 'unstaged') {
-        let sender = get(senders, change.sender.id)
-        let receiver = get(receivers, change.receiver.id)
-        let route = updatedRoutes.filter(route => {
-          return receiver.id === route.receiver.id && route.sender.id === sender.id
-        })[0]
+  changes.forEach(change => {
+    if (change.type === 'route' && change.state !== 'deployed' && change.state !== 'unstaged') {
+      let sender = get(senders, change.sender.id)
+      let receiver = get(receivers, change.receiver.id)
+      let route = routes.filter(route => {
+        return receiver.id === route.receiver.id && route.sender.id === sender.id
+      })[0]
 
-        if (route === undefined) {
-          console.log('Re-staging route')
-          let thisRoute = {state: 'staged-route',
-            receiver: clone(receiver),
-            sender: clone(sender)}
-          updatedRoutes.push(thisRoute)
-        }
-      } else if (change.type === 'unroute' && change.state !== 'deployed' && change.state !== 'unstaged') {
-        let receiver = get(receivers, change.receiver.id)
-        let route = updatedRoutes.filter(route => {
-          return receiver.id === route.receiver.id
-        })[0]
-
-        if (route && route.state === 'routed') {
-          route.state = 'staged-unroute'
-        }
+      if (route === undefined) {
+        let thisRoute = {state: 'staged-route',
+          receiver: clone(receiver),
+          sender: clone(sender)}
+        routes.push(thisRoute)
       }
-    })
+    } else if (change.type === 'unroute' && change.state !== 'deployed' && change.state !== 'unstaged') {
+      let receiver = get(receivers, change.receiver.id)
+      let route = routes.filter(route => {
+        return receiver.id === route.receiver.id
+      })[0]
 
-    return updatedRoutes
-  } else {
-    return null
-  }
+      if (route && route.state === 'routed') {
+        route.state = 'staged-unroute'
+      }
+    }
+  })
 }

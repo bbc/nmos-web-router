@@ -1,3 +1,10 @@
+/*
+Using the sender ID to get the most up-to-date version of the sender
+  avoids problems caused by a sender being removed and then coming back online
+  while a change is staged (resulting in the change holding an out-of-date copy
+  of the sender)
+*/
+
 import dispatchError from '../error-dispatcher'
 
 export default (actions) => {
@@ -11,8 +18,7 @@ export default (actions) => {
     delete sender.stateString
     window.nmos.route(receiver.id, sender)
       .then(() => {
-        let rID = receiver.id
-        actions.deployRoute({ receiver, sender, rID, subscriptionID })
+        actions.deployRoute({ sender, receiver, subscriptionID })
       })
       .catch(error => {
         if (error.message === 'Network Error') error = `Can not connect to server, can not route ${sender.label} to ${receiver.label}`

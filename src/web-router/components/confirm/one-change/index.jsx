@@ -22,10 +22,7 @@ let Change = ({id, actions, change}) => {
       available={available} />
     <Delete
       actions={actions}
-      rID={change.receiver.id}
-      sID={change.sender.id}
-      type={change.type}
-      subscriptionID={change.subscriptionID} />
+      change={change} />
   </Layout>
 }
 

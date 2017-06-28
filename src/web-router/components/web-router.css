@@ -157,7 +157,7 @@
     overflow-y: auto;
   }
 
-  /* This is a bit of a hack - need to work on layout stuff */
+  /* This is a bit of a hack */
   & .route-view-layout {
     margin-left: 1px;
     margin-right: 1px;
