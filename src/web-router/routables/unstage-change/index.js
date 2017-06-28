@@ -14,15 +14,17 @@ import unstageUnroute from './unroute'
 import unstageMulti from './multi'
 
 export default (data) => {
-  return (receiverID, senderID, changeType, subscriptionID) => {
+  return (change) => {
     data = cloneRoutables(data)
-    let receiver = getRoutable(data.receivers, receiverID)
-    let sender = getRoutable(data.senders, senderID)
+    let receiver = getRoutable(data.receivers, change.receiver.id)
+    let sender = getRoutable(data.senders, change.sender.id)
     let subscription = ''
-    if (subscriptionID) subscription = getRoutable(data.senders, subscriptionID)
+    if (change.subscriptionID) {
+      subscription = getRoutable(data.senders, change.subscriptionID)
+    }
 
-    if (changeType === 'route') {
-      if (subscriptionID) {
+    if (change.type === 'route') {
+      if (change.subscriptionID) {
         unstageMulti({data, sender, receiver, subscription})
       } else {
         unstageRoute({data, sender, receiver})
@@ -31,8 +33,9 @@ export default (data) => {
       unstageUnroute({data, sender, receiver})
     }
 
+    let targetID = change.receiver.id
     data.changes.forEach(change => {
-      if (change.receiver.id === receiverID) change.state = 'unstaged'
+      if (change.receiver.id === targetID) change.state = 'unstaged'
     })
 
     data.routes.sort(sortRoutes)

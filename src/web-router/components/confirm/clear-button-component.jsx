@@ -11,7 +11,7 @@ import { LayoutItem } from '../../../gel-react/grid'
 let ClearButton = ({changes, actions, state}) => {
   let clearClick = () => {
     changes.forEach(change => {
-      actions.unstageChange(change.sender.id, change.receiver.id, change.type)
+      actions.unstageChange(change)
     })
     setTimeout(function () { actions.clearChanges('unstaged') }, 500)
   }

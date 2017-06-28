@@ -26,8 +26,7 @@ export default (actions) => {
           let rID = receiver.id
           let sID = change.sender.id
           let changeType = change.type
-          let subscriptionID = change.subscriptionID
-          actions.unstageChange({sID, rID, changeType, subscriptionID})
+          actions.unstageChange({change})
           actions.removeChange({sID, rID, changeType})
         }
       })

@@ -11,10 +11,10 @@ import deployRoute from './route'
 import deployUnroute from './unroute'
 
 export default (data) => {
-  return (receiverId, senderId, changeType, subscriptionID) => {
+  return (senderID, receiverID, changeType, subscriptionID) => {
     data = cloneRoutables(data)
-    let sender = getRoutable(data.senders, senderId)
-    let receiver = getRoutable(data.receivers, receiverId)
+    let sender = getRoutable(data.senders, senderID)
+    let receiver = getRoutable(data.receivers, receiverID)
     let subscription = ''
     if (subscriptionID) {
       subscription = getRoutable(data.senders, subscriptionID)
