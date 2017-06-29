@@ -89,7 +89,7 @@ let Dispatcher = (options) => {
         actions.deleteExpired()
         globalTimer(actions)
       }, 250)
-    }, 2000)
+    }, 300000)
   };
 
   return (dispatch) => {

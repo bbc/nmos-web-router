@@ -5,7 +5,6 @@ To clear all changes, each change is set to 'unstaged' so that they fade out
 */
 
 import React, { PropTypes } from 'react'
-import { Pica } from '../../../gel-react/typography'
 import { LayoutItem } from '../../../gel-react/grid'
 
 let ClearButton = ({changes, actions, state}) => {
@@ -13,12 +12,12 @@ let ClearButton = ({changes, actions, state}) => {
     changes.forEach(change => {
       actions.unstageChange(change)
     })
-    setTimeout(function () { actions.clearChanges('unstaged') }, 500)
+    setTimeout(function () { actions.clearChanges('unstaged') }, 250)
   }
 
   return <LayoutItem className={`button clear ${state}`}
     onClick={function () { clearClick() }}>
-    <Pica className='button-label'>Clear</Pica>
+    <span className='button-label'>CLEAR</span>
   </LayoutItem>
 }
 

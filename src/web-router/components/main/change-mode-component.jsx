@@ -1,20 +1,18 @@
 import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
-import { Yes } from '../../../gel-react/iconography'
+import { No } from '../../../gel-react/iconography'
 import { Link } from 'react-router'
-import { Pica } from '../../../gel-react/typography'
-
-let Empty = () => {
-  return <svg
-    className='gel-icon gel-icon-empty'
-    xmlns='http://www.w3.org/2000/svg'
-    width='32'
-    height='32'
-    viewBox='0 0 32 32' />
-}
+import { LongPrimer } from '../../../gel-react/typography'
+import Empty from '../shared/empty'
 
 let ChangeModeCheckbox = ({view, actions}) => {
   function onCheckboxClick () {
+    if (view.changes) {
+      view.changes.forEach(change => {
+        actions.unstageChange(change)
+      })
+      setTimeout(function () { actions.clearChanges('unstaged') }, 250)
+    }
     actions.changeMode()
   }
 
@@ -29,27 +27,26 @@ let ChangeModeCheckbox = ({view, actions}) => {
   the other parts of view.location and use this to ensure the user stays in the same
   location when they change mode */
   /* Default to /choose if view.location is null */
-  let location = view.location
-  if (location) {
+  let location = '/choose'
+  if (view.location) {
+    location = view.location
     location = location.replace('/web-router/', '')
     location = location.replace(mode.now, '')
-  } else {
-    location = '/choose'
   }
   let searchTerm = view.choose.term || ''
 
   return <Layout
     className={`change-mode-container ${mode.now}`}
     layouts='right'>
-    <LayoutItem gels='4/8' className='label-container'>
-      <Pica className='change-mode-label'>Confirm changes mode:</Pica>
+    <LayoutItem gels='5/12' className='label-container'>
+      <LongPrimer className='change-mode-label'>Confirm changes mode:</LongPrimer>
     </LayoutItem>
-    <LayoutItem gels='1/8'>
+    <LayoutItem className='checkbox-container'>
       <Link
         to={`/web-router/${mode.next}${location}?search=${searchTerm}`}
         className={`checkbox`}
         onClick={function () { onCheckboxClick() }}>
-        <Yes />
+        <No />
         <Empty />
       </Link>
     </LayoutItem>

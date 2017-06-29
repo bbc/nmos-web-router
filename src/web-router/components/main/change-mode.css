@@ -3,18 +3,22 @@
     margin-left: 16px;
     margin-top: 10px;
     margin-right: 16px;
-    padding: 12px;
+    padding: 0;
 
     & .label-container {
       text-align: right;
     }
 
+    & .checkbox-container {
+      padding: 0;
+      width: 30px;
+    }
+
     & .checkbox {
       display: inline-block;
-      width: 25px;
-      height: 25px;
-      border: solid 2px;
-      margin-top: -3px;
+      position: absolute;
+      right: 0;
+      margin-right: 16px;
 
       &:hover {
         cursor: pointer;
@@ -26,7 +30,7 @@
         height: 100%;
       }
 
-      & .gel-icon-yes,
+      & .gel-icon-no,
       & .gel-icon-empty {
         display: none;
       }
@@ -40,7 +44,7 @@
   }
 
   & .manual {
-    & .checkbox .gel-icon-yes {
+    & .checkbox .gel-icon-no {
       display: block;
     }
   }
