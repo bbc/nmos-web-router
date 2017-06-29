@@ -7,7 +7,6 @@ Changes are deployed and then time is left for them to fade from view
 */
 
 import React, { PropTypes } from 'react'
-import { Pica } from '../../../gel-react/typography'
 import { LayoutItem } from '../../../gel-react/grid'
 
 let ConfirmButton = ({changes, actions, senders, state}) => {
@@ -26,7 +25,7 @@ let ConfirmButton = ({changes, actions, senders, state}) => {
 
   return <LayoutItem className={`button confirm ${state}`}
     onClick={function () { confirmClick() }}>
-    <Pica className='button-label'>Confirm</Pica>
+    <span className='button-label'>CONFIRM</span>
   </LayoutItem>
 }
 
