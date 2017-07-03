@@ -14,7 +14,7 @@ import ChangeQueue from './change-queue'
 import ClearConfirmButtons from './clear-confirm-buttons'
 
 let Confirm = ({changes, actions, senders}) => {
-  return <Layout className='confirm box box-hidden'>
+  return <Layout layouts='flush' className='confirm box box-hidden'>
     <Header />
     <ChangeQueue
       actions={actions}

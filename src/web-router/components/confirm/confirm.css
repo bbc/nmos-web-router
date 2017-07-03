@@ -22,8 +22,7 @@ styles the view from top to bottom */
   /* The scrollable area that contains all the changes */
   & .changes-scroll {
     top: 0;
-    padding: 1px;
-    height: 90%;
+    height: 85%;
     width: 100%;
 
     /* "One change" consists of a sender, line, receiver and delete button */
@@ -219,6 +218,11 @@ styles the view from top to bottom */
   /* Style the container which holds the "clear" and "confirm" buttons */
   & .clear-confirm-container {
     height: 10%;
+    width: 100%;
+
+    & .gel-layout--right {
+      margin-left: 0;
+    }
 
     & .button {
       width: 20%;

@@ -21,17 +21,19 @@ let ClearConfirm = ({changes, actions, senders}) => {
     if (availableCount > 0) confirmEnabled = 'enabled'
   }
 
-  return <Layout gels='1/1' layouts='right' className='clear-confirm-container'>
-    <ClearButton
-      changes={changes}
-      actions={actions}
-      state={clearEnabled} />
-    <ConfirmButton
-      changes={changes}
-      actions={actions}
-      senders={senders}
-      state={confirmEnabled} />
-  </Layout>
+  return <div className='clear-confirm-container'>
+    <Layout layouts='right'>
+      <ClearButton
+        changes={changes}
+        actions={actions}
+        state={clearEnabled} />
+      <ConfirmButton
+        changes={changes}
+        actions={actions}
+        senders={senders}
+        state={confirmEnabled} />
+    </Layout>
+  </div>
 }
 
 ClearConfirm.propTypes = {
