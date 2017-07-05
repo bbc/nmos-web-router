@@ -6,7 +6,7 @@
         "caps": {},
         "version": "1482245273:40000000",
         "device_id": "9a4d00e5-d2ca-4015-a703-392c5c3fe8ba",
-        "label": "TestRx1",
+        "label": "Video Rx 1",
         "id": "a1960e85-9498-4696-8cd9-56eeb37836a5",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
@@ -31,7 +31,7 @@
         },
         "version": "1483959795:625161592",
         "device_id": "557dce26-d26e-49d2-8af9-ef76c9b913fd",
-        "label": "TestRx2",
+        "label": "Video Rx 2",
         "id": "b44c4ca6-cd23-34a2-a4a9-fb18df0b242a",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
@@ -39,6 +39,46 @@
         },
         "type": "receivers"
     },
+    {
+      "description": "",
+      "tags": {},
+      "format": "urn:x-nmos:format:video",
+      "caps": {},
+      "version": "1482245273:40000000",
+      "device_id": "9a4d00e5-d2ca-4015-a703-392c5c3fe8ba",
+      "label": "Video Rx 3",
+      "id": "b1960e85-9498-4696-8cd9-56eeb37836a5",
+      "transport": "urn:x-nmos:transport:rtp",
+      "subscription": {
+          "sender_id": null
+      },
+      "type": "receivers"
+  },
+  {
+      "description": "",
+      "tags": {},
+      "format": "urn:x-nmos:format:video",
+      "caps": {
+          "media_types": [
+              "video/raw",
+              "video/H264",
+              "video/x-vc2",
+              "video/x-vc2-snell",
+              "video/x-vc2-fast",
+              "video/x-vc2-fragmented",
+              "video/x-pgf"
+          ]
+      },
+      "version": "1483959795:625161592",
+      "device_id": "567dce26-d26e-49d2-8af9-ef76c9b913fd",
+      "label": "Video Rx 4",
+      "id": "b44d4ca6-cd23-34a2-a4a9-fb18df0b242a",
+      "transport": "urn:x-nmos:transport:rtp",
+      "subscription": {
+          "sender_id": null
+      },
+      "type": "receivers"
+  },
     {
         "description": "",
         "tags": {},
@@ -56,7 +96,7 @@
         },
         "version": "1483971517:595272704",
         "device_id": "e3c6d7f0-0abe-32c1-9f57-0d142b184c90",
-        "label": "TestRx3",
+        "label": "Video Rx 5",
         "id": "6f606384-3df7-3985-a53c-cddc92f7cef1",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
@@ -81,7 +121,7 @@
         },
         "version": "1483723314:7809302",
         "device_id": "7fe8db33-ee62-31b6-9663-322001e04702",
-        "label": "TestRx4",
+        "label": "Video Rx 6",
         "id": "36c0e61c-721d-3b3d-a23f-d118cf2c7e81",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
@@ -106,11 +146,11 @@
         },
         "version": "1483723392:639920415",
         "device_id": "421bab6c-0f7d-3010-b360-1d5c40d1c2a9",
-        "label": "TestRx5",
+        "label": "Video Rx 7",
         "id": "d1af6966-8d6a-371d-9fac-54ebaf3315fe",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
-            "sender_id": "74d16e59-dc49-32bb-a91e-c62ae0209a98"
+            "sender_id": null
         },
         "type": "receivers"
     },
@@ -131,7 +171,7 @@
       },
       "version": "1483723392:639920415",
       "device_id": "594dba1f-1fd3-4df2-be68-3a5d5b4d0c67",
-      "label": "TestRx6",
+      "label": "Mux Rx 1",
       "id": "bc27e69a-dfd7-49bf-974f-40978c22b786",
       "transport": "urn:x-nmos:transport:rtp",
       "subscription": {
@@ -156,7 +196,7 @@
     },
     "version": "1483723392:639920415",
     "device_id": "5954956d-0d3c-4b36-b8a6-53df12a89767",
-    "label": "TestRx7",
+    "label": "Data Rx 1",
     "id": "e9c4e207-2cd2-4a23-a618-cab90a558cb8",
     "transport": "urn:x-nmos:transport:rtp",
     "subscription": {
@@ -181,7 +221,7 @@
     },
     "version": "1483723392:639920415",
     "device_id": "538b2270-b84b-46dc-8500-2fda1b0cab42",
-    "label": "TestRx8",
+    "label": "Audio Rx 1",
     "id": "401810e9-f601-4862-bce3-1052840599f5",
     "transport": "urn:x-nmos:transport:rtp",
     "subscription": {
@@ -196,7 +236,7 @@
     "caps": {},
     "version": "1482245273:40000000",
     "device_id": "9a4d00e5-d2ca-4015-a703-392c5c3fe8ba",
-    "label": "TestRx9",
+    "label": "Video Rx 8",
     "id": "a1960e85-9498-4696-8cd9-56eeb37836a6",
     "transport": "urn:x-nmos:transport:rtp",
     "subscription": {
@@ -221,7 +261,7 @@
     },
     "version": "1483959795:625161592",
     "device_id": "557dce26-d26e-49d2-8af9-ef76c9b913fd",
-    "label": "TestRx10",
+    "label": "Video Rx 9",
     "id": "b44c4ca6-cd23-34a2-a4a9-fb18df0b242b",
     "transport": "urn:x-nmos:transport:rtp",
     "subscription": {
@@ -246,7 +286,7 @@
     },
     "version": "1483971517:595272704",
     "device_id": "e3c6d7f0-0abe-32c1-9f57-0d142b184c90",
-    "label": "TestRx11",
+    "label": "Video Rx a",
     "id": "6f606384-3df7-3985-a53c-cddc92f7cef2",
     "transport": "urn:x-nmos:transport:rtp",
     "subscription": {
@@ -271,7 +311,7 @@
     },
     "version": "1483723314:7809302",
     "device_id": "7fe8db33-ee62-31b6-9663-322001e04702",
-    "label": "TestRx12",
+    "label": "Video Rx b",
     "id": "36c0e61c-721d-3b3d-a23f-d118cf2c7e82",
     "transport": "urn:x-nmos:transport:rtp",
     "subscription": {
@@ -296,18 +336,18 @@
     },
     "version": "1483723392:639920415",
     "device_id": "421bab6c-0f7d-3010-b360-1d5c40d1c2a9",
-    "label": "TestRx13",
+    "label": "Video Rx c",
     "id": "d1af6966-8d6a-371d-9fac-54ebaf3315ff",
     "transport": "urn:x-nmos:transport:rtp",
     "subscription": {
-        "sender_id": "74d16e59-dc49-32bb-a91e-c62ae0209a98"
+        "sender_id": null
     },
     "type": "receivers"
 },
 {
   "description": "",
   "tags": {},
-  "format": "urn:x-nmos:format:mux",
+  "format": "urn:x-nmos:format:audio",
   "caps": {
       "media_types": [
           "video/raw",
@@ -321,7 +361,7 @@
   },
   "version": "1483723392:639920415",
   "device_id": "594dba1f-1fd3-4df2-be68-3a5d5b4d0c67",
-  "label": "TestRx14",
+  "label": "Audio Rx 2",
   "id": "bc27e69a-dfd7-49bf-974f-40978c22b787",
   "transport": "urn:x-nmos:transport:rtp",
   "subscription": {
@@ -346,7 +386,7 @@
 },
 "version": "1483723392:639920415",
 "device_id": "5954956d-0d3c-4b36-b8a6-53df12a89767",
-"label": "TestRx15",
+"label": "Data Rx 2",
 "id": "e9c4e207-2cd2-4a23-a618-cab90a558cb9",
 "transport": "urn:x-nmos:transport:rtp",
 "subscription": {
@@ -371,7 +411,7 @@
 },
 "version": "1483723392:639920415",
 "device_id": "538b2270-b84b-46dc-8500-2fda1b0cab42",
-"label": "TestRx16",
+"label": "Audio Rx 3",
 "id": "401810e9-f601-4862-bce3-1052840599f6",
 "transport": "urn:x-nmos:transport:rtp",
 "subscription": {

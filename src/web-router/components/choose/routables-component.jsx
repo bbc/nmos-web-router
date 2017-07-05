@@ -7,7 +7,7 @@ let Routables = ({routables, side, actions, expanded, type}) => {
     <div>{
       routables.map((routable, index) => {
         return <Routable
-          key={`${side}-${index}`}
+          key={`${side}-${index}-${routable.id}`}
           baseState='static'
           checkbox
           routable={routable}

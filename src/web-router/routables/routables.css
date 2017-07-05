@@ -15,6 +15,7 @@
   height: 38px;
   margin-top: 8px;
   width: 99%;
+  max-height: 38px;
 
   & .button {
     width: 100%;
@@ -216,6 +217,8 @@
 
   &.expired {
     transition: opacity 0.25s;
+    transition: max-height 0.25s;
+    max-height: 0;
     opacity: 0;
   }
 }

@@ -22,7 +22,7 @@ styles the view from top to bottom */
   /* The scrollable area that contains all the changes */
   & .changes-scroll {
     top: 0;
-    height: 85%;
+    height: 88%;
     width: 100%;
 
     /* "One change" consists of a sender, line, receiver and delete button */
@@ -30,6 +30,8 @@ styles the view from top to bottom */
       opacity: 1;
       width: 100%;
       transition: opacity 0.25s;
+      transition: max-height 0.25s;
+      max-height: 50px;
 
       & .receiver-container,
       & .sender-container {
@@ -193,8 +195,9 @@ styles the view from top to bottom */
     /* Hide changes that have "unstaged" or "deployed" in their state */
     & .unstaged,
     & .deployed {
-      transition: visibility 0.25s, opacity 0.25s linear;
+      transition: visibility 0.25s, max-height 0.25s linear;
       visibility: hidden;
+      max-height: 0;
       opacity: 0;
     }
 
@@ -207,7 +210,9 @@ styles the view from top to bottom */
     /* If a change has unavailable- in its state then make the strikethrough
     for the relevant routable visible */
     & .unavailable-receiver .receiver-container,
-    & .unavailable-sender .sender-container {
+    & .unavailable-sender .sender-container,
+    & .unavailable-routables .receiver-container,
+    & .unavailable-routables .sender-container {
       & .strikethrough-svg .strikethrough {
         transition: opacity 0.25s linear;
         opacity: 1;
@@ -217,33 +222,46 @@ styles the view from top to bottom */
 
   /* Style the container which holds the "clear" and "confirm" buttons */
   & .clear-confirm-container {
-    height: 10%;
+    height: 8%;
     width: 100%;
+    position: relative;
 
-    & .gel-layout--right {
+    & .buttons-div {
       margin-left: 0;
-    }
+      height: 50%;
+      position: absolute;
+      top: 25%;
+      right: 0;
+      width: 50%;
 
-    & .button {
-      width: 20%;
-      margin-left: 12px;
-      margin-top: 12px;
-      background-color: var(--clear-button);
-      color: white;
-      text-align: center;
-      letter-spacing: 0.1rem;
-      border: none;
-      border-radius: 20px;
-      box-shadow: rgba(85, 85, 85, 0.5) 0 2px 7px 1px;
-    }
+      & .button {
+        width: 40%;
+        min-width: 100px;
+        height: 40px;
+        max-height: 40px;
+        margin-left: 24px;
+        background-color: var(--clear-button);
+        color: white;
+        text-align: center;
+        letter-spacing: 0.1rem;
+        border: none;
+        border-radius: 20px;
+        box-shadow: rgba(85, 85, 85, 0.5) 0 2px 7px 1px;
+        transition: background-color 0.25s;
 
-    & .confirm {
-      background-color: var(--confirm-button);
-    }
+        & .button-label {
+          vertical-align: middle;
+        }
+      }
 
-    & .disabled {
-      cursor: default;
-      background-color: var(--button-disabled);
+      & .confirm {
+        background-color: var(--confirm-button);
+      }
+
+      & .disabled {
+        cursor: default;
+        background-color: var(--button-disabled);
+      }
     }
   }
 }
