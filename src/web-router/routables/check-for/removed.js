@@ -18,7 +18,11 @@ export default (senders, receivers, changes) => {
   removedReceivers.forEach(receiver => {
     changes.forEach(change => {
       if (change.receiver.id === receiver.id) {
-        change.state = 'unavailable-receiver'
+        if (change.state === 'unavailable-sender') {
+          change.state = 'unavailable-routables'
+        } else {
+          change.state = 'unavailable-receiver'
+        }
       }
     })
   })

@@ -28,7 +28,7 @@ let ChangeModeCheckbox = ({view, actions}) => {
   location when they change mode */
   /* Default to /choose if view.location is null */
   let location = '/choose'
-  if (view.location) {
+  if (view.location && !(view.location.includes('/confirm') && mode.now === 'manual')) {
     location = view.location
     location = location.replace('/web-router/', '')
     location = location.replace(mode.now, '')

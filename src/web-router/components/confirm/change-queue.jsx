@@ -15,7 +15,7 @@ let ChangeQueue = ({actions, changes}) => {
       changes.map((change, index) => {
         return <Change
           id={change.receiver.id + 'change'}
-          key={index}
+          key={change.receiver.id + change.sender.id}
           actions={actions}
           change={change} />
       })
