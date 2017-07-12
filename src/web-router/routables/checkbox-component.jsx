@@ -28,9 +28,7 @@ let Checkbox = ({onClick, state}) => {
   state = state || ''
   onClick = onClick || function () {}
   return <div className={`checkbox ${state}`}
-    onClick={function () {
-      onClick(state)
-    }}>
+    onClick={function () { onClick(state) }}>
     <No />
     <Minus />
     <Empty />
