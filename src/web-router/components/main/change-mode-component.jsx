@@ -38,8 +38,8 @@ let ChangeModeCheckbox = ({changes, routingMode, location, choose, actions}) => 
   return <Layout
     className={`change-mode-container ${mode.now}`}
     layouts='right'>
-    <LayoutItem gels='1/4' className='label-container'>
-      <LongPrimer className='change-mode-label'>Confirm changes mode:</LongPrimer>
+    <LayoutItem gels='3/4' className='label-container'>
+      <LongPrimer className='change-mode-label'>Deploy changes without confirmation:</LongPrimer>
     </LayoutItem>
     <LayoutItem className='checkbox-container'>
       <Link

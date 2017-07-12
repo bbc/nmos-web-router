@@ -234,17 +234,26 @@ styles the view from top to bottom */
         text-align: center;
         letter-spacing: 0.1rem;
         border: none;
-        border-radius: 20px;
-        box-shadow: rgba(85, 85, 85, 0.5) 0 2px 7px 1px;
+        border-radius: 4px;
         transition: background-color 0.25s;
+        padding-left: 8px;
 
         & .button-label {
           vertical-align: middle;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: color(var(--clear-button) shade(20%));
         }
       }
 
       & .confirm {
         background-color: var(--confirm-button);
+
+        &:hover {
+          background-color: color(var(--confirm-button) shade(20%));
+        }
       }
 
       & .disabled {

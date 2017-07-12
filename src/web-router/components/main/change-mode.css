@@ -33,13 +33,13 @@
     }
   }
 
-  & .automatic {
+  & .manual {
     & .checkbox-container .checkbox .gel-icon-empty {
       display: block;
     }
   }
 
-  & .manual {
+  & .automatic {
     & .checkbox-container .checkbox .gel-icon-no {
       display: block;
     }

@@ -24,7 +24,7 @@
       "type": "alert",
       "timeout": null
     },
-    "routingMode": "automatic",
+    "routingMode": "manual",
     "changes": []
   },
   "initialised": false,
