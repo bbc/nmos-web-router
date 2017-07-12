@@ -53,7 +53,7 @@ Connections.propTypes = {
   routingMode: PropTypes.string.isRequired,
   changes: PropTypes.array.isRequired,
   location: PropTypes.string.isRequired,
-  choose: PropTypes.string.isRequired
+  choose: PropTypes.object.isRequired
 }
 
 export default Connections

@@ -108,14 +108,15 @@
       &-right .label {
         text-align: right;
         padding-top: 10px;
+        font-size: 14px;
       }
 
       &-left {
-        padding-right: 14px;
+        padding-right: 16px;
       }
 
       &-right {
-        padding-right: 4px;
+        padding-right: 5px;
       }
     }
 
