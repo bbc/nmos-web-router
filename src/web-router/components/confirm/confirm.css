@@ -11,6 +11,7 @@ styles the view from top to bottom */
   --confirm-button: #70bf41;
   --clear-button: #a6aaa9;
   --button-disabled: #dcdee0;
+  --one-change-height: 38px;
 }
 
 .confirm {
@@ -22,7 +23,7 @@ styles the view from top to bottom */
   /* The scrollable area that contains all the changes */
   & .changes-scroll {
     top: 0;
-    height: 88%;
+    height: 85%;
     width: 100%;
 
     /* "One change" consists of a sender, line, receiver and delete button */
@@ -31,32 +32,19 @@ styles the view from top to bottom */
       width: 100%;
       transition: opacity 0.25s;
       transition: max-height 0.25s;
+      margin-top: 8px;
       max-height: 50px;
-
-      & .receiver-container,
-      & .sender-container {
-        height: 45px;
-
-        /* Set up a strikethrough line, used when a routable is unavailable,
-        then hide it */
-        & .strikethrough-svg {
-          width: 100%;
-          height: 32px;
-          transform: translate(0, -36px);
-
-          & .strikethrough {
-            stroke: var(--remove);
-            stroke-width: 2;
-            opacity: 0;
-            transform: translate(0, -10px);
-          }
-        }
-      }
 
       /* Set up the nodes for senders and receivers
           - most formatting for nodes is done by previous css files */
       & .senders,
       & .receivers {
+        height: var(--one-change-height);
+
+        & .routable {
+          margin: 0;
+        }
+
         & .node {
           background-color: var(--routed);
           top: 50%;
@@ -103,7 +91,7 @@ styles the view from top to bottom */
       /* Apply positioning to the line container and line svg such that
       the line appears to connect both nodes *** a bit of a hack *** */
       & .line-container {
-        height: 45px;
+        height: var(--one-change-height);
         padding-left: 15px;
 
         & .line-svg {
@@ -125,14 +113,14 @@ styles the view from top to bottom */
           fill: var(--remove);
           background-color: white;
           display: none;
-          transform: translate(0, -100%);
+          transform: translate(-10px, -38px);
         }
       }
 
       /* This is the alternative container which appears if either
       routable in a change is unavailable */
       & .line-container-unavailable {
-        height: 45px;
+        height: var(--one-change-height);
         text-align: center;
 
         /* This CSS is a bit hacky but makes the "sender/receiver unavailable"
@@ -147,30 +135,31 @@ styles the view from top to bottom */
 
       /* Set up the delete button which is a /red circle with a /white X
       inside */
-      & .delete-button {
-        margin-left: 10px;
-        margin-top: 7px;
-        height: 38px;
+      & .delete-container {
+        height: var(--one-change-height);
 
-        & .delete-circle {
+        & .delete-button {
+          margin-left: 12px;
+          margin-top: 5px;
+
           &:hover {
             cursor: pointer;
             background-color: red;
           }
 
           background-color: var(--remove);
-          width: 32px;
-          height: 32px;
-          border-radius: 16px;
+          width: var(--node-width);
+          height: var(--node-width);
+          border-radius: calc(var(--node-width) / 2);
           transform: translate(0%, 10%);
-        }
 
-        /* Use a "No" icon as the X for the button */
-        & .gel-icon-no {
-          height: 18;
-          width: 18px;
-          fill: white;
-          transform: translate(40%);
+          /* Use a "No" icon as the X for the button */
+          & .gel-icon-no {
+            height: 24px;
+            width: 12px;
+            fill: white;
+            transform: translate(50%);
+          }
         }
       }
     }

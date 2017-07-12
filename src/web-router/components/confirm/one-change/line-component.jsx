@@ -7,6 +7,7 @@ let Line = ({state}) => {
   let unavailable = state.includes('unavailable')
   if (unavailable) {
     let text = state.substring(12) + ' unavailable'
+    if (text.includes('routables')) text = 'sender/receiver unavailable'
     return <LayoutItem className='line-container-unavailable' gels='3/12'>
       <div className='unavailable-text'>{text}</div>
     </LayoutItem>
@@ -18,9 +19,9 @@ let Line = ({state}) => {
         <line
           className={'line'}
           x1='0'
-          y1='27'
+          y1='19'
           x2='300'
-          y2='27' />
+          y2='19' />
       </svg>
       <Scissors />
     </LayoutItem>
