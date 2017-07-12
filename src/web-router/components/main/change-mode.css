@@ -1,50 +1,46 @@
 .web-router {
   & .change-mode-container {
-    margin-left: 16px;
-    margin-top: 10px;
-    margin-right: 16px;
-    padding: 0;
+    height: 30px;
 
     & .label-container {
       text-align: right;
     }
 
     & .checkbox-container {
-      padding: 0;
+      margin-left: 10px;
       width: 30px;
-    }
+      position: relative;
 
-    & .checkbox {
-      display: inline-block;
-      position: absolute;
-      right: 0;
-      margin-right: 16px;
+      & .checkbox {
+        position: absolute;
+        right: 2px;
 
-      &:hover {
-        cursor: pointer;
-      }
+        &:hover {
+          cursor: pointer;
+        }
 
-      & .gel-icon {
-        margin: auto;
-        width: 100%;
-        height: 100%;
-      }
+        & .gel-icon {
+          margin: auto;
+          width: 100%;
+          height: 100%;
+        }
 
-      & .gel-icon-no,
-      & .gel-icon-empty {
-        display: none;
+        & .gel-icon-no,
+        & .gel-icon-empty {
+          display: none;
+        }
       }
     }
   }
 
   & .automatic {
-    & .checkbox .gel-icon-empty {
+    & .checkbox-container .checkbox .gel-icon-empty {
       display: block;
     }
   }
 
   & .manual {
-    & .checkbox .gel-icon-no {
+    & .checkbox-container .checkbox .gel-icon-no {
       display: block;
     }
   }

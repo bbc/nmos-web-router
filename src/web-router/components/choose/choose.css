@@ -10,11 +10,7 @@
 
   & .routables {
     width: 100%;
-    height: 75%;
-  }
-
-  & .column-title {
-    text-align: center;
+    height: 85%;
   }
 
   & .routable {
@@ -50,9 +46,10 @@
   & .search {
     margin: 8px;
     margin-left: 16px;
+    margin-right: 16px;
     border: solid 1px;
     height: 38px;
-    width: 52%;
+    width: 100%;
     display: flex;
 
     & .gel-icon,
@@ -80,19 +77,50 @@
     }
   }
 
-  & .all-visible-left {
-    margin-left: 2px;
+  & .choose-header {
+    vertical-align: center;
+    height: 30px;
+    padding-left: 16px;
 
-    @media (pointer: coarse) {
-      margin-left: 4px;
+    & .column-title {
+      &-right {
+        position: relative;
+        padding-left: 6px;
+
+        & .label {
+          position: absolute;
+          bottom: 0;
+        }
+      }
+
+      &-left {
+        position: relative;
+
+        & .label {
+          position: absolute;
+          bottom: 0;
+        }
+      }
     }
-  }
 
-  & .all-visible-right {
-    margin-left: -15px;
+    & .all-visible {
+      &-left .label,
+      &-right .label {
+        text-align: right;
+        padding-top: 10px;
+      }
 
-    @media (pointer: coarse) {
-      margin-left: -4px;
+      &-left {
+        padding-right: 14px;
+      }
+
+      &-right {
+        padding-right: 4px;
+      }
+    }
+
+    & .checkbox-container {
+      padding-top: 6px;
     }
   }
 }

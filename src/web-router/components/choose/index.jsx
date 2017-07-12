@@ -3,19 +3,17 @@ import './choose.css'
 import React, { PropTypes } from 'react'
 import { Layout } from '../../../gel-react/grid'
 import Routables from './routables-component'
-import Header from '../shared/header-component'
-import AllVisible from './all-visible-component'
+import Header from './header-component'
 import Search from './search-component'
 
 let Choose = ({view, senders, receivers, expanded, actions}) => {
-  return <Layout className='box box-hidden' >
+  return <Layout layouts='flush' className='box box-hidden' >
     <Search
       expanded={expanded}
       actions={actions}
       mode={view.routingMode}
       term={view.choose.term} />
-    <Header />
-    <AllVisible
+    <Header
       expanded={expanded}
       actions={actions}
       state={view.choose.allVisibleState} />

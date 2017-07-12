@@ -8,7 +8,6 @@ import ExpandedSender from '../connections/expanded-sender-component'
 import Choose from '../choose'
 import Buttons from './buttons-component'
 import Confirm from '../confirm'
-import ChangeMode from './change-mode-component'
 
 let WebRouter = ({view, actions}) => {
   let Expanded = null
@@ -47,10 +46,9 @@ let WebRouter = ({view, actions}) => {
         actions={actions}
         routingMode={view.routingMode}
         changes={view.changes}
+        location={view.location}
+        choose={view.choose}
         />
-      <ChangeMode
-        view={view}
-        actions={actions} />
     </div>
     <div className='expanded-sender-container route-view center'>
       {Expanded}

@@ -1,4 +1,4 @@
-@custom-media --small-screen (min-width: 400px) and (max-width: 1100px);
+@custom-media --small-screen (max-width: 1100px);
 @custom-media --medium-screen (min-width: 1200px) and (max-width: 1699px);
 @custom-media --large-screen (min-width: 1700px);
 
@@ -13,7 +13,7 @@
   overflow: hidden;
   width: 100%;
   max-width: 1600px;
-  min-width: 400px;
+  min-width: 600px;
   height: 100%;
   min-height: 650px;
   top: calc(38px + 3 * 12px);
@@ -147,10 +147,6 @@
 
   & .box-hidden {
     overflow-y: hidden;
-  }
-
-  & .connections-box {
-    height: 95%;
   }
 
   & .routables-scroll,

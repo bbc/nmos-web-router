@@ -12,9 +12,7 @@ let Delete = ({actions, change}) => {
 
   return <LayoutItem gels='1/12' className='delete-container'>
     <div className='delete-button' onClick={function () { onClick() }}>
-      <div className='delete-circle'>
-        <No />
-      </div>
+      <No />
     </div>
   </LayoutItem>
 }
