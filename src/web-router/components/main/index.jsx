@@ -46,7 +46,7 @@ let WebRouter = ({view, actions}) => {
         actions={actions}
         routingMode={view.routingMode}
         changes={view.changes}
-        location={view.location}
+        location={view.location || ''}
         choose={view.choose}
         />
     </div>
