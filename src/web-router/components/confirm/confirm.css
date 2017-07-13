@@ -17,7 +17,8 @@ styles the view from top to bottom */
 .confirm {
   /* The column headers: "Senders" and "Receivers" */
   & .column-title {
-    text-align: center;
+    margin-top: 6px;
+    text-align: left;
   }
 
   /* The scrollable area that contains all the changes */
@@ -195,18 +196,6 @@ styles the view from top to bottom */
       transition: opacity 0.25s linear;
       opacity: 0.25;
     }
-
-    /* If a change has unavailable- in its state then make the strikethrough
-    for the relevant routable visible */
-    & .unavailable-receiver .receiver-container,
-    & .unavailable-sender .sender-container,
-    & .unavailable-routables .receiver-container,
-    & .unavailable-routables .sender-container {
-      & .strikethrough-svg .strikethrough {
-        transition: opacity 0.25s linear;
-        opacity: 1;
-      }
-    }
   }
 
   /* Style the container which holds the "clear" and "confirm" buttons */
@@ -250,6 +239,7 @@ styles the view from top to bottom */
 
       & .confirm {
         background-color: var(--confirm-button);
+        margin-left: 14px;
 
         &:hover {
           background-color: color(var(--confirm-button) shade(20%));
@@ -259,6 +249,11 @@ styles the view from top to bottom */
       & .disabled {
         cursor: default;
         background-color: var(--button-disabled);
+
+        &:hover {
+          cursor: default;
+          background-color: var(--button-disabled);
+        }
       }
     }
   }

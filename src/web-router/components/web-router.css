@@ -1,6 +1,6 @@
-@custom-media --small-screen (max-width: 1199px);
-@custom-media --medium-screen (min-width: 1200px) and (max-width: 1699px);
-@custom-media --large-screen (min-width: 1700px);
+@custom-media --small-screen (max-width: 1279px);
+@custom-media --medium-screen (min-width: 1280px) and (max-width: 1859px);
+@custom-media --large-screen (min-width: 1860px);
 
 :root {
   --button-color: #fff;
@@ -12,8 +12,8 @@
   position: absolute;
   overflow: hidden;
   width: 100%;
-  max-width: 1600px;
-  min-width: 600px;
+  max-width: 1860px;
+  min-width: 640px;
   height: 100%;
   min-height: 650px;
   top: calc(38px + 3 * 12px);
@@ -30,6 +30,7 @@
     position: absolute;
     top: calc(38px + 12px);
     width: 100%;
+    min-width: 620px;
     transition: all 0.5s;
 
     @media (--medium-screen), (--large-screen) {

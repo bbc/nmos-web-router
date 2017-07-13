@@ -2,9 +2,9 @@
 arrange themselves depending on the user's viewport size
 It also styles the three navigation buttons at the top of the page accordingly */
 
-@custom-media --small-screen (max-width: 1199px);
-@custom-media --medium-screen (min-width: 1200px) and (max-width: 1699px);
-@custom-media --large-screen (min-width: 1700px);
+@custom-media --small-screen (max-width: 1279px);
+@custom-media --medium-screen (min-width: 1280px) and (max-width: 1859px);
+@custom-media --large-screen (min-width: 1860px);
 
 :root {
   --button-color: #fff;
@@ -47,8 +47,6 @@ It also styles the three navigation buttons at the top of the page accordingly *
   }
 
   --manual-large-screen-view: {
-    max-width: 1920px;
-
     & .left {
       @apply --center;
     }
@@ -169,6 +167,20 @@ It also styles the three navigation buttons at the top of the page accordingly *
       @apply --active-nav;
     }
   }
+
+  /* @media (--large-screen) {
+    & .left {
+      transform: translate(50%);
+    }
+
+    & .center {
+      transform: translate(150%);
+    }
+
+    & .right {
+      transform: translate(300%);
+    }
+  } */
 
   &\/manual\/choose {
     & .left {

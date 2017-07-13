@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
 
 let Buttons = ({term, mode, location}) => {
-  const largeScreen = 1700
-  const mediumScreen = 1200
+  const largeScreen = 1860
+  const mediumScreen = 1280
   /* If the window size is such that two columns are visible then clicking
   the route button should do nothing, as per the design spec  */
   let routeButtonDestination = 'route'

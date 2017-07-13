@@ -10,7 +10,7 @@
 
   & .routables {
     width: 100%;
-    height: 85%;
+    height: 82%;
   }
 
   & .routable {
@@ -46,7 +46,7 @@
   & .search {
     margin: 8px;
     margin-left: 16px;
-    margin-right: 16px;
+    margin-right: 0;
     border: solid 1px;
     height: 38px;
     width: 100%;
@@ -81,6 +81,7 @@
     vertical-align: center;
     height: 30px;
     padding-left: 16px;
+    padding-bottom: 10px;
 
     & .column-title {
       &-right {
@@ -109,10 +110,6 @@
         text-align: right;
         padding-top: 10px;
         font-size: 14px;
-      }
-
-      &-left {
-        padding-right: 16px;
       }
 
       &-right {

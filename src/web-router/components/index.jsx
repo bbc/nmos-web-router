@@ -6,7 +6,8 @@ import Main from './main'
 import Notifications from './notifications'
 
 let WebRouter = ({data, view, actions}) => {
-  return <div className={`web-router web-router/${view.routingMode}${view.location} web-router-notification-${view.notifications.state}`}>
+  let location = view.location || '/choose'
+  return <div className={`web-router web-router/${view.routingMode}${location} web-router-notification-${view.notifications.state}`}>
     <Notifications view={view.notifications} />
     <Main view={view} changes={view.changes} actions={actions} />
   </div>
