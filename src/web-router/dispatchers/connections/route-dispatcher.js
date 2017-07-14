@@ -2,6 +2,7 @@ import dispatchError from '../error-dispatcher'
 
 export default (actions) => {
   return (receiver, senders) => {
+    console.log(receiver)
     let sender = senders.filter(sender => {
       return sender.state.includes('expanded')
     })[0]

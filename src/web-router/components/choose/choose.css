@@ -10,7 +10,7 @@
 
   & .routables {
     width: 100%;
-    height: 82%;
+    height: 85%;
   }
 
   & .routable {
@@ -77,48 +77,33 @@
     }
   }
 
-  & .choose-header {
-    vertical-align: center;
-    height: 30px;
-    padding-left: 16px;
-    padding-bottom: 10px;
+  & .all-visible-left {
+    margin-left: 2px;
 
-    & .column-title {
-      &-right {
-        position: relative;
-        padding-left: 6px;
-
-        & .label {
-          position: absolute;
-          bottom: 0;
-        }
-      }
-
-      &-left {
-        position: relative;
-
-        & .label {
-          position: absolute;
-          bottom: 0;
-        }
-      }
+    @media (pointer: coarse) {
+      margin-left: 4px;
     }
+  }
 
-    & .all-visible {
-      &-left .label,
-      &-right .label {
-        text-align: right;
-        padding-top: 10px;
-        font-size: 14px;
-      }
+  & .all-visible-right {
+    margin-left: -15px;
 
-      &-right {
-        padding-right: 5px;
-      }
+    @media (pointer: coarse) {
+      margin-left: -4px;
     }
+  }
 
-    & .checkbox-container {
-      padding-top: 6px;
+  & .all-visible-left,
+  & .all-visible-right {
+    margin-bottom: 6px;
+
+    & .column-label {
+      text-transform: capitalize;
+      font-style: normal;
+      font-size: 18px;
+      font-weight: normal;
+      letter-spacing: 0;
+      color: #555;
     }
   }
 }

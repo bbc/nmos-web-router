@@ -27,7 +27,7 @@ Node.propTypes = {
   onRender: PropTypes.func.isRequired
 }
 
-let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender, timeRemoved }) => {
+let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender, columnTitle, timeRemoved }) => {
   id = id || ''
   node = node || 'none'
   baseState = baseState || ''
@@ -55,6 +55,8 @@ let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, on
     />
   }
 
+  let columnTitleLabel = columnTitle || ''
+
   return <div
     id={id}
     className={`routable short ${baseState} ${routableState}`}
@@ -62,6 +64,7 @@ let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, on
     <div
       className='button'
       onClick={onButton}>
+      <span className='column-label'>{columnTitleLabel}</span>
       <Icon format={routable.format} />
       <span className='label'>{routable.label}</span>
     </div>
@@ -81,6 +84,7 @@ Routable.propTypes = {
   onCheckbox: PropTypes.func,
   onNode: PropTypes.func,
   onNodeRender: PropTypes.func,
+  columnTitle: PropTypes.string,
   timeRemoved: PropTypes.number
 }
 
