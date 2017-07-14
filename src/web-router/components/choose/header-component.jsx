@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+/* import React, { PropTypes } from 'react'
 import { LayoutItem, Layout } from '../../../gel-react/grid'
 import { Pica } from '../../../gel-react/typography'
 import AllVisible from './all-visible-component'
@@ -32,6 +32,23 @@ Header.propTypes = {
   state: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
   expanded: PropTypes.object.isRequired
+}
+
+export default Header */
+
+import React from 'react'
+import { LayoutItem, Layout } from '../../../gel-react/grid'
+import { Pica } from '../../../gel-react/typography'
+
+let Header = () => {
+  return <Layout className='header' gels='1/1' layouts='flush'>
+    <LayoutItem gels='1/2' className='column-title'>
+      <Pica>Senders</Pica>
+    </LayoutItem>
+    <LayoutItem gels='1/2' className='column-title'>
+      <Pica>Receivers</Pica>
+    </LayoutItem>
+  </Layout>
 }
 
 export default Header
