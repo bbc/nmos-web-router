@@ -11,7 +11,6 @@ let ChangeModeCheckbox = ({changes, routingMode, location, choose, actions}) => 
       changes.forEach(change => {
         actions.unstageChange(change)
       })
-      setTimeout(function () { actions.clearChanges('unstaged') }, 250)
     }
     actions.changeMode()
   }

@@ -39,6 +39,9 @@ export default (data) => {
     })
 
     data.routes.sort(sortRoutes)
+    data.changes = data.changes.filter(oneChange => {
+      return !(oneChange.sender.id === change.sender.id && oneChange.receiver.id === change.receiver.id)
+    })
 
     return View(data)
   }

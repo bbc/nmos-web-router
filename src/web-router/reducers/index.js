@@ -16,10 +16,8 @@ import deleteExpired from './delete-expired-reducer'
 import changeMode from './change-mode-reducer'
 import addChange from './confirm/add-change-reducer'
 import unstageChange from './confirm/unstage-change-reducer'
-import removeChange from './confirm/remove-change-reducer'
 import deployRoute from './confirm/deploy-route-reducer'
 import deployUnroute from './confirm/deploy-unroute-reducer'
-import clearChanges from './confirm/clear-changes-reducer'
 
 export default {
   initialise,
@@ -39,10 +37,8 @@ export default {
   changeMode,
   addChange,
   unstageChange,
-  removeChange,
   deployRoute,
   deployUnroute,
-  clearChanges,
   all: {
     router: {
       LOCATION_CHANGE: locationChange

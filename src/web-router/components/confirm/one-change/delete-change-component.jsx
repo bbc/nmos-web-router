@@ -5,9 +5,6 @@ import { LayoutItem } from '../../../../gel-react/grid'
 let Delete = ({actions, change}) => {
   let onClick = () => {
     actions.unstageChange(change)
-    setTimeout(function () {
-      actions.removeChange(change.sender.id, change.receiver.id, change.type)
-    }, 250)
   }
 
   return <LayoutItem gels='1/12' className='delete-container'>
