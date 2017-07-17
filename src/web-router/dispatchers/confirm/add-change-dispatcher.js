@@ -23,11 +23,7 @@ export default (actions) => {
     if (changes) {
       changes.forEach(change => {
         if (change.receiver.id === receiver.id) {
-          let rID = receiver.id
-          let sID = change.sender.id
-          let changeType = change.type
           actions.unstageChange({change})
-          actions.removeChange({sID, rID, changeType})
         }
       })
     }

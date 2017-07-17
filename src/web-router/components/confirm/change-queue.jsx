@@ -10,17 +10,28 @@
 import React, { PropTypes } from 'react'
 import Change from './one-change'
 
-let ChangeQueue = ({actions, changes}) => {
-  return <div className='changes-scroll'>{
-      changes.map((change, index) => {
-        return <Change
-          id={change.receiver.id + 'change'}
-          key={change.receiver.id + change.sender.id}
-          actions={actions}
-          change={change} />
-      })
-      }
-  </div>
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
+class ChangeQueue extends React.Component {
+  render () {
+    const changes = this.props.changes.map((change, index) => {
+      return <Change
+        id={change.receiver.id + 'change'}
+        key={change.receiver.id + change.sender.id}
+        actions={this.props.actions}
+        change={change} />
+    })
+    // let actions = this.props.actions
+    return <div className='changes-scroll'>
+      <ReactCSSTransitionGroup
+        className='transition-wrapping'
+        transitionName='example'
+        transitionEnterTimeout={250}
+        transitionLeaveTimeout={250}>
+        {changes}
+      </ReactCSSTransitionGroup>
+    </div>
+  }
 }
 
 ChangeQueue.propTypes = {

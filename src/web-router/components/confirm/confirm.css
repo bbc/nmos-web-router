@@ -27,11 +27,28 @@ styles the view from top to bottom */
     height: 85%;
     width: 100%;
 
+    & .example-enter {
+      opacity: 0.01;
+    }
+
+    & .example-enter.example-enter-active {
+      opacity: 1;
+      transition: opacity 250ms ease-in;
+    }
+
+    & .example-leave {
+      opacity: 1;
+    }
+
+    & .example-leave.example-leave-active {
+      opacity: 0.01;
+      max-height: 0;
+      transition: max-height 250ms, opacity 150ms ease-in;
+    }
+
     /* "One change" consists of a sender, line, receiver and delete button */
     & .one-change {
-      opacity: 1;
       width: 100%;
-      transition: opacity 0.25s;
       transition: max-height 0.25s;
       margin-top: 8px;
       max-height: 50px;
@@ -180,15 +197,6 @@ styles the view from top to bottom */
       & .line-container .gel-icon-scissors {
         display: block;
       }
-    }
-
-    /* Hide changes that have "unstaged" or "deployed" in their state */
-    & .unstaged,
-    & .deployed {
-      transition: visibility 0.25s, max-height 0.25s linear;
-      visibility: hidden;
-      max-height: 0;
-      opacity: 0;
     }
 
     /* Fade out changes involving an unavailable routable */

@@ -19,7 +19,6 @@ let ConfirmButton = ({changes, actions, senders, state}) => {
           actions.deployUnroute(change.sender, change.receiver)
         }
       })
-      setTimeout(function () { actions.clearChanges('deployed') }, 500)
     }
   }
 

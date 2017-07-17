@@ -12,7 +12,6 @@ let ClearButton = ({changes, actions, state}) => {
     changes.forEach(change => {
       actions.unstageChange(change)
     })
-    setTimeout(function () { actions.clearChanges('unstaged') }, 250)
   }
 
   return <LayoutItem className={`button clear ${state}`}
