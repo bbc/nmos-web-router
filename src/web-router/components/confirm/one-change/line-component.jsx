@@ -14,7 +14,7 @@ let Line = ({state}) => {
   } else {
     // Line length is a bit of a hack, it's deliberately too wide and is then restricted
     // by the width of the svg it is in
-    return <LayoutItem className='line-container' gels='3/12'>
+    return <LayoutItem className='line-container'>
       <svg className={'line-svg'}>
         <line
           className={'line'}

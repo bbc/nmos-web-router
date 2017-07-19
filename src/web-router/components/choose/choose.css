@@ -49,7 +49,7 @@
     margin-right: 0;
     border: solid 1px;
     height: 38px;
-    width: 100%;
+    width: calc(95% + 8px);
     display: flex;
 
     & .gel-icon,
@@ -77,33 +77,37 @@
     }
   }
 
-  & .all-visible-left {
-    margin-left: 2px;
-
-    @media (pointer: coarse) {
-      margin-left: 4px;
-    }
-  }
-
-  & .all-visible-right {
-    margin-left: -16px;
-
-    @media (pointer: coarse) {
-      margin-left: -4px;
-    }
-  }
-
-  & .all-visible-left,
-  & .all-visible-right {
-    margin-bottom: 6px;
+  & .header {
+    margin-left: 0;
 
     & .column-label {
-      text-transform: capitalize;
-      font-style: normal;
-      font-size: 18px;
-      font-weight: normal;
-      letter-spacing: 0;
-      color: #555;
+      margin-left: -14px;
+    }
+
+    & .all-visible-left {
+      @media (pointer: coarse) {
+        margin-left: 4px;
+      }
+    }
+
+    & .all-visible-right {
+      @media (pointer: coarse) {
+        margin-left: -4px;
+      }
+    }
+
+    & .all-visible-left,
+    & .all-visible-right {
+      margin-bottom: 6px;
+
+      & .column-label {
+        text-transform: capitalize;
+        font-style: normal;
+        font-size: 18px;
+        font-weight: normal;
+        letter-spacing: 0;
+        color: #555;
+      }
     }
   }
 }

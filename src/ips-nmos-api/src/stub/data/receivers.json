@@ -3,420 +3,236 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "caps": {},
-        "version": "1482245273:40000000",
-        "device_id": "9a4d00e5-d2ca-4015-a703-392c5c3fe8ba",
-        "label": "Video Rx 1",
-        "id": "a1960e85-9498-4696-8cd9-56eeb37836a5",
+        "label": "H264 Receiver",
+        "version": "1500302239:361317212",
+        "device_id": "bf523b74-d897-3c7d-961e-57db5ac37942",
+        "caps": {
+            "media_types": [
+                "video/H264"
+            ]
+        },
+        "id": "875d7038-483b-38d6-b262-70122b52b3b5",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
             "sender_id": null
-        },
-        "type": "receivers"
+        }
     },
     {
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
+        "label": "Raw Video Receiver",
+        "version": "1499335896:272223149",
+        "device_id": "0200e578-ed2c-38a7-987c-f84fc139f2b1",
         "caps": {
             "media_types": [
-                "video/raw",
-                "video/H264",
-                "video/x-vc2",
-                "video/x-vc2-snell",
-                "video/x-vc2-fast",
-                "video/x-vc2-fragmented",
-                "video/x-pgf"
+                "video/raw"
             ]
         },
-        "version": "1483959795:625161592",
-        "device_id": "557dce26-d26e-49d2-8af9-ef76c9b913fd",
-        "label": "Video Rx 2",
-        "id": "b44c4ca6-cd23-34a2-a4a9-fb18df0b242a",
+        "id": "4368954f-48d8-3e7d-a76f-196fdd272eee",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
             "sender_id": null
-        },
-        "type": "receivers"
-    },
-    {
-      "description": "",
-      "tags": {},
-      "format": "urn:x-nmos:format:video",
-      "caps": {},
-      "version": "1482245273:40000000",
-      "device_id": "9a4d00e5-d2ca-4015-a703-392c5c3fe8ba",
-      "label": "Video Rx 3",
-      "id": "b1960e85-9498-4696-8cd9-56eeb37836a5",
-      "transport": "urn:x-nmos:transport:rtp",
-      "subscription": {
-          "sender_id": null
-      },
-      "type": "receivers"
-  },
-  {
-      "description": "",
-      "tags": {},
-      "format": "urn:x-nmos:format:video",
-      "caps": {
-          "media_types": [
-              "video/raw",
-              "video/H264",
-              "video/x-vc2",
-              "video/x-vc2-snell",
-              "video/x-vc2-fast",
-              "video/x-vc2-fragmented",
-              "video/x-pgf"
-          ]
-      },
-      "version": "1483959795:625161592",
-      "device_id": "567dce26-d26e-49d2-8af9-ef76c9b913fd",
-      "label": "Video Rx 4",
-      "id": "b44d4ca6-cd23-34a2-a4a9-fb18df0b242a",
-      "transport": "urn:x-nmos:transport:rtp",
-      "subscription": {
-          "sender_id": null
-      },
-      "type": "receivers"
-  },
-    {
-        "description": "",
-        "tags": {},
-        "format": "urn:x-nmos:format:video",
-        "caps": {
-            "media_types": [
-                "video/raw",
-                "video/H264",
-                "video/x-vc2",
-                "video/x-vc2-snell",
-                "video/x-vc2-fast",
-                "video/x-vc2-fragmented",
-                "video/x-pgf"
-            ]
-        },
-        "version": "1483971517:595272704",
-        "device_id": "e3c6d7f0-0abe-32c1-9f57-0d142b184c90",
-        "label": "Video Rx 5",
-        "id": "6f606384-3df7-3985-a53c-cddc92f7cef1",
-        "transport": "urn:x-nmos:transport:rtp",
-        "subscription": {
-            "sender_id": null
-        },
-        "type": "receivers"
+        }
     },
     {
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
+        "label": "MV Top Left",
+        "version": "1497876725:321709342",
+        "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
         "caps": {
             "media_types": [
                 "video/raw",
-                "video/H264",
-                "video/x-vc2",
-                "video/x-vc2-snell",
-                "video/x-vc2-fast",
-                "video/x-vc2-fragmented",
-                "video/x-pgf"
+                "video/H264"
             ]
         },
-        "version": "1483723314:7809302",
-        "device_id": "7fe8db33-ee62-31b6-9663-322001e04702",
-        "label": "Video Rx 6",
-        "id": "36c0e61c-721d-3b3d-a23f-d118cf2c7e81",
+        "id": "1326dcfc-5732-3ce3-b457-05a593264093",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
-            "sender_id": "c77513bf-8a09-3de3-8d3f-6306d6ccac71"
+            "sender_id": "b5c3274e-67e4-367b-a5f6-afafd1e7b884"
+        }
+    },
+    {
+        "description": "",
+        "tags": {},
+        "format": "urn:x-nmos:format:audio",
+        "label": "ap-z800-3 RTPRx",
+        "version": "1500033031:280000000",
+        "device_id": "2dcdf5ea-ed26-3048-bacb-a4d88d665dfc",
+        "caps": {
+            "media_types": [
+                "audio/L16",
+                "audio/L24",
+                "audio/L32"
+            ]
         },
-        "type": "receivers"
+        "id": "2f9ef628-d108-325e-9c10-b06d4116fabd",
+        "transport": "urn:x-nmos:transport:rtp",
+        "subscription": {
+            "sender_id": null
+        }
     },
     {
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
+        "label": "MV Bottom Right",
+        "version": "1497878940:580000000",
+        "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
+        "caps": {
+            "media_types": [
+                "video/vc2",
+                "video/x-vc2",
+                "video/x-vc2-snell",
+                "video/x-vc2-fast",
+                "video/x-vc2-fragmented"
+            ]
+        },
+        "id": "153983e1-dc39-3f10-8856-51d97add00d2",
+        "transport": "urn:x-nmos:transport:rtp",
+        "subscription": {
+            "sender_id": "7f140e8b-e3a0-3c4b-971a-d807668c0f7a"
+        }
+    },
+    {
+        "description": "",
+        "tags": {},
+        "format": "urn:x-nmos:format:audio",
+        "label": "JasonTestRx",
+        "version": "1500297191:447697835",
+        "device_id": "c3ad0377-3182-3a2d-8931-e608b70562f9",
+        "caps": {
+            "media_types": [
+                "audio/opus"
+            ]
+        },
+        "id": "d6b52a31-a449-3a76-8da7-76333f3fde12",
+        "transport": "urn:x-nmos:transport:rtp",
+        "subscription": {
+            "sender_id": null
+        }
+    },
+    {
+        "description": "",
+        "tags": {},
+        "format": "urn:x-nmos:format:video",
+        "label": "MV Bottom Left",
+        "version": "1497876016:258846540",
+        "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
         "caps": {
             "media_types": [
                 "video/raw",
                 "video/H264",
+                "video/vc2",
                 "video/x-vc2",
                 "video/x-vc2-snell",
                 "video/x-vc2-fast",
                 "video/x-vc2-fragmented",
-                "video/x-pgf"
+                "video/x-pgf",
+                "video/VP8"
             ]
         },
-        "version": "1483723392:639920415",
-        "device_id": "421bab6c-0f7d-3010-b360-1d5c40d1c2a9",
-        "label": "Video Rx 7",
-        "id": "d1af6966-8d6a-371d-9fac-54ebaf3315fe",
+        "id": "3f38402e-833a-31b9-9954-1abd2105be2a",
+        "transport": "urn:x-nmos:transport:rtp",
+        "subscription": {
+            "sender_id": "bfa8d17b-7d60-31dd-b113-e23bf26c9a85"
+        }
+    },
+    {
+        "description": "",
+        "tags": {},
+        "format": "urn:x-nmos:format:video",
+        "label": "ap-z200-1 Rx",
+        "version": "1497876016:258846540",
+        "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
+        "caps": {
+            "media_types": [
+                "video/raw",
+                "video/H264",
+                "video/vc2",
+                "video/x-vc2",
+                "video/x-vc2-snell",
+                "video/x-vc2-fast",
+                "video/x-vc2-fragmented",
+                "video/x-pgf",
+                "video/VP8"
+            ]
+        },
+        "id": "4f38402e-833a-31b9-9954-1abd2105be2a",
         "transport": "urn:x-nmos:transport:rtp",
         "subscription": {
             "sender_id": null
-        },
-        "type": "receivers"
+        }
     },
     {
-      "description": "",
-      "tags": {},
-      "format": "urn:x-nmos:format:mux",
-      "caps": {
-          "media_types": [
-              "video/raw",
-              "video/H264",
-              "video/x-vc2",
-              "video/x-vc2-snell",
-              "video/x-vc2-fast",
-              "video/x-vc2-fragmented",
-              "video/x-pgf"
-          ]
-      },
-      "version": "1483723392:639920415",
-      "device_id": "594dba1f-1fd3-4df2-be68-3a5d5b4d0c67",
-      "label": "Mux Rx 1",
-      "id": "bc27e69a-dfd7-49bf-974f-40978c22b786",
-      "transport": "urn:x-nmos:transport:rtp",
-      "subscription": {
-          "sender_id": null
-      },
-      "type": "receivers"
-  },
-  {
-    "description": "",
-    "tags": {},
-    "format": "urn:x-nmos:format:data",
-    "caps": {
-        "media_types": [
-            "video/raw",
-            "video/H264",
-            "video/x-vc2",
-            "video/x-vc2-snell",
-            "video/x-vc2-fast",
-            "video/x-vc2-fragmented",
-            "video/x-pgf"
-        ]
+        "description": "",
+        "tags": {},
+        "format": "urn:x-nmos:format:video",
+        "label": "Test Video Rx",
+        "version": "1497876016:258846540",
+        "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
+        "caps": {
+            "media_types": [
+                "video/raw",
+                "video/vc2",
+                "video/x-vc2",
+                "video/x-vc2-snell",
+                "video/x-vc2-fast",
+                "video/x-vc2-fragmented",
+                "video/x-pgf",
+                "video/VP8"
+            ]
+        },
+        "id": "5f38402e-833a-31b9-9954-1abd2105be2a",
+        "transport": "urn:x-nmos:transport:rtp",
+        "subscription": {
+            "sender_id": null
+        }
     },
-    "version": "1483723392:639920415",
-    "device_id": "5954956d-0d3c-4b36-b8a6-53df12a89767",
-    "label": "Data Rx 1",
-    "id": "e9c4e207-2cd2-4a23-a618-cab90a558cb8",
-    "transport": "urn:x-nmos:transport:rtp",
-    "subscription": {
-        "sender_id": null
+    {
+        "description": "",
+        "tags": {},
+        "format": "urn:x-nmos:format:video",
+        "label": "ap-z420-8 RTPRx - VP8 only",
+        "version": "1500045145:23148480",
+        "device_id": "e018ec90-2ebe-3910-8c3b-4d14f540256e",
+        "caps": {
+            "media_types": [
+                "video/VP8"
+            ]
+        },
+        "id": "c875bc57-deed-3b17-9968-6532c33755fe",
+        "transport": "urn:x-nmos:transport:rtp",
+        "subscription": {
+            "active": false,
+            "sender_id": null
+        }
     },
-    "type": "receivers"
-  },
-  {
-    "description": "",
-    "tags": {},
-    "format": "urn:x-nmos:format:audio",
-    "caps": {
-        "media_types": [
-            "video/raw",
-            "video/H264",
-            "video/x-vc2",
-            "video/x-vc2-snell",
-            "video/x-vc2-fast",
-            "video/x-vc2-fragmented",
-            "video/x-pgf"
-        ]
-    },
-    "version": "1483723392:639920415",
-    "device_id": "538b2270-b84b-46dc-8500-2fda1b0cab42",
-    "label": "Audio Rx 1",
-    "id": "401810e9-f601-4862-bce3-1052840599f5",
-    "transport": "urn:x-nmos:transport:rtp",
-    "subscription": {
-        "sender_id": null
-    },
-    "type": "receivers"
-  },
-  {
-    "description": "",
-    "tags": {},
-    "format": "urn:x-nmos:format:video",
-    "caps": {},
-    "version": "1482245273:40000000",
-    "device_id": "9a4d00e5-d2ca-4015-a703-392c5c3fe8ba",
-    "label": "Video Rx 8",
-    "id": "a1960e85-9498-4696-8cd9-56eeb37836a6",
-    "transport": "urn:x-nmos:transport:rtp",
-    "subscription": {
-        "sender_id": null
-    },
-    "type": "receivers"
-},
-{
-    "description": "",
-    "tags": {},
-    "format": "urn:x-nmos:format:video",
-    "caps": {
-        "media_types": [
-            "video/raw",
-            "video/H264",
-            "video/x-vc2",
-            "video/x-vc2-snell",
-            "video/x-vc2-fast",
-            "video/x-vc2-fragmented",
-            "video/x-pgf"
-        ]
-    },
-    "version": "1483959795:625161592",
-    "device_id": "557dce26-d26e-49d2-8af9-ef76c9b913fd",
-    "label": "Video Rx 9",
-    "id": "b44c4ca6-cd23-34a2-a4a9-fb18df0b242b",
-    "transport": "urn:x-nmos:transport:rtp",
-    "subscription": {
-        "sender_id": null
-    },
-    "type": "receivers"
-},
-{
-    "description": "",
-    "tags": {},
-    "format": "urn:x-nmos:format:video",
-    "caps": {
-        "media_types": [
-            "video/raw",
-            "video/H264",
-            "video/x-vc2",
-            "video/x-vc2-snell",
-            "video/x-vc2-fast",
-            "video/x-vc2-fragmented",
-            "video/x-pgf"
-        ]
-    },
-    "version": "1483971517:595272704",
-    "device_id": "e3c6d7f0-0abe-32c1-9f57-0d142b184c90",
-    "label": "Video Rx a",
-    "id": "6f606384-3df7-3985-a53c-cddc92f7cef2",
-    "transport": "urn:x-nmos:transport:rtp",
-    "subscription": {
-        "sender_id": null
-    },
-    "type": "receivers"
-},
-{
-    "description": "",
-    "tags": {},
-    "format": "urn:x-nmos:format:video",
-    "caps": {
-        "media_types": [
-            "video/raw",
-            "video/H264",
-            "video/x-vc2",
-            "video/x-vc2-snell",
-            "video/x-vc2-fast",
-            "video/x-vc2-fragmented",
-            "video/x-pgf"
-        ]
-    },
-    "version": "1483723314:7809302",
-    "device_id": "7fe8db33-ee62-31b6-9663-322001e04702",
-    "label": "Video Rx b",
-    "id": "36c0e61c-721d-3b3d-a23f-d118cf2c7e82",
-    "transport": "urn:x-nmos:transport:rtp",
-    "subscription": {
-        "sender_id": "c77513bf-8a09-3de3-8d3f-6306d6ccac71"
-    },
-    "type": "receivers"
-},
-{
-    "description": "",
-    "tags": {},
-    "format": "urn:x-nmos:format:video",
-    "caps": {
-        "media_types": [
-            "video/raw",
-            "video/H264",
-            "video/x-vc2",
-            "video/x-vc2-snell",
-            "video/x-vc2-fast",
-            "video/x-vc2-fragmented",
-            "video/x-pgf"
-        ]
-    },
-    "version": "1483723392:639920415",
-    "device_id": "421bab6c-0f7d-3010-b360-1d5c40d1c2a9",
-    "label": "Video Rx c",
-    "id": "d1af6966-8d6a-371d-9fac-54ebaf3315ff",
-    "transport": "urn:x-nmos:transport:rtp",
-    "subscription": {
-        "sender_id": null
-    },
-    "type": "receivers"
-},
-{
-  "description": "",
-  "tags": {},
-  "format": "urn:x-nmos:format:audio",
-  "caps": {
-      "media_types": [
-          "video/raw",
-          "video/H264",
-          "video/x-vc2",
-          "video/x-vc2-snell",
-          "video/x-vc2-fast",
-          "video/x-vc2-fragmented",
-          "video/x-pgf"
-      ]
-  },
-  "version": "1483723392:639920415",
-  "device_id": "594dba1f-1fd3-4df2-be68-3a5d5b4d0c67",
-  "label": "Audio Rx 2",
-  "id": "bc27e69a-dfd7-49bf-974f-40978c22b787",
-  "transport": "urn:x-nmos:transport:rtp",
-  "subscription": {
-      "sender_id": null
-  },
-  "type": "receivers"
-},
-{
-"description": "",
-"tags": {},
-"format": "urn:x-nmos:format:data",
-"caps": {
-    "media_types": [
-        "video/raw",
-        "video/H264",
-        "video/x-vc2",
-        "video/x-vc2-snell",
-        "video/x-vc2-fast",
-        "video/x-vc2-fragmented",
-        "video/x-pgf"
-    ]
-},
-"version": "1483723392:639920415",
-"device_id": "5954956d-0d3c-4b36-b8a6-53df12a89767",
-"label": "Data Rx 2",
-"id": "e9c4e207-2cd2-4a23-a618-cab90a558cb9",
-"transport": "urn:x-nmos:transport:rtp",
-"subscription": {
-    "sender_id": null
-},
-"type": "receivers"
-},
-{
-"description": "",
-"tags": {},
-"format": "urn:x-nmos:format:audio",
-"caps": {
-    "media_types": [
-        "video/raw",
-        "video/H264",
-        "video/x-vc2",
-        "video/x-vc2-snell",
-        "video/x-vc2-fast",
-        "video/x-vc2-fragmented",
-        "video/x-pgf"
-    ]
-},
-"version": "1483723392:639920415",
-"device_id": "538b2270-b84b-46dc-8500-2fda1b0cab42",
-"label": "Audio Rx 3",
-"id": "401810e9-f601-4862-bce3-1052840599f6",
-"transport": "urn:x-nmos:transport:rtp",
-"subscription": {
-    "sender_id": null
-},
-"type": "receivers"
-}
+    {
+        "description": "",
+        "tags": {},
+        "format": "urn:x-nmos:format:video",
+        "label": "MV Top Right - H264/VC2/VP8",
+        "version": "1497876257:59378364",
+        "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
+        "caps": {
+            "media_types": [
+                "video/H264",
+                "video/vc2",
+                "video/x-vc2",
+                "video/x-vc2-snell",
+                "video/x-vc2-fast",
+                "video/x-vc2-fragmented",
+                "video/x-pgf",
+                "video/VP8"
+            ]
+        },
+        "id": "2ab72f6a-a09f-31f3-82d8-76278febb5de",
+        "transport": "urn:x-nmos:transport:rtp",
+        "subscription": {
+            "sender_id": "7f140e8b-e3a0-3c4b-971a-d807668c0f7a"
+        }
+    }
 ]

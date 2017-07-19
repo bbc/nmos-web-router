@@ -7,7 +7,7 @@ let Delete = ({actions, change}) => {
     actions.unstageChange(change)
   }
 
-  return <LayoutItem gels='1/12' className='delete-container'>
+  return <LayoutItem className='delete-container'>
     <div className='delete-button' onClick={function () { onClick() }}>
       <No />
     </div>
