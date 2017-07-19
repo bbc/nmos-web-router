@@ -1,170 +1,175 @@
 [
     {
-        "description": "",
+        "description": "RTP audio stream - audio/opus media type",
         "tags": {},
-        "flow_id": "199b0281-6179-3a60-9ca7-73aa5d4b8a72",
-        "label": "Video Tx 1",
-        "version": "1483723280:417824077",
-        "manifest_href": "http://172.29.80.196:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/1/pipel/ipp_rtptx5037/misc/sdp/",
-        "id": "c77513bf-8a09-3de3-8d3f-6306d6ccac71",
+        "flow_id": "084d2e99-2d2d-3da8-b82e-03df846d64a5",
+        "label": "edfest-cam1 enc-audio",
+        "version": "1500296353:534121094",
+        "manifest_href": "http://172.29.80.185/x-ipstudio/pipelinemanager/v1.0/run/pipeline/3/pipel/ipp_rtptx19a7/misc/sdp/",
+        "id": "2072cba3-bce8-3eb4-aca2-4bc6f56b7c58",
         "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "0ca4b8d6-2e4e-482c-ba55-78e8ff734b29",
-        "type": "senders"
+        "device_id": "e17ce0ed-f430-3a05-a761-764f1f29915f"
+    },
+    {
+        "description": "A 1920x1080 RTP multicast stream of BBC One",
+        "tags": {},
+        "flow_id": "bc0acbcd-4558-3825-a119-529daf6f94ab",
+        "label": "BBC One (HD)",
+        "version": "1498049440:227124885",
+        "manifest_href": "http://172.29.80.46/x-ipstudio/pipelinemanager/v1.0/run/pipeline/2/pipel/ipp_rtptx1ee0/misc/sdp/",
+        "id": "6fe87ddd-1a46-343a-8c83-48ee7078b02e",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "device_id": "3c3d355e-c06f-3c2d-b5e8-c9ee526eab1e"
+    },
+    {
+        "description": "A dash stream - audio/L24 media type",
+        "tags": {},
+        "flow_id": "d639c527-aac5-372f-bd44-ab36825d3426",
+        "label": "Dash sender",
+        "version": "1500296353:530546682",
+        "manifest_href": "http://172.29.80.185:9005/dash/d639c527aac5372fbd44ab36825d3426/live/isom/manifest.mpd",
+        "id": "91363f60-7b08-4937-9f6b-c06545cae3ff",
+        "transport": "urn:x-nmos:transport:dash",
+        "device_id": "e17ce0ed-f430-3a05-a761-764f1f29915f"
+    },
+    {
+        "description": "A raw video test source",
+        "tags": {},
+        "flow_id": "e9ab3f0b-34a2-3357-9008-2b7accd03867",
+        "label": "25p test source",
+        "version": "1496936323:622132567",
+        "manifest_href": "http://172.29.80.40/x-ipstudio/pipelinemanager/v1.0/run/pipeline/6/pipel/ipp_rtptxfe9e/misc/sdp/",
+        "id": "bfa8d17b-7d60-31dd-b113-e23bf26c9a85",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "device_id": "b6124a29-120b-3b12-9079-402d6d96ab69"
+    },
+    {
+        "description": "A BBC1 stream - raw video",
+        "tags": {},
+        "flow_id": "12dec9a4-8d36-37b2-98bd-6980cddae50d",
+        "label": "CH BBC1 off-air",
+        "version": "1496153730:600046266",
+        "manifest_href": "http://172.29.176.142/x-ipstudio/pipelinemanager/v1.0/run/pipeline/3/pipel/ipp_rtptx20c4/misc/sdp/",
+        "id": "b5c3274e-67e4-367b-a5f6-afafd1e7b884",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "device_id": "4fcc38db-43fe-3dd5-8f35-22a93f78358d"
+    },
+    {
+        "description": "CH BBC1 off-air test stream - video/H264 media type",
+        "tags": {},
+        "flow_id": "beaf31c6-9572-38c4-bccc-f0606b044baf",
+        "label": "CH BBC1 off-air",
+        "version": "1496153730:824566557",
+        "manifest_href": "http://172.29.176.142/x-ipstudio/pipelinemanager/v1.0/run/pipeline/3/pipel/ipp_rtptx6d6f/misc/sdp/",
+        "id": "72efe793-c0b0-3eed-b13a-cca263270a45",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "device_id": "4fcc38db-43fe-3dd5-8f35-22a93f78358d"
+    },
+    {
+        "description": "A WebRTC sender",
+        "tags": {},
+        "flow_id": "88a43446-6afe-11e7-89df-a74930048888",
+        "label": "WebRTC",
+        "version": "1500302710:579172585",
+        "manifest_href": "http://10.0.3.1:8090/x-ipstudio/webrtc-gateway/v1.0/senders/88a43448-6afe-11e7-89df-a74930048888/stream.sdp",
+        "id": "88a43448-6afe-11e7-89df-a74930048888",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "device_id": "88a43442-6afe-11e7-89df-a74930048888"
+    },
+    {
+        "description": "A VC2 stream from the viewing and demo room - 1920x1080",
+        "tags": {},
+        "flow_id": "b35c79f9-58b0-3c1b-8d21-33ddd831f912",
+        "label": "Viewing and Demo HD",
+        "version": "1498570665:528721878",
+        "manifest_href": "http://172.29.80.80/x-ipstudio/pipelinemanager/v1.0/run/pipeline/6/pipel/ipp_rtptx68f6/misc/sdp/",
+        "id": "7f140e8b-e3a0-3c4b-971a-d807668c0f7a",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "device_id": "09a17c3b-1f3b-308f-8bb4-16dcec7e67bf"
+    },
+    {
+        "description": "A WebRTC sender using VP8 encoding",
+        "tags": {},
+        "flow_id": "7bf8b729-6aff-11e7-89df-a74930048888",
+        "label": "WebRTC source",
+        "version": "1500303118:968233333",
+        "manifest_href": "http://10.0.3.1:8090/x-ipstudio/webrtc-gateway/v1.0/senders/7bf8b72b-6aff-11e7-89df-a74930048888/stream.sdp",
+        "id": "7bf8b72b-6aff-11e7-89df-a74930048888",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "device_id": "7bf8b726-6aff-11e7-89df-a74930048888"
+    },
+    {
+        "description": "",
+        "tags": {
+            "soma-type": [
+                "full-frame"
+            ]
+        },
+        "flow_id": "30a6082a-9f81-30b7-ae36-4f5e7bdd655d",
+        "label": "edfest Frame 1-scaled",
+        "version": "1500296429:568559871",
+        "manifest_href": "http://172.29.80.185/x-ipstudio/pipelinemanager/v1.0/run/pipeline/4/pipel/ipp_rtptxf4f8/misc/sdp/",
+        "id": "4ba6b514-299c-3bbc-942f-08c43d22d415",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "device_id": "3fe622bc-6c04-33da-bf65-b74ea01d3312"
     },
     {
         "description": "",
         "tags": {},
-        "flow_id": "b00250a3-d123-3bf7-966c-779fd0dbea12",
-        "label": "Video Tx 2",
-        "version": "1483961259:98728182",
-        "manifest_href": "http://172.29.80.211:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/3/pipel/ipp_rtptx1462/misc/sdp/",
-        "id": "54a0e8c2-ad4c-3ff4-8268-f8d1eeccaf63",
+        "flow_id": "647fa2a3-ebfa-3a5e-ad38-5c5c45242278",
+        "label": "Viewing and Demo 4K",
+        "version": "1498570665:528488686",
+        "manifest_href": "http://172.29.80.80/x-ipstudio/pipelinemanager/v1.0/run/pipeline/6/pipel/ipp_rtptx695a/misc/sdp/",
+        "id": "ae20fd84-8480-3cca-92c7-4c11417f5d58",
         "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "d5d198fe-82ba-4f2e-8805-6424682bdafc",
-        "type": "senders"
+        "device_id": "09a17c3b-1f3b-308f-8bb4-16dcec7e67bf"
     },
     {
         "description": "",
         "tags": {},
-        "flow_id": "6f3de266-3054-459d-ace1-29d175821cc8",
-        "label": "Video Tx 3",
-        "version": "1483439735:889710687",
-        "manifest_href": "http://172.29.80.34:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/2/pipel/ipp_rtptx67ef/misc/sdp/",
-        "id": "a55d43f4-f215-4e00-96c1-faec6c44c1d8",
+        "flow_id": "ddb69eeb-d27b-3003-a3be-d2bb908d76a2",
+        "label": "Tram Cam",
+        "version": "1497877137:180113331",
+        "manifest_href": "http://172.29.80.22/x-ipstudio/pipelinemanager/v1.0/run/pipeline/3/pipel/ipp_rtptxff93/misc/sdp/",
+        "id": "7a0a2e77-1392-3436-ab01-09ee4135b521",
         "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "a2f27fc1-08ba-41cb-80ce-3367fb41ed2d",
-        "type": "senders"
+        "device_id": "8806599c-bc23-39ee-946d-19fd0e90a64e"
     },
     {
         "description": "",
         "tags": {},
-        "flow_id": "6f3de266-3054-459d-ace1-29d175821cc8",
-        "label": "Video Tx 4",
-        "version": "1481106886:101144462",
-        "manifest_href": "http://172.29.80.34:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/25/pipel/ipp_rtptxd932/misc/sdp/",
-        "id": "ec0cc699-96b6-400b-8d47-d76235ba451d",
+        "flow_id": "c21686de-a7cb-3142-bbae-6d448a00af87",
+        "label": "CH BBC1 off-air audio",
+        "version": "1496153730:344377233",
+        "manifest_href": "http://172.29.176.142/x-ipstudio/pipelinemanager/v1.0/run/pipeline/3/pipel/ipp_rtptx0339/misc/sdp/",
+        "id": "4b1714a3-b67f-37b5-9f3f-07e8f9de16a4",
         "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "9294bc11-5aff-4c4f-8187-723ba1ad8c07",
-        "type": "senders"
+        "device_id": "4fcc38db-43fe-3dd5-8f35-22a93f78358d"
     },
     {
         "description": "",
         "tags": {},
-        "flow_id": "6f3de266-3054-459d-ace1-29d175821cc8",
-        "label": "Video Tx 5",
-        "version": "1481106886:536232909",
-        "manifest_href": "http://172.29.80.34:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/25/pipel/ipp_rtptxb407/misc/sdp/",
-        "id": "940fc760-8212-43e6-bcf9-d2189943f43b",
+        "flow_id": "d639c527-aac5-372f-bd44-ab36825d3426",
+        "label": "edfest-cam1 audio",
+        "version": "1500296353:528312091",
+        "manifest_href": "http://172.29.80.185/x-ipstudio/pipelinemanager/v1.0/run/pipeline/3/pipel/ipp_rtptx9a88/misc/sdp/",
+        "id": "9a106e4d-af93-381b-b9b8-5091850c6116",
         "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "9294bc11-5aff-4c4f-8187-723ba1ad8c07",
-        "type": "senders"
+        "device_id": "e17ce0ed-f430-3a05-a761-764f1f29915f"
     },
     {
         "description": "",
-        "tags": {},
-        "flow_id": "e94f48c7-d43a-3f4e-8dfb-79bc664ec440",
-        "label": "Video Tx 6",
-        "version": "1484042335:720056755",
-        "manifest_href": "http://172.29.80.169:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/1/pipel/ipp_rtptx1d00/misc/sdp/",
-        "id": "23fd200d-658f-3ef2-8e87-6af437e950d5",
+        "tags": {
+            "soma-type": [
+                "full-frame"
+            ]
+        },
+        "flow_id": "7027fe2e-7835-3cc4-9bed-be594e1452f0",
+        "label": "edfest Still Full Frame 1",
+        "version": "1500296429:493358757",
+        "manifest_href": "http://172.29.80.185/x-ipstudio/pipelinemanager/v1.0/run/pipeline/4/pipel/ipp_rtptxa27a/misc/sdp/",
+        "id": "a0993206-670e-3952-9579-ede940e03090",
         "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "07dc507e-6e6b-364b-858f-2f15b76fdf3a",
-        "type": "senders"
-    },
-    {
-        "description": "",
-        "tags": {},
-        "flow_id": "3b6a7b8c-4485-31db-8dbf-9349f0d5db63",
-        "label": "Video Tx 7",
-        "version": "1483975628:623657799",
-        "manifest_href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/1/pipel/ipp_rtptx6fe7/misc/sdp/",
-        "id": "90605ffa-c36c-3064-b656-795ee43431eb",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "2efbe4a0-810b-3eb4-97e5-dfb9caee6ebc",
-        "type": "senders"
-    },
-    {
-        "description": "",
-        "tags": {},
-        "flow_id": "5d634ed9-40de-35e9-9a10-1e6dacfbaf19",
-        "label": "Audio Tx 1",
-        "version": "1483975628:380511099",
-        "manifest_href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/1/pipel/ipp_rtptx0b9a/misc/sdp/",
-        "id": "92ad638d-4841-3796-8db9-767858873271",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "2efbe4a0-810b-3eb4-97e5-dfb9caee6ebc",
-        "type": "senders"
-    },
-    {
-        "description": "",
-        "tags": {},
-        "flow_id": "0b3b5939-3b45-3609-97a2-7a6674b69915",
-        "label": "Data Tx 1",
-        "version": "1483976741:371826990",
-        "manifest_href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/3/pipel/ipp_rtptx82f8/misc/sdp/",
-        "id": "e7ce4d11-ed38-3b77-bc2a-40782065737a",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "5d6fabde-df2a-37ab-b926-c231d6813949",
-        "type": "senders"
-    },
-    {
-        "description": "",
-        "tags": {},
-        "flow_id": "6f3de266-3054-459d-ace1-29d175821cc8",
-        "label": "Video Tx 8",
-        "version": "1483439735:889710687",
-        "manifest_href": "http://172.29.80.34:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/2/pipel/ipp_rtptx67ef/misc/sdp/",
-        "id": "a55d43f4-f215-4e00-96c1-faec6c44c1d0",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "a2f27fc1-08ba-41cb-80ce-3367fb41ed2d",
-        "type": "senders"
-    },
-    {
-        "description": "",
-        "tags": {},
-        "flow_id": "3b6a7b8c-4485-31db-8dbf-9349f0d5db63",
-        "label": "Video Tx 9",
-        "version": "1483975628:623657799",
-        "manifest_href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/1/pipel/ipp_rtptx6fe7/misc/sdp/",
-        "id": "90605ffa-c36c-3064-b656-795ee43431ec",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "2efbe4a0-810b-3eb4-97e5-dfb9caee6ebc",
-        "type": "senders"
-    },
-    {
-        "description": "",
-        "tags": {},
-        "flow_id": "5d634ed9-40de-35e9-9a10-1e6dacfbaf19",
-        "label": "Audio Tx 2",
-        "version": "1483975628:380511099",
-        "manifest_href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/1/pipel/ipp_rtptx0b9a/misc/sdp/",
-        "id": "92ad638d-4841-3796-8db9-767858873272",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "2efbe4a0-810b-3eb4-97e5-dfb9caee6ebc",
-        "type": "senders"
-    },
-    {
-        "description": "",
-        "tags": {},
-        "flow_id": "0b3b5939-3b45-3609-97a2-7a6674b69915",
-        "label": "Data Tx 2",
-        "version": "1483976741:371826990",
-        "manifest_href": "http://172.29.80.65:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/3/pipel/ipp_rtptx82f8/misc/sdp/",
-        "id": "e7ce4d11-ed38-3b77-bc2a-40782065737b",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "5d6fabde-df2a-37ab-b926-c231d6813949",
-        "type": "senders"
-    },
-    {
-        "description": "",
-        "tags": {},
-        "flow_id": "42a4b4b3-c056-3468-8d09-342768eaae46",
-        "label": "Video Tx a",
-        "version": "1483723356:944142432",
-        "manifest_href": "http://172.29.80.80:12345/x-nmos/node/v1.0/self/pipelinemanager/run/pipeline/1/pipel/ipp_rtptxd052/misc/sdp/",
-        "id": "74d16e59-dc49-32bb-a91e-c62ae0209a99",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
-        "device_id": "9b9c7ea0-d2e4-403c-9b53-e46a2c62b02b",
-        "type": "senders"
+        "device_id": "3fe622bc-6c04-33da-bf65-b74ea01d3312"
     }
 ]

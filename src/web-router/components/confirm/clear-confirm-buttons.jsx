@@ -7,6 +7,7 @@ These buttons either delete all staged changes (clear) or deploy all
 import React, { PropTypes } from 'react'
 import ClearButton from './clear-button-component'
 import ConfirmButton from './confirm-button-component'
+import { Layout } from '../../../gel-react/grid'
 
 let ClearConfirm = ({changes, actions, senders}) => {
   let confirmEnabled = 'disabled'
@@ -20,7 +21,7 @@ let ClearConfirm = ({changes, actions, senders}) => {
     if (availableCount > 0) confirmEnabled = 'enabled'
   }
 
-  return <div className='clear-confirm-container'>
+  return <Layout className='clear-confirm-container' layouts='right'>
     <div className='buttons-div'>
       <ClearButton
         changes={changes}
@@ -32,7 +33,7 @@ let ClearConfirm = ({changes, actions, senders}) => {
         senders={senders}
         state={confirmEnabled} />
     </div>
-  </div>
+  </Layout>
 }
 
 ClearConfirm.propTypes = {

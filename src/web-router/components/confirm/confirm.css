@@ -12,19 +12,30 @@ styles the view from top to bottom */
   --clear-button: #a6aaa9;
   --button-disabled: #dcdee0;
   --one-change-height: 38px;
+  --line-container-width: calc(33.333% - 36px);
+  --header-height: 35px;
+  --clear-confirm-height: 64px;
 }
 
 .confirm {
-  /* The column headers: "Senders" and "Receivers" */
-  & .column-title {
-    margin-top: 6px;
-    text-align: left;
+  & .header {
+    height: var(--header-height);
+
+    /* The column headers: "Senders" and "Receivers" */
+    & .column-title {
+      margin-top: 6px;
+      text-align: left;
+    }
+
+    & .filler-block {
+      width: var(--line-container-width);
+    }
   }
 
   /* The scrollable area that contains all the changes */
   & .changes-scroll {
     top: 0;
-    height: 85%;
+    height: calc(100% - var(--header-height) - var(--clear-confirm-height));
     width: 100%;
 
     & .example-enter {
@@ -111,6 +122,7 @@ styles the view from top to bottom */
       & .line-container {
         height: var(--one-change-height);
         padding-left: 15px;
+        width: var(--line-container-width);
 
         & .line-svg {
           width: 200%;
@@ -147,7 +159,6 @@ styles the view from top to bottom */
           width: 80px;
           height: 20px;
           margin: auto;
-          padding-top: 8px;
         }
       }
 
@@ -155,6 +166,7 @@ styles the view from top to bottom */
       inside */
       & .delete-container {
         height: var(--one-change-height);
+        width: 36px;
 
         & .delete-button {
           margin-left: 12px;
@@ -208,24 +220,19 @@ styles the view from top to bottom */
 
   /* Style the container which holds the "clear" and "confirm" buttons */
   & .clear-confirm-container {
-    height: 8%;
+    height: 64px;
     width: 100%;
-    position: relative;
 
     & .buttons-div {
-      margin-left: 0;
-      height: 50%;
-      position: absolute;
-      top: 25%;
-      right: 0;
       width: 50%;
+      margin-right: 12px;
 
       & .button {
         width: 40%;
         min-width: 100px;
         height: 40px;
-        max-height: 40px;
-        margin-left: 24px;
+        margin-left: 12px;
+        margin-top: 12px;
         background-color: var(--clear-button);
         color: white;
         text-align: center;
@@ -247,7 +254,6 @@ styles the view from top to bottom */
 
       & .confirm {
         background-color: var(--confirm-button);
-        margin-left: 14px;
 
         &:hover {
           background-color: color(var(--confirm-button) shade(20%));

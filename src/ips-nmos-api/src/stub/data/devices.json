@@ -1,199 +1,961 @@
 [
     {
-        "receivers": [],
-        "label": "pipeline 1 default device",
-        "version": "1484042335:726707720",
-        "id": "07dc507e-6e6b-364b-858f-2f15b76fdf3a",
-        "type": "devices",
-        "senders": [
-            "23fd200d-658f-3ef2-8e87-6af437e950d5"
-        ],
-        "node_id": "d5f9c014-bb5e-44eb-aa53-6aef7249c944"
-    },
-    {
-        "receivers": [],
-        "label": "pipeline 1 default device",
-        "version": "1483723280:422965989",
-        "id": "0ca4b8d6-2e4e-482c-ba55-78e8ff734b29",
-        "type": "devices",
-        "senders": [
-            "c77513bf-8a09-3de3-8d3f-6306d6ccac71"
-        ],
-        "node_id": "ecd6296e-9603-11e6-bdab-0cc47aa8ba9e"
-    },
-    {
-        "description": "pipeline 1 default device",
+        "description": "pipeline 4 default device",
         "receivers": [],
         "tags": {},
-        "label": "pipeline 1 default device",
-        "version": "1483975628:629310428",
-        "id": "2efbe4a0-810b-3eb4-97e5-dfb9caee6ebc",
-        "type": "devices",
+        "controls": [
+            {
+                "href": "ws://172.29.80.185:35163/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.185:37722/",
+                "type": "urn:x-ipstudio:control:ws.ipp_storeapp"
+            },
+            {
+                "href": "ws://172.29.80.185:37413/",
+                "type": "urn:x-ipstudio:control:ws.ipp_stillplayer"
+            },
+            {
+                "href": "ws://172.29.80.185:46307/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.185:45751/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            },
+            {
+                "href": "ws://172.29.80.185:37955/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            },
+            {
+                "href": "ws://172.29.80.185:33904/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            },
+            {
+                "href": "ws://172.29.80.185:39838/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            },
+            {
+                "href": "ws://172.29.80.185:33813/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            }
+        ],
+        "label": "pipeline 4 default device",
+        "version": "1500296429:578866789",
+        "id": "3fe622bc-6c04-33da-bf65-b74ea01d3312",
+        "type": "urn:x-nmos:device:pipeline",
         "senders": [
-            "92ad638d-4841-3796-8db9-767858873271",
-            "90605ffa-c36c-3064-b656-795ee43431eb"
+            "7b32f07d-0ae5-40b9-9e54-00866df26dff",
+            "a0993206-670e-3952-9579-ede940e03090",
+            "4ba6b514-299c-3bbc-942f-08c43d22d415"
         ],
-        "node_id": "5fdb769a-33a2-11e6-b707-a0369f2c0bd0"
+        "node_id": "c038e396-0d87-11e7-98e5-480fcf54bc1a"
     },
     {
+        "description": "Store Manager 172.29.176.86",
         "receivers": [],
-        "label": "pipeline 1 default device",
-        "version": "1483723356:950540607",
-        "id": "9b9c7ea0-d2e4-403c-9b53-e46a2c62b02b",
-        "type": "devices",
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.176.86/x-ipstudio/storemanager/v1.0/stores/f6f12742-41fe-485b-a508-44f7cada0192/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.176.86",
+        "version": "1498820925:950576665",
+        "id": "f6f12742-41fe-485b-a508-44f7cada0192",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "b2dbe318-16c3-47fe-923f-c3e069f109e5"
+    },
+    {
+        "description": "Store Manager 172.29.80.151",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.151/x-ipstudio/storemanager/v1.0/stores/9510dd29-8dfa-4e80-add7-fa352443d6d8/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.151",
+        "version": "1497530122:307349560",
+        "id": "9510dd29-8dfa-4e80-add7-fa352443d6d8",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "279dfe26-934b-484f-bacb-c5526c40fe77"
+    },
+    {
+        "description": "pipeline 6 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.80/x-nmos/connection/v1.0/",
+                "type": "urn:x-nmos:control:sr-ctrl/v1.0"
+            },
+            {
+                "href": "ws://172.29.80.80:44767/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.80:39000/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.80:39011/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            }
+        ],
+        "label": "pipeline 6 default device",
+        "version": "1498570665:541457999",
+        "id": "09a17c3b-1f3b-308f-8bb4-16dcec7e67bf",
+        "type": "urn:x-nmos:device:pipeline",
         "senders": [
-            "74d16e59-dc49-32bb-a91e-c62ae0209a98"
+            "ae20fd84-8480-3cca-92c7-4c11417f5d58",
+            "7f140e8b-e3a0-3c4b-971a-d807668c0f7a"
         ],
-        "node_id": "a6b4e145-6110-4857-997f-c35165eb0a14"
-    },
-    {
-        "receivers": [],
-        "label": "pipeline 11 default device",
-        "version": "1483971452:890383167",
-        "id": "fae4a8a7-2472-441f-97aa-c630d4907694",
-        "type": "devices",
-        "senders": [],
-        "node_id": "408a40c6-96a0-11e6-8ec4-0cc47aaa14f8"
-    },
-    {
-        "receivers": [
-            "b44c4ca6-cd23-34a2-a4a9-fb18df0b242a"
-        ],
-        "label": "pipeline 2 default device",
-        "version": "1483959733:492208656",
-        "id": "557dce26-d26e-49d2-8af9-ef76c9b913fd",
-        "type": "devices",
-        "senders": [],
-        "node_id": "99656db2-1c4a-407a-ab88-c79dbe2b9c23"
-    },
-    {
-        "receivers": [
-            "36c0e61c-721d-3b3d-a23f-d118cf2c7e81"
-        ],
-        "label": "pipeline 2 default device",
-        "version": "1483723306:517229795",
-        "id": "7fe8db33-ee62-31b6-9663-322001e04702",
-        "type": "devices",
-        "senders": [],
-        "node_id": "79baa79c-d353-11e6-94e5-8cdcd443c151"
-    },
-    {
-        "receivers": [],
-        "label": "pipeline 2 default device",
-        "version": "1483439735:882464254",
-        "id": "a2f27fc1-08ba-41cb-80ce-3367fb41ed2d",
-        "type": "devices",
-        "senders": [
-            "a55d43f4-f215-4e00-96c1-faec6c44c1d8"
-        ],
-        "node_id": "3ffe6d93-a365-4142-bf7c-5870d1e902fa"
-    },
-    {
-        "receivers": [],
-        "label": "pipeline 25 default device",
-        "version": "1481106886:519027118",
-        "id": "9294bc11-5aff-4c4f-8187-723ba1ad8c07",
-        "type": "devices",
-        "senders": [
-            "ec0cc699-96b6-400b-8d47-d76235ba451d",
-            "940fc760-8212-43e6-bcf9-d2189943f43b"
-        ],
-        "node_id": "3ffe6d93-a365-4142-bf7c-5870d1e902fa"
-    },
-    {
-        "receivers": [
-            "d1af6966-8d6a-371d-9fac-54ebaf3315fe"
-        ],
-        "label": "pipeline 3 default device",
-        "version": "1483723379:330179788",
-        "id": "421bab6c-0f7d-3010-b360-1d5c40d1c2a9",
-        "type": "devices",
-        "senders": [],
-        "node_id": "79baa79c-d353-11e6-94e5-8cdcd443c151"
+        "node_id": "aab91b9e-4d24-11e7-bf2b-6805ca1785c7"
     },
     {
         "description": "pipeline 3 default device",
         "receivers": [],
         "tags": {},
-        "label": "pipeline 3 default device",
-        "version": "1483976741:379338747",
-        "id": "5d6fabde-df2a-37ab-b926-c231d6813949",
-        "type": "devices",
-        "senders": [
-            "e7ce4d11-ed38-3b77-bc2a-40782065737a"
-        ],
-        "node_id": "5fdb769a-33a2-11e6-b707-a0369f2c0bd0"
-    },
-    {
-        "receivers": [],
-        "label": "pipeline 3 default device",
-        "version": "1483961259:104726171",
-        "id": "d5d198fe-82ba-4f2e-8805-6424682bdafc",
-        "type": "devices",
-        "senders": [
-            "54a0e8c2-ad4c-3ff4-8268-f8d1eeccaf63"
-        ],
-        "node_id": "8b3ac1ee-96ab-11e6-a657-0cc47aaa015c"
-    },
-    {
-        "receivers": [
-            "6f606384-3df7-3985-a53c-cddc92f7cef1"
-        ],
-        "label": "pipeline 4 default device",
-        "version": "1483971517:602291958",
-        "id": "e3c6d7f0-0abe-32c1-9f57-0d142b184c90",
-        "type": "devices",
-        "senders": [],
-        "node_id": "9a8d7ebe-d3fc-11e6-af2c-2c44fd15121f"
-    },
-    {
-        "receivers": [
-            "a1960e85-9498-4696-8cd9-56eeb37836a5"
-        ],
-        "label": "pipeline 7 default device",
-        "version": "1478084476:271822558",
-        "id": "9a4d00e5-d2ca-4015-a703-392c5c3fe8ba",
-        "type": "devices",
-        "senders": [],
-        "node_id": "43fed1e1-212c-4c1b-a63a-bdce3ce709fe"
-    },
-    {
-        "receivers": [],
         "controls": [
             {
-                "href": "http://172.29.176.36:12361/",
+                "href": "http://172.29.176.142/x-nmos/connection/v1.0/",
+                "type": "urn:x-nmos:control:sr-ctrl/v1.0"
+            },
+            {
+                "href": "ws://172.29.176.142:33801/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.176.142:34177/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.176.142:33300/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.176.142:37809/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            },
+            {
+                "href": "ws://172.29.176.142:34257/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            }
+        ],
+        "label": "pipeline 3 default device",
+        "version": "1496153730:845105967",
+        "id": "4fcc38db-43fe-3dd5-8f35-22a93f78358d",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "4b1714a3-b67f-37b5-9f3f-07e8f9de16a4",
+            "b5c3274e-67e4-367b-a5f6-afafd1e7b884",
+            "72efe793-c0b0-3eed-b13a-cca263270a45"
+        ],
+        "node_id": "0f6a4d44-2c08-11e7-a739-b8ca3a6c6204"
+    },
+    {
+        "description": "Store Manager 172.29.80.78",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.80.78/x-ipstudio/storemanager/v1.0/stores/79f44851-8d39-4205-803c-5b4b265140b0/",
                 "type": "urn:x-ipstudio:control:flowstore.read"
             }
         ],
-        "label": "Store Manager 172.29.176.36",
-        "version": "1473242025:969783559",
-        "id": "1540e254-88d6-4d1d-8465-b0b8564d8251",
-        "type": "devices",
+        "label": "Store Manager 172.29.80.78",
+        "version": "1499678585:428375839",
+        "id": "79f44851-8d39-4205-803c-5b4b265140b0",
+        "type": "urn:x-ipstudio:device:flowstore",
         "senders": [],
-        "node_id": "0ab9623d-e0b7-436e-8286-67ace719e4f3"
+        "node_id": "5d016250-3bb1-11e7-8d41-1cc1de325d93"
     },
     {
+        "description": "Store Manager 172.29.80.151",
         "receivers": [],
+        "tags": {},
         "controls": [
             {
-                "href": "http://172.29.176.55:12361/",
+                "href": "http://172.29.80.151/x-ipstudio/storemanager/v1.0/stores/d31fb5db-d528-4bae-a18e-c14550d7e55b/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.151",
+        "version": "1497530122:290189095",
+        "id": "d31fb5db-d528-4bae-a18e-c14550d7e55b",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "279dfe26-934b-484f-bacb-c5526c40fe77"
+    },
+    {
+        "description": "pipeline 2 default device",
+        "receivers": [
+            "4368954f-48d8-3e7d-a76f-196fdd272eee"
+        ],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.176.91/x-nmos/connection/v1.0/",
+                "type": "urn:x-nmos:control:sr-ctrl/v1.0"
+            },
+            {
+                "href": "ws://172.29.176.91:40401/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            },
+            {
+                "href": "ws://172.29.176.91:46376/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            }
+        ],
+        "label": "pipeline 2 default device",
+        "version": "1499335896:278928962",
+        "id": "0200e578-ed2c-38a7-987c-f84fc139f2b1",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [],
+        "node_id": "0d757c61-a0f4-49ea-a70e-f9558ac9e332"
+    },
+    {
+        "description": "Store Manager 172.29.80.110",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.80.110/x-ipstudio/storemanager/v1.0/stores/1e1c112b-f4c2-4127-a7c3-bd4a750b738e/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.110",
+        "version": "1499937741:588031841",
+        "id": "1e1c112b-f4c2-4127-a7c3-bd4a750b738e",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "d991f0fa-6573-11e7-add5-ecf4bbbfef64"
+    },
+    {
+        "description": "Store Manager 172.29.80.112",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.80.112/x-ipstudio/storemanager/v1.0/stores/e0cda35a-ffb4-4b42-9a5a-a511657466a5/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.112",
+        "version": "1499938469:318644930",
+        "id": "e0cda35a-ffb4-4b42-9a5a-a511657466a5",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "d5856f00-6573-11e7-9a77-ecf4bbbfec1c"
+    },
+    {
+        "description": "pipeline 2 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.118:43632/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.118:39787/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            }
+        ],
+        "label": "pipeline 2 default device",
+        "version": "1500286966:945459521",
+        "id": "a180a4fa-b5fc-369a-94b8-8c5d33839b89",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "458c94a8-1668-3105-9a0d-eec18022e984"
+        ],
+        "node_id": "d65ada84-49e2-11e7-bcf1-6451062ad89a"
+    },
+    {
+        "description": "pipeline 3 default device",
+        "receivers": [
+            "c875bc57-deed-3b17-9968-6532c33755fe"
+        ],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.128:34128/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            },
+            {
+                "href": "ws://172.29.80.128:44486/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            }
+        ],
+        "label": "pipeline 3 default device",
+        "version": "1500045145:30276202",
+        "id": "e018ec90-2ebe-3910-8c3b-4d14f540256e",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [],
+        "node_id": "79baa79c-d353-11e6-94e5-8cdcd443c151"
+    },
+    {
+        "description": "pipeline 2 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.191/x-nmos/connection/v1.0/",
+                "type": "urn:x-nmos:control:sr-ctrl/v1.0"
+            },
+            {
+                "href": "ws://172.29.80.191:44054/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.191:46049/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            }
+        ],
+        "label": "pipeline 2 default device",
+        "version": "1497263554:227056544",
+        "id": "f74df49e-e964-380e-bc44-70f429e99d02",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "d4a7cf65-b275-327c-9d21-f17950b57175"
+        ],
+        "node_id": "1ee63ca2-65ec-11e6-b56c-246e960971bc"
+    },
+    {
+        "description": "Store Manager 172.29.80.151",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.151/x-ipstudio/storemanager/v1.0/stores/1204dfa4-b796-4db6-9404-c8433d02652f/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.151",
+        "version": "1497530122:311890517",
+        "id": "1204dfa4-b796-4db6-9404-c8433d02652f",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "279dfe26-934b-484f-bacb-c5526c40fe77"
+    },
+    {
+        "description": "Store Manager 172.29.176.55",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.176.55/x-ipstudio/storemanager/v1.0/stores/c752a234-e25c-4942-a442-2b4060175b20/",
                 "type": "urn:x-ipstudio:control:flowstore.read"
             }
         ],
         "label": "Store Manager 172.29.176.55",
-        "version": "1473242025:969783559",
-        "id": "6cc3c74e-0748-4347-9847-463f2b9a7ce4",
-        "type": "devices",
+        "version": "1500024019:429130019",
+        "id": "c752a234-e25c-4942-a442-2b4060175b20",
+        "type": "urn:x-ipstudio:device:flowstore",
         "senders": [],
-        "node_id": "5a2ee032-a1c6-11e6-859f-40a8f0c94847"
+        "node_id": "48c92fe6-03f5-11e7-983d-40a8f0c94847"
     },
     {
+        "description": "Store Manager 172.29.80.151",
         "receivers": [],
-        "label": "Store Manager 172.29.176.98",
-        "version": "1483635626:4238005",
-        "id": "ba13b282-940d-433b-b579-6c2e6e2c8dcf",
-        "type": "devices",
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.151/x-ipstudio/storemanager/v1.0/stores/6c6b7efb-6e2b-4e72-8bca-2943f15c3a7b/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.151",
+        "version": "1497530122:303021033",
+        "id": "6c6b7efb-6e2b-4e72-8bca-2943f15c3a7b",
+        "type": "urn:x-ipstudio:device:flowstore",
         "senders": [],
-        "node_id": "e59c818a-8bb2-11e6-9d46-645106508665"
+        "node_id": "279dfe26-934b-484f-bacb-c5526c40fe77"
+    },
+    {
+        "description": "Store Manager 172.29.80.102",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.80.102/x-ipstudio/storemanager/v1.0/stores/d3e1fe76-40ad-4c62-b8fd-5b1f53127019/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.102",
+        "version": "1499937733:836788976",
+        "id": "d3e1fe76-40ad-4c62-b8fd-5b1f53127019",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "d503fa38-6573-11e7-b66a-ecf4bbbfed6c"
+    },
+    {
+        "description": "pipeline 6 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.40/x-nmos/connection/v1.0/",
+                "type": "urn:x-nmos:control:sr-ctrl/v1.0"
+            },
+            {
+                "href": "ws://172.29.80.40:38598/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.40:36527/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            }
+        ],
+        "label": "pipeline 6 default device",
+        "version": "1496936323:631154875",
+        "id": "b6124a29-120b-3b12-9079-402d6d96ab69",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "bfa8d17b-7d60-31dd-b113-e23bf26c9a85"
+        ],
+        "node_id": "998cff06-4c3a-11e7-a76e-782bcb08a560"
+    },
+    {
+        "description": "pipeline 3 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.185:33678/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.185:33615/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.185:35745/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.185:39603/",
+                "type": "urn:x-ipstudio:control:ws.ipp_storeapp"
+            },
+            {
+                "href": "ws://172.29.80.185:37700/",
+                "type": "urn:x-ipstudio:control:ws.ipp_storeapp"
+            },
+            {
+                "href": "ws://172.29.80.185:39353/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            },
+            {
+                "href": "ws://172.29.80.185:38296/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            },
+            {
+                "href": "ws://172.29.80.185:38354/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            },
+            {
+                "href": "ws://172.29.80.185:38833/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            }
+        ],
+        "label": "pipeline 3 default device",
+        "version": "1500296353:934461111",
+        "id": "e17ce0ed-f430-3a05-a761-764f1f29915f",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "9a106e4d-af93-381b-b9b8-5091850c6116",
+            "91363f60-7b08-4937-9f6b-c06545cae3ff",
+            "2072cba3-bce8-3eb4-aca2-4bc6f56b7c58",
+            "a6d8a815-fb60-4319-967c-e55a7fb07b4a",
+            "e08d1688-5141-3e2a-bbf4-cc2f93616bbf"
+        ],
+        "node_id": "c038e396-0d87-11e7-98e5-480fcf54bc1a"
+    },
+    {
+        "description": "Store Manager 172.29.80.106",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.80.106/x-ipstudio/storemanager/v1.0/stores/48a2cca5-a8e0-4abd-831c-47c64e5c84c0/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.106",
+        "version": "1499937613:238819002",
+        "id": "48a2cca5-a8e0-4abd-831c-47c64e5c84c0",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "336ffe9a-6575-11e7-ba3d-ecf4bbbfee3c"
+    },
+    {
+        "description": "Web browser",
+        "receivers": [
+            "7bf8b72d-6aff-11e7-89df-a74930048888",
+            "7bf8b72e-6aff-11e7-89df-a74930048888"
+        ],
+        "tags": {},
+        "controls": [],
+        "label": "Janus Gateway",
+        "version": "1500303118:719730950",
+        "id": "7bf8b726-6aff-11e7-89df-a74930048888",
+        "type": "urn:x-nmos:device:generic",
+        "senders": [
+            "7bf8b72b-6aff-11e7-89df-a74930048888",
+            "7bf8b72c-6aff-11e7-89df-a74930048888"
+        ],
+        "node_id": "f248b302-969f-11e6-b582-0cc47aaa1264"
+    },
+    {
+        "description": "pipeline 3 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.52:38195/",
+                "type": "urn:x-ipstudio:control:ws.ipp_audiomatrix"
+            },
+            {
+                "href": "ws://172.29.80.52:43755/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.52:60225/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.52:33440/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.52:60506/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.52:36141/",
+                "type": "urn:x-ipstudio:control:ws.ipp_audiocapture"
+            }
+        ],
+        "label": "pipeline 3 default device",
+        "version": "1498591737:848519037",
+        "id": "d35d9388-6dbf-3b25-813b-13ed9b4af721",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "b9169565-b151-3891-a1c8-f0820d2d8a7a",
+            "70ccd9a5-dc71-36fc-b770-fbf688351be5",
+            "20d27aa9-6e19-348d-ad83-4e5fda8d7332",
+            "3e324385-bef5-3a8b-826d-681cb1414603"
+        ],
+        "node_id": "96253ec1-72e4-4aba-a4ed-c605874c16fb"
+    },
+    {
+        "description": "pipeline 3 default device",
+        "receivers": [
+            "2f9ef628-d108-325e-9c10-b06d4116fabd"
+        ],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.78:35385/",
+                "type": "urn:x-ipstudio:control:ws.ipp_socketapp"
+            },
+            {
+                "href": "ws://172.29.80.78:45524/",
+                "type": "urn:x-ipstudio:control:ws.ipp_audiooutput"
+            },
+            {
+                "href": "ws://172.29.80.78:44638/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            },
+            {
+                "href": "ws://172.29.80.78:39459/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            }
+        ],
+        "label": "pipeline 3 default device",
+        "version": "1500029897:189621747",
+        "id": "2dcdf5ea-ed26-3048-bacb-a4d88d665dfc",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [],
+        "node_id": "5d016250-3bb1-11e7-8d41-1cc1de325d93"
+    },
+    {
+        "description": "Store Manager 172.29.80.130",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.80.130/x-ipstudio/storemanager/v1.0/stores/9a2a17a5-0a5e-40ee-bd8a-9d284b1a2919/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.130",
+        "version": "1500302576:449128174",
+        "id": "9a2a17a5-0a5e-40ee-bd8a-9d284b1a2919",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "a49c3bf4-7d6c-477d-83e1-302b11b733da"
+    },
+    {
+        "description": "Store Manager 172.29.80.151",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.151/x-ipstudio/storemanager/v1.0/stores/d3dc24a2-3cd3-49a7-99d1-efe963a22b27/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.151",
+        "version": "1497530122:298650073",
+        "id": "d3dc24a2-3cd3-49a7-99d1-efe963a22b27",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "279dfe26-934b-484f-bacb-c5526c40fe77"
+    },
+    {
+        "description": "Store Manager 172.29.80.151",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.151/x-ipstudio/storemanager/v1.0/stores/b4b7e8ee-509a-447a-9a11-627d2639b16d/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.151",
+        "version": "1497530122:294468090",
+        "id": "b4b7e8ee-509a-447a-9a11-627d2639b16d",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "279dfe26-934b-484f-bacb-c5526c40fe77"
+    },
+    {
+        "description": "pipeline 22 default device",
+        "receivers": [
+            "d6b52a31-a449-3a76-8da7-76333f3fde12"
+        ],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.123:46533/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            }
+        ],
+        "label": "pipeline 22 default device",
+        "version": "1500292067:756063522",
+        "id": "c3ad0377-3182-3a2d-8931-e608b70562f9",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [],
+        "node_id": "e08cd0ca-5cb1-11e7-8b51-ecf4bbdf4d40"
+    },
+    {
+        "description": "pipeline 1 default device",
+        "receivers": [
+            "153983e1-dc39-3f10-8856-51d97add00d2",
+            "3f38402e-833a-31b9-9954-1abd2105be2a",
+            "2ab72f6a-a09f-31f3-82d8-76278febb5de",
+            "1326dcfc-5732-3ce3-b457-05a593264093"
+        ],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.137:39622/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            },
+            {
+                "href": "ws://172.29.80.137:34669/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            },
+            {
+                "href": "ws://172.29.80.137:39569/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            },
+            {
+                "href": "ws://172.29.80.137:36306/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            },
+            {
+                "href": "http://172.29.80.137/x-nmos/connection/v1.0/",
+                "type": "urn:x-nmos:control:sr-ctrl/v1.0"
+            }
+        ],
+        "label": "pipeline 1 default device",
+        "version": "1497875416:658497928",
+        "id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [],
+        "node_id": "75a8783e-7668-11e6-b101-5065f32f2e2c"
+    },
+    {
+        "description": "pipeline 3 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.22/x-nmos/connection/v1.0/",
+                "type": "urn:x-nmos:control:sr-ctrl/v1.0"
+            },
+            {
+                "href": "ws://172.29.80.22:38438/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.22:37222/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            }
+        ],
+        "label": "pipeline 3 default device",
+        "version": "1497877137:196013918",
+        "id": "8806599c-bc23-39ee-946d-19fd0e90a64e",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "7a0a2e77-1392-3436-ab01-09ee4135b521"
+        ],
+        "node_id": "059a0296-4ad5-11e7-93e2-842b2b1336e3"
+    },
+    {
+        "description": "Store Manager 172.29.80.151",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.151/x-ipstudio/storemanager/v1.0/stores/cc2ce24e-b920-40a7-937a-71c8bb53109f/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.151",
+        "version": "1497530122:285838848",
+        "id": "cc2ce24e-b920-40a7-937a-71c8bb53109f",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "279dfe26-934b-484f-bacb-c5526c40fe77"
+    },
+    {
+        "description": "pipeline 1 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "http://172.29.80.43/x-nmos/connection/v1.0/",
+                "type": "urn:x-nmos:control:sr-ctrl/v1.0"
+            },
+            {
+                "href": "ws://172.29.80.43:36523/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.43:35711/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            }
+        ],
+        "label": "pipeline 1 default device",
+        "version": "1497010742:353329799",
+        "id": "d1466df0-a04f-3217-ae2a-825cb3099775",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "4eb17d62-4623-3a60-a8fe-1405d13d5785"
+        ],
+        "node_id": "bcc262de-4c5f-11e7-ae6a-782bcb08a12c"
+    },
+    {
+        "description": "pipeline 8 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.78:35824/",
+                "type": "urn:x-ipstudio:control:ws.ipp_audiooutput"
+            },
+            {
+                "href": "ws://172.29.80.78:45170/",
+                "type": "urn:x-ipstudio:control:ws.ipp_socketapp"
+            },
+            {
+                "href": "ws://172.29.80.78:33938/",
+                "type": "urn:x-ipstudio:control:ws.ipp_playstoreapp"
+            },
+            {
+                "href": "ws://172.29.80.78:42916/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            },
+            {
+                "href": "ws://172.29.80.78:43182/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            }
+        ],
+        "label": "pipeline 8 default device",
+        "version": "1500041353:676005991",
+        "id": "a4e71796-09d1-3c04-958a-1a2861371e34",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [],
+        "node_id": "5d016250-3bb1-11e7-8d41-1cc1de325d93"
+    },
+    {
+        "description": "pipeline 2 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.46:39670/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.46:39531/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            }
+        ],
+        "label": "pipeline 2 default device",
+        "version": "1498049440:234312401",
+        "id": "3c3d355e-c06f-3c2d-b5e8-c9ee526eab1e",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "6fe87ddd-1a46-343a-8c83-48ee7078b02e"
+        ],
+        "node_id": "b52c7b3a-4b7f-11e7-9294-782bcb08aad8"
+    },
+    {
+        "description": "pipeline 4 default device",
+        "receivers": [
+            "875d7038-483b-38d6-b262-70122b52b3b5"
+        ],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.81:37240/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtprx"
+            },
+            {
+                "href": "ws://172.29.80.81:46032/",
+                "type": "urn:x-ipstudio:control:ws.ipp_pluginhost"
+            }
+        ],
+        "label": "pipeline 4 default device",
+        "version": "1499685312:642947400",
+        "id": "bf523b74-d897-3c7d-961e-57db5ac37942",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [],
+        "node_id": "49ce67aa-4548-11e7-981f-2c44fd15121f"
+    },
+    {
+        "description": "Store Manager 172.29.80.185",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.80.185/x-ipstudio/storemanager/v1.0/stores/df6000be-cd3f-4ef7-a175-3ff13be68e42/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.80.185",
+        "version": "1499963662:166672060",
+        "id": "df6000be-cd3f-4ef7-a175-3ff13be68e42",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "c038e396-0d87-11e7-98e5-480fcf54bc1a"
+    },
+    {
+        "description": "Store Manager 172.29.225.17",
+        "receivers": [],
+        "tags": {
+            "urn:x-ipstudio:tag:storemanager.version_tag": [
+                "v20170615T1413-5-gc75bfcd"
+            ]
+        },
+        "controls": [
+            {
+                "href": "http://172.29.225.17/x-ipstudio/storemanager/v1.0/stores/aae72a53-d8a7-4e00-9a03-1f1b7f9c3df5/",
+                "type": "urn:x-ipstudio:control:flowstore.read"
+            }
+        ],
+        "label": "Store Manager 172.29.225.17",
+        "version": "1499936834:451857137",
+        "id": "aae72a53-d8a7-4e00-9a03-1f1b7f9c3df5",
+        "type": "urn:x-ipstudio:device:flowstore",
+        "senders": [],
+        "node_id": "e79162da-6573-11e7-a55a-ecf4bbbff46c"
+    },
+    {
+        "description": "Web browser",
+        "receivers": [
+            "88a43449-6afe-11e7-89df-a74930048888",
+            "88a4344a-6afe-11e7-89df-a74930048888"
+        ],
+        "tags": {},
+        "controls": [],
+        "label": "Janus Gateway",
+        "version": "1500302710:479516207",
+        "id": "88a43442-6afe-11e7-89df-a74930048888",
+        "type": "urn:x-nmos:device:generic",
+        "senders": [
+            "88a43447-6afe-11e7-89df-a74930048888",
+            "88a43448-6afe-11e7-89df-a74930048888"
+        ],
+        "node_id": "f248b302-969f-11e6-b582-0cc47aaa1264"
+    },
+    {
+        "description": "pipeline 2 default device",
+        "receivers": [],
+        "tags": {},
+        "controls": [
+            {
+                "href": "ws://172.29.80.121:44519/",
+                "type": "urn:x-ipstudio:control:ws.ipp_rtptx"
+            },
+            {
+                "href": "ws://172.29.80.121:38887/",
+                "type": "urn:x-ipstudio:control:ws.ipp_sdimulticapture"
+            }
+        ],
+        "label": "pipeline 2 default device",
+        "version": "1498749869:824862746",
+        "id": "48a8cde2-8146-3210-9336-dbe2e67e1b1c",
+        "type": "urn:x-nmos:device:pipeline",
+        "senders": [
+            "68dcb01d-3359-3153-b26a-f542d142a767"
+        ],
+        "node_id": "3f424350-5caf-11e7-a4f1-ecf4bbdf4c94"
     }
 ]

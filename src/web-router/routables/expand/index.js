@@ -18,6 +18,7 @@ export default (data) => {
     if (expandedSender.state.includes('routed')) mapExpandedState.route()
     if (expandedSender.state.includes('stagedRoute')) mapExpandedState.stageRoute()
     if (expandedSender.state.includes('stagedUnroute')) mapExpandedState.stageUnroute()
+
     expanded.state = mapExpandedState.state()
     expanded.stateString = stateToString(expanded.state)
     expanded.id = expandedSender.id
