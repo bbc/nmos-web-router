@@ -21,11 +21,10 @@ class ChangeQueue extends React.Component {
         actions={this.props.actions}
         change={change} />
     })
-    // let actions = this.props.actions
+
     return <div className='changes-scroll'>
       <ReactCSSTransitionGroup
-        className='transition-wrapping'
-        transitionName='example'
+        transitionName='transition'
         transitionEnterTimeout={250}
         transitionLeaveTimeout={250}>
         {changes}

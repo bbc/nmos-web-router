@@ -4,7 +4,9 @@ export default ({senders, flows, changes}) => {
       return flow.id === sender.flow_id
     })[0] || {format: 'no'}
     sender.format = flow.format
-    if (sender.format === 'no' && !sender.state.includes('removed')) sender.format = 'help'
+    if (sender.state && sender.format === 'no') {
+      if (!sender.state.includes('removed')) sender.format = 'help'
+    }
   })
 
   if (changes) {

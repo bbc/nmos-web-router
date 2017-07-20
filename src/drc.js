@@ -85,10 +85,7 @@ let Dispatcher = (options) => {
   function globalTimer (actions) {
     setTimeout(() => {
       actions.checkForExpired()
-      setTimeout(() => {
-        actions.deleteExpired()
-        globalTimer(actions)
-      }, 250)
+      globalTimer(actions)
     }, 3000)
   };
 
