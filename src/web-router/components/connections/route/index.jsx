@@ -30,6 +30,7 @@ let ExpandedRoute = ({data, routesRects, scrollTop, half}) => {
 
   let LineComponent = Path
   if (half) {
+    width = 0 // Hiding half route temporarily. Appearance should be changed.
     LineComponent = Half
     top = routesRects.top + scrollTop + senderHeight
   }
