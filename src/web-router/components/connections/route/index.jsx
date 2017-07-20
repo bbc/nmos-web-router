@@ -5,24 +5,18 @@ import Path from './path-component'
 import RouteSVG from './route-svg-component'
 
 let ExpandedRoute = ({data, routesRects, scrollTop, half}) => {
-  // Get the sender that has been clicked
   let senderEl = document.querySelector('.expanded-sender')
   if (senderEl === null) return null
 
-  // Get the bounding rectangle of the receiver's node
   let receiverEl = document.getElementById(data.receiver.id)
   let receiverNodeEl = receiverEl.querySelector('.node')
   let receiverRects = receiverNodeEl.getBoundingClientRect()
 
-  // Calculate the height of the route as the difference between the tops
-  // of the sender and receiver rectangles
   let senderButtonContainer = senderEl.querySelector('.button-container')
   let senderHeight = senderButtonContainer.getBoundingClientRect().height / 2 + 12
   let top = routesRects.top + scrollTop + senderHeight
   let height = Math.abs(top - receiverRects.top)
 
-  // Set the start and end Y co-ordinates of the route according
-  // to which end of the route is higher
   let y1 = 0
   let y2 = height
   if (receiverRects.top < top) {
@@ -31,7 +25,6 @@ let ExpandedRoute = ({data, routesRects, scrollTop, half}) => {
     top -= height
   }
 
-  // Get the width of the routes container (the gap between the senders and receivers)
   let x1 = routesRects.width / 10
   let width = routesRects.width
 
