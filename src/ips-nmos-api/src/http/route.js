@@ -32,9 +32,7 @@ module.exports = function (nmos) {
   function routeCM (id, sender, controlHref) {
     console.log('Using Connection Management API')
     if (controlHref.endsWith('/')) controlHref = controlHref.slice(0, controlHref.length - 1)
-    var stageUrl = `${controlHref}/single/receivers/${id}/staged/transportfile`
-    var disableUrl = `${controlHref}/single/receivers/${id}/staged/transportparams`
-    var activateUrl = `${controlHref}/single/receivers/${id}/activate`
+    var stageUrl = `${controlHref}/single/receivers/${id}/staged`
     var options = {
       headers: {
         'Content-Type': 'application/json',
@@ -42,33 +40,50 @@ module.exports = function (nmos) {
       }
     }
     if (Object.keys(sender).length === 0) {
-      // TODO: Detect interface_bindings from Query API records to pick one or two legs
+      // Unsubscribe
       var toPatch = {
-        'transport_params': [{
-          'rtp_enabled': false
-        }]
+        'master_enable': false,
+        'activation': {
+          'mode': 'activate_immediate'
+        }
       }
-      return axios.patch(disableUrl, toPatch, options)
+      return axios.patch(stageUrl, toPatch, options)
       .then(response => {
-        // TODO Check responses
-        return axios.post(activateUrl, {'mode': 'activate_immediate'}, options)
-      }).then(response => {
+        if (response.status !== 200) {
+          return new Promise((resolve, reject) => {
+            reject('Unable to modify Receiver configuration')
+          })
+        }
         return response.data
       })
     } else {
-      var toPut = {
-        'session_description': {
-          'data': sender.manifest_href,
-          'type': 'application/sdp',
-          'by_reference': true
-        },
-        'sender_id': sender.id
-      }
-      return axios.put(stageUrl, toPut, options)
+      // Subscribe
+      return axios.get(sender.manifest_href)
       .then(response => {
-        // TODO Check responses
-        return axios.post(activateUrl, {'mode': 'activate_immediate'}, options)
-      }).then(response => {
+        if (response.status !== 200) {
+          return new Promise((resolve, reject) => {
+            reject('Unable to fetch transport file from Sender')
+          })
+        }
+        var toPatch = {
+          'sender_id': sender.id,
+          'master_enable': true,
+          'activation': {
+            'mode': 'activate_immediate'
+          },
+          'transport_file': {
+            'data': response.data,
+            'type': 'application/sdp'
+          }
+        }
+        return axios.patch(stageUrl, toPatch, options)
+      })
+      .then(response => {
+        if (response.status !== 200) {
+          return new Promise((resolve, reject) => {
+            reject('Unable to modify Receiver configuration')
+          })
+        }
         return response.data
       })
     }
