@@ -38,20 +38,20 @@ styles the view from top to bottom */
     height: calc(100% - var(--header-height) - var(--clear-confirm-height));
     width: 100%;
 
-    & .example-enter {
+    & .transition-enter {
       opacity: 0.01;
     }
 
-    & .example-enter.example-enter-active {
+    & .transition-enter.transition-enter-active {
       opacity: 1;
       transition: opacity 250ms ease-in;
     }
 
-    & .example-leave {
+    & .transition-leave {
       opacity: 1;
     }
 
-    & .example-leave.example-leave-active {
+    & .transition-leave.transition-leave-active {
       opacity: 0.01;
       max-height: 0;
       transition: max-height 250ms, opacity 150ms ease-in;
