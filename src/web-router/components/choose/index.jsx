@@ -7,7 +7,6 @@ import AllVisible from './all-visible-component'
 import Search from './search-component'
 
 let Choose = ({view, senders, receivers, expanded, actions}) => {
-  let tempState = {senders: 'all', receivers: 'all'}
   return <Layout layouts='flush' className='box box-hidden' >
     <Search
       expanded={expanded}
@@ -17,7 +16,7 @@ let Choose = ({view, senders, receivers, expanded, actions}) => {
     <AllVisible
       expanded={expanded}
       actions={actions}
-      state={tempState} />
+      state={view.choose.allVisibleState} />
     <div className='routables routables-scroll'>
       <Routables
         side='left'
