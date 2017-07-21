@@ -20,7 +20,7 @@ let Line = ({state}) => {
           className={'line'}
           x1='0'
           y1='19'
-          x2='300'
+          x2='450'
           y2='19' />
       </svg>
       <Scissors />
