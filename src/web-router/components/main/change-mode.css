@@ -1,6 +1,6 @@
 .web-router {
   & .change-mode-container {
-    height: 30px;
+    height: 35px;
 
     & .label-container {
       text-align: right;

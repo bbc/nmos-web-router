@@ -3,9 +3,14 @@
   --remove: #ec5d57;
   --default: #a19ea0;
   --remove-icon: #fff;
+  --header-height: 35px;
 }
 
 .connections {
+  & .header {
+    height: var(--header-height);
+  }
+
   & .expanded.short {
     visibility: hidden;
   }
@@ -15,7 +20,7 @@
   }
 
   & .routables-scroll {
-    height: 90%;
+    height: calc(100% - 35px - 35px - 12px);
   }
 
   & .routable.unchecked {
