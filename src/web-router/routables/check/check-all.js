@@ -3,7 +3,9 @@ import stateToString from '../common/state-to-string'
 
 export default (routables) => {
   routables.forEach(routable => {
-    routable.state = mapState(routable).check().state()
-    routable.stateString = stateToString(routable.state)
+    if (routable.state.includes('fuzzymatch')) {
+      routable.state = mapState(routable).check().state()
+      routable.stateString = stateToString(routable.state)
+    }
   })
 }
