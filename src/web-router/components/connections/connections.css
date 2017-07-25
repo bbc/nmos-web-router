@@ -99,6 +99,11 @@
         stroke: var(--routed);
       }
     }
+
+    & .unicast .line {
+      /* Placeholder */
+      stroke: green;
+    }
   }
 
   & .receivers,

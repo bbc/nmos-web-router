@@ -3,7 +3,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "label": "H264 Receiver",
+        "label": "H264 - unicast",
         "version": "1500302239:361317212",
         "device_id": "bf523b74-d897-3c7d-961e-57db5ac37942",
         "caps": {
@@ -12,7 +12,7 @@
             ]
         },
         "id": "875d7038-483b-38d6-b262-70122b52b3b5",
-        "transport": "urn:x-nmos:transport:rtp",
+        "transport": "urn:x-nmos:transport:rtp.ucast",
         "subscription": {
             "sender_id": null
         }
@@ -39,7 +39,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "label": "MV Top Left",
+        "label": "Raw/H264 - mcast only",
         "version": "1497876725:321709342",
         "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
         "caps": {
@@ -49,7 +49,7 @@
             ]
         },
         "id": "1326dcfc-5732-3ce3-b457-05a593264093",
-        "transport": "urn:x-nmos:transport:rtp",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
         "subscription": {
             "sender_id": "b5c3274e-67e4-367b-a5f6-afafd1e7b884"
         }
@@ -58,7 +58,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:audio",
-        "label": "ap-z800-3 RTPRx",
+        "label": "Audio L16/24/32",
         "version": "1500033031:280000000",
         "device_id": "2dcdf5ea-ed26-3048-bacb-a4d88d665dfc",
         "caps": {
@@ -78,7 +78,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "label": "MV Bottom Right",
+        "label": "VC2 Receiver",
         "version": "1497878940:580000000",
         "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
         "caps": {
@@ -100,7 +100,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:audio",
-        "label": "JasonTestRx",
+        "label": "Opus receiver - ucast",
         "version": "1500297191:447697835",
         "device_id": "c3ad0377-3182-3a2d-8931-e608b70562f9",
         "caps": {
@@ -109,7 +109,7 @@
             ]
         },
         "id": "d6b52a31-a449-3a76-8da7-76333f3fde12",
-        "transport": "urn:x-nmos:transport:rtp",
+        "transport": "urn:x-nmos:transport:rtp.ucsat",
         "subscription": {
             "sender_id": null
         }
@@ -118,7 +118,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "label": "MV Bottom Left",
+        "label": "All types - unicast",
         "version": "1497876016:258846540",
         "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
         "caps": {
@@ -135,7 +135,7 @@
             ]
         },
         "id": "3f38402e-833a-31b9-9954-1abd2105be2a",
-        "transport": "urn:x-nmos:transport:rtp",
+        "transport": "urn:x-nmos:transport:rtp.ucast",
         "subscription": {
             "sender_id": "bfa8d17b-7d60-31dd-b113-e23bf26c9a85"
         }
@@ -144,7 +144,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "label": "ap-z200-1 Rx",
+        "label": "All types - mcast",
         "version": "1497876016:258846540",
         "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
         "caps": {
@@ -161,7 +161,7 @@
             ]
         },
         "id": "4f38402e-833a-31b9-9954-1abd2105be2a",
-        "transport": "urn:x-nmos:transport:rtp",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
         "subscription": {
             "sender_id": null
         }
@@ -170,7 +170,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "label": "Test Video Rx",
+        "label": "Raw/VC2/VP8 Receiver",
         "version": "1497876016:258846540",
         "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
         "caps": {
@@ -195,7 +195,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "label": "ap-z420-8 RTPRx - VP8 only",
+        "label": "VP8 Receiver - mcast",
         "version": "1500045145:23148480",
         "device_id": "e018ec90-2ebe-3910-8c3b-4d14f540256e",
         "caps": {
@@ -204,7 +204,7 @@
             ]
         },
         "id": "c875bc57-deed-3b17-9968-6532c33755fe",
-        "transport": "urn:x-nmos:transport:rtp",
+        "transport": "urn:x-nmos:transport:rtp.mcast",
         "subscription": {
             "active": false,
             "sender_id": null
@@ -214,7 +214,7 @@
         "description": "",
         "tags": {},
         "format": "urn:x-nmos:format:video",
-        "label": "MV Top Right - H264/VC2/VP8",
+        "label": "H264/VC2/VP8 Receiver",
         "version": "1497876257:59378364",
         "device_id": "f2428a75-e2f3-3c67-8bf7-d5a81dc9c551",
         "caps": {

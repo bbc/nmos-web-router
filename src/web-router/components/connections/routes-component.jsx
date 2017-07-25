@@ -46,6 +46,14 @@ let Routes = ({routes, expanded}) => {
             }
 
             let half = `half-${index}`
+
+            // Extra checks needed due to bug ^
+            if (route.sender && route.sender.transport) {
+              if (route.sender.transport.includes('rtp.ucast') && !route.state.includes('unicast')) {
+                route.state += ' unicast'
+              }
+            }
+
             return <Route
               key={`route-${route.receiver ? route.receiver.id : half}-${route.sender ? route.sender.id : half}`}
               data={route}
