@@ -168,20 +168,6 @@ It also styles the three navigation buttons at the top of the page accordingly *
     }
   }
 
-  /* @media (--large-screen) {
-    & .left {
-      transform: translate(50%);
-    }
-
-    & .center {
-      transform: translate(150%);
-    }
-
-    & .right {
-      transform: translate(300%);
-    }
-  } */
-
   &\/manual\/choose {
     & .left {
       @apply --center;

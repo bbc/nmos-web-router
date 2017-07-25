@@ -6,6 +6,8 @@
   --button-color: #fff;
   --active: #33c3f0;
   --box-border: #a19ea0;
+  --notification-height: 44px;
+  --nav-buttons-height: 38px;
 }
 
 .web-router {
@@ -28,7 +30,7 @@
   & .container,
   & .expanded-sender-container {
     position: absolute;
-    top: calc(38px + 12px);
+    top: calc(var(--nav-buttons-height) + 12px);
     width: 100%;
     min-width: 620px;
     transition: all 0.5s;
@@ -63,7 +65,7 @@
     width: 100%;
     overflow: hidden;
     transition: all 0.5s;
-    height: 38px;
+    height: var(--nav-buttons-height);
 
     @media (--large-screen) {
       height: 0;
@@ -74,15 +76,15 @@
   &-notification-alert {
     & .container,
     & .expanded-sender-container {
-      top: calc(38px + 44px);
+      top: calc(var(--nav-buttons-height) + var(--notification-height) + 24px);
 
-      @media (--medium-screen) {
-        top: calc(44px + 12px);
+      @media (--large-screen) {
+        top: calc(var(--notification-height) + 12px);
       }
     }
 
     & .buttons-container {
-      top: calc(38px + 12px);
+      top: calc(var(--notification-height) + 12px);
     }
   }
 
