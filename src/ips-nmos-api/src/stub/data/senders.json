@@ -36,11 +36,11 @@
         "description": "A raw video test source",
         "tags": {},
         "flow_id": "e9ab3f0b-34a2-3357-9008-2b7accd03867",
-        "label": "25p test source",
+        "label": "Unicast test source",
         "version": "1496936323:622132567",
         "manifest_href": "http://172.29.80.40/x-ipstudio/pipelinemanager/v1.0/run/pipeline/6/pipel/ipp_rtptxfe9e/misc/sdp/",
         "id": "bfa8d17b-7d60-31dd-b113-e23bf26c9a85",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "transport": "urn:x-nmos:transport:rtp.ucast",
         "device_id": "b6124a29-120b-3b12-9079-402d6d96ab69"
     },
     {

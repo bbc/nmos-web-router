@@ -4,6 +4,7 @@ import expandSenders from './expand-senders'
 import expandReceivers from './expand-receivers'
 import mapState from '../common/map-state'
 import stateToString from '../common/state-to-string'
+import checkForUnicast from './check-for-unicast'
 
 export default (data) => {
   data = cloneRoutables(data)
@@ -28,9 +29,13 @@ export default (data) => {
 
     return expanded
   }
+
+  let unicast = {inUse: false, routed: false, subscription_id: ''}
+
   return (id) => {
     expandSenders(data, id)
-    expandReceivers(data, id)
+    checkForUnicast(data, id, unicast)
+    expandReceivers(data, id, unicast)
     data.expanded = expanded(data.senders)
     return View(data)
   }
