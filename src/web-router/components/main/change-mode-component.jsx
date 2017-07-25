@@ -5,8 +5,6 @@ import { Link } from 'react-router'
 import { LongPrimer } from '../../../gel-react/typography'
 import Empty from '../shared/empty'
 
-// import dispatchError from '../../dispatchers/error-dispatcher'
-
 let ChangeModeCheckbox = ({changes, routingMode, location, choose, actions}) => {
   function onCheckboxClick () {
     if (changes) {
@@ -14,8 +12,6 @@ let ChangeModeCheckbox = ({changes, routingMode, location, choose, actions}) => 
         actions.unstageChange(change)
       })
     }
-    let message = 'Change mode has been clicked'
-    actions.alert(message)
     actions.changeMode()
   }
 
