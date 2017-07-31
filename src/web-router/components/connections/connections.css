@@ -188,6 +188,11 @@ to bottom */
         padding-left: 10px;
         margin-top: 10px;
         width: 100%;
+        z-index: -3;
+
+        &.expanded {
+          z-index: -1;
+        }
 
         & .line {
           transition: stroke-dasharray 0.25s ease-out, stroke 0.25s ease-out;
@@ -210,6 +215,7 @@ to bottom */
         &.unicast .line,
         &.unicast.expanded .line {
           transform: translate(0, 1px);
+          stroke: var(--unicast);
         }
 
         &.expanded .line,
@@ -224,10 +230,6 @@ to bottom */
           & .line {
             stroke: var(--remove);
           }
-        }
-
-        &.unicast .line {
-          stroke: var(--unicast);
         }
       }
     }
