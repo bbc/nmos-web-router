@@ -109,7 +109,7 @@
             ]
         },
         "id": "d6b52a31-a449-3a76-8da7-76333f3fde12",
-        "transport": "urn:x-nmos:transport:rtp.ucsat",
+        "transport": "urn:x-nmos:transport:rtp.ucast",
         "subscription": {
             "sender_id": null
         }

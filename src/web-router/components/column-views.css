@@ -61,7 +61,6 @@ It also styles the three navigation buttons at the top of the page accordingly *
 
     & .container,
     & .expanded-sender-container {
-      top: 0;
       width: 33%;
     }
   }

@@ -26,6 +26,7 @@ export default (data) => {
     expanded.label = expandedSender.label
     expanded.description = expandedSender.description
     expanded.format = expandedSender.format
+    expanded.transport = expandedSender.transport
 
     return expanded
   }

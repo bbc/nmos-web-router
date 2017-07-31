@@ -10,6 +10,7 @@ class ExpandedSender extends React.Component {
   render () {
     let sender = this.props.sender
     let actions = this.props.actions
+    let nodeClassName = (sender.transport.includes('rtp.ucast')) ? 'node unicast' : 'node'
 
     return <div className={sender.stateString}>
       <div className={`full expanded-sender routable ${sender.stateString}`}>
@@ -31,7 +32,7 @@ class ExpandedSender extends React.Component {
             </LayoutItem>
           </Layout>
           <div className='node-container'>
-            <div className={`node`} />
+            <div className={nodeClassName} />
           </div>
         </div>
       </div>

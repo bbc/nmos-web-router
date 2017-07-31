@@ -1,5 +1,3 @@
-import './change-mode.css'
-
 import React, { PropTypes } from 'react'
 import { LayoutItem } from '../../../gel-react/grid'
 import { DoublePica } from '../../../gel-react/typography'

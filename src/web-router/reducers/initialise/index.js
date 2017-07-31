@@ -1,5 +1,6 @@
 import loading from './loading'
 import Routables from '../../routables'
+import allVisibleState from './all-visible-state'
 
 export default (state, action, merge) => {
   let initialised = action.receivers || action.senders || action.flows
@@ -15,8 +16,14 @@ export default (state, action, merge) => {
   routables.insert.flows(data.flows)
   routables.filter(state.view.choose.term)
 
+  // If available, restore checked/unchecked status of routables from
+  // browser session storage
+  routables.check.senders('saved')
+  routables.check.receivers('saved')
+
   let view = Object.assign({}, state.view, {
-    loading: loading(routables.view(), state.view)
+    loading: loading(routables.view(), state.view, action),
+    choose: allVisibleState(data.senders, data.receivers, state.view.choose)
   }, routables.view())
 
   return merge({

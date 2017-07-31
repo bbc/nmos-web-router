@@ -18,5 +18,8 @@ module.exports = function (baseUrl, apiVersion, name) {
         } else data.type = name
         return data
       })
+      .catch(function (error) {
+        console.error(error)
+      })
   }
 }

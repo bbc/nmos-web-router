@@ -7,5 +7,8 @@ module.exports = function (baseUrl, apiVersion) {
       .then(response => {
         return response.data
       })
+      .catch(function (error) {
+        console.error(error)
+      })
   }
 }
