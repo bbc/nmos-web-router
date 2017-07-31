@@ -1,166 +1,235 @@
+/* This .css file styles some elements of the 'Route' view. It is roughly
+structured such that the css file from top to bottom styles the view from top
+to bottom */
+
 :root {
   --routed: #f5d328;
   --remove: #ec5d57;
   --default: #a19ea0;
+  --unicast: #1cc94d;
   --remove-icon: #fff;
   --header-height: 35px;
+  --change-mode-height: 35px;
 }
 
 .connections {
-  & .header {
-    height: var(--header-height);
-  }
-
   & .expanded.short {
     visibility: hidden;
   }
 
-  & .column-title {
-    text-align: left;
-  }
+  /* Styles the change mode text and checkbox */
+  & .change-mode-container {
+    height: var(--change-mode-height);
 
-  & .routables-scroll {
-    height: calc(100% - 35px - 35px - 12px);
-  }
+    & .label-container {
+      text-align: right;
+    }
 
-  & .routable.unchecked {
-    display: none;
-  }
-
-  & .routes {
-    position: relative;
-    z-index: -2;
-    padding-right: 19px;
-    left: -40%;
-
-    &-container {
+    & .checkbox-container {
+      margin-left: 10px;
+      width: 30px;
       position: relative;
-      width: 100%;
-      height: 100%;
-    }
 
-    &.expanded {
-      & .route {
-        & .line {
-          stroke: color(var(--default) tint(75%));
+      & .checkbox {
+        position: absolute;
+        right: 2px;
+
+        &:hover {
+          cursor: pointer;
         }
 
-        &-unrouting .line {
-          stroke: color(var(--remove) tint(30%));
+        & .gel-icon {
+          margin: auto;
+          width: 100%;
+          height: 100%;
         }
-      }
-    }
 
-    & .route {
-      position: absolute;
-      padding: 2px 0;
-      padding-left: 10px;
-      margin-top: 10px;
-      width: 100%;
-
-      & .line {
-        transition: stroke-dasharray 0.25s ease-out, stroke 0.25s ease-out;
-        fill: transparent;
-        stroke-linecap: round;
-        stroke-width: 3;
-        stroke: color(var(--default) tint(30%));
-        stroke-dasharray: 0, 0;
-      }
-
-      &-routing,
-      &-unrouting,
-      &-staged-route,
-      &-staged-unroute {
-        & .line {
-          stroke-dasharray: 15, 15;
+        & .gel-icon-no,
+        & .gel-icon-empty {
+          display: none;
         }
-      }
-
-      &.expanded {
-        & .line {
-          stroke: var(--routed);
-        }
-      }
-
-      &-staged-unroute.expanded {
-        & .line {
-          stroke: var(--remove);
-        }
-      }
-
-      &-unrouting,
-      &-staged-unroute {
-        & .line {
-          stroke: var(--remove);
-        }
-      }
-
-      &-staged-route .line {
-        stroke: var(--routed);
       }
     }
 
-    & .unicast .line {
-      /* Placeholder */
-      stroke: green;
+    &.manual .checkbox-container .checkbox .gel-icon-empty {
+      display: block;
+    }
+
+    &.automatic .checkbox-container .checkbox .gel-icon-no {
+      display: block;
     }
   }
 
-  & .receivers,
-  & .senders {
-    & .node {
-      top: 50%;
+  /* Styles the 'Senders' and 'Receivers' column titles */
+  & .header {
+    height: var(--header-height);
 
-      & .gel-icon {
-        fill: transparent;
-      }
+    & .column-title {
+      text-align: left;
     }
   }
 
-  & .senders .node {
-    right: 0;
-    transform: translate(12px, -50%);
-  }
+  /* The scrollable area occupying most of the view */
+  & .routables-scroll {
+    height: calc(100% - var(--header-height) - var(--change-mode-height) - 12px);
 
-  & .receivers {
-    position: relative;
-    left: 20%;
+    & .routable.unchecked {
+      display: none;
+    }
 
-    & .node {
-      left: 0;
-      transform: translate(-12px, -50%);
+    /* Style the routables nodes which are not present in the 'Choose' view */
+    & .receivers,
+    & .senders {
+      & .node {
+        top: 50%;
 
-      &-container-routed {
-        z-index: 1;
+        & .gel-icon {
+          fill: transparent;
+        }
+      }
+
+      & .stagedRoute .node {
+        background-color: var(--routed);
+      }
+
+      & .stagedUnroute .node {
+        background-color: var(--remove);
       }
     }
 
-    & .routable {
-      &.routed,
-      &.unrouting,
-      &.remove {
-        & .node-container {
+    & .senders {
+      & .node {
+        right: 0;
+        transform: translate(12px, -50%);
+      }
+
+      & .node.unicast {
+        transform: translate(9px, -50%) rotate(45deg);
+      }
+    }
+
+    & .receivers {
+      position: relative;
+      left: 20%;
+
+      & .node {
+        left: 0;
+        transform: translate(-12px, -50%);
+
+        &-container-routed {
           z-index: 1;
+        }
+      }
 
-          /* transform: translateX(-26px); */
+      & .node.unicast {
+        transform: translate(-9px, -50%) rotate(45deg);
 
-          & .gel-icon {
-            fill: var(--remove-icon);
+        & .gel-icon {
+          transform: rotate(315deg) translate(7px, -50%);
+        }
+      }
+
+      & .routable {
+        &.routed,
+        &.unrouting,
+        &.remove {
+          & .node-container {
+            z-index: 1;
+
+            & .gel-icon {
+              fill: var(--remove-icon);
+            }
           }
         }
       }
     }
-  }
 
-  /* Staged routes are the temp routes that appear in manual routing mode */
-  & .receivers,
-  & .senders {
-    & .stagedRoute .node {
-      background-color: var(--routed);
-    }
+    /* Style the routes connecting routables */
+    & .routes {
+      position: relative;
+      z-index: -2;
+      padding-right: 19px;
+      left: -40%;
 
-    & .stagedUnroute .node {
-      background-color: var(--remove);
+      &-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Fade routes not connected to expanded sender */
+      &.expanded {
+        & .route {
+          & .line {
+            stroke: color(var(--default) tint(75%));
+          }
+
+          &-unrouting .line {
+            stroke: color(var(--remove) tint(30%));
+          }
+
+          &-staged-unroute .line {
+            stroke: color(var(--remove) tint(50%));
+          }
+
+          &-staged-route .line {
+            stroke: color(var(--routed) tint(50%));
+          }
+
+          &.unicast .line {
+            stroke: color(var(--unicast) tint(50%));
+          }
+        }
+      }
+
+      & .route {
+        position: absolute;
+        padding: 2px 0;
+        padding-left: 10px;
+        margin-top: 10px;
+        width: 100%;
+
+        & .line {
+          transition: stroke-dasharray 0.25s ease-out, stroke 0.25s ease-out;
+          fill: transparent;
+          stroke-linecap: round;
+          stroke-width: 3;
+          stroke: color(var(--default) tint(30%));
+          stroke-dasharray: 0, 0;
+        }
+
+        &-routing,
+        &-unrouting,
+        &-staged-route,
+        &-staged-unroute {
+          & .line {
+            stroke-dasharray: 15, 15;
+          }
+        }
+
+        &.unicast .line,
+        &.unicast.expanded .line {
+          transform: translate(0, 1px);
+        }
+
+        &.expanded .line,
+        &-staged-route .line {
+          stroke: var(--routed);
+        }
+
+        &-staged-unroute.expanded,
+        &-staged-unroute.unicast,
+        &-unrouting,
+        &-staged-unroute {
+          & .line {
+            stroke: var(--remove);
+          }
+        }
+
+        &.unicast .line {
+          stroke: var(--unicast);
+        }
+      }
     }
   }
 }

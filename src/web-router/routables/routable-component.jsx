@@ -2,30 +2,9 @@ import './routables.css'
 import React, { PropTypes } from 'react'
 import Icon from '../components/shared/icon-component'
 import Checkbox from './checkbox-component'
-import { No } from '../../gel-react/iconography'
+import NodeComponent from './node-component'
 
 const noop = function () {}
-
-class Node extends React.Component {
-  componentDidMount () {
-    this.props.onRender(this.nodeEl)
-  }
-  render () {
-    return <div className='node-container'>
-      <div
-        ref={(nodeEl) => { this.nodeEl = nodeEl }}
-        onClick={this.props.onClick}
-        className='node'>
-        <No />
-      </div>
-    </div>
-  }
-}
-
-Node.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  onRender: PropTypes.func.isRequired
-}
 
 let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender, columnTitle, timeRemoved }) => {
   id = id || ''
@@ -47,11 +26,13 @@ let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, on
     />
   }
 
-  let NodeComponent = null
+  let RoutableNode = null
   if (node !== 'none') {
-    NodeComponent = <Node
+    let unicast = (routable.transport.includes('rtp.ucast'))
+    RoutableNode = <NodeComponent
       onClick={onNode}
       onRender={onNodeRender}
+      unicast={unicast}
     />
   }
 
@@ -69,7 +50,7 @@ let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, on
       <span className='label'>{routable.label}</span>
     </div>
     {CheckboxComponent}
-    {NodeComponent}
+    {RoutableNode}
   </div>
 }
 

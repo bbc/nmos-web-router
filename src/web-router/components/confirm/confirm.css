@@ -38,6 +38,7 @@ styles the view from top to bottom */
     height: calc(100% - var(--header-height) - var(--clear-confirm-height));
     width: 100%;
 
+    /* Animates the adding/removing of a change */
     & .transition-enter {
       opacity: 0.01;
     }
@@ -110,11 +111,19 @@ styles the view from top to bottom */
         & .node {
           right: 0;
           transform: translate(12px, -50%);
+
+          &.unicast {
+            transform: translate(9px, -50%) rotate(45deg);
+          }
         }
       }
 
       & .receivers .node {
         transform: translate(-12px, -50%);
+
+        &.unicast {
+          transform: translate(-9px, -50%) rotate(45deg);
+        }
       }
 
       /* Apply positioning to the line container and line svg such that

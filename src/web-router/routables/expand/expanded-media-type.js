@@ -6,7 +6,8 @@ export default ({id, senders, flows}) => {
     let flow = flows.filter(flow => {
       return flow.id === flowID
     })[0]
-    return flow.media_type
+    if (flow) return flow.media_type
+    else return 'no flow found'
   }
   return 'contracting'
 }

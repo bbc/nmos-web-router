@@ -9,7 +9,11 @@
       "status": "loading",
       "notLoaded": ["receivers", "senders", "flows"],
       "loaded": [],
-      "errored": []
+      "errored": [],
+      "restoredChecked": {
+        "senders": false,
+        "receivers": false
+      }
     },
     "choose": {
       "term": "",

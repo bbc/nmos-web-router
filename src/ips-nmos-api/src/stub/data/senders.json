@@ -73,7 +73,7 @@
         "version": "1500302710:579172585",
         "manifest_href": "http://10.0.3.1:8090/x-ipstudio/webrtc-gateway/v1.0/senders/88a43448-6afe-11e7-89df-a74930048888/stream.sdp",
         "id": "88a43448-6afe-11e7-89df-a74930048888",
-        "transport": "urn:x-nmos:transport:rtp.mcast",
+        "transport": "urn:x-nmos:transport:rtp.ucast",
         "device_id": "88a43442-6afe-11e7-89df-a74930048888"
     },
     {
