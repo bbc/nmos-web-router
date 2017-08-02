@@ -24,23 +24,15 @@ export default (data) => {
     }
 
     if (change.type === 'route') {
-      if (change.subscriptionID) {
-        unstageMulti({data, sender, receiver, subscription})
-      } else {
-        unstageRoute({data, sender, receiver})
-      }
+      if (change.subscriptionID) unstageMulti({data, sender, receiver, subscription})
+      else unstageRoute({data, sender, receiver})
     } else {
       unstageUnroute({data, sender, receiver})
     }
 
-    let targetID = change.receiver.id
-    data.changes.forEach(change => {
-      if (change.receiver.id === targetID) change.state = 'unstaged'
-    })
-
     data.routes.sort(sortRoutes)
     data.changes = data.changes.filter(oneChange => {
-      return !(oneChange.sender.id === change.sender.id && oneChange.receiver.id === change.receiver.id)
+      return !(oneChange.receiver.id === change.receiver.id)
     })
 
     return View(data)

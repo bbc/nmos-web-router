@@ -16,7 +16,7 @@
   width: 100%;
   max-width: 1860px;
   min-width: 640px;
-  height: 100%;
+  height: calc(100% - 62px - 12px);
   min-height: 650px;
   top: calc(38px + 3 * 12px);
   left: 0;
@@ -45,7 +45,7 @@
   }
 
   & .container {
-    height: 80%;
+    height: calc(100% - 12px);
     left: 0;
   }
 
@@ -76,6 +76,7 @@
   &-notification-alert {
     & .container,
     & .expanded-sender-container {
+      height: calc(100% - 12px - var(--notification-height) - 12px);
       top: calc(var(--nav-buttons-height) + var(--notification-height) + 24px);
 
       @media (--large-screen) {
@@ -137,10 +138,14 @@
     padding: 12px;
     margin-left: 16px;
     margin-right: 16px;
-    height: 100%;
+    height: calc(100% - 26px - 44px - 38px);
 
     @media (--medium-screen), (--large-screen) {
       border: solid 1px var(--box-border);
+    }
+
+    @media (--large-screen) {
+      height: calc(100% - 26px - 44px);
     }
   }
 

@@ -86,7 +86,7 @@ let Dispatcher = (options) => {
     setTimeout(() => {
       actions.checkForExpired()
       globalTimer(actions)
-    }, 300000)
+    }, 60000)
   };
 
   return (dispatch) => {
