@@ -1,4 +1,4 @@
-const expirationTimeMins = 30 // Set the desired timeout in minutes here
+const expirationTimeMins = 10 // Set the desired timeout in minutes here
 const expirationTimeMS = expirationTimeMins * 60 * 1000
 
 export default (data) => {

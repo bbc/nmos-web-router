@@ -7,7 +7,7 @@ import Senders from './senders-component'
 import Routes from './routes-component'
 import Receivers from './receivers-component'
 import addChanges from './add-changes-to-routes'
-import ChangeMode from '../main/change-mode-component'
+import ChangeMode from './change-mode-component'
 
 let Connections = ({expanded, senders, receivers, routes, actions, routingMode, changes, location, choose}) => {
   if (changes.length >= 1) {

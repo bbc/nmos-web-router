@@ -21,6 +21,28 @@ const types = [
   'senders',
   'sources'
 ]
+const videoTypes = [
+  'video/raw',
+  'video/H264',
+  'video/vc2',
+  'video/x-vc2',
+  'video/x-pgf',
+  'video/VP8'
+]
+const audioTypes = [
+  'audio/L16',
+  'audio/L24',
+  'audio/L32',
+  'audio/x-pgf',
+  'audio/opus'
+]
+const dataTypes = [
+  'video/smpte291',
+  'application/x-pgf'
+]
+const muxTypes = [
+  'video/SMPTE2022-6'
+]
 
 module.exports = {
   type () { return chance.pickone(types) },
@@ -38,7 +60,14 @@ module.exports = {
     })
     return tags
   },
-  caps () { return {} },
+  caps (format) {
+    let caps = {media_types: []}
+    if (format === 'urn:x-nmos:format:video') caps.media_types = videoTypes
+    else if (format === 'urn:x-nmos:format:audio') caps.media_types = audioTypes
+    else if (format === 'urn:x-nmos:format:data') caps.media_types = dataTypes
+    else if (format === 'urn:x-nmos:format:mux') caps.media_types = muxTypes
+    return caps
+  },
   label () { return chance.sentence() },
   transport () { return chance.pickone(transports) },
   id () { return new RandExp(regex).gen() },
@@ -63,5 +92,12 @@ module.exports = {
     for (let i = 0; i < count; i++) services.push(this.service())
     return services
   },
-  bool () { return chance.bool() }
+  bool () { return chance.bool() },
+  mediaType (format) {
+    if (format === 'urn:x-nmos:format:video') return chance.pickone(videoTypes)
+    else if (format === 'urn:x-nmos:format:audio') return chance.pickone(audioTypes)
+    else if (format === 'urn:x-nmos:format:data') return chance.pickone(dataTypes)
+    else if (format === 'urn:x-nmos:format:mux') return chance.pickone(muxTypes)
+    return []
+  }
 }

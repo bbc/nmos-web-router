@@ -1,11 +1,12 @@
 const random = require('./random')
 
 module.exports = () => {
+  let format = random.format()
   return {
     description: random.description(),
-    format: random.format(),
+    format: format,
     tags: random.tags(),
-    caps: random.caps(),
+    caps: random.caps(format),
     label: random.label(),
     transport: random.transport(),
     device_id: random.id(),

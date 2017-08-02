@@ -18,6 +18,10 @@ describe('checking', () => {
 
     data = insert({}).receivers(receivers).view()
     data = insert(data).senders(senders).view()
+
+    data.receivers.forEach((r) => {
+      r.state += 'fuzzymatch'
+    })
   })
 
   it('"all" routables changes them all to "checked"', () => {
