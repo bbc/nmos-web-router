@@ -25,12 +25,8 @@ export default (data) => {
       if (receiver.state.includes('routed')) {
         subscription = getRoutable(data.senders, receiver.subscription.sender_id)
         stageMulti({data, sender, receiver, subscription})
-      } else {
-        stageRoute({data, sender, receiver})
-      }
-    } else {
-      stageUnroute({data, sender, receiver})
-    }
+      } else stageRoute({data, sender, receiver})
+    } else stageUnroute({data, sender, receiver})
 
     data.routes.sort(sortRoutes)
     let newChange = {

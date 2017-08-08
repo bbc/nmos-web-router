@@ -18,7 +18,7 @@ module.exports = function (nmos) {
   function route (id, sender, href, versions) {
     console.log('Using Node API')
     if (href.endsWith('/')) href = href.slice(0, href.length - 1)
-    if (typeof versions !== Array) versions = ['v1.0']
+    if (!Array.isArray(versions)) versions = ['v1.0']
     var url = `${href}/${constants.NODE_URL}/${maxAPIVersion(versions)}/receivers/${id}/target`
     var options = {
       headers: {
