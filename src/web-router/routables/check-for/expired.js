@@ -1,4 +1,6 @@
 const expirationTimeMins = 10 // Set the desired timeout in minutes here
+// If the value is changed, ensure the corresponding value is changed in './expired.spec.js'
+// The timer tick is set in 'ips-web/src/drc.js'
 const expirationTimeMS = expirationTimeMins * 60 * 1000
 
 export default (data) => {

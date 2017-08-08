@@ -176,9 +176,9 @@ to bottom */
             stroke: color(var(--routed) tint(50%));
           }
 
-          &.unicast .line {
+          /* &.unicast .line {
             stroke: color(var(--unicast) tint(50%));
-          }
+          } */
         }
       }
 
@@ -214,8 +214,9 @@ to bottom */
 
         &.unicast .line,
         &.unicast.expanded .line {
-          transform: translate(0, 1px);
-          stroke: var(--unicast);
+          transform: translate(-2px, 1px);
+
+          /* stroke: var(--unicast); */
         }
 
         &.expanded .line,

@@ -6,9 +6,7 @@ export default (senders, receivers, changes) => {
   })
   removedSenders.forEach(sender => {
     changes.forEach(change => {
-      if (change.sender.id === sender.id) {
-        change.state = 'unavailable-sender'
-      }
+      if (change.sender.id === sender.id) change.state = 'unavailable-sender'
     })
   })
 
@@ -18,11 +16,8 @@ export default (senders, receivers, changes) => {
   removedReceivers.forEach(receiver => {
     changes.forEach(change => {
       if (change.receiver.id === receiver.id) {
-        if (change.state === 'unavailable-sender') {
-          change.state = 'unavailable-routables'
-        } else {
-          change.state = 'unavailable-receiver'
-        }
+        if (change.state === 'unavailable-sender') change.state = 'unavailable-routables'
+        else change.state = 'unavailable-receiver'
       }
     })
   })
