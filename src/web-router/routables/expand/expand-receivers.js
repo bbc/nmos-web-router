@@ -7,11 +7,10 @@ export default (data, id, unicast) => {
   let format = ''
 
   if (!unicast.subscription_id) {
-    if (data.receivers[0].caps.media_types) {
-      mediaType = expandedMediaType({senders: data.senders, id, flows: data.flows})
-    } else {
-      format = expandedFormat({senders: data.senders, id})
-    }
+    data.receivers.forEach(receiver => {
+      if (receiver.caps.media_types && !mediaType) mediaType = expandedMediaType({senders: data.senders, id, flows: data.flows})
+    })
+    format = expandedFormat({senders: data.senders, id})
   }
   filterReceivers(data.receivers, mediaType, format, unicast)
 }
