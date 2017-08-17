@@ -4,7 +4,7 @@ import Line from './line-component'
 import Path from './path-component'
 import RouteSVG from './route-svg-component'
 
-let ExpandedRoute = ({data, routesRects, scrollTop, half}) => {
+let ExpandedRoute = ({data, routesRects, scrollTop, half, unicast}) => {
   let senderEl = document.querySelector('.expanded-sender')
   if (senderEl === null) return null
 
@@ -30,16 +30,19 @@ let ExpandedRoute = ({data, routesRects, scrollTop, half}) => {
 
   let LineComponent = Path
   if (half) {
-    width = 0 // Hiding half route temporarily. Appearance should be changed.
+    width = 0 // TODO Re-design half-route, or remove it altogether
     LineComponent = Half
     top = routesRects.top + scrollTop + senderHeight
   }
 
   top -= routesRects.top
 
+  let state = data.state
+  if (unicast) state += ' unicast'
+
   return <RouteSVG
     top={top}
-    state={`${data.state} expanded`}
+    state={`${state} expanded`}
     width={width}
     height={height}
     >
@@ -51,10 +54,11 @@ ExpandedRoute.propTypes = {
   data: PropTypes.object.isRequired,
   routesRects: PropTypes.object.isRequired,
   scrollTop: PropTypes.number.isRequired,
-  half: PropTypes.bool.isRequired
+  half: PropTypes.bool.isRequired,
+  unicast: PropTypes.bool.isRequired
 }
 
-let FullRoute = ({data, routesRects, scrollTop}) => {
+let FullRoute = ({data, routesRects, scrollTop, unicast}) => {
   let senderEl = document.getElementById(data.sender.id)
   let senderNodeEl = senderEl.querySelector('.node')
   let senderRects = senderNodeEl.getBoundingClientRect()
@@ -79,9 +83,12 @@ let FullRoute = ({data, routesRects, scrollTop}) => {
   let LineComponent = Path
   if (y1 === y2) LineComponent = Line
 
+  let state = data.state
+  if (unicast) state += ' unicast'
+
   return <RouteSVG
     top={top}
-    state={data.state}
+    state={state}
     width={width}
     height={height}
     >
@@ -92,20 +99,23 @@ let FullRoute = ({data, routesRects, scrollTop}) => {
 FullRoute.propTypes = {
   data: PropTypes.object.isRequired,
   routesRects: PropTypes.object.isRequired,
-  scrollTop: PropTypes.number.isRequired
+  scrollTop: PropTypes.number.isRequired,
+  unicast: PropTypes.bool.isRequired
 }
 
-let HalfRoute = ({data, side, routesRects, scrollTop}) => {
+let HalfRoute = ({data, side, routesRects, scrollTop, unicast}) => {
   let routableEl = document.getElementById(data.routable.id)
   let routableNodeEl = routableEl.querySelector('.node')
   let routableRects = routableNodeEl.getBoundingClientRect()
 
   let width = 0
   let top = routableRects.top - routesRects.top
+  let state = data.state
+  if (unicast) state += ' unicast'
 
   return <RouteSVG
     top={top}
-    state={data.state}
+    state={state}
     width={width}
     height={4}
     >
@@ -117,10 +127,11 @@ HalfRoute.propTypes = {
   side: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
   routesRects: PropTypes.object.isRequired,
-  scrollTop: PropTypes.number.isRequired
+  scrollTop: PropTypes.number.isRequired,
+  unicast: PropTypes.bool.isRequired
 }
 
-let Route = ({data, expanded, halfs}) => {
+let Route = ({data, expanded, halfs, unicast}) => {
   let routesEl = document.querySelector('.routes')
   if (routesEl === null) return null
   let routesRects = routesEl.getBoundingClientRect()
@@ -132,6 +143,7 @@ let Route = ({data, expanded, halfs}) => {
       routesRects={routesRects}
       scrollTop={scrollTop}
       half={halfs.includes('receiver')}
+      unicast={unicast}
       />
   } else if (halfs.length === 1) {
     let side = 'right'
@@ -150,12 +162,14 @@ let Route = ({data, expanded, halfs}) => {
       routesRects={routesRects}
       scrollTop={scrollTop}
       side={side}
+      unicast={unicast}
       />
   } else {
     return <FullRoute
       data={data}
       routesRects={routesRects}
       scrollTop={scrollTop}
+      unicast={unicast}
       />
   }
 }
@@ -163,7 +177,8 @@ let Route = ({data, expanded, halfs}) => {
 Route.propTypes = {
   data: PropTypes.object.isRequired,
   expanded: PropTypes.bool.isRequired,
-  halfs: PropTypes.array.isRequired
+  halfs: PropTypes.array.isRequired,
+  unicast: PropTypes.bool.isRequired
 }
 
 export default Route

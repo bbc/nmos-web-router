@@ -168,17 +168,15 @@ to bottom */
             stroke: color(var(--remove) tint(30%));
           }
 
-          &-staged-unroute .line {
+          &-staged-unroute .line,
+          &-staged-unroute.unicast .line {
             stroke: color(var(--remove) tint(50%));
           }
 
-          &-staged-route .line {
+          &-staged-route .line,
+          &-staged-route.unicast .line {
             stroke: color(var(--routed) tint(50%));
           }
-
-          /* &.unicast .line {
-            stroke: color(var(--unicast) tint(50%));
-          } */
         }
       }
 
@@ -220,14 +218,16 @@ to bottom */
         }
 
         &.expanded .line,
-        &-staged-route .line {
+        &-staged-route .line,
+        &.expanded.unicast .line {
           stroke: var(--routed);
         }
 
         &-staged-unroute.expanded,
         &-staged-unroute.unicast,
         &-unrouting,
-        &-staged-unroute {
+        &-staged-unroute,
+        &-staged-unroute.expanded.unicast {
           & .line {
             stroke: var(--remove);
           }

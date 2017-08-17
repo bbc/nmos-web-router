@@ -13,7 +13,8 @@
       "restoredChecked": {
         "senders": false,
         "receivers": false
-      }
+      },
+      "restoredChanges": false
     },
     "choose": {
       "term": "",
@@ -29,7 +30,8 @@
       "timeout": null
     },
     "routingMode": "automatic",
-    "changes": []
+    "changes": [],
+    "useSessionStorage": true
   },
   "initialised": false,
   "location": "/"

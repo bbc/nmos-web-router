@@ -8,9 +8,8 @@ export default (state, action, merge) => {
 
   routables.update[action.name](action.update[action.name])
   routables.filter(state.view.choose.term)
-  if (state.view.routingMode === 'manual') {
-    routables.checkFor('removed')
-  }
+  if (state.view.routingMode === 'manual') routables.checkFor('removed')
+
   let updatedView = routables.view()
   view = Object.assign({}, state.view, updatedView)
 

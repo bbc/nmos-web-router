@@ -30,8 +30,8 @@ describe('stage-change', () => {
     stageChange = StageChange(data)
   })
 
-  it('a routing change is staged', () => {
-    data = stageChange(data.senders[0].id, data.receivers[0].id, 'route').view()
+  it('stages a routing change', () => {
+    data = stageChange(data.senders[0].id, data.receivers[0].id, 'route', true).view()
 
     expect(data.changes.length).toBe(1)
     expect(data.changes[0].type).toBe('route')
@@ -43,8 +43,8 @@ describe('stage-change', () => {
     expect(data.senders[0].state).toContain('stagedRoute')
   })
 
-  it('an unrouting change is staged', () => {
-    data = stageChange(data.senders[1].id, data.receivers[1].id, 'unroute').view()
+  it('stages an unrouting change', () => {
+    data = stageChange(data.senders[1].id, data.receivers[1].id, 'unroute', true).view()
 
     expect(data.changes.length).toBe(1)
     expect(data.changes[0].type).toBe('unroute')

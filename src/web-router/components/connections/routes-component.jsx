@@ -47,10 +47,11 @@ let Routes = ({routes, expanded}) => {
 
             let half = `half-${index}`
 
+            let unicast = false
             // Extra checks needed due to bug ^
             if (route.sender && route.sender.transport) {
-              if (route.sender.transport.includes('rtp.ucast') && !route.state.includes('unicast')) {
-                route.state += ' unicast'
+              if (route.sender.transport.includes('rtp.ucast')) {
+                unicast = true
               }
             }
 
@@ -59,6 +60,7 @@ let Routes = ({routes, expanded}) => {
               data={route}
               expanded={isExpanded}
               halfs={halfs}
+              unicast={unicast}
               />
           })
       }</div>

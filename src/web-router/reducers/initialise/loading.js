@@ -26,10 +26,14 @@ export default (data, view, action) => {
   if (action.senders) restoredChecked.senders = true
   if (action.receivers) restoredChecked.receivers = true
 
+  let restoredChanges = false
+  if (restoredChecked.senders && restoredChecked.receivers) restoredChanges = true
+
   return {
     notLoaded: getNotLoading(data),
     loaded: getLoaded(data),
     errored: view.loading.errored,
-    restoredChecked: restoredChecked
+    restoredChecked: restoredChecked,
+    restoredChanges: restoredChanges
   }
 }

@@ -30,6 +30,7 @@ describe('stage-change', () => {
     data.changes = []
     checkFor = CheckFor(data)
 
+    /* Stage a change and then remove both the sender and receiver */
     let stageChange = StageChange(data)
     data = stageChange(data.senders[0].id, data.receivers[0].id, 'route').view()
 

@@ -8,9 +8,9 @@ import Search from './search-component'
 import saveCheckedRoutables from './save-checked-routables'
 
 let Choose = ({view, senders, receivers, expanded, actions}) => {
-  if (view.loading.restoredChecked.senders && view.loading.restoredChecked.receivers) {
+  if (view.loading.restoredChecked.senders && view.loading.restoredChecked.receivers && view.useSessionStorage) {
     // Store the 'checked' state of each routable in browser memory so it can be restored
-    // if the session is refreshed
+    // if the session is refreshed. Only do this once the web router has fully loaded.
     saveCheckedRoutables(senders, receivers)
   }
   return <Layout layouts='flush' className='box box-hidden' >

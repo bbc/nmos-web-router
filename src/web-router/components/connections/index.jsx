@@ -6,14 +6,9 @@ import Header from './header-component'
 import Senders from './senders-component'
 import Routes from './routes-component'
 import Receivers from './receivers-component'
-import addChanges from './add-changes-to-routes'
 import ChangeMode from './change-mode-component'
 
 let Connections = ({expanded, senders, receivers, routes, actions, routingMode, changes, location, choose}) => {
-  if (changes.length >= 1) {
-    addChanges({changes, routes, senders, receivers})
-  }
-
   return <Layout className='connections box box-hidden connections-box'
     onClick={function () { if (!expanded.state.includes('contracted')) actions.toggleSender(expanded) }}>
     <ChangeMode

@@ -1,3 +1,11 @@
+/*
+Expand functions deal with the expanding of a sender when it is clicked
+  A copy of the sender is made and added to state.view.expanded
+  expandReceivers uses functions in /filter-receivers to grey out receivers
+    that can't be connected to the expanded sender. The filtering is based
+    on format, transport and media_type (where available)
+*/
+
 import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import expandSenders from './expand-senders'

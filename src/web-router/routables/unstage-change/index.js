@@ -1,8 +1,6 @@
 /*
-These functions are called from the unstage change reducers
-If a change has a subscriptionID then this means there is an existing route
-  which has been changed to a 'staged unroute' and this needs to be changed back
-  to a 'routed' route - unstageMulti does this
+UnstageChange is used to remove changes from state and to undo their changes
+  to the 'Route' view
 */
 
 import cloneRoutables from '../common/clone-routables'
@@ -26,9 +24,7 @@ export default (data) => {
     if (change.type === 'route') {
       if (change.subscriptionID) unstageMulti({data, sender, receiver, subscription})
       else unstageRoute({data, sender, receiver})
-    } else {
-      unstageUnroute({data, sender, receiver})
-    }
+    } else unstageUnroute({data, sender, receiver})
 
     data.routes.sort(sortRoutes)
     data.changes = data.changes.filter(oneChange => {
