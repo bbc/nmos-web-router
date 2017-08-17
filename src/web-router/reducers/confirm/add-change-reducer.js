@@ -7,7 +7,7 @@ export default (state, action, merge) => {
   // to the sender. If this is the case then do nothing.
   if (!(action.receiver.subscription.sender_id === action.sender.id && action.changeType === 'route')) {
     let routables = Routables(state.view)
-    updatedView = routables.stageChange(action.sender.id, action.receiver.id, action.changeType).view()
+    updatedView = routables.stageChange(action.sender.id, action.receiver.id, action.changeType, true).view()
   }
   let view = Object.assign({}, state.view, updatedView)
 

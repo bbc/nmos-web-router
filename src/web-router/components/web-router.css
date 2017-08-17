@@ -49,10 +49,6 @@
     left: 0;
   }
 
-  & .expanded-sender-container {
-    height: 0;
-  }
-
   & .expanded-sender {
     height: 0;
     margin-top: 88px;
@@ -87,6 +83,10 @@
     & .buttons-container {
       top: calc(var(--notification-height) + 12px);
     }
+  }
+
+  & .expanded-sender-container {
+    height: 0;
   }
 
   & .buttons {

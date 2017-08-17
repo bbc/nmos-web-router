@@ -1,7 +1,6 @@
 /*
-These functions are called from the deploy change reducers
-In both cases (route or unroute) the state of the relevant routables is updated
-  accordingly and staged routes are updated or removed accordingly
+The actual http get/post commands are carried out in the dispatcher
+These functions change the state of routables and routes accordingly
 */
 
 import cloneRoutables from '../common/clone-routables'

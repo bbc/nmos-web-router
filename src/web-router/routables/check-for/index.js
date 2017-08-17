@@ -1,7 +1,9 @@
 /*
-These functions are called from the add change reducers
-In both cases the state of the relevant routables is updated accordingly
-  and routes are updated or added accordingly
+CheckFor functions are used to look at the state of routables
+  checkForExpired is used to regularly check if any routables have been removed for
+    a certain amount of time and to delete them if so
+  checkForRemoved/Unremoved are used to check routables and ensure any staged changes
+    are up-to-date (displaying 'sender unavailable' etc. if a routable has been removed)
 */
 
 import cloneRoutables from '../common/clone-routables'

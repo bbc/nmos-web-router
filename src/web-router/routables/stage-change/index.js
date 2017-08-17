@@ -1,9 +1,11 @@
 /*
-These functions are called from the add change reducers
-  Stage Multi means both a route and an unroute are staged because
-  the user is routing a receiver which is already routed to a different sender
-  Therefore the existing route (subscription) is turned dashed red to indicate
-  to the user that it will be deleted if they deploy their desired change
+Stage Change functions are used to push a change into state and to reflect
+  it in the UI by changing routable and route states
+  These functions are also used to re-stage changes after updates from web socket grains
+  The reason for this is that the web socket grains often reset routables and route states
+    as staged changes are only stored client side
+  StageMulti stages a routing change and also shows that an existing route will be
+    broken as a result of the routing change
 */
 
 import cloneRoutables from '../common/clone-routables'
@@ -15,28 +17,35 @@ import stageUnroute from './unroute'
 import stageMulti from './multi'
 
 export default (data) => {
-  return (senderID, receiverID, changeType) => {
+  return (senderID, receiverID, changeType, changeIsNew) => {
     data = cloneRoutables(data)
     let receiver = getRoutable(data.receivers, receiverID)
     let sender = getRoutable(data.senders, senderID)
     let subscription = ''
 
     if (changeType === 'route') {
-      if (receiver.state.includes('routed')) {
+      if (receiver.state.includes('routed') || (receiver.state.includes('stagedRoute') && !changeIsNew)) {
         subscription = getRoutable(data.senders, receiver.subscription.sender_id)
-        stageMulti({data, sender, receiver, subscription})
+
+        if (subscription && subscription.id !== sender.id) stageMulti({data, sender, receiver, subscription})
+        else {
+          subscription = ''
+          stageRoute({data, sender, receiver})
+        }
       } else stageRoute({data, sender, receiver})
     } else stageUnroute({data, sender, receiver})
 
     data.routes.sort(sortRoutes)
-    let newChange = {
-      sender: sender,
-      receiver: receiver,
-      type: changeType,
-      state: 'staged',
-      subscriptionID: subscription.id
+    if (changeIsNew) {
+      let newChange = {
+        sender: sender,
+        receiver: receiver,
+        type: changeType,
+        state: 'staged',
+        subscriptionID: subscription.id
+      }
+      data.changes.push(newChange)
     }
-    data.changes.push(newChange)
 
     return View(data)
   }

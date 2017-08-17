@@ -1,5 +1,6 @@
 import clone from 'clone'
 import sortRoutes from '../common/sort-routes'
+import StageChange from '../stage-change'
 
 export default (data) => {
   function get (routables, id) {
@@ -27,6 +28,13 @@ export default (data) => {
         sender: clone(sender)
       }
     })
+
+  if (data.changes) {
+    let stageChange = StageChange(data)
+    data.changes.forEach(change => {
+      stageChange(change.sender.id, change.receiver.id, change.type, false)
+    })
+  }
 
   data.routes.sort(sortRoutes)
 }

@@ -54,9 +54,11 @@ let WebRouter = ({view, actions}) => {
     <div className='container confirm-view right'>
       <LayoutItem><DoublePica>Confirm</DoublePica></LayoutItem>
       <Confirm
+        loading={view.loading}
         changes={view.changes}
         actions={actions}
-        senders={view.senders} />
+        senders={view.senders}
+        useSessionStorage={view.useSessionStorage} />
     </div>
   </div>
 }

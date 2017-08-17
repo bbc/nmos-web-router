@@ -1,3 +1,9 @@
+/*
+Route functions manipulate the state of routables
+  The relevant receiver is unrouted by default and then routed to
+  the relevant sender, if it is a routing change
+*/
+
 import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import sortRoutes from '../common/sort-routes'

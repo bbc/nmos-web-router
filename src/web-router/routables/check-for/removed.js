@@ -1,5 +1,5 @@
 export default (senders, receivers, changes) => {
-  // Should probably extend this to change the state of the sender and receiver
+  // Could possibly extend this to change the state of the sender and receiver
   // so that nodes don't remain yellow/red
   let removedSenders = senders.filter(sender => {
     return sender.state.includes('removed')

@@ -37,7 +37,7 @@ describe('stage-change', () => {
     data = stageChange(data.senders[1].id, data.receivers[1].id, 'unroute').view()
   })
 
-  it('a routing change is unstaged', () => {
+  it('unstages a routing change', () => {
     data = unstageChange(data.changes[0]).view()
 
     expect(data.changes.length).toBe(1)
@@ -47,7 +47,7 @@ describe('stage-change', () => {
     expect(data.senders[0].state).toContain('unrouted')
   })
 
-  it('an unrouting change is unstaged', () => {
+  it('unstages an unrouting change', () => {
     data = unstageChange(data.changes[1]).view()
 
     expect(data.changes.length).toBe(1)

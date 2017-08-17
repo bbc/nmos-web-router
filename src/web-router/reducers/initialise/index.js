@@ -1,6 +1,7 @@
 import loading from './loading'
 import Routables from '../../routables'
 import allVisibleState from './all-visible-state'
+import restoreChanges from './restore-changes'
 
 export default (state, action, merge) => {
   let initialised = action.receivers || action.senders || action.flows
@@ -16,14 +17,20 @@ export default (state, action, merge) => {
   routables.insert.flows(data.flows)
   routables.filter(state.view.choose.term)
 
-  // If available, restore checked/unchecked status of routables from
-  // browser session storage
-  routables.check.senders('saved')
-  routables.check.receivers('saved')
+  if (state.view.useSessionStorage) {
+    routables.check.senders('saved')
+    routables.check.receivers('saved')
+
+    restoreChanges(data, routables)
+  }
+  // If a page refresh has occurred then this will ensure the user stays in the same
+  // routing mode
+  let routingMode = window.location.href.includes('manual') ? 'manual' : 'automatic'
 
   let view = Object.assign({}, state.view, {
     loading: loading(routables.view(), state.view, action),
-    choose: allVisibleState(data.senders, data.receivers, state.view.choose)
+    choose: allVisibleState(data.senders, data.receivers, state.view.choose),
+    routingMode: routingMode
   }, routables.view())
 
   return merge({

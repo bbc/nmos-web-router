@@ -12,7 +12,6 @@ import alert from './notifications/alert-reducer'
 import info from './notifications/info-reducer'
 import allClear from './notifications/all-clear-reducer'
 import checkForExpired from './check-for-expired-reducer'
-import deleteExpired from './delete-expired-reducer'
 import changeMode from './change-mode-reducer'
 import addChange from './confirm/add-change-reducer'
 import unstageChange from './confirm/unstage-change-reducer'
@@ -33,7 +32,6 @@ export default {
   info,
   allClear,
   checkForExpired,
-  deleteExpired,
   changeMode,
   addChange,
   unstageChange,

@@ -1,3 +1,9 @@
+/*
+Insert functions are used to insert a new sender/receiver/flow into the web router
+  Routes are inserted afterwards so they are up to date. Part of insert-routes
+  is re-staging any staged changes so they are still visible in the 'Route' view
+*/
+
 import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import insertSenders from './insert-senders'
