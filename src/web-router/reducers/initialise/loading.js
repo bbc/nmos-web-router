@@ -2,10 +2,10 @@
 // if the length was 0, and push to loaded if greater than 0,
 // however it is acceptable to have no senders/receivers/flows
 // in the Query API so these checks were no longer suitable
-// The 'loading' functionality needs to be changed
+// TODO The 'loading' functionality needs to be changed
 function getNotLoading (data) {
   let notLoaded = []
-  if (!data.receivers.length) notLoaded.push('receivers')
+  if (!data.receivers) notLoaded.push('receivers')
   if (!data.senders) notLoaded.push('senders')
   if (!data.flows) notLoaded.push('flows')
   return notLoaded

@@ -1,18 +1,19 @@
 :root {
   --alert: #ec5d57;
   --info: #33c3f0;
+  --notification-height: 44px;
 }
 
 .notifications {
   margin-bottom: 12px;
-  height: 44px;
+  height: var(--notification-height);
   overflow: hidden;
   transition: all 0.5s;
 }
 
 .notification {
   background-color: #ebebeb;
-  height: 44px;
+  height: var(--notification-height);
 
   & .gel-icon {
     margin-top: 4px;
@@ -32,6 +33,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 44px;
+    line-height: var(--notification-height);
   }
 }
