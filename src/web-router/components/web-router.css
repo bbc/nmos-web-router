@@ -1,3 +1,7 @@
+/* This .css file styles the web router itself including the containers
+that contain each of the three views. It is roughly structured such that
+the file from top to bottom styles the web router from top to bottom */
+
 @custom-media --small-screen (max-width: 1279px);
 @custom-media --medium-screen (min-width: 1280px) and (max-width: 1859px);
 @custom-media --large-screen (min-width: 1860px);
@@ -8,55 +12,88 @@
   --box-border: #a19ea0;
   --notification-height: 44px;
   --nav-buttons-height: 38px;
+  --IPS-nav-height: 62px; /* The nav bar at the top to navigate between IPS apps */
+  --view-title-height: 30px;
 }
 
+/* .web-router contains everything other than the IPS navigation bar */
 .web-router {
   position: absolute;
   overflow: hidden;
   width: 100%;
   max-width: 1860px;
   min-width: 640px;
-  height: calc(100% - 62px - 12px);
+
+  /* 12px gap between IPS nav bar and web router */
+  height: calc(100% - var(--IPS-nav-height) - 12px);
   min-height: 650px;
-  top: calc(38px + 3 * 12px);
+  top: calc(var(--IPS-nav-height) + 12px);
   left: 0;
   right: 0;
   margin: auto;
 
-  &-notification-none .notifications {
-    height: 0;
-  }
+  &-notification {
+    /* Set the default height and top values for containers when there is
+    no notification present */
+    &-none {
+      & .container,
+      & .expanded-sender-container {
+        top: calc(var(--nav-buttons-height) + 12px);
 
-  & .container,
-  & .expanded-sender-container {
-    position: absolute;
-    top: calc(var(--nav-buttons-height) + 12px);
-    width: 100%;
-    min-width: 620px;
-    transition: all 0.5s;
+        @media (--large-screen) {
+          top: 0;
+        }
+      }
 
-    @media (--medium-screen), (--large-screen) {
-      width: 50%;
+      & .container {
+        height: calc(100% - 12px - var(--nav-buttons-height));
+
+        @media (--large-screen) {
+          height: calc(100% - 12px);
+        }
+      }
+
+      & .buttons-container {
+        top: 0;
+      }
+
+      & .notifications {
+        height: 0;
+      }
     }
 
-    @media (--large-screen) {
-      top: 0;
+    /* Adjust height and top values when a notification appears */
+    &-info,
+    &-alert {
+      & .container,
+      & .expanded-sender-container {
+        top: calc(var(--notification-height) + 12px + var(--nav-buttons-height) + 12px);
+
+        @media (--large-screen) {
+          top: calc(var(--notification-height) + 12px);
+        }
+      }
+
+      & .container {
+        height: calc(100% - 12px - var(--nav-buttons-height) - var(--notification-height) - 12px);
+
+        @media (--large-screen) {
+          height: calc(100% - 12px - var(--notification-height) - 12px);
+        }
+      }
+
+      & .buttons-container {
+        top: calc(var(--notification-height) + 12px);
+      }
+    }
+
+    & .expanded-sender-container {
+      height: 0;
     }
   }
 
-  & .container {
-    height: calc(100% - 12px);
-    left: 0;
-  }
-
-  & .expanded-sender {
-    height: 0;
-    margin-top: 88px;
-    margin-left: 112px;
-  }
-
+  /* Container for the three navigation buttons (Choose, Route, Confirm) */
   & .buttons-container {
-    top: 0;
     position: absolute;
     width: 100%;
     overflow: hidden;
@@ -66,105 +103,83 @@
     @media (--large-screen) {
       height: 0;
     }
-  }
 
-  &-notification-info,
-  &-notification-alert {
-    & .container,
-    & .expanded-sender-container {
-      height: calc(100% - 12px - var(--notification-height) - 12px);
-      top: calc(var(--nav-buttons-height) + var(--notification-height) + 24px);
+    & .buttons {
+      width: 360px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
 
-      @media (--large-screen) {
-        top: calc(var(--notification-height) + 12px);
+      & .button {
+        border: 1px solid #555;
+      }
+
+      & .center-nav {
+        border-radius: 0;
+        border-left-width: 0 !important;
+        border-right-width: 0 !important;
+      }
+
+      & .left-nav {
+        border-radius: 4px 0 0 4px;
+      }
+
+      & .right-nav {
+        border-radius: 0 4px 4px 0;
+      }
+
+      & .nav-1\/3 {
+        text-align: center;
+        width: 33.3333%;
+
+        & .label {
+          width: 100%;
+        }
       }
     }
-
-    & .buttons-container {
-      top: calc(var(--notification-height) + 12px);
-    }
   }
 
+  /* Default values for containers (containing each of the three views) */
+  & .container,
   & .expanded-sender-container {
-    height: 0;
-  }
-
-  & .buttons {
-    width: 360px;
-    position: absolute;
     left: 0;
-    right: 0;
-    margin: auto;
-
-    & .button {
-      border: 1px solid #555;
-    }
-  }
-
-  & .center-nav {
-    border-radius: 0;
-    border-left-width: 0 !important;
-    border-right-width: 0 !important;
-  }
-
-  & .left-nav {
-    border-radius: 4px 0 0 4px;
-  }
-
-  & .right-nav {
-    border-radius: 0 4px 4px 0;
-  }
-
-  & .nav-1\/2 {
-    text-align: center;
-    width: 50%;
-
-    & .label {
-      width: 100%;
-    }
-  }
-
-  & .nav-1\/3 {
-    text-align: center;
-    width: 33.3333%;
-
-    & .label {
-      width: 100%;
-    }
-  }
-
-  & .box {
-    border: solid 1px transparent;
-    padding: 12px;
-    margin-left: 16px;
-    margin-right: 16px;
-    height: calc(100% - 26px - 44px - 38px);
+    position: absolute;
+    width: 100%;
+    min-width: 620px;
+    transition: all 0.5s;
 
     @media (--medium-screen), (--large-screen) {
-      border: solid 1px var(--box-border);
+      width: 50%;
     }
 
-    @media (--large-screen) {
-      height: calc(100% - 26px - 44px);
+    /* Draw a box around each view, below the view's title */
+    & .box {
+      border: solid 1px transparent;
+      padding: 12px;
+      margin-left: 16px;
+      margin-right: 16px;
+
+      /* This calculation ensures the bottom of the box is at least 14px from the bottom
+      of the web browser. The 26px accounts for the padding and borders around the box */
+      height: calc(100% - var(--view-title-height) - 26px - 14px);
+
+      @media (--medium-screen), (--large-screen) {
+        border: solid 1px var(--box-border);
+      }
+
+      @media (--large-screen) {
+        height: calc(100% - var(--view-title-height) - 26px - 14px);
+      }
+
+      &-hidden {
+        overflow-y: hidden;
+      }
+
+      & .routables-scroll,
+      & .changes-scroll {
+        overflow-y: auto;
+      }
     }
-  }
-
-  & .box-scroll {
-    overflow-y: scroll;
-  }
-
-  & .box-hidden {
-    overflow-y: hidden;
-  }
-
-  & .routables-scroll,
-  & .changes-scroll {
-    overflow-y: auto;
-  }
-
-  /* This is a bit of a hack */
-  & .route-view-layout {
-    margin-left: 1px;
-    margin-right: 1px;
   }
 }

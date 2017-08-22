@@ -1,3 +1,6 @@
+/* This .css file styles the routables seen in all three views inlcuding
+their label text, icon and node or checkbox */
+
 :root {
   --unrouted: #a19ea0;
   --routed: #f5d328;
@@ -8,15 +11,17 @@
   --remove-icon: #fff;
   --node-width: 24px;
   --background-color: #dfe3e2;
+  --routable-height: 38px;
 }
 
 .routable {
   position: relative;
-  height: 38px;
+  height: var(--routable-height);
   margin-top: 8px;
   width: 99%;
-  max-height: 38px;
+  max-height: var(--routable-height);
 
+  /* Button is the large /grey clickable area containing the icon and label */
   & .button {
     width: 100%;
     cursor: initial;
@@ -47,11 +52,12 @@
     }
   }
 
+  /* Nodes are the semi-circles present on routables in the 'Route' and 'Confirm' views */
   & .node-container {
     width: 100%;
     position: absolute;
     top: 0;
-    height: 38px;
+    height: var(--routable-height);
     z-index: -1;
     transition: transform 0.25s;
 
@@ -72,6 +78,8 @@
         transition: fill 0.25s;
       }
 
+      /* TODO Decide on node design for unicast routables, or leave them the same
+      Currently makes node a small square and rotates it/hides part of it to make a triangle */
       &.unicast {
         border-radius: 0;
         height: 18px;
@@ -80,6 +88,7 @@
     }
   }
 
+  /* A full routable is an expanded one (i.e. a sender after it has been clicked) */
   &.full {
     margin-top: 140px;
     margin-left: 10%;
@@ -89,6 +98,43 @@
     & .button-container {
       width: 100%;
       position: absolute;
+
+      & .button {
+        height: auto;
+        background-color: color(var(--expanded) tint(30%));
+
+        & .gel-icon {
+          height: 40px;
+          margin-top: 16px;
+          width: 100%;
+        }
+
+        & .label {
+          width: 95%;
+        }
+
+        & .label,
+        & .description {
+          text-align: center;
+          white-space: normal;
+        }
+
+        & .description {
+          font-style: italic;
+        }
+
+        & .description-container {
+          line-height: 18px;
+          margin-left: 16px;
+          margin-right: 16px;
+          margin-bottom: 16px;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: var(--expanded);
+        }
+      }
     }
 
     & .node-container {
@@ -97,61 +143,28 @@
       height: 100%;
       top: 0;
       z-index: -1;
-    }
 
-    & .node {
-      right: 0;
-      top: 50%;
-      transform: translate(12px, -50%);
+      & .node {
+        right: 0;
+        top: 50%;
+        transform: translate(12px, -50%);
 
-      &.unicast {
-        transform: translate(10px, -50%) rotate(45deg);
-      }
-    }
-
-    & .button {
-      height: auto;
-      background-color: color(var(--expanded) tint(30%));
-
-      & .gel-icon {
-        height: 40px;
-        margin-top: 16px;
-        width: 100%;
-      }
-
-      & .label {
-        width: 95%;
-      }
-
-      & .label,
-      & .description {
-        text-align: center;
-        white-space: normal;
-      }
-
-      & .description {
-        font-style: italic;
-      }
-
-      & .description-container {
-        line-height: 18px;
-        margin-left: 16px;
-        margin-right: 16px;
-        margin-bottom: 16px;
-      }
-
-      &:hover {
-        cursor: pointer;
-        background-color: var(--expanded);
+        /* Rotate and hide part of the square node to make a triangle */
+        &.unicast {
+          transform: translate(10px, -50%) rotate(45deg);
+        }
       }
     }
   }
 
-  & .unrouting .node {
+  /* Colour settings for routables in different states */
+  & .unrouting .node,
+  &.stagedUnroute .node {
     background-color: var(--remove);
   }
 
-  &.routed .node {
+  &.routed .node,
+  &.stagedRoute .node {
     background-color: var(--routed);
 
     &:hover {
@@ -189,6 +202,7 @@
     }
   }
 
+  /* 'Other' only seems to be used in tests for map-state */
   &.other {
     & .button {
       background-color: color(var(--contracted) tint(25%));
@@ -224,31 +238,13 @@
       }
     }
   }
-
-  &.expired {
-    transition: opacity 0.25s;
-    transition: max-height 0.25s;
-    max-height: 0;
-    opacity: 0;
-  }
 }
 
+/* Set a box shadow around an expanded routable */
 .expanded {
   & .button-container,
   & .node {
     box-shadow: rgba(85, 85, 85, 0.5) -7px 7px 20px 3px;
-  }
-}
-
-.stagedRoute {
-  & .node-container .node {
-    background-color: var(--routed);
-  }
-}
-
-.stagedUnroute {
-  & .node-container .node {
-    background-color: var(--remove);
   }
 }
 
@@ -259,6 +255,7 @@
   }
 }
 
+/* The checkbox present next to routables in the 'Choose' view */
 .checkbox {
   margin-left: 4px;
   display: inline-block;
@@ -284,6 +281,7 @@
   }
 }
 
+/* Display the appropriate icon in the checkbox according to checkbox state */
 .checked .gel-icon-no,
 .all .gel-icon-no,
 .some .gel-icon-minus,

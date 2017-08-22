@@ -87,14 +87,6 @@ to bottom */
           fill: transparent;
         }
       }
-
-      & .stagedRoute .node {
-        background-color: var(--routed);
-      }
-
-      & .stagedUnroute .node {
-        background-color: var(--remove);
-      }
     }
 
     & .senders {

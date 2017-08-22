@@ -67,10 +67,6 @@ It also styles the three navigation buttons at the top of the page accordingly *
 }
 
 .web-router {
-  &-notification-none .notifications {
-    height: 0;
-  }
-
   /* Default view */
 
   & .right {
