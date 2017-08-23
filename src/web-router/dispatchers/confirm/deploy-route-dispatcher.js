@@ -21,7 +21,7 @@ export default (actions) => {
         actions.deployRoute({ sender, receiver, subscriptionID })
       })
       .catch(error => {
-        if (error.message === 'Network Error') error = `Can not connect to server, can not route ${sender.label} to ${receiver.label}`
+        if (error.message === 'Network Error') error = `Unable to connect to server, cannot route ${sender.label} to ${receiver.label}`
         dispatchError(actions)(error)
       })
   }

@@ -29,7 +29,7 @@ describe('stage-change', () => {
     checkFor = CheckFor(data)
 
     let stageChange = StageChange(data)
-    data = stageChange(data.senders[0].id, data.receivers[0].id, 'route').view()
+    data = stageChange(data.senders[0].id, data.receivers[0].id, 'route', true).view()
   })
 
   it('removing the sender makes the change state "unavailable-sender"', () => {

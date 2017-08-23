@@ -33,8 +33,8 @@ describe('stage-change', () => {
 
     /* Stage a route change and an unroute change to the sender/receiver pairs */
 
-    data = stageChange(data.senders[0].id, data.receivers[0].id, 'route').view()
-    data = stageChange(data.senders[1].id, data.receivers[1].id, 'unroute').view()
+    data = stageChange(data.senders[0].id, data.receivers[0].id, 'route', true).view()
+    data = stageChange(data.senders[1].id, data.receivers[1].id, 'unroute', true).view()
   })
 
   it('deploys a routing change and updates routable states accordingly', () => {

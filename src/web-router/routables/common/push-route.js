@@ -7,10 +7,11 @@ export default ({data, receiver, sender, staged}) => {
   })[0]
   if (route === undefined) {
     route = {
-      state: (staged) ? 'staged-route' : 'routing',
+      state: '',
       receiver: clone(receiver),
       sender: clone(sender)
     }
     data.routes.push(route)
   }
+  route.state = (staged) ? 'staged-route' : 'routing'
 }
