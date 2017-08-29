@@ -2,7 +2,7 @@ var react = require('react')
 exports.default = function () {
   return react.createElement(
     'svg',
-    { className: 'gel-icon gel-icon-ips-video-icon', xmlns: 'http://www.w3.org/2000/svg', width: '165', height: '165', viewBox: '0 0 165 165' },
+    { className: 'gel-icon gel-icon-ips-audio', xmlns: 'http://www.w3.org/2000/svg', width: '165', height: '165', viewBox: '0 0 165 165' },
     react.createElement('line', { fill: 'none', strokeWidth: '8', strokeLinecap: 'round', strokeMiterlimit: '10', x1: '5', y1: '78', x2: '5', y2: '89' }),
     react.createElement('line', { fill: 'none', strokeWidth: '8', strokeLinecap: 'round', strokeMiterlimit: '10', x1: '26', y1: '36', x2: '26', y2: '130' }),
     react.createElement('line', { fill: 'none', strokeWidth: '8', strokeLinecap: 'round', strokeMiterlimit: '10', x1: '65', y1: '73', x2: '65', y2: '93' }),

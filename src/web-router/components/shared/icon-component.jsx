@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import { Help, IPSAudioIcon, IPSVideoIcon, IPSDataIcon, IPSMuxIcon, No } from '../../../gel-react/iconography'
+import { IPSQuestionMark, IPSAudioIcon, IPSVideoIcon, IPSDataIcon, IPSMuxIcon, IPSCross } from '../../../gel-react/iconography'
 import Empty from './empty'
 
 const icons = {
@@ -8,8 +8,8 @@ const icons = {
   video: IPSVideoIcon,
   data: IPSDataIcon,
   mux: IPSMuxIcon,
-  no: No,
-  help: Help,
+  no: IPSCross,
+  help: IPSQuestionMark,
   blank: Empty
 }
 

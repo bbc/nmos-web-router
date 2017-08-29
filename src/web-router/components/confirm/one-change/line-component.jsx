@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { Scissors } from '../../../../gel-react/iconography.js'
+import { IPSScissors } from '../../../../gel-react/iconography.js'
 import { LayoutItem } from '../../../../gel-react/grid'
 
 let Line = ({state}) => {
@@ -23,7 +23,7 @@ let Line = ({state}) => {
           x2='450'
           y2='19' />
       </svg>
-      <Scissors />
+      <IPSScissors />
     </LayoutItem>
   }
 }
