@@ -1,4 +1,5 @@
 var axios = require('axios')
+var constants = require('./constants')
 
 export default (nmos, bulkStuff) => {
   return nmos.devices(bulkStuff.deviceID)
@@ -95,6 +96,55 @@ export default (nmos, bulkStuff) => {
         console.log('Error with bulk route request!')
         console.log(error)
       })
+    } else {
+      // Fall back to old connection management method
+      // TODO this probably won't work yet, need to fall back to Node API and
+      // loop through changes and do them one by one as before
+      return nmos.nodes(device.node_id).then(node => {
+        let versions = ['v1.0'] // Fallback for Node API v1.0
+        if (node.api) { // Available from Node API v1.1 onwards
+          versions = node.api.versions
+        }
+        return route(bulkStuff.receiverIDs, bulkStuff.senders, node.href, versions)
+      })
     }
   })
+
+  function route (ids, senders, href, versions) {
+    console.log('Attempting to fall back to Node API')
+    if (href.endsWith('/')) href = href.slice(0, href.length - 1)
+    if (!Array.isArray(versions)) versions = ['v1.0']
+    let apiVersion = maxAPIVersion(versions)
+    let promises = []
+    let i = 0
+
+    var options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+
+    ids.forEach(id => {
+      var url = `${href}/${constants.NODE_URL}/${apiVersion}/receivers/${id}/target`
+      promises.push(axios.put(url, senders[i], options))
+      i++
+    })
+    // This should fire off the individual PUT requests, need to add something to deal with
+    // responses though
+    return axios.all(promises)
+  }
+
+  function maxAPIVersion (versions) {
+    let major = 1
+    let minor = 0
+    versions.forEach(version => {
+      let versionBits = version.slice(1).split('.')
+      if (versionBits[0] > major || (versionBits[0] === major && versionBits[1] > minor)) {
+        major = versionBits[0]
+        minor = versionBits[1]
+      }
+    })
+    return 'v' + major + '.' + minor
+  }
 }
