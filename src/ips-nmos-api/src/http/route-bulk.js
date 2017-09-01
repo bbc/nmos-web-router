@@ -18,7 +18,7 @@ export default (nmos, bulkStuff) => {
       if (controlHref.endsWith('/')) controlHref = controlHref.slice(0, controlHref.length - 1)
       var stageUrl = `${controlHref}/bulk/receivers`
       // Hack to avoid proxy on r730-3
-      stageUrl = stageUrl.replace('123', '123:8856')
+      // stageUrl = stageUrl.replace('123', '123:8856')
 
       var options = {
         headers: {

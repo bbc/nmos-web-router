@@ -3,7 +3,6 @@ import isEmpty from '../common/is-empty'
 const noop = () => {}
 
 export default ({add, remove, grains, data}) => {
-  console.log(grains)
   grains.forEach(grain => {
     let hasPost = !isEmpty(grain.post)
     let hasPre = !isEmpty(grain.pre)

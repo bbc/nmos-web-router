@@ -26,10 +26,8 @@ export default (actions) => {
     })
 
     let bulkStuff = { senders: bulkSenders, receiverIDs: bulkReceiverIDs, deviceID: deviceID }
-    console.log(bulkStuff)
     window.nmos.route({bulkStuff: bulkStuff})
       .then(() => {
-        console.log('Back in dispatcher')
         actions.deployBulkRoute({bulkChanges})
       })
       .catch((error) => {
