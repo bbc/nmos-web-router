@@ -1,5 +1,6 @@
 var axios = require('axios')
 var constants = require('./constants')
+import routeBulk from './route-bulk'
 
 module.exports = function (nmos) {
   function maxAPIVersion (versions) {
@@ -121,8 +122,9 @@ module.exports = function (nmos) {
     })
   }
 
-  return function (id, sender, href, versions) {
-    if (typeof href === 'string' && href !== '') return route(id, sender, href, versions)
+  return function ({id, sender, href, versions, bulkStuff}) {
+    if (bulkStuff) return routeBulk(nmos, bulkStuff)
+    else if (typeof href === 'string' && href !== '') return route(id, sender, href, versions)
     return routeHref(id, sender)
   }
 }

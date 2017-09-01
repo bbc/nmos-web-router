@@ -10,7 +10,7 @@ export default (actions) => {
     delete sender.format
     delete sender.state
     delete sender.stateString
-    window.nmos.route(receiver.id, sender)
+    window.nmos.route({id: receiver.id, sender: sender})
       .then(() => {
         actions.route({ receiver, sender })
       })

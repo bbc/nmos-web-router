@@ -59,7 +59,7 @@ module.exports = (nmos, httpPort, wsPort) => {
     })
 
     app.put(`/x-nmos/node/v1.0/receivers/:id/target`, (req, res) => {
-      nmos.route(req.params.id, req.body)
+      nmos.route({id: req.params.id, sender: req.body})
         .then(data => {
           res.json(data)
         })

@@ -17,6 +17,7 @@ import addChange from './confirm/add-change-reducer'
 import unstageChange from './confirm/unstage-change-reducer'
 import deployRoute from './confirm/deploy-route-reducer'
 import deployUnroute from './confirm/deploy-unroute-reducer'
+import deployBulkRoute from './confirm/deploy-bulk-route-reducer'
 
 export default {
   initialise,
@@ -37,6 +38,7 @@ export default {
   unstageChange,
   deployRoute,
   deployUnroute,
+  deployBulkRoute,
   all: {
     router: {
       LOCATION_CHANGE: locationChange

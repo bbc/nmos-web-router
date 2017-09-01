@@ -17,6 +17,7 @@ import addChange from './confirm/add-change-dispatcher'
 import unstageChange from './confirm/unstage-change-dispatcher'
 import deployRoute from './confirm/deploy-route-dispatcher'
 import deployUnroute from './confirm/deploy-unroute-dispatcher'
+import deployBulkRoute from './confirm/deploy-bulk-route-dispatcher'
 
 export default {
   initialise,
@@ -37,5 +38,6 @@ export default {
   addChange,
   unstageChange,
   deployRoute,
-  deployUnroute
+  deployUnroute,
+  deployBulkRoute
 }
