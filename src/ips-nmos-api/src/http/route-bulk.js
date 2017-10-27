@@ -63,7 +63,8 @@ export default (nmos, bulkStuff) => {
                 'transport_file': {
                   'data': transports[transportCounter],
                   'type': 'application/sdp'
-                }
+                },
+                'sender_id': sender.id
               }
             }
             transportCounter++
@@ -98,8 +99,6 @@ export default (nmos, bulkStuff) => {
       })
     } else {
       // Fall back to old connection management method
-      // TODO this probably won't work yet, need to fall back to Node API and
-      // loop through changes and do them one by one as before
       return nmos.nodes(device.node_id).then(node => {
         let versions = ['v1.0'] // Fallback for Node API v1.0
         if (node.api) { // Available from Node API v1.1 onwards
@@ -127,7 +126,10 @@ export default (nmos, bulkStuff) => {
 
     ids.forEach(id => {
       var url = `${href}/${constants.NODE_URL}/${apiVersion}/receivers/${id}/target`
-      promises.push(axios.put(url, senders[i], options))
+      let sender = senders[i]
+      if (sender == null) sender = {}
+      promises.push(axios.put(url, sender, options))
+      console.log(senders[i])
       i++
     })
     // This should fire off the individual PUT requests, need to add something to deal with
