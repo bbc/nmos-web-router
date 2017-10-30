@@ -109,6 +109,24 @@ export default (nmos, bulkStuff) => {
     }
   })
 
+  function checkNodeResponses (responses) {
+    let reject = false
+    let failList = []
+    responses.forEach(response => {
+      if (response.status !== 200 && response.status !== 202) {
+        reject = true
+        failList.push(response.data.id)
+      }
+    })
+    if (reject) {
+      return new Promise((resolve, reject) => {
+        reject('Node API bulk routing failed at the following senders/receivers: ' + failList.toString())
+      })
+    } else {
+      return responses
+    }
+  }
+
   function route (ids, senders, href, versions) {
     console.log('Attempting to fall back to Node API')
     if (href.endsWith('/')) href = href.slice(0, href.length - 1)
@@ -129,12 +147,12 @@ export default (nmos, bulkStuff) => {
       let sender = senders[i]
       if (sender == null) sender = {}
       promises.push(axios.put(url, sender, options))
-      console.log(senders[i])
       i++
     })
     // This should fire off the individual PUT requests, need to add something to deal with
     // responses though
     return axios.all(promises)
+      .then(checkNodeResponses)
   }
 
   function maxAPIVersion (versions) {

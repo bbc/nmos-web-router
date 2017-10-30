@@ -4,9 +4,10 @@ Pass the arrays of senders and corresponding receiver IDs to the routing API, al
   the device id of the bulk device in question
 */
 
+import dispatchError from '../error-dispatcher'
+
 export default (actions) => {
   return (senders, bulkChanges, deviceID) => {
-    console.log(bulkChanges)
     let bulkSenders = []
     let bulkReceiverIDs = []
     bulkChanges.forEach(change => {
@@ -31,7 +32,7 @@ export default (actions) => {
         actions.deployBulkRoute({bulkChanges})
       })
       .catch((error) => {
-        console.log(error)
+        dispatchError(actions)(error)
       })
   }
 }
