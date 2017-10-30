@@ -28,6 +28,28 @@ export default (nmos, bulkStuff) => {
     }
   }
 
+  function getTransportFiles (senders) {
+    let callGet = (sender) => {
+      if (sender) {
+        return axios.get(sender.manifest_href)
+      }
+    }
+    let promises = senders.map(callGet)
+    return axios.all(promises)
+  }
+
+  function checkTransportFileResponses (responses) {
+    let checker = (response) => {
+      if (response) {
+        if (response.status === 200) return response.data
+        else throw new Error('Failed getting transport file for one or more senders')
+      } else {
+        return 'Placeholder'
+      }
+    }
+    return Promise.all(responses.map(checker))
+  }
+
   function cmBulkRoute (controlHref) {
     console.log('Attempting Connection Management API bulk route')
     if (controlHref.endsWith('/')) controlHref = controlHref.slice(0, controlHref.length - 1)
@@ -40,24 +62,10 @@ export default (nmos, bulkStuff) => {
         'Accept': 'application/json'
       }
     }
-
-    let promises = []
-    let transports = []
-    bulkStuff.senders.forEach(sender => {
-      if (sender) {
-        let href = sender.manifest_href
-        promises.push(axios.get(href))
-      }
-    })
-
     // Retrieve the transport files for any senders
-    return axios.all(promises)
-      .then(responses => {
-        responses.forEach(response => {
-          if (response.status === 200) transports.push(response.data)
-          else transports.push('Placeholder')
-        })
-
+    getTransportFiles(bulkStuff.senders)
+      .then(checkTransportFileResponses)
+      .then((transports) => {
         let i = 0
         let transportCounter = 0
         let post = []
