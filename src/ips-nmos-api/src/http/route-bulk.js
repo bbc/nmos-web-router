@@ -2,42 +2,56 @@ var axios = require('axios')
 var constants = require('./constants')
 
 export default (nmos, bulkStuff) => {
+  var device = null
   return nmos.devices(bulkStuff.deviceID)
-  .then(device => {
-    let controlHref = null
+    .then((passedDevice) => {
+      device = passedDevice
+      let toReturn = getControlHref(device)
+      return toReturn
+    })
+    .then((controlHref) => {
+      if (controlHref) {
+        return cmBulkRoute(controlHref)
+      } else {
+        // Fall back to old connection management method
+        return nodeApiFallback(device)
+      }
+    })
+
+  function getControlHref (device) {
     if (device.controls) {
       let controlURN = 'urn:x-nmos:control:sr-ctrl/v1.0'
-      device.controls.forEach(control => {
-        if (control.type === controlURN) {
-          controlHref = control.href
-        }
+      let control = device.controls.find((control) => {
+        return control.type === controlURN
       })
+      return control.href
     }
-    if (controlHref) {
-      console.log('Attempting Connection Management API bulk route')
-      if (controlHref.endsWith('/')) controlHref = controlHref.slice(0, controlHref.length - 1)
-      var stageUrl = `${controlHref}/bulk/receivers`
-      // Hack to avoid proxy on r730-3
-      // stageUrl = stageUrl.replace('123', '123:8856')
+  }
 
-      var options = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
+  function cmBulkRoute (controlHref) {
+    console.log('Attempting Connection Management API bulk route')
+    if (controlHref.endsWith('/')) controlHref = controlHref.slice(0, controlHref.length - 1)
+
+    const stageUrl = `${controlHref}/bulk/receivers`
+
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       }
+    }
 
-      let promises = []
-      let transports = []
-      bulkStuff.senders.forEach(sender => {
-        if (sender) {
-          let href = sender.manifest_href
-          promises.push(axios.get(href))
-        }
-      })
+    let promises = []
+    let transports = []
+    bulkStuff.senders.forEach(sender => {
+      if (sender) {
+        let href = sender.manifest_href
+        promises.push(axios.get(href))
+      }
+    })
 
-      // Retrieve the transport files for any senders
-      return axios.all(promises)
+    // Retrieve the transport files for any senders
+    return axios.all(promises)
       .then(responses => {
         responses.forEach(response => {
           if (response.status === 200) transports.push(response.data)
@@ -97,17 +111,17 @@ export default (nmos, bulkStuff) => {
         console.log('Error with bulk route request!')
         console.log(error)
       })
-    } else {
-      // Fall back to old connection management method
-      return nmos.nodes(device.node_id).then(node => {
-        let versions = ['v1.0'] // Fallback for Node API v1.0
-        if (node.api) { // Available from Node API v1.1 onwards
-          versions = node.api.versions
-        }
-        return route(bulkStuff.receiverIDs, bulkStuff.senders, node.href, versions)
-      })
-    }
-  })
+  }
+
+  function nodeApiFallback (device) {
+    return nmos.nodes(device.node_id).then(node => {
+      let versions = ['v1.0'] // Fallback for Node API v1.0
+      if (node.api) { // Available from Node API v1.1 onwards
+        versions = node.api.versions
+      }
+      return route(bulkStuff.receiverIDs, bulkStuff.senders, node.href, versions)
+    })
+  }
 
   function checkNodeResponses (responses) {
     let reject = false
@@ -149,8 +163,6 @@ export default (nmos, bulkStuff) => {
       promises.push(axios.put(url, sender, options))
       i++
     })
-    // This should fire off the individual PUT requests, need to add something to deal with
-    // responses though
     return axios.all(promises)
       .then(checkNodeResponses)
   }
