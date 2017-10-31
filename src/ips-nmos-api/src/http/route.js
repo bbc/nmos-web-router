@@ -123,7 +123,7 @@ module.exports = function (nmos) {
   }
 
   return function ({id, sender, href, versions, bulkStuff}) {
-    if (bulkStuff) return routeBulk(nmos, bulkStuff)
+    if (bulkStuff) return routeBulk(nmos, bulkStuff, routeHref)
     else if (typeof href === 'string' && href !== '') return route(id, sender, href, versions)
     return routeHref(id, sender)
   }

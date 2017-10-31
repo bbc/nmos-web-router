@@ -1,7 +1,7 @@
 var axios = require('axios')
 var constants = require('./constants')
 
-export default (nmos, bulkStuff) => {
+export default (nmos, bulkStuff, fallback) => {
   var device = null
   return nmos.devices(bulkStuff.deviceID)
     .then((passedDevice) => {
@@ -50,75 +50,98 @@ export default (nmos, bulkStuff) => {
     return Promise.all(responses.map(checker))
   }
 
-  function cmBulkRoute (controlHref) {
-    console.log('Attempting Connection Management API bulk route')
-    if (controlHref.endsWith('/')) controlHref = controlHref.slice(0, controlHref.length - 1)
+  function createBulkRequests (bulkStuff, transports) {
+    let i = 0
+    let transportCounter = 0
+    let toReturn = []
+    let post = bulkStuff.senders.map((sender) => {
+      if (sender) {
+        toReturn = createBulkPostRequest(sender, bulkStuff.receiverIDs[i], transports[transportCounter])
+        transportCounter++
+      } else {
+        toReturn = createUnRoutingRequest(bulkStuff.receiverIDs[i])
+      }
+      i++
+      return toReturn
+    })
+    return post
+  }
 
+  function createBulkPostRequest (sender, receiverID, transport) {
+    return {
+      'id': receiverID,
+      'params': {
+        'master_enable': true,
+        'activation': {
+          'mode': 'activate_immediate'
+        },
+        'transport_file': {
+          'data': transport,
+          'type': 'application/sdp'
+        },
+        'sender_id': sender.id
+      }
+    }
+  }
+
+  function callCMBulkPost (posts, controlHref) {
     const stageUrl = `${controlHref}/bulk/receivers`
-
     const options = {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
     }
-    // Retrieve the transport files for any senders
+    return axios.post(stageUrl, posts, options)
+  }
+
+  function checkCMBulkResponse (response) {
+    if (response.status !== 200) {
+      return new Promise((resolve, reject) => {
+        reject('Unable to carry out bulk routing')
+      })
+    }
+    return response.data
+  }
+
+  function createUnRoutingRequest (receiverID) {
+    // Unrouting change so no transport file
+    return {
+      'id': receiverID,
+      'params': {
+        'master_enable': false,
+        'activation': {
+          'mode': 'activate_immediate'
+        }
+      }
+    }
+  }
+
+  function cmBulkRoute (controlHref) {
+    console.log('Attempting Connection Management API bulk route')
+    if (controlHref.endsWith('/')) controlHref = controlHref.slice(0, controlHref.length - 1)
     getTransportFiles(bulkStuff.senders)
       .then(checkTransportFileResponses)
-      .then((transports) => {
-        let i = 0
-        let transportCounter = 0
-        let post = []
-        // There should be one sender value for every receiver ID, the value
-        // will be null if it is an unrouting change
-        bulkStuff.senders.forEach(sender => {
-          let thisPost = ''
-          // Routing change therefore add in the corresponding transport file
-          if (sender) {
-            thisPost = {
-              'id': bulkStuff.receiverIDs[i],
-              'params': {
-                'master_enable': true,
-                'activation': {
-                  'mode': 'activate_immediate'
-                },
-                'transport_file': {
-                  'data': transports[transportCounter],
-                  'type': 'application/sdp'
-                },
-                'sender_id': sender.id
-              }
-            }
-            transportCounter++
-          } else {
-            // Unrouting change so no transport file
-            thisPost = {
-              'id': bulkStuff.receiverIDs[i],
-              'params': {
-                'master_enable': false,
-                'activation': {
-                  'mode': 'activate_immediate'
-                }
-              }
-            }
-          }
-          post.push(thisPost)
-          i++
-        })
-        return axios.post(stageUrl, post, options)
-      })
-      .then(response => {
-        if (response.status !== 200) {
-          return new Promise((resolve, reject) => {
-            reject('Unable to carry out bulk routing')
-          })
-        }
-        return response.data
-      })
+      .then((transports) => { return createBulkRequests(bulkStuff, transports) })
+      .then((posts) => { return callCMBulkPost(posts, controlHref) })
+      .then(checkCMBulkResponse)
       .catch(error => {
-        console.log('Error with bulk route request!')
         console.log(error)
+        console.log('Error with bulk route request - attempting to fall back to single CM interface')
+        singleModeFallback(bulkStuff)
       })
+  }
+
+  function singleModeFallback (bulkStuff) {
+    let i = 0
+    bulkStuff.senders.map((sender) => {
+      if (!sender) {
+        sender = {}
+      }
+      let toReturn = fallback(bulkStuff.receiverIDs[i], sender)
+      i++
+      return toReturn
+    })
   }
 
   function nodeApiFallback (device) {
