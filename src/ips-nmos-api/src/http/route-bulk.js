@@ -24,7 +24,9 @@ export default (nmos, bulkStuff, fallback) => {
       let control = device.controls.find((control) => {
         return control.type === controlURN
       })
-      return control.href
+      if (control) {
+        return control.href
+      }
     }
   }
 
