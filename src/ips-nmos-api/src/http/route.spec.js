@@ -48,7 +48,7 @@ describe('routing', () => {
   })
 
   it('will route when given a receiver id and sender, it first calls devices then nodes to get the href', (done) => {
-    route('receiverId', {id: 'senderId'})
+    route({id: 'receiverId', sender: {id: 'senderId'}})
       .then(data => {
         expect(data).toBe('routed using node')
         done()
@@ -60,7 +60,7 @@ describe('routing', () => {
   })
 
   it('will route when given a receiver id and sender and uses it\'s own href', (done) => {
-    route('receiverId', {id: 'senderId'}, 'href')
+    route({id: 'receiverId', sender: {id: 'senderId'}, href: 'href'})
       .then(data => {
         expect(data).toBe('routed using href')
         done()
