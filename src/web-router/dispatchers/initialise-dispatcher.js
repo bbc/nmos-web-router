@@ -33,7 +33,7 @@ export default (actions) => {
   function subscribe (name) {
     let showOpenedMessage = false
     let subscription = window.nmos.subscription[name]()
-    subscription.connect()
+    subscription.connect({'connection': {'params': {'query.downgrade': 'v1.0'}}})
     subscription.subscribe({
       open () {
         if (showOpenedMessage) dispatchInfo(actions)(`Connected to ${name}`)
