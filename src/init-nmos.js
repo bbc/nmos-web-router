@@ -10,6 +10,9 @@ const queryProtocol = parsedUrl.query('api_proto').string || window.location.pro
 const httpPort = queryProtocol === 'https' ? 443 : 80
 const queryPort = parsedUrl.query('mdnsbridge_port').number || httpPort
 
+const downgrade = !parsedUrl.query('api_no_downgrade').boolean
+const downgradeVersion = parsedUrl.query('api_downgrade_version').string || 'v1.0'
+
 function getPrioritised (representations, priority, version, protocol) {
   var url = ''
   if (queryPriority) {
@@ -64,7 +67,7 @@ export default (start) => {
     .then(result => {
       let representations = result.data.representation
       let url = getPrioritised(representations, queryPriority, queryVersion, queryProtocol)
-      start(queryStub, url, queryVersion)
+      start(queryStub, url, queryVersion, downgrade, downgradeVersion)
     })
     .catch(error => {
       console.error(error)
