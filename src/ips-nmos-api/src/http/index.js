@@ -15,7 +15,7 @@ module.exports = function (options) {
 
   let routers = {
     route: Route(getters),
-    unroute (id) { return Route(getters)(id, {}) }
+    unroute (id) { return Route(getters)({ id: id, sender: {} }) }
   }
 
   let subscriptions = Subscriptions(options.url, options.apiVersion)

@@ -2,7 +2,7 @@ import dispatchError from '../error-dispatcher'
 
 export default (actions) => {
   return (receiver) => {
-    window.nmos.unroute({sender: '', id: receiver.id})
+    window.nmos.unroute(receiver.id)
       .then(() => {
         actions.unroute({ receiver })
       })

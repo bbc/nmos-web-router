@@ -8,9 +8,9 @@ module.exports = function (nmos) {
     let minor = 0
     versions.forEach(version => {
       let versionBits = version.slice(1).split('.')
-      if (versionBits[0] > major || (versionBits[0] === major && versionBits[1] > minor)) {
-        major = versionBits[0]
-        minor = versionBits[1]
+      if (parseInt(versionBits[0]) > major || (parseInt(versionBits[0]) === major && parseInt(versionBits[1]) > minor)) {
+        major = parseInt(versionBits[0])
+        minor = parseInt(versionBits[1])
       }
     })
     return 'v' + major + '.' + minor
