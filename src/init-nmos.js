@@ -66,11 +66,18 @@ export default (start) => {
     })
     .then(result => {
       let representations = result.data.representation
+      if (representations.length === 0) {
+        throw new Error('No Query APIs identified from mDNS Bridge')
+      }
       let url = getPrioritised(representations, queryPriority, queryVersion, queryProtocol)
+      if (url === '') {
+        throw new Error('No URL identified for Query API')
+      }
       start(queryStub, url, queryVersion, downgrade, downgradeVersion)
     })
     .catch(error => {
       console.error(error)
-      start()
+      console.warn('Loading stub data as fallback...')
+      start(true)
     })
 }
