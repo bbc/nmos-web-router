@@ -12,7 +12,9 @@ export default (actions) => {
   }
 
   function initialise (name) {
-    window.nmos[name]()
+    // Only perform an initial GET for stub data, otherwise just use WebSockets
+    if (window.nmos.stub) {
+      window.nmos[name]()
       .then(response => {
         let data = {}
         data[name] = response
@@ -28,6 +30,11 @@ export default (actions) => {
           }, RETRY_TIMEOUT)
         }
       })
+    } else {
+      let data = {}
+      data[name] = []
+      actions.initialise(data)
+    }
   }
 
   function subscribe (name) {
