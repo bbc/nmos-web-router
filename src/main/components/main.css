@@ -21,6 +21,23 @@
   --nav-background: #33c3f0;
 }
 
+.formDiv {
+  position: absolute;
+  background-color: var(--navigation-background);
+  border-radius: 5px;
+  transition-duration: 1s;
+}
+
+.welcome {
+  position: relative;
+  top: 200px;
+}
+
+/* style={{
+  position: 'absolute',
+  backgroundColor: '#ebebeb'
+}} */
+
 .navigation {
   height: 38px;
   padding: 12px 0;

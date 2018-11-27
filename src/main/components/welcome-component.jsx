@@ -22,7 +22,7 @@ let Welcome = () => {
         WEB ROUTER
       </Link>
     </LayoutItem>
-  </Layout>
+  < /Layout>
 }
 
 export default Welcome

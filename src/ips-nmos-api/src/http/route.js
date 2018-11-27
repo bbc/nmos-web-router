@@ -56,6 +56,17 @@ module.exports = function (nmos) {
         'Accept': 'application/json'
       }
     }
+    if (`${constants.SECURITY}`) {
+      try {
+        const accessToken = JSON.parse(window.sessionStorage.getItem('bearerToken')).access_token
+        const authString = 'Bearer '.concat(accessToken)
+        options.headers.Authorization = authString
+      } catch (err) {
+        return new Promise((resolve, reject) => {
+          reject('Please Sign In')
+        })
+      }
+    }
     if (Object.keys(sender).length === 0) {
       // Unsubscribe
       var toPatch = {

@@ -10,9 +10,9 @@ import Welcome from './welcome-component'
 let Main = ({children}) => {
   children = children || <Welcome />
   return <Wrap>
-    <Navigation />
     <Layout>{children}</Layout>
-  </Wrap>
+    <Navigation />
+  < /Wrap>
 }
 
 Main.propTypes = {
