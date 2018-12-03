@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
-import SigninRequest from '../security/security_request'
+// import SigninRequest from '../security/signin-request'
 import './main.css'
 
 class Signin extends Component {
@@ -13,6 +13,8 @@ class Signin extends Component {
       showForm: false,
       result: ''
     }
+
+    console.log(this.props)
   }
 
   componentDidMount () {
@@ -58,7 +60,7 @@ class Signin extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    SigninRequest(this.state.username, this.state.password)
+    this.props.actions.signIn(this.state.username, this.state.password)
       .then(response => {
         this.setState({
           result: response
@@ -102,6 +104,10 @@ class Signin extends Component {
       </div>
     )
   }
+}
+
+Signin.propTypes = {
+  actions: PropTypes.object.isRequired
 }
 
 export default Signin

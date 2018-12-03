@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
-import Signin from './signin_component'
+import Signin from './signin-component'
 import Logo from './logo'
 import { Layout, LayoutItem } from '../../gel-react/grid'
 // import { SignIn } from '../../gel-react/iconography'
 
-let Navigation = () => {
+let Navigation = ({actions}) => {
   return <div>
     <div className='navigation-background' />
     <Layout className='navigation' layouts='flush'>
@@ -19,7 +19,7 @@ let Navigation = () => {
       </Layout>
       <Layout layouts='center'>
         <LayoutItem gels='5/24'>
-          <Signin />
+          <Signin actions={actions} />
         </LayoutItem>
       </Layout>
       <Layout layouts='right'>
@@ -33,6 +33,10 @@ let Navigation = () => {
       </Layout>
     </Layout>
   < /div>
+}
+
+Navigation.propTypes = {
+  actions: PropTypes.object.isRequired
 }
 
 export default Navigation
