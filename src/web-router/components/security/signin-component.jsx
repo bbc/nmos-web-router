@@ -62,7 +62,7 @@ class Signin extends Component {
     if (this.props.view.loggedIn) innerText = 'SIGN OUT'
     return (
       <div className='formDiv' ref={this.setRef}>
-        <button onClick={this.toggleForm} className='button nav' style={{ display: 'inline-block' }}>{innerText}</button>
+        <button onClick={this.toggleForm} className={'button nav button ' + (!this.props.view.loggedIn ? 'button-pipeline' : '')} style={{ display: 'inline-block' }}>{innerText}</button>
         {this.state.showForm &&
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId='username' bsSize='large'>
