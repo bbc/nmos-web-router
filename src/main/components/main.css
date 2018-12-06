@@ -18,25 +18,35 @@
   --logo-color: #555;
   --navigation-background: color(#ebebeb b(15%));
   --nav-color: #fff;
-  --nav-background: #33c3f0;
-}
-
-.formDiv {
-  position: absolute;
-  background-color: var(--navigation-background);
-  border-radius: 5px;
-  transition-duration: 1s;
+  --pipeline-color: #ff6961;
+  --processors-color: #7d7;
 }
 
 .welcome {
   position: relative;
-  top: 200px;
 }
 
-/* style={{
-  position: 'absolute',
-  backgroundColor: '#ebebeb'
-}} */
+.button {
+  width: 100%;
+  text-align: center;
+  border-style: none;
+
+  &-pipeline {
+    background-color: color(var(--pipeline-color) tint(30%));
+
+    &:hover {
+      background-color: var(--pipeline-color);
+    }
+  }
+
+  &-processors {
+    background-color: color(var(--processors-color) tint(30%));
+
+    &:hover {
+      background-color: var(--processors-color);
+    }
+  }
+}
 
 .navigation {
   height: 38px;

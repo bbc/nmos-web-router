@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
-// import SigninRequest from '../security/signin-request'
-import './main.css'
 
 class Signin extends Component {
   constructor (props) {
@@ -10,11 +8,8 @@ class Signin extends Component {
     this.state = {
       username: '',
       password: '',
-      showForm: false,
-      result: ''
+      showForm: false
     }
-
-    console.log(this.props)
   }
 
   componentDidMount () {
@@ -32,8 +27,7 @@ class Signin extends Component {
   clearForm = () => {
     this.setState({
       username: '',
-      password: '',
-      result: ''
+      password: ''
     })
   }
 
@@ -61,17 +55,14 @@ class Signin extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.actions.signIn(this.state.username, this.state.password)
-      .then(response => {
-        this.setState({
-          result: response
-        })
-      })
   }
 
   render () {
+    let innerText = 'SIGN IN'
+    if (this.props.view.loggedIn) innerText = 'SIGN OUT'
     return (
-      <div className='formDiv' ref={this.setRef} >
-        <button onClick={this.toggleForm} className='button nav'>SIGNIN</button>
+      <div className='formDiv' ref={this.setRef}>
+        <button onClick={this.toggleForm} className='button nav' style={{ display: 'inline-block' }}>{innerText}</button>
         {this.state.showForm &&
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId='username' bsSize='large'>
@@ -84,20 +75,20 @@ class Signin extends Component {
               />
             </FormGroup>
             <FormGroup controlId='password' bsSize='large'>
-              <ControlLabel>Password </ControlLabel>
+              <ControlLabel>Password</ControlLabel>
               <FormControl
                 type='password'
                 value={this.state.password}
                 onChange={this.handleChange}
               />
             </FormGroup>
-            <Button style={{display: 'block', margin: 'auto'}}
+            <Button
               block
               bsSize='large'
               disabled={!this.validateForm()}
               type='submit'
             >
-              {this.state.result || 'OK'}
+              OK
             </Button>
           </form>
         }
@@ -107,7 +98,8 @@ class Signin extends Component {
 }
 
 Signin.propTypes = {
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  view: PropTypes.object.isRequired
 }
 
 export default Signin

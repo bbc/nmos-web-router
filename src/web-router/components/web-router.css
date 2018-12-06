@@ -30,9 +30,34 @@ the file from top to bottom styles the web router from top to bottom */
   --nav-buttons-height: 38px;
   --IPS-nav-height: 62px; /* The nav bar at the top to navigate between IPS apps */
   --view-title-height: 30px;
+  --background-color: #bfbfbf;
 }
 
-/* .web-router contains everything other than the IPS navigation bar */
+.signIn {
+  position: relative;
+  width: 20%;
+  margin: auto;
+  top: 6px;
+  z-index: 1;
+
+  &-background {
+    position: absolute;
+    height: calc(var(--nav-buttons-height) + 12px);
+    width: 100%;
+    left: 0;
+    z-index: -1;
+    background-color: var(--background-color);
+  }
+
+  & .formDiv {
+    background-color: var(--background-color);
+    border-radius: 5px;
+    transition-duration: 0.5s;
+    text-align: center;
+  }
+}
+
+/* .web-router contains everything other than the IPS navigation bar and Sign-in bar */
 .web-router {
   position: absolute;
   overflow: hidden;
@@ -43,7 +68,7 @@ the file from top to bottom styles the web router from top to bottom */
   /* 12px gap between IPS nav bar and web router */
   height: calc(100% - var(--IPS-nav-height) - 12px);
   min-height: 650px;
-  top: calc(var(--IPS-nav-height) + 12px);
+  top: calc(var(--IPS-nav-height) + 12px + var(--nav-buttons-height) + 12px);
   left: 0;
   right: 0;
   margin: auto;

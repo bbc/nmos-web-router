@@ -31,7 +31,8 @@
     },
     "routingMode": "automatic",
     "changes": [],
-    "useSessionStorage": true
+    "useSessionStorage": true,
+    "loggedIn": false
   },
   "initialised": false,
   "location": "/"

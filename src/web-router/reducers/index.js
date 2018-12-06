@@ -34,6 +34,8 @@ import unstageChange from './confirm/unstage-change-reducer'
 import deployRoute from './confirm/deploy-route-reducer'
 import deployUnroute from './confirm/deploy-unroute-reducer'
 import deployBulkRoute from './confirm/deploy-bulk-route-reducer'
+import signIn from './security/signin-reducer'
+import signOut from './security/signout-reducer'
 
 export default {
   initialise,
@@ -55,6 +57,8 @@ export default {
   deployRoute,
   deployUnroute,
   deployBulkRoute,
+  signIn,
+  signOut,
   all: {
     router: {
       LOCATION_CHANGE: locationChange
