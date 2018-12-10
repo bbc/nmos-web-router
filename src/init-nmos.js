@@ -4,7 +4,7 @@ import parseURL from './parse-url'
 const parsedUrl = parseURL(window.location)
 const queryStub = parsedUrl.query('stub').boolean
 const queryPriority = parsedUrl.query('priority').number || null
-const queryVersion = parsedUrl.query('api_ver').string || 'v1.1'
+const queryVersion = parsedUrl.query('api_ver').string || 'v1.2'
 const queryProtocol = parsedUrl.query('api_proto').string || window.location.protocol.substring(0, window.location.protocol.length - 1)
 
 const httpPort = queryProtocol === 'https' ? 443 : 80
