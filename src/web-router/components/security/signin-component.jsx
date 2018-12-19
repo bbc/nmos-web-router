@@ -58,11 +58,15 @@ class Signin extends Component {
   }
 
   render () {
-    let innerText = 'SIGN IN'
-    if (this.props.view.loggedIn) innerText = 'SIGN OUT'
+    const {view} = this.props
+    let buttonText = 'SIGN IN'
+    if (view.loggedIn) buttonText = 'SIGNED IN'
     return (
       <div className='formDiv' ref={this.setRef}>
-        <button onClick={this.toggleForm} className={'button nav button ' + (!this.props.view.loggedIn ? 'button-pipeline' : '')} style={{ display: 'inline-block' }}>{innerText}</button>
+        <button onClick={this.toggleForm}
+          className={'button nav ' + (!view.loggedIn ? 'button-red' : '')}
+          style={{ display: 'inline-block' }}>{buttonText}
+        </button>
         {this.state.showForm &&
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId='username' bsSize='large'>

@@ -2,10 +2,10 @@ const axios = require('axios')
 const qs = require('qs')
 
 export default (username, password) => {
-  let clientID = 'EUrkTVN0RNCMhd8FZXcBlcTD'
-  let clientSecret = 'fooIeREp5JtETq70bNqmzK9yIHHXFm8MitOBeGhnGzLdNi3u'
+  let clientID = 'cdqgP5I6aMI3pvqacjkgroM7'
+  let clientSecret = 'rectlNa4lGtC60BmFaE9gwKJQXcCnz0DDOxfUt7eRe7A0mby'
   let scope = 'is05'
-  let url = 'http://localhost:4999/oauth/token'
+  let url = 'http://172.29.80.117:4999/oauth/token' // TODO discover URL via mDNS
   let data = {
     grant_type: 'password',
     scope: scope,

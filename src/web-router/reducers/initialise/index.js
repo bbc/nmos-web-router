@@ -18,6 +18,7 @@ import loading from './loading'
 import Routables from '../../routables'
 import allVisibleState from './all-visible-state'
 import restoreChanges from './restore-changes'
+import checkTokenExpiry from '../../security/check-token-expiry'
 
 export default (state, action, merge) => {
   let initialised = action.receivers || action.senders || action.flows
@@ -40,13 +41,15 @@ export default (state, action, merge) => {
     restoreChanges(data, routables)
   }
   // If a page refresh has occurred then this will ensure the user stays in the same
-  // routing mode
+  // routing mode, and checks to see if the token in sessionStorage is still valid
   let routingMode = window.location.href.includes('manual') ? 'manual' : 'automatic'
+  let loggedIn = !!checkTokenExpiry()
 
   let view = Object.assign({}, state.view, {
     loading: loading(routables.view(), state.view, action),
     choose: allVisibleState(data.senders, data.receivers, state.view.choose),
-    routingMode: routingMode
+    routingMode: routingMode,
+    loggedIn: loggedIn
   }, routables.view())
 
   return merge({

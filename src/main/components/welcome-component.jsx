@@ -28,12 +28,12 @@ let Welcome = () => {
       <GreatPrimer>Pipelines</GreatPrimer>
       <a
         href='http://ipstudio-master.rd.bbc.co.uk/ipp-web/apps/configurator2/'
-        className='button button-pipeline'>
+        className='button button-red'>
         CONFIGURATOR
       </a>
       <a
         href='http://ipstudio-master.rd.bbc.co.uk/ipp-web/apps/status/index.html'
-        className='button button-pipeline'>
+        className='button button-red'>
         STATUS MONITOR
       </a>
     </LayoutItem>
@@ -41,7 +41,7 @@ let Welcome = () => {
       <GreatPrimer>Processors</GreatPrimer>
       <a
         href='http://ipstudio-master.rd.bbc.co.uk/ssp-tinker-frontend/'
-        className='button button-processors'>
+        className='button button-green'>
         TINKER
       </a>
     </LayoutItem>

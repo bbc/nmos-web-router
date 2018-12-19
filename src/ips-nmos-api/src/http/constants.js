@@ -20,6 +20,5 @@ var NODE = 'node'
 
 module.exports = {
   QUERY_URL: [NMOS, QUERY].join('/'),
-  NODE_URL: [NMOS, NODE].join('/'),
-  SECURITY: true
+  NODE_URL: [NMOS, NODE].join('/')
 }

@@ -1,12 +1,13 @@
 import dispatchError from '../error-dispatcher'
-import storeToken from '../../security/store-token'
+import storeToken from '../../security/access-token'
 import signInRequest from '../../security/signin-request'
 
 export default (actions) => {
   return (username, password) => {
     signInRequest(username, password)
       .then(response => {
-        let expiryTime = storeToken(response.data)
+        // stores Bearer Token in sessionStorage and returns decoded JWT
+        let expiryTime = storeToken(response.data).exp
         let currentTime = Math.floor(new Date().getTime() / 1000)
         let timeTillExpire = expiryTime - currentTime
 

@@ -31,7 +31,7 @@
   text-align: center;
   border-style: none;
 
-  &-pipeline {
+  &-red {
     background-color: color(var(--pipeline-color) tint(30%));
 
     &:hover {
@@ -39,7 +39,7 @@
     }
   }
 
-  &-processors {
+  &-green {
     background-color: color(var(--processors-color) tint(30%));
 
     &:hover {

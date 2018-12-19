@@ -39,6 +39,7 @@ the file from top to bottom styles the web router from top to bottom */
   margin: auto;
   top: 6px;
   z-index: 1;
+  letter-spacing: normal;
 
   &-background {
     position: absolute;

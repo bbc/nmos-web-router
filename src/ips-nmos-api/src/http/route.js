@@ -56,7 +56,7 @@ module.exports = function (nmos) {
         'Accept': 'application/json'
       }
     }
-    if (`${constants.SECURITY}`) {
+    if (window.sessionStorage.getItem('bearerToken')) {
       try {
         const accessToken = JSON.parse(window.sessionStorage.getItem('bearerToken')).access_token
         const authString = 'Bearer '.concat(accessToken)
