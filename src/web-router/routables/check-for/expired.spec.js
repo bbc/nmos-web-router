@@ -28,8 +28,7 @@ describe('stage-change', () => {
     checkFor = CheckFor(data)
 
     let grain = {
-      pre: senders[0],
-      post: {}
+      pre: senders[0]
     }
     Remove({data, grain})
   })

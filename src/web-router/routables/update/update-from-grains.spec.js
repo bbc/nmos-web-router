@@ -40,7 +40,7 @@ describe('updating from grains', () => {
   })
 
   it('does nothing if no post or pre', () => {
-    let grains = [{post: {}, pre: {}}]
+    let grains = [{}]
 
     updateFromGrains({add, remove, grains, data})
 

@@ -34,9 +34,9 @@ describe('stage-change', () => {
     let stageChange = StageChange(data)
     data = stageChange(data.senders[0].id, data.receivers[0].id, 'route', true).view()
 
-    let grain = { pre: data.senders[0], post: {} }
+    let grain = { pre: data.senders[0] }
     RemoveSender({data, grain})
-    grain = { pre: data.receivers[0], post: {} }
+    grain = { pre: data.receivers[0] }
     RemoveReceiver({data, grain})
   })
 

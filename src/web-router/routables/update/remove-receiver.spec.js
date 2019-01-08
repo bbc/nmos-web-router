@@ -19,8 +19,7 @@ describe('removing receivers', () => {
     data = insert.receivers(receivers).view()
 
     let grain = {
-      pre: receivers[0],
-      post: {}
+      pre: receivers[0]
     }
     remove({data, grain})
     remove({data, grain})

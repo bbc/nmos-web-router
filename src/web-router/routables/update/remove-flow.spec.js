@@ -15,7 +15,6 @@ describe('adding flows', () => {
       flows: [flow]
     }
     let grain = {
-      post: {},
       pre: flow
     }
     remove({data, grain})

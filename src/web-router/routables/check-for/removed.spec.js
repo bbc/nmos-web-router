@@ -33,7 +33,7 @@ describe('stage-change', () => {
   })
 
   it('removing the sender makes the change state "unavailable-sender"', () => {
-    let grain = { pre: data.senders[0], post: {} }
+    let grain = { pre: data.senders[0] }
     RemoveSender({data, grain})
     data = checkFor('removed').view()
 
@@ -41,7 +41,7 @@ describe('stage-change', () => {
   })
 
   it('removing the receiver makes the change state "unavailable-receiver"', () => {
-    let grain = { pre: data.receivers[0], post: {} }
+    let grain = { pre: data.receivers[0] }
     RemoveReceiver({data, grain})
     data = checkFor('removed').view()
 
@@ -49,9 +49,9 @@ describe('stage-change', () => {
   })
 
   it('removing both the sender and receiver makes the change state "unavailable-routables"', () => {
-    let grain = { pre: data.senders[0], post: {} }
+    let grain = { pre: data.senders[0] }
     RemoveSender({data, grain})
-    grain = { pre: data.receivers[0], post: {} }
+    grain = { pre: data.receivers[0] }
     RemoveReceiver({data, grain})
     data = checkFor('removed').view()
 
