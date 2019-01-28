@@ -80,6 +80,7 @@ const deepEquals = (obj1, obj2) =>
 class Routable extends React.Component {
   shouldComponentUpdate (nextProps) {
     // only re-render if the reference to routable has changed
+    // or the routable some part of the routable has change
 
     const routableRefHasChanged = nextProps.routable !== this.props.routable
 
