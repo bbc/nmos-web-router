@@ -96,7 +96,7 @@ class Routable extends React.Component {
   }
 }
 
-Routable.propTypes = {
+renderRoutable.propTypes = {
   id: PropTypes.string,
   routable: PropTypes.object.isRequired,
   baseState: PropTypes.string,
@@ -109,6 +109,10 @@ Routable.propTypes = {
   onNodeRender: PropTypes.func,
   columnTitle: PropTypes.string,
   timeRemoved: PropTypes.number
+}
+
+Routable.propTypes = {
+  routable: PropTypes.object.isRequired
 }
 
 export default Routable
