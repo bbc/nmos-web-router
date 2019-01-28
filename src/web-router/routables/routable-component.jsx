@@ -68,15 +68,6 @@ let renderRoutable = ({
   )
 }
 
-const shallowEquals = (obj1, obj2) =>
-  Object.keys(obj1).length === Object.keys(obj2).length &&
-  Object.keys(obj1).every(
-    key => obj2.hasOwnProperty(key) && obj1[key] === obj2[key]
-  )
-
-const deepEquals = (obj1, obj2) =>
-  JSON.stringify(obj1) === JSON.stringify(obj2)
-
 class Routable extends React.Component {
   shouldComponentUpdate (nextProps) {
     // only re-render if the reference to routable has changed
@@ -85,9 +76,7 @@ class Routable extends React.Component {
     const routableRefHasChanged = nextProps.routable !== this.props.routable
 
     return (
-      routableRefHasChanged ||
-      !shallowEquals(nextProps.routable, this.props.routable) ||
-      !deepEquals(nextProps.routable, this.props.routable)
+      routableRefHasChanged
     )
   }
 
