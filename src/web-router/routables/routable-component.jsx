@@ -6,7 +6,20 @@ import NodeComponent from './node-component'
 
 const noop = function () {}
 
-let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender, columnTitle, timeRemoved }) => {
+let renderRoutable = ({
+  id,
+  routable,
+  baseState,
+  node,
+  checkbox,
+  onClick,
+  onButton,
+  onCheckbox,
+  onNode,
+  onNodeRender,
+  columnTitle,
+  timeRemoved
+}) => {
   id = id || ''
   node = node || 'none'
   baseState = baseState || ''
@@ -21,37 +34,65 @@ let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, on
 
   let CheckboxComponent = null
   if (checkbox) {
-    CheckboxComponent = <Checkbox
-      onClick={onCheckbox}
-    />
+    CheckboxComponent = <Checkbox onClick={onCheckbox} />
   }
 
   let RoutableNode = null
   if (node !== 'none') {
-    let unicast = (routable.transport.includes('rtp.ucast'))
-    RoutableNode = <NodeComponent
-      onClick={onNode}
-      onRender={onNodeRender}
-      unicast={unicast}
-    />
+    let unicast = routable.transport.includes('rtp.ucast')
+    RoutableNode = (
+      <NodeComponent
+        onClick={onNode}
+        onRender={onNodeRender}
+        unicast={unicast}
+      />
+    )
   }
 
   let columnTitleLabel = columnTitle || ''
 
-  return <div
-    id={id}
-    className={`routable short ${baseState} ${routableState}`}
-    onClick={onClick}>
+  return (
     <div
-      className='button'
-      onClick={onButton}>
-      <span className='column-label'>{columnTitleLabel}</span>
-      <Icon format={routable.format} />
-      <span className='label'>{routable.label}</span>
+      id={id}
+      className={`routable short ${baseState} ${routableState}`}
+      onClick={onClick}
+    >
+      <div className='button' onClick={onButton}>
+        <span className='column-label'>{columnTitleLabel}</span>
+        <Icon format={routable.format} />
+        <span className='label'>{routable.label}</span>
+      </div>
+      {CheckboxComponent}
+      {RoutableNode}
     </div>
-    {CheckboxComponent}
-    {RoutableNode}
-  </div>
+  )
+}
+
+const shallowCompare = (obj1, obj2) =>
+  Object.keys(obj1).length === Object.keys(obj2).length &&
+  Object.keys(obj1).every(
+    key => obj2.hasOwnProperty(key) && obj1[key] === obj2[key]
+  )
+
+const deepCompare = (obj1, obj2) =>
+  JSON.stringify(obj1) === JSON.stringify(obj2)
+
+class Routable extends React.Component {
+  shouldComponentUpdate (nextProps) {
+    // only re-render if the reference to routable has changed
+
+    const routableRefHasChanged = nextProps.routable !== this.props.routable
+
+    return (
+      routableRefHasChanged ||
+      shallowCompare(nextProps.routable, this.props.routable) ||
+      deepCompare(nextProps.routable, this.props.routable)
+    )
+  }
+
+  render () {
+    return renderRoutable(this.props)
+  }
 }
 
 Routable.propTypes = {
