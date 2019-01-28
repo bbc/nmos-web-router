@@ -68,13 +68,13 @@ let renderRoutable = ({
   )
 }
 
-const shallowCompare = (obj1, obj2) =>
+const shallowEquals = (obj1, obj2) =>
   Object.keys(obj1).length === Object.keys(obj2).length &&
   Object.keys(obj1).every(
     key => obj2.hasOwnProperty(key) && obj1[key] === obj2[key]
   )
 
-const deepCompare = (obj1, obj2) =>
+const deepEquals = (obj1, obj2) =>
   JSON.stringify(obj1) === JSON.stringify(obj2)
 
 class Routable extends React.Component {
@@ -85,8 +85,8 @@ class Routable extends React.Component {
 
     return (
       routableRefHasChanged ||
-      shallowCompare(nextProps.routable, this.props.routable) ||
-      deepCompare(nextProps.routable, this.props.routable)
+      !shallowEquals(nextProps.routable, this.props.routable) ||
+      !deepEquals(nextProps.routable, this.props.routable)
     )
   }
 
