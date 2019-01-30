@@ -14,7 +14,7 @@ export default (actions) => {
   }
 
   let actionQueue = []
-  const throttledActionsUpdate = throttle(args => {
+  const throttledActionsUpdate = throttle(() => {
     // send the entire queue to React Store
     actions.update(actionQueue) // bulk action middleware will update store in one go
     // empty the queue
