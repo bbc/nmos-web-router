@@ -63,6 +63,8 @@ function createReducer (component) {
   return theReducer(component)
 }
 
+const withDefaultType = defaultType => data => ({ ...data, type: data.type || defaultType })
+
 function Actions (options) {
   let name = `@@${options.name}`
   let actions = options.actions || []
@@ -72,10 +74,17 @@ function Actions (options) {
 
   actions.forEach(action => {
     actionsMap[action] = `${name}/${action}`
+
+    // default type field to the name of this action
+    const applyDefaultType = withDefaultType(actionsMap[action])
+
+    // create a dispatch function for this action type
     actionDispatchers[action] = (data = {}) => {
-      let bulkActions = Array.isArray(data) ? data : [data]
-      bulkActions.map(d => ({ ...d, type: d.type || actionsMap[action] }))
-      options.dispatch(batchActions(bulkActions))
+      let action = Array.isArray(data)
+        ? batchActions(data.map(applyDefaultType))
+        : applyDefaultType(data)
+
+      options.dispatch(action)
     }
   })
 
