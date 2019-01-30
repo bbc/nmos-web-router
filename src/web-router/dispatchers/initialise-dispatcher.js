@@ -1,8 +1,10 @@
 import dispatchError from './error-dispatcher'
 import dispatchInfo from './info-dispatcher'
+import throttle from 'lodash.throttle'
 
 const MAX_RETRIES = 3
 const RETRY_TIMEOUT = 1000
+const MAX_UPDATE_SPEED_MS = 1000
 
 export default (actions) => {
   let retries = {
@@ -10,6 +12,14 @@ export default (actions) => {
     senders: 0,
     flows: 0
   }
+
+  let actionQueue = []
+  const throttledActionsUpdate = throttle(args => {
+    // send the entire queue to React Store
+    actions.update(actionQueue) // bulk action middleware will update store in one go
+    // empty the queue
+    actionQueue = []
+  }, MAX_UPDATE_SPEED_MS)
 
   function initialise (name) {
     // Only perform an initial GET for stub data, otherwise just use WebSockets
@@ -48,12 +58,13 @@ export default (actions) => {
       },
       update (data) {
         showOpenedMessage = true
-        let update = {}
-        update[name] = data.grain.data
-        actions.update({
-          update,
-          name: name
-        })
+        // create the action
+        let action = { update: { [name]: data.grain.data }, name: name }
+        // add new messages to queue
+        actionQueue.push(action)
+        // empty the queue at rate limited speed
+        throttledActionsUpdate()
+        actions.update()
       },
       close () {
         showOpenedMessage = true

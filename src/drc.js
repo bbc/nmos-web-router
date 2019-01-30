@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
+import { batchActions, enableBatching } from 'redux-batched-actions'
 import { Router, Route, browserHistory, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer as routing } from 'react-router-redux'
 
@@ -71,10 +72,10 @@ function Actions (options) {
 
   actions.forEach(action => {
     actionsMap[action] = `${name}/${action}`
-    actionDispatchers[action] = (data) => {
-      data = data || {}
-      data.type = data.type || actionsMap[action]
-      options.dispatch(data)
+    actionDispatchers[action] = (data = {}) => {
+      let bulkActions = Array.isArray(data) ? data : [data]
+      bulkActions.map(d => ({ ...d, type: d.type || actionsMap[action] }))
+      options.dispatch(batchActions(bulkActions))
     }
   })
 
@@ -171,8 +172,10 @@ export default (containers, shouldUseHash) => {
   extractReducers(newContainers, reducers)
 
   let store = createStore(
-    combineReducers(
-      Object.assign({ routing }, reducers)
+    enableBatching(
+      combineReducers(
+        Object.assign({ routing }, reducers)
+      )
     ),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
