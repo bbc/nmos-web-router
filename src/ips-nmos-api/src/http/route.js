@@ -58,7 +58,8 @@ module.exports = function (nmos) {
     }
     if (window.sessionStorage.getItem('bearerToken')) {
       try {
-        const accessToken = JSON.parse(window.sessionStorage.getItem('bearerToken')).access_token
+        const bearerToken = window.sessionStorage.getItem('bearerToken')
+        const accessToken = JSON.parse(bearerToken).access_token
         const authString = 'Bearer '.concat(accessToken)
         options.headers.Authorization = authString
       } catch (err) {
