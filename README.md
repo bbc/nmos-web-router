@@ -7,8 +7,8 @@ A web based application for connecting multicast RTP Senders and Receivers using
 The following instructions have been tested on Ubuntu 16.04, but may work for other operating systems.
 
 ```
-$ git clone https://github.com/bbc/rd-ips-web-react.git
-$ cd rd-ips-web-react
+$ git clone https://github.com/bbc/nmos-web-router.git
+$ cd nmos-web-router
 $ sudo ./install.sh
 $ yarn install
 $ yarn start
