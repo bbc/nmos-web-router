@@ -1,6 +1,22 @@
-# IPS Web
+# NMOS Web Router
 
-This is the new version of ipp-web
+A web based application for connecting multicast RTP Senders and Receivers using AMWA NMOS IS-04 and IS-05
+
+## Getting Started
+
+The following instructions have been tested on Ubuntu 16.04, but may work for other operating systems.
+
+```
+$ git clone https://github.com/bbc/rd-ips-web-react.git
+$ cd rd-ips-web-react
+$ sudo ./install.sh
+$ yarn install
+$ yarn start
+```
+
+This will run the application in development mode, launching a web browser automatically.
+
+Note: If you see senders such as 'BBC One (HD)' then the application is running with stub data and has been unable to find an active IS-04 registry.
 
 ## NPM Scripts
 
