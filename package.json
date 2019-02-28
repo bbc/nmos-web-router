@@ -71,6 +71,7 @@
     "clone": "^2.1.0",
     "eslint-plugin-jasmine": "^2.1.0",
     "lokijs": "^1.4.1",
+    "no-case": "^2.3.2",
     "pushstate-server": "^2.1.0",
     "randexp": "^0.4.3",
     "react": "^15.3.1",
