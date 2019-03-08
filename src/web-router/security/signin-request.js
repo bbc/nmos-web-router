@@ -12,10 +12,10 @@ export default (username, password) => {
     password: password
   }
 
-  return getServiceUrl('nmos-auth', 'v1.0')
+  return getServiceUrl('nmos-auth', 'v1.0', 0)
     .then(href => {
       return axios({
-        url: href + '/token',
+        url: href + '/x-nmos/oauth/v1.0/token/',
         method: 'post',
         data: qs.stringify(data),
         auth: {

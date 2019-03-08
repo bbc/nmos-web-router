@@ -17,7 +17,31 @@
 const axios = require('axios')
 const constants = require('../constants')
 
+function getHeaders () {
+  if (window.sessionStorage.getItem('bearerToken')) {
+    try {
+      const bearerToken = window.sessionStorage.getItem('bearerToken')
+      const accessToken = JSON.parse(bearerToken).access_token
+      const authString = 'Bearer '.concat(accessToken)
+      // options.headers.Authorization = authString
+      var options = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': authString
+        }
+      }
+    } catch (err) {
+      return new Promise((resolve, reject) => {
+        reject('Please Sign In')
+      })
+    }
+    return options
+  }
+}
+
 module.exports = ({body, baseUrl, apiVersion, type, downgrade, downgradeVersion}) => {
+  let options = getHeaders()
   body.max_update_rate_ms = body.max_update_rate_ms || 100
   if (downgrade) body.params = {'query.downgrade': `${downgradeVersion}`}
   else body.params = body.params || {}
@@ -25,5 +49,5 @@ module.exports = ({body, baseUrl, apiVersion, type, downgrade, downgradeVersion}
   const secure = baseUrl.startsWith('https')
   if (!body.hasOwnProperty('secure')) body.secure = secure
   body.resource_path = `/${type}`
-  return axios.post(`${baseUrl}/${constants.QUERY_URL}/${apiVersion}/subscriptions`, body)
+  return axios.post(`${baseUrl}/${constants.QUERY_URL}/${apiVersion}/subscriptions`, body, options)
 }
