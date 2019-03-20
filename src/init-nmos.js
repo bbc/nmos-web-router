@@ -21,6 +21,7 @@ const parsedUrl = parseURL(window.location)
 const queryStub = parsedUrl.query('stub').boolean
 const queryPriority = parsedUrl.query('priority').number || null
 const queryVersion = parsedUrl.query('api_ver').string || 'v1.2'
+const nodeVersion = queryVersion || 'v1.2'
 const queryProtocol = parsedUrl.query('api_proto').string || window.location.protocol.substring(0, window.location.protocol.length - 1)
 
 const httpPort = queryProtocol === 'https' ? 443 : 80
@@ -38,8 +39,7 @@ function priorityIndexGenerator (representations) {
     }
   })
   // Pick a number between 1 and priorityMatches
-  let randomSelection = Math.floor(Math.random() * (priorityMatches))
-  console.log(priorityMatches, randomSelection)
+  let randomSelection = Math.floor(Math.random() * priorityMatches)
   return randomSelection
 }
 
@@ -70,7 +70,6 @@ function getPrioritised (representations, priority, version, protocol) {
     lessThanOneHundred.sort((left, right) => {
       return (left.priority - right.priority)
     })
-    console.log(lessThanOneHundred)
     let index = priorityIndexGenerator(lessThanOneHundred)
     let representation = lessThanOneHundred[index]
     if (representation) {
@@ -86,7 +85,7 @@ function getPrioritised (representations, priority, version, protocol) {
 
 export function getServiceUrl (serviceType, apiVersion, priority) {
   return axios
-    .get(`${queryProtocol}://${parsedUrl.hostname}:${queryPort}/x-nmos/node/${apiVersion}/self/`)
+    .get(`${queryProtocol}://${parsedUrl.hostname}:${queryPort}/x-nmos/node/${nodeVersion}/self/`)
     .then(result => {
       let service = result.data.services.filter(service => {
         return service.type.includes('mdnsbridge')
