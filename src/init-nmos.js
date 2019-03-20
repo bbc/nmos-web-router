@@ -58,7 +58,16 @@ function getPrioritised (representations, priority, version, protocol) {
       else if (left.priority < right.priority) return -1
       return 0
     })
-    let representation = lessThanOneHundred[lessThanOneHundred.length - 1]
+    let minPriority = lessThanOneHundred[lessThanOneHundred.length - 1].priority
+    let priorityMatches = 0
+    lessThanOneHundred.forEach(representation => {
+      if (representation.priority === minPriority) {
+        priorityMatches += 1
+      }
+    })
+    // Pick a number between 1 and priorityMatches
+    let randomSelection = Math.floor(Math.random() * (priorityMatches - 1)) + 1
+    let representation = lessThanOneHundred[lessThanOneHundred.length - randomSelection]
     if (representation) {
       if (representation.address.indexOf(':') > -1) {
         url = `${protocol}://[${representation.address}]:${representation.port}`
