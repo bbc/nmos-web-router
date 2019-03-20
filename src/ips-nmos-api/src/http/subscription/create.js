@@ -23,7 +23,6 @@ function getHeaders () {
       const bearerToken = window.sessionStorage.getItem('bearerToken')
       const accessToken = JSON.parse(bearerToken).access_token
       const authString = 'Bearer '.concat(accessToken)
-      // options.headers.Authorization = authString
       var options = {
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +32,7 @@ function getHeaders () {
       }
     } catch (err) {
       return new Promise((resolve, reject) => {
-        reject('Please Sign In')
+        reject('Error requesting Authorization headers')
       })
     }
     return options

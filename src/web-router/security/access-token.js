@@ -14,6 +14,7 @@ export default (bearerToken) => {
       // If no parameters are passed, get token from session storage
     } else if (!bearerToken && window.sessionStorage.getItem(BEARER_KEY)) {
       let bearerToken = JSON.parse(window.sessionStorage.getItem(BEARER_KEY))
+      validateToken(bearerToken)
       accessToken = jwtDecode(bearerToken.access_token)
     }
   }

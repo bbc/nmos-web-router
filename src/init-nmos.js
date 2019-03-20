@@ -109,7 +109,7 @@ export function getServiceUrl (serviceType, apiVersion, priority) {
 export default (start) => {
   getServiceUrl('nmos-query', queryVersion, queryPriority)
     .then(url => {
-      start(queryStub, 'http://172.29.80.117:8870', queryVersion, downgrade, downgradeVersion)
+      start(queryStub, url, queryVersion, downgrade, downgradeVersion)
     })
     .catch(error => {
       console.error(error)

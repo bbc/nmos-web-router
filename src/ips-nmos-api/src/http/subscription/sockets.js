@@ -32,7 +32,11 @@ module.exports = ({baseUrl, apiVersion, callbacks, status, type, WebSocket, down
           .then(subscription => {
             if (status.value() === 'closed' || status.value() === 'errored') {
               status.connecting()
-              ws = new WebSocket(subscription.data.ws_href)
+              let wsHref = new window.URL(subscription.data.ws_href)
+              let bearerToken = window.sessionStorage.getItem('bearerToken')
+              if (bearerToken) wsHref.searchParams.append('authorization', 'Bearer ' + JSON.parse(bearerToken).access_token)
+              console.log(wsHref.searchParams.get('authorization'))
+              ws = new WebSocket(wsHref)
               disconnect = Disconnect({baseUrl, apiVersion, ws, status})
               connect({ws, callbacks, status})
             }
