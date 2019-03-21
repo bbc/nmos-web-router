@@ -21,6 +21,7 @@ const parsedUrl = parseURL(window.location)
 const queryStub = parsedUrl.query('stub').boolean
 const queryPriority = parsedUrl.query('priority').number || null
 const queryVersion = parsedUrl.query('api_ver').string || 'v1.2'
+const nodeVersion = queryVersion || 'v1.2'
 const queryProtocol = parsedUrl.query('api_proto').string || window.location.protocol.substring(0, window.location.protocol.length - 1)
 
 const httpPort = queryProtocol === 'https' ? 443 : 80
@@ -29,9 +30,22 @@ const queryPort = parsedUrl.query('mdnsbridge_port').number || httpPort
 const downgrade = !parsedUrl.query('api_no_downgrade').boolean
 const downgradeVersion = parsedUrl.query('api_downgrade_version').string || 'v1.0'
 
+function priorityIndexGenerator (representations) {
+  let minPriority = representations[0].priority
+  let priorityMatches = 0
+  representations.forEach(representation => {
+    if (representation.priority === minPriority) {
+      priorityMatches += 1
+    }
+  })
+  // Pick a number between 1 and priorityMatches
+  let randomSelection = Math.floor(Math.random() * priorityMatches)
+  return randomSelection
+}
+
 function getPrioritised (representations, priority, version, protocol) {
   var url = ''
-  if (queryPriority) {
+  if (priority) {
     let representation = representations
       .filter(representation => {
         return representation.priority === priority &&
@@ -54,11 +68,10 @@ function getPrioritised (representations, priority, version, protocol) {
             representation.protocol === protocol
       })
     lessThanOneHundred.sort((left, right) => {
-      if (left.priority < right.priority) return 1
-      else if (left.priority < right.priority) return -1
-      return 0
+      return (left.priority - right.priority)
     })
-    let representation = lessThanOneHundred[lessThanOneHundred.length - 1]
+    let index = priorityIndexGenerator(lessThanOneHundred)
+    let representation = lessThanOneHundred[index]
     if (representation) {
       if (representation.address.indexOf(':') > -1) {
         url = `${protocol}://[${representation.address}]:${representation.port}`
@@ -70,25 +83,32 @@ function getPrioritised (representations, priority, version, protocol) {
   }
 }
 
-export default (start) => {
-  axios
-    .get(`${queryProtocol}://${parsedUrl.hostname}:${queryPort}/x-nmos/node/${queryVersion}/self/`)
+export function getServiceUrl (serviceType, apiVersion, priority) {
+  return axios
+    .get(`${queryProtocol}://${parsedUrl.hostname}:${queryPort}/x-nmos/node/${nodeVersion}/self/`)
     .then(result => {
       let service = result.data.services.filter(service => {
         return service.type.includes('mdnsbridge')
       })[0]
-      let url = service.href + 'nmos-query/'
+      let url = service.href + serviceType + '/'
       return axios.get(url)
     })
     .then(result => {
       let representations = result.data.representation
       if (representations.length === 0) {
-        throw new Error('No Query APIs identified from mDNS Bridge')
+        throw new Error('No ' + serviceType + ' APIs identified from mDNS Bridge')
       }
-      let url = getPrioritised(representations, queryPriority, queryVersion, queryProtocol)
+      let url = getPrioritised(representations, priority, apiVersion, queryProtocol)
       if (url === '') {
-        throw new Error('No URL identified for Query API')
+        throw new Error('No URL identified for ' + serviceType + ' API')
       }
+      return url
+    })
+}
+
+export default (start) => {
+  getServiceUrl('nmos-query', queryVersion, queryPriority)
+    .then(url => {
       start(queryStub, url, queryVersion, downgrade, downgradeVersion)
     })
     .catch(error => {
