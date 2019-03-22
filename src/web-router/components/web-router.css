@@ -34,21 +34,13 @@ the file from top to bottom styles the web router from top to bottom */
 }
 
 .signIn {
-  position: relative;
-  width: 20%;
+  position: absolute;
+  left: 42.5%;
+  width: 15%;
   margin: auto;
-  top: 6px;
+  top: 12px;
   z-index: 1;
   letter-spacing: normal;
-
-  &-background {
-    position: absolute;
-    height: calc(var(--nav-buttons-height) + 12px);
-    width: 100%;
-    left: 0;
-    z-index: -1;
-    background-color: var(--background-color);
-  }
 
   & .formDiv {
     background-color: var(--background-color);
@@ -69,7 +61,7 @@ the file from top to bottom styles the web router from top to bottom */
   /* 12px gap between IPS nav bar and web router */
   height: calc(100% - var(--IPS-nav-height) - 12px);
   min-height: 650px;
-  top: calc(var(--IPS-nav-height) + 12px + var(--nav-buttons-height) + 12px);
+  top: calc(var(--IPS-nav-height) + 12px);
   left: 0;
   right: 0;
   margin: auto;

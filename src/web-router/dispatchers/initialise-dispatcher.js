@@ -57,19 +57,25 @@ export default (actions) => {
     let showOpenedMessage = false
     let subscription = window.nmos.subscription[name]()
     subscription.connect()
+      .catch(error => {
+        dispatchError(actions)(error)
+      })
     subscription.subscribe({
       open () {
         if (showOpenedMessage) dispatchInfo(actions)(`Connected to ${name}`)
         showOpenedMessage = true
       },
       update (data) {
-        showOpenedMessage = true
-        let update = {}
-        update[name] = data.grain.data
-        actions.update({
-          update,
-          name: name
-        })
+        if (data.type === 'error') dispatchError(actions)(data.data)
+        else {
+          showOpenedMessage = true
+          let update = {}
+          update[name] = data.grain.data
+          actions.update({
+            update,
+            name: name
+          })
+        }
       },
       close () {
         showOpenedMessage = true

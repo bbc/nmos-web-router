@@ -1,6 +1,7 @@
 import dispatchError from '../error-dispatcher'
 import storeToken from '../../security/access-token'
 import signInRequest from '../../security/signin-request'
+import initialiseDispatcher from '../initialise-dispatcher'
 
 export default (actions) => {
   return (username, password) => {
@@ -16,6 +17,7 @@ export default (actions) => {
         }, timeTillExpire * 1000)
 
         actions.signIn()
+        initialiseDispatcher(actions)()
       })
       .catch(error => {
         if (error.message === 'Network Error') error = 'Unable to connect to the Authorisation Server'

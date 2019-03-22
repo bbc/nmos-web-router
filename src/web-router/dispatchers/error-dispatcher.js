@@ -18,7 +18,7 @@ export default (actions) => {
   return (error) => {
     let message = error
     if (error.message) message = error.message
-    if (typeof error.response !== 'undefined') {
+    if (error.response) {
       if (error.response.data.error) message = error.response.data.error // pull out error message from webAPI errorhandler
       if (error.response.data.error_description) message = error.response.data.error_description // Authlib errors
     }

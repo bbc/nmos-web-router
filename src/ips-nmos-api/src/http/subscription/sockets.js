@@ -35,13 +35,22 @@ module.exports = ({baseUrl, apiVersion, callbacks, status, type, WebSocket, down
               let wsHref = new window.URL(subscription.data.ws_href)
               let bearerToken = window.sessionStorage.getItem('bearerToken')
               if (bearerToken) wsHref.searchParams.append('authorization', 'Bearer ' + JSON.parse(bearerToken).access_token)
-              console.log(wsHref.searchParams.get('authorization'))
               ws = new WebSocket(wsHref)
               disconnect = Disconnect({baseUrl, apiVersion, ws, status})
               connect({ws, callbacks, status})
             }
             return new Promise((resolve, reject) => {
               resolve(subscription)
+            })
+          })
+          .catch((err) => {
+            return new Promise((resolve, reject) => {
+              if (err.response) {
+                if (err.response.data.code === 401) err.response.data.error += ' Please Sign In.'
+              }
+              // For instances when a URL is found for a Query API but it is unresponsive
+              if (err.message === 'Network Error') err = 'Unable to connect to the Query API'
+              reject(err)
             })
           })
     },
