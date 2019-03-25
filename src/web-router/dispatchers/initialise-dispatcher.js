@@ -16,6 +16,7 @@
 
 import dispatchError from './error-dispatcher'
 import dispatchInfo from './info-dispatcher'
+import initialiseSignin from './security/signin-initialise-dispatcher'
 
 const MAX_RETRIES = 3
 const RETRY_TIMEOUT = 1000
@@ -93,6 +94,7 @@ export default (actions) => {
       console.error(window.nmos.error)
       actions.initialiseError({ error: window.nmos.error, name: 'nmos' })
     } else {
+      initialiseSignin(actions)()
       initialise('receivers')
       initialise('senders')
       initialise('flows')

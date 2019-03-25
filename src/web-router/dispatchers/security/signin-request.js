@@ -1,7 +1,7 @@
 const axios = require('axios')
 const qs = require('qs')
 import { CLIENT_ID, CLIENT_SECRET } from './constants'
-import { getServiceUrl } from '../../init-nmos'
+import { getServiceUrl } from '../../../init-nmos'
 
 export default (username, password) => {
   let scope = 'is05'

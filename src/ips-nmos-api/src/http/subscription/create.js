@@ -17,30 +17,9 @@
 const axios = require('axios')
 const constants = require('../constants')
 
-function getHeaders () {
-  if (window.sessionStorage.getItem('bearerToken')) {
-    try {
-      const bearerToken = window.sessionStorage.getItem('bearerToken')
-      const accessToken = JSON.parse(bearerToken).access_token
-      const authString = 'Bearer '.concat(accessToken)
-      var options = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': authString
-        }
-      }
-    } catch (err) {
-      return new Promise((resolve, reject) => {
-        reject('Error requesting Authorization headers')
-      })
-    }
-    return options
-  }
-}
-
-module.exports = ({body, baseUrl, apiVersion, type, downgrade, downgradeVersion}) => {
-  let options = getHeaders()
+module.exports = ({body, baseUrl, apiVersion, type, downgrade, downgradeVersion, addToken}) => {
+  let options = {}
+  if (addToken.fetch()) options.headers = addToken.addAuthHeaders()
   body.max_update_rate_ms = body.max_update_rate_ms || 100
   if (downgrade) body.params = {'query.downgrade': `${downgradeVersion}`}
   else body.params = body.params || {}

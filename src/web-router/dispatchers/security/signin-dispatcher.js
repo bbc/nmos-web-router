@@ -1,22 +1,30 @@
 import dispatchError from '../error-dispatcher'
-import storeToken from '../../security/access-token'
-import signInRequest from '../../security/signin-request'
+import AccessToken from './access-token'
+import signInRequest from './signin-request'
 import initialiseDispatcher from '../initialise-dispatcher'
+// import updateDispatcher from '../update-dispatcher'
 
 export default (actions) => {
   return (username, password) => {
     signInRequest(username, password)
       .then(response => {
         // stores Bearer Token in sessionStorage and returns decoded JWT
-        let expiryTime = storeToken(response.data).exp
-        let currentTime = Math.floor(new Date().getTime() / 1000)
-        let timeTillExpire = expiryTime - currentTime
+        let accessToken = AccessToken(actions)
+        accessToken.store(response.data)
+        let timeTillExpired = accessToken.timeTillExpired()
 
         setTimeout(function () {
           actions.signOut()
-        }, timeTillExpire * 1000)
+        }, timeTillExpired * 1000)
 
         actions.signIn()
+
+        // Must disconnect from existing websockets before re-initialising
+        let subscriptions = ['senders', 'receivers', 'flows']
+        subscriptions.forEach(subscription => {
+          window.nmos.subscription[subscription]().disconnect()
+        })
+
         initialiseDispatcher(actions)()
       })
       .catch(error => {
