@@ -18,34 +18,12 @@
   --logo-color: #555;
   --navigation-background: color(#ebebeb b(15%));
   --nav-color: #fff;
-  --pipeline-color: #ff6961;
-  --processors-color: #7d7;
-}
-
-.welcome {
-  position: relative;
 }
 
 .button {
   width: 100%;
   text-align: center;
   border-style: none;
-
-  &-red {
-    background-color: color(var(--pipeline-color) tint(30%));
-
-    &:hover {
-      background-color: var(--pipeline-color);
-    }
-  }
-
-  &-green {
-    background-color: color(var(--processors-color) tint(30%));
-
-    &:hover {
-      background-color: var(--processors-color);
-    }
-  }
 }
 
 .navigation {

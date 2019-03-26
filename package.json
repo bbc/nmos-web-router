@@ -70,8 +70,6 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "axios-oauth-client": "^1.1.1",
-    "axios-token-interceptor": "^0.1.0",
     "chance": "^1.0.4",
     "change-case": "^3.0.0",
     "clone": "^2.1.0",

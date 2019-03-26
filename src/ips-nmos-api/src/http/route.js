@@ -17,6 +17,7 @@
 var axios = require('axios')
 var constants = require('./constants')
 import routeBulk from './route-bulk'
+import addToken from './subscription/add-token'
 
 module.exports = function (nmos) {
   function maxAPIVersion (versions) {
@@ -56,18 +57,7 @@ module.exports = function (nmos) {
         'Accept': 'application/json'
       }
     }
-    if (window.sessionStorage.getItem('bearerToken')) {
-      try {
-        const bearerToken = window.sessionStorage.getItem('bearerToken')
-        const accessToken = JSON.parse(bearerToken).access_token
-        const authString = 'Bearer '.concat(accessToken)
-        options.headers.Authorization = authString
-      } catch (err) {
-        return new Promise((resolve, reject) => {
-          reject('Please Sign In')
-        })
-      }
-    }
+    addToken().addAuthHeaders(options.headers)
     if (Object.keys(sender).length === 0) {
       // Unsubscribe
       var toPatch = {

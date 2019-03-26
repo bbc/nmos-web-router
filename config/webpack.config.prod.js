@@ -23,7 +23,7 @@ var url = require('url')
 var paths = require('./paths')
 var getClientEnvironment = require('./env')
 var StyleLintPlugin = require('stylelint-webpack-plugin')
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 function ensureSlash (path, needsSlash) {
   var hasSlash = path.endsWith('/')
