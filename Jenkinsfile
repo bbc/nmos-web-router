@@ -51,7 +51,8 @@ pipeline {
                 bbcGithubNotify(context: "deb/sourceBuild", status: "PENDING")
 
                 unstash(name: "built-site")
-                sh 'debuild -uc -us -S'
+                sh "scripts/make_dsc.sh"
+
                 bbcPrepareDsc()
                 stash(name: "deb_dist", includes: "deb_dist/*")
                 script {
