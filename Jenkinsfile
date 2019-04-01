@@ -38,7 +38,7 @@ pipeline {
                 }
             }
             steps {
-                // bbcNpmRunScript("ci")
+                bbcNpmRunScript("ci")
                 bbcNpmRunScript("build")
                 stash(name: "built-site", includes: "build/**")
             }
