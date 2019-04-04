@@ -1,3 +1,9 @@
+ips-web (1.0.1) xenial; urgency=medium
+
+  * Build using Docker/Jenkinsfile pattern used elsewhere 
+
+ -- Sam Mesterton-Gibbons <sam.mesterton-gibbons@bbc.co.uk>  Mon, 01 Apr 2019 16:08:54 +0100
+
 ips-web (1.0.0) natty; urgency=low
 
   * Initial relase.
