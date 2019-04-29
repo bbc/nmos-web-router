@@ -1,6 +1,6 @@
 const axios = require('axios')
 const qs = require('qs')
-import { CLIENT_ID, CLIENT_SECRET } from './constants'
+import { CLIENT_ID, CLIENT_SECRET, AUTH_API_VERSION } from './constants'
 import { getServiceUrl } from '../../../init-nmos'
 
 export default (username, password) => {
@@ -12,7 +12,7 @@ export default (username, password) => {
     password: password
   }
 
-  return getServiceUrl('nmos-auth', 'v1.0', 105)
+  return getServiceUrl('nmos-auth', AUTH_API_VERSION, null)
     .then(href => {
       return axios({
         url: href + '/x-nmos/auth/v1.0/token',

@@ -16,14 +16,17 @@ module.exports = () => {
       let accessToken = this.fetch()
       if (accessToken) {
         let authString = `Bearer ${accessToken}`
-        if (headers) headers['Authorization'] = authString
-        else headers = {'Authorization': authString}
+        if (headers) {
+          headers['Authorization'] = authString
+        } else headers = {'Authorization': authString}
       }
       return headers
     },
     addAuthQuery (url) {
       let accessToken = this.fetch()
-      if (accessToken) url.searchParams.append('authorization', `Bearer ${accessToken}`)
+      if (accessToken) {
+        url.searchParams.append('authorization', `Bearer ${accessToken}`)
+      }
       return url
     }
   }
