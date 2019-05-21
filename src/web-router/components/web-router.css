@@ -31,9 +31,10 @@ the file from top to bottom styles the web router from top to bottom */
   --IPS-nav-height: 62px; /* The nav bar at the top to navigate between IPS apps */
   --view-title-height: 30px;
   --background-color: #bfbfbf;
+  --button-red: #ff6961;
 }
 
-.signIn {
+.sign-in {
   position: absolute;
   left: 42.5%;
   width: 15%;
@@ -42,11 +43,19 @@ the file from top to bottom styles the web router from top to bottom */
   z-index: 1;
   letter-spacing: normal;
 
-  & .formDiv {
+  & .form-div {
     background-color: var(--background-color);
     border-radius: 5px;
     transition-duration: 0.5s;
     text-align: center;
+  }
+
+  &-button {
+    background-color: color(var(--button-red) tint(30%));
+
+    &:hover {
+      background-color: var(--button-red);
+    }
   }
 }
 

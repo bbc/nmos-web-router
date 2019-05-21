@@ -10,7 +10,7 @@ let WebRouter = ({data, view, actions}) => {
   let location = view.location || '/choose'
   return <div style={{ width: '100%' }}>
     <div className='signIn-background' />
-    <div className='signIn'>
+    <div className='sign-in'>
       <SignIn view={view} actions={actions} />
     </div>
     <div className={`web-router web-router/${view.routingMode}${location} web-router-notification-${view.notifications.state}`}>

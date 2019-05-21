@@ -62,9 +62,9 @@ class Signin extends Component {
     let buttonText = 'SIGN IN'
     if (view.loggedIn) buttonText = 'SIGNED IN'
     return (
-      <div className='formDiv' ref={this.setRef}>
+      <div className='form-div' ref={this.setRef}>
         <button onClick={this.toggleForm}
-          className={'button nav ' + (!view.loggedIn ? 'button-red' : '')}
+          className={'button nav ' + (!view.loggedIn ? 'sign-in-button' : '')}
           style={{ display: 'inline-block' }}>{buttonText}
         </button>
         {this.state.showForm &&
