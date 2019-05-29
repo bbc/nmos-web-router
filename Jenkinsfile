@@ -116,7 +116,7 @@ pipeline {
                         bbcDebUpload(sourceFiles: "_result/${dist}-amd64/*",
                                         removePrefix: "_result/${dist}-amd64",
                                         dist: "${dist}",
-                                        apt_repo: "ap/python")
+                                        apt_repo: "ap/ipstudio")
                     }
                 }
                 script {
