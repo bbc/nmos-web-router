@@ -17,27 +17,41 @@
 const Disconnect = require('./disconnect')
 const connect = require('./connect-socket')
 const create = require('./create')
+const AddToken = require('./add-token')
 
 module.exports = ({baseUrl, apiVersion, callbacks, status, type, WebSocket, downgrade, downgradeVersion}) => {
   let ws = {
     close () {}
   }
   let disconnect = Disconnect({baseUrl, apiVersion, ws, status})
+  let addToken = AddToken()
 
   return {
     connect (options) {
       options.connection = options.connection || {}
       let body = options.connection
-      return create({body, baseUrl, apiVersion, type, downgrade, downgradeVersion})
+      return create({body, baseUrl, apiVersion, type, downgrade, downgradeVersion, addToken})
           .then(subscription => {
             if (status.value() === 'closed' || status.value() === 'errored') {
               status.connecting()
-              ws = new WebSocket(subscription.data.ws_href)
+              let wsHref = new window.URL(subscription.data.ws_href)
+              if (addToken.fetch()) wsHref = addToken.addAuthQuery(wsHref)
+              ws = new WebSocket(wsHref)
               disconnect = Disconnect({baseUrl, apiVersion, ws, status})
               connect({ws, callbacks, status})
             }
             return new Promise((resolve, reject) => {
               resolve(subscription)
+            })
+          })
+          .catch((err) => {
+            return new Promise((resolve, reject) => {
+              if (err.response) {
+                if (err.response.data.code === 401) err.response.data.error += ' Please Sign In.'
+              }
+              // For instances when a URL is found for a Query instance but it is unresponsive
+              if (err.message === 'Network Error') err = 'Unable to connect to the Query API'
+              reject(err)
             })
           })
     },

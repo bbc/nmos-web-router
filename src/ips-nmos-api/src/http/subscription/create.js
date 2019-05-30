@@ -17,7 +17,9 @@
 const axios = require('axios')
 const constants = require('../constants')
 
-module.exports = ({body, baseUrl, apiVersion, type, downgrade, downgradeVersion}) => {
+module.exports = ({body, baseUrl, apiVersion, type, downgrade, downgradeVersion, addToken}) => {
+  let options = {}
+  if (addToken.fetch()) options.headers = addToken.addAuthHeaders()
   body.max_update_rate_ms = body.max_update_rate_ms || 100
   if (downgrade) body.params = {'query.downgrade': `${downgradeVersion}`}
   else body.params = body.params || {}
@@ -25,5 +27,5 @@ module.exports = ({body, baseUrl, apiVersion, type, downgrade, downgradeVersion}
   const secure = baseUrl.startsWith('https')
   if (!body.hasOwnProperty('secure')) body.secure = secure
   body.resource_path = `/${type}`
-  return axios.post(`${baseUrl}/${constants.QUERY_URL}/${apiVersion}/subscriptions`, body)
+  return axios.post(`${baseUrl}/${constants.QUERY_URL}/${apiVersion}/subscriptions`, body, options)
 }

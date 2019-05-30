@@ -32,6 +32,12 @@ jest.mock('axios', () => {
   }
 })
 
+var addToken = {
+  fetch () {},
+  addAuthHeaders () {},
+  addAuthQuery () {}
+}
+
 describe('create', () => {
   beforeEach((done) => {
     url = 'no url'
@@ -42,7 +48,8 @@ describe('create', () => {
       body: {},
       baseUrl: 'baseUrl',
       apiVersion: 'apiVersion',
-      type: 'type'
+      type: 'type',
+      addToken: addToken
     })
     .then(resoltResponse => {
       response = resoltResponse

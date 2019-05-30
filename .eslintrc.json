@@ -6,6 +6,8 @@
   "plugins": [
     "jasmine"
   ],
+  "parser":
+    "babel-eslint",
   "env": {
     "jasmine": true
   },

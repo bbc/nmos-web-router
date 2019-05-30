@@ -17,6 +17,7 @@
 var axios = require('axios')
 var constants = require('./constants')
 import routeBulk from './route-bulk'
+import addToken from './subscription/add-token'
 
 module.exports = function (nmos) {
   function maxAPIVersion (versions) {
@@ -56,6 +57,7 @@ module.exports = function (nmos) {
         'Accept': 'application/json'
       }
     }
+    addToken().addAuthHeaders(options.headers)
     if (Object.keys(sender).length === 0) {
       // Unsubscribe
       var toPatch = {

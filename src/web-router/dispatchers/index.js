@@ -34,6 +34,9 @@ import unstageChange from './confirm/unstage-change-dispatcher'
 import deployRoute from './confirm/deploy-route-dispatcher'
 import deployUnroute from './confirm/deploy-unroute-dispatcher'
 import deployBulkRoute from './confirm/deploy-bulk-route-dispatcher'
+import signIn from './security/signin-dispatcher'
+import initialiseSignin from './security/signin-initialise-dispatcher'
+import signOut from './security/signout-dispatcher'
 
 export default {
   initialise,
@@ -55,5 +58,8 @@ export default {
   unstageChange,
   deployRoute,
   deployUnroute,
-  deployBulkRoute
+  deployBulkRoute,
+  signIn,
+  initialiseSignin,
+  signOut
 }

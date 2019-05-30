@@ -18,7 +18,12 @@
   --logo-color: #555;
   --navigation-background: color(#ebebeb b(15%));
   --nav-color: #fff;
-  --nav-background: #33c3f0;
+}
+
+.button {
+  width: 100%;
+  text-align: center;
+  border-style: none;
 }
 
 .navigation {

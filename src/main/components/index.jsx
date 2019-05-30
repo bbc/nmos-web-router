@@ -12,7 +12,7 @@ let Main = ({children}) => {
   return <Wrap>
     <Navigation />
     <Layout>{children}</Layout>
-  </Wrap>
+  < /Wrap>
 }
 
 Main.propTypes = {

@@ -19,7 +19,7 @@ import parseURL from './parse-url'
 
 const parsedUrl = parseURL(window.location)
 const queryStub = parsedUrl.query('stub').boolean
-const queryPriority = parsedUrl.query('priority').number || null
+export const queryPriority = parsedUrl.query('priority').number || null
 const queryVersion = parsedUrl.query('api_ver').string || 'v1.2'
 const nodeVersion = queryVersion || 'v1.2'
 const queryProtocol = parsedUrl.query('api_proto').string || window.location.protocol.substring(0, window.location.protocol.length - 1)
@@ -61,12 +61,14 @@ function getPrioritised (representations, priority, version, protocol) {
     }
     return url
   } else {
-    let lessThanOneHundred = representations
-      .filter(representation => {
-        return representation.priority < 100 &&
-            representation.versions.indexOf(version) !== -1 &&
-            representation.protocol === protocol
-      })
+    let lessThanOneHundred = representations.filter(representation => {
+      return representation.priority < 100 &&
+        representation.versions.indexOf(version) !== -1 &&
+        representation.protocol === protocol
+    })
+    if (lessThanOneHundred.length === 0) {
+      return url
+    }
     lessThanOneHundred.sort((left, right) => {
       return (left.priority - right.priority)
     })
