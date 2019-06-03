@@ -53,7 +53,9 @@ function getPrioritised (representations, priority, version, protocol) {
             representation.protocol === protocol
       })[0]
     if (representation) {
-      if (representation.address.indexOf(':') > -1) {
+      if (protocol === 'https') {
+        url = `${protocol}://${representation.hostname}:${representation.port}`
+      } else if (representation.address.indexOf(':') > -1) {
         url = `${protocol}://[${representation.address}]:${representation.port}`
       } else {
         url = `${protocol}://${representation.address}:${representation.port}`
@@ -75,7 +77,9 @@ function getPrioritised (representations, priority, version, protocol) {
     let index = priorityIndexGenerator(lessThanOneHundred)
     let representation = lessThanOneHundred[index]
     if (representation) {
-      if (representation.address.indexOf(':') > -1) {
+      if (protocol === 'https') {
+        url = `${protocol}://${representation.hostname}:${representation.port}`
+      } else if (representation.address.indexOf(':') > -1) {
         url = `${protocol}://[${representation.address}]:${representation.port}`
       } else {
         url = `${protocol}://${representation.address}:${representation.port}`
