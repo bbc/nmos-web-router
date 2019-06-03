@@ -1,3 +1,9 @@
+ips-web (1.1.1) xenial; urgency=medium
+
+  * Fix bug in handling of HTTPS and hostnames
+
+ -- Andrew Bonney <andrew.bonney@bbc.co.uk>  Mon, 03 Jun 2019 10:52:50 +0100
+
 ips-web (1.1.0) xenial; urgency=medium
 
   * Addition of log-in feature using OAuth2 Password Grant flow for secured Senders / Receivers

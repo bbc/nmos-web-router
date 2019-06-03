@@ -1,6 +1,6 @@
 {
   "name": "ips-web",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "BBC",
   "private": true,
   "devDependencies": {
@@ -69,7 +69,7 @@
     "whatwg-fetch": "2.0.1"
   },
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.19.0",
     "chance": "^1.0.4",
     "change-case": "^3.0.0",
     "clone": "^2.1.0",

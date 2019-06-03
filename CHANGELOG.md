@@ -1,5 +1,8 @@
 # NMOS Web Router Changelog
 
+## 1.1.1
+- Fix bug in handling of hostnames/IPs for HTTPS
+
 ## 1.1.0
 - Addition of log-in feature using OAuth2 Password Grant flow for secured Senders / Receivers
 
