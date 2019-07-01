@@ -1,5 +1,8 @@
 # NMOS Web Router Changelog
 
+## 1.1.2
+- Add external config file to edit OAuth2 client credentials
+
 ## 1.1.1
 - Fix bug in handling of hostnames/IPs for HTTPS
 
