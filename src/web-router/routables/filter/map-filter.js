@@ -21,10 +21,10 @@ export default (term, routables) => {
   routables.forEach(routable => {
     let dataKey = Object.keys(term)[0]
     let searchTerm = Object.values(term)[0]
-    let transportMatch = routable[dataKey].includes(searchTerm)
+    let filterMatch = routable[dataKey].includes(searchTerm)
 
     let routableMapState = mapState(routable)
-    if (transportMatch) routableMapState.fuzzymatch()
+    if (filterMatch) routableMapState.fuzzymatch()
     else routableMapState.fuzzymissmatch()
     routable.state = routableMapState.state()
     routable.stateString = stateToString(routable.state)
