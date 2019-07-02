@@ -1,3 +1,9 @@
+ips-web (1.1.3) xenial; urgency=medium
+
+  * Add ability to filter routables using key/value pair
+
+ -- Danny Meloy <danny.meloy@bbc.co.uk>  Tue  2 Jul 15:22:14 BST 2019
+
 ips-web (1.1.2) xenial; urgency=medium
 
   * Add external config file to edit OAuth2 client credentials

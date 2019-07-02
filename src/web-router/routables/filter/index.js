@@ -22,7 +22,7 @@ Filter is used to filter routables out of the 'Choose' view according to
 import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import mapFuzzymatch from './map-fuzzymatch'
-import mapTransport from './map-transport'
+import mapFilter from './map-filter'
 
 export default (data) => {
   data = cloneRoutables(data)
@@ -34,8 +34,8 @@ export default (data) => {
       mapFuzzymatch(term, senders)
       mapFuzzymatch(term, receivers)
     } else {
-      mapTransport(term, senders)
-      mapTransport(term, receivers)
+      mapFilter(term, senders)
+      mapFilter(term, receivers)
     }
 
     return View(data)
