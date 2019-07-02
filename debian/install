@@ -1,3 +1,4 @@
 build/static	usr/share/ips-web
 build/index.html	usr/share/ips-web
 build/favicon.ico	usr/share/ips-web
+build/auth_config.js usr/share/ips-web

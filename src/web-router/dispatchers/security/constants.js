@@ -1,4 +1,4 @@
 export const TOKEN_KEY = 'accessToken'
-export const CLIENT_ID = '0oey7t5tuKpkPeio7zerDjj3'
-export const CLIENT_SECRET = 'pyM4TNrZsY1et2HKmmUzYVijGIBpMqZOkEIbLa7gLDi8OtR4'
+export const CLIENT_ID = '4zk5xjDWla3S7YVEEIOqTjQI'
+export const CLIENT_SECRET = 'V8dEXpcZszxRlPrACSZhHD1M1UTdsgIJQuft2r1x5lvuBhIi'
 export const AUTH_API_VERSION = 'v1.0'
