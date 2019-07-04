@@ -18,7 +18,7 @@ let Connections = ({expanded, senders, receivers, routes, actions, routingMode, 
       choose={choose}
       actions={actions} />
     <Header />
-    <Layout gels='1/1' layouts='flush' className='routables-scroll' onScroll={() => { if (!expanded.state.includes('contracted')) actions.update() }}>
+    <Layout gels='1/1' layouts='flush' className='routables-scroll' onScroll={() => { if (expanded.state.length > 0 && !expanded.state.includes('contracted')) { actions.update() } }}>
       <Senders
         senders={senders}
         actions={actions}
