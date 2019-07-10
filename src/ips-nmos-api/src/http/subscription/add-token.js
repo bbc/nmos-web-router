@@ -25,7 +25,7 @@ module.exports = () => {
     addAuthQuery (url) {
       let accessToken = this.fetch()
       if (accessToken) {
-        url.searchParams.append('authorization', `Bearer ${accessToken}`)
+        url.searchParams.append('access_token', accessToken)
       }
       return url
     }
