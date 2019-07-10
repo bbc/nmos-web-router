@@ -1,16 +1,15 @@
 const axios = require('axios')
 const qs = require('qs')
-import { CLIENT_ID, CLIENT_SECRET, AUTH_API_VERSION } from './constants'
+import { CLIENT_ID, CLIENT_SECRET, AUTH_API_VERSION, AUTH_SCOPE, AUTH_GRANT } from './constants'
 import { getServiceUrl, queryPriority } from '../../../init-nmos'
 
 const clientId = window.authConfig ? window.authConfig.client_id : CLIENT_ID
 const clientSecret = window.authConfig ? window.authConfig.client_secret : CLIENT_SECRET
 
 export default (username, password) => {
-  let scope = 'is05'
   let data = {
-    grant_type: 'password',
-    scope: scope,
+    grant_type: AUTH_GRANT,
+    scope: AUTH_SCOPE,
     username: username,
     password: password
   }
