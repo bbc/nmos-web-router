@@ -19,7 +19,7 @@ import StageChange from '../stage-change'
 import generate from '../../../ips-nmos-api/src/stub/generate'
 import Insert from '../insert'
 
-describe('stage-change', () => {
+describe('unstage-change', () => {
   let data
   let unstageChange
 
