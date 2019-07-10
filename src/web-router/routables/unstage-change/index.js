@@ -19,7 +19,6 @@ UnstageChange is used to remove changes from state and to undo their changes
   to the 'Route' view
 */
 
-import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import sortRoutes from '../common/sort-routes'
 import getRoutable from '../common/get-routable'
@@ -29,7 +28,6 @@ import unstageMulti from './multi'
 
 export default (data) => {
   return (change) => {
-    data = cloneRoutables(data)
     let receiver = getRoutable(data.receivers, change.receiver.id)
     let sender = getRoutable(data.senders, change.sender.id)
     let subscription = ''

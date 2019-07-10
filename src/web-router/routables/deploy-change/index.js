@@ -19,7 +19,6 @@ The actual http get/post commands are carried out in the dispatcher
 These functions change the state of routables and routes accordingly
 */
 
-import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import getRoutable from '../common/get-routable'
 import deployRoute from './route'
@@ -27,7 +26,6 @@ import deployUnroute from './unroute'
 
 export default (data) => {
   return (senderID, receiverID, changeType, subscriptionID) => {
-    data = cloneRoutables(data)
     let sender = getRoutable(data.senders, senderID)
     let receiver = getRoutable(data.receivers, receiverID)
     let subscription = ''
