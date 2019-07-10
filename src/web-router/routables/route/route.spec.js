@@ -17,6 +17,7 @@
 import Insert from '../insert'
 import Route from '.'
 import generate from '../../../ips-nmos-api/src/stub/generate'
+import cloneRoutables from '../common/clone-routables'
 
 describe('routing', () => {
   let data
@@ -37,7 +38,7 @@ describe('routing', () => {
     receivers[1].id = 'receiver_1'
     receivers[1].subscription.sender_id = 'sender_1'
 
-    data = {}
+    data = cloneRoutables()
     data = Insert(data).senders(senders).view()
     data = Insert(data).receivers(receivers).view()
     route = Route(data)

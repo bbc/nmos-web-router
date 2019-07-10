@@ -17,6 +17,7 @@
 import remove from './remove-sender'
 import Insert from '../insert'
 import generate from '../../../ips-nmos-api/src/stub/generate'
+import cloneRoutables from '../common/clone-routables'
 
 describe('removing receivers', () => {
   let data
@@ -30,7 +31,7 @@ describe('removing receivers', () => {
     let receivers = generate.receivers(1)
     receivers[0].subscription.sender_id = 'sender_id'
 
-    let insert = Insert({})
+    let insert = Insert(cloneRoutables())
     data = insert.senders(senders).view()
     data = insert.receivers(receivers).view()
 

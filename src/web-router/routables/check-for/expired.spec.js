@@ -19,6 +19,7 @@ import generate from '../../../ips-nmos-api/src/stub/generate'
 import Insert from '../insert'
 import Remove from '../update/remove-sender.js'
 import check from '../check/check'
+import cloneRoutables from '../common/clone-routables'
 
 describe('stage-change', () => {
   let data
@@ -37,7 +38,7 @@ describe('stage-change', () => {
     let senders = generate.senders(2)
     let receivers = generate.receivers(2)
 
-    data = {}
+    data = cloneRoutables()
     data = Insert(data).senders(senders).view()
     data = Insert(data).receivers(receivers).view()
     data.changes = []

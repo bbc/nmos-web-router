@@ -16,6 +16,7 @@
 
 import Insert from './'
 import generate from '../../../ips-nmos-api/src/stub/generate'
+import cloneRoutables from '../common/clone-routables'
 
 describe('insert', () => {
   let data
@@ -33,7 +34,7 @@ describe('insert', () => {
         else if (left.hasOwnProperty('subscription')) sorted.push('receiver')
       }
     }
-    insert = Insert({})
+    insert = Insert(cloneRoutables())
 
     senders = generate.senders(2)
     senders[0].id = 'sender_id'
