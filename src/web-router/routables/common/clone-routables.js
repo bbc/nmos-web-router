@@ -17,22 +17,18 @@
 import clone from 'clone'
 
 /**
- * Falling back to the same "defaultArray" instance, rather than a
- * new [] instance, prevents unnecessary re-renders.
- */
-const defaultArray = []
-
-// Provide default fallbacks for any missing required properties
-const initialData = {
-  senders: defaultArray,
-  flows: defaultArray,
-  receivers: defaultArray,
-  routes: defaultArray,
-  changes: defaultArray
-}
-
-/**
  * Clone the entire data object (`state.view`) so it can
  * be safely mutated before being merged back into state.
  */
-export default data => Object.assign({}, initialData, clone(data))
+export default data => {
+  // Provide default fallbacks for any missing required properties
+  const defaultData = {
+    senders: [],
+    flows: [],
+    receivers: [],
+    routes: [],
+    changes: []
+  }
+
+  return Object.assign({}, defaultData, clone(data))
+}
