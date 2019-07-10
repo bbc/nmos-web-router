@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
+import clone from 'clone'
 import Routables from '../routables'
 import allVisible from './choose/all-visible'
 
 export default (state, action, merge) => {
   let pathname = action.payload.pathname
   let query = action.payload.query
-  let view = Object.assign({}, state.view)
+  let view = clone(state.view)
   if (pathname.includes('/web-router/')) {
     if (pathname.includes('/web-router/automatic')) {
       view.location = pathname.replace('/web-router/automatic', '')
