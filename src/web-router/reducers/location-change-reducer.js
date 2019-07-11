@@ -21,19 +21,32 @@ import allVisible from './choose/all-visible'
 export default (state, action, merge) => {
   let pathname = action.payload.pathname
   let query = action.payload.query
-  let view = clone(state.view)
+  let location
+  let term = ''
+  // Get search query
   if (pathname.includes('/web-router/')) {
     if (pathname.includes('/web-router/automatic')) {
-      view.location = pathname.replace('/web-router/automatic', '')
+      location = pathname.replace('/web-router/automatic', '')
     } else {
-      view.location = pathname.replace('/web-router/manual', '')
+      location = pathname.replace('/web-router/manual', '')
     }
     if (query.search !== '') {
-      view.choose.term = query.search
+      term = query.search
     } else {
-      view.choose.term = ''
+      term = ''
     }
   }
+
+  // Ignore if it hasn't changed
+  if (term === state.view.choose.term && location === state.view.location) {
+    return null
+  }
+
+  let view = clone(state.view)
+
+  // Add term and location to view
+  view.location = location
+  view.choose.term = term
 
   let routables = Routables(view)
   let filteredView = routables
