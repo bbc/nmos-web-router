@@ -26,14 +26,13 @@ export default (state, action, merge) => {
   routables.filter(state.view.choose.term)
   if (state.view.routingMode === 'manual') routables.checkFor('removed')
 
-  let updatedView = routables.view()
-  view = Object.assign({}, state.view, updatedView)
+  view = routables.view()
 
-  let allVisibleState = allVisible(routables.view().senders)
-  view.choose.allVisibleState.senders = allVisibleState.current
+  let sendersAllVisibleState = allVisible(routables.view().senders)
+  view.choose.allVisibleState.senders = sendersAllVisibleState.current
 
-  allVisibleState = allVisible(routables.view().receivers)
-  view.choose.allVisibleState.receivers = allVisibleState.current
+  let receiversAllVisibleState = allVisible(routables.view().receivers)
+  view.choose.allVisibleState.receivers = receiversAllVisibleState.current
 
   return merge({view})
 }

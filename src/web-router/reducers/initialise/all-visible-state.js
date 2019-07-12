@@ -14,10 +14,15 @@
  * limitations under the License.
  */
 
+import clone from 'clone'
+
 /* Change the 'allVisibleState' if the checked value of some routables has been
 changed by restoring the contents of window.sessionStorage */
 
 export default (senders, receivers, choose) => {
+  // Clone the `choose` object, to avoid mutating state
+  choose = clone(choose)
+
   let setAllVisibleState = (routables, type) => {
     let unchecked = 0
     routables.forEach(routable => {

@@ -23,8 +23,8 @@ export default (state, action, merge) => {
     .check[action.routableType](action.routable.id)
     .view()
 
-  let view = Object.assign({}, state.view, updatedView)
   let allVisibleState = allVisible(routables.view()[action.routableType])
-  view.choose.allVisibleState[action.routableType] = allVisibleState.current
+  updatedView.choose.allVisibleState[action.routableType] = allVisibleState.current
+  let view = Object.assign({}, state.view, updatedView)
   return merge({view})
 }

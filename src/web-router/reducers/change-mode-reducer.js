@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+import clone from 'clone'
+
 export default (state, action, merge) => {
-  let view = Object.assign({}, state.view)
+  let view = clone(state.view)
   view.routingMode = (view.routingMode === 'automatic') ? 'manual' : 'automatic'
   return merge({ view })
 }
