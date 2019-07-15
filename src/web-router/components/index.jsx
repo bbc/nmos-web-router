@@ -9,7 +9,6 @@ import SignIn from './security/signin-component'
 let WebRouter = ({data, view, actions}) => {
   let location = view.location || '/choose'
   return <div style={{ width: '100%' }}>
-    <div className='signIn-background' />
     <div className='sign-in'>
       <SignIn view={view} actions={actions} />
     </div>

@@ -32,6 +32,7 @@ export default (state, action, merge) => {
   routables.insert.senders(data.senders)
   routables.insert.flows(data.flows)
   routables.filter(state.view.choose.term)
+  routables.filter({'transport': 'rtp'})
 
   if (state.view.useSessionStorage) {
     routables.check.senders('saved')

@@ -24,6 +24,7 @@ export default (state, action, merge) => {
 
   routables.update[action.name](action.update[action.name])
   routables.filter(state.view.choose.term)
+  routables.filter({'transport': 'rtp'})
   if (state.view.routingMode === 'manual') routables.checkFor('removed')
 
   view = routables.view()

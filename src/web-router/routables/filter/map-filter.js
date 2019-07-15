@@ -14,28 +14,19 @@
  * limitations under the License.
  */
 
-/*
-Filter is used to filter routables out of the 'Choose' view according to
-  search text entered by the user
-*/
+import mapState from '../common/map-state'
+import stateToString from '../common/state-to-string'
 
-import View from '../view'
-import mapFuzzymatch from './map-fuzzymatch'
-import mapFilter from './map-filter'
+export default (term, routables) => {
+  routables.forEach(routable => {
+    let dataKey = Object.keys(term)[0]
+    let searchTerm = Object.values(term)[0]
+    let filterMatch = routable[dataKey].includes(searchTerm)
 
-export default (data) => {
-  return (term) => {
-    let senders = data.senders
-    let receivers = data.receivers
-
-    if (typeof term === 'string') {
-      mapFuzzymatch(term, senders)
-      mapFuzzymatch(term, receivers)
-    } else {
-      mapFilter(term, senders)
-      mapFilter(term, receivers)
-    }
-
-    return View(data)
-  }
+    let routableMapState = mapState(routable)
+    if (filterMatch) routableMapState.fuzzymatch()
+    else routableMapState.fuzzymissmatch()
+    routable.state = routableMapState.state()
+    routable.stateString = stateToString(routable.state)
+  })
 }

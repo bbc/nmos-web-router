@@ -3,6 +3,9 @@ const qs = require('qs')
 import { CLIENT_ID, CLIENT_SECRET, AUTH_API_VERSION } from './constants'
 import { getServiceUrl, queryPriority } from '../../../init-nmos'
 
+const clientId = window.authConfig ? window.authConfig.client_id : CLIENT_ID
+const clientSecret = window.authConfig ? window.authConfig.client_secret : CLIENT_SECRET
+
 export default (username, password) => {
   let scope = 'is05'
   let data = {
@@ -19,8 +22,8 @@ export default (username, password) => {
         method: 'post',
         data: qs.stringify(data),
         auth: {
-          username: CLIENT_ID,
-          password: CLIENT_SECRET
+          username: clientId,
+          password: clientSecret
         }
       })
     })
