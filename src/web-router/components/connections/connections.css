@@ -88,6 +88,7 @@ to bottom */
   /* The scrollable area occupying most of the view */
   & .routables-scroll {
     height: calc(100% - var(--header-height) - var(--change-mode-height) - 12px);
+    width: 100%;
 
     & .routable.unchecked {
       display: none;
