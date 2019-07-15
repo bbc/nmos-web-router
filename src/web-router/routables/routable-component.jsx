@@ -3,55 +3,79 @@ import React, { PropTypes } from 'react'
 import Icon from '../components/shared/icon-component'
 import Checkbox from './checkbox-component'
 import NodeComponent from './node-component'
+import equal from 'fast-deep-equal'
 
 const noop = function () {}
 
-let Routable = ({ id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender, columnTitle, timeRemoved }) => {
-  id = id || ''
-  node = node || 'none'
-  baseState = baseState || ''
-  onClick = onClick || noop
-  onButton = onButton || noop
-  onCheckbox = onCheckbox || noop
-  onNode = onNode || noop
-  onNodeRender = onNodeRender || noop
-  timeRemoved = timeRemoved || 0
+class Routable extends React.Component {
+  /**
+   * There could be a large amount of instances of this component, which
+   * could lock up the browser if there all re-rendering at the same time.
+   *
+   * To help improve performance the parent component can set the `allowUpdateRender`
+   * prop to `false` and block any redundant renders, e.g. through windowing.
+   */
+  shouldComponentUpdate (nextProps) {
+    if (!nextProps.allowUpdateRender) {
+      return false
+    }
 
-  let routableState = routable.stateString || ''
-
-  let CheckboxComponent = null
-  if (checkbox) {
-    CheckboxComponent = <Checkbox
-      onClick={onCheckbox}
-    />
+    // Prevent redundant renders
+    return !equal(this.props, nextProps)
   }
 
-  let RoutableNode = null
-  if (node !== 'none') {
-    let unicast = (routable.transport.includes('rtp.ucast'))
-    RoutableNode = <NodeComponent
-      onClick={onNode}
-      onRender={onNodeRender}
-      unicast={unicast}
-    />
-  }
+  render () {
+    const { id, routable, baseState, node, checkbox, onClick, onButton, onCheckbox, onNode, onNodeRender, columnTitle } = this.props
 
-  let columnTitleLabel = columnTitle || ''
+    let routableState = routable.stateString || ''
 
-  return <div
-    id={id}
-    className={`routable short ${baseState} ${routableState}`}
-    onClick={onClick}>
-    <div
-      className='button'
-      onClick={onButton}>
-      <span className='column-label'>{columnTitleLabel}</span>
-      <Icon format={routable.format} />
-      <span className='label'>{routable.label}</span>
+    let CheckboxComponent = null
+    if (checkbox) {
+      CheckboxComponent = <Checkbox
+        onClick={() => onCheckbox(routable)}
+      />
+    }
+
+    let RoutableNode = null
+    if (node) {
+      let unicast = (routable.transport.includes('rtp.ucast'))
+      RoutableNode = <NodeComponent
+        onClick={onNode}
+        onRender={onNodeRender}
+        unicast={unicast}
+      />
+    }
+
+    let columnTitleLabel = columnTitle || ''
+
+    return <div
+      id={id}
+      className={`routable short ${baseState} ${routableState}`}
+      onClick={onClick}>
+      <div
+        className='button'
+        onClick={onButton}>
+        <span className='column-label'>{columnTitleLabel}</span>
+        <Icon format={routable.format} />
+        <span className='label'>{routable.label}</span>
+      </div>
+      {CheckboxComponent}
+      {RoutableNode}
     </div>
-    {CheckboxComponent}
-    {RoutableNode}
-  </div>
+  }
+}
+
+Routable.defaultProps = {
+  id: '',
+  node: false,
+  baseState: '',
+  onClick: noop,
+  onButton: noop,
+  onCheckbox: noop,
+  onNode: noop,
+  onNodeRender: noop,
+  timeRemoved: 0,
+  allowUpdateRender: true
 }
 
 Routable.propTypes = {
@@ -66,7 +90,8 @@ Routable.propTypes = {
   onNode: PropTypes.func,
   onNodeRender: PropTypes.func,
   columnTitle: PropTypes.string,
-  timeRemoved: PropTypes.number
+  timeRemoved: PropTypes.number,
+  allowUpdateRender: PropTypes.bool
 }
 
 export default Routable
