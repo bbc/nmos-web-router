@@ -2,20 +2,36 @@ import React, { PropTypes } from 'react'
 import { Layout, LayoutItem } from '../../../gel-react/grid'
 import Routable from '../../routables/routable-component'
 
-let Visible = ({type, actions, expanded, state}) => {
-  return <Routable
-    baseState={`blank ${state}`}
-    routable={{
-      label: 'All Visible',
-      format: 'blank'
-    }}
-    checkbox
-    onCheckbox={function () {
-      if (!expanded.state.includes('contracted')) actions.toggleSender(expanded)
-      actions.allVisible(type)
-    }}
-    columnTitle={type}
-    />
+class Visible extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.onCheckbox = this.onCheckbox.bind(this)
+  }
+
+  onCheckbox () {
+    const {type, actions, expanded} = this.props
+
+    if (!expanded.state.includes('contracted')) {
+      actions.toggleSender(expanded)
+    }
+    actions.allVisible(type)
+  }
+
+  render () {
+    const {type, state} = this.props
+
+    return <Routable
+      baseState={`blank ${state}`}
+      routable={{
+        label: 'All Visible',
+        format: 'blank'
+      }}
+      checkbox
+      onCheckbox={this.onCheckbox}
+      columnTitle={type}
+      />
+  }
 }
 
 Visible.propTypes = {
