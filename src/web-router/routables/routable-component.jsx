@@ -74,7 +74,6 @@ Routable.defaultProps = {
   onCheckbox: noop,
   onNode: noop,
   onNodeRender: noop,
-  timeRemoved: 0,
   allowUpdateRender: true
 }
 
@@ -90,7 +89,6 @@ Routable.propTypes = {
   onNode: PropTypes.func,
   onNodeRender: PropTypes.func,
   columnTitle: PropTypes.string,
-  timeRemoved: PropTypes.number,
   allowUpdateRender: PropTypes.bool
 }
 
