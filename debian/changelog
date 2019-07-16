@@ -1,3 +1,9 @@
+ips-web (1.2.0) xenial; urgency=medium
+
+  * Improve performance by using windowing and generally reducing re-rendering
+
+ -- Andrew Bonney <andrew.bonney@bbc.co.uk>  Tue, 16 Jul 2019 14:03:13 +0100
+
 ips-web (1.1.3) xenial; urgency=medium
 
   * Add ability to filter routables using key/value pair
