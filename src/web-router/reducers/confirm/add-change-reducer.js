@@ -17,7 +17,7 @@
 import Routables from '../../routables'
 
 export default (state, action, merge) => {
-  let updatedView = ''
+  let updatedView = {}
 
   // Check to make sure the user is not routing a receiver that is already subscribed
   // to the sender. If this is the case then do nothing.

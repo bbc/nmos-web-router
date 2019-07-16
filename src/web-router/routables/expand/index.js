@@ -22,7 +22,6 @@ Expand functions deal with the expanding of a sender when it is clicked
     on format, transport and media_type (where available)
 */
 
-import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import expandSenders from './expand-senders'
 import expandReceivers from './expand-receivers'
@@ -31,7 +30,6 @@ import stateToString from '../common/state-to-string'
 import checkForUnicast from './check-for-unicast'
 
 export default (data) => {
-  data = cloneRoutables(data)
   function expanded (senders) {
     let expanded = {}
     let expandedSender = senders.filter(sender => {

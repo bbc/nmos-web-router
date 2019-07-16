@@ -18,6 +18,7 @@ import check from './check'
 import generate from '../../../ips-nmos-api/src/stub/generate'
 import insert from '../insert'
 import mapState from '../common/map-state'
+import cloneRoutables from '../common/clone-routables'
 
 describe('checking', () => {
   let data
@@ -32,7 +33,7 @@ describe('checking', () => {
     receivers[0].subscription.sender_id = senders[0].id
     receivers[1].subscription.sender_id = null
 
-    data = insert({}).receivers(receivers).view()
+    data = insert(cloneRoutables()).receivers(receivers).view()
     data = insert(data).senders(senders).view()
 
     data.receivers.forEach((r) => {

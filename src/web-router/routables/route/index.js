@@ -20,7 +20,6 @@ Route functions manipulate the state of routables
   the relevant sender, if it is a routing change
 */
 
-import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import sortRoutes from '../common/sort-routes'
 import getRoutable from '../common/get-routable'
@@ -30,7 +29,6 @@ import unrouteReceivers from './unroute-receivers'
 
 export default (data) => {
   return (receiverId, senderId) => {
-    data = cloneRoutables(data)
     let receiver = getRoutable(data.receivers, receiverId)
 
     unrouteReceivers({data, receiver})

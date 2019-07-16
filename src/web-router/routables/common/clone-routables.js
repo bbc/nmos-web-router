@@ -16,19 +16,19 @@
 
 import clone from 'clone'
 
-export default (data) => {
-  data = data || {}
-  data.senders = data.senders || []
-  data.flows = data.flows || []
-  data.receivers = data.receivers || []
-  data.routes = data.routes || []
-  data.changes = data.changes || []
+/**
+ * Clone the entire data object (`state.view`) so it can
+ * be safely mutated before being merged back into state.
+ */
+export default data => {
+  // Provide default fallbacks for any missing required properties
+  const defaultData = {
+    senders: [],
+    flows: [],
+    receivers: [],
+    routes: [],
+    changes: []
+  }
 
-  data.senders = clone(data.senders)
-  data.flows = clone(data.flows)
-  data.receivers = clone(data.receivers)
-  data.routes = clone(data.routes)
-  data.changes = clone(data.changes)
-
-  return data
+  return Object.assign({}, defaultData, clone(data))
 }

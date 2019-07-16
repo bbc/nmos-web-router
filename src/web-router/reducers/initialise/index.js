@@ -46,7 +46,7 @@ export default (state, action, merge) => {
 
   let view = Object.assign({}, state.view, {
     loading: loading(routables.view(), state.view, action),
-    choose: allVisibleState(data.senders, data.receivers, state.view.choose),
+    choose: allVisibleState(routables.view().senders, routables.view().receivers, state.view.choose),
     routingMode: routingMode
   }, routables.view())
 

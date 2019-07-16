@@ -20,6 +20,7 @@ import Insert from '../insert'
 import RemoveSender from '../update/remove-sender.js'
 import RemoveReceiver from '../update/remove-receiver.js'
 import StageChange from '../stage-change'
+import cloneRoutables from '../common/clone-routables'
 
 describe('stage-change', () => {
   let data
@@ -40,7 +41,7 @@ describe('stage-change', () => {
     receivers = generate.receivers(1)
     receivers[0].subscription.sender_id = null
 
-    data = {}
+    data = cloneRoutables()
     data = Insert(data).senders(senders).view()
     data = Insert(data).receivers(receivers).view()
     data.changes = []

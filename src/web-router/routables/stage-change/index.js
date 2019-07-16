@@ -24,7 +24,6 @@ Stage Change functions are used to push a change into state and to reflect
     broken as a result of the routing change
 */
 
-import cloneRoutables from '../common/clone-routables'
 import View from '../view'
 import sortRoutes from '../common/sort-routes'
 import getRoutable from '../common/get-routable'
@@ -34,7 +33,6 @@ import stageMulti from './multi'
 
 export default (data) => {
   return (senderID, receiverID, changeType, changeIsNew) => {
-    data = cloneRoutables(data)
     let receiver = getRoutable(data.receivers, receiverID)
     let sender = getRoutable(data.senders, senderID)
     let subscription = ''

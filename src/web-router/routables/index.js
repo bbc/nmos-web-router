@@ -24,8 +24,20 @@ import stageChange from './stage-change'
 import deployChange from './deploy-change'
 import unstageChange from './unstage-change'
 import checkFor from './check-for'
+import cloneRoutables from './common/clone-routables'
 
 export default (data) => {
+  /**
+   * All the methods below mutate the `data` object. So to avoid mutating
+   * state directly, the `data` object is cloned and then this cloned version
+   * is passed into all the methods below. This allows the cloned version to
+   * be mutated, without affecting the original state.
+   *
+   * Once all the changes to the cloned `data` have been applied, it can
+   * be returned with the `view` method and merged into state.
+   */
+  data = cloneRoutables(data)
+
   return {
     check: check(data),
     update: {
