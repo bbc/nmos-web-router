@@ -10,6 +10,19 @@ import ChangeMode from './change-mode-component'
 import ScrollWindowing from '../scroll-windowing/scroll-windowing'
 import { ROUTABLE_ROW_HEIGHT } from '../scroll-windowing/constants'
 
+/**
+ * This component displays all the chosen Senders, Receivers and the
+ * routes between them.
+ *
+ * The following optimisations have been applied to keep rendering quick
+ * when there are a large amount of Senders or Receivers:
+ *
+ * 1. Filter the `senders` and `receivers` by their `unchecked` state,
+ *    so that only chosen routables are rendered to the DOM.
+ * 2. The elements are windowed, so only those visible to the user are
+ *    re-rendered on scroll.
+ */
+
 const filterByUnchecked = ({ stateString }) => !stateString.includes('unchecked')
 
 let Connections = ({expanded, senders, receivers, routes, actions, routingMode, changes, location, choose}) => {
