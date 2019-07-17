@@ -89,6 +89,13 @@ Routable.propTypes = {
   onNode: PropTypes.func,
   onNodeRender: PropTypes.func,
   columnTitle: PropTypes.string,
+  /**
+   * The next prop validation has been temporarily disabled as it
+   * incorrectly throws a `react/no-unused-prop-types` eslint error.
+   * This is a known bug in this version of `eslint-plugin-react`:
+   * https://github.com/yannickcr/eslint-plugin-react/issues/1684.
+   */
+  // eslint-disable-next-line
   allowUpdateRender: PropTypes.bool
 }
 
