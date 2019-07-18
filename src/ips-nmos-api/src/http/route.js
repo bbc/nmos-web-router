@@ -17,7 +17,17 @@
 var axios = require('axios')
 var constants = require('./constants')
 import routeBulk from './route-bulk'
-import addToken from './subscription/add-token'
+import AddToken from './subscription/add-token'
+
+let addToken = AddToken()
+
+// Add a request interceptor
+axios.interceptors.request.use(function (config) {
+  // const authString = addToken.getAuthHeader()
+  // config.headers.Authorization =  authString
+  addToken.addAuthHeader(config.headers)
+  return config
+})
 
 module.exports = function (nmos) {
   function maxAPIVersion (versions) {
@@ -57,7 +67,6 @@ module.exports = function (nmos) {
         'Accept': 'application/json'
       }
     }
-    addToken().addAuthHeaders(options.headers)
     if (Object.keys(sender).length === 0) {
       // Unsubscribe
       var toPatch = {
