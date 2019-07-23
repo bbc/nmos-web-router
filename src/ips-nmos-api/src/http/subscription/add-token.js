@@ -24,9 +24,11 @@ module.exports = () => {
       if (authString) {
         if (headers) {
           headers['Authorization'] = authString
-        } else headers = {'Authorization': authString}
+        } else {
+          headers = {'Authorization': authString}
+        }
+        return headers
       }
-      return headers
     },
     addAuthQuery (url) {
       let accessToken = this.fetch()

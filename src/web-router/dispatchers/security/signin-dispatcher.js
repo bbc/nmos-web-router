@@ -14,6 +14,7 @@ export default (actions) => {
         let timeTillExpired = accessToken.timeTillExpired()
 
         setTimeout(function () {
+          accessToken.remove()
           actions.signOut()
         }, timeTillExpired * 1000)
 
