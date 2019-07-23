@@ -23,8 +23,6 @@ let addToken = AddToken()
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
-  // const authString = addToken.getAuthHeader()
-  // config.headers.Authorization =  authString
   addToken.addAuthHeader(config.headers)
   return config
 })
