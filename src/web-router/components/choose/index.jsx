@@ -6,6 +6,10 @@ import Routables from './routables-component'
 import AllVisible from './all-visible-component'
 import Search from './search-component'
 import saveCheckedRoutables from './save-checked-routables'
+import ScrollWindowing from '../scroll-windowing/scroll-windowing'
+import { ROUTABLE_ROW_HEIGHT } from '../scroll-windowing/constants'
+
+const filterBySearchTerm = ({ stateString }) => !stateString.includes('fuzzymissmatch')
 
 let Choose = ({view, senders, receivers, expanded, actions}) => {
   if (view.loading.restoredChecked.senders && view.loading.restoredChecked.receivers && view.useSessionStorage) {
@@ -13,6 +17,13 @@ let Choose = ({view, senders, receivers, expanded, actions}) => {
     // if the session is refreshed. Only do this once the web router has fully loaded.
     saveCheckedRoutables(senders, receivers)
   }
+
+  // Filter senders and receivers by the search term
+  const filteredSenders = senders.filter(filterBySearchTerm)
+  const filteredReceivers = receivers.filter(filterBySearchTerm)
+
+  const rowCount = Math.max(filteredSenders.length, filteredReceivers.length)
+
   return <Layout layouts='flush' className='box box-hidden' >
     <Search
       expanded={expanded}
@@ -23,22 +34,31 @@ let Choose = ({view, senders, receivers, expanded, actions}) => {
       expanded={expanded}
       actions={actions}
       state={view.choose.allVisibleState} />
-    <div className='routables routables-scroll'>
-      <Routables
-        side='left'
-        type='senders'
-        routables={senders}
-        actions={actions}
-        expanded={expanded}
-        />
-      <Routables
-        side='right'
-        type='receivers'
-        routables={receivers}
-        actions={actions}
-        expanded={expanded}
-        />
-    </div>
+    <ScrollWindowing rowHeight={ROUTABLE_ROW_HEIGHT} rowCount={rowCount}>
+      {({ getScrollProps, visibleStartRow, visibleEndRow, spacer }) => (
+        <div className='routables routables-scroll' {...getScrollProps()}>
+          {spacer}
+          <Routables
+            side='left'
+            type='senders'
+            routables={filteredSenders}
+            actions={actions}
+            expanded={expanded}
+            visibleStartRow={visibleStartRow}
+            visibleEndRow={visibleEndRow}
+            />
+          <Routables
+            side='right'
+            type='receivers'
+            routables={filteredReceivers}
+            actions={actions}
+            expanded={expanded}
+            visibleStartRow={visibleStartRow}
+            visibleEndRow={visibleEndRow}
+            />
+        </div>
+      )}
+    </ScrollWindowing>
   </Layout>
 }
 

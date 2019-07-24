@@ -135,7 +135,7 @@ let Route = ({data, expanded, halfs, unicast}) => {
   let routesEl = document.querySelector('.routes')
   if (routesEl === null) return null
   let routesRects = routesEl.getBoundingClientRect()
-  let scrollTop = routesEl.parentElement.scrollTop
+  let scrollTop = routesEl.parentElement.parentElement.scrollTop
 
   if (expanded) {
     return <ExpandedRoute

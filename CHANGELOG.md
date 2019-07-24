@@ -1,5 +1,8 @@
 # NMOS Web Router Changelog
 
+## 1.2.0
+- Improve performance by using windowing and generally reducing re-rendering
+
 ## 1.1.2
 - Add external config file to edit OAuth2 client credentials
 
