@@ -53,6 +53,8 @@ jest.mock('axios', () => {
   }
 })
 
+jest.mock('./subscription/add-token', () => () => {})
+
 describe('routing', () => {
   beforeEach(function () {
     sender.id = 'senderId'
