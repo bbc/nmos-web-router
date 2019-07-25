@@ -29,6 +29,7 @@ const queryPort = parsedUrl.query('mdnsbridge_port').number || httpPort
 
 const downgrade = !parsedUrl.query('api_no_downgrade').boolean
 const downgradeVersion = parsedUrl.query('api_downgrade_version').string || 'v1.0'
+const queryAuth = parsedUrl.query('auth').boolean
 
 function priorityIndexGenerator (representations) {
   let minPriority = representations[0].priority
@@ -38,7 +39,7 @@ function priorityIndexGenerator (representations) {
       priorityMatches += 1
     }
   })
-  // Pick a number between 1 and priorityMatches
+  // Pick a number between 0 and priorityMatches-1
   let randomSelection = Math.floor(Math.random() * priorityMatches)
   return randomSelection
 }
@@ -48,9 +49,13 @@ function getPrioritised (representations, priority, version, protocol) {
   if (priority) {
     let representation = representations
       .filter(representation => {
+        if (!representation.txt.hasOwnProperty('api_auth')) {
+          representation.txt.api_auth = false
+        }
         return representation.priority === priority &&
             representation.versions.indexOf(version) !== -1 &&
-            representation.protocol === protocol
+            representation.protocol === protocol &&
+            representation.txt.api_auth === queryAuth
       })[0]
     if (representation) {
       if (protocol === 'https') {
@@ -64,12 +69,16 @@ function getPrioritised (representations, priority, version, protocol) {
     return url
   } else {
     let lessThanOneHundred = representations.filter(representation => {
+      if (!representation.txt.hasOwnProperty('api_auth')) {
+        representation.txt.api_auth = false
+      }
       return representation.priority < 100 &&
         representation.versions.indexOf(version) !== -1 &&
-        representation.protocol === protocol
+        representation.protocol === protocol &&
+        representation.txt.api_auth === queryAuth
     })
     if (lessThanOneHundred.length === 0) {
-      return url
+      return ''
     }
     lessThanOneHundred.sort((left, right) => {
       return (left.priority - right.priority)
