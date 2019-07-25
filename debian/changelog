@@ -1,3 +1,9 @@
+ips-web (1.2.1) xenial; urgency=medium
+
+  * Change OAuth token name in query param, filter query api based on api_auth text record
+
+ -- Danny Meloy <danny.meloy@bbc.co.uk>  Thu 25 Jul 12:50:12 BST 2019
+
 ips-web (1.2.0) xenial; urgency=medium
 
   * Improve performance by using windowing and generally reducing re-rendering
