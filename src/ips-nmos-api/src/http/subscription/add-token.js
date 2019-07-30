@@ -12,20 +12,28 @@ module.exports = () => {
         return accessToken
       }
     },
-    addAuthHeaders (headers) {
+    getAuthHeader () {
       let accessToken = this.fetch()
       if (accessToken) {
         let authString = `Bearer ${accessToken}`
+        return authString
+      }
+    },
+    addAuthHeader (headers) {
+      let authString = this.getAuthHeader()
+      if (authString) {
         if (headers) {
           headers['Authorization'] = authString
-        } else headers = {'Authorization': authString}
+        } else {
+          headers = {'Authorization': authString}
+        }
       }
       return headers
     },
     addAuthQuery (url) {
       let accessToken = this.fetch()
       if (accessToken) {
-        url.searchParams.append('authorization', `Bearer ${accessToken}`)
+        url.searchParams.append('access_token', accessToken)
       }
       return url
     }

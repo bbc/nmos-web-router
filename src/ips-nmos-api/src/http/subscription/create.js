@@ -19,7 +19,7 @@ const constants = require('../constants')
 
 module.exports = ({body, baseUrl, apiVersion, type, downgrade, downgradeVersion, addToken}) => {
   let options = {}
-  if (addToken.fetch()) options.headers = addToken.addAuthHeaders()
+  if (addToken.fetch()) options.headers = addToken.addAuthHeader()
   body.max_update_rate_ms = body.max_update_rate_ms || 100
   if (downgrade) body.params = {'query.downgrade': `${downgradeVersion}`}
   else body.params = body.params || {}

@@ -34,7 +34,7 @@ jest.mock('axios', () => {
 
 var addToken = {
   fetch () {},
-  addAuthHeaders () {},
+  addAuthHeader () {},
   addAuthQuery () {}
 }
 

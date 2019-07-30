@@ -29,6 +29,7 @@ const queryPort = parsedUrl.query('mdnsbridge_port').number || httpPort
 
 const downgrade = !parsedUrl.query('api_no_downgrade').boolean
 const downgradeVersion = parsedUrl.query('api_downgrade_version').string || 'v1.0'
+const queryAuth = parsedUrl.query('auth').boolean
 
 function priorityIndexGenerator (representations) {
   let minPriority = representations[0].priority
@@ -38,7 +39,7 @@ function priorityIndexGenerator (representations) {
       priorityMatches += 1
     }
   })
-  // Pick a number between 1 and priorityMatches
+  // Pick a number between 0 and priorityMatches-1
   let randomSelection = Math.floor(Math.random() * priorityMatches)
   return randomSelection
 }
@@ -50,7 +51,8 @@ function getPrioritised (representations, priority, version, protocol) {
       .filter(representation => {
         return representation.priority === priority &&
             representation.versions.indexOf(version) !== -1 &&
-            representation.protocol === protocol
+            representation.protocol === protocol &&
+            representation.authorization === queryAuth
       })[0]
     if (representation) {
       if (protocol === 'https') {
@@ -66,10 +68,11 @@ function getPrioritised (representations, priority, version, protocol) {
     let lessThanOneHundred = representations.filter(representation => {
       return representation.priority < 100 &&
         representation.versions.indexOf(version) !== -1 &&
-        representation.protocol === protocol
+        representation.protocol === protocol &&
+        representation.authorization === queryAuth
     })
     if (lessThanOneHundred.length === 0) {
-      return url
+      return ''
     }
     lessThanOneHundred.sort((left, right) => {
       return (left.priority - right.priority)

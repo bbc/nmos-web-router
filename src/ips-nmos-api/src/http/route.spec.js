@@ -44,9 +44,16 @@ jest.mock('axios', () => {
         else if (url === 'href/x-nmos/node/v1.0/receivers/receiverId/target') data = 'routed using href'
         resolve({data})
       })
+    },
+    interceptors: {
+      request: {
+        use () {}
+      }
     }
   }
 })
+
+jest.mock('./subscription/add-token', () => () => {})
 
 describe('routing', () => {
   beforeEach(function () {
