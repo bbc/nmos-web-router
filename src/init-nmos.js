@@ -55,7 +55,7 @@ function getPrioritised (representations, priority, version, protocol) {
         return representation.priority === priority &&
             representation.versions.indexOf(version) !== -1 &&
             representation.protocol === protocol &&
-            representation.txt.api_auth === queryAuth
+            representation.authorization === queryAuth
       })[0]
     if (representation) {
       if (protocol === 'https') {
@@ -75,7 +75,7 @@ function getPrioritised (representations, priority, version, protocol) {
       return representation.priority < 100 &&
         representation.versions.indexOf(version) !== -1 &&
         representation.protocol === protocol &&
-        representation.txt.api_auth === queryAuth
+        representation.authorization === queryAuth
     })
     if (lessThanOneHundred.length === 0) {
       return ''
