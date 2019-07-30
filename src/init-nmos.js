@@ -49,9 +49,6 @@ function getPrioritised (representations, priority, version, protocol) {
   if (priority) {
     let representation = representations
       .filter(representation => {
-        if (!representation.txt.hasOwnProperty('api_auth')) {
-          representation.txt.api_auth = false
-        }
         return representation.priority === priority &&
             representation.versions.indexOf(version) !== -1 &&
             representation.protocol === protocol &&
@@ -69,9 +66,6 @@ function getPrioritised (representations, priority, version, protocol) {
     return url
   } else {
     let lessThanOneHundred = representations.filter(representation => {
-      if (!representation.txt.hasOwnProperty('api_auth')) {
-        representation.txt.api_auth = false
-      }
       return representation.priority < 100 &&
         representation.versions.indexOf(version) !== -1 &&
         representation.protocol === protocol &&
