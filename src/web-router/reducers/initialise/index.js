@@ -18,6 +18,8 @@ import loading from './loading'
 import Routables from '../../routables'
 import allVisibleState from './all-visible-state'
 import restoreChanges from './restore-changes'
+import { AND, OR } from '../../constants/filterOperators'
+import { FUZZY_SEARCH, INCLUDES } from '../../constants/filterMethods'
 
 export default (state, action, merge) => {
   let initialised = action.receivers || action.senders || action.flows
@@ -31,8 +33,22 @@ export default (state, action, merge) => {
   routables.insert.receivers(data.receivers)
   routables.insert.senders(data.senders)
   routables.insert.flows(data.flows)
-  routables.filter(state.view.choose.term)
-  routables.filter({'transport': 'rtp'})
+  // Filter by the current search term and transport type
+  routables.filter({
+    operator: AND,
+    terms: [
+      {
+        props: ['label', 'id'],
+        term: state.view.choose.term,
+        method: FUZZY_SEARCH,
+        operator: OR
+      }, {
+        props: ['transport'],
+        term: 'rtp',
+        method: INCLUDES
+      }
+    ]
+  })
 
   if (state.view.useSessionStorage) {
     routables.check.senders('saved')
