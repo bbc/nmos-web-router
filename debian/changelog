@@ -1,3 +1,9 @@
+ips-web (1.2.2) xenial; urgency=medium
+
+  * Fix bug in search view when WebSocket updates occur
+
+ -- Andrew Bonney <andrew.bonney@bbc.co.uk>  Fri, 30 Aug 2019 09:10:08 +0100
+
 ips-web (1.2.1) xenial; urgency=medium
 
   * Change OAuth token name in query param, filter query api based on api_auth text record
