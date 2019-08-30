@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { cancelTimeout, requestTimeout } from './timeout'
+import debounce from './debounce'
 import callAll from './call-all'
 
 /**
@@ -45,6 +46,26 @@ class ScrollWindowing extends React.Component {
     this.getScrollProps = this.getScrollProps.bind(this)
     this.onScroll = this.onScroll.bind(this)
     this.setRef = this.setRef.bind(this)
+
+    /**
+     * Resizing is quite intensive, so it has been debounced to
+     * only update once the user has finished or paused resizing.
+     */
+    this.onResize = debounce(150, this.onResize.bind(this))
+  }
+
+  /**
+   * Listen for window resizing
+   */
+  componentDidMount () {
+    window.addEventListener('resize', this.onResize)
+  }
+
+  /**
+   * Unbind any event listener
+   */
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.onResize)
   }
 
   /**
@@ -64,6 +85,16 @@ class ScrollWindowing extends React.Component {
          */
         this.onScroll({ currentTarget: this.ref }, true)
       }
+    }
+  }
+
+  /**
+   * Trigger the `onScroll` event on resize/zoom to update
+   * the viewport dimensions and visible indexes.
+   */
+  onResize () {
+    if (this.ref && this.initialsed) {
+      this.onScroll({ currentTarget: this.ref }, true)
     }
   }
 

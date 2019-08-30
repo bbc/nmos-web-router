@@ -16,6 +16,8 @@
 
 import Routables from '../routables'
 import allVisible from './choose/all-visible'
+import { AND, OR } from '../constants/filterOperators'
+import { FUZZY_SEARCH, INCLUDES } from '../constants/filterMethods'
 
 export default (state, action, merge) => {
   let routables = Routables(state.view)
@@ -23,8 +25,22 @@ export default (state, action, merge) => {
   if (action.name === 'view') return merge({view})
 
   routables.update[action.name](action.update[action.name])
-  routables.filter(state.view.choose.term)
-  routables.filter({'transport': 'rtp'})
+  // Filter by the current search term and transport type
+  routables.filter({
+    operator: AND,
+    terms: [
+      {
+        props: ['label', 'id'],
+        term: state.view.choose.term,
+        method: FUZZY_SEARCH,
+        operator: OR
+      }, {
+        props: ['transport'],
+        term: 'rtp',
+        method: INCLUDES
+      }
+    ]
+  })
   if (state.view.routingMode === 'manual') routables.checkFor('removed')
 
   view = routables.view()
