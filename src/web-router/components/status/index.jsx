@@ -3,7 +3,7 @@ import {Pica} from '../../../gel-react/typography'
 
 let Status = ({status}) => {
   return <div>
-    <Pica>{status}</Pica>
+    <Pica className={`status-${status}`}>{status}</Pica>
   </div>
 }
 

@@ -65,9 +65,21 @@ the file from top to bottom styles the web router from top to bottom */
   top: 20px;
   right: 100px;
   letter-spacing: normal;
+
+  &-Disconnected {
+    color: red;
+  }
+
+  &-Connected {
+    color: green;
+  }
+
+  &-Error {
+    color: red;
+  }
 }
 
-/* .web-router contains everything other than the IPS navigation bar and Sign-in bar */
+/* .web-router contains everything other than the IPS navigation bar */
 .web-router {
   position: absolute;
   overflow: hidden;

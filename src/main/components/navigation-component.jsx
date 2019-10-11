@@ -7,14 +7,12 @@ let Navigation = () => {
   return <div>
     <div className='navigation-background' />
     <Layout className='navigation' layouts='flush'>
-      <Layout gels='10/12'>
-        <LayoutItem>
-          <Link
-            to='/'>
-            <Logo />
-          </Link>
-        </LayoutItem>
-      </Layout>
+      <LayoutItem>
+        <Link
+          to='/'>
+          <Logo />
+        </Link>
+      </LayoutItem>
     </Layout>
   < /div>
 }
