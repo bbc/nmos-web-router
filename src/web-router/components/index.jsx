@@ -5,12 +5,16 @@ import React, { PropTypes } from 'react'
 import Main from './main'
 import Notifications from './notifications'
 import SignIn from './security/signin-component'
+import Status from './status'
 
 let WebRouter = ({data, view, actions}) => {
   let location = view.location || '/choose'
-  return <div style={{ width: '100%' }}>
+  return <div>
     <div className='sign-in'>
       <SignIn view={view} actions={actions} />
+    </div>
+    <div className='status'>
+      <Status status={view.connectionStatus} />
     </div>
     <div className={`web-router web-router/${view.routingMode}${location} web-router-notification-${view.notifications.state}`}>
       <Notifications view={view.notifications} />

@@ -15,13 +15,6 @@ let Navigation = () => {
           </Link>
         </LayoutItem>
       </Layout>
-      <Layout gels='2/12'>
-        <Link
-          to='/web-router'
-          className='nav button'>
-            WEB ROUTER
-          </Link>
-      </Layout>
     </Layout>
   < /div>
 }

@@ -60,6 +60,13 @@ the file from top to bottom styles the web router from top to bottom */
   }
 }
 
+.status {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  letter-spacing: normal;
+}
+
 /* .web-router contains everything other than the IPS navigation bar and Sign-in bar */
 .web-router {
   position: absolute;
