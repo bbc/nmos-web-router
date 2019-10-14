@@ -63,8 +63,12 @@ the file from top to bottom styles the web router from top to bottom */
 .status {
   position: absolute;
   top: 20px;
-  right: 100px;
+  right: 15%;
   letter-spacing: normal;
+
+  @media (--small-screen) {
+    right: 2em;
+  }
 
   &-Disconnected {
     color: red;
