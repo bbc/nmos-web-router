@@ -14,7 +14,7 @@ let Navigation = () => {
         </Link>
       </LayoutItem>
     </Layout>
-  < /div>
+  </div>
 }
 
 export default Navigation
