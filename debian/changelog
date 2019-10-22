@@ -1,3 +1,9 @@
+ips-web (1.2.3) xenial; urgency=medium
+
+  * Add WebSocket connection status indicator
+
+  -- Danny Meloy <danny.meloy@bbc.co.uk>  Mon 14 Oct 16:43:20 BST 2019
+
 ips-web (1.2.2) xenial; urgency=medium
 
   * Fix bug in search view when WebSocket updates occur

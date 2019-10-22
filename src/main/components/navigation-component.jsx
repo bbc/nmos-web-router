@@ -7,23 +7,14 @@ let Navigation = () => {
   return <div>
     <div className='navigation-background' />
     <Layout className='navigation' layouts='flush'>
-      <Layout gels='10/12'>
-        <LayoutItem>
-          <Link
-            to='/'>
-            <Logo />
-          </Link>
-        </LayoutItem>
-      </Layout>
-      <Layout gels='2/12'>
+      <LayoutItem>
         <Link
-          to='/web-router'
-          className='nav button'>
-            WEB ROUTER
-          </Link>
-      </Layout>
+          to='/'>
+          <Logo />
+        </Link>
+      </LayoutItem>
     </Layout>
-  < /div>
+  </div>
 }
 
 export default Navigation

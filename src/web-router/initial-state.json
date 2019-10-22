@@ -32,7 +32,8 @@
     "routingMode": "automatic",
     "changes": [],
     "useSessionStorage": true,
-    "loggedIn": false
+    "loggedIn": false,
+    "connectionStatus": "Disconnected"
   },
   "initialised": false,
   "location": "/"

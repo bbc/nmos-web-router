@@ -36,6 +36,7 @@ import deployUnroute from './confirm/deploy-unroute-reducer'
 import deployBulkRoute from './confirm/deploy-bulk-route-reducer'
 import signIn from './security/signin-reducer'
 import signOut from './security/signout-reducer'
+import status from './status/status-reducer.js'
 
 export default {
   initialise,
@@ -59,6 +60,7 @@ export default {
   deployBulkRoute,
   signIn,
   signOut,
+  status,
   all: {
     router: {
       LOCATION_CHANGE: locationChange

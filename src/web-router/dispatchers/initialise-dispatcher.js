@@ -65,6 +65,7 @@ export default (actions) => {
       open () {
         if (showOpenedMessage) dispatchInfo(actions)(`Connected to ${name}`)
         showOpenedMessage = true
+        actions.status({status: 'Connected'})
       },
       update (data) {
         if (data.type === 'error') dispatchError(actions)(data.data)
@@ -81,10 +82,12 @@ export default (actions) => {
       close () {
         showOpenedMessage = true
         dispatchError(actions)(`Disconnected from ${name}`)
+        actions.status({status: 'Disconnected'})
       },
       error (error) {
         showOpenedMessage = true
         dispatchError(actions)(`Error occured on ${name}, ${error}`)
+        actions.status({status: 'Error'})
       }
     })
   }
