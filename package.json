@@ -86,7 +86,7 @@
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
-    "ws": "^1.1.1"
+    "ws": "^3.3.1"
   },
   "scripts": {
     "build": "node scripts/build.js",
