@@ -55,12 +55,12 @@ module.exports = (nmos, httpPort, wsPort) => {
     body.ws_href = `ws://localhost:${wsPort}/${type}`
     nmos.subscription[type]()
       .connect(body)
-        .then(data => {
-          res.json(data)
-        })
-        .catch(error => {
-          res.status(404).send(error)
-        })
+      .then(data => {
+        res.json(data)
+      })
+      .catch(error => {
+        res.status(404).send(error)
+      })
   })
 
   let add = (type) => {

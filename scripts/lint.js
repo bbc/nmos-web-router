@@ -17,24 +17,24 @@
 function style () {
   const stylelint = require('stylelint')
   return stylelint
-  .lint({
-    files: '**/*.css'
-  })
-  .then(result => {
-    let errored = result.results
-      .filter(res => {
-        return res.errored
-      })
-    if (errored.length > 0) {
-      errored.forEach(res => {
-        console.log(res.source, res.warnings)
-      })
-    } else console.log('STYLE LINT FREE')
-    return errored.length === 0
-  })
-  .catch(err => {
-    console.log(err)
-  })
+    .lint({
+      files: '**/*.css'
+    })
+    .then(result => {
+      let errored = result.results
+        .filter(res => {
+          return res.errored
+        })
+      if (errored.length > 0) {
+        errored.forEach(res => {
+          console.log(res.source, res.warnings)
+        })
+      } else console.log('STYLE LINT FREE')
+      return errored.length === 0
+    })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 function js () {

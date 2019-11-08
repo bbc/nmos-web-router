@@ -51,13 +51,13 @@ describe('create', () => {
       type: 'type',
       addToken: addToken
     })
-    .then(resoltResponse => {
-      response = resoltResponse
-      done()
-    })
-    .catch(() => {
-      done()
-    })
+      .then(resoltResponse => {
+        response = resoltResponse
+        done()
+      })
+      .catch(() => {
+        done()
+      })
   })
 
   it('uses base url for post', () => {
