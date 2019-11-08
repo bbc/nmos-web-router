@@ -22,12 +22,61 @@ apt-get update && apt-get install -y nodejs yarn
 mkdir /home/vagrant
 cd /home/vagrant
 
-# Download the Node provisioning script
-curl -s https://raw.githubusercontent.com/bbc/nmos-joint-ri/master/vagrant/provision_node.sh -o provision_node.sh
-chmod +x provision_node.sh
+# Provision a Node
+#!/usr/bin/env bash
 
-# Run the Node provisioning script
-./provision_node.sh master master master master master master master
+export DEBIAN_FRONTEND=noninteractive
+export DEB_BUILD_OPTIONS=nocheck
+APT_TOOL='apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -y'
+
+# All service are run as an ipstudio user
+useradd ipstudio
+mkdir /home/ipstudio
+chown -R ipstudio /home/ipstudio
+
+sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
+apt-get update
+apt-get install python-pip python-mock devscripts debhelper equivs python3-setuptools python-stdeb python3 python3-pip tox -y
+pip install setuptools
+
+apt-get install libavahi-compat-libdnssd1 -y
+
+cd /home/vagrant
+
+git clone https://github.com/bbc/nmos-common.git
+git clone https://github.com/bbc/nmos-reverse-proxy.git
+git clone https://github.com/bbc/nmos-node.git
+git clone https://github.com/bbc/nmos-mdns-bridge.git
+
+cd /home/vagrant/nmos-common
+pip install -e .
+install -m 666 /dev/null /var/log/nmos.log
+
+cd /home/vagrant/nmos-reverse-proxy
+sed -i "s/, python-nmoscommon//" stdeb.cfg
+make dsc
+mk-build-deps --install deb_dist/nmosreverseproxy_*.dsc --tool "$APT_TOOL"
+make deb
+dpkg -i dist/ips-reverseproxy-common_*_all.deb
+sudo apt-get -f -y install
+
+cd /home/vagrant/nmos-mdns-bridge
+sed -i "s/, python-nmoscommon//" stdeb.cfg
+make dsc
+mk-build-deps --install deb_dist/mdnsbridge_*.dsc --tool "$APT_TOOL"
+make deb
+dpkg -i dist/python-mdnsbridge_*_all.deb
+sudo apt-get -f -y install
+
+cd /home/vagrant/nmos-node
+sed -i "s/, python-nmoscommon//" stdeb.cfg
+make dsc
+mk-build-deps --install deb_dist/nodefacade_*.dsc --tool "$APT_TOOL"
+make deb
+dpkg -i dist/python-nodefacade_*_all.deb
+sudo apt-get -f -y install
+
+service apache2 restart
 
 # Move back to the starting directory
 cd $DIR
