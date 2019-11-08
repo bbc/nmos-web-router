@@ -60,7 +60,7 @@ import { FUZZY_SEARCH, INCLUDES } from '../../constants/filterMethods'
  *    }
  *    ```
  */
-export default ((conditions, routables) => {
+export default (conditions, routables) => {
   // Extract the required advanced filtering properties
   const { operator, terms } = conditions
 
@@ -108,4 +108,4 @@ export default ((conditions, routables) => {
     routable.state = routableMapState.state()
     routable.stateString = stateToString(routable.state)
   })
-})
+}

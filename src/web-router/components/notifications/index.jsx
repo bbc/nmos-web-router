@@ -7,7 +7,7 @@ let Notifictions = ({view}) => {
     <Notification
       message={view.message}
       type={view.type}
-      />
+    />
   </div>
 }
 

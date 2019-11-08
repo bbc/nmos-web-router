@@ -32,21 +32,21 @@ export default (actions) => {
     // Only perform an initial GET for stub data, otherwise just use WebSockets
     if (window.nmos.stub) {
       window.nmos[name]()
-      .then(response => {
-        let data = {}
-        data[name] = response
-        actions.initialise(data)
-      })
-      .catch(error => {
-        dispatchError(actions)(error)
-        retries[name] += 1
-        if (retries[name] >= MAX_RETRIES) actions.initialiseError({ error, name })
-        else {
-          setTimeout(function () {
-            initialise(name)
-          }, RETRY_TIMEOUT)
-        }
-      })
+        .then(response => {
+          let data = {}
+          data[name] = response
+          actions.initialise(data)
+        })
+        .catch(error => {
+          dispatchError(actions)(error)
+          retries[name] += 1
+          if (retries[name] >= MAX_RETRIES) actions.initialiseError({ error, name })
+          else {
+            setTimeout(function () {
+              initialise(name)
+            }, RETRY_TIMEOUT)
+          }
+        })
     } else {
       let data = {}
       data[name] = []

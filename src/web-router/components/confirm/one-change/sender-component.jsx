@@ -16,7 +16,7 @@ let Sender = ({sender, type, available}) => {
       routable={sender}
       node
       onNodeRender={function (nodeEl) { }}
-      />
+    />
   }</LayoutItem>
 }
 

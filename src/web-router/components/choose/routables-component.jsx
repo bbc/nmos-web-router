@@ -4,7 +4,6 @@ import Routable from '../../routables/routable-component'
 import { ROUTABLE_ROW_HEIGHT } from '../scroll-windowing/constants'
 
 class Routables extends React.Component {
-
   constructor (props) {
     super(props)
 
@@ -43,13 +42,13 @@ class Routables extends React.Component {
           <div
             key={`${side}-${routable.id}`}
             style={positionStyling}
-            >
+          >
             <Routable
               baseState='static'
               checkbox
               routable={routable}
               onCheckbox={this.onCheckbox}
-              />
+            />
           </div>
         )
       })

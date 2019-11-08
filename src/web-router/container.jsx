@@ -11,7 +11,7 @@ let WebRouterContainer = ({ initialised, data, view, actions }) => {
     data={data}
     view={view}
     actions={actions}
-    />
+  />
 }
 
 WebRouterContainer.propTypes = {

@@ -54,7 +54,7 @@ let Connections = ({expanded, senders, receivers, routes, actions, routingMode, 
               actions={actions}
               visibleStartRow={visibleStartRow}
               visibleEndRow={visibleEndRow}
-              />
+            />
             <Receivers
               senders={senders}
               receivers={filteredReceivers}
@@ -63,12 +63,12 @@ let Connections = ({expanded, senders, receivers, routes, actions, routingMode, 
               changes={changes}
               visibleStartRow={visibleStartRow}
               visibleEndRow={visibleEndRow}
-              />
+            />
             <Routes
               routes={routes}
               actions={actions}
               expanded={expanded}
-              />
+            />
           </Layout>
         </div>
       )}

@@ -36,7 +36,7 @@ let routes = (containers) => {
           subRoutes.map(subRoute => {
             return routes(route[subRoute])
           })
-      }</Route>
+        }</Route>
     })
 }
 

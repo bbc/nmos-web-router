@@ -30,7 +30,7 @@ let Loading = ({view}) => {
           name={name}
           label={notLoaded}
           icon={<Spinner />}
-          />
+        />
       })}
       {view.errored.map((errored, index) => {
         let name = 'errored'
@@ -39,7 +39,7 @@ let Loading = ({view}) => {
           name={name}
           label={errored}
           icon={<No />}
-          />
+        />
       })}
       {view.loaded.map((loaded, index) => {
         let name = 'loaded'
@@ -48,7 +48,7 @@ let Loading = ({view}) => {
           name={name}
           label={loaded}
           icon={<Yes />}
-          />
+        />
       })}
     </Layout>
   </Layout>

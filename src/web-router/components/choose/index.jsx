@@ -46,7 +46,7 @@ let Choose = ({view, senders, receivers, expanded, actions}) => {
             expanded={expanded}
             visibleStartRow={visibleStartRow}
             visibleEndRow={visibleEndRow}
-            />
+          />
           <Routables
             side='right'
             type='receivers'
@@ -55,7 +55,7 @@ let Choose = ({view, senders, receivers, expanded, actions}) => {
             expanded={expanded}
             visibleStartRow={visibleStartRow}
             visibleEndRow={visibleEndRow}
-            />
+          />
         </div>
       )}
     </ScrollWindowing>

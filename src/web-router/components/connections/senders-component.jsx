@@ -37,7 +37,7 @@ class Sender extends React.Component {
       onClick={this.onClick}
       onNodeRender={this.onNodeRender}
       allowUpdateRender={index >= visibleStartRow && index <= visibleEndRow}
-      />
+    />
   }
 }
 
@@ -52,7 +52,7 @@ Sender.propTypes = {
 let Senders = props => {
   const {senders, ...otherProps} = props
   return <LayoutItem className='routables senders' gels='4/10'>{
-      senders.map((sender, index) => <Sender key={sender.id} sender={sender} index={index} {...otherProps} />)
+    senders.map((sender, index) => <Sender key={sender.id} sender={sender} index={index} {...otherProps} />)
   }</LayoutItem>
 }
 

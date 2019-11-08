@@ -7,7 +7,7 @@ let Line = ({width}) => {
     y1='0'
     x2={width}
     y2='0'
-    />
+  />
 }
 
 Line.propTypes = {

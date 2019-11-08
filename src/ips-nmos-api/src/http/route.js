@@ -74,77 +74,77 @@ module.exports = function (nmos) {
         }
       }
       return axios.patch(stageUrl, toPatch, options)
-      .then(response => {
-        if (response.status !== 200) {
-          return new Promise((resolve, reject) => {
-            reject('Unable to modify Receiver configuration')
-          })
-        }
-        return response.data
-      })
+        .then(response => {
+          if (response.status !== 200) {
+            return new Promise((resolve, reject) => {
+              reject('Unable to modify Receiver configuration')
+            })
+          }
+          return response.data
+        })
     } else {
       // Subscribe
       return axios.get(sender.manifest_href)
-      .then(response => {
-        if (response.status !== 200) {
-          return new Promise((resolve, reject) => {
-            reject('Unable to fetch transport file from Sender')
-          })
-        }
-        var toPatch = {
-          'sender_id': sender.id,
-          'master_enable': true,
-          'activation': {
-            'mode': 'activate_immediate'
-          },
-          'transport_file': {
-            'data': response.data,
-            'type': 'application/sdp'
+        .then(response => {
+          if (response.status !== 200) {
+            return new Promise((resolve, reject) => {
+              reject('Unable to fetch transport file from Sender')
+            })
           }
-        }
-        return axios.patch(stageUrl, toPatch, options)
-      })
-      .then(response => {
-        if (response.status !== 200) {
-          return new Promise((resolve, reject) => {
-            reject('Unable to modify Receiver configuration')
-          })
-        }
-        return response.data
-      })
+          var toPatch = {
+            'sender_id': sender.id,
+            'master_enable': true,
+            'activation': {
+              'mode': 'activate_immediate'
+            },
+            'transport_file': {
+              'data': response.data,
+              'type': 'application/sdp'
+            }
+          }
+          return axios.patch(stageUrl, toPatch, options)
+        })
+        .then(response => {
+          if (response.status !== 200) {
+            return new Promise((resolve, reject) => {
+              reject('Unable to modify Receiver configuration')
+            })
+          }
+          return response.data
+        })
     }
   }
 
   function routeHref (id, sender) {
     return nmos.receivers(id)
-    .then(receiver => {
-      return nmos.devices(receiver.device_id)
-    })
-    .then(device => {
+      .then(receiver => {
+        return nmos.devices(receiver.device_id)
+      })
+      .then(device => {
       // TODO: Should also check that interface_bindings present in Receiver ie. running API v1.2
-      let controlHref = null
-      if (device.controls) { // Available from Node API v1.1 onwards
+        let controlHref = null
+        if (device.controls) { // Available from Node API v1.1 onwards
         // Look for connection management API
-        let controlURN = 'urn:x-nmos:control:sr-ctrl/v1.0'
-        device.controls.forEach(control => {
-          if (control.type === controlURN) {
-            controlHref = control.href
-          }
-        })
-      }
-      if (controlHref) {
-        return routeCM(id, sender, controlHref)
-      } else {
+          let controlURN = 'urn:x-nmos:control:sr-ctrl/v1.0'
+          device.controls.forEach(control => {
+            if (control.type === controlURN) {
+              controlHref = control.href
+            }
+          })
+        }
+        if (controlHref) {
+          return routeCM(id, sender, controlHref)
+        } else {
         // Fall back to old connection management method
-        return nmos.nodes(device.node_id).then(node => {
-          let versions = ['v1.0'] // Fallback for Node API v1.0
-          if (node.api) { // Available from Node API v1.1 onwards
-            versions = node.api.versions
-          }
-          return route(id, sender, node.href, versions)
-        })
-      }
-    })
+          return nmos.nodes(device.node_id).then(node => {
+            let versions = ['v1.0'] // Fallback for Node API v1.0
+            if (node.api) { // Available from Node API v1.1 onwards
+              versions = node.api.versions
+            }
+            return route(id, sender, node.href, versions)
+          })
+        }
+      })
   }
 
   return function ({id, sender, href, versions, bulkStuff}) {

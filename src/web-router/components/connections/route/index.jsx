@@ -45,7 +45,7 @@ let ExpandedRoute = ({data, routesRects, scrollTop, half, unicast}) => {
     state={`${state} expanded`}
     width={width}
     height={height}
-    >
+  >
     <LineComponent side='left' x1={x1} y1={y1} y2={y2} width={width} height={height} />
   </RouteSVG>
 }
@@ -91,7 +91,7 @@ let FullRoute = ({data, routesRects, scrollTop, unicast}) => {
     state={state}
     width={width}
     height={height}
-    >
+  >
     <LineComponent x1={0} y1={y1} y2={y2} width={width} height={height} />
   </RouteSVG>
 }
@@ -118,7 +118,7 @@ let HalfRoute = ({data, side, routesRects, scrollTop, unicast}) => {
     state={state}
     width={width}
     height={4}
-    >
+  >
     <Half side={side} x1={0} width={width} />
   </RouteSVG>
 }
@@ -144,7 +144,7 @@ let Route = ({data, expanded, halfs, unicast}) => {
       scrollTop={scrollTop}
       half={halfs.includes('receiver')}
       unicast={unicast}
-      />
+    />
   } else if (halfs.length === 1) {
     let side = 'right'
     let routableType = 'receiver'
@@ -163,14 +163,14 @@ let Route = ({data, expanded, halfs, unicast}) => {
       scrollTop={scrollTop}
       side={side}
       unicast={unicast}
-      />
+    />
   } else {
     return <FullRoute
       data={data}
       routesRects={routesRects}
       scrollTop={scrollTop}
       unicast={unicast}
-      />
+    />
   }
 }
 

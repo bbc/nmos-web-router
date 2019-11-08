@@ -13,7 +13,7 @@ let half = ({x1, width, side}) => {
     y1='0'
     x2={x2}
     y2='0'
-    />
+  />
 }
 
 half.propTypes = {

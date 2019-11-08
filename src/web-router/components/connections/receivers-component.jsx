@@ -69,7 +69,7 @@ class Receiver extends React.Component {
       onNode={this.onNode}
       onNodeRender={this.onNodeRender}
       allowUpdateRender={index >= visibleStartRow && index <= visibleEndRow}
-      />
+    />
   }
 }
 
@@ -86,7 +86,7 @@ Receiver.propTypes = {
 
 let Receivers = ({receivers, ...otherProps}) => {
   return <LayoutItem className='routables receivers' gels='4/10'>{
-      receivers.map((receiver, index) => <Receiver key={receiver.id} receiver={receiver} index={index} {...otherProps} />)
+    receivers.map((receiver, index) => <Receiver key={receiver.id} receiver={receiver} index={index} {...otherProps} />)
   }</LayoutItem>
 }
 

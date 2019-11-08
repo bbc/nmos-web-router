@@ -14,7 +14,7 @@ let WebRouter = ({view, actions}) => {
     Expanded = <ExpandedSender
       sender={view.expanded}
       actions={actions}
-      />
+    />
   }
 
   return <div className='main'>
@@ -22,7 +22,7 @@ let WebRouter = ({view, actions}) => {
       term={view.choose.term}
       mode={view.routingMode}
       location={view.location || ''}
-      />
+    />
     <div className='container choose-view left'>
       <LayoutItem><DoublePica>Choose</DoublePica></LayoutItem>
       <Choose
@@ -31,7 +31,7 @@ let WebRouter = ({view, actions}) => {
         receivers={view.receivers}
         expanded={view.expanded}
         actions={actions}
-        />
+      />
     </div>
     <div className='container route-view center'>
       <LayoutItem><DoublePica>Route</DoublePica></LayoutItem>
@@ -46,7 +46,7 @@ let WebRouter = ({view, actions}) => {
         changes={view.changes}
         location={view.location || ''}
         choose={view.choose}
-        />
+      />
     </div>
     <div className='expanded-sender-container route-view center'>
       {Expanded}

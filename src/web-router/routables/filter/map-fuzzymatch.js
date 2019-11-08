@@ -24,9 +24,9 @@ export default (term, routables) => {
       term.toLowerCase(),
       routable.label.toLowerCase()
     ) || fuzzysearch(
-      term.toLowerCase(),
-      routable.id.toLowerCase()
-    )
+        term.toLowerCase(),
+        routable.id.toLowerCase()
+      )
 
     let routableMapState = mapState(routable)
     if (fuzzymatch) routableMapState.fuzzymatch()

@@ -30,7 +30,7 @@ class Visible extends React.Component {
       checkbox
       onCheckbox={this.onCheckbox}
       columnTitle={type}
-      />
+    />
   }
 }
 
