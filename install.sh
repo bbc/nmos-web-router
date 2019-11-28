@@ -36,10 +36,7 @@ chown -R ipstudio /home/ipstudio
 
 sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
 apt-get update
-apt-get install python-pip python-mock devscripts debhelper equivs python3-setuptools python-stdeb python3 python3-pip tox -y
-pip install setuptools
-
-apt-get install libavahi-compat-libdnssd1 -y
+apt-get install python3-pip python3-mock devscripts debhelper equivs python3-setuptools python-stdeb python3 tox -y
 
 cd /home/vagrant
 
@@ -49,31 +46,31 @@ git clone https://github.com/bbc/nmos-node.git
 git clone https://github.com/bbc/nmos-mdns-bridge.git
 
 cd /home/vagrant/nmos-common
-pip install -e .
+pip3 install -e .
 install -m 666 /dev/null /var/log/nmos.log
 
 cd /home/vagrant/nmos-reverse-proxy
-sed -i "s/, python-nmoscommon//" stdeb.cfg
+sed -i "s/, python3-nmoscommon//" stdeb.cfg
 make dsc
 mk-build-deps --install deb_dist/nmosreverseproxy_*.dsc --tool "$APT_TOOL"
 make deb
-dpkg -i dist/ips-reverseproxy-common_*_all.deb
+dpkg -i dist/python3-nmosreverseproxy_*_all.deb
 sudo apt-get -f -y install
 
 cd /home/vagrant/nmos-mdns-bridge
-sed -i "s/, python-nmoscommon//" stdeb.cfg
+sed -i "s/, python3-nmoscommon//" stdeb.cfg
 make dsc
 mk-build-deps --install deb_dist/mdnsbridge_*.dsc --tool "$APT_TOOL"
 make deb
-dpkg -i dist/python-mdnsbridge_*_all.deb
+dpkg -i dist/python3-mdnsbridge_*_all.deb
 sudo apt-get -f -y install
 
 cd /home/vagrant/nmos-node
-sed -i "s/, python-nmoscommon//" stdeb.cfg
+sed -i "s/, python3-nmoscommon//" stdeb.cfg
 make dsc
 mk-build-deps --install deb_dist/nodefacade_*.dsc --tool "$APT_TOOL"
 make deb
-dpkg -i dist/python-nodefacade_*_all.deb
+dpkg -i dist/python3-nodefacade_*_all.deb
 sudo apt-get -f -y install
 
 service apache2 restart
