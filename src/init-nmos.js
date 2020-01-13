@@ -44,7 +44,7 @@ function priorityIndexGenerator (representations) {
   return randomSelection
 }
 
-function getPrioritised (representations, priority, version, protocol) {
+function getPrioritised (representations, priority, version, protocol, serviceType) {
   var url = ''
   if (priority) {
     let representation = representations
@@ -52,7 +52,7 @@ function getPrioritised (representations, priority, version, protocol) {
         return representation.priority === priority &&
             representation.versions.indexOf(version) !== -1 &&
             representation.protocol === protocol &&
-            representation.authorization === queryAuth
+            (serviceType === 'nmos-auth' ? true : representation.authorization === queryAuth)
       })[0]
     if (representation) {
       if (protocol === 'https') {
@@ -69,7 +69,7 @@ function getPrioritised (representations, priority, version, protocol) {
       return representation.priority < 100 &&
         representation.versions.indexOf(version) !== -1 &&
         representation.protocol === protocol &&
-        representation.authorization === queryAuth
+        (serviceType === 'nmos-auth' ? true : representation.authorization === queryAuth)
     })
     if (lessThanOneHundred.length === 0) {
       return ''
@@ -107,7 +107,7 @@ export function getServiceUrl (serviceType, apiVersion, priority) {
       if (representations.length === 0) {
         throw new Error('No ' + serviceType + ' APIs identified from mDNS Bridge')
       }
-      let url = getPrioritised(representations, priority, apiVersion, queryProtocol)
+      let url = getPrioritised(representations, priority, apiVersion, queryProtocol, serviceType)
       if (url === '') {
         throw new Error('No URL identified for ' + serviceType + ' API')
       }
