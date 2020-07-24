@@ -1,6 +1,6 @@
 export const TOKEN_KEY = 'accessToken'
-export const CLIENT_ID = '4zk5xjDWla3S7YVEEIOqTjQI'
-export const CLIENT_SECRET = 'V8dEXpcZszxRlPrACSZhHD1M1UTdsgIJQuft2r1x5lvuBhIi'
+export const CLIENT_ID = 'sample-client-id'
+export const CLIENT_SECRET = 'sample-client-secret'
 export const AUTH_API_VERSION = 'v1.0'
 export const AUTH_SCOPE = 'is-05'
 export const AUTH_GRANT = 'password'
