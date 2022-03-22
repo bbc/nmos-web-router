@@ -29,7 +29,7 @@ app.all('*', function (req, res, next) {
 
 app.use(bodyParser.json())
 
-app.get('/x-nmos/node/v1.0/self', function (req, res) {
+app.get('/x-nmos/node/v1.2/self', function (req, res) {
   res.json({
     'version': '1481114285:857636340',
     'hostname': 'ipstudio-master',
@@ -37,11 +37,11 @@ app.get('/x-nmos/node/v1.0/self', function (req, res) {
     'href': 'http://localhost:12345/',
     'services': [
       {
-        'href': 'http://localhost:12345/x-nmos/node/v1.0/self/status/',
+        'href': 'http://localhost:12345/x-nmos/node/v1.2/self/status/',
         'type': 'urn:x-ipstudio:service:status'
       },
       {
-        'href': 'http://localhost:12345/x-nmos/node/v1.0/self/mdnsbridge/',
+        'href': 'http://localhost:12345/x-nmos/node/v1.2/self/mdnsbridge/',
         'type': 'urn:x-ipstudio:service:mdnsbridge'
       }
     ],
@@ -50,7 +50,7 @@ app.get('/x-nmos/node/v1.0/self', function (req, res) {
   })
 })
 
-app.get('/x-nmos/node/v1.0/self/mdnsbridge/nmos-query', function (req, res) {
+app.get('/x-nmos/node/v1.2/self/mdnsbridge/nmos-query', function (req, res) {
   res.json({
     'representation': [
       {
@@ -80,7 +80,7 @@ app.get('/x-nmos/node/v1.0/self/mdnsbridge/nmos-query', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-  res.send('You did this wrong, go to x-nmos/node/v1.0/self')
+  res.send('You did this wrong, go to x-nmos/node/v1.2/self')
 })
 
 app.listen(12345, () => {

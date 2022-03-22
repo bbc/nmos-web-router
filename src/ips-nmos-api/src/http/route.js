@@ -16,8 +16,8 @@
 
 var axios = require('axios')
 var constants = require('./constants')
-import routeBulk from './route-bulk'
-import AddToken from './subscription/add-token'
+var routeBulk = require('./route-bulk')
+var AddToken = require('./subscription/add-token')
 
 let addToken = AddToken()
 

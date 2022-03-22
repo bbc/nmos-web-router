@@ -1,0 +1,12 @@
+[submodule "nmos-dep/nmos-common"]
+	path = nmos-dep/nmos-common
+	url = https://github.com/pkeroulas/nmos-common.git
+[submodule "nmos-dep/nmos-reverse-proxy"]
+	path = nmos-dep/nmos-reverse-proxy
+	url = https://github.com/pkeroulas/nmos-reverse-proxy.git
+[submodule "nmos-dep/nmos-node"]
+	path = nmos-dep/nmos-node
+	url = https://github.com/bbc/nmos-node.git
+[submodule "nmos-dep/nmos-mdns-bridge"]
+	path = nmos-dep/nmos-mdns-bridge
+	url = https://github.com/pkeroulas/nmos-mdns-bridge.git

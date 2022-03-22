@@ -17,7 +17,7 @@
 var axios = require('axios')
 var constants = require('./constants')
 
-export default (nmos, bulkStuff, fallback) => {
+module.export = function (nmos, bulkStuff, fallback) {
   var device = null
   return nmos.devices(bulkStuff.deviceID)
     .then((passedDevice) => {

@@ -1,6 +1,6 @@
 module.exports = () => {
   const TOKEN_KEY = 'accessToken'
-  if (!window.sessionStorage) {
+  if (typeof window !== 'undefined' && !window.sessionStorage) {
     console.error('Please use a browser that supports Session Storage')
     return
   }

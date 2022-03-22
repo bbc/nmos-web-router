@@ -97,7 +97,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "test:once": "CI=true node scripts/test.js --env=jsdom",
     "ci": "npm run lint && npm run test:once",
-    "nmos": "./src/ips-nmos-api/bin/ips-nmos-api",
+    "nmos": "./src/ips-nmos-api/bin/ips-nmos-api.js",
     "mdnsbridge": "node scripts/mdnsbridge-local.js"
   },
   "homepage": "http://ipstudio-master.rd.bbc.co.uk/ips-web/",
