@@ -25,7 +25,7 @@
     "body-parser": "^1.15.2",
     "chance": "^1.0.4",
     "change-case": "^3.0.0",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "jest": "^18.1.0",
     "lokijs": "^1.4.1",
     "randexp": "^0.4.3",
