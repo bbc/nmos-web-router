@@ -1,6 +1,7 @@
 # NMOS Web Router
 
-WARNING -- THIS SOFTWARE IS NO LONGER MAINTAINED AND SHOULD BE CONSIDERED INSECURE
+WARNING -- THIS SOFTWARE IS NO LONGER MAINTAINED AND SHOULD BE CONSIDERED INSECURE. 
+See [this page](https://www.amwa.tv/buynmoshere) for information about other open source, free and paid NMOS products.
 
 See 
 
