@@ -1,5 +1,9 @@
 # NMOS Web Router
 
+WARNING -- THIS SOFTWARE IS NO LONGER MAINTAINED AND SHOULD BE CONSIDERED INSECURE
+
+See 
+
 A web based application for connecting multicast RTP Senders and Receivers using AMWA NMOS IS-04 and IS-05. 
 This is a basic tool, intended to provide a reference example for implementors and to aid with testing.
 
