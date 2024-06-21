@@ -10,7 +10,7 @@ This is a basic tool, intended to provide a reference example for implementors a
 
 ## Getting Started
 
-The following instructions have been tested on Ubuntu 16.04, but may work for other operating systems.
+The following instructions have been tested on Ubuntu 20.04, but may work for other operating systems.
 
 ```
 $ git clone https://github.com/bbc/nmos-web-router.git

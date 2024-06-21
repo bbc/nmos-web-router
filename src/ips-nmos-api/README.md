@@ -16,7 +16,7 @@ Installation
 ------------
 
 ```
-npm i -s bbc/ips-nmos-api
+npm i -s src/ips-nmos-api
 ```
 
 or
