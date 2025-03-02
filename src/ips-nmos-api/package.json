@@ -21,7 +21,7 @@
     "start": "bin/ips-nmos-api"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "body-parser": "^1.15.2",
     "chance": "^1.0.4",
     "change-case": "^3.0.0",
